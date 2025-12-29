@@ -8,25 +8,30 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.10' # 최신 문법을 지원하는 버전으로 업그레이드
 
       - name: Install dependencies
-        run: pip install yfinance
+        run: |
+          pip install --upgrade pip
+          pip install yfinance
 
       - name: Run update script
         run: python update_data.py
 
       - name: Commit and Push changes
         run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git add -A  # -A로 하면 새로 생긴 모든 파일(지도 포함)을 싹 긁어갑니다
-          git commit -m "Update assets and sitemap" || echo "No changes"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Automated update: index.html & sitemap.xml" || echo "Nothing changed"
           git push
