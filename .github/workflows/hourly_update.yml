@@ -2,8 +2,8 @@ name: Update Asset Data
 
 on:
   schedule:
-    - cron: "0 * * * *"  # 매시간 정각 실행
-  workflow_dispatch:      # 수동 실행 버튼
+    - cron: "0 * * * *"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -29,11 +27,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # 에러 방지용: 작업 중인 파일 강제 초기화 및 최신화
-          git checkout .
-          git pull --rebase origin main
-          
           git add index.html sitemap.xml
-          git commit -m "Automated update: index.html & sitemap.xml" || echo "No changes to commit"
-          git push origin main
+          git commit -m "Force Update to 30 assets" || echo "No changes"
+          git push origin main --force
