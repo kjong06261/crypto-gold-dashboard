@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"  # 3.9에서 3.10으로 업그레이드!
+          python-version: "3.10"
 
       - name: Install Dependencies
         run: pip install yfinance
@@ -29,7 +29,11 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 에러 방지용: 작업 중인 파일 강제 초기화 및 최신화
+          git checkout .
           git pull --rebase origin main
+          
           git add index.html sitemap.xml
           git commit -m "Automated update: index.html & sitemap.xml" || echo "No changes to commit"
           git push origin main
