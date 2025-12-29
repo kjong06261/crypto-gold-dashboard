@@ -1,27 +1,33 @@
-name: Hourly Update
+name: Update Asset Data
+
 on:
   schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
-permissions:
-  contents: write
+    - cron: '0 * * * *' # 매시간 정각 실행
+  workflow_dispatch: # 수동 실행 버튼
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'  # 버전을 3.10으로 올려서 충돌 방지
+          python-version: '3.9'
+
       - name: Install dependencies
-        run: pip install yfinance pandas
-      - name: Run script
-        run: python update_data.py
-      - name: Commit and Push
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add index.html
-          git commit -m "Update Dashboard" || exit 0
-          git push origin main
+          pip install yfinance
+
+      - name: Run update script
+        run: python update_data.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add index.html sitemap.xml  # 여기서 sitemap.xml도 같이 추가합니다!
+          git commit -m "Update index and sitemap" || echo "No changes to commit"
+          git push
