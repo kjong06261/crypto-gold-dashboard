@@ -1,19 +1,36 @@
-# (중략... 위에는 기존 시세 데이터 코드)
+name: Update Asset Data
 
-if __name__ == "__main__":
-    # 1. 인덱스 파일 생성
-    with open('index.html', 'w', encoding='utf-8') as f:
-        f.write(get_data())
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
-    # 2. 지도 파일 생성 (이게 꼭 있어야 합니다!)
-    sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://coin.us-dividend-pro.com/</loc>
-        <lastmod>{datetime.now().strftime('%Y-%m-%d')}</lastmod>
-        <changefreq>hourly</changefreq>
-        <priority>1.0</priority>
-    </url>
-</urlset>"""
-    with open('sitemap.xml', 'w', encoding='utf-8') as f:
-        f.write(sitemap_content)
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # 권한 설정이 확실하게 먹히도록 코드 레벨에서도 한 번 더 박아줍니다
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # 최신 버전 v4로 교체
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install yfinance
+
+      - name: Run update script
+        run: python update_data.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Automated update: index.html & sitemap.xml" || echo "Nothing changed"
+          git push
