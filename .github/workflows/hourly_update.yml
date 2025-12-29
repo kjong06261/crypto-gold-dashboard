@@ -1,8 +1,8 @@
 name: Hourly Update
 on:
-  workflow_dispatch:
   schedule:
     - cron: '0 * * * *'
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
@@ -13,7 +13,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'  # 버전을 3.10으로 올려서 충돌 방지
       - name: Install dependencies
         run: pip install yfinance pandas
       - name: Run script
@@ -22,6 +22,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add -A
-          git commit -m "Update" || exit 0
-          git push
+          git add index.html
+          git commit -m "Update Dashboard" || exit 0
+          git push origin main
