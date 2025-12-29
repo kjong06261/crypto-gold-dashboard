@@ -2,107 +2,168 @@
     <!DOCTYPE html>
     <html>
     <head>
-        <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crypto & Stock Terminal</title>
         <style>
-            body { background: #0b0f19; color: #e2e8f0; font-family: 'Inter', sans-serif; margin: 0; padding: 40px 20px; }
-            .header { margin-bottom: 40px; border-left: 5px solid #38bdf8; padding-left: 20px; text-align: left; max-width: 1000px; margin: 0 auto 40px; }
-            h1 { font-size: 2.2rem; margin: 0; color: #f8fafc; }
-            .update-time { color: #64748b; font-size: 0.9rem; }
-            .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-            .card { background: #161e2d; padding: 25px; border-radius: 16px; border: 1px solid #2d3748; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-            .name { color: #94a3b8; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-            .price-row { display: flex; align-items: baseline; gap: 10px; margin: 10px 0; }
-            .price { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; }
-            .change { font-size: 0.95rem; font-weight: 600; }
-            .up { color: #ef4444; } .down { color: #3b82f6; }
-            .footer { max-width: 1000px; margin: 60px auto 0; padding-top: 20px; border-top: 1px solid #2d3748; color: #475569; font-size: 0.85rem; display: flex; justify-content: space-between; }
-            .market-status { display: inline-block; padding: 4px 12px; background: #064e3b; color: #34d399; border-radius: 20px; font-size: 0.75rem; font-weight: bold; margin-bottom: 15px; }
+            body { background: #05070a; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; }
+            .wrapper { max-width: 1200px; margin: 0 auto; }
+            .header { display: flex; justify-content: space-between; align-items: flex-end; padding: 20px 0; border-bottom: 2px solid #1e293b; margin-bottom: 30px; }
+            h1 { margin: 0; font-size: 2rem; color: #f8fafc; letter-spacing: -1px; }
+            .live-dot { display: inline-block; width: 10px; height: 10px; background: #22c55e; border-radius: 50%; margin-right: 8px; animation: pulse 2s infinite; }
+            @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+            .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+            .card { background: #111827; padding: 20px; border-radius: 12px; border: 1px solid #1f2937; transition: all 0.2s ease; }
+            .card:hover { border-color: #3b82f6; background: #1a2234; }
+            .info { display: flex; justify-content: space-between; margin-bottom: 10px; }
+            .label { color: #94a3b8; font-size: 0.8rem; font-weight: 600; }
+            .symbol { color: #475569; font-size: 0.7rem; }
+            .price-box { display: flex; align-items: baseline; justify-content: space-between; }
+            .price { font-size: 1.6rem; font-weight: 700; color: #f1f5f9; }
+            .change { font-size: 0.9rem; font-weight: 600; padding: 4px 8px; border-radius: 6px; }
+            .up { color: #ff4d4d; background: rgba(255, 77, 77, 0.1); }
+            .down { color: #4d94ff; background: rgba(77, 148, 255, 0.1); }
+            .footer { text-align: center; margin-top: 50px; color: #475569; font-size: 0.8rem; border-top: 1px solid #1e293b; padding-top: 20px; }
         </style>
     </head>
     <body>
-        <div class="header">
-            <div class="market-status">● LIVE MARKET DATA</div>
-            <h1>Global Asset Terminal</h1>
-            <div class="update-time">마지막 업데이트: 2025-12-29 11:06 (KST)</div>
-        </div>
-        <div class="grid">
+        <div class="wrapper">
+            <div class="header">
+                <div>
+                    <h1><span class="live-dot"></span>PRO ASSET TERMINAL</h1>
+                    <p style="color:#64748b; margin:5px 0 0 0;">Stock & Crypto Real-time Tracker</p>
+                </div>
+                <div style="text-align: right; color:#94a3b8; font-size:0.8rem;">
+                    Last Update: 2025-12-29 11:12<br>Auto-refresh: Every 1 Hour
+                </div>
+            </div>
+            <div class="grid">
     
                 <div class="card">
-                    <div class="name">비트코인 ETF</div>
-                    <div class="price-row">
-                        <div class="price">$49.61</div>
-                        <div class="change up">▲ +0.30%</div>
+                    <div class="info">
+                        <span class="label">비트코인</span>
+                        <span class="symbol">BTC-USD</span>
                     </div>
-                    <div style="font-size: 0.7rem; color: #475569;">Symbol: IBIT</div>
+                    <div class="price-box">
+                        <span class="price">$87,672.62</span>
+                        <span class="change down">-0.19%</span>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <div class="name">이더리움</div>
-                    <div class="price-row">
-                        <div class="price">$2,957.82</div>
-                        <div class="change up">▲ +0.31%</div>
+                    <div class="info">
+                        <span class="label">이더리움</span>
+                        <span class="symbol">ETH-USD</span>
                     </div>
-                    <div style="font-size: 0.7rem; color: #475569;">Symbol: ETH-USD</div>
+                    <div class="price-box">
+                        <span class="price">$2,961.00</span>
+                        <span class="change up">+0.42%</span>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <div class="name">금 현물</div>
-                    <div class="price-row">
-                        <div class="price">$416.74</div>
-                        <div class="change up">▲ +1.17%</div>
+                    <div class="info">
+                        <span class="label">솔라나</span>
+                        <span class="symbol">SOL-USD</span>
                     </div>
-                    <div style="font-size: 0.7rem; color: #475569;">Symbol: GLD</div>
+                    <div class="price-box">
+                        <span class="price">$125.14</span>
+                        <span class="change down">-0.05%</span>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <div class="name">엔비디아</div>
-                    <div class="price-row">
-                        <div class="price">$190.53</div>
-                        <div class="change up">▲ +1.02%</div>
+                    <div class="info">
+                        <span class="label">도지코인</span>
+                        <span class="symbol">DOGE-USD</span>
                     </div>
-                    <div style="font-size: 0.7rem; color: #475569;">Symbol: NVDA</div>
+                    <div class="price-box">
+                        <span class="price">$0.13</span>
+                        <span class="change up">+1.06%</span>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <div class="name">테슬라</div>
-                    <div class="price-row">
-                        <div class="price">$475.19</div>
-                        <div class="change down">▼ -2.10%</div>
+                    <div class="info">
+                        <span class="label">리플</span>
+                        <span class="symbol">XRP-USD</span>
                     </div>
-                    <div style="font-size: 0.7rem; color: #475569;">Symbol: TSLA</div>
+                    <div class="price-box">
+                        <span class="price">$1.87</span>
+                        <span class="change up">+0.49%</span>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <div class="name">애플</div>
-                    <div class="price-row">
-                        <div class="price">$273.40</div>
-                        <div class="change down">▼ -0.15%</div>
+                    <div class="info">
+                        <span class="label">엔비디아</span>
+                        <span class="symbol">NVDA</span>
                     </div>
-                    <div style="font-size: 0.7rem; color: #475569;">Symbol: AAPL</div>
+                    <div class="price-box">
+                        <span class="price">$190.53</span>
+                        <span class="change up">+1.02%</span>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <div class="name">나스닥100</div>
-                    <div class="price-row">
-                        <div class="price">$623.89</div>
-                        <div class="change down">▼ -0.01%</div>
+                    <div class="info">
+                        <span class="label">테슬라</span>
+                        <span class="symbol">TSLA</span>
                     </div>
-                    <div style="font-size: 0.7rem; color: #475569;">Symbol: QQQ</div>
+                    <div class="price-box">
+                        <span class="price">$475.19</span>
+                        <span class="change down">-2.10%</span>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <div class="name">원/달러 환율</div>
-                    <div class="price-row">
-                        <div class="price">₩1,435.64</div>
-                        <div class="change down">▼ -0.75%</div>
+                    <div class="info">
+                        <span class="label">애플</span>
+                        <span class="symbol">AAPL</span>
                     </div>
-                    <div style="font-size: 0.7rem; color: #475569;">Symbol: KRW=X</div>
+                    <div class="price-box">
+                        <span class="price">$273.40</span>
+                        <span class="change down">-0.15%</span>
+                    </div>
                 </div>
                 
-        </div>
-        <div class="footer">
-            <div>© 2025 US-DIVIDEND-PRO Terminal</div>
-            <div>Data provided by Yahoo Finance</div>
+                <div class="card">
+                    <div class="info">
+                        <span class="label">나스닥100</span>
+                        <span class="symbol">QQQ</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="price">$623.89</span>
+                        <span class="change down">-0.01%</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="info">
+                        <span class="label">금 현물</span>
+                        <span class="symbol">GLD</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="price">$416.74</span>
+                        <span class="change up">+1.17%</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="info">
+                        <span class="label">원/달러 환율</span>
+                        <span class="symbol">KRW=X</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="price">₩1,437.48</span>
+                        <span class="change down">-0.62%</span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="footer">
+                © 2025 US-DIVIDEND-PRO | Built for Gemini Training Project | Data via Yahoo Finance
+            </div>
         </div>
     </body>
     </html>
