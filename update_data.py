@@ -1,7 +1,7 @@
 import yfinance as yf
 from datetime import datetime
 
-# 1. 자산 리스트 세팅
+# 1. 자산 리스트 (사장님의 금광 목록)
 asset_pool = {
     'BTC-USD': 'Bitcoin', 'ETH-USD': 'Ethereum', 'SOL-USD': 'Solana',
     'DOGE-USD': 'Doge Coin', 'XRP-USD': 'Ripple', 'NVDA': 'NVIDIA',
@@ -31,7 +31,11 @@ def get_data():
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Prime Asset Terminal</title>
+
+        <meta name="google-site-verification" content="사장님이_복사한_알파벳_숫자_여기에_넣으세요" />
+
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+
         <style>
             body {{ background: #020617; color: #f1f5f9; font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }}
             .container {{ max-width: 1000px; margin: 0 auto; }}
@@ -79,11 +83,10 @@ def get_data():
     return html
 
 if __name__ == "__main__":
-    # 1. 인덱스 생성
+    # index.html 생성
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(get_data())
-
-    # 2. 지도 생성
+    # sitemap.xml 생성
     sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
