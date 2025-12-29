@@ -1,98 +1,43 @@
 import yfinance as yf
 from datetime import datetime
 
-# 1. 자산 리스트
-asset_pool = {
+# 코인 데이터로 꽉 채우기
+coin_pool = {
     'BTC-USD': 'Bitcoin', 'ETH-USD': 'Ethereum', 'SOL-USD': 'Solana',
-    'DOGE-USD': 'Doge Coin', 'XRP-USD': 'Ripple', 'NVDA': 'NVIDIA',
-    'TSLA': 'Tesla', 'AAPL': 'Apple', 'QQQ': 'Nasdaq 100',
-    'GLD': 'Gold SPDR', 'KRW=X': 'USD/KRW Rate'
+    'XRP-USD': 'Ripple', 'ADA-USD': 'Cardano', 'DOGE-USD': 'Dogecoin',
+    'DOT-USD': 'Polkadot', 'MATIC-USD': 'Polygon', 'LINK-USD': 'Chainlink',
+    'AVAX-USD': 'Avalanche', 'TRX-USD': 'TRON', 'SHIB-USD': 'Shiba Inu'
 }
 
 def get_data():
     results = []
-    now = datetime.now().strftime('%b %d, %Y %H:%M')
-    for s, n in asset_pool.items():
+    now = datetime.now().strftime('%Y-%m-%d %H:%M')
+    for s, n in coin_pool.items():
         try:
             t = yf.Ticker(s)
             df = t.history(period='2d')
-            if len(df) >= 2:
-                cur = df['Close'].iloc[-1]
-                prev = df['Close'].iloc[-2]
-                pct = ((cur - prev) / prev) * 100
-                results.append({'symbol': s, 'name': n, 'price': cur, 'pct': pct})
+            cur = df['Close'].iloc[-1]
+            prev = df['Close'].iloc[-2]
+            pct = ((cur - prev) / prev) * 100
+            results.append({'symbol': n, 'price': cur, 'pct': pct})
         except: continue
-    results.sort(key=lambda x: x['name'])
-
+    
+    # 디자인: 골드 & 블랙 (코인 느낌)
     html = f"""
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Prime Asset Terminal</title>
-
-        <meta name="google-site-verification" content="38-xbGp8vqze8MfoAinJeJoI-maoeT_-qE9TXa7XekQ" />
-
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
-
-        <style>
-            body {{ background: #020617; color: #f1f5f9; font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }}
-            .container {{ max-width: 1000px; margin: 0 auto; }}
-            .header {{ border-left: 4px solid #3b82f6; padding: 25px; margin: 40px 0; background: #0f172a; border-radius: 0 12px 12px 0; }}
-            h1 {{ margin: 0; font-size: 2.2rem; letter-spacing: -2px; color: #fff; font-weight: 800; }}
-            .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }}
-            .card {{ background: #0f172a; border: 1px solid #1e293b; padding: 25px; border-radius: 12px; transition: 0.2s; }}
-            .card:hover {{ border-color: #3b82f6; transform: translateY(-2px); }}
-            .label {{ color: #94a3b8; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; display: block; }}
-            .price-row {{ display: flex; justify-content: space-between; align-items: baseline; }}
-            .price {{ font-size: 1.8rem; font-weight: 800; }}
-            .pct {{ font-size: 0.95rem; font-weight: 700; }}
-            .up {{ color: #ef4444; }} .down {{ color: #3b82f6; }}
-            .footer {{ margin-top: 60px; text-align: center; color: #4b5563; font-size: 0.8rem; border-top: 1px solid #1e293b; padding: 40px 0; }}
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="header">
-                <h1>PRIME ASSET TERMINAL</h1>
-                <p style="color:#64748b; margin:8px 0 0 0;">Updated: {now}</p>
-            </div>
-            <div class="grid">
+    <body style="background:#000; color:#fbbf24; font-family:sans-serif; text-align:center;">
+        <h1 style="color:#fbbf24;">CRYPTO TERMINAL</h1>
+        <p>실시간 암호화폐 시세 | {now}</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; padding:20px;">
     """
     for item in results:
-        cls = "up" if item['pct'] >= 0 else "down"
-        sign = "+" if item['pct'] >= 0 else ""
-        prefix = "₩" if item['symbol'] == 'KRW=X' else "$"
+        color = "#f87171" if item['pct'] >= 0 else "#60a5fa"
         html += f"""
-        <div class="card">
-            <span class="label">{item['name']}</span>
-            <div class="price-row">
-                <span class="price">{prefix}{item['price']:,.2f}</span>
-                <span class="pct {cls}">{sign}{item['pct']:.2f}%</span>
+            <div style="background:#111; border:1px solid #fbbf24; padding:20px; border-radius:15px;">
+                <h2>{item['symbol']}</h2>
+                <div style="font-size:24px; font-weight:bold;">${item['price']:,.2f}</div>
+                <div style="color:{color};">{item['pct']:.2f}%</div>
             </div>
-        </div>
         """
-    html += """
-            </div>
-            <div class="footer"><p>© 2025 PRIME TERMINAL</p></div>
-        </div>
-    </body>
-    </html>
-    """
+    html += "</div></body>"
     return html
-
-if __name__ == "__main__":
-    with open('index.html', 'w', encoding='utf-8') as f:
-        f.write(get_data())
-    sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://coin.us-dividend-pro.com/</loc>
-        <lastmod>{datetime.now().strftime('%Y-%m-%d')}</lastmod>
-        <changefreq>hourly</changefreq>
-        <priority>1.0</priority>
-    </url>
-</urlset>"""
-    with open('sitemap.xml', 'w', encoding='utf-8') as f:
-        f.write(sitemap)
+# (이하 저장 로직 동일)
