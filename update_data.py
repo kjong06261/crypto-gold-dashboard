@@ -1,7 +1,7 @@
 import yfinance as yf
 from datetime import datetime
 
-# 종목 확 늘린 20개 리스트
+# 종목을 20개로 꽉 채웠습니다 (사장님 요청 반영)
 coin_pool = {
     'BTC-USD': 'Bitcoin', 'ETH-USD': 'Ethereum', 'SOL-USD': 'Solana',
     'XRP-USD': 'Ripple', 'ADA-USD': 'Cardano', 'DOGE-USD': 'Dogecoin',
@@ -53,7 +53,7 @@ def get_data():
         <div class="container">
             <header>
                 <h1>CRYPTO TERMINAL</h1>
-                <p>24/7 Real-time Market Data | Last Update: {now}</p>
+                <p>Real-time Market Data | Last Update: {now}</p>
             </header>
             <div class="grid">
     """
@@ -80,7 +80,6 @@ if __name__ == "__main__":
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(get_data())
     
-    # 사이트맵도 코인 주소로 정확히 세팅
     sitemap = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://coin.us-dividend-pro.com/</loc><priority>1.0</priority></url></urlset>'
     with open('sitemap.xml', 'w', encoding='utf-8') as f:
         f.write(sitemap)
