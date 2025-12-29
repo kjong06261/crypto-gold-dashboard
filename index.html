@@ -5,122 +5,169 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
-        <title>Crypto Terminal</title>
+        <title>Premium Crypto Terminal</title>
         <style>
-            body { background-color: #000; color: #fbbf24; font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }
-            .container { max-width: 1200px; margin: 0 auto; }
-            header { text-align: center; padding: 40px 0; border-bottom: 2px solid #fbbf24; margin-bottom: 30px; }
-            h1 { font-size: 36px; text-transform: uppercase; letter-spacing: 2px; }
-            .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
-            .card { background: #111; padding: 20px; border-radius: 12px; border: 1px solid #333; text-align: center; transition: 0.3s; }
-            .card:hover { border-color: #fbbf24; transform: scale(1.02); }
-            .name { font-size: 18px; font-weight: bold; display: block; margin-bottom: 10px; color: #fff; }
-            .price { font-size: 24px; font-weight: 800; display: block; margin-bottom: 5px; }
-            .pct { font-size: 16px; font-weight: 600; }
-            .up { color: #f87171; } .down { color: #60a5fa; }
-            footer { margin-top: 50px; text-align: center; color: #666; font-size: 12px; }
+            :root { --gold: #fbbf24; --bg: #000; --card: #111; --up: #f87171; --down: #60a5fa; }
+            body { background-color: var(--bg); color: var(--gold); font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }
+            .container { max-width: 1400px; margin: 0 auto; }
+            header { text-align: center; padding: 40px 0; border-bottom: 2px solid var(--gold); margin-bottom: 30px; }
+            h1 { font-size: 3vw; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
+            .time { color: #888; font-size: 14px; margin-top: 10px; }
+            .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+            .card { background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid #333; transition: 0.3s; position: relative; overflow: hidden; }
+            .card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(251, 191, 36, 0.2); }
+            .name { font-size: 16px; font-weight: bold; color: #fff; display: block; margin-bottom: 10px; opacity: 0.8; }
+            .price { font-size: 22px; font-weight: 800; display: block; margin-bottom: 8px; color: #fff; }
+            .pct { font-size: 15px; font-weight: 600; }
+            .up { color: var(--up); }
+            .down { color: var(--down); }
+            footer { margin-top: 50px; text-align: center; color: #444; font-size: 12px; border-top: 1px solid #222; padding-top: 20px; }
         </style>
     </head>
     <body>
         <div class="container">
             <header>
                 <h1>CRYPTO TERMINAL</h1>
-                <p>Real-time Market Data | Last Update: 2025-12-29 13:49</p>
+                <div class="time">REAL-TIME DATA FEED • LAST UPDATE: 2025-12-29 14:20 (KST)</div>
             </header>
             <div class="grid">
     
                 <div class="card">
                     <span class="name">Bitcoin</span>
-                    <span class="price">$87,175.37</span>
-                    <span class="pct down">-0.75%</span>
+                    <span class="price">$87,378.16</span>
+                    <span class="pct down">-0.52%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Ethereum</span>
-                    <span class="price">$2,925.97</span>
+                    <span class="price">$2,925.80</span>
                     <span class="pct down">-0.77%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Solana</span>
-                    <span class="price">$123.50</span>
-                    <span class="pct down">-1.36%</span>
+                    <span class="price">$122.77</span>
+                    <span class="pct down">-1.94%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Ripple</span>
                     <span class="price">$1.86</span>
-                    <span class="pct down">-0.26%</span>
+                    <span class="pct down">-0.08%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Cardano</span>
                     <span class="price">$0.36</span>
-                    <span class="pct down">-1.24%</span>
+                    <span class="pct down">-1.04%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Dogecoin</span>
                     <span class="price">$0.12</span>
-                    <span class="pct down">-0.39%</span>
+                    <span class="pct down">-0.25%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Polkadot</span>
                     <span class="price">$1.83</span>
-                    <span class="pct down">-1.05%</span>
+                    <span class="pct down">-1.03%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Chainlink</span>
                     <span class="price">$12.30</span>
-                    <span class="pct down">-1.42%</span>
+                    <span class="pct down">-1.41%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Avalanche</span>
                     <span class="price">$12.56</span>
-                    <span class="pct down">-0.60%</span>
+                    <span class="pct down">-0.64%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">TRON</span>
                     <span class="price">$0.28</span>
-                    <span class="pct down">-1.25%</span>
+                    <span class="pct down">-1.22%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Shiba Inu</span>
                     <span class="price">$0.00</span>
-                    <span class="pct up">+4.55%</span>
+                    <span class="pct up">+4.50%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Litecoin</span>
-                    <span class="price">$77.37</span>
-                    <span class="pct down">-1.61%</span>
+                    <span class="price">$77.45</span>
+                    <span class="pct down">-1.51%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Bitcoin Cash</span>
-                    <span class="price">$601.70</span>
-                    <span class="pct down">-3.17%</span>
+                    <span class="price">$601.24</span>
+                    <span class="pct down">-3.24%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">NEAR Protocol</span>
                     <span class="price">$1.52</span>
-                    <span class="pct down">-3.96%</span>
+                    <span class="pct down">-4.11%</span>
                 </div>
         
                 <div class="card">
                     <span class="name">Render</span>
                     <span class="price">$1.31</span>
-                    <span class="pct down">-0.88%</span>
+                    <span class="pct down">-1.16%</span>
+                </div>
+        
+                <div class="card">
+                    <span class="name">Optimism</span>
+                    <span class="price">$0.27</span>
+                    <span class="pct down">-0.91%</span>
+                </div>
+        
+                <div class="card">
+                    <span class="name">Arbitrum</span>
+                    <span class="price">$0.00</span>
+                    <span class="pct down">-0.03%</span>
+                </div>
+        
+                <div class="card">
+                    <span class="name">Kaspa</span>
+                    <span class="price">$0.04</span>
+                    <span class="pct down">-1.43%</span>
+                </div>
+        
+                <div class="card">
+                    <span class="name">Fetch.ai</span>
+                    <span class="price">$0.21</span>
+                    <span class="pct down">-1.01%</span>
+                </div>
+        
+                <div class="card">
+                    <span class="name">Bonk</span>
+                    <span class="price">$0.00</span>
+                    <span class="pct down">-2.63%</span>
+                </div>
+        
+                <div class="card">
+                    <span class="name">dogwifhat</span>
+                    <span class="price">$0.29</span>
+                    <span class="pct down">-5.70%</span>
+                </div>
+        
+                <div class="card">
+                    <span class="name">Floki</span>
+                    <span class="price">$0.00</span>
+                    <span class="pct down">-3.23%</span>
                 </div>
         
             </div>
-            <footer><p>© 2025 COIN.US-DIVIDEND-PRO</p></footer>
+            <footer>
+                <p>Global Crypto Market Summary © 2025 COIN.US-DIVIDEND-PRO.COM</p>
+            </footer>
         </div>
     </body>
     </html>
