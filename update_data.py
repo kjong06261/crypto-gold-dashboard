@@ -1,10 +1,21 @@
 import yfinance as yf
 from datetime import datetime
 
+# 사장님의 똑똑한 선택: 주식 + 코인 하이브리드 리스트
 tickers = {
-    'IBIT': '비트코인 ETF', 'ETH-USD': '이더리움', 'GLD': '금 현물',
-    'NVDA': '엔비디아', 'TSLA': '테슬라', 'AAPL': '애플',
-    'QQQ': '나스닥100', 'KRW=X': '원/달러 환율'
+    # --- 코인 섹션 ---
+    'BTC-USD': '비트코인',
+    'ETH-USD': '이더리움',
+    'SOL-USD': '솔라나',
+    'DOGE-USD': '도지코인',
+    'XRP-USD': '리플',
+    # --- 주식 & 자산 섹션 ---
+    'NVDA': '엔비디아',
+    'TSLA': '테슬라',
+    'AAPL': '애플',
+    'QQQ': '나스닥100',
+    'GLD': '금 현물',
+    'KRW=X': '원/달러 환율'
 }
 
 def get_data():
@@ -13,67 +24,81 @@ def get_data():
     <!DOCTYPE html>
     <html>
     <head>
-        <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crypto & Stock Terminal</title>
         <style>
-            body {{ background: #0b0f19; color: #e2e8f0; font-family: 'Inter', sans-serif; margin: 0; padding: 40px 20px; }}
-            .header {{ margin-bottom: 40px; border-left: 5px solid #38bdf8; padding-left: 20px; text-align: left; max-width: 1000px; margin: 0 auto 40px; }}
-            h1 {{ font-size: 2.2rem; margin: 0; color: #f8fafc; }}
-            .update-time {{ color: #64748b; font-size: 0.9rem; }}
-            .grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }}
-            .card {{ background: #161e2d; padding: 25px; border-radius: 16px; border: 1px solid #2d3748; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }}
-            .name {{ color: #94a3b8; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }}
-            .price-row {{ display: flex; align-items: baseline; gap: 10px; margin: 10px 0; }}
-            .price {{ font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; }}
-            .change {{ font-size: 0.95rem; font-weight: 600; }}
-            .up {{ color: #ef4444; }} .down {{ color: #3b82f6; }}
-            .footer {{ max-width: 1000px; margin: 60px auto 0; padding-top: 20px; border-top: 1px solid #2d3748; color: #475569; font-size: 0.85rem; display: flex; justify-content: space-between; }}
-            .market-status {{ display: inline-block; padding: 4px 12px; background: #064e3b; color: #34d399; border-radius: 20px; font-size: 0.75rem; font-weight: bold; margin-bottom: 15px; }}
+            body {{ background: #05070a; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; }}
+            .wrapper {{ max-width: 1200px; margin: 0 auto; }}
+            .header {{ display: flex; justify-content: space-between; align-items: flex-end; padding: 20px 0; border-bottom: 2px solid #1e293b; margin-bottom: 30px; }}
+            h1 {{ margin: 0; font-size: 2rem; color: #f8fafc; letter-spacing: -1px; }}
+            .live-dot {{ display: inline-block; width: 10px; height: 10px; background: #22c55e; border-radius: 50%; margin-right: 8px; animation: pulse 2s infinite; }}
+            @keyframes pulse {{ 0% {{ opacity: 1; }} 50% {{ opacity: 0.4; }} 100% {{ opacity: 1; }} }}
+            .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }}
+            .card {{ background: #111827; padding: 20px; border-radius: 12px; border: 1px solid #1f2937; transition: all 0.2s ease; }}
+            .card:hover {{ border-color: #3b82f6; background: #1a2234; }}
+            .info {{ display: flex; justify-content: space-between; margin-bottom: 10px; }}
+            .label {{ color: #94a3b8; font-size: 0.8rem; font-weight: 600; }}
+            .symbol {{ color: #475569; font-size: 0.7rem; }}
+            .price-box {{ display: flex; align-items: baseline; justify-content: space-between; }}
+            .price {{ font-size: 1.6rem; font-weight: 700; color: #f1f5f9; }}
+            .change {{ font-size: 0.9rem; font-weight: 600; padding: 4px 8px; border-radius: 6px; }}
+            .up {{ color: #ff4d4d; background: rgba(255, 77, 77, 0.1); }}
+            .down {{ color: #4d94ff; background: rgba(77, 148, 255, 0.1); }}
+            .footer {{ text-align: center; margin-top: 50px; color: #475569; font-size: 0.8rem; border-top: 1px solid #1e293b; padding-top: 20px; }}
         </style>
     </head>
     <body>
-        <div class="header">
-            <div class="market-status">● LIVE MARKET DATA</div>
-            <h1>Global Asset Terminal</h1>
-            <div class="update-time">마지막 업데이트: {now} (KST)</div>
-        </div>
-        <div class="grid">
+        <div class="wrapper">
+            <div class="header">
+                <div>
+                    <h1><span class="live-dot"></span>PRO ASSET TERMINAL</h1>
+                    <p style="color:#64748b; margin:5px 0 0 0;">Stock & Crypto Real-time Tracker</p>
+                </div>
+                <div style="text-align: right; color:#94a3b8; font-size:0.8rem;">
+                    Last Update: {now}<br>Auto-refresh: Every 1 Hour
+                </div>
+            </div>
+            <div class="grid">
     """
-    
+
     for s, n in tickers.items():
         try:
             t = yf.Ticker(s)
             df = t.history(period='2d')
             if len(df) >= 2:
-                close_today = df['Close'].iloc[-1]
-                close_yesterday = df['Close'].iloc[-2]
-                change = close_today - close_yesterday
-                change_pct = (change / close_yesterday) * 100
+                cur = df['Close'].iloc[-1]
+                prev = df['Close'].iloc[-2]
+                diff = cur - prev
+                pct = (diff / prev) * 100
                 
-                color_class = "up" if change >= 0 else "down"
-                sign = "+" if change >= 0 else ""
-                arrow = "▲" if change >= 0 else "▼"
+                cls = "up" if diff >= 0 else "down"
+                sign = "+" if diff >= 0 else ""
                 
-                p_str = f"{close_today:,.2f}"
-                if s == 'KRW=X': p_str = f"₩{p_str}"
-                else: p_str = f"${p_str}"
+                # 원화/달러 구분 표시
+                val = f"{cur:,.2f}"
+                val = f"₩{val}" if s == 'KRW=X' else f"${val}"
 
                 html += f"""
                 <div class="card">
-                    <div class="name">{n}</div>
-                    <div class="price-row">
-                        <div class="price">{p_str}</div>
-                        <div class="change {color_class}">{arrow} {sign}{change_pct:.2f}%</div>
+                    <div class="info">
+                        <span class="label">{n}</span>
+                        <span class="symbol">{s}</span>
                     </div>
-                    <div style="font-size: 0.7rem; color: #475569;">Symbol: {s}</div>
+                    <div class="price-box">
+                        <span class="price">{val}</span>
+                        <span class="change {cls}">{sign}{pct:.2f}%</span>
+                    </div>
                 </div>
                 """
-        except: continue
-    
-    html += f"""
-        </div>
-        <div class="footer">
-            <div>© 2025 US-DIVIDEND-PRO Terminal</div>
-            <div>Data provided by Yahoo Finance</div>
+        except Exception as e:
+            continue
+
+    html += """
+            </div>
+            <div class="footer">
+                © 2025 US-DIVIDEND-PRO | Built for Gemini Training Project | Data via Yahoo Finance
+            </div>
         </div>
     </body>
     </html>
