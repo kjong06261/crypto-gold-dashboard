@@ -1,8 +1,8 @@
 name: Hourly Update
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 * * * *'
-  workflow_dispatch:
 permissions:
   contents: write
 jobs:
@@ -18,10 +18,10 @@ jobs:
         run: pip install yfinance pandas
       - name: Run script
         run: python update_data.py
-      - name: Push results
+      - name: Commit and Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add index.html
-          git commit -m "Update" || echo "No changes"
-          git push origin main
+          git add -A
+          git commit -m "Update" || exit 0
+          git push
