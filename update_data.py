@@ -1,25 +1,17 @@
 import yfinance as yf
 from datetime import datetime
 
-def get_data():
-    # 사장님의 리스크 관리형 근본 자산 리스트
-    asset_pool = {
-        'BTC-USD': 'Bitcoin',
-        'ETH-USD': 'Ethereum',
-        'SOL-USD': 'Solana',
-        'DOGE-USD': 'Doge Coin',
-        'XRP-USD': 'Ripple',
-        'NVDA': 'NVIDIA',
-        'TSLA': 'Tesla',
-        'AAPL': 'Apple',
-        'QQQ': 'Nasdaq 100',
-        'GLD': 'Gold SPDR',
-        'KRW=X': 'USD/KRW Rate'
-    }
+# 사장님이 선정한 글로벌 핵심 자산 리스트
+asset_pool = {
+    'BTC-USD': 'Bitcoin', 'ETH-USD': 'Ethereum', 'SOL-USD': 'Solana',
+    'DOGE-USD': 'Doge Coin', 'XRP-USD': 'Ripple', 'NVDA': 'NVIDIA',
+    'TSLA': 'Tesla', 'AAPL': 'Apple', 'QQQ': 'Nasdaq 100',
+    'GLD': 'Gold SPDR', 'KRW=X': 'USD/KRW Rate'
+}
 
+def get_data():
     results = []
     now = datetime.now().strftime('%b %d, %Y %H:%M')
-
     for s, n in asset_pool.items():
         try:
             t = yf.Ticker(s)
@@ -30,7 +22,6 @@ def get_data():
                 pct = ((cur - prev) / prev) * 100
                 results.append({'symbol': s, 'name': n, 'price': cur, 'pct': pct})
         except: continue
-
     results.sort(key=lambda x: x['name'])
 
     html = f"""
@@ -40,10 +31,8 @@ def get_data():
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Prime Asset Terminal</title>
-        
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894"
-             crossorigin="anonymous"></script>
-        
+        <meta name="google-site-verification" content="여기에_구글서치콘솔_코드를_넣으세요" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
         <style>
             body {{ background: #020617; color: #f1f5f9; font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }}
             .container {{ max-width: 1000px; margin: 0 auto; }}
@@ -64,12 +53,10 @@ def get_data():
         <div class="container">
             <div class="header">
                 <h1>PRIME ASSET TERMINAL</h1>
-                <p style="color:#64748b; margin:8px 0 0 0;">Global Market Intelligence • Last Update: {now} (KST)</p>
+                <p style="color:#64748b; margin:8px 0 0 0;">Global Market Intelligence • Updated: {now}</p>
             </div>
-
             <div class="grid">
     """
-
     for item in results:
         cls = "up" if item['pct'] >= 0 else "down"
         sign = "+" if item['pct'] >= 0 else ""
@@ -83,13 +70,9 @@ def get_data():
             </div>
         </div>
         """
-
     html += """
             </div>
-            <div class="footer">
-                <p>© 2025 PRIME TERMINAL | Professional Data Feed</p>
-                <p style="max-width:600px; margin: 10px auto; opacity: 0.6;">Disclaimer: This data is for informational purposes only. Not intended for trading purposes or advice.</p>
-            </div>
+            <div class="footer"><p>© 2025 PRIME TERMINAL</p></div>
         </div>
     </body>
     </html>
@@ -97,5 +80,19 @@ def get_data():
     return html
 
 if __name__ == "__main__":
+    # 1. 사이트 메인 페이지 생성
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(get_data())
+
+    # 2. 구글용 지도(Sitemap) 생성
+    sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://coin.us-dividend-pro.com/</loc>
+        <lastmod>{datetime.now().strftime('%Y-%m-%d')}</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>1.0</priority>
+    </url>
+</urlset>"""
+    with open('sitemap.xml', 'w', encoding='utf-8') as f:
+        f.write(sitemap)
