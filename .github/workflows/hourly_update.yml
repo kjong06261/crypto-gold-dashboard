@@ -3,31 +3,25 @@ on:
   schedule:
     - cron: '0 * * * *'
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-
       - name: Install dependencies
         run: pip install yfinance pandas
-
-      - name: Run update script
+      - name: Run script
         run: python update_data.py
-
-      - name: Commit and Push
+      - name: Push results
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add .
-          git commit -m "Update Dashboard" || exit 0
+          git add index.html
+          git commit -m "Update" || echo "No changes"
           git push origin main
