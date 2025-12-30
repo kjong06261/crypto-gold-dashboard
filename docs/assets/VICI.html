@@ -1,61 +1,48 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="UTF-8"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894"
-     crossorigin="anonymous"></script><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>VICI Report</title>
+<meta name="description" content="Pro AI-Financial Analysis Terminal">
+<title>VICI | US Market Terminals</title>
 <style>
-:root{
-  --bg:#05070a; --panel:#11141b; --border:#1e222d;
-  --text:#d1d4dc; --muted:#8b949e; --link:#58a6ff; --accent:#fbbf24;
-}
-body{margin:0;padding:18px;background:var(--bg);color:var(--text);font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif}
+:root{--bg:#05070a;--panel:#11141b;--border:#1e222d;--text:#d1d4dc;--muted:#8b949e;--link:#58a6ff;--accent:#fbbf24;--success:#00d084;--danger:#ff3366;}
+body{margin:0;padding:18px;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;}
 .container{max-width:1200px;margin:0 auto}
 .nav{display:flex;flex-wrap:wrap;gap:10px;padding:12px;background:#0b0e14;margin-bottom:16px;border-radius:12px;border:1px solid var(--border)}
-.nav a{color:var(--link);text-decoration:none;padding:6px 10px;background:rgba(255,255,255,0.03);border-radius:8px}
-header{padding:6px 2px 16px 2px;margin-bottom:14px;border-bottom:1px solid var(--border)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px, 1fr));gap:12px}
-.card{background:var(--panel);border:1px solid var(--border);padding:14px;border-radius:12px}
-.symbol{font-weight:800;color:#fff}
-.price{font-size:22px;font-weight:800;color:#fff;margin-top:8px}
-.pct{font-size:12px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,0.05)}
-.up{color:#00ffaa}.down{color:#ff3b3b}
-.analysis{margin-top:22px;padding:18px;background:var(--panel);border-radius:12px;line-height:1.75;border:1px solid var(--border)}
-table{width:100%;border-collapse:collapse;margin-top:10px}
-th,td{padding:10px;text-align:left;border-bottom:1px solid #30363d}
-th{color:var(--muted);font-weight:700;background:#0b0e14}
-footer{margin-top:30px;padding:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+.nav a{color:var(--link);text-decoration:none;padding:8px 14px;background:rgba(255,255,255,0.03);border-radius:8px;font-weight:600;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:30px}
+.card{background:var(--panel);border:1px solid var(--border);padding:20px;border-radius:14px;transition:0.3s;}
+.card:hover{border-color:var(--accent);transform:translateY(-3px);}
+.analysis{background:var(--panel);padding:20px;border-radius:12px;margin:20px 0;border:1px solid var(--border);}
+.small-muted{font-size:0.85em;color:var(--muted);margin-top:5px;}
+.calc-card{background:var(--panel);border:2px solid var(--accent);padding:25px;border-radius:15px;margin:20px 0}
+.calc-input{width:100%;padding:12px;margin:8px 0;background:#0b0e14;border:1px solid var(--border);color:#fff;border-radius:8px;outline:none}
+.calc-btn{width:100%;padding:15px;background:var(--accent);color:#000;font-weight:800;border:none;border-radius:8px;cursor:pointer}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left}
+th{color:var(--accent);background:#0b0e14}
+footer{text-align:center;padding:40px 0;color:var(--muted);font-size:0.9rem;border-top:1px solid var(--border)}
 </style>
-</head>
-<body><div class="container">
-
-<div class="nav">
-  <strong style="color:#fff">US Market Terminals</strong>
-  <a href="/index.html">Home</a>
-  <a href="/coin.html">Crypto</a>
-  <a href="/dividend.html">Dividend</a>
-  <a href="/nasdaq.html">NASDAQ</a>
-  <a href="/assets/index.html">Assets</a>
-  <a href="/blog/index.html">Blog</a>
-  <a href="/about.html">About</a>
-  <a href="/privacy.html">Privacy</a>
-  <a href="/terms.html">Terms</a>
-  <a href="/contact.html">Contact</a>
+</head><body><div class="container"><div class="nav">
+<strong style="color:var(--accent)">US Market Terminals</strong>
+<a href="/index.html">Home</a>
+<a href="/finance.html">Finance</a>
+<a href="/ai_tools.html">Investor AI</a>
+<a href="/blog/index.html">Insights</a>
 </div>
-
-
-        <header>
-          <h1>VICI Report</h1>
-          <div style="color:var(--muted)">Last Update (US/Eastern): 2025-12-30 02:47 EST</div>
-        </header>
-        <div class="analysis">
-          <p><strong>Latest snapshot:</strong> $28.30 • <strong>1-day change:</strong> +0.60%</p>
-          <p style="color:var(--muted)">Snapshot is based on recent daily closes (short horizon).</p>
-          <p><strong>Risk notes:</strong> Prices can move quickly. For dividends, payouts may change. For crypto, 24/7 volatility is normal. Use this page as a starting point for research—not a decision engine.</p>
-          <p style="color:var(--muted)">Disclaimer: informational only. No recommendation to buy, sell, or hold.</p>
-        </div>
-        
-<footer>
-  <div>© 2025 US Market Terminals. Informational only. No investment advice.</div>
-</footer>
+            <h1>VICI Snapshot</h1>
+            <div class="analysis">
+              <table>
+                <tr><th>Last Close</th><td>$28.30</td></tr>
+                <tr><th>Daily Change</th><td style="color:var(--success)">+0.60%</td></tr>
+                <tr><th>Updated</th><td>2025-12-30 07:15 EST</td></tr>
+              </table>
+              <h3>AI Workflow</h3>
+              <ul>
+                <li><a href="/ai/perplexity-pro.html">Perplexity</a>: 최신 뉴스/이슈 확인</li>
+                <li><a href="/ai/claude-3-5-sonnet.html">Claude</a>: 리스크/반례 체크</li>
+                <li><a href="/ai/gpt-4o.html">GPT</a>: 최종 요약/내러티브</li>
+              </ul>
+            </div>
+            
+<footer>© 2025 US Market Terminals • Updated Hourly • Educational purpose only.</footer>
 </div></body></html>
