@@ -1,16 +1,18 @@
 name: Update Market Data
 
 on:
+  push:  # 🔥 이거 추가 - 푸시할 때마다 실행
+    branches: [ main ]
   schedule:
-    - cron: '0 * * * *'  # 매시간 실행
-  workflow_dispatch:  # 수동 실행 가능
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: write  # 🔥 이거 추가 필수!
+      contents: write
     
     steps:
       - name: Checkout
@@ -28,19 +30,3 @@ jobs:
       - name: Run update script
         run: |
           python update_data.py
-```
-
----
-
-## 📂 **파일 위치 (정확)**
-```
-crypto-gold-dashboard/
-├── .github/
-│   └── workflows/
-│       └── update.yml          # 워크플로우
-├── update_data.py              # 🔥 이 artifact 코드
-├── coin.html                   # 자동 생성됨
-├── dividend.html               # 자동 생성됨
-├── index.html                  # 자동 생성됨
-├── status.json                 # 자동 생성됨
-└── README.md
