@@ -1,42 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Crypto Terminal</title>
+    <style>
+        :root { --gold: #fbbf24; --bg: #000; --card: #111; --up: #f87171; --down: #60a5fa; }
+        body { background-color: var(--bg); color: var(--gold); font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        header { text-align: center; padding: 40px 0; border-bottom: 2px solid var(--gold); margin-bottom: 30px; }
+        h1 { font-size: 3vw; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
+        .time { color: #888; font-size: 14px; margin-top: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+        /* 기존 카드 디자인 유지 */
+        .card { background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid #333; transition: 0.3s; }
+        .name { font-size: 16px; font-weight: bold; color: #fff; display: block; margin-bottom: 10px; opacity: 0.8; }
+        .price { font-size: 22px; font-weight: 800; display: block; margin-bottom: 8px; color: #fff; }
+        .pct { font-size: 15px; font-weight: 600; }
+        .up { color: var(--up); }
+        .down { color: var(--down); }
+        footer { margin-top: 50px; text-align: center; color: #444; font-size: 12px; border-top: 1px solid #222; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CRYPTO TERMINAL</h1>
+            <div class="time">REAL-TIME DATA FEED • LAST UPDATE: 2025-12-30 03:36 (KST)</div>
+        </header>
 
-    <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
-        <title>Premium Crypto Terminal</title>
-        <style>
-            :root { --gold: #fbbf24; --bg: #000; --card: #111; --up: #f87171; --down: #60a5fa; }
-            body { background-color: var(--bg); color: var(--gold); font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }
-            .container { max-width: 1400px; margin: 0 auto; }
-            header { text-align: center; padding: 40px 0; border-bottom: 2px solid var(--gold); margin-bottom: 30px; }
-            h1 { font-size: 3vw; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
-            .time { color: #888; font-size: 14px; margin-top: 10px; }
-            .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-            .card { background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid #333; transition: 0.3s; position: relative; overflow: hidden; }
-            .card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(251, 191, 36, 0.2); }
-            .name { font-size: 16px; font-weight: bold; color: #fff; display: block; margin-bottom: 10px; opacity: 0.8; }
-            .price { font-size: 22px; font-weight: 800; display: block; margin-bottom: 8px; color: #fff; }
-            .pct { font-size: 15px; font-weight: 600; }
-            .up { color: var(--up); }
-            .down { color: var(--down); }
-            footer { margin-top: 50px; text-align: center; color: #444; font-size: 12px; border-top: 1px solid #222; padding-top: 20px; }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <header>
-                <h1>CRYPTO TERMINAL</h1>
-                <div class="time">REAL-TIME DATA FEED • LAST UPDATE: 2025-12-30 03:36 (KST)</div>
-            </header>
-            <div class="grid">
-    
-            </div>
-            <footer>
-                <p>Global Crypto Market Summary © 2025 COIN.US-DIVIDEND-PRO.COM</p>
-            </footer>
+        <div class="grid" id="coin-grid">
+            <div class="card"><span class="name">데이터 동기화 중...</span></div>
         </div>
-    </body>
-    </html>
-    
+
+        <footer>
+            <p>Global Crypto Market Summary © 2025 COIN.US-DIVIDEND-PRO.COM</p>
+        </footer>
+    </div>
+</body>
+</html>
