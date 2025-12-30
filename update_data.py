@@ -2,9 +2,8 @@ import yfinance as yf
 import pandas as pd
 import datetime
 import time
-import random
 import subprocess
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, Optional
 from pathlib import Path
 
 try:
@@ -12,16 +11,20 @@ try:
 except Exception:
     ZoneInfo = None
 
+
 # =========================================================
 # Configuration
 # =========================================================
 OUTPUT_DIR = Path("./")
 MAX_RETRIES = 4
 BASE_DELAY = 1.5
-CHUNK_SIZE = 25  # safer for yfinance
+CHUNK_SIZE = 25
+PERIOD = "5d"
+TIMEZONE = "US/Eastern"
+
 
 # =========================================================
-# Tickers (keep lists as-is)
+# Tickers
 # =========================================================
 NASDAQ_TICKERS = [
     'AAPL', 'MSFT', 'NVDA', 'GOOGL', 'AMZN', 'META', 'TSLA', 'AVGO', 'ASML', 'COST',
@@ -61,8 +64,24 @@ DIVIDEND_TICKERS = [
     'LOW', 'TGT', 'WMT', 'HD', 'MCD', 'YUM', 'GIS', 'K', 'CL', 'KMB'
 ]
 
+
 # =========================================================
-# HTML Templates (text-heavy for AdSense/SEO)
+# Known states / fallbacks
+# =========================================================
+DELISTED = {
+    "SPLK": "DELISTED (Acquired by Cisco, Mar 2024)"
+}
+
+# Optional alias list for symbols that sometimes fail in batch mode
+# NOTE: Keep original ticker as first entry.
+CRYPTO_ALIASES: Dict[str, List[str]] = {
+    "MATIC-USD": ["MATIC-USD", "POL28321-USD"],   # Yahoo also lists Polygon(prev. MATIC)
+    "RNDR-USD": ["RNDR-USD", "RENDER-USD"],       # Yahoo also lists Render as RENDER-USD
+}
+
+
+# =========================================================
+# HTML Templates
 # =========================================================
 CACHE_META = (
     '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">'
@@ -70,393 +89,346 @@ CACHE_META = (
     '<meta http-equiv="Expires" content="0">'
 )
 
-COIN_TEMPLATE = """<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">{cache_meta}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Real-time cryptocurrency dashboard tracking the top 100 crypto assets with price, change %, and market commentary.">
-<title>Premium Crypto Terminal - Top 100 Real-Time Data</title>
-<style>
-:root {{ --bg: #05070a; --card-bg: #11141b; --border: #1e222d; --text: #d1d4dc; --accent: #fbbf24; }}
-body {{ background-color: var(--bg); color: var(--text); font-family: 'Trebuchet MS', sans-serif; margin: 0; padding: 20px; }}
-.container {{ max-width: 1200px; margin: 0 auto; }}
-header {{ border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }}
-h1 {{ font-size: 38px; color: #ffffff; margin: 0; letter-spacing: -1px; }}
-.grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }}
-.card {{ background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 6px; }}
-.card-header {{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }}
-.up {{ color: #00ffaa; }}
-.down {{ color: #ff3b3b; }}
-.na {{ color: #888; }}
-.symbol {{ font-weight: bold; font-size: 16px; color: #fff; }}
-.price {{ font-size: 24px; font-weight: 700; color: #ffffff; }}
-.pct {{ font-size: 13px; font-weight: bold; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); }}
-.analysis {{ margin-top: 50px; padding: 30px; background: #11141b; border-radius: 8px; line-height: 1.8; border-left: 4px solid var(--accent); }}
-footer {{ margin-top: 80px; padding: 40px; text-align: center; font-size: 0.8rem; color: #8b949e; border-top: 1px solid var(--border); }}
-small {{ color:#8b949e; }}
-</style>
-</head>
-<body>
-<div class="container">
-<header>
-  <h1>💎 Crypto Gold Terminal</h1>
-  <div style="color:#888;">Real-time blockchain market feed • Top 100 assets</div>
-  <div style="font-size:0.85rem; color:#666; margin-top:6px;">Last Update (US/Eastern): {update_time} | Data Success: {success_rate}%</div>
-</header>
+COIN_TEMPLATE = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">{cache_meta}<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Premium Crypto Terminal - Top 100 Real-Time Data</title><style>:root {{ --bg: #05070a; --card-bg: #11141b; --border: #1e222d; --text: #d1d4dc; --accent: #fbbf24; }}body {{ background-color: var(--bg); color: var(--text); font-family: 'Trebuchet MS', sans-serif; margin: 0; padding: 20px; }}.container {{ max-width: 1200px; margin: 0 auto; }}header {{ border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }}h1 {{ font-size: 38px; color: #ffffff; margin: 0; letter-spacing: -1px; }}.grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }}.card {{ background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 6px; }}.up {{ color: #00ffaa; }}.down {{ color: #ff3b3b; }}.symbol {{ font-weight: bold; font-size: 16px; color: #fff; }}.price {{ font-size: 24px; font-weight: 700; color: #ffffff; }}.pct {{ font-size: 13px; font-weight: bold; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); }}.analysis {{ margin-top: 50px; padding: 30px; background: #11141b; border-radius: 8px; line-height: 1.8; border-left: 4px solid var(--accent); }} footer {{ margin-top: 80px; padding: 40px; text-align: center; font-size: 0.8rem; color: #8b949e; border-top: 1px solid var(--border); }}</style></head><body><div class="container"><header><h1>💎 Crypto Gold Terminal</h1><div style="color:#888;">Real-time blockchain market feed • Top 100 assets</div><div style="font-size:0.8rem; color:#666; margin-top:5px;">Last Update (US/Eastern): {update_time} | Data Success: {success_rate}%</div></header><div class="grid">{content}</div><section class="analysis"><h2>Crypto Market Overview, Volatility, and Risk Notes</h2><p>This page tracks major digital assets across the global cryptocurrency market, including Bitcoin, Ethereum, and widely traded altcoins. The primary objective is to present recent price changes and short-term momentum signals in a compact terminal format.</p><p><strong>How to read this dashboard:</strong> Each card shows the latest adjusted closing price and the percentage change from the prior session. Large moves can reflect macro events, exchange-specific liquidity, news-driven spikes, or broader risk-on/risk-off shifts in global markets.</p><p><strong>Important:</strong> Cryptocurrency markets can be highly volatile and may trade 24/7. Prices may differ slightly across venues. Use this information for research and educational purposes only.</p><p><strong>Disclaimer:</strong> This content is informational only and does not constitute financial advice.</p></section><footer>© 2025 CRYPTO-GOLD-DASHBOARD • Automated Market Pages</footer></div></body></html>"""
 
-<div class="grid">{content}</div>
+DIV_TEMPLATE = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">{cache_meta}<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Premium Dividend Terminal - High Yield Assets</title><style>:root {{ --bg: #05070a; --card-bg: #11141b; --border: #1e222d; --text: #d1d4dc; --accent: #00ffaa; }}body {{ background-color: var(--bg); color: var(--text); font-family: 'Trebuchet MS', sans-serif; margin: 0; padding: 20px; }}.container {{ max-width: 1200px; margin: 0 auto; }}header {{ border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }}h1 {{ font-size: 38px; color: #ffffff; margin: 0; letter-spacing: -1px; }}.grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }}.card {{ background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 6px; }}.up {{ color: #00ffaa; }}.down {{ color: #ff3b3b; }}.symbol {{ font-weight: bold; font-size: 16px; color: #fff; }}.price {{ font-size: 24px; font-weight: 700; color: #ffffff; }}.pct {{ font-size: 13px; font-weight: bold; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); }}.analysis {{ margin-top: 50px; padding: 30px; background: #11141b; border-radius: 8px; line-height: 1.8; border-left: 4px solid var(--accent); }} footer {{ margin-top: 80px; padding: 40px; text-align: center; font-size: 0.8rem; color: #8b949e; border-top: 1px solid var(--border); }}</style></head><body><div class="container"><header><h1>💰 Dividend Terminal Pro</h1><div style="color:#888;">Income-focused market feed • High-quality dividend assets</div><div style="font-size:0.8rem; color:#666; margin-top:5px;">Last Update (US/Eastern): {update_time} | Data Success: {success_rate}%</div></header><div class="grid">{content}</div><section class="analysis"><h2>Dividend Investing Notes: Yield, Quality, and Risk Controls</h2><p>Dividend strategies aim to generate consistent cash flow through distributions while balancing equity risk. This terminal highlights popular income assets such as dividend ETFs and widely held dividend stocks.</p><p><strong>What matters beyond yield:</strong> payout ratios, free cash flow durability, balance-sheet strength, sector concentration, and interest-rate sensitivity are key factors for long-term income outcomes.</p><p><strong>Reminder:</strong> Dividend payments are not guaranteed. Prices can decline even when yields appear attractive. Always evaluate sustainability rather than headline yield alone.</p><p><strong>Disclaimer:</strong> This content is informational only and does not constitute financial advice.</p></section><footer>© 2025 CRYPTO-GOLD-DASHBOARD • Automated Income Pages</footer></div></body></html>"""
 
-<section class="analysis">
-  <h2>Crypto Market Overview, Volatility, and Risk Notes</h2>
-  <p>
-    This page tracks major digital assets across the global cryptocurrency market, including Bitcoin, Ethereum,
-    and widely traded altcoins. The primary objective is to present recent price changes and short-term momentum
-    signals in a compact terminal format.
-  </p>
-  <p>
-    <strong>How to read this dashboard:</strong> Each card shows the latest adjusted closing price and the percentage change
-    from the prior session. Large moves can reflect macro events, exchange-specific liquidity, news-driven spikes,
-    or broader risk-on/risk-off shifts in global markets.
-  </p>
-  <p>
-    <strong>Important:</strong> Cryptocurrency markets can be highly volatile and may trade 24/7. Prices may differ slightly across venues.
-    Use this information for research and educational purposes only.
-  </p>
-  <p><small>Disclaimer: This content is informational only and does not constitute financial advice.</small></p>
-</section>
+INDEX_TEMPLATE = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">{cache_meta}<title>NASDAQ Real-Time Terminal - Tech Sector Intelligence</title><style>body {{ background: #0b0e14; color: #e2e8f0; font-family: sans-serif; padding: 20px; margin: 0; }}.dashboard {{ max-width: 1200px; margin: 0 auto; background: #161b22; border: 1px solid #30363d; padding: 30px; border-radius: 12px; }}.grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }}.stat-card {{ background: #0d1117; padding: 20px; border-radius: 8px; border-top: 4px solid #00ff88; }}.stat-title {{ color: #8b949e; font-size: 0.9rem; margin-bottom: 5px; text-transform: uppercase; }}.price {{ font-size: 2rem; font-weight: bold; color: #ffffff; }}table {{ width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; }}th {{ background: #21262d; color: #8b949e; padding: 15px; text-align: left; border-bottom: 2px solid #30363d; }}td {{ padding: 12px 15px; border-bottom: 1px solid #30363d; }}tr:hover {{ background: #21262d; }}.up {{ color: #39d353; font-weight: bold; }}.down {{ color: #ff7b72; font-weight: bold; }}.analysis {{ margin-top: 50px; padding: 30px; background: #0d1117; border-radius: 8px; line-height: 1.8; border: 1px solid #30363d; }} footer {{ margin-top: 60px; padding: 30px; border-top: 1px solid #30363d; color: #8b949e; font-size: 0.8rem; text-align: center; }}</style></head><body><div class="dashboard"><h1>🚀 NASDAQ-100 Live Intelligence</h1><div style="color:#8b949e; margin-bottom:20px; font-size:0.9rem;">Real-time technology market feed • Last Update (US/Eastern): {update_time} • Sentiment: {sentiment}</div><div class="grid"><div class="stat-card"><div class="stat-title">QQQ ETF Price</div><div class="price">{qqq_price}</div></div><div class="stat-card" style="border-top-color:#58a6ff;"><div class="stat-title">Market Sentiment</div><div class="price" style="font-size:1.5rem;">{sentiment}</div></div><div class="stat-card" style="border-top-color:#e3b341;"><div class="stat-title">Volatility (VIX)</div><div class="price">{vix_price}</div></div></div><table><thead><tr><th>Ticker</th><th>Price ($)</th><th>Change (%)</th><th>1-Day Momentum</th></tr></thead><tbody>{content}</tbody></table><section class="analysis"><h2>Technology Sector Commentary and Risk Context</h2><p>The NASDAQ-100 is a key benchmark for large-cap innovation and growth-oriented companies. Monitoring its constituents helps investors understand market leadership, earnings sensitivity, and macro-driven valuation shifts.</p><p><strong>How to use momentum markers:</strong> The simple BUY/SELL/HOLD markers on this page are based on short-term percentage moves and are not a substitute for comprehensive analysis. Combine trend context, liquidity conditions, and volatility readings.</p><p><strong>VIX and QQQ:</strong> VIX is a popular proxy for equity volatility expectations. QQQ reflects broader NASDAQ-100 exposure. Together they provide a quick view of risk appetite.</p><p><strong>Disclaimer:</strong> This content is informational only and does not constitute financial advice.</p></section><footer>© 2025 CRYPTO-GOLD-DASHBOARD • Automated Index Pages</footer></div></body></html>"""
 
-<footer>© 2025 CRYPTO-GOLD-DASHBOARD • Automated Market Pages</footer>
-</div>
-</body>
-</html>"""
-
-DIV_TEMPLATE = """<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">{cache_meta}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Dividend-focused dashboard for high-yield stocks and ETFs with real-time price updates and income investing commentary.">
-<title>Premium Dividend Terminal - High Yield Assets</title>
-<style>
-:root {{ --bg: #05070a; --card-bg: #11141b; --border: #1e222d; --text: #d1d4dc; --accent: #00ffaa; }}
-body {{ background-color: var(--bg); color: var(--text); font-family: 'Trebuchet MS', sans-serif; margin: 0; padding: 20px; }}
-.container {{ max-width: 1200px; margin: 0 auto; }}
-header {{ border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }}
-h1 {{ font-size: 38px; color: #ffffff; margin: 0; letter-spacing: -1px; }}
-.grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }}
-.card {{ background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 6px; }}
-.card-header {{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }}
-.up {{ color: #00ffaa; }}
-.down {{ color: #ff3b3b; }}
-.na {{ color: #888; }}
-.symbol {{ font-weight: bold; font-size: 16px; color: #fff; }}
-.price {{ font-size: 24px; font-weight: 700; color: #ffffff; }}
-.pct {{ font-size: 13px; font-weight: bold; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); }}
-.analysis {{ margin-top: 50px; padding: 30px; background: #11141b; border-radius: 8px; line-height: 1.8; border-left: 4px solid var(--accent); }}
-footer {{ margin-top: 80px; padding: 40px; text-align: center; font-size: 0.8rem; color: #8b949e; border-top: 1px solid var(--border); }}
-small {{ color:#8b949e; }}
-</style>
-</head>
-<body>
-<div class="container">
-<header>
-  <h1>💰 Dividend Terminal Pro</h1>
-  <div style="color:#888;">Income-focused market feed • High-quality dividend assets</div>
-  <div style="font-size:0.85rem; color:#666; margin-top:6px;">Last Update (US/Eastern): {update_time} | Data Success: {success_rate}%</div>
-</header>
-
-<div class="grid">{content}</div>
-
-<section class="analysis">
-  <h2>Dividend Investing Notes: Yield, Quality, and Risk Controls</h2>
-  <p>
-    Dividend strategies aim to generate consistent cash flow through distributions while balancing equity risk.
-    This terminal highlights popular income assets such as dividend ETFs and widely held dividend stocks.
-  </p>
-  <p>
-    <strong>What matters beyond yield:</strong> payout ratios, free cash flow durability, balance-sheet strength,
-    sector concentration, and interest-rate sensitivity are key factors for long-term income outcomes.
-  </p>
-  <p>
-    <strong>Reminder:</strong> Dividend payments are not guaranteed. Prices can decline even when yields appear attractive.
-    Always evaluate sustainability rather than headline yield alone.
-  </p>
-  <p><small>Disclaimer: This content is informational only and does not constitute financial advice.</small></p>
-</section>
-
-<footer>© 2025 CRYPTO-GOLD-DASHBOARD • Automated Income Pages</footer>
-</div>
-</body>
-</html>"""
-
-INDEX_TEMPLATE = """<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">{cache_meta}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="NASDAQ-100 dashboard with QQQ and VIX, showing price changes, signals, and technology sector commentary.">
-<title>NASDAQ Real-Time Terminal - Tech Sector Intelligence</title>
-<style>
-body {{ background: #0b0e14; color: #e2e8f0; font-family: sans-serif; padding: 20px; margin: 0; }}
-.dashboard {{ max-width: 1200px; margin: 0 auto; background: #161b22; border: 1px solid #30363d; padding: 30px; border-radius: 12px; }}
-.grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }}
-.stat-card {{ background: #0d1117; padding: 20px; border-radius: 8px; border-top: 4px solid #00ff88; }}
-.stat-title {{ color: #8b949e; font-size: 0.9rem; margin-bottom: 5px; text-transform: uppercase; }}
-.price {{ font-size: 2rem; font-weight: bold; color: #ffffff; }}
-table {{ width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; }}
-th {{ background: #21262d; color: #8b949e; padding: 15px; text-align: left; border-bottom: 2px solid #30363d; }}
-td {{ padding: 12px 15px; border-bottom: 1px solid #30363d; }}
-tr:hover {{ background: #21262d; }}
-.up {{ color: #39d353; font-weight: bold; }}
-.down {{ color: #ff7b72; font-weight: bold; }}
-.analysis {{ margin-top: 50px; padding: 30px; background: #0d1117; border-radius: 8px; line-height: 1.8; border: 1px solid #30363d; }}
-footer {{ margin-top: 60px; padding: 30px; border-top: 1px solid #30363d; color: #8b949e; font-size: 0.8rem; text-align: center; }}
-small {{ color:#8b949e; }}
-</style>
-</head>
-<body>
-<div class="dashboard">
-  <h1>🚀 NASDAQ-100 Live Intelligence</h1>
-  <div style="color:#8b949e; margin-bottom:20px; font-size:0.95rem;">
-    Real-time technology market feed • Last Update (US/Eastern): {update_time} • Sentiment: {sentiment}
-  </div>
-
-  <div class="grid">
-    <div class="stat-card">
-      <div class="stat-title">QQQ ETF Price</div>
-      <div class="price">{qqq_price}</div>
-    </div>
-    <div class="stat-card" style="border-top-color:#58a6ff;">
-      <div class="stat-title">Market Sentiment</div>
-      <div class="price" style="font-size:1.5rem;">{sentiment}</div>
-    </div>
-    <div class="stat-card" style="border-top-color:#e3b341;">
-      <div class="stat-title>Volatility (VIX)</div>
-      <div class="price">{vix_price}</div>
-    </div>
-  </div>
-
-  <table>
-    <thead>
-      <tr><th>Ticker</th><th>Price ($)</th><th>Change (%)</th><th>Signal</th></tr>
-    </thead>
-    <tbody>{content}</tbody>
-  </table>
-
-  <section class="analysis">
-    <h2>Technology Sector Commentary and Risk Context</h2>
-    <p>
-      The NASDAQ-100 is a key benchmark for large-cap innovation and growth-oriented companies. Monitoring its constituents
-      helps investors understand market leadership, earnings sensitivity, and macro-driven valuation shifts.
-    </p>
-    <p>
-      <strong>How to use signals:</strong> The simple BUY/SELL/HOLD markers on this page are based on short-term percentage moves
-      and are not a substitute for comprehensive analysis. Combine trend context, liquidity conditions, and volatility readings.
-    </p>
-    <p>
-      <strong>VIX and QQQ:</strong> VIX is a popular proxy for equity volatility expectations. QQQ reflects the broader NASDAQ-100 exposure.
-      Together they provide a quick view of risk appetite.
-    </p>
-    <p><small>Disclaimer: This content is informational only and does not constitute financial advice.</small></p>
-  </section>
-
-  <footer>© 2025 CRYPTO-GOLD-DASHBOARD • Automated Index Pages</footer>
-</div>
-</body>
-</html>"""
 
 # =========================================================
-# Engine
+# Time helpers
 # =========================================================
 def us_eastern_now_str() -> str:
-    if ZoneInfo is not None:
-        dt = datetime.datetime.now(ZoneInfo("America/New_York"))
-        return dt.strftime("%Y-%m-%d %H:%M %Z")
-    dt = datetime.datetime.utcnow()
-    return dt.strftime("%Y-%m-%d %H:%M UTC")
+    if ZoneInfo:
+        tz = ZoneInfo(TIMEZONE)
+        return datetime.datetime.now(tz).strftime("%Y-%m-%d %H:%M %Z")
+    # Fallback: approximate (EST/EDT not guaranteed without zoneinfo)
+    utc_now = datetime.datetime.now(datetime.timezone.utc)
+    return utc_now.strftime("%Y-%m-%d %H:%M UTC")
 
-def fetch_batch_data(tickers: List[str], period: str = "5d", chunk_size: int = CHUNK_SIZE) -> pd.DataFrame:
+
+# =========================================================
+# yfinance normalization
+# Some yfinance downloads return MultiIndex as (Field, Ticker) instead of (Ticker, Field).
+# This function forces it to (Ticker, Field) when possible.
+# =========================================================
+PRICE_FIELDS = {"Open", "High", "Low", "Close", "Adj Close", "Volume"}
+
+def normalize_yf_columns(df: pd.DataFrame) -> pd.DataFrame:
+    if df is None or df.empty:
+        return df
+    if isinstance(df.columns, pd.MultiIndex) and df.columns.nlevels == 2:
+        lvl0 = set(df.columns.get_level_values(0))
+        lvl1 = set(df.columns.get_level_values(1))
+        # If level 0 looks like fields, swap to make (Ticker, Field)
+        if len(lvl0 & PRICE_FIELDS) >= 3 and len(lvl1 & PRICE_FIELDS) == 0:
+            df = df.copy()
+            df.columns = df.columns.swaplevel(0, 1)
+            df = df.sort_index(axis=1)
+    return df
+
+
+def fetch_single(symbol: str, period: str = PERIOD) -> pd.DataFrame:
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            df = yf.download(symbol, period=period, progress=False, auto_adjust=True, threads=False)
+            df = normalize_yf_columns(df)
+            if df is not None and not df.empty:
+                return df
+        except Exception:
+            pass
+        if attempt < MAX_RETRIES:
+            time.sleep(BASE_DELAY * attempt)
+    return pd.DataFrame()
+
+
+def fetch_batch_data(tickers: List[str], period: str = PERIOD, chunk_size: int = CHUNK_SIZE) -> pd.DataFrame:
     frames = []
     for i in range(0, len(tickers), chunk_size):
         chunk = tickers[i:i + chunk_size]
         df = None
         for attempt in range(1, MAX_RETRIES + 1):
             try:
-                print(f"[{attempt}/{MAX_RETRIES}] Fetching chunk {i//chunk_size + 1} ({len(chunk)} tickers)...")
-                df = yf.download(
-                    chunk,
-                    period=period,
-                    group_by="ticker",
-                    threads=True,
-                    progress=False,
-                    auto_adjust=True
-                )
+                df = yf.download(chunk, period=period, group_by="ticker", threads=True, progress=False, auto_adjust=True)
+                df = normalize_yf_columns(df)
                 if df is not None and not df.empty:
                     break
-            except Exception as e:
-                print(f"Fetch failed (attempt {attempt}): {e}")
+            except Exception:
+                df = None
             if attempt < MAX_RETRIES:
-                time.sleep(BASE_DELAY * attempt + random.uniform(0, 0.35))
+                time.sleep(BASE_DELAY * attempt)
         if df is not None and not df.empty:
             frames.append(df)
 
-    return pd.concat(frames, axis=1) if frames else pd.DataFrame()
+    if not frames:
+        return pd.DataFrame()
+
+    merged = pd.concat(frames, axis=1)
+    merged = normalize_yf_columns(merged)
+    return merged
+
 
 def extract_symbol_df(batch_data: pd.DataFrame, symbol: str) -> pd.DataFrame:
     if batch_data is None or batch_data.empty:
-        raise ValueError("Empty batch data")
-
+        raise ValueError("Empty batch")
     if isinstance(batch_data.columns, pd.MultiIndex):
-        lvl0 = set(map(str, batch_data.columns.levels[0]))
-        if symbol in lvl0:
-            df = batch_data[symbol]
-        elif symbol.upper() in lvl0:
-            df = batch_data[symbol.upper()]
-        else:
-            raise ValueError("Symbol not found")
-        if "Close" not in df.columns:
-            raise ValueError("Close missing")
-        return df
-
+        if symbol in batch_data.columns.levels[0]:
+            return batch_data[symbol]
+        if symbol.upper() in batch_data.columns.levels[0]:
+            return batch_data[symbol.upper()]
     if "Close" in batch_data.columns:
         return batch_data
+    raise ValueError("Not found")
 
-    raise ValueError("Unsupported format")
 
-def format_price(symbol: str, price: float) -> str:
-    if "-USD" in symbol:
-        if price < 0.01:
-            return f"${price:,.8f}"
-        if price < 1.0:
-            return f"${price:,.6f}"
-        return f"${price:,.2f}"
+# =========================================================
+# Formatting / validation
+# =========================================================
+def format_crypto_price(price: float) -> str:
+    if price < 0.01:
+        return f"${price:,.8f}"
+    if price < 1.0:
+        return f"${price:,.6f}"
     return f"${price:,.2f}"
 
-def safe_change_pct(price: float, prev: float) -> float:
-    if prev <= 0:
-        raise ValueError("Invalid previous price")
-    return ((price - prev) / prev) * 100.0
 
-def generate_html_from_batch(tickers: List[str], batch_data: pd.DataFrame, mode: str = "card") -> Tuple[str, Dict]:
+def is_plausible_crypto(symbol: str, price: float) -> bool:
+    if price <= 0:
+        return False
+    s = symbol.replace("-USD", "")
+    # Very light sanity checks to catch obvious bad feeds (too small).
+    if s in {"BTC"} and price < 1000:
+        return False
+    if s in {"ETH"} and price < 10:
+        return False
+    if s in {"ARB", "OP", "UNI", "MATIC", "SUI"} and price < 0.01:
+        return False
+    return True
+
+
+def get_crypto_frame_with_alias(symbol: str, period: str = PERIOD) -> Optional[pd.DataFrame]:
+    candidates = CRYPTO_ALIASES.get(symbol, [symbol])
+    for cand in candidates:
+        df = fetch_single(cand, period=period)
+        if df is not None and not df.empty and "Close" in df.columns and df["Close"].dropna().shape[0] >= 2:
+            return df
+    return None
+
+
+# =========================================================
+# HTML generation
+# =========================================================
+def generate_cards(
+    tickers: List[str],
+    batch_data: pd.DataFrame,
+    is_crypto: bool = False
+) -> Tuple[str, Dict]:
+    html = ""
+    success = 0
+
+    for symbol in tickers:
+        # Delisted marker (NASDAQ)
+        if symbol in DELISTED:
+            html += (
+                f'<div class="card" style="opacity:0.55;">'
+                f'<span class="symbol">{symbol}</span>'
+                f'<div class="price">{DELISTED[symbol]}</div>'
+                f"</div>"
+            )
+            continue
+
+        try:
+            df = extract_symbol_df(batch_data, symbol).dropna(subset=["Close"])
+            if len(df) < 2:
+                raise ValueError("Short")
+            price = float(df["Close"].iloc[-1])
+            prev = float(df["Close"].iloc[-2])
+
+            if is_crypto and not is_plausible_crypto(symbol, price):
+                raise ValueError("Implausible crypto price")
+
+            change = ((price - prev) / prev) * 100.0
+            cls = "up" if change >= 0 else "down"
+            sign = "+" if change >= 0 else ""
+
+            p_str = format_crypto_price(price) if is_crypto else f"${price:,.2f}"
+            shown = symbol.replace("-USD", "")
+            html += (
+                f'<div class="card">'
+                f'<div class="card-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">'
+                f'<span class="symbol">{shown}</span>'
+                f'<span class="pct {cls}">{sign}{change:.2f}%</span>'
+                f"</div>"
+                f'<div class="price">{p_str}</div>'
+                f"</div>"
+            )
+            success += 1
+        except Exception:
+            # Single-ticker retry for missing data
+            if is_crypto:
+                df2 = get_crypto_frame_with_alias(symbol)
+            else:
+                df2 = fetch_single(symbol)
+
+            try:
+                if df2 is None or df2.empty:
+                    raise ValueError("No single data")
+
+                df2 = df2.dropna(subset=["Close"])
+                if len(df2) < 2:
+                    raise ValueError("Short single")
+                price = float(df2["Close"].iloc[-1])
+                prev = float(df2["Close"].iloc[-2])
+
+                if is_crypto and not is_plausible_crypto(symbol, price):
+                    raise ValueError("Implausible crypto price (single)")
+
+                change = ((price - prev) / prev) * 100.0
+                cls = "up" if change >= 0 else "down"
+                sign = "+" if change >= 0 else ""
+                p_str = format_crypto_price(price) if is_crypto else f"${price:,.2f}"
+                shown = symbol.replace("-USD", "")
+                html += (
+                    f'<div class="card">'
+                    f'<div class="card-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">'
+                    f'<span class="symbol">{shown}</span>'
+                    f'<span class="pct {cls}">{sign}{change:.2f}%</span>'
+                    f"</div>"
+                    f'<div class="price">{p_str}</div>'
+                    f"</div>"
+                )
+                success += 1
+            except Exception:
+                html += (
+                    f'<div class="card" style="opacity:0.4;">'
+                    f'<span class="symbol">{symbol.replace("-USD","")}</span>'
+                    f'<div class="price">N/A</div>'
+                    f"</div>"
+                )
+
+    rate = (success / len(tickers) * 100.0) if tickers else 0.0
+    return html, {"rate": rate}
+
+
+def generate_table(tickers: List[str], batch_data: pd.DataFrame) -> Tuple[str, Dict]:
     html = ""
     success = 0
     ups = 0
 
     for symbol in tickers:
+        # Delisted marker
+        if symbol in DELISTED:
+            html += f"<tr><td>{symbol}</td><td>-</td><td>-</td><td>{DELISTED[symbol]}</td></tr>"
+            continue
+
         try:
             df = extract_symbol_df(batch_data, symbol).dropna(subset=["Close"])
             if len(df) < 2:
-                raise ValueError("Not enough data")
-
+                raise ValueError("Short")
             price = float(df["Close"].iloc[-1])
             prev = float(df["Close"].iloc[-2])
-            change = safe_change_pct(price, prev)
+            change = ((price - prev) / prev) * 100.0
 
-            cls, sign = ("up", "+") if change >= 0 else ("down", "")
+            cls = "up" if change >= 0 else "down"
+            sign = "+" if change >= 0 else ""
             if change >= 0:
                 ups += 1
 
-            if mode == "card":
-                p_str = format_price(symbol, price)
-                html += (
-                    f'<div class="card">'
-                    f'  <div class="card-header">'
-                    f'    <span class="symbol">{symbol.replace("-USD","")}</span>'
-                    f'    <span class="pct {cls}">{sign}{change:.2f}%</span>'
-                    f'  </div>'
-                    f'  <div class="price">{p_str}</div>'
-                    f'</div>'
-                )
-            else:
-                sig = "BUY" if change > 0.5 else ("SELL" if change < -0.5 else "HOLD")
-                sig_col = "#39d353" if sig == "BUY" else ("#ff7b72" if sig == "SELL" else "#888")
+            # Momentum marker (NOT investment advice)
+            marker = "BUY" if change > 0.5 else ("SELL" if change < -0.5 else "HOLD")
+            marker_color = "#39d353" if marker == "BUY" else ("#ff7b72" if marker == "SELL" else "#888")
+
+            html += (
+                f"<tr>"
+                f"<td style='color:#fff;'>{symbol}</td>"
+                f"<td>${price:,.2f}</td>"
+                f"<td class='{cls}'>{sign}{change:.2f}%</td>"
+                f"<td style='color:{marker_color};'>{marker}</td>"
+                f"</tr>"
+            )
+            success += 1
+        except Exception:
+            # Single-ticker retry
+            df2 = fetch_single(symbol)
+            try:
+                if df2 is None or df2.empty:
+                    raise ValueError("No single data")
+                df2 = df2.dropna(subset=["Close"])
+                if len(df2) < 2:
+                    raise ValueError("Short single")
+                price = float(df2["Close"].iloc[-1])
+                prev = float(df2["Close"].iloc[-2])
+                change = ((price - prev) / prev) * 100.0
+
+                cls = "up" if change >= 0 else "down"
+                sign = "+" if change >= 0 else ""
+                if change >= 0:
+                    ups += 1
+
+                marker = "BUY" if change > 0.5 else ("SELL" if change < -0.5 else "HOLD")
+                marker_color = "#39d353" if marker == "BUY" else ("#ff7b72" if marker == "SELL" else "#888")
+
                 html += (
                     f"<tr>"
                     f"<td style='color:#fff;'>{symbol}</td>"
                     f"<td>${price:,.2f}</td>"
                     f"<td class='{cls}'>{sign}{change:.2f}%</td>"
-                    f"<td style='color:{sig_col};'>{sig}</td>"
+                    f"<td style='color:{marker_color};'>{marker}</td>"
                     f"</tr>"
                 )
-
-            success += 1
-
-        except Exception:
-            if mode == "card":
-                html += (
-                    f'<div class="card" style="opacity:0.45;">'
-                    f'  <div class="card-header">'
-                    f'    <span class="symbol">{symbol.replace("-USD","")}</span>'
-                    f'    <span class="pct na">N/A</span>'
-                    f'  </div>'
-                    f'  <div class="price">N/A</div>'
-                    f'</div>'
-                )
-            else:
+                success += 1
+            except Exception:
                 html += f"<tr><td>{symbol}</td><td>-</td><td>-</td><td>N/A</td></tr>"
 
     rate = (success / len(tickers) * 100.0) if tickers else 0.0
-    up_ratio = (ups / max(1, success))
-    sentiment = "BULLISH" if up_ratio > 0.6 else ("BEARISH" if up_ratio < 0.4 else "NEUTRAL")
-
+    sentiment = "BULLISH" if (ups / max(1, success)) > 0.6 else ("BEARISH" if (ups / max(1, success)) < 0.4 else "NEUTRAL")
     return html, {"rate": rate, "sentiment": sentiment}
 
-def git_push_if_changed(commit_msg: str) -> None:
-    try:
-        subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
-        subprocess.run(["git", "config", "user.email", "github-actions@github.com"], check=True)
-        subprocess.run(["git", "add", "."], check=True)
 
-        if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode == 0:
-            print("Git push skipped (no changes).")
-            return
-
-        subprocess.run(["git", "commit", "-m", commit_msg], check=True)
-        subprocess.run(["git", "push"], check=True)
-        print("Git push OK.")
-    except Exception as e:
-        print(f"Git push skipped (error): {e}")
-
+# =========================================================
+# Main
+# =========================================================
 def main():
     now_str = us_eastern_now_str()
 
-    c_batch = fetch_batch_data(COIN_TICKERS, period="5d")
-    c_html, c_stats = generate_html_from_batch(COIN_TICKERS, c_batch, mode="card")
+    # 1) Crypto
+    c_batch = fetch_batch_data(COIN_TICKERS, period=PERIOD, chunk_size=CHUNK_SIZE)
+    c_html, c_stats = generate_cards(COIN_TICKERS, c_batch, is_crypto=True)
     (OUTPUT_DIR / "coin.html").write_text(
         COIN_TEMPLATE.format(
             cache_meta=CACHE_META,
             update_time=now_str,
             success_rate=f"{c_stats['rate']:.1f}",
-            content=c_html,
+            content=c_html
         ),
-        encoding="utf-8",
+        encoding="utf-8"
     )
 
-    d_batch = fetch_batch_data(DIVIDEND_TICKERS, period="5d")
-    d_html, d_stats = generate_html_from_batch(DIVIDEND_TICKERS, d_batch, mode="card")
+    # 2) Dividend
+    d_batch = fetch_batch_data(DIVIDEND_TICKERS, period=PERIOD, chunk_size=CHUNK_SIZE)
+    d_html, d_stats = generate_cards(DIVIDEND_TICKERS, d_batch, is_crypto=False)
     (OUTPUT_DIR / "dividend.html").write_text(
         DIV_TEMPLATE.format(
             cache_meta=CACHE_META,
             update_time=now_str,
             success_rate=f"{d_stats['rate']:.1f}",
-            content=d_html,
+            content=d_html
         ),
-        encoding="utf-8",
+        encoding="utf-8"
     )
 
-    n_batch = fetch_batch_data(NASDAQ_TICKERS + ["QQQ", "^VIX"], period="5d")
-    n_html, n_stats = generate_html_from_batch(NASDAQ_TICKERS, n_batch, mode="table")
+    # 3) NASDAQ
+    n_batch = fetch_batch_data(NASDAQ_TICKERS + ["QQQ", "^VIX"], period=PERIOD, chunk_size=CHUNK_SIZE)
+    n_html, n_stats = generate_table(NASDAQ_TICKERS, n_batch)
 
     try:
-        qqq = f"${float(extract_symbol_df(n_batch, 'QQQ')['Close'].iloc[-1]):,.2f}"
+        qqq_df = extract_symbol_df(n_batch, "QQQ").dropna(subset=["Close"])
+        vix_df = extract_symbol_df(n_batch, "^VIX").dropna(subset=["Close"])
+        qqq = f"${float(qqq_df['Close'].iloc[-1]):,.2f}" if len(qqq_df) else "N/A"
+        vix = f"{float(vix_df['Close'].iloc[-1]):,.2f}" if len(vix_df) else "N/A"
     except Exception:
-        qqq = "N/A"
-
-    try:
-        vix = f"{float(extract_symbol_df(n_batch, '^VIX')['Close'].iloc[-1]):,.2f}"
-    except Exception:
-        vix = "N/A"
+        qqq, vix = "N/A", "N/A"
 
     (OUTPUT_DIR / "index.html").write_text(
         INDEX_TEMPLATE.format(
@@ -465,12 +437,22 @@ def main():
             content=n_html,
             qqq_price=qqq,
             vix_price=vix,
-            sentiment=n_stats["sentiment"],
+            sentiment=n_stats["sentiment"]
         ),
-        encoding="utf-8",
+        encoding="utf-8"
     )
 
-    git_push_if_changed(f"🚀 SEO Update (US/Eastern): {now_str}")
+    # Git Push (optional)
+    try:
+        subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
+        subprocess.run(["git", "config", "user.email", "github-actions@github.com"], check=True)
+        subprocess.run(["git", "add", "."], check=True)
+        if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode != 0:
+            subprocess.run(["git", "commit", "-m", f"🚀 Update (US/Eastern): {now_str}"], check=True)
+            subprocess.run(["git", "push"], check=True)
+    except Exception:
+        pass
+
 
 if __name__ == "__main__":
     main()
