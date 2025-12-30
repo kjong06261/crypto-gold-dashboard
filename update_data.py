@@ -4,7 +4,7 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # =========================================================
-# 0) 경로 및 환경 설정 (Python 보정 완료)
+# 0) 경로 및 환경 설정
 # =========================================================
 OUTPUT_DIR = Path("./docs")
 ASSETS_DIR = OUTPUT_DIR / "assets"
@@ -14,7 +14,6 @@ for d in [OUTPUT_DIR, ASSETS_DIR, API_DIR, CACHE_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 SITE_NAME = "US Dividend Pro"
-# Python에서 BASE_URL을 "/repo" 또는 "" 형태로 확실히 보정
 BASE_URL = os.getenv("BASE_URL", "").strip().rstrip("/")
 if BASE_URL and not BASE_URL.startswith("/"):
     BASE_URL = "/" + BASE_URL
@@ -60,7 +59,7 @@ def get_category(ticker: str) -> str:
     return "other"
 
 # =========================================================
-# 2) UI & 무적 JS (BASE_URL 이중 슬래시 버그 수정 완료)
+# 2) UI & 무적 JS (중괄호 이중 처리 완료)
 # =========================================================
 BASE_CSS = """
 :root{--bg:#05070a;--panel:#11141b;--border:#1e222d;--text:#d1d4dc;--muted:#8b949e;--link:#58a6ff;--success:#00d084;--danger:#ff3366;}
@@ -83,7 +82,6 @@ DYNAMIC_JS = f"""
 <script>
 (function() {{
   const RAW_BASE = {base_js};
-  // 대표님 패치: BASE_URL 이중 슬래시 완벽 방어
   const BASE = (!RAW_BASE || RAW_BASE === "/") ? "" : RAW_BASE.replace(/\\/+$/g, "");
   const SITE_NAME = {site_js};
 
@@ -111,7 +109,7 @@ DYNAMIC_JS = f"""
 
       if (ticker) renderDetail(data, ticker);
       else if (document.getElementById("grid")) renderGrid(data);
-    } catch (e) {{
+    }} catch (e) {{
       console.error(e);
       const c = document.getElementById("content");
       if (c) c.innerHTML = "<h1>Data Load Failed</h1>";
@@ -160,7 +158,7 @@ DYNAMIC_JS = f"""
 def wrap_page(title, body, last_et, use_js=False):
     site = html.escape(SITE_NAME)
     js = DYNAMIC_JS if use_js else ""
-    nav = f"<div class='nav'><strong>{site}</strong><a href='{u('/index.html')}'>Home</a><a href='{u('/finance.html')}'>Terminal</a></div>"
+    nav = f"<div class='nav'><strong>{site}</strong><a href='{u('/index.html')}'>Home</a><a href='{u('/finance.html')}'>Terminal</a><a href='{u('/assets/index.html')}'>Assets</a></div>"
     return f"<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1.0'><title>{title} | {site}</title><style>{BASE_CSS}</style>{js}</head><body>{nav}<div class='container' id='content'>{body}</div><footer>© 2025 {site} | Updated: {last_et}</footer></body></html>"
 
 # =========================================================
@@ -168,7 +166,7 @@ def wrap_page(title, body, last_et, use_js=False):
 # =========================================================
 def fetch_data(t):
     cache_file = CACHE_DIR / f"{safe_slug(t)}.json"
-    if cache_file.exists() and time.time() - cache_file.stat().st_mtime < CACHE_MINUTES * 60:
+    if cache_file.exists() and time.time() - cache_file.stat().st_mtime < 10 * 60:
         try: return json.loads(cache_file.read_text(encoding="utf-8"))
         except: pass
 
@@ -194,7 +192,7 @@ def main():
             r = f.result()
             if r: results.append(r)
     
-    if len(results) < 10: return
+    if len(results) < 5: return
 
     results.sort(key=lambda x: x['t'])
     write_if_changed(API_DIR / "assets.json", json.dumps(results, ensure_ascii=False, indent=2))
@@ -209,7 +207,7 @@ def main():
     sitemap.append("</urlset>")
     write_if_changed(OUTPUT_DIR / "sitemap.xml", "\n".join(sitemap))
 
-    print(f"✅ BUILD COMPLETE: {len(results)} assets | {time.time()-start_time:.1f}s")
+    print(f"✅ Success: {len(results)} assets | {time.time()-start_time:.1f}s")
 
 if __name__ == "__main__":
     main()
