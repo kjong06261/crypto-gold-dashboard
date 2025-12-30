@@ -47,9 +47,29 @@ def write_if_changed(path: Path, text: str):
 # 1) 티커 데이터 구성
 # =========================================================
 TICKERS = {
-    "crypto": ["BTC-USD", "ETH-USD", "SOL-USD", "XRP-USD", "DOGE-USD"],
-    "tech": ["AAPL", "MSFT", "NVDA", "AMZN", "META", "GOOGL", "TSLA", "AVGO", "AMD"],
-    "dividend": ["O", "SCHD", "JEPI", "VICI", "MAIN", "STAG", "ADC", "MO", "T", "VZ"],
+    "crypto": [
+        "BTC-USD", "ETH-USD", "SOL-USD", "XRP-USD", "DOGE-USD", "ADA-USD", "DOT-USD", "MATIC-USD", "LINK-USD", "AVAX-USD",
+        "SHIB-USD", "TRX-USD", "LTC-USD", "BCH-USD", "UNI-USD", "NEAR-USD", "APT-USD", "ICP-USD", "STX-USD", "FIL-USD"
+    ],
+    "ai_semiconductor": [
+        "NVDA", "AMD", "AVGO", "ARM", "TSM", "ASML", "AMAT", "LRCX", "KLAC", "MRVL", 
+        "MU", "INTC", "SMCI", "SNPS", "CDNS", "ANSS", "MCHP", "TXN", "ADI", "NXPI"
+    ],
+    "big_tech": [
+        "AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA", "NFLX", "ADBE", "ORCL", "CRM",
+        "SAP", "ASML", "CSCO", "TMUS", "QCOM", "INTU", "AMAT", "PBR", "SONY", "UBER"
+    ],
+    "dividend_pro": [
+        "O", "SCHD", "JEPI", "JEPQ", "VICI", "MAIN", "STAG", "ADC", "MO", "T", "VZ", "JNJ", "PG", "KO", "PEP", 
+        "ABBV", "CVX", "XOM", "LOW", "MMM", "IBM", "PFE", "AMCR", "KHC", "WBA", "LEG", "BEN", "FRT", "NUE", "SPG"
+    ],
+    "etf_index": [
+        "SPY", "QQQ", "DIA", "VOO", "IVV", "VTI", "VEU", "VWO", "AGG", "BND", "TLT", "LQD", "HYG", "VIG", "VYM"
+    ],
+    "nasdaq_100_extra": [
+        "AMGN", "SBUX", "MDLZ", "ISRG", "GILD", "BKNG", "VRTX", "REGN", "ADP", "PANW",
+        "MELI", "SNOW", "WDAY", "KLAC", "LRCX", "PYPL", "CTAS", "MAR", "AEP", "CDNS"
+    ]
 }
 ALL_TICKERS = sorted(set(sum(TICKERS.values(), [])))
 
