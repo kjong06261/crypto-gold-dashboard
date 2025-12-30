@@ -747,15 +747,12 @@ def run_update() -> Optional[Metrics]:
         coin_batch, coin_source = fetch_batch_data(COIN_TICKERS, period="5d")
         coin_html, coin_stats = generate_html_from_batch(COIN_TICKERS, coin_batch, mode="card")
         all_stats["crypto"] = coin_stats
-        data_source_used = coin_source
         
         # 2) Dividend
         logger.info(">>> Dividend Stocks")
         div_batch, div_source = fetch_batch_data(DIVIDEND_TICKERS, period="5d")
         div_html, div_stats = generate_html_from_batch(DIVIDEND_TICKERS, div_batch, mode="card")
         all_stats["dividend"] = div_stats
-        if data_source_used == "unknown":
-            data_source_used = div_source
         
         # 3) Nasdaq
         logger.info(">>> NASDAQ-100")
@@ -769,41 +766,39 @@ def run_update() -> Optional[Metrics]:
         vix_price = get_price_from_batch(nasdaq_batch, "^VIX")
         sentiment = calculate_sentiment(nasdaq_batch, NASDAQ_TICKERS)
         
-        # Metrics 계산
-        duration = time.time() - start_time
-        overall_success = sum(s["success"] for s in all_stats.values())
-        overall_total = sum(s["total"] for s in all_stats.values())
-        overall_rate = (overall_success / overall_total) if overall_total else 0.0
-        
+        # 성공률 계산
         coin_success_rate = (coin_stats["success"] / coin_stats["total"]) if coin_stats["total"] else 0.0
         div_success_rate = (div_stats["success"] / div_stats["total"]) if div_stats["total"] else 0.0
         nasdaq_success_rate = (nasdaq_stats["success"] / nasdaq_stats["total"]) if nasdaq_stats["total"] else 0.0
         
-        metrics = Metrics(
+        overall_success = sum(s["success"] for s in all_stats.values())
+        overall_total = sum(s["total"] for s in all_stats.values())
+        overall_rate = (overall_success / overall_total) if overall_total else 0.0
+        
+        # 🔥 버그 수정: Metrics를 만들기 전에 먼저 Health 계산 (임시)
+        temp_metrics = Metrics(
             timestamp=datetime.datetime.now(datetime.timezone.utc).isoformat(),
-            update_duration_seconds=round(duration, 3),
+            update_duration_seconds=0.0,
             crypto_success_rate=round(coin_success_rate, 4),
             dividend_success_rate=round(div_success_rate, 4),
             nasdaq_success_rate=round(nasdaq_success_rate, 4),
             overall_success_rate=round(overall_rate, 4),
-            total_api_calls=API_COUNTER.get_and_reset(),
-            cache_hit_rate=round(CACHE.get_hit_rate(), 4),
-            errors=errors,
-            data_source=data_source_used
+            total_api_calls=0,
+            cache_hit_rate=0.0,
+            errors=[],
+            data_source="temp"
         )
-        
-        # Health 업데이트 후 반영
-        HEALTH_MONITOR.add_metrics(metrics)
+        HEALTH_MONITOR.add_metrics(temp_metrics)
         health_status, health_class = HEALTH_MONITOR.get_health_status()
         
-        # HTML 생성 (업데이트 후 health 반영)
+        # 🔥 버그 수정: HTML 생성 (페이지별 data_source 정확하게)
         coin_final = COIN_TEMPLATE.format(
             update_time=update_time_str,
             content=coin_html,
             success_rate=f"{coin_success_rate*100:.1f}",
             health_status=health_status,
             health_class=health_class,
-            data_source=data_source_used
+            data_source=coin_source
         )
         if not atomic_write(CONFIG.OUTPUT_DIR / "coin.html", coin_final):
             errors.append("coin.html write failed")
@@ -814,7 +809,7 @@ def run_update() -> Optional[Metrics]:
             success_rate=f"{div_success_rate*100:.1f}",
             health_status=health_status,
             health_class=health_class,
-            data_source=data_source_used
+            data_source=div_source
         )
         if not atomic_write(CONFIG.OUTPUT_DIR / "dividend.html", div_final):
             errors.append("dividend.html write failed")
@@ -828,10 +823,27 @@ def run_update() -> Optional[Metrics]:
             success_rate=f"{nasdaq_success_rate*100:.1f}",
             health_status=health_status,
             health_class=health_class,
-            data_source=data_source_used
+            data_source=nasdaq_source
         )
         if not atomic_write(CONFIG.OUTPUT_DIR / "index.html", index_final):
             errors.append("index.html write failed")
+        
+        # 🔥 버그 수정: Metrics는 모든 작업(write 포함) 후에 최종 생성
+        duration = time.time() - start_time
+        data_source_summary = f"crypto:{coin_source}|div:{div_source}|nasdaq:{nasdaq_source}"
+        
+        metrics = Metrics(
+            timestamp=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            update_duration_seconds=round(duration, 3),
+            crypto_success_rate=round(coin_success_rate, 4),
+            dividend_success_rate=round(div_success_rate, 4),
+            nasdaq_success_rate=round(nasdaq_success_rate, 4),
+            overall_success_rate=round(overall_rate, 4),
+            total_api_calls=API_COUNTER.get_and_reset(),
+            cache_hit_rate=round(CACHE.get_hit_rate(), 4),
+            errors=errors,  # 🔥 이제 write 실패도 포함됨
+            data_source=data_source_summary
+        )
         
         # Trends & Status 저장
         HEALTH_MONITOR.save_trends()
