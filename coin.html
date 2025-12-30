@@ -3,29 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Intelligence Terminal | us-dividend-pro.com</title>
+    <title>Crypto Intelligence Terminal | US-DIVIDEND-PRO</title>
     <style>
-        body { font-family: 'Inter', sans-serif; line-height: 1.7; color: #f8f9fa; max-width: 1100px; margin: 0 auto; padding: 40px 20px; background: #0b0e11; }
-        .terminal-header { border-left: 6px solid #f3ba2f; padding-left: 20px; margin-bottom: 40px; }
-        h1 { color: #f3ba2f; font-size: 2.5rem; }
-        .analysis-section { background: #1e2329; border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #2b3139; }
-        h2 { color: #f3ba2f; }
-        footer { text-align: center; margin-top: 60px; color: #707a8a; border-top: 1px solid #2b3139; padding-top: 30px; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #010409; color: #c9d1d9; padding: 40px; line-height: 1.6; display: flex; justify-content: center; }
+        .terminal { max-width: 850px; background: #0d1117; border: 1px solid #30363d; padding: 45px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+        .live-dot { height: 10px; width: 10px; background-color: #238636; border-radius: 50%; display: inline-block; margin-right: 8px; animation: blink 1.5s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        h1 { color: #58a6ff; font-size: 2.3rem; margin-bottom: 25px; border-bottom: 2px solid #21262d; padding-bottom: 15px; }
+        .section-header { color: #f0f6fc; font-size: 1.5rem; margin-top: 35px; margin-bottom: 15px; font-weight: 600; display: flex; align-items: center; }
+        p { font-size: 1.15rem; color: #8b949e; margin-bottom: 22px; }
+        .data-point { color: #d2a8ff; font-weight: bold; }
+        .highlight { color: #79c0ff; font-weight: bold; }
+        footer { margin-top: 50px; font-size: 0.9rem; color: #484f58; text-align: center; border-top: 1px solid #21262d; padding-top: 20px; }
     </style>
 </head>
 <body>
-    <div class="terminal-header">
-        <h1>Crypto Intelligence Terminal</h1>
-        <p>Real-Time On-Chain Analysis & Market Sentiment</p>
+    <div class="terminal">
+        <div><span class="live-dot"></span><span style="color: #238636; font-weight: bold; font-size: 0.9rem;">LIVE CRYPTO FEED</span></div>
+        <h1>Digital Asset Intelligence</h1>
+        
+        <div class="section-header">On-Chain Dynamics</div>
+        <p>Our terminal monitors <span class="highlight">whale accumulation patterns</span> and exchange net flows. Currently, <span class="data-point">Bitcoin (BTC)</span> dominance is maintaining a critical structural level, indicating a shift in institutional liquidity towards long-term cold storage.</p>
+        
+        <div class="section-header">Market Sentiment & Momentum</div>
+        <p>Utilizing high-frequency trading data, we analyze the <span class="highlight">Funding Rates</span> and <span class="highlight">Open Interest</span> across major derivatives exchanges. This allows us to identify potential short-squeeze zones and volatility clusters before they manifest in price action.</p>
+        
+        <div class="section-header">Ecosystem Analysis</div>
+        <p>We provide deep-dives into <span class="data-point">Ethereum (ETH)</span> L2 scaling solutions and the burgeoning <span class="highlight">Solana (SOL)</span> DeFi ecosystem. Our goal is to filter out the noise and focus on protocol revenue, active addresses, and Total Value Locked (TVL).</p>
+        
+        <footer>
+            © 2025 US-DIVIDEND-PRO | Global Digital Asset Research Unit
+        </footer>
     </div>
-    <div class="analysis-section">
-        <h2>Market Dynamics (Updated Dec 30, 2025)</h2>
-        <p>Bitcoin dominance is currently at 52.4%, showing strong institutional accumulation. We are monitoring significant net outflows from exchanges, which historically precedes a major price rally. Our terminal tracks these whale movements and liquidity shifts to provide an edge in the volatile digital asset market.</p>
-    </div>
-    <div class="analysis-section">
-        <h2>Technical Momentum</h2>
-        <p>Utilizing RSI and Fibonacci levels, we've identified key support at the current levels. The ETH/BTC ratio suggests a potential shift towards Altcoin season. This data is essential for tactical asset allocation in decentralized finance ecosystems.</p>
-    </div>
-    <footer>© 2025 US-DIVIDEND-PRO | Crypto Intelligence Unit</footer>
 </body>
 </html>
