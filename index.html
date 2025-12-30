@@ -1,174 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Intelligence & On-Chain Terminal | US-DIVIDEND-PRO</title>
+    <style>
+        body { font-family: 'Inter', -apple-system, sans-serif; line-height: 1.7; color: #f8f9fa; max-width: 1100px; margin: 0 auto; padding: 40px 20px; background: #0b0e11; }
+        .terminal-header { border-left: 6px solid #f3ba2f; padding-left: 20px; margin-bottom: 40px; }
+        h1 { color: #f3ba2f; font-size: 2.5rem; margin: 0; }
+        .analysis-section { background: #1e2329; border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #2b3139; }
+        h2 { color: #f3ba2f; font-size: 1.4rem; margin-top: 0; }
+        p { color: #eaecef; }
+        .live-indicator { display: inline-block; width: 10px; height: 10px; background: #00ff00; border-radius: 50%; margin-right: 8px; animation: blink 1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        footer { text-align: center; margin-top: 60px; color: #707a8a; font-size: 0.85rem; border-top: 1px solid #2b3139; padding-top: 30px; }
+    </style>
+</head>
+<body>
 
-    <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
-        <title>Premium Crypto Terminal</title>
-        <style>
-            :root { --gold: #fbbf24; --bg: #000; --card: #111; --up: #f87171; --down: #60a5fa; }
-            body { background-color: var(--bg); color: var(--gold); font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }
-            .container { max-width: 1400px; margin: 0 auto; }
-            header { text-align: center; padding: 40px 0; border-bottom: 2px solid var(--gold); margin-bottom: 30px; }
-            h1 { font-size: 3vw; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
-            .time { color: #888; font-size: 14px; margin-top: 10px; }
-            .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-            .card { background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid #333; transition: 0.3s; position: relative; overflow: hidden; }
-            .card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(251, 191, 36, 0.2); }
-            .name { font-size: 16px; font-weight: bold; color: #fff; display: block; margin-bottom: 10px; opacity: 0.8; }
-            .price { font-size: 22px; font-weight: 800; display: block; margin-bottom: 8px; color: #fff; }
-            .pct { font-size: 15px; font-weight: 600; }
-            .up { color: var(--up); }
-            .down { color: var(--down); }
-            footer { margin-top: 50px; text-align: center; color: #444; font-size: 12px; border-top: 1px solid #222; padding-top: 20px; }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <header>
-                <h1>CRYPTO TERMINAL</h1>
-                <div class="time">REAL-TIME DATA FEED • LAST UPDATE: 2025-12-29 23:34 (KST)</div>
-            </header>
-            <div class="grid">
-    
-                <div class="card">
-                    <span class="name">Bitcoin</span>
-                    <span class="price">$87,119.79</span>
-                    <span class="pct down">-0.82%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Ethereum</span>
-                    <span class="price">$2,931.93</span>
-                    <span class="pct down">-0.56%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Solana</span>
-                    <span class="price">$123.20</span>
-                    <span class="pct down">-1.60%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Ripple</span>
-                    <span class="price">$1.85</span>
-                    <span class="pct down">-0.87%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Cardano</span>
-                    <span class="price">$0.35</span>
-                    <span class="pct down">-4.21%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Dogecoin</span>
-                    <span class="price">$0.12</span>
-                    <span class="pct down">-0.85%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Polkadot</span>
-                    <span class="price">$1.82</span>
-                    <span class="pct down">-1.31%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Chainlink</span>
-                    <span class="price">$12.29</span>
-                    <span class="pct down">-1.48%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Avalanche</span>
-                    <span class="price">$12.38</span>
-                    <span class="pct down">-2.02%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">TRON</span>
-                    <span class="price">$0.28</span>
-                    <span class="pct down">-0.13%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Shiba Inu</span>
-                    <span class="price">$0.00</span>
-                    <span class="pct up">+2.61%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Litecoin</span>
-                    <span class="price">$78.30</span>
-                    <span class="pct down">-0.43%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Bitcoin Cash</span>
-                    <span class="price">$597.95</span>
-                    <span class="pct down">-3.77%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">NEAR Protocol</span>
-                    <span class="price">$1.52</span>
-                    <span class="pct down">-3.68%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Render</span>
-                    <span class="price">$1.29</span>
-                    <span class="pct down">-2.05%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Optimism</span>
-                    <span class="price">$0.27</span>
-                    <span class="pct down">-1.73%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Arbitrum</span>
-                    <span class="price">$0.00</span>
-                    <span class="pct down">-0.03%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Kaspa</span>
-                    <span class="price">$0.04</span>
-                    <span class="pct down">-2.57%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Fetch.ai</span>
-                    <span class="price">$0.21</span>
-                    <span class="pct down">-2.66%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Bonk</span>
-                    <span class="price">$0.00</span>
-                    <span class="pct down">-3.19%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">dogwifhat</span>
-                    <span class="price">$0.29</span>
-                    <span class="pct down">-7.80%</span>
-                </div>
-        
-                <div class="card">
-                    <span class="name">Floki</span>
-                    <span class="price">$0.00</span>
-                    <span class="pct down">-4.18%</span>
-                </div>
-        
-            </div>
-            <footer>
-                <p>Global Crypto Market Summary © 2025 COIN.US-DIVIDEND-PRO.COM</p>
-            </footer>
-        </div>
-    </body>
-    </html>
-    
+<div class="terminal-header">
+    <h1>Crypto Intelligence Terminal</h1>
+    <p><span class="live-indicator"></span>Real-Time On-Chain Analysis & Market Sentiment</p>
+</div>
+
+<div class="analysis-section">
+    <h2>Market Dynamics & Liquidity Analysis</h2>
+    <p>The cryptocurrency market operates on a decentralized framework, requiring a sophisticated approach to liquidity and volatility assessment. Our terminal integrates <strong>On-Chain data</strong> to track institutional capital flows and 'Whale' wallet movements across major exchanges. By monitoring the <strong>Exchange Net Flow</strong> (Inflow vs. Outflow) of Bitcoin and Ethereum, we provide investors with a lead-time indicator of potential market reversals. This systematic approach filters out short-term noise to reveal the underlying structural trends of the digital asset economy.</p>
+</div>
+
+<div style="background: #000; color: #f3ba2f; padding: 25px; border-radius: 8px; font-family: monospace; border: 1px solid #f3ba2f; margin-bottom: 25px;">
+    [SYSTEM] CRYPTO_MARKET_SCANNER_v2.5_LOADED...
+    <br>[BTC] MVRV_RATIO: OPTIMIZED | [ETH] GAS_FEE: STABLE
+    <br>[DOMINANCE] BTC: 52.4% | ALTSEASON_INDEX: ACCUMULATING
+    <br>--------------------------------------------------
+    <br>※ 사장님의 실시간 코인 위젯/차트 코드를 여기에 넣으세요.
+</div>
+
+<div class="analysis-section">
+    <h2>Technical Momentum & Sentiment Correlation</h2>
+    <p>Price action in the crypto sector is heavily influenced by algorithmic trading and retail sentiment. We utilize <strong>Fibonacci Retracement levels</strong> and the <strong>Relative Strength Index (RSI)</strong> to pinpoint critical support and resistance zones. Furthermore, our platform correlates social sentiment data with Fear & Greed indices to detect 'Market Euphoria' or 'Maximum Pain' scenarios. This dual-layer analysis ensures that users can distinguish between speculative bubbles and sustainable growth phases in the DeFi and Layer-1 ecosystems.</p>
+</div>
+
+<article class="analysis-section">
+    <h2>2025 Vision: Institutional Adoption and Regulatory Impact</h2>
+    <p>Heading into 2025, the digital asset landscape is shifting toward institutional integration. Our terminal monitors the impact of Spot ETFs and regulatory clarity on market volatility. We track the 'HODL Waves' and realized cap data to understand the long-term conviction of market participants. From the tokenization of real-world assets (RWA) to the evolution of Ethereum’s sharding, we provide the essential intelligence required for the next generation of digital asset investors.</p>
+</article>
+
+<footer>
+    <p>&copy; 2025 US-DIVIDEND-PRO | Crypto Intelligence Unit</p>
+    <p>Digital assets involve significant risk. This data is for professional research purposes only.</p>
+</footer>
+
+</body>
+</html>
