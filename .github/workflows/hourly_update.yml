@@ -1,32 +1,30 @@
-name: Update Market Data
+name: Update Asset Data
 
 on:
-  push:  # 🔥 이거 추가 - 푸시할 때마다 실행
-    branches: [ main ]
   schedule:
-    - cron: '0 * * * *'
+    - cron: "0 * * * *"  # 매시간 정각
   workflow_dispatch:
 
+permissions:
+  contents: write  # 중요! 파이썬의 git push 기능을 허용함
+
 jobs:
-  update:
+  build:
     runs-on: ubuntu-latest
-    
-    permissions:
-      contents: write
-    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Checkout Repository
+        uses: actions/checkout@v3
         with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
+          fetch-depth: 0  # 전체 히스토리를 가져와야 push가 잘 됨
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
         run: |
-          pip install yfinance pandas
-      
-      - name: Run update script
-        run: |
-          python update_data.py
+          pip install yfinance pandas lxml  # requests는 보통 기본설치되지만 필요시 추가
+
+      - name: Run Update Script
+        run: python update_data.py
