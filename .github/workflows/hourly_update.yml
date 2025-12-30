@@ -9,6 +9,9 @@ jobs:
   update:
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: write  # 🔥 이거 추가 필수!
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,27 +28,19 @@ jobs:
       - name: Run update script
         run: |
           python update_data.py
-      
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add coin.html dividend.html index.html status.json
-          git commit -m "🤖 Auto-update: $(date +'%Y-%m-%d %H:%M UTC')" || exit 0
-          git push
 ```
 
 ---
 
-## 📂 **파일 구조**
+## 📂 **파일 위치 (정확)**
 ```
-repo/
+crypto-gold-dashboard/
 ├── .github/
 │   └── workflows/
-│       └── update.yml
-├── update_data.py  (← 이 스크립트)
-├── coin.html
-├── dividend.html
-├── index.html
-├── status.json
+│       └── update.yml          # 워크플로우
+├── update_data.py              # 🔥 이 artifact 코드
+├── coin.html                   # 자동 생성됨
+├── dividend.html               # 자동 생성됨
+├── index.html                  # 자동 생성됨
+├── status.json                 # 자동 생성됨
 └── README.md
