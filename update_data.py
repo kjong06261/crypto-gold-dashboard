@@ -73,10 +73,9 @@ DELISTED = {
 }
 
 # Optional alias list for symbols that sometimes fail in batch mode
-# NOTE: Keep original ticker as first entry.
 CRYPTO_ALIASES: Dict[str, List[str]] = {
-    "MATIC-USD": ["MATIC-USD", "POL28321-USD"],   # Yahoo also lists Polygon(prev. MATIC)
-    "RNDR-USD": ["RNDR-USD", "RENDER-USD"],       # Yahoo also lists Render as RENDER-USD
+    "MATIC-USD": ["MATIC-USD", "POL28321-USD"],
+    "RNDR-USD": ["RNDR-USD", "RENDER-USD"],
 }
 
 
@@ -93,7 +92,7 @@ COIN_TEMPLATE = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">{c
 
 DIV_TEMPLATE = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">{cache_meta}<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Premium Dividend Terminal - High Yield Assets</title><style>:root {{ --bg: #05070a; --card-bg: #11141b; --border: #1e222d; --text: #d1d4dc; --accent: #00ffaa; }}body {{ background-color: var(--bg); color: var(--text); font-family: 'Trebuchet MS', sans-serif; margin: 0; padding: 20px; }}.container {{ max-width: 1200px; margin: 0 auto; }}header {{ border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }}h1 {{ font-size: 38px; color: #ffffff; margin: 0; letter-spacing: -1px; }}.grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }}.card {{ background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 6px; }}.up {{ color: #00ffaa; }}.down {{ color: #ff3b3b; }}.symbol {{ font-weight: bold; font-size: 16px; color: #fff; }}.price {{ font-size: 24px; font-weight: 700; color: #ffffff; }}.pct {{ font-size: 13px; font-weight: bold; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); }}.analysis {{ margin-top: 50px; padding: 30px; background: #11141b; border-radius: 8px; line-height: 1.8; border-left: 4px solid var(--accent); }} footer {{ margin-top: 80px; padding: 40px; text-align: center; font-size: 0.8rem; color: #8b949e; border-top: 1px solid var(--border); }}</style></head><body><div class="container"><header><h1>💰 Dividend Terminal Pro</h1><div style="color:#888;">Income-focused market feed • High-quality dividend assets</div><div style="font-size:0.8rem; color:#666; margin-top:5px;">Last Update (US/Eastern): {update_time} | Data Success: {success_rate}%</div></header><div class="grid">{content}</div><section class="analysis"><h2>Dividend Investing Notes: Yield, Quality, and Risk Controls</h2><p>Dividend strategies aim to generate consistent cash flow through distributions while balancing equity risk. This terminal highlights popular income assets such as dividend ETFs and widely held dividend stocks.</p><p><strong>What matters beyond yield:</strong> payout ratios, free cash flow durability, balance-sheet strength, sector concentration, and interest-rate sensitivity are key factors for long-term income outcomes.</p><p><strong>Reminder:</strong> Dividend payments are not guaranteed. Prices can decline even when yields appear attractive. Always evaluate sustainability rather than headline yield alone.</p><p><strong>Disclaimer:</strong> This content is informational only and does not constitute financial advice.</p></section><footer>© 2025 CRYPTO-GOLD-DASHBOARD • Automated Income Pages</footer></div></body></html>"""
 
-INDEX_TEMPLATE = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">{cache_meta}<title>NASDAQ Real-Time Terminal - Tech Sector Intelligence</title><style>body {{ background: #0b0e14; color: #e2e8f0; font-family: sans-serif; padding: 20px; margin: 0; }}.dashboard {{ max-width: 1200px; margin: 0 auto; background: #161b22; border: 1px solid #30363d; padding: 30px; border-radius: 12px; }}.grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }}.stat-card {{ background: #0d1117; padding: 20px; border-radius: 8px; border-top: 4px solid #00ff88; }}.stat-title {{ color: #8b949e; font-size: 0.9rem; margin-bottom: 5px; text-transform: uppercase; }}.price {{ font-size: 2rem; font-weight: bold; color: #ffffff; }}table {{ width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; }}th {{ background: #21262d; color: #8b949e; padding: 15px; text-align: left; border-bottom: 2px solid #30363d; }}td {{ padding: 12px 15px; border-bottom: 1px solid #30363d; }}tr:hover {{ background: #21262d; }}.up {{ color: #39d353; font-weight: bold; }}.down {{ color: #ff7b72; font-weight: bold; }}.analysis {{ margin-top: 50px; padding: 30px; background: #0d1117; border-radius: 8px; line-height: 1.8; border: 1px solid #30363d; }} footer {{ margin-top: 60px; padding: 30px; border-top: 1px solid #30363d; color: #8b949e; font-size: 0.8rem; text-align: center; }}</style></head><body><div class="dashboard"><h1>🚀 NASDAQ-100 Live Intelligence</h1><div style="color:#8b949e; margin-bottom:20px; font-size:0.9rem;">Real-time technology market feed • Last Update (US/Eastern): {update_time} • Sentiment: {sentiment}</div><div class="grid"><div class="stat-card"><div class="stat-title">QQQ ETF Price</div><div class="price">{qqq_price}</div></div><div class="stat-card" style="border-top-color:#58a6ff;"><div class="stat-title">Market Sentiment</div><div class="price" style="font-size:1.5rem;">{sentiment}</div></div><div class="stat-card" style="border-top-color:#e3b341;"><div class="stat-title">Volatility (VIX)</div><div class="price">{vix_price}</div></div></div><table><thead><tr><th>Ticker</th><th>Price ($)</th><th>Change (%)</th><th>1-Day Momentum</th></tr></thead><tbody>{content}</tbody></table><section class="analysis"><h2>Technology Sector Commentary and Risk Context</h2><p>The NASDAQ-100 is a key benchmark for large-cap innovation and growth-oriented companies. Monitoring its constituents helps investors understand market leadership, earnings sensitivity, and macro-driven valuation shifts.</p><p><strong>How to use momentum markers:</strong> The simple BUY/SELL/HOLD markers on this page are based on short-term percentage moves and are not a substitute for comprehensive analysis. Combine trend context, liquidity conditions, and volatility readings.</p><p><strong>VIX and QQQ:</strong> VIX is a popular proxy for equity volatility expectations. QQQ reflects broader NASDAQ-100 exposure. Together they provide a quick view of risk appetite.</p><p><strong>Disclaimer:</strong> This content is informational only and does not constitute financial advice.</p></section><footer>© 2025 CRYPTO-GOLD-DASHBOARD • Automated Index Pages</footer></div></body></html>"""
+INDEX_TEMPLATE = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">{cache_meta}<title>NASDAQ Real-Time Terminal - Tech Sector Intelligence</title><style>body {{ background: #0b0e14; color: #e2e8f0; font-family: sans-serif; padding: 20px; margin: 0; }}.dashboard {{ max-width: 1200px; margin: 0 auto; background: #161b22; border: 1px solid #30363d; padding: 30px; border-radius: 12px; }}.grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }}.stat-card {{ background: #0d1117; padding: 20px; border-radius: 8px; border-top: 4px solid #00ff88; }}.stat-title {{ color: #8b949e; font-size: 0.9rem; margin-bottom: 5px; text-transform: uppercase; }}.price {{ font-size: 2rem; font-weight: bold; color: #ffffff; }}table {{ width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; }}th {{ background: #21262d; color: #8b949e; padding: 15px; text-align: left; border-bottom: 2px solid #30363d; }}td {{ padding: 12px 15px; border-bottom: 1px solid #30363d; }}tr:hover {{ background: #21262d; }}.up {{ color: #39d353; font-weight: bold; }}.down {{ color: #ff7b72; font-weight: bold; }}.analysis {{ margin-top: 50px; padding: 30px; background: #0d1117; border-radius: 8px; line-height: 1.8; border: 1px solid #30363d; }} footer {{ margin-top: 60px; padding: 30px; border-top: 1px solid #30363d; color: #8b949e; font-size: 0.8rem; text-align: center; }}</style></head><body><div class="dashboard"><h1>🚀 NASDAQ-100 Live Intelligence</h1><div style="color:#8b949e; margin-bottom:10px; font-size:0.9rem;">Real-time technology market feed • Last Update (US/Eastern): {update_time} • Sentiment: {sentiment}</div><div style="color:#8b949e; font-size:0.85rem; margin-bottom:20px;">Informational only. Trend labels are derived from simple 1-day price changes and are not investment advice.</div><div class="grid"><div class="stat-card"><div class="stat-title">QQQ ETF Price</div><div class="price">{qqq_price}</div></div><div class="stat-card" style="border-top-color:#58a6ff;"><div class="stat-title">Market Sentiment</div><div class="price" style="font-size:1.5rem;">{sentiment}</div></div><div class="stat-card" style="border-top-color:#e3b341;"><div class="stat-title">Volatility (VIX)</div><div class="price">{vix_price}</div></div></div><table><thead><tr><th>Ticker</th><th>Price ($)</th><th>Change (%)</th><th>1-Day Trend</th></tr></thead><tbody>{content}</tbody></table><section class="analysis"><h2>Technology Sector Commentary and Risk Context</h2><p>The NASDAQ-100 is a key benchmark for large-cap innovation and growth-oriented companies. Monitoring its constituents helps investors understand market leadership, earnings sensitivity, and macro-driven valuation shifts.</p><p><strong>How to use trend labels:</strong> The BULLISH/BEARISH/NEUTRAL markers on this page are based solely on short-term percentage moves and do not predict future performance. They are not a substitute for comprehensive analysis.</p><p><strong>VIX and QQQ:</strong> VIX is a popular proxy for equity volatility expectations. QQQ reflects broader NASDAQ-100 exposure. Together they provide a quick view of risk appetite.</p><p><strong>Disclaimer:</strong> This content is informational only and does not constitute financial advice. No recommendation is made to buy, sell, or hold any security.</p></section><footer>© 2025 CRYPTO-GOLD-DASHBOARD • Automated Index Pages</footer></div></body></html>"""
 
 
 # =========================================================
@@ -103,7 +102,7 @@ def us_eastern_now_str() -> str:
     if ZoneInfo:
         tz = ZoneInfo(TIMEZONE)
         return datetime.datetime.now(tz).strftime("%Y-%m-%d %H:%M %Z")
-    # Fallback: approximate (EST/EDT not guaranteed without zoneinfo)
+    # Fallback: UTC only if zoneinfo is unavailable
     utc_now = datetime.datetime.now(datetime.timezone.utc)
     return utc_now.strftime("%Y-%m-%d %H:%M UTC")
 
@@ -197,10 +196,10 @@ def is_plausible_crypto(symbol: str, price: float) -> bool:
     if price <= 0:
         return False
     s = symbol.replace("-USD", "")
-    # Very light sanity checks to catch obvious bad feeds (too small).
-    if s in {"BTC"} and price < 1000:
+    # Light sanity checks to catch obvious bad feeds (too small).
+    if s == "BTC" and price < 1000:
         return False
-    if s in {"ETH"} and price < 10:
+    if s == "ETH" and price < 10:
         return False
     if s in {"ARB", "OP", "UNI", "MATIC", "SUI"} and price < 0.01:
         return False
@@ -228,7 +227,6 @@ def generate_cards(
     success = 0
 
     for symbol in tickers:
-        # Delisted marker (NASDAQ)
         if symbol in DELISTED:
             html += (
                 f'<div class="card" style="opacity:0.55;">'
@@ -265,19 +263,14 @@ def generate_cards(
             )
             success += 1
         except Exception:
-            # Single-ticker retry for missing data
-            if is_crypto:
-                df2 = get_crypto_frame_with_alias(symbol)
-            else:
-                df2 = fetch_single(symbol)
-
+            df2 = get_crypto_frame_with_alias(symbol) if is_crypto else fetch_single(symbol)
             try:
                 if df2 is None or df2.empty:
                     raise ValueError("No single data")
-
                 df2 = df2.dropna(subset=["Close"])
                 if len(df2) < 2:
                     raise ValueError("Short single")
+
                 price = float(df2["Close"].iloc[-1])
                 prev = float(df2["Close"].iloc[-2])
 
@@ -287,6 +280,7 @@ def generate_cards(
                 change = ((price - prev) / prev) * 100.0
                 cls = "up" if change >= 0 else "down"
                 sign = "+" if change >= 0 else ""
+
                 p_str = format_crypto_price(price) if is_crypto else f"${price:,.2f}"
                 shown = symbol.replace("-USD", "")
                 html += (
@@ -317,7 +311,6 @@ def generate_table(tickers: List[str], batch_data: pd.DataFrame) -> Tuple[str, D
     ups = 0
 
     for symbol in tickers:
-        # Delisted marker
         if symbol in DELISTED:
             html += f"<tr><td>{symbol}</td><td>-</td><td>-</td><td>{DELISTED[symbol]}</td></tr>"
             continue
@@ -326,6 +319,7 @@ def generate_table(tickers: List[str], batch_data: pd.DataFrame) -> Tuple[str, D
             df = extract_symbol_df(batch_data, symbol).dropna(subset=["Close"])
             if len(df) < 2:
                 raise ValueError("Short")
+
             price = float(df["Close"].iloc[-1])
             prev = float(df["Close"].iloc[-2])
             change = ((price - prev) / prev) * 100.0
@@ -335,9 +329,16 @@ def generate_table(tickers: List[str], batch_data: pd.DataFrame) -> Tuple[str, D
             if change >= 0:
                 ups += 1
 
-            # Momentum marker (NOT investment advice)
-            marker = "BUY" if change > 0.5 else ("SELL" if change < -0.5 else "HOLD")
-            marker_color = "#39d353" if marker == "BUY" else ("#ff7b72" if marker == "SELL" else "#888")
+            # Safer "trend label" (not action)
+            if change > 0.5:
+                marker = "BULLISH"
+                marker_color = "#39d353"
+            elif change < -0.5:
+                marker = "BEARISH"
+                marker_color = "#ff7b72"
+            else:
+                marker = "NEUTRAL"
+                marker_color = "#888"
 
             html += (
                 f"<tr>"
@@ -349,14 +350,15 @@ def generate_table(tickers: List[str], batch_data: pd.DataFrame) -> Tuple[str, D
             )
             success += 1
         except Exception:
-            # Single-ticker retry
             df2 = fetch_single(symbol)
             try:
                 if df2 is None or df2.empty:
                     raise ValueError("No single data")
+
                 df2 = df2.dropna(subset=["Close"])
                 if len(df2) < 2:
                     raise ValueError("Short single")
+
                 price = float(df2["Close"].iloc[-1])
                 prev = float(df2["Close"].iloc[-2])
                 change = ((price - prev) / prev) * 100.0
@@ -366,8 +368,15 @@ def generate_table(tickers: List[str], batch_data: pd.DataFrame) -> Tuple[str, D
                 if change >= 0:
                     ups += 1
 
-                marker = "BUY" if change > 0.5 else ("SELL" if change < -0.5 else "HOLD")
-                marker_color = "#39d353" if marker == "BUY" else ("#ff7b72" if marker == "SELL" else "#888")
+                if change > 0.5:
+                    marker = "BULLISH"
+                    marker_color = "#39d353"
+                elif change < -0.5:
+                    marker = "BEARISH"
+                    marker_color = "#ff7b72"
+                else:
+                    marker = "NEUTRAL"
+                    marker_color = "#888"
 
                 html += (
                     f"<tr>"
