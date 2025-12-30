@@ -8,14 +8,13 @@ from typing import List, Dict
 from pathlib import Path
 
 # =========================================================
-# 1. 시스템 설정 (System Config)
+# 1. 시스템 설정
 # =========================================================
 OUTPUT_DIR = Path("./docs")
 ASSETS_DIR = OUTPUT_DIR / "assets"
 AI_DIR = OUTPUT_DIR / "ai"
 BLOG_DIR = OUTPUT_DIR / "blog"
 
-# 폴더 생성
 for d in [ASSETS_DIR, AI_DIR, BLOG_DIR]: 
     d.mkdir(parents=True, exist_ok=True)
 
@@ -23,7 +22,6 @@ CUSTOM_DOMAIN = "us-dividend-pro.com"
 BASE_URL = f"https://{CUSTOM_DOMAIN}"
 SITE_NAME = "US Market Terminals"
 
-# [SEO & Adsense]
 ADSENSE_HEAD = """<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>"""
 ADS_TXT_LINE = "google.com, pub-3030006828946894, DIRECT, f08c47fec0942fa0"
 
@@ -45,7 +43,7 @@ AI_TOOLS_30 = [
 ] + [{"id":f"tool-{i}","name":f"FinTech Tool {i}","cat":"Investment AI","price":"$10/mo","str":f"Smart Feature {i}","use":f"Financial use {i}"} for i in range(6,31)]
 
 # =========================================================
-# 3. 디자인 시스템 (CSS)
+# 3. 디자인 시스템
 # =========================================================
 BASE_CSS = """
 :root{--bg:#05070a;--panel:#11141b;--border:#1e222d;--text:#d1d4dc;--muted:#8b949e;--link:#58a6ff;--accent:#fbbf24;--success:#00d084;}
@@ -66,7 +64,7 @@ footer{text-align:center;padding:40px 0;color:var(--muted);font-size:0.9rem;bord
 NAV_HTML = f"""<div class="nav"><strong style="color:var(--accent)">{SITE_NAME}</strong><a href="/index.html">Home</a><a href="/finance.html">Finance</a><a href="/ai_tools.html">Investor AI</a><a href="/blog/index.html">Blog</a></div>"""
 
 def wrap_page(title, body, desc="Pro AI-Financial Analysis Terminal"):
-    return f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">{ADSENSE_HEAD}<meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="{desc}"><title>{title} | {SITE_NAME}</title><style>{BASE_CSS}</style></head><body><div class="container">{NAV_HTML}{body}<footer>© 2025 {SITE_NAME} - AI Integrated.</footer></div></body></html>"""
+    return f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">{ADSENSE_HEAD}<meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="{desc}"><title>{title} | {SITE_NAME}</title><style>{BASE_CSS}</style></head><body><div class="container">{NAV_HTML}{body}<footer>© 2025 {SITE_NAME}</footer></div></body></html>"""
 
 SCRIPTS = """<script>
 function calcInvestment(){
@@ -80,66 +78,53 @@ function calcInvestment(){
     document.getElementById('res').innerHTML="<div style='margin-top:15px; font-size:1.5em; color:var(--accent)'>Est. Value: $"+total.toLocaleString(undefined,{maximumFractionDigits:0})+"</div>";
 }
 function compareAI(){
-    document.getElementById('ai_res').innerHTML="<div style='background:#0b0e14; padding:15px; border-radius:10px; margin-top:15px; color:var(--success)'>DeepSeek: Low Cost ($0.01) | Claude: High Intelligence ($0.50)<br><b>💡 Pro Tip: Use DeepSeek for bulk data!</b></div>";
+    document.getElementById('ai_res').innerHTML="<div style='background:#0b0e14; padding:15px; border-radius:10px; margin-top:15px; color:var(--success)'>DeepSeek: Low Cost ($0.01) | Claude: High Intelligence ($0.50)</div>";
 }
 </script>"""
 
-# =========================================================
-# 4. 메인 실행 함수 (Main Build)
-# =========================================================
 def main():
-    try:
-        tz = pytz.timezone('US/Eastern')
-    except:
-        tz = None
-    now_str = datetime.datetime.now(tz).strftime("%Y-%m-%d %H:%M %Z") if tz else datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    print("🚀 빌드를 시작합니다...")
+    tz = pytz.timezone('US/Eastern')
     created_assets = []
 
-    print("🚀 빌드 시작...")
-
-    # [1] Index.html
-    home_body = f"<h1>🚀 The Financial Hub</h1><div class='grid'><div class='card'><h2>Finance</h2><a href='/finance.html'>Enter →</a></div><div class='card'><h2>AI Weapons</h2><a href='/ai_tools.html'>Explore →</a></div></div>"
+    # [1] Index
+    home_body = f"<h1>🚀 Financial Terminal</h1><div class='grid'><div class='card'><h2>Finance</h2><a href='/finance.html'>Enter</a></div><div class='card'><h2>AI Tools</h2><a href='/ai_tools.html'>Explore</a></div></div>"
     (OUTPUT_DIR / "index.html").write_text(wrap_page("Home", home_body), encoding="utf-8")
 
-    # [2] Finance.html & Assets
+    # [2] Finance & Assets
     finance_cards = ""
     for ticker in FINANCE_TICKERS:
         try:
-            print(f"📡 데이터 수집 중: {ticker}")
+            print(f"📡 수집 중: {ticker}")
             stock = yf.Ticker(ticker)
             info = stock.info
             price = info.get('currentPrice', info.get('regularMarketPrice', 0))
-            if not price or price == 0: continue
-            change = info.get('regularMarketChangePercent', 0)
-            color = "var(--success)" if change >= 0 else "#ff3366"
-            finance_cards += f"<div class='card'><h3>{ticker}</h3><div style='font-size:1.5em;color:var(--accent)'>${price:.2f}</div><div style='color:{color}'>{change:.2f}%</div><a href='/assets/{ticker}.html'>Analysis →</a></div>"
+            if price == 0: continue
+            finance_cards += f"<div class='card'><h3>{ticker}</h3><div style='font-size:1.5em;color:var(--accent)'>${price:.2f}</div><a href='/assets/{ticker}.html'>Analysis</a></div>"
             (ASSETS_DIR / f"{ticker}.html").write_text(wrap_page(f"{ticker} Analysis", f"<h1>{ticker}</h1><div class='analysis'>Price: ${price:.2f}</div>"), encoding="utf-8")
             created_assets.append(ticker)
             time.sleep(0.1)
         except: continue
 
-    fin_calc = """<div class="calc-card"><h3>💵 Wealth Calculator</h3><input id="p" class="calc-input" placeholder="Initial" value="10000"><input id="m" class="calc-input" placeholder="Monthly" value="500"><input id="r" class="calc-input" placeholder="Yield %" value="5"><input id="y" class="calc-input" placeholder="Years" value="10"><button onclick="calcInvestment()" class="calc-btn">Calculate</button><div id="res"></div></div>"""
-    (OUTPUT_DIR / "finance.html").write_text(wrap_page("Finance", fin_calc + f"<div class='grid'>{finance_cards}</div>" + SCRIPTS), encoding="utf-8")
+    (OUTPUT_DIR / "finance.html").write_text(wrap_page("Finance", f"<div class='grid'>{finance_cards}</div>"), encoding="utf-8")
 
-    # [3] AI Tools & Pages
-    ai_cards = "".join([f"<div class='card'><h3>{t['name']}</h3><a href='/ai/{t['id']}.html'>Details →</a></div>" for t in AI_TOOLS_30])
+    # [3] AI Tools
+    ai_cards = "".join([f"<div class='card'><h3>{t['name']}</h3><a href='/ai/{t['id']}.html'>Details</a></div>" for t in AI_TOOLS_30])
     (OUTPUT_DIR / "ai_tools.html").write_text(wrap_page("AI Tools", f"<div class='grid'>{ai_cards}</div>"), encoding="utf-8")
     for tool in AI_TOOLS_30:
         (AI_DIR / f"{tool['id']}.html").write_text(wrap_page(tool['name'], f"<h1>{tool['name']}</h1><div class='analysis'>{tool['str']}</div>"), encoding="utf-8")
 
-    # [4] SEO & 필수 파일
+    # [4] SEO
     (OUTPUT_DIR / "CNAME").write_text(CUSTOM_DOMAIN, encoding="utf-8")
     (OUTPUT_DIR / "ads.txt").write_text(ADS_TXT_LINE, encoding="utf-8")
-    (OUTPUT_DIR / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml", encoding="utf-8")
+    (OUTPUT_DIR / "robots.txt").write_text(f"User-agent: *\nSitemap: {BASE_URL}/sitemap.xml", encoding="utf-8")
     
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
     for u in ["/index.html", "/finance.html", "/ai_tools.html"]: sitemap_xml += f"<url><loc>{BASE_URL}{u}</loc></url>"
-    for t in AI_TOOLS_30: sitemap_xml += f"<url><loc>{BASE_URL}/ai/{t['id']}.html</loc></url>"
     for t in created_assets: sitemap_xml += f"<url><loc>{BASE_URL}/assets/{t}.html</loc></url>"
     sitemap_xml += "</urlset>"
     (OUTPUT_DIR / "sitemap.xml").write_text(sitemap_xml, encoding="utf-8")
-    
-    print(f"✅ 빌드 완료! 총 {len(created_assets) + 33}개 페이지 생성됨.")
+    print("✅ 빌드 완료!")
 
 if __name__ == "__main__":
     main()
