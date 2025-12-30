@@ -1,30 +1,59 @@
-name: Update Asset Data
+name: Update & Deploy Pages
 
 on:
-  schedule:
-    - cron: "0 * * * *"  # 매시간 정각
   workflow_dispatch:
+  schedule:
+    - cron: "5 * * * *"   # 매 1시간, 5분에 실행 (원하면 변경)
 
 permissions:
-  contents: write  # 중요! 파이썬의 git push 기능을 허용함
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # 전체 히스토리를 가져와야 push가 잘 됨
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
-          pip install yfinance pandas lxml  # requests는 보통 기본설치되지만 필요시 추가
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install yfinance pandas
 
-      - name: Run Update Script
-        run: python update_data.py
+      - name: Build site (generate ./docs)
+        env:
+          ENABLE_GIT_PUSH: "0"
+        run: |
+          python update_data.py
+          test -f docs/index.html
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
