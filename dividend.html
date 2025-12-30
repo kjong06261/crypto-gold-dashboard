@@ -1,31 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dividend Yield Strategy | US-DIVIDEND-PRO</title>
+    <title>PREMIUM DIVIDEND TERMINAL</title>
     <style>
-        /* 이 부분이 있어야 디자인이 나옵니다! */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0b0e14; color: #e2e8f0; padding: 40px; line-height: 1.6; display: flex; justify-content: center; }
-        .card { max-width: 800px; background: #161b22; border: 1px solid #30363d; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #e3b341; font-size: 2.5rem; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
-        .yield-badge { background: #e3b341; color: #000; padding: 6px 15px; border-radius: 4px; font-weight: bold; margin-bottom: 20px; display: inline-block; font-size: 0.9rem; }
-        p { font-size: 1.1rem; color: #8b949e; line-height: 1.8; margin-bottom: 20px; }
-        .highlight { color: #ffffff; font-weight: 600; }
-        .expert-note { border-left: 4px solid #e3b341; padding: 15px 20px; margin: 30px 0; font-style: italic; color: #c9d1d9; background: #0d1117; }
+        :root { --bg: #05070a; --card-bg: #11141b; --border: #1e222d; --text: #d1d4dc; --accent: #00ffaa; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Trebuchet MS', sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }
+        h1 { font-size: 38px; color: #ffffff; margin: 0; letter-spacing: -1px; }
+        .update-tag { font-size: 14px; color: #848e9c; margin-top: 5px; }
+        .sector-title { font-size: 18px; color: var(--accent); margin: 40px 0 15px 0; border-left: 4px solid var(--accent); padding-left: 10px; text-transform: uppercase; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 6px; transition: all 0.2s ease; }
+        .card:hover { background: #1c212d; border-color: var(--accent); transform: translateY(-2px); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .symbol { font-weight: bold; font-size: 16px; color: #fff; }
+        .price { font-size: 24px; font-weight: 700; color: #ffffff; }
+        .pct { font-size: 13px; font-weight: bold; padding: 2px 6px; border-radius: 4px; }
+        .up { color: #00ffaa; background: rgba(0, 255, 170, 0.1); }
+        .down { color: #ff3b3b; background: rgba(255, 59, 59, 0.1); }
+        footer { margin-top: 80px; padding: 40px; text-align: center; font-size: 12px; color: #444; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="yield-badge">PREMIUM DIVIDEND REPORT</div>
-        <h1>Passive Income Strategies</h1>
-        <p>At <span class="highlight">US-DIVIDEND-PRO</span>, we specialize in identifying high-quality <span class="highlight">Dividend Aristocrats and Kings</span>. Our screening process focuses on payout ratio sustainability, dividend growth CAGR, and balance sheet strength.</p>
-        
-        <div class="expert-note">
-            "Yield alone is a trap. We focus on total return and dividend safety to ensure your capital compounds effectively through market cycles."
+    <div class="container">
+        <header>
+            <h1>DIVIDEND TERMINAL PRO</h1>
+            <div class="update-tag">LIVE MARKET DATA • REAL-TIME FEED</div>
+        </header>
+
+        <div id="dividend-content">
+            <h2 class="sector-title">DIVIDEND KINGS & ARISTOCRATS</h2>
+            <div class="grid" id="dividend-grid">
+                <div class="card"><span class="symbol">데이터 로딩 중...</span></div>
+            </div>
         </div>
-        
-        <p>Our analysis covers diverse sectors including <span class="highlight">REITs, Business Development Companies (BDCs), and Consumer Staples</span>. We provide the data necessary for income-oriented investors to build a resilient, monthly-paying portfolio that outpaces inflation.</p>
+
+        <footer>
+            <p>Designed for income investors. High-yield data updated every hour.</p>
+            <p>© 2025 US-DIVIDEND-PRO. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
