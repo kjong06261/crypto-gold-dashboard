@@ -8,13 +8,14 @@ from typing import List, Dict
 from pathlib import Path
 
 # =========================================================
-# 1. 시스템 설정
+# 1. 시스템 설정 (System Config)
 # =========================================================
 OUTPUT_DIR = Path("./docs")
 ASSETS_DIR = OUTPUT_DIR / "assets"
 AI_DIR = OUTPUT_DIR / "ai"
 BLOG_DIR = OUTPUT_DIR / "blog"
 
+# 폴더 생성
 for d in [ASSETS_DIR, AI_DIR, BLOG_DIR]: 
     d.mkdir(parents=True, exist_ok=True)
 
@@ -44,7 +45,7 @@ AI_TOOLS_30 = [
 ] + [{"id":f"tool-{i}","name":f"FinTech Tool {i}","cat":"Investment AI","price":"$10/mo","str":f"Smart Feature {i}","use":f"Financial use {i}"} for i in range(6,31)]
 
 # =========================================================
-# 3. 디자인 시스템
+# 3. 디자인 시스템 (CSS)
 # =========================================================
 BASE_CSS = """
 :root{--bg:#05070a;--panel:#11141b;--border:#1e222d;--text:#d1d4dc;--muted:#8b949e;--link:#58a6ff;--accent:#fbbf24;--success:#00d084;}
@@ -84,12 +85,17 @@ function compareAI(){
 </script>"""
 
 # =========================================================
-# 4. 메인 실행 함수
+# 4. 메인 실행 함수 (Main Build)
 # =========================================================
 def main():
-    tz = pytz.timezone('US/Eastern')
-    now_str = datetime.datetime.now(tz).strftime("%Y-%m-%d %H:%M %Z")
+    try:
+        tz = pytz.timezone('US/Eastern')
+    except:
+        tz = None
+    now_str = datetime.datetime.now(tz).strftime("%Y-%m-%d %H:%M %Z") if tz else datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     created_assets = []
+
+    print("🚀 빌드 시작...")
 
     # [1] Index.html
     home_body = f"<h1>🚀 The Financial Hub</h1><div class='grid'><div class='card'><h2>Finance</h2><a href='/finance.html'>Enter →</a></div><div class='card'><h2>AI Weapons</h2><a href='/ai_tools.html'>Explore →</a></div></div>"
@@ -99,10 +105,11 @@ def main():
     finance_cards = ""
     for ticker in FINANCE_TICKERS:
         try:
+            print(f"📡 데이터 수집 중: {ticker}")
             stock = yf.Ticker(ticker)
             info = stock.info
             price = info.get('currentPrice', info.get('regularMarketPrice', 0))
-            if price == 0: continue
+            if not price or price == 0: continue
             change = info.get('regularMarketChangePercent', 0)
             color = "var(--success)" if change >= 0 else "#ff3366"
             finance_cards += f"<div class='card'><h3>{ticker}</h3><div style='font-size:1.5em;color:var(--accent)'>${price:.2f}</div><div style='color:{color}'>{change:.2f}%</div><a href='/assets/{ticker}.html'>Analysis →</a></div>"
@@ -120,7 +127,7 @@ def main():
     for tool in AI_TOOLS_30:
         (AI_DIR / f"{tool['id']}.html").write_text(wrap_page(tool['name'], f"<h1>{tool['name']}</h1><div class='analysis'>{tool['str']}</div>"), encoding="utf-8")
 
-    # [4] SEO Files
+    # [4] SEO & 필수 파일
     (OUTPUT_DIR / "CNAME").write_text(CUSTOM_DOMAIN, encoding="utf-8")
     (OUTPUT_DIR / "ads.txt").write_text(ADS_TXT_LINE, encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml", encoding="utf-8")
@@ -131,6 +138,8 @@ def main():
     for t in created_assets: sitemap_xml += f"<url><loc>{BASE_URL}/assets/{t}.html</loc></url>"
     sitemap_xml += "</urlset>"
     (OUTPUT_DIR / "sitemap.xml").write_text(sitemap_xml, encoding="utf-8")
+    
+    print(f"✅ 빌드 완료! 총 {len(created_assets) + 33}개 페이지 생성됨.")
 
 if __name__ == "__main__":
     main()
