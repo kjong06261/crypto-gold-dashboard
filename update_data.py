@@ -1,119 +1,117 @@
 import yfinance as yf
-import feedparser
-from datetime import datetime
+import re
 
-# 1. 자산 리스트 설정
-nasdaq_sectors = {
-    "MARKET INDEX": ['QQQ', 'TQQQ', 'SQQQ', 'VOO', 'DIA', 'IWM'],
-    "MAGNIFICENT 7": ['NVDA', 'AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'TSLA'],
-    "SEMICONDUCTORS": ['SOXL', 'SOXX', 'AVGO', 'AMD', 'ARM', 'MU', 'TSM', 'ASML', 'INTC', 'AMAT', 'LRCX', 'QCOM']
-}
+# ==========================================
+# 1. 종목 리스트 설정
+# ==========================================
+nasdaq_tickers = ['NVDA', 'AAPL', 'MSFT', 'AMZN', 'TSLA', 'GOOGL', 'META', 'AMD', 'NFLX', 'INTC']
+coin_tickers = ['BTC-USD', 'ETH-USD', 'SOL-USD', 'XRP-USD', 'DOGE-USD', 'ADA-USD']
+dividend_tickers = ['O', 'SCHD', 'JEPI', 'JEPQ', 'VICI', 'MAIN', 'T', 'VZ']
 
-coin_sectors = {
-    "MAJOR CRYPTO": ['BTC-USD', 'ETH-USD', 'SOL-USD', 'BNB-USD', 'XRP-USD'],
-    "MEME & ALT": ['DOGE-USD', 'SHIB-USD', 'PEPE-USD', 'ADA-USD', 'LINK-USD']
-}
+# ==========================================
+# 2. 데이터 생성 함수들 (HTML 구조에 맞춤)
+# ==========================================
 
-dividend_sectors = {
-    "DIVIDEND KINGS": ['O', 'SCHD', 'JEPI', 'JEPQ', 'VICI', 'MAIN', 'STAG'],
-    "HIGH YIELD": ['MO', 'T', 'VZ', 'BTI', 'PFE']
-}
-
-# 2. 뉴스 가져오기
-def get_news():
+# [A] 코인/배당주용: 카드(Card) 디자인 생성
+def make_card_html(symbol):
     try:
-        url = "https://news.google.com/rss/search?q=investing+finance&hl=en-US&gl=US&ceid=US:en"
-        feed = feedparser.parse(url)
-        html = '<div class="news-box">'
-        for entry in feed.entries[:4]:
-            html += f'<div class="news-item">🔔 <a href="{entry.link}" target="_blank">{entry.title}</a></div>'
-        return html + '</div>'
+        t = yf.Ticker(symbol)
+        data = t.history(period="2d")
+        if len(data) < 2: return ""
+        price = data['Close'].iloc[-1]
+        prev = data['Close'].iloc[-2]
+        change = ((price - prev) / prev) * 100
+        
+        cls = "up" if change >= 0 else "down"
+        sign = "+" if change >= 0 else ""
+        name = symbol.replace("-USD", "")
+        
+        # 대표님이 주신 HTML의 card, name, price, pct 클래스 사용
+        return f"""
+        <div class="card">
+            <div class="card-header">
+                <span class="symbol">{name}</span>
+                <span class="pct {cls}">{sign}{change:.2f}%</span>
+            </div>
+            <div class="price">${price:,.2f}</div>
+        </div>"""
     except: return ""
 
-# 3. 디자인 엔진 (여기가 핵심입니다. 황금색/검정색 디자인을 여기서 만듭니다)
-def create_page(title, sectors, color_theme, filename):
-    now = datetime.now().strftime('%Y-%m-%d %H:%M')
-    cards_html = ""
-    
-    for sector, symbols in sectors.items():
-        cards_html += f'<h2 class="sector-title" style="border-color:{color_theme}; color:{color_theme}">{sector}</h2><div class="grid">'
-        for s in symbols:
-            try:
-                t = yf.Ticker(s)
-                hist = t.history(period="2d")
-                if len(hist) < 2: continue
-                price = hist['Close'].iloc[-1]
-                prev = hist['Close'].iloc[-2]
-                pct = ((price - prev) / prev) * 100
-                
-                # 상승/하락 색상
-                cls = "up" if pct >= 0 else "down"
-                sign = "+" if pct >= 0 else ""
-                
-                # 심볼 이름 깔끔하게
-                name = s.replace("-USD", "")
-                
-                cards_html += f"""
-                <div class="card">
-                    <div class="top">
-                        <span class="name">{name}</span>
-                        <span class="pct {cls}">{sign}{pct:.2f}%</span>
-                    </div>
-                    <div class="price">${price:,.2f}</div>
-                </div>"""
-            except: continue
-        cards_html += '</div>'
+# [B] 나스닥용: 테이블 행(Table Row) 생성 (대표님 index.html은 표 형식임)
+def make_table_row(symbol):
+    try:
+        t = yf.Ticker(symbol)
+        data = t.history(period="2d")
+        if len(data) < 2: return ""
+        price = data['Close'].iloc[-1]
+        prev = data['Close'].iloc[-2]
+        change = ((price - prev) / prev) * 100
+        
+        cls = "up" if change >= 0 else "down"
+        sign = "+" if change >= 0 else ""
+        signal = "STRONG BUY" if change > 1 else ("SELL" if change < -1 else "HOLD")
+        
+        # 대표님 index.html의 table 구조 (tr, td) 사용
+        return f"""
+        <tr>
+            <td>{symbol}</td>
+            <td>{t.info.get('shortName', symbol)}</td>
+            <td>${price:,.2f}</td>
+            <td class="{cls}">{sign}{change:.2f}%</td>
+            <td>{signal}</td>
+        </tr>"""
+    except: return ""
 
-    # 전체 HTML 조립 (CSS 디자인 포함)
-    full_html = f"""
-    <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{title}</title>
-        <style>
-            :root {{ --bg: #000000; --card: #111; --text: #eee; --theme: {color_theme}; }}
-            body {{ background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }}
-            .container {{ max-width: 1200px; margin: 0 auto; }}
-            header {{ border-bottom: 2px solid var(--theme); padding-bottom: 20px; margin-bottom: 30px; }}
-            h1 {{ margin: 0; font-size: 2rem; color: #fff; }}
-            .time {{ color: #888; font-size: 0.9rem; margin-top: 5px; }}
-            .sector-title {{ margin-top: 40px; border-left: 5px solid; padding-left: 15px; font-size: 1.2rem; text-transform: uppercase; }}
-            .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }}
-            .card {{ background: var(--card); border: 1px solid #333; padding: 20px; border-radius: 8px; }}
-            .card:hover {{ border-color: var(--theme); transform: translateY(-3px); transition: 0.3s; }}
-            .top {{ display: flex; justify-content: space-between; font-size: 0.9rem; color: #aaa; margin-bottom: 5px; }}
-            .price {{ font-size: 1.5rem; font-weight: bold; color: #fff; }}
-            .up {{ color: #ff4d4d; }} .down {{ color: #4da6ff; }} /* 한국식: 상승 빨강, 하락 파랑 */
-            .news-box {{ background: #111; padding: 15px; margin-bottom: 30px; border: 1px solid #333; border-radius: 8px; }}
-            .news-item {{ margin-bottom: 8px; font-size: 0.9rem; }}
-            .news-item a {{ color: #ccc; text-decoration: none; }}
-            .news-item a:hover {{ color: var(--theme); }}
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <header>
-                <h1>{title}</h1>
-                <div class="time">LAST UPDATE: {now} (KST)</div>
-            </header>
-            {get_news() if filename == 'index.html' else ''}
-            {cards_html}
-        </div>
-    </body>
-    </html>
-    """
-    
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(full_html)
+# [C] 단순 가격 가져오기 (QQQ, VIX용)
+def get_simple_price(symbol):
+    try:
+        t = yf.Ticker(symbol)
+        price = t.history(period="1d")['Close'].iloc[-1]
+        return f"${price:,.2f}"
+    except: return "Error"
 
+# ==========================================
+# 3. 파일 업데이트 엔진 (Regex로 핀셋 교체)
+# ==========================================
+def inject_html(filename, target_id, new_content):
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            html = f.read()
+        
+        # id="타겟" 태그의 내부 내용만 교체하는 정규식
+        # <태그 id="target"> (여기만바꿈) </태그>
+        pattern = f'(id="{target_id}"[^>]*>)(.*?)(</)'
+        
+        import re
+        if re.search(pattern, html, re.DOTALL):
+            updated_html = re.sub(pattern, f'\\1{new_content}\\3', html, flags=re.DOTALL)
+            with open(filename, "w", encoding="utf-8") as f:
+                f.write(updated_html)
+            print(f"✅ {filename} ({target_id}) 업데이트 성공")
+        else:
+            print(f"❌ {filename}에서 id='{target_id}'를 찾을 수 없음")
+            
+    except FileNotFoundError:
+        print(f"⚠️ {filename} 파일 없음")
+
+# ==========================================
+# 4. 실행 (메인 로직)
+# ==========================================
 if __name__ == "__main__":
-    # 1. 나스닥 (메인, 파란색 테마)
-    create_page("NASDAQ TERMINAL", nasdaq_sectors, "#2962ff", "index.html")
     
-    # 2. 코인 (황금색 테마) - 여기가 대표님이 원하시는 골드 대시보드입니다.
-    create_page("CRYPTO GOLD DASHBOARD", coin_sectors, "#fbbf24", "coin.html")
+    # 1. 코인 업데이트 (coin.html -> id="coin-grid")
+    coin_html = "".join([make_card_html(s) for s in coin_tickers])
+    inject_html("coin.html", "coin-grid", coin_html)
     
-    # 3. 배당주 (초록색 테마)
-    create_page("DIVIDEND KINGS", dividend_sectors, "#00ffaa", "dividend.html")
+    # 2. 배당주 업데이트 (dividend.html -> id="dividend-grid")
+    div_html = "".join([make_card_html(s) for s in dividend_tickers])
+    inject_html("dividend.html", "dividend-grid", div_html)
+    
+    # 3. 나스닥 테이블 업데이트 (index.html -> id="nasdaq-table")
+    nasdaq_html = "".join([make_table_row(s) for s in nasdaq_tickers])
+    inject_html("index.html", "nasdaq-table", nasdaq_html)
+    
+    # 4. 나스닥 상단 지표 업데이트 (index.html -> id="qqq-price", id="vix-index")
+    inject_html("index.html", "qqq-price", get_simple_price("QQQ"))
+    inject_html("index.html", "vix-index", get_simple_price("^VIX"))
+    inject_html("index.html", "sentiment-score", "GREED (75)") # 센티먼트는 임시값
