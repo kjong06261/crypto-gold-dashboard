@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NASDAQ-100 Live Intelligence</title>
+<meta name="description" content="NASDAQ-100 Live Intelligence - educational market context, pricing snapshots, and risk notes. Informational only.">
+<style>
+:root{
+  --bg:#05070a; --panel:#11141b; --border:#1e222d; --text:#d1d4dc;
+  --muted:#8b949e; --link:#58a6ff;
+  --accent-coin:#fbbf24; --accent-div:#00ffaa; --accent-idx:#00ff88;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:20px;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+.container{max-width:1200px;margin:0 auto}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+.nav{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  padding:12px 14px;border:1px solid var(--border);border-radius:10px;
+  background:#0b0e14;margin-bottom:18px
+}
+.nav .brand{font-weight:800;color:#fff;margin-right:8px}
+.nav a{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.03)}
+.nav a:hover{background:rgba(255,255,255,0.06);text-decoration:none}
+header{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--border)}
+h1{margin:0;color:#fff;letter-spacing:-0.5px}
+.sub{margin-top:6px;color:var(--muted)}
+.meta{margin-top:6px;color:#666;font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.card{
+  background:var(--panel); border:1px solid var(--border); padding:14px; border-radius:10px;
+  min-height:92px;
+}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.symbol{font-weight:800;color:#fff}
+.price{font-size:22px;font-weight:800;color:#fff}
+.pct{font-weight:800;font-size:13px;padding:2px 7px;border-radius:8px;background:rgba(255,255,255,0.05)}
+.up{color:#00ffaa}
+.down{color:#ff3b3b}
+.analysis{
+  margin-top:26px; padding:22px; background:var(--panel); border:1px solid var(--border);
+  border-radius:12px; line-height:1.75
+}
+.analysis h2{margin-top:0;color:#fff}
+footer{
+  margin-top:30px; padding-top:18px; border-top:1px solid var(--border);
+  color:var(--muted); font-size:.85rem
+}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.95rem}
+th{background:#21262d;color:var(--muted);padding:12px;text-align:left;border-bottom:1px solid #30363d}
+td{padding:10px;border-bottom:1px solid #30363d}
+tr:hover{background:#21262d}
+.badge{font-weight:800}
+</style>
+
+</head>
+<body>
+<div class="container">
+<div class="nav">
+  <div class="brand">US Market Terminals</div>
+  <a href="/coin.html">Crypto</a>
+  <a href="/dividend.html">Dividend</a>
+  <a href="/index.html">NASDAQ</a>
+  <a href="/blog/index.html">Blog</a>
+  <a href="/about.html">About</a>
+  <a href="/privacy.html">Privacy</a>
+  <a href="/terms.html">Terms</a>
+  <a href="/contact.html">Contact</a>
+  <a href="/disclaimer.html">Disclaimer</a>
+</div>
+
+<header>
+  <h1>🚀 NASDAQ-100 Live Intelligence</h1>
+  <div class="sub">Real-time technology market feed • Sentiment: BEARISH</div>
+  <div class="meta">Last Update (US/Eastern): 2025-12-30 02:09 EST</div>
+  <div class="meta" style="color:#777;">Informational only. Trend labels are derived from simple 1-day price-change thresholds and are not investment advice.</div>
+</header>
+
+<div class="grid">
+  <div class="card"><div class="row"><span class="symbol">QQQ ETF</span><span class="pct up">REF</span></div><div class="price">$620.87</div></div>
+  <div class="card"><div class="row"><span class="symbol">Sentiment</span><span class="pct">BREADTH</span></div><div class="price" style="font-size:18px;">BEARISH</div></div>
+  <div class="card"><div class="row"><span class="symbol">VIX</span><span class="pct">RISK</span></div><div class="price">14.20</div></div>
+</div>
+
+<table>
+  <thead><tr><th>Ticker</th><th>Price ($)</th><th>Change (%)</th><th>1-Day Trend</th></tr></thead>
+  <tbody><tr><td style='color:#fff; font-weight:800;'>AAPL</td><td>$273.76</td><td class='up'>+0.13%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>MSFT</td><td>$487.10</td><td class='down'>-0.13%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>NVDA</td><td>$188.22</td><td class='down'>-1.21%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>GOOGL</td><td>$313.56</td><td class='up'>+0.02%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>AMZN</td><td>$232.07</td><td class='down'>-0.19%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>META</td><td>$658.69</td><td class='down'>-0.69%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>TSLA</td><td>$459.64</td><td class='down'>-3.27%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>AVGO</td><td>$349.39</td><td class='down'>-0.78%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>ASML</td><td>$1,066.00</td><td class='down'>-0.63%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>COST</td><td>$867.84</td><td class='down'>-0.63%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>PEP</td><td>$144.24</td><td class='up'>+0.32%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>NFLX</td><td>$94.15</td><td class='down'>-0.34%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>AMD</td><td>$215.61</td><td class='up'>+0.29%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>LIN</td><td>$426.54</td><td class='up'>+0.42%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>ADBE</td><td>$353.16</td><td class='down'>-0.18%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>AZN</td><td>$92.52</td><td class='down'>-0.41%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>QCOM</td><td>$173.43</td><td class='down'>-0.79%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>TMUS</td><td>$203.15</td><td class='up'>+1.07%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>CSCO</td><td>$77.79</td><td class='down'>-0.47%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>INTU</td><td>$674.15</td><td class='down'>-0.35%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>TXN</td><td>$175.69</td><td class='down'>-0.67%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>CMCSA</td><td>$29.87</td><td class='up'>+0.71%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>AMGN</td><td>$329.63</td><td class='down'>-0.99%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>INTC</td><td>$36.68</td><td class='up'>+1.33%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>HON</td><td>$197.09</td><td class='down'>-0.14%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>AMAT</td><td>$263.05</td><td class='up'>+0.44%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>BKNG</td><td>$5,441.33</td><td class='up'>+0.02%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>ISRG</td><td>$575.40</td><td class='down'>-0.42%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>ADI</td><td>$275.63</td><td class='down'>-0.44%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>GILD</td><td>$124.91</td><td class='up'>+0.17%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>VRTX</td><td>$459.78</td><td class='down'>-0.67%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>LRCX</td><td>$175.87</td><td class='down'>-1.24%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>REGN</td><td>$780.50</td><td class='down'>-0.57%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>MDLZ</td><td>$55.04</td><td class='up'>+0.73%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>PANW</td><td>$186.85</td><td class='down'>-0.85%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>SNPS</td><td>$478.97</td><td class='up'>+0.38%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>KLAC</td><td>$1,260.39</td><td class='down'>-1.50%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>CDNS</td><td>$317.71</td><td class='down'>-0.37%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>CHTR</td><td>$209.04</td><td class='up'>+0.91%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>PDD</td><td>$114.15</td><td class='down'>-0.75%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>MAR</td><td>$314.41</td><td class='down'>-0.37%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>ORCL</td><td>$195.38</td><td class='down'>-1.32%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>MELI</td><td>$2,014.97</td><td class='up'>+0.46%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>CRWD</td><td>$475.91</td><td class='down'>-1.10%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>CTAS</td><td>$191.04</td><td class='down'>-0.05%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>CSX</td><td>$36.72</td><td class='up'>+0.27%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>PYPL</td><td>$59.49</td><td class='down'>-0.80%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>MNST</td><td>$77.63</td><td class='up'>+0.41%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>WDAY</td><td>$218.99</td><td class='down'>-0.77%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>ROP</td><td>$450.84</td><td class='up'>+0.00%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>LULU</td><td>$212.54</td><td class='up'>+1.71%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>NXPI</td><td>$220.46</td><td class='down'>-1.08%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>AEP</td><td>$115.77</td><td class='up'>+0.09%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>DXCM</td><td>$67.47</td><td class='down'>-0.15%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>MRVL</td><td>$85.76</td><td class='down'>-0.67%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>ADSK</td><td>$301.23</td><td class='up'>+0.17%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>MCHP</td><td>$64.65</td><td class='down'>-0.45%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>CPRT</td><td>$39.49</td><td class='up'>+0.48%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>KDP</td><td>$28.16</td><td class='up'>+0.21%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>PAYX</td><td>$114.00</td><td class='down'>-0.17%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>PCAR</td><td>$111.44</td><td class='down'>-0.31%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>ROST</td><td>$180.72</td><td class='down'>-0.23%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>SBUX</td><td>$85.57</td><td class='up'>+0.58%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>IDXX</td><td>$687.89</td><td class='down'>-0.09%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>FTNT</td><td>$80.82</td><td class='down'>-0.91%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>ODFL</td><td>$159.56</td><td class='up'>+0.04%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>FAST</td><td>$41.29</td><td class='down'>-0.65%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>EA</td><td>$204.27</td><td class='down'>-0.25%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>KHC</td><td>$24.25</td><td class='up'>+0.50%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>VRSK</td><td>$224.74</td><td class='up'>+2.00%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>BKR</td><td>$45.38</td><td class='up'>+0.29%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>EXC</td><td>$43.63</td><td class='up'>+0.16%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>CTSH</td><td>$85.00</td><td class='down'>-0.67%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>GEHC</td><td>$83.15</td><td class='down'>-0.55%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>XEL</td><td>$74.12</td><td class='up'>+0.37%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>CSGP</td><td>$67.60</td><td class='up'>+0.88%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>ON</td><td>$54.02</td><td class='down'>-1.66%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>GFS</td><td>$35.85</td><td class='up'>+0.11%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>TEAM</td><td>$163.99</td><td class='up'>+0.51%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>CDW</td><td>$138.61</td><td class='down'>-0.79%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>TTWO</td><td>$255.70</td><td class='down'>-0.15%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>DLTR</td><td>$123.93</td><td class='down'>-0.02%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td>ANSS</td><td>-</td><td>-</td><td>N/A</td></tr><tr><td style='color:#fff; font-weight:800;'>WBD</td><td>$28.79</td><td class='down'>-0.03%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>BIIB</td><td>$176.83</td><td class='down'>-0.14%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>FANG</td><td>$148.57</td><td class='up'>+1.54%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td>SPLK</td><td>-</td><td>-</td><td>DELISTED (Acquired by Cisco, Mar 2024)</td></tr><tr><td style='color:#fff; font-weight:800;'>ILMN</td><td>$134.48</td><td class='down'>-0.35%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>SIRI</td><td>$20.33</td><td class='down'>-1.31%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>EBAY</td><td>$87.74</td><td class='up'>+2.97%</td><td style='color:#39d353; font-weight:800;'>BULLISH</td></tr><tr><td style='color:#fff; font-weight:800;'>ZM</td><td>$86.33</td><td class='down'>-1.94%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>ALGN</td><td>$157.84</td><td class='down'>-0.33%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>JD</td><td>$29.27</td><td class='down'>-0.44%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>LCID</td><td>$11.11</td><td class='down'>-2.63%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>RIVN</td><td>$20.67</td><td class='down'>-1.10%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>SOFI</td><td>$26.82</td><td class='down'>-0.92%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>PLTR</td><td>$184.18</td><td class='down'>-2.40%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>ARM</td><td>$110.51</td><td class='up'>+0.22%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr><tr><td style='color:#fff; font-weight:800;'>CART</td><td>$45.37</td><td class='down'>-1.05%</td><td style='color:#ff7b72; font-weight:800;'>BEARISH</td></tr><tr><td style='color:#fff; font-weight:800;'>KVUE</td><td>$17.19</td><td class='up'>+0.00%</td><td style='color:#888; font-weight:800;'>NEUTRAL</td></tr></tbody>
+</table>
+
+<section class="analysis">
+  <h2>Technology Sector Commentary and Risk Context</h2>
+  <p>The NASDAQ-100 is a key benchmark for large-cap innovation and growth-oriented companies. Monitoring its constituents can help you understand leadership rotation and broad market risk appetite.</p>
+  <p><strong>How to use trend labels:</strong> BULLISH/BEARISH/NEUTRAL markers here are descriptive summaries based on 1-day moves. They do not predict future performance and do not represent a recommendation.</p>
+  <p><strong>VIX and QQQ:</strong> VIX is derived from options and reflects implied volatility expectations. QQQ represents NASDAQ-100 exposure. Together they provide a quick risk context.</p>
+</section>
+
+<footer>
+  <div><strong>Informational only.</strong> No recommendation is made to buy, sell, or hold any security or digital asset.</div>
+  <div>© 2025 US Market Terminals</div>
+</footer>
+</div>
+</body>
+</html>
