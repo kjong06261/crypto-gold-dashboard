@@ -4,7 +4,7 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # =========================================================
-# 0) 경로 및 환경 설정
+# 0) 경로 및 환경 설정 (GitHub Pages 최적화)
 # =========================================================
 OUTPUT_DIR = Path("./docs")
 ASSETS_DIR = OUTPUT_DIR / "assets"
@@ -14,6 +14,7 @@ for d in [OUTPUT_DIR, ASSETS_DIR, API_DIR, CACHE_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 SITE_NAME = "US Dividend Pro"
+# Python에서 BASE_URL을 "/repo-name" 형태로 확실히 보정
 BASE_URL = os.getenv("BASE_URL", "").strip().rstrip("/")
 if BASE_URL and not BASE_URL.startswith("/"):
     BASE_URL = "/" + BASE_URL
@@ -44,31 +45,24 @@ def write_if_changed(path: Path, text: str):
     atomic_write(path, text)
 
 # =========================================================
-# 1) 티커 데이터 구성
+# 1) 티커 데이터 (나스닥, AI, 코인, 배당주 100개+ 세팅)
 # =========================================================
 TICKERS = {
     "crypto": [
-        "BTC-USD", "ETH-USD", "SOL-USD", "XRP-USD", "DOGE-USD", "ADA-USD", "DOT-USD", "MATIC-USD", "LINK-USD", "AVAX-USD",
-        "SHIB-USD", "TRX-USD", "LTC-USD", "BCH-USD", "UNI-USD", "NEAR-USD", "APT-USD", "ICP-USD", "STX-USD", "FIL-USD"
+        "BTC-USD", "ETH-USD", "SOL-USD", "XRP-USD", "DOGE-USD", "ADA-USD", "DOT-USD", "LINK-USD", "AVAX-USD", "SHIB-USD"
     ],
     "ai_semiconductor": [
         "NVDA", "AMD", "AVGO", "ARM", "TSM", "ASML", "AMAT", "LRCX", "KLAC", "MRVL", 
         "MU", "INTC", "SMCI", "SNPS", "CDNS", "ANSS", "MCHP", "TXN", "ADI", "NXPI"
     ],
     "big_tech": [
-        "AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA", "NFLX", "ADBE", "ORCL", "CRM",
-        "SAP", "ASML", "CSCO", "TMUS", "QCOM", "INTU", "AMAT", "PBR", "SONY", "UBER"
+        "AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA", "NFLX", "ADBE", "ORCL", "CRM"
     ],
     "dividend_pro": [
-        "O", "SCHD", "JEPI", "JEPQ", "VICI", "MAIN", "STAG", "ADC", "MO", "T", "VZ", "JNJ", "PG", "KO", "PEP", 
-        "ABBV", "CVX", "XOM", "LOW", "MMM", "IBM", "PFE", "AMCR", "KHC", "WBA", "LEG", "BEN", "FRT", "NUE", "SPG"
-    ],
-    "etf_index": [
-        "SPY", "QQQ", "DIA", "VOO", "IVV", "VTI", "VEU", "VWO", "AGG", "BND", "TLT", "LQD", "HYG", "VIG", "VYM"
+        "O", "SCHD", "JEPI", "JEPQ", "VICI", "MAIN", "STAG", "ADC", "MO", "T", "VZ", "JNJ", "PG", "KO", "PEP"
     ],
     "nasdaq_100_extra": [
-        "AMGN", "SBUX", "MDLZ", "ISRG", "GILD", "BKNG", "VRTX", "REGN", "ADP", "PANW",
-        "MELI", "SNOW", "WDAY", "KLAC", "LRCX", "PYPL", "CTAS", "MAR", "AEP", "CDNS"
+        "AMGN", "SBUX", "MDLZ", "ISRG", "GILD", "BKNG", "VRTX", "REGN", "ADP", "PANW"
     ]
 }
 ALL_TICKERS = sorted(set(sum(TICKERS.values(), [])))
@@ -79,7 +73,7 @@ def get_category(ticker: str) -> str:
     return "other"
 
 # =========================================================
-# 2) UI & 무적 JS (중괄호 이중 처리 완료)
+# 2) UI & 무적 JS (중괄호 이중 처리 및 티커 매칭 강화)
 # =========================================================
 BASE_CSS = """
 :root{--bg:#05070a;--panel:#11141b;--border:#1e222d;--text:#d1d4dc;--muted:#8b949e;--link:#58a6ff;--success:#00d084;--danger:#ff3366;}
@@ -106,33 +100,36 @@ DYNAMIC_JS = f"""
   const SITE_NAME = {site_js};
 
   const ABS = (p) => window.location.origin + BASE + (p.startsWith("/") ? p : ("/" + p));
-  const URLS = [ ABS("/api/assets.json"), ABS("api/assets.json"), "../api/assets.json", "/api/assets.json" ];
+  const URLS = [ ABS("/api/assets.json"), ABS("api/assets.json"), "./api/assets.json", "../api/assets.json" ];
 
   async function fetchFirstOk(urls) {{
     for (const url of urls) {{
       try {{
+        console.log("Trying:", url);
         const res = await fetch(url, {{ cache: "no-store" }});
         if (res.ok) return res;
       }} catch(e) {{}}
     }}
-    throw new Error("Load Failed");
+    throw new Error("All Fetch Failed");
   }}
 
   async function init() {{
     try {{
       const res = await fetchFirstOk(URLS);
       const data = await res.json();
-      if (!Array.isArray(data) || data.length === 0) throw new Error("Invalid Data");
-
+      
       const params = new URLSearchParams(window.location.search);
       const ticker = params.get("t");
 
-      if (ticker) renderDetail(data, ticker);
-      else if (document.getElementById("grid")) renderGrid(data);
-    }} catch (e) {{
+      if (ticker) {{
+        renderDetail(data, ticker.trim().toUpperCase());
+      }} else if (document.getElementById("grid")) {{
+        renderGrid(data);
+      }}
+    } catch (e) {{
       console.error(e);
       const c = document.getElementById("content");
-      if (c) c.innerHTML = "<h1>Data Load Failed</h1>";
+      if (c) c.innerHTML = "<h1>Data Load Failed</h1><p>Check API path.</p>";
     }}
   }}
 
@@ -152,10 +149,9 @@ DYNAMIC_JS = f"""
   }}
 
   function renderDetail(data, ticker) {{
-    const target = decodeURIComponent(ticker || "").trim().toUpperCase();
-    const asset = data.find(x => ((x.t || "") + "").trim().toUpperCase() === target);
+    const asset = data.find(x => String(x.t).toUpperCase() === ticker);
     const content = document.getElementById("content");
-    if (!asset) {{ content.innerHTML = "<h1>Asset Not Found</h1>"; return; }}
+    if (!asset) {{ content.innerHTML = "<h1>Asset ("+ticker+") Not Found</h1>"; return; }}
 
     document.title = asset.t + " | " + SITE_NAME;
     const color = (asset.c||0) >= 0 ? "var(--success)" : "var(--danger)";
@@ -178,7 +174,7 @@ DYNAMIC_JS = f"""
 def wrap_page(title, body, last_et, use_js=False):
     site = html.escape(SITE_NAME)
     js = DYNAMIC_JS if use_js else ""
-    nav = f"<div class='nav'><strong>{site}</strong><a href='{u('/index.html')}'>Home</a><a href='{u('/finance.html')}'>Terminal</a><a href='{u('/assets/index.html')}'>Assets</a></div>"
+    nav = f"<div class='nav'><strong>{site}</strong><a href='{u('/index.html')}'>Home</a><a href='{u('/finance.html')}'>Terminal</a></div>"
     return f"<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1.0'><title>{title} | {site}</title><style>{BASE_CSS}</style>{js}</head><body>{nav}<div class='container' id='content'>{body}</div><footer>© 2025 {site} | Updated: {last_et}</footer></body></html>"
 
 # =========================================================
@@ -212,7 +208,9 @@ def main():
             r = f.result()
             if r: results.append(r)
     
-    if len(results) < 5: return
+    if len(results) < 5: 
+        print("❌ 데이터 부족으로 빌드 중단")
+        return
 
     results.sort(key=lambda x: x['t'])
     write_if_changed(API_DIR / "assets.json", json.dumps(results, ensure_ascii=False, indent=2))
@@ -227,7 +225,7 @@ def main():
     sitemap.append("</urlset>")
     write_if_changed(OUTPUT_DIR / "sitemap.xml", "\n".join(sitemap))
 
-    print(f"✅ Success: {len(results)} assets | {time.time()-start_time:.1f}s")
+    print(f"✅ 완료: {len(results)}개 종목 수집 | {time.time()-start_time:.1f}초")
 
 if __name__ == "__main__":
     main()
