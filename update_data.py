@@ -5,6 +5,7 @@ import time
 import subprocess
 from typing import List, Tuple, Dict, Optional
 from pathlib import Path
+import os
 
 try:
     from zoneinfo import ZoneInfo  # Python 3.9+
@@ -365,7 +366,6 @@ def generate_nasdaq_table(tickers: List[str], batch_data: pd.DataFrame) -> Tuple
             if change >= 0:
                 ups += 1
 
-            # ✅ “Signal”이 아니라 “Trend label”
             if change > 0.5:
                 marker, color = "BULLISH", "#39d353"
             elif change < -0.5:
@@ -478,7 +478,6 @@ BLOG_POSTS = [
 # Assets (자산 페이지)
 # =========================================================
 def all_asset_symbols() -> List[str]:
-    # 통일: Crypto는 -USD 제거한 심볼로 페이지 생성
     out = set()
     for t in NASDAQ_TICKERS + DIVIDEND_TICKERS:
         out.add(t)
@@ -487,10 +486,8 @@ def all_asset_symbols() -> List[str]:
     return sorted(out)
 
 def symbol_to_yf(symbol: str) -> str:
-    # Assets 페이지에서 가격도 찍어주기 위해 yfinance 심볼로 변환
     if symbol in NASDAQ_TICKERS or symbol in DIVIDEND_TICKERS:
         return symbol
-    # crypto
     return f"{symbol}-USD"
 
 
@@ -537,25 +534,27 @@ def write_static_pages():
 
 
 # =========================================================
-# Blog writer (✅ f-string 백슬래시 오류 제거 완료)
+# Blog writer  (✅ f-string 백슬래시 금지 해결)
 # =========================================================
 def write_blog():
-    items = [f"<li><a href='/blog/{slug}.html'>{title}</a></li>" for slug, title, _ in BLOG_POSTS]
-    items_html = "".join(items)  # ✅ f-string {} 안에서 join 안함(안전)
+    items = []
+    for slug, title, _ in BLOG_POSTS:
+        items.append(f"<li><a href='/blog/{slug}.html'>{title}</a></li>")
 
     index_body = f"""
     <header><h1>Blog</h1><div style="color:var(--muted)">Educational market notes</div></header>
-    <div class="analysis"><ul>{items_html}</ul></div>
+    <div class="analysis"><ul>{''.join(items)}</ul></div>
     """
     (BLOG_DIR / "index.html").write_text(wrap_page("Blog", index_body), encoding="utf-8")
 
     for slug, title, content in BLOG_POSTS:
-        # ✅ f-string {} 안에서 "\n\n" split/join을 하지 않고, 밖에서 먼저 처리
-        paragraphs = "</p><p>".join(content.split("\n\n"))
+        # ✅ f-string { } 안에서 "\n\n" 같은 백슬래시를 쓰지 않기 위해, 미리 계산
+        paragraphs = content.split("\n\n")
+        paragraphs_html = "</p><p>".join(paragraphs)
 
         body = f"""
         <header><h1>{title}</h1><div style="color:var(--muted)">Educational article • Research-only</div></header>
-        <div class="analysis"><p>{paragraphs}</p></div>
+        <div class="analysis"><p>{paragraphs_html}</p></div>
         """
         (BLOG_DIR / f"{slug}.html").write_text(wrap_page(title, body), encoding="utf-8")
 
@@ -575,7 +574,6 @@ def write_assets_pages(now_str: str):
     """
     (ASSETS_DIR / "index.html").write_text(wrap_page("Assets", index_body), encoding="utf-8")
 
-    # 배치로 한 번에 가져오기 (가능하면)
     yf_symbols = [symbol_to_yf(s) for s in symbols]
     batch = fetch_batch_data(yf_symbols, period=PERIOD, chunk_size=CHUNK_SIZE)
 
@@ -603,8 +601,8 @@ def write_assets_pages(now_str: str):
             pass
 
         edu = (
-            f"<p><strong>Risk notes:</strong> Prices can move quickly. For dividends, payouts may change. "
-            f"For crypto, 24/7 volatility is normal. Use this page as a starting point for research—not a decision engine.</p>"
+            "<p><strong>Risk notes:</strong> Prices can move quickly. For dividends, payouts may change. "
+            "For crypto, 24/7 volatility is normal. Use this page as a starting point for research—not a decision engine.</p>"
         )
 
         body = f"""
@@ -626,7 +624,6 @@ def write_assets_pages(now_str: str):
 # Sitemap / robots
 # =========================================================
 def write_robots():
-    # GitHub Pages에서 robots는 간단히
     robots = f"""User-agent: *
 Allow: /
 Sitemap: {BASE_URL}/sitemap.xml
@@ -634,15 +631,12 @@ Sitemap: {BASE_URL}/sitemap.xml
     (OUTPUT_DIR / "robots.txt").write_text(robots, encoding="utf-8")
 
 def write_sitemap(extra_paths: List[str]):
-    # 사이트 전체 URL 수집
     urls = set(extra_paths)
 
-    # blog
     urls.add("/blog/index.html")
     for slug, _, _ in BLOG_POSTS:
         urls.add(f"/blog/{slug}.html")
 
-    # assets
     urls.add("/assets/index.html")
     for s in all_asset_symbols():
         urls.add(f"/assets/{s}.html")
@@ -686,7 +680,7 @@ def write_terminals(now_str: str):
     d_cards, d_rate = generate_cards(DIVIDEND_TICKERS, d_batch, is_crypto=False)
     div_body = f"""
     <header><h1>💰 Dividend Terminal Pro</h1>
-    <div style="color:var(--muted)">Income-focused watchlist snapshot • Research-only</div>
+    <div style="color:var(--muted)">Income-focused watchlist • Research-only</div>
     <div style="color:var(--muted);font-size:12px;margin-top:6px;">Last Update (US/Eastern): {now_str} | Data Success: {d_rate:.1f}%</div>
     </header>
     <div class="grid">{d_cards}</div>
@@ -794,16 +788,18 @@ def main():
         "/about.html", "/privacy.html", "/terms.html", "/contact.html",
     ])
 
-    # 6) Git Push (Actions에서만 의미)
-    try:
-        subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
-        subprocess.run(["git", "config", "user.email", "github-actions@github.com"], check=True)
-        subprocess.run(["git", "add", "."], check=True)
-        if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode != 0:
-            subprocess.run(["git", "commit", "-m", f"🚀 Build: {now_str}"], check=True)
-            subprocess.run(["git", "push"], check=True)
-    except Exception:
-        pass
+    # 6) (옵션) Actions 안에서 update_data.py가 직접 push 하면 무한루프/권한 문제 나기 쉬움.
+    # 필요할 때만 ENABLE_GIT_PUSH=1 로 켜세요.
+    if os.getenv("ENABLE_GIT_PUSH", "0") == "1":
+        try:
+            subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
+            subprocess.run(["git", "config", "user.email", "github-actions@github.com"], check=True)
+            subprocess.run(["git", "add", "."], check=True)
+            if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode != 0:
+                subprocess.run(["git", "commit", "-m", f"🚀 Build: {now_str}"], check=True)
+                subprocess.run(["git", "push"], check=True)
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":
