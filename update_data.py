@@ -3,7 +3,7 @@ import datetime, pytz, os, html, json
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# 1. 경로 및 기본 설정
+# 1. Directory & Basic Settings
 OUTPUT_DIR = Path("./docs")
 ASSETS_DIR = OUTPUT_DIR / "assets"
 API_DIR = OUTPUT_DIR / "api"
@@ -16,7 +16,7 @@ if BASE_URL and not BASE_URL.startswith("/"): BASE_URL = "/" + BASE_URL
 
 def u(path: str): return f"{BASE_URL}/{path.lstrip('/')}"
 
-# 2. 물량 공세 리스트 (AI, 나스닥, 코인, 배당주 총 300+ 종목)
+# 2. Global Asset List (Total 300+ Tickers)
 TICKERS = {
     "AI": ["NVDA", "AMD", "MSFT", "GOOGL", "META", "TSM", "AVGO", "ARM", "ASML", "AMAT", "LRCX", "KLAC", "MRVL", "MU", "INTC", "SMCI", "SNPS", "CDNS", "ANSS", "MCHP", "TXN", "ADI", "NXPI", "PLTR", "TSLA", "ORCL", "ADBE", "CRM", "IBM", "QCOM", "HPE", "DELL", "STX", "WDC"],
     "NASDAQ": ["AAPL", "AMZN", "NFLX", "AMGN", "SBUX", "MDLZ", "ISRG", "GILD", "BKNG", "VRTX", "REGN", "ADP", "PANW", "SNOW", "WDAY", "TEAM", "DDOG", "MDB", "ZS", "OKTA", "CRWD", "NET", "FSLY", "SHOP", "SQ", "PYPL", "MELI", "JD", "PDD", "BIDU", "NTES", "CPRT", "FAST", "CSX", "ODFL", "PCAR", "PAYX", "CTAS", "ADSK"],
@@ -25,7 +25,7 @@ TICKERS = {
 }
 ALL_TICKERS = sorted(set(sum(TICKERS.values(), [])))
 
-# 3. 디자인 (탭 메뉴 & 금융 포털 스타일)
+# 3. CSS Design (Global Premium Dark Theme)
 BASE_CSS = """
 :root{--bg:#05070a;--panel:#11141b;--border:#1e222d;--text:#d1d4dc;--link:#58a6ff;--accent:#00d084;}
 body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;line-height:1.6;}
@@ -48,11 +48,10 @@ input{background:#000;border:1px solid var(--link);color:#fff;padding:12px;borde
 footer{text-align:center;padding:50px 20px;color:var(--muted);border-top:1px solid var(--border);margin-top:50px;font-size:0.8rem;}
 """
 
-# 4. 페이지 구성 함수
 def wrap_page(title, body, last_et):
     ads = f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_ID}" crossorigin="anonymous"></script>'
     nav = f"<div class='nav'><strong>{SITE_NAME}</strong><a href='{u('/index.html')}'>Home</a><a href='{u('/finance.html')}'>Terminal</a></div>"
-    return f"<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1.0'>{ads}<title>{title} | {SITE_NAME}</title><style>{BASE_CSS}</style></head><body>{nav}<div class='container'>{body}</div><footer><p>© 2025 {SITE_NAME} | Updated: {last_et}</p><div style='text-align:left;max-width:800px;margin:20px auto;border-top:1px solid #1e222d;padding-top:10px;'><strong>Disclaimer:</strong> 본 데이터는 정보 제공용이며 투자에 대한 법적 책임을 지지 않습니다.</div></footer></body></html>"
+    return f"<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1.0'>{ads}<title>{title} | {SITE_NAME}</title><style>{BASE_CSS}</style></head><body>{nav}<div class='container'>{body}</div><footer><p>© 2025 {SITE_NAME} | Updated: {last_et}</p><div style='text-align:left;max-width:800px;margin:20px auto;border-top:1px solid #1e222d;padding-top:10px;'><strong>Disclaimer:</strong> All data is provided for informational purposes only. We do not guarantee accuracy and assume no legal liability for investment decisions.</div></footer></body></html>"
 
 def make_links(category):
     return "".join([f'<a href="{u("/assets/index.html")}?t={t}" class="ticker-link">{t}</a>' for t in TICKERS[category]])
@@ -60,44 +59,43 @@ def make_links(category):
 def main():
     now_et = datetime.datetime.now(pytz.timezone("US/Eastern")).strftime("%Y-%m-%d %H:%M %Z")
     
-    # 홈페이지 본문 (5단 탭 구조)
     home_body = f"""
     <div class="card" style="border:2px solid var(--link); background:rgba(88,166,255,0.05);">
         <h2 style="color:var(--link);margin:0;">📊 Portfolio Yield Analyzer</h2>
-        <p style="color:var(--muted);font-size:0.9rem;">매수 단가와 수량을 입력하여 실시간 자산 가치를 분석하세요.</p>
+        <p style="color:var(--muted);font-size:0.9rem;">Calculate your estimated asset value based on entry price and holding quantity.</p>
         <div class="calc-input-group">
-            <input type="number" id="p" placeholder="Avg Price ($)">
+            <input type="number" id="p" placeholder="Entry Price ($)">
             <input type="number" id="q" placeholder="Quantity">
-            <button class="tab-btn" style="background:var(--link);color:white;min-width:120px;" onclick="alert('분석 결과: 현재 자산 가치는 $'+(document.getElementById('p').value*document.getElementById('q').value).toLocaleString()+' 입니다.')">분석 실행</button>
+            <button class="tab-btn" style="background:var(--link);color:white;min-width:120px;" onclick="alert('Result: Your current asset value is $'+(document.getElementById('p').value*document.getElementById('q').value).toLocaleString())">Analyze</button>
         </div>
     </div>
 
     <div class="tab-menu">
-        <button class="tab-btn active" onclick="openTab(event, 'ai')">AI & Semiconductor</button>
+        <button class="tab-btn active" onclick="openTab(event, 'ai')">AI & Tech</button>
         <button class="tab-btn" onclick="openTab(event, 'nasdaq')">NASDAQ 100</button>
         <button class="tab-btn" onclick="openTab(event, 'coin')">Digital Assets</button>
-        <button class="tab-btn" onclick="openTab(event, 'divi')">High-Yield Dividend</button>
-        <button class="tab-btn" onclick="openTab(event, 'all')">Full Market Index ({len(ALL_TICKERS)})</button>
+        <button class="tab-btn" onclick="openTab(event, 'divi')">High-Yield</button>
+        <button class="tab-btn" onclick="openTab(event, 'all')">Market Index ({len(ALL_TICKERS)})</button>
     </div>
 
     <div id="ai" class="tab-content active">
-        <p style="color:var(--muted);font-size:0.85rem;">🤖 글로벌 AI 및 반도체 산업을 선도하는 핵심 기업 리스트입니다.</p>
+        <p style="color:var(--muted);font-size:0.85rem;">🤖 Leaders in global AI development and the semiconductor ecosystem.</p>
         <div class="ticker-grid">{make_links('AI')}</div>
     </div>
     <div id="nasdaq" class="tab-content">
-        <p style="color:var(--muted);font-size:0.85rem;">📈 나스닥 시장의 성장을 견인하는 주요 기술주 포트폴리오입니다.</p>
+        <p style="color:var(--muted);font-size:0.85rem;">📈 High-growth technology stocks and market drivers within the NASDAQ-100 index.</p>
         <div class="ticker-grid">{make_links('NASDAQ')}</div>
     </div>
     <div id="coin" class="tab-content">
-        <p style="color:var(--muted);font-size:0.85rem;">🌐 비트코인 및 주요 가상자산 인덱스 데이터입니다.</p>
+        <p style="color:var(--muted);font-size:0.85rem;">🌐 Real-time tracking of Bitcoin and leading cryptocurrency assets.</p>
         <div class="ticker-grid">{make_links('COIN')}</div>
     </div>
     <div id="divi" class="tab-content">
-        <p style="color:var(--muted);font-size:0.85rem;">💰안정적인 배당 수익과 우량한 재무 구조를 가진 기업 리스트입니다.</p>
+        <p style="color:var(--muted);font-size:0.85rem;">💰 Blue-chip companies focused on stable cash flows and high-dividend yields.</p>
         <div class="ticker-grid">{make_links('DIVIDEND')}</div>
     </div>
     <div id="all" class="tab-content">
-        <p style="color:var(--link);font-weight:bold;text-align:center;">전 세계 {len(ALL_TICKERS)}개 핵심 자산 통합 인덱스</p>
+        <p style="color:var(--link);font-weight:bold;text-align:center;">Comprehensive Global Index: {len(ALL_TICKERS)} Assets</p>
         <div class="ticker-grid">{"".join([f'<a href="{u("/assets/index.html")}?t={t}" class="ticker-link">{t}</a>' for t in ALL_TICKERS])}</div>
     </div>
 
@@ -116,6 +114,6 @@ def main():
     
     Path(OUTPUT_DIR / "index.html").write_text(wrap_page("Market Analytics", home_body, now_et), encoding="utf-8")
     Path(OUTPUT_DIR / "finance.html").write_text(wrap_page("Terminal", "<h1>Market Terminal</h1><div id='grid'>Loading...</div>", now_et), encoding="utf-8")
-    print(f"✅ Success: {len(ALL_TICKERS)} tickers deployed.")
+    print(f"✅ Deployment Complete: {len(ALL_TICKERS)} tickers indexed in English.")
 
 if __name__ == "__main__": main()
