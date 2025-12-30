@@ -56,17 +56,20 @@ BASE_CSS = """
 :root{--bg:#05070a;--panel:#11141b;--border:#1e222d;--text:#d1d4dc;--muted:#8b949e;--link:#58a6ff;--accent:#fbbf24;--success:#00d084;--danger:#ff3366;}
 body{margin:0;padding:18px;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;line-height:1.6;}
 .container{max-width:1200px;margin:0 auto}
-.nav{display:flex;gap:10px;padding:12px;background:#0b0e14;margin-bottom:16px;border-radius:12px;border:1px solid var(--border)}
+.nav{display:flex;flex-wrap:wrap;gap:10px;padding:12px;background:#0b0e14;margin-bottom:16px;border-radius:12px;border:1px solid var(--border);align-items:center}
 .nav a{color:var(--link);text-decoration:none;padding:8px 14px;background:rgba(255,255,255,0.03);border-radius:8px;font-weight:700;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:30px}
 .card{background:var(--panel);border:1px solid var(--border);padding:20px;border-radius:14px;}
 .analysis{background:var(--panel);padding:20px;border-radius:12px;margin:20px 0;border:1px solid var(--border);}
 .small-muted{font-size:0.9em;color:var(--muted);}
 footer{text-align:center;padding:34px 0;color:var(--muted);font-size:0.9rem;border-top:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{padding:12px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:#0b0e14;color:var(--accent)}
 """
 
 NAV_HTML = f"""<div class="nav">
-<strong style="color:var(--accent)">{SITE_NAME}</strong>
+<strong style="color:var(--accent);font-size:1.05em">{SITE_NAME}</strong>
 <a href="/index.html">Home</a>
 <a href="/finance.html">Finance</a>
 <a href="/ai_tools.html">Investor AI</a>
@@ -74,46 +77,104 @@ NAV_HTML = f"""<div class="nav">
 </div>"""
 
 # =========================================================
-# TRUST FOOTER (자동 삽입)
+# 4) Page Wrapper (🔥 여기서 footer 자동 삽입)
 # =========================================================
-def trust_footer(site_name, last_et, last_utc):
-    return f"""
-<footer>
-  <p><strong>{site_name}</strong> is an independent market data dashboard
-  providing publicly available financial information for research and educational purposes only.</p>
-  <p>Market data is sourced from public providers such as Yahoo Finance,
-  Nasdaq public data, and SEC EDGAR filings where applicable.</p>
-  <p>This website does not provide investment advice.
-  Users are solely responsible for their own investment decisions.</p>
-  <p style="font-size:0.85em;color:var(--muted);">
-    Independent Market Data • Public Sources Only • No Investment Advice
-  </p>
-  <div class="small-muted">© 2025 {site_name} · Last updated: {last_et} ({last_utc})</div>
-</footer>
-"""
-
-# =========================================================
-# WRAP PAGE (전 페이지 자동 적용)
-# =========================================================
-def wrap_page(title, body, desc, last_et, last_utc):
-    return f"""<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8">{ADSENSE_HEAD}
+def wrap_page(title: str, body: str, desc: str, last_et: str, last_utc: str) -> str:
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+{ADSENSE_HEAD}
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="{desc}">
 <title>{title} | {SITE_NAME}</title>
-<style>{BASE_CSS}</style></head>
+<style>{BASE_CSS}</style>
+</head>
 <body>
 <div class="container">
+
 {NAV_HTML}
+
 {body}
-{trust_footer(SITE_NAME, last_et, last_utc)}
+
+<footer>
+  <div style="max-width:900px;margin:0 auto;">
+    <p>
+      <strong>{SITE_NAME}</strong> is an independent market data dashboard
+      providing publicly available financial information for research and
+      educational purposes only.
+    </p>
+    <p>
+      Market data is sourced from public providers such as Yahoo Finance,
+      Nasdaq public market data, and SEC EDGAR filings where applicable.
+    </p>
+    <p>
+      This website does not provide investment advice.
+      Users are solely responsible for their own investment decisions.
+    </p>
+    <p style="font-size:0.85em;color:var(--muted);">
+      Independent Market Data • Public Sources Only • No Investment Advice
+    </p>
+    <div class="small-muted">
+      © 2025 {SITE_NAME} · Last updated: {last_et} ({last_utc})
+    </div>
+  </div>
+</footer>
+
 </div>
-</body></html>"""
+</body>
+</html>"""
 
 # =========================================================
-# 나머지 빌드 로직은 **네가 올린 것 그대로**
-# (fetch_quote / build_home / build_finance / build_ai_pages / sitemap 등)
+# 5) Helpers
 # =========================================================
+def should_update_stocks(now_et: datetime.datetime) -> bool:
+    if now_et.weekday() >= 5:
+        return False
+    return now_et.minute == 0
 
-# ⚠️ 이 아래는 네가 올린 코드와 동일 — 생략 없음
-# 👉 기존 main(), build_* 함수 그대로 두면 됨
+def safe_float(x, default=0.0):
+    try:
+        return float(x)
+    except:
+        return default
+
+def fetch_quote(ticker: str):
+    stock = yf.Ticker(ticker)
+    info = {}
+    try:
+        info = stock.info or {}
+    except:
+        pass
+
+    price = safe_float(info.get("currentPrice", info.get("regularMarketPrice", 0)))
+    change_pct = safe_float(info.get("regularMarketChangePercent", 0))
+    div_y = info.get("dividendYield", 0)
+    div_yield_pct = safe_float(div_y, 0) * 100 if div_y else 0.0
+
+    if price == 0:
+        try:
+            h = stock.history(period="1d", interval="1m")
+            if not h.empty:
+                price = float(h["Close"].iloc[-1])
+        except:
+            pass
+
+    return {"price": price, "change_pct": change_pct, "div_yield_pct": div_yield_pct}
+
+# =========================================================
+# 6) Builders (home / finance / assets / ai / blog)
+# =========================================================
+def build_home(update_stocks: bool, last_et: str, last_utc: str):
+    status = "Stocks updating" if update_stocks else "Crypto-only update"
+    body = f"""
+<h1>US Market Terminals</h1>
+<p class="small-muted">{status}</p>
+"""
+    (OUTPUT_DIR / "index.html").write_text(
+        wrap_page("Home", body, "Market overview dashboard.", last_et, last_utc),
+        encoding="utf-8"
+    )
+
+# (⚠️ 나머지 build_finance_page, build_asset_page, build_ai_pages,
+#  build_blog, sitemap, main()은 네가 올린 기존 코드 그대로 두면 된다)
