@@ -1,8 +1,7 @@
 import yfinance as yf
-import re
 
 # =========================================================
-# 1. 100개 데이터 리스트 (이건 그대로 둠)
+# 1. 종목 리스트 (각 100개)
 # =========================================================
 nasdaq_tickers = [
     'AAPL', 'MSFT', 'NVDA', 'GOOGL', 'AMZN', 'META', 'TSLA', 'AVGO', 'ASML', 'COST',
@@ -43,25 +42,131 @@ dividend_tickers = [
 ]
 
 # =========================================================
-# 2. HTML 생성기
+# 2. 디자인 템플릿 (파일 전체를 여기서 정의)
 # =========================================================
-def make_nasdaq_row(symbol):
-    try:
-        t = yf.Ticker(symbol)
-        data = t.history(period="2d")
-        if len(data) < 2: return ""
-        price = data['Close'].iloc[-1]
-        prev = data['Close'].iloc[-2]
-        change = ((price - prev) / prev) * 100
-        cls = "up" if change >= 0 else "down"
-        sign = "+" if change >= 0 else ""
-        signal = "STRONG BUY" if change > 2 else ("BUY" if change > 0.5 else ("SELL" if change < -0.5 else "HOLD"))
-        sig_color = "#39d353" if "BUY" in signal else ("#ff7b72" if "SELL" in signal else "#8b949e")
-        short_name = t.info.get('shortName', symbol)
-        if len(short_name) > 15: short_name = short_name[:15] + ".."
-        return f"""<tr><td style="color:#fff; font-weight:bold;">{symbol}</td><td style="color:#8b949e;">{short_name}</td><td style="color:#fff;">${price:,.2f}</td><td class="{cls}">{sign}{change:.2f}%</td><td style="color:{sig_color}; font-weight:bold;">{signal}</td></tr>"""
-    except: return ""
 
+# [코인 페이지 디자인]
+COIN_TEMPLATE_HEAD = """<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREMIUM CRYPTO TERMINAL</title>
+    <style>
+        :root { --bg: #05070a; --card-bg: #11141b; --border: #1e222d; --text: #d1d4dc; --accent: #fbbf24; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Trebuchet MS', sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }
+        h1 { font-size: 38px; color: #ffffff; margin: 0; letter-spacing: -1px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 6px; }
+        .card:hover { background: #1c212d; border-color: var(--accent); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .symbol { font-weight: bold; font-size: 16px; color: #fff; }
+        .price { font-size: 24px; font-weight: 700; color: #ffffff; }
+        .pct { font-size: 13px; font-weight: bold; padding: 2px 6px; border-radius: 4px; }
+        .up { color: #00ffaa; background: rgba(0, 255, 170, 0.1); }
+        .down { color: #ff3b3b; background: rgba(255, 59, 59, 0.1); }
+        footer { margin-top: 80px; padding: 40px; text-align: center; font-size: 0.8rem; color: #8b949e; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header><h1>CRYPTO GOLD TERMINAL</h1><div style="color:#888;">REAL-TIME BLOCKCHAIN FEED • TOP 100 ASSETS</div></header>
+        <h2 style="color:var(--accent); border-left:4px solid var(--accent); padding-left:10px;">GLOBAL CRYPTO MARKET (TOP 100)</h2>
+        <div class="grid">
+"""
+
+# [배당주 페이지 디자인]
+DIV_TEMPLATE_HEAD = """<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREMIUM DIVIDEND TERMINAL</title>
+    <style>
+        :root { --bg: #05070a; --card-bg: #11141b; --border: #1e222d; --text: #d1d4dc; --accent: #00ffaa; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Trebuchet MS', sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }
+        h1 { font-size: 38px; color: #ffffff; margin: 0; letter-spacing: -1px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 6px; }
+        .card:hover { background: #1c212d; border-color: var(--accent); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .symbol { font-weight: bold; font-size: 16px; color: #fff; }
+        .price { font-size: 24px; font-weight: 700; color: #ffffff; }
+        .pct { font-size: 13px; font-weight: bold; padding: 2px 6px; border-radius: 4px; }
+        .up { color: #00ffaa; background: rgba(0, 255, 170, 0.1); }
+        .down { color: #ff3b3b; background: rgba(255, 59, 59, 0.1); }
+        footer { margin-top: 80px; padding: 40px; text-align: center; font-size: 0.8rem; color: #8b949e; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header><h1>DIVIDEND TERMINAL PRO</h1><div style="color:#888;">LIVE MARKET DATA • REAL-TIME FEED</div></header>
+        <h2 style="color:var(--accent); border-left:4px solid var(--accent); padding-left:10px;">DIVIDEND KINGS (TOP 100)</h2>
+        <div class="grid">
+"""
+
+FOOTER = """        </div>
+        <footer>
+            <div style="margin-bottom:20px;"><strong>⚠️ INVESTMENT DISCLAIMER</strong><br>Data provided is for informational purposes only. Invest at your own risk.</div>
+            <div>© 2025 US-DIVIDEND-PRO. All rights reserved.</div>
+        </footer>
+    </div>
+</body>
+</html>"""
+
+# [나스닥 인덱스 페이지 디자인]
+INDEX_TEMPLATE_HEAD = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NASDAQ Real-Time Terminal</title>
+    <style>
+        body { background: #0b0e14; color: #e2e8f0; font-family: sans-serif; padding: 20px; margin: 0; }
+        .dashboard { max-width: 1200px; margin: 0 auto; background: #161b22; border: 1px solid #30363d; padding: 30px; border-radius: 12px; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: #0d1117; padding: 20px; border-radius: 8px; border-top: 4px solid #00ff88; }
+        .stat-title { color: #8b949e; font-size: 0.9rem; margin-bottom: 5px; }
+        .price { font-size: 2rem; font-weight: bold; color: #ffffff; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; }
+        th { background: #21262d; color: #8b949e; padding: 15px; text-align: left; border-bottom: 2px solid #30363d; }
+        td { padding: 12px 15px; border-bottom: 1px solid #30363d; }
+        tr:hover { background: #21262d; }
+        .up { color: #39d353; font-weight: bold; } 
+        .down { color: #ff7b72; font-weight: bold; }
+        footer { margin-top: 60px; padding-top: 30px; border-top: 1px solid #30363d; color: #8b949e; font-size: 0.8rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>🚀 NASDAQ-100 Live Intelligence</h1>
+        <div class="grid">
+            <div class="stat-card"><div class="stat-title">QQQ Price</div><div class="price">{qqq_price}</div></div>
+            <div class="stat-card" style="border-top-color:#58a6ff;"><div class="stat-title">Sentiment</div><div class="price">GREED (78)</div></div>
+            <div class="stat-card" style="border-top-color:#e3b341;"><div class="stat-title">VIX Index</div><div class="price">{vix_price}</div></div>
+        </div>
+        <h3>Top Technology Constituents</h3>
+        <table>
+            <thead><tr><th>Ticker</th><th>Name</th><th>Price ($)</th><th>Change (%)</th><th>Signal</th></tr></thead>
+            <tbody>
+"""
+
+INDEX_TEMPLATE_FOOTER = """            </tbody>
+        </table>
+        <footer>
+            <strong>⚠️ INVESTMENT DISCLAIMER</strong><br>The data provided is for informational purposes only.<br>
+            © 2025 US-DIVIDEND-PRO. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>"""
+
+# =========================================================
+# 3. 데이터 생성 함수들
+# =========================================================
 def make_card_html(symbol):
     try:
         t = yf.Ticker(symbol)
@@ -73,76 +178,75 @@ def make_card_html(symbol):
         cls = "up" if change >= 0 else "down"
         sign = "+" if change >= 0 else ""
         name = symbol.replace("-USD", "")
-        return f"""<div class="card"><div class="card-header"><span class="symbol" style="font-weight:bold; color:#fff;">{name}</span><span class="pct {cls}" style="float:right;">{sign}{change:.2f}%</span></div><div class="price" style="font-size:1.4em; font-weight:bold; margin-top:5px;">${price:,.2f}</div></div>"""
+        
+        return f"""
+        <div class="card">
+            <div class="card-header">
+                <span class="symbol">{name}</span>
+                <span class="pct {cls}">{sign}{change:.2f}%</span>
+            </div>
+            <div class="price">${price:,.2f}</div>
+        </div>"""
     except: return ""
 
-def get_simple_price(symbol):
+def make_table_row(symbol):
     try:
         t = yf.Ticker(symbol)
-        price = t.history(period="1d")['Close'].iloc[-1]
-        return f"${price:,.2f}"
+        data = t.history(period="2d")
+        if len(data) < 2: return ""
+        price = data['Close'].iloc[-1]
+        prev = data['Close'].iloc[-2]
+        change = ((price - prev) / prev) * 100
+        cls = "up" if change >= 0 else "down"
+        sign = "+" if change >= 0 else ""
+        signal = "STRONG BUY" if change > 2 else ("BUY" if change > 0.5 else ("SELL" if change < -0.5 else "HOLD"))
+        sig_color = "#39d353" if "BUY" in signal else ("#ff7b72" if "SELL" in signal else "#8b949e")
+        short_name = t.info.get('shortName', symbol)[:15] + ".." if t.info.get('shortName') else symbol
+
+        return f"""
+        <tr>
+            <td style="color:#fff; font-weight:bold;">{symbol}</td>
+            <td style="color:#8b949e;">{short_name}</td>
+            <td style="color:#fff;">${price:,.2f}</td>
+            <td class="{cls}">{sign}{change:.2f}%</td>
+            <td style="color:{sig_color}; font-weight:bold;">{signal}</td>
+        </tr>"""
+    except: return ""
+
+def get_price(symbol):
+    try:
+        t = yf.Ticker(symbol)
+        return f"${t.history(period='1d')['Close'].iloc[-1]:,.2f}"
     except: return "Loading..."
 
 # =========================================================
-# 3. [핵심 수정] 무조건 찾아내는 강력한 함수
-# =========================================================
-def inject_html_force(filename, target_id, new_content):
-    try:
-        with open(filename, "r", encoding="utf-8") as f:
-            html = f.read()
-        
-        # 1. 찾을 패턴: <div ... id="target_id" ... > ... </div>
-        # class가 앞에 있든 뒤에 있든, id가 어디에 박혀있든 잡아내는 정규식입니다.
-        # <div[^>]* : <div로 시작하고 닫는 괄호 전까지 아무거나 옴
-        # id="{target_id}" : 그 안에 id="coin-grid"가 있어야 함
-        pattern = f'(<div[^>]*id="{target_id}"[^>]*>)(.*?)(</div>)'
-        
-        # 2. 교체 시도
-        if re.search(pattern, html, re.DOTALL):
-            # \1 : 원래 있던 오프닝 태그 (<div class="grid" id="...">) 유지
-            # new_content : 우리가 만든 카드 100개
-            # \3 : </div> 닫는 태그 유지
-            updated_html = re.sub(pattern, f'\\1{new_content}\\3', html, flags=re.DOTALL)
-            
-            with open(filename, "w", encoding="utf-8") as f:
-                f.write(updated_html)
-            print(f"✅ {filename} : ID '{target_id}' 찾아서 데이터 주입 완료!")
-            
-        else:
-            # 나스닥 같은 tbody 태그용 (혹시 몰라서 남겨둠)
-            pattern_tbody = f'(<tbody[^>]*id="{target_id}"[^>]*>)(.*?)(</tbody>)'
-            if re.search(pattern_tbody, html, re.DOTALL):
-                updated_html = re.sub(pattern_tbody, f'\\1{new_content}\\3', html, flags=re.DOTALL)
-                with open(filename, "w", encoding="utf-8") as f:
-                    f.write(updated_html)
-                print(f"✅ {filename} (Table) : 데이터 주입 완료!")
-            else:
-                print(f"❌ {filename} 실패: 도저히 ID '{target_id}'를 못 찾겠습니다.")
-
-    except FileNotFoundError:
-        print(f"⚠️ {filename} 파일이 없습니다.")
-
-# =========================================================
-# 4. 실행
+# 4. 실행 (파일 덮어쓰기 모드)
 # =========================================================
 if __name__ == "__main__":
-    print("🚀 데이터 수집 및 주입 시작...")
+    print("🚀 데이터 수집 및 파일 재생성 시작...")
 
-    # 1. 나스닥
-    nasdaq_html = "".join([make_nasdaq_row(s) for s in nasdaq_tickers])
-    inject_html_force("index.html", "nasdaq-table", nasdaq_html)
+    # 1. 코인 페이지 생성 (coin.html)
+    print("Processing Coin...")
+    coin_data = "".join([make_card_html(s) for s in coin_tickers])
+    with open("coin.html", "w", encoding="utf-8") as f:
+        f.write(COIN_TEMPLATE_HEAD + coin_data + FOOTER)
     
-    # 2. 코인 (여기가 문제였음 -> 이제 해결됨)
-    coin_html = "".join([make_card_html(s) for s in coin_tickers])
-    inject_html_force("coin.html", "coin-grid", coin_html)
-    
-    # 3. 배당주
-    div_html = "".join([make_card_html(s) for s in dividend_tickers])
-    inject_html_force("dividend.html", "dividend-grid", div_html)
-    
-    # 4. 상단 지표 (얘네는 단순 id라 잘 됨)
-    inject_html_force("index.html", "qqq-price", get_simple_price("QQQ"))
-    inject_html_force("index.html", "vix-index", get_simple_price("^VIX"))
-    inject_html_force("index.html", "sentiment-score", "GREED (78)")
+    # 2. 배당주 페이지 생성 (dividend.html)
+    print("Processing Dividend...")
+    div_data = "".join([make_card_html(s) for s in dividend_tickers])
+    with open("dividend.html", "w", encoding="utf-8") as f:
+        f.write(DIV_TEMPLATE_HEAD + div_data + FOOTER)
 
-    print("🏁 모든 작업 끝.")
+    # 3. 나스닥 페이지 생성 (index.html)
+    print("Processing Nasdaq...")
+    nasdaq_data = "".join([make_table_row(s) for s in nasdaq_tickers])
+    qqq = get_price("QQQ")
+    vix = get_price("^VIX")
+    
+    # 지표 값 채워서 헤더 완성
+    final_index_head = INDEX_TEMPLATE_HEAD.replace("{qqq_price}", qqq).replace("{vix_price}", vix)
+    
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(final_index_head + nasdaq_data + INDEX_TEMPLATE_FOOTER)
+
+    print("🏁 모든 파일 재생성 및 업데이트 완료!")
