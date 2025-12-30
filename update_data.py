@@ -4,7 +4,7 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # =========================================================
-# 0) 경로 및 환경 설정 (GitHub Pages 최적화)
+# 0) 경로 및 환경 설정
 # =========================================================
 OUTPUT_DIR = Path("./docs")
 ASSETS_DIR = OUTPUT_DIR / "assets"
@@ -14,7 +14,6 @@ for d in [OUTPUT_DIR, ASSETS_DIR, API_DIR, CACHE_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 SITE_NAME = "US Dividend Pro"
-# Python에서 BASE_URL을 "/repo-name" 형태로 확실히 보정
 BASE_URL = os.getenv("BASE_URL", "").strip().rstrip("/")
 if BASE_URL and not BASE_URL.startswith("/"):
     BASE_URL = "/" + BASE_URL
@@ -45,7 +44,7 @@ def write_if_changed(path: Path, text: str):
     atomic_write(path, text)
 
 # =========================================================
-# 1) 티커 데이터 (나스닥, AI, 코인, 배당주 100개+ 세팅)
+# 1) 티커 데이터 (나스닥, AI, 코인, 배당주 리스트)
 # =========================================================
 TICKERS = {
     "crypto": [
@@ -73,7 +72,7 @@ def get_category(ticker: str) -> str:
     return "other"
 
 # =========================================================
-# 2) UI & 무적 JS (중괄호 이중 처리 및 티커 매칭 강화)
+# 2) UI & 무적 JS (중괄호 탈출 완벽 처리)
 # =========================================================
 BASE_CSS = """
 :root{--bg:#05070a;--panel:#11141b;--border:#1e222d;--text:#d1d4dc;--muted:#8b949e;--link:#58a6ff;--success:#00d084;--danger:#ff3366;}
@@ -105,12 +104,11 @@ DYNAMIC_JS = f"""
   async function fetchFirstOk(urls) {{
     for (const url of urls) {{
       try {{
-        console.log("Trying:", url);
         const res = await fetch(url, {{ cache: "no-store" }});
         if (res.ok) return res;
       }} catch(e) {{}}
     }}
-    throw new Error("All Fetch Failed");
+    throw new Error("Load Failed");
   }}
 
   async function init() {{
@@ -126,10 +124,10 @@ DYNAMIC_JS = f"""
       }} else if (document.getElementById("grid")) {{
         renderGrid(data);
       }}
-    } catch (e) {{
+    }} catch (e) {{
       console.error(e);
       const c = document.getElementById("content");
-      if (c) c.innerHTML = "<h1>Data Load Failed</h1><p>Check API path.</p>";
+      if (c) {{ c.innerHTML = "<h1>Data Load Failed</h1>"; }}
     }}
   }}
 
@@ -151,7 +149,10 @@ DYNAMIC_JS = f"""
   function renderDetail(data, ticker) {{
     const asset = data.find(x => String(x.t).toUpperCase() === ticker);
     const content = document.getElementById("content");
-    if (!asset) {{ content.innerHTML = "<h1>Asset ("+ticker+") Not Found</h1>"; return; }}
+    if (!asset) {{ 
+        content.innerHTML = "<h1>Asset (" + ticker + ") Not Found</h1>"; 
+        return; 
+    }}
 
     document.title = asset.t + " | " + SITE_NAME;
     const color = (asset.c||0) >= 0 ? "var(--success)" : "var(--danger)";
@@ -208,9 +209,7 @@ def main():
             r = f.result()
             if r: results.append(r)
     
-    if len(results) < 5: 
-        print("❌ 데이터 부족으로 빌드 중단")
-        return
+    if len(results) < 5: return
 
     results.sort(key=lambda x: x['t'])
     write_if_changed(API_DIR / "assets.json", json.dumps(results, ensure_ascii=False, indent=2))
@@ -225,7 +224,7 @@ def main():
     sitemap.append("</urlset>")
     write_if_changed(OUTPUT_DIR / "sitemap.xml", "\n".join(sitemap))
 
-    print(f"✅ 완료: {len(results)}개 종목 수집 | {time.time()-start_time:.1f}초")
+    print(f"✅ Success: {len(results)} assets")
 
 if __name__ == "__main__":
     main()
