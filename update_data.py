@@ -1,38 +1,119 @@
 import yfinance as yf
-import feedparser # 뉴스 가져오기용 (설치 안되어있으면 pip install feedparser)
+import feedparser
 from datetime import datetime
 
-# 1. 나스닥 50개 종목 (대표님 리스트 복구)
+# 1. 자산 리스트 설정
 nasdaq_sectors = {
     "MARKET INDEX": ['QQQ', 'TQQQ', 'SQQQ', 'VOO', 'DIA', 'IWM'],
     "MAGNIFICENT 7": ['NVDA', 'AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'TSLA'],
-    "SEMICONDUCTORS": ['SOXL', 'SOXX', 'AVGO', 'AMD', 'ARM', 'MU', 'TSM', 'ASML', 'INTC', 'AMAT', 'LRCX', 'QCOM'],
-    "AI & SOFTWARE": ['PLTR', 'ORCL', 'ADBE', 'CRM', 'SNOW', 'NOW', 'WDAY', 'PALO'],
-    "FINTECH & BEYOND": ['PYPL', 'SQ', 'V', 'MA', 'COIN', 'NFLX', 'UBER', 'SHOP', 'COST']
+    "SEMICONDUCTORS": ['SOXL', 'SOXX', 'AVGO', 'AMD', 'ARM', 'MU', 'TSM', 'ASML', 'INTC', 'AMAT', 'LRCX', 'QCOM']
 }
 
-# 2. 뉴스 데이터 가져오기 함수 (추가)
-def get_market_news():
-    rss_url = "https://news.google.com/rss/search?q=nasdaq+stock+market&hl=ko&gl=KR&ceid=KR:ko"
-    feed = feedparser.parse(rss_url)
-    news_html = '<div class="news-container">'
-    for entry in feed.entries[:5]: # 최신 뉴스 5개
-        news_html += f'<div class="news-item"><a href="{entry.link}" target="_blank">{entry.title}</a> <span class="news-date">({entry.published[:16]})</span></div>'
-    news_html += '</div>'
-    return news_html
+coin_sectors = {
+    "MAJOR CRYPTO": ['BTC-USD', 'ETH-USD', 'SOL-USD', 'BNB-USD', 'XRP-USD'],
+    "MEME & ALT": ['DOGE-USD', 'SHIB-USD', 'PEPE-USD', 'ADA-USD', 'LINK-USD']
+}
 
-def create_terminal_html(title, sector_dict, now, show_news=False):
-    # (디자인 및 카드 생성 로직은 이전과 동일하며 뉴스 스타일만 추가)
-    news_section = f'<h2 class="sector-title">LATEST MARKET NEWS</h2>{get_market_news()}' if show_news else ""
+dividend_sectors = {
+    "DIVIDEND KINGS": ['O', 'SCHD', 'JEPI', 'JEPQ', 'VICI', 'MAIN', 'STAG'],
+    "HIGH YIELD": ['MO', 'T', 'VZ', 'BTI', 'PFE']
+}
+
+# 2. 뉴스 가져오기
+def get_news():
+    try:
+        url = "https://news.google.com/rss/search?q=investing+finance&hl=en-US&gl=US&ceid=US:en"
+        feed = feedparser.parse(url)
+        html = '<div class="news-box">'
+        for entry in feed.entries[:4]:
+            html += f'<div class="news-item">🔔 <a href="{entry.link}" target="_blank">{entry.title}</a></div>'
+        return html + '</div>'
+    except: return ""
+
+# 3. 디자인 엔진 (여기가 핵심입니다. 황금색/검정색 디자인을 여기서 만듭니다)
+def create_page(title, sectors, color_theme, filename):
+    now = datetime.now().strftime('%Y-%m-%d %H:%M')
+    cards_html = ""
     
-    # ... (상단 디자인 생략 - 이전과 동일한 럭셔리 다크모드 CSS 유지) ...
-    # CSS에 뉴스 스타일 추가
-    news_css = """
-    .news-container { background: #11141b; padding: 20px; border-radius: 6px; border: 1px solid #1e222d; margin-bottom: 30px; }
-    .news-item { margin-bottom: 12px; font-size: 14px; border-bottom: 1px solid #1e222d; padding-bottom: 8px; }
-    .news-item a { color: #fff; text-decoration: none; }
-    .news-item a:hover { color: #2962ff; }
-    .news-date { color: #848e9c; font-size: 12px; }
+    for sector, symbols in sectors.items():
+        cards_html += f'<h2 class="sector-title" style="border-color:{color_theme}; color:{color_theme}">{sector}</h2><div class="grid">'
+        for s in symbols:
+            try:
+                t = yf.Ticker(s)
+                hist = t.history(period="2d")
+                if len(hist) < 2: continue
+                price = hist['Close'].iloc[-1]
+                prev = hist['Close'].iloc[-2]
+                pct = ((price - prev) / prev) * 100
+                
+                # 상승/하락 색상
+                cls = "up" if pct >= 0 else "down"
+                sign = "+" if pct >= 0 else ""
+                
+                # 심볼 이름 깔끔하게
+                name = s.replace("-USD", "")
+                
+                cards_html += f"""
+                <div class="card">
+                    <div class="top">
+                        <span class="name">{name}</span>
+                        <span class="pct {cls}">{sign}{pct:.2f}%</span>
+                    </div>
+                    <div class="price">${price:,.2f}</div>
+                </div>"""
+            except: continue
+        cards_html += '</div>'
+
+    # 전체 HTML 조립 (CSS 디자인 포함)
+    full_html = f"""
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{title}</title>
+        <style>
+            :root {{ --bg: #000000; --card: #111; --text: #eee; --theme: {color_theme}; }}
+            body {{ background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }}
+            .container {{ max-width: 1200px; margin: 0 auto; }}
+            header {{ border-bottom: 2px solid var(--theme); padding-bottom: 20px; margin-bottom: 30px; }}
+            h1 {{ margin: 0; font-size: 2rem; color: #fff; }}
+            .time {{ color: #888; font-size: 0.9rem; margin-top: 5px; }}
+            .sector-title {{ margin-top: 40px; border-left: 5px solid; padding-left: 15px; font-size: 1.2rem; text-transform: uppercase; }}
+            .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }}
+            .card {{ background: var(--card); border: 1px solid #333; padding: 20px; border-radius: 8px; }}
+            .card:hover {{ border-color: var(--theme); transform: translateY(-3px); transition: 0.3s; }}
+            .top {{ display: flex; justify-content: space-between; font-size: 0.9rem; color: #aaa; margin-bottom: 5px; }}
+            .price {{ font-size: 1.5rem; font-weight: bold; color: #fff; }}
+            .up {{ color: #ff4d4d; }} .down {{ color: #4da6ff; }} /* 한국식: 상승 빨강, 하락 파랑 */
+            .news-box {{ background: #111; padding: 15px; margin-bottom: 30px; border: 1px solid #333; border-radius: 8px; }}
+            .news-item {{ margin-bottom: 8px; font-size: 0.9rem; }}
+            .news-item a {{ color: #ccc; text-decoration: none; }}
+            .news-item a:hover {{ color: var(--theme); }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>{title}</h1>
+                <div class="time">LAST UPDATE: {now} (KST)</div>
+            </header>
+            {get_news() if filename == 'index.html' else ''}
+            {cards_html}
+        </div>
+    </body>
+    </html>
     """
     
-    # (이하 생략 - 전체 코드는 대표님의 50개 종목을 카드형태로 뿌려줍니다)
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(full_html)
+
+if __name__ == "__main__":
+    # 1. 나스닥 (메인, 파란색 테마)
+    create_page("NASDAQ TERMINAL", nasdaq_sectors, "#2962ff", "index.html")
+    
+    # 2. 코인 (황금색 테마) - 여기가 대표님이 원하시는 골드 대시보드입니다.
+    create_page("CRYPTO GOLD DASHBOARD", coin_sectors, "#fbbf24", "coin.html")
+    
+    # 3. 배당주 (초록색 테마)
+    create_page("DIVIDEND KINGS", dividend_sectors, "#00ffaa", "dividend.html")
