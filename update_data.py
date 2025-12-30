@@ -14,6 +14,9 @@ for d in [OUTPUT_DIR, ASSETS_DIR, API_DIR, CACHE_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 SITE_NAME = "US Dividend Pro"
+# 대표님의 애드센스 ID 적용 완료
+ADSENSE_ID = "ca-pub-3030006828946894" 
+
 BASE_URL = os.getenv("BASE_URL", "").strip().rstrip("/")
 if BASE_URL and not BASE_URL.startswith("/"):
     BASE_URL = "/" + BASE_URL
@@ -47,22 +50,11 @@ def write_if_changed(path: Path, text: str):
 # 1) 티커 데이터 (나스닥, AI, 코인, 배당주 리스트)
 # =========================================================
 TICKERS = {
-    "crypto": [
-        "BTC-USD", "ETH-USD", "SOL-USD", "XRP-USD", "DOGE-USD", "ADA-USD", "DOT-USD", "LINK-USD", "AVAX-USD", "SHIB-USD"
-    ],
-    "ai_semiconductor": [
-        "NVDA", "AMD", "AVGO", "ARM", "TSM", "ASML", "AMAT", "LRCX", "KLAC", "MRVL", 
-        "MU", "INTC", "SMCI", "SNPS", "CDNS", "ANSS", "MCHP", "TXN", "ADI", "NXPI"
-    ],
-    "big_tech": [
-        "AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA", "NFLX", "ADBE", "ORCL", "CRM"
-    ],
-    "dividend_pro": [
-        "O", "SCHD", "JEPI", "JEPQ", "VICI", "MAIN", "STAG", "ADC", "MO", "T", "VZ", "JNJ", "PG", "KO", "PEP"
-    ],
-    "nasdaq_100_extra": [
-        "AMGN", "SBUX", "MDLZ", "ISRG", "GILD", "BKNG", "VRTX", "REGN", "ADP", "PANW"
-    ]
+    "crypto": ["BTC-USD", "ETH-USD", "SOL-USD", "XRP-USD", "DOGE-USD", "ADA-USD", "DOT-USD", "LINK-USD", "AVAX-USD", "SHIB-USD"],
+    "ai_semiconductor": ["NVDA", "AMD", "AVGO", "ARM", "TSM", "ASML", "AMAT", "LRCX", "KLAC", "MRVL", "MU", "INTC", "SMCI", "SNPS", "CDNS", "ANSS", "MCHP", "TXN", "ADI", "NXPI"],
+    "big_tech": ["AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA", "NFLX", "ADBE", "ORCL", "CRM"],
+    "dividend_pro": ["O", "SCHD", "JEPI", "JEPQ", "VICI", "MAIN", "STAG", "ADC", "MO", "T", "VZ", "JNJ", "PG", "KO", "PEP"],
+    "nasdaq_100_extra": ["AMGN", "SBUX", "MDLZ", "ISRG", "GILD", "BKNG", "VRTX", "REGN", "ADP", "PANW"]
 }
 ALL_TICKERS = sorted(set(sum(TICKERS.values(), [])))
 
@@ -72,7 +64,7 @@ def get_category(ticker: str) -> str:
     return "other"
 
 # =========================================================
-# 2) UI & 무적 JS (중괄호 탈출 완벽 처리)
+# 2) UI & 무적 JS (중괄호 이중 처리 완료)
 # =========================================================
 BASE_CSS = """
 :root{--bg:#05070a;--panel:#11141b;--border:#1e222d;--text:#d1d4dc;--muted:#8b949e;--link:#58a6ff;--success:#00d084;--danger:#ff3366;}
@@ -115,15 +107,11 @@ DYNAMIC_JS = f"""
     try {{
       const res = await fetchFirstOk(URLS);
       const data = await res.json();
-      
       const params = new URLSearchParams(window.location.search);
       const ticker = params.get("t");
 
-      if (ticker) {{
-        renderDetail(data, ticker.trim().toUpperCase());
-      }} else if (document.getElementById("grid")) {{
-        renderGrid(data);
-      }}
+      if (ticker) {{ renderDetail(data, ticker.trim().toUpperCase()); }}
+      else if (document.getElementById("grid")) {{ renderGrid(data); }}
     }} catch (e) {{
       console.error(e);
       const c = document.getElementById("content");
@@ -149,19 +137,12 @@ DYNAMIC_JS = f"""
   function renderDetail(data, ticker) {{
     const asset = data.find(x => String(x.t).toUpperCase() === ticker);
     const content = document.getElementById("content");
-    if (!asset) {{ 
-        content.innerHTML = "<h1>Asset (" + ticker + ") Not Found</h1>"; 
-        return; 
-    }}
-
+    if (!asset) {{ content.innerHTML = "<h1>Asset (" + ticker + ") Not Found</h1>"; return; }}
     document.title = asset.t + " | " + SITE_NAME;
     const color = (asset.c||0) >= 0 ? "var(--success)" : "var(--danger)";
-
     content.innerHTML = `<div class="hero">
         <h1>${{asset.t}}</h1>
-        <div style="font-size:4rem;font-weight:900;color:${{color}}">
-          $${{Number(asset.p || 0).toLocaleString()}}
-        </div>
+        <div style="font-size:4rem;font-weight:900;color:${{color}}">$${{Number(asset.p || 0).toLocaleString()}}</div>
         <div style="font-size:1.5rem;font-weight:700;color:${{color}}">${{(asset.c||0)>=0?"+":""}}${{Number(asset.c||0).toFixed(2)}}%</div>
         <p style="margin-top:20px;color:var(--muted);">Vol: ${{Number(asset.v || 0).toLocaleString()}} | Cat: ${{String(asset.cat || "").toUpperCase()}}</p>
         <a href="${{ABS("/finance.html")}}" style="color:var(--link);text-decoration:none;font-weight:800;">← Back to Terminal</a>
@@ -175,8 +156,11 @@ DYNAMIC_JS = f"""
 def wrap_page(title, body, last_et, use_js=False):
     site = html.escape(SITE_NAME)
     js = DYNAMIC_JS if use_js else ""
+    # 애드센스 자동 광고 스크립트 (ID 포함)
+    ads_script = f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_ID}" crossorigin="anonymous"></script>'
+
     nav = f"<div class='nav'><strong>{site}</strong><a href='{u('/index.html')}'>Home</a><a href='{u('/finance.html')}'>Terminal</a></div>"
-    return f"<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1.0'><title>{title} | {site}</title><style>{BASE_CSS}</style>{js}</head><body>{nav}<div class='container' id='content'>{body}</div><footer>© 2025 {site} | Updated: {last_et}</footer></body></html>"
+    return f"<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1.0'>{ads_script}<title>{title} | {site}</title><style>{BASE_CSS}</style>{js}</head><body>{nav}<div class='container' id='content'>{body}</div><footer>© 2025 {site} | Updated: {last_et}</footer></body></html>"
 
 # =========================================================
 # 3) 데이터 엔진
