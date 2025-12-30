@@ -2,42 +2,84 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Crypto Intelligence | US-DIVIDEND-PRO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREMIUM CRYPTO TERMINAL</title>
     <style>
-        body { background: #010409; color: #39d353; font-family: 'Courier New', monospace; padding: 30px; }
-        .terminal { border: 1px solid #30363d; background: #0d1117; padding: 30px; border-radius: 5px; box-shadow: 0 0 20px rgba(0,255,0,0.1); }
-        .header { border-bottom: 2px solid #30363d; margin-bottom: 20px; padding-bottom: 10px; }
-        .data-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 1.2rem; }
-        .label { color: #8b949e; }
-        .value { color: #f0f6fc; font-weight: bold; }
-        .footer { margin-top: 30px; font-size: 0.8rem; color: #484f58; }
+        /* 코인 전용 골드 테마 */
+        :root { --bg: #05070a; --card-bg: #11141b; --border: #1e222d; --text: #d1d4dc; --accent: #fbbf24; }
+        
+        body { background-color: var(--bg); color: var(--text); font-family: 'Trebuchet MS', sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        /* 헤더 디자인 */
+        header { border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }
+        h1 { font-size: 38px; color: #ffffff; margin: 0; letter-spacing: -1px; }
+        .update-tag { font-size: 14px; color: #848e9c; margin-top: 5px; }
+        
+        /* 섹터 타이틀 */
+        .sector-title { font-size: 18px; color: var(--accent); margin: 40px 0 15px 0; border-left: 4px solid var(--accent); padding-left: 10px; text-transform: uppercase; }
+        
+        /* 100개 코인 들어갈 그리드 (자동 정렬) */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+        
+        /* 카드 디자인 */
+        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 6px; transition: all 0.2s ease; }
+        .card:hover { background: #1c212d; border-color: var(--accent); transform: translateY(-2px); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        
+        /* 텍스트 스타일 */
+        .symbol { font-weight: bold; font-size: 16px; color: #fff; }
+        .price { font-size: 24px; font-weight: 700; color: #ffffff; }
+        .pct { font-size: 13px; font-weight: bold; padding: 2px 6px; border-radius: 4px; }
+        
+        /* 상승하락 색상 */
+        .up { color: #00ffaa; background: rgba(0, 255, 170, 0.1); }
+        .down { color: #ff3b3b; background: rgba(255, 59, 59, 0.1); }
+        
+        /* 구글 승인용 푸터 */
+        footer { margin-top: 80px; padding: 40px 20px; background: #0d1117; border-top: 1px solid var(--border); text-align: center; color: #8b949e; font-size: 0.8rem; border-radius: 8px; }
+        .footer-links a { color: var(--accent); text-decoration: none; margin: 0 10px; }
     </style>
 </head>
 <body>
-    <div class="terminal">
-        <div class="header">
-            <h1>[CRYPTO TERMINAL]</h1>
-            <p>STATUS: <span style="color:#00ff88;">CONNECTED</span></p>
-        </div>
+    <div class="container">
+        <header>
+            <h1>CRYPTO GOLD TERMINAL</h1>
+            <div class="update-tag">REAL-TIME BLOCKCHAIN FEED • TOP 100 ASSETS</div>
+        </header>
 
-        <div id="coin-data-area">
-            <div class="data-row">
-                <span class="label">> BTC PRICE:</span>
-                <span class="value" id="btc-price">$68,432.12</span>
-            </div>
-            <div class="data-row">
-                <span class="label">> BTC DOMINANCE:</span>
-                <span class="value" id="btc-dom">52.4%</span>
-            </div>
-            <div class="data-row">
-                <span class="label">> MARKET SENTIMENT:</span>
-                <span class="value" id="sentiment">GREED (68)</span>
+        <div id="coin-content">
+            <h2 class="sector-title">GLOBAL CRYPTO MARKET (TOP 100)</h2>
+            
+            <div class="grid" id="coin-grid">
+                <div class="card" style="text-align:center; padding:30px; color: #888;">
+                    <span class="symbol">Connecting to Blockchain...</span>
+                </div>
             </div>
         </div>
 
-        <div class="footer">
-            © 2025 US-DIVIDEND-PRO • REAL-TIME DATA FEED
-        </div>
+        <footer>
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #fff; margin-bottom: 10px;">ABOUT US-DIVIDEND-PRO</h4>
+                <p style="max-width: 800px; margin: 0 auto;">
+                    We track real-time pricing for Bitcoin, Ethereum, and major altcoins. 
+                    Our mission is to provide transparent market data for crypto investors worldwide.
+                </p>
+            </div>
+
+            <div style="margin-bottom: 20px; border: 1px solid #ff7b72; padding: 15px; border-radius: 6px; background: rgba(255,123,114,0.05); display: inline-block;">
+                <strong style="color: #ff7b72;">⚠️ CRYPTO RISK WARNING</strong><br>
+                Cryptocurrency trading involves high risk and may not be suitable for all investors.<br>
+                Prices are highly volatile. Invest at your own risk.
+            </div>
+
+            <div class="footer-links" style="margin-top: 20px;">
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a> | 
+                <a href="#">Contact Support</a>
+            </div>
+            <p style="margin-top: 15px;">© 2025 US-DIVIDEND-PRO. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
