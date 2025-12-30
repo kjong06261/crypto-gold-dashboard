@@ -1,34 +1,51 @@
-name: Update Asset Data
+name: Update Market Data
 
 on:
   schedule:
-    - cron: "0 * * * *"  # 매시간 정각 실행
-  workflow_dispatch:      # 수동 실행 버튼 활성화
+    - cron: '0 * * * *'  # 매시간 실행
+  workflow_dispatch:  # 수동 실행 가능
 
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
-
-      - name: Install Dependencies
+          python-version: '3.11'
+      
+      - name: Install dependencies
         run: |
-          pip install yfinance pandas requests schedule lxml
-
-      - name: Run Update Script
-        run: python update_data.py once  # 엔터프라이즈 코드를 위해 'once' 추가
-
-      - name: Commit and Push
+          pip install yfinance pandas
+      
+      - name: Run update script
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # 모든 html 파일과 데이터/로그를 싹 다 저장합니다.
-          git add index.html coin.html dividend.html status.json trends.json logs/ backups/
-          git commit -m "🚀 Enterprise Data Update: $(date +'%Y-%m-%d %H:%M KST')" || echo "No changes to commit"
-          git push origin main
+          python update_data.py
+      
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add coin.html dividend.html index.html status.json
+          git commit -m "🤖 Auto-update: $(date +'%Y-%m-%d %H:%M UTC')" || exit 0
+          git push
+```
+
+---
+
+## 📂 **파일 구조**
+```
+repo/
+├── .github/
+│   └── workflows/
+│       └── update.yml
+├── update_data.py  (← 이 스크립트)
+├── coin.html
+├── dividend.html
+├── index.html
+├── status.json
+└── README.md
