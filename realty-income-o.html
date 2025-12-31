@@ -2,86 +2,60 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>리얼티 인컴(O) 심층 분석: 월 $1,000 패시브 인컴을 위한 가이드</title>
+    <title>리얼티 인컴(O) 심층 분석: 월 $1,000 패시브 인컴 엔진 설계 가이드</title>
     <style>
-        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.8; color: #333; max-width: 900px; margin: 0 auto; padding: 40px 20px; background-color: #f9f9f9; }
-        .content-box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { color: #1a237e; border-bottom: 3px solid #1a237e; padding-bottom: 10px; font-size: 2.2em; }
-        h2 { color: #283593; margin-top: 40px; border-left: 5px solid #283593; padding-left: 15px; }
-        h3 { color: #3949ab; margin-top: 30px; }
-        p { margin-bottom: 20px; text-align: justify; }
-        .stats-table { width: 100%; border-collapse: collapse; margin: 25px 0; }
-        .stats-table th, .stats-table td { border: 1px solid #ddd; padding: 12px; text-align: center; }
-        .stats-table th { background-color: #f5f5f5; color: #1a237e; }
-        .highlight { background-color: #fff9c4; padding: 2px 5px; font-weight: bold; }
-        .footer { margin-top: 50px; font-size: 0.9em; color: #666; text-align: center; border-top: 1px solid #ddd; padding-top: 20px; }
+        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.8; color: #333; max-width: 900px; margin: 0 auto; padding: 40px; background: #f4f7f6; }
+        .article-container { background: white; padding: 50px; border-radius: 15px; shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h1 { color: #1a237e; font-size: 2.5em; border-bottom: 4px solid #1a237e; padding-bottom: 15px; }
+        h2 { color: #283593; margin-top: 50px; background: #e8eaf6; padding: 10px 20px; border-radius: 5px; }
+        p { margin-bottom: 25px; font-size: 1.1em; text-align: justify; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 1em; }
+        .data-table th, .data-table td { border: 1px solid #ddd; padding: 15px; text-align: center; }
+        .data-table th { background: #303f9f; color: white; }
     </style>
 </head>
 <body>
-    <div class="content-box">
-        <h1>Realty Income (O): Engineering Reliable Monthly Cash Flow</h1>
-        <p><strong>[국문 요약]</strong> 리얼티 인컴(Realty Income, O)은 미국 배당 투자자들 사이에서 '월세 받는 주식'의 대명사로 불립니다. 단순히 배당 수익률이 높은 것을 넘어, 50년이 넘는 기간 동안 배당을 늘려온 재무적 신뢰도가 이 종목의 핵심 가치입니다. 본 분석에서는 리얼티 인컴의 사업 구조와 2026년 현금흐름 전망을 심층 분석합니다.</p>
+    <div class="article-container">
+        <h1>Realty Income (O): The Ultimate Blueprint for Monthly Passive Income</h1>
+        <p>리얼티 인컴(Realty Income, O)은 단순한 부동산 투자 신탁(REITs)을 넘어, 전 세계 투자자들에게 '월세 받는 주식'의 표준으로 자리 잡았습니다. 1994년 상장 이후 650회 이상의 연속 배당을 지급하며, 54년 연속 배당 성장을 기록한 이 '배당 귀족주'는 예측 가능한 현금흐름(Cash Flow)을 설계하고자 하는 투자자들에게 필수적인 앵커 자산입니다.</p>
 
-        <h2>1. Corporate Profile: The Strategic Advantage of Triple-Net Leases</h2>
-        <p>Realty Income is not a typical landlord. It operates under a highly specialized business model known as the <strong>Triple-Net (NNN) Lease</strong>. In this structure, the tenant is responsible for nearly all property-related expenses, including property taxes, insurance, and ongoing maintenance. This is a critical factor for long-term investors because it shifts the burden of inflation and rising operational costs away from the REIT and onto the tenant.</p>
-        <p>For a company like Realty Income, which owns over 15,000 properties, managing maintenance for every single site would be a logistical and financial nightmare. However, by utilizing NNN leases, the company secures a <strong>stable, high-margin revenue stream</strong> that functions more like a bond than a traditional real estate holding. This structural advantage is what allows for the "predictability" that dividend investors crave.</p>
+        <h2>1. The Triple-Net Lease: A Structural Advantage</h2>
+        <p>리얼티 인컴의 강력함은 **Triple-Net (NNN) 임대 구조**에서 나옵니다. 이는 임차인이 부동산 세금, 보험료, 유지보수 비용을 모두 부담하는 구조입니다. 인플레이션으로 인해 원자재 값과 인건비가 상승하더라도, 리얼티 인컴은 운영 비용 리스크를 임차인에게 전가함으로써 순수익(AFFO)의 변동성을 최소화합니다. 이는 인플레이션 시기에도 배당 안전성이 훼손되지 않는 강력한 경제적 해자(Moat)를 형성합니다.</p>
+        <p>특히 포트폴리오의 80% 이상이 월마트, 세븐일레븐, 페덱스와 같은 필수 소비재 및 서비스 산업에 집중되어 있어, 경기 침체기에도 임대료 수취율이 98% 이하로 떨어진 적이 거의 없습니다. 이는 데이터가 증명하는 절대적인 안정성입니다.</p>
 
-        <h2>2. Deep Dive: Dividend Analysis and AFFO Payout Ratio</h2>
-        <p>When analyzing REITs, traditional earnings metrics like EPS (Earnings Per Share) are often misleading due to non-cash depreciation charges. Instead, professional investors focus on <strong>AFFO (Adjusted Funds From Operations)</strong>. Realty Income currently maintains an AFFO payout ratio of approximately 75% to 78%. This is considered the "Golden Zone" for dividend safety.</p>
-        <p>A payout ratio in this range indicates that the company is not overextending itself to pay shareholders. It retains enough capital to reinvest in new acquisitions and maintain its existing portfolio without relying on heavy debt issuance. This is precisely why Realty Income is <strong>NOT a yield trap</strong>. While some stocks offer 10% yields with 100% payout ratios, Realty Income offers a sustainable 5.4% yield with plenty of room for growth.</p>
-        
-        <h3>Dividend Growth Rate (CAGR)</h3>
-        <p>Historical data shows a consistent <strong>Dividend CAGR of approximately 4.3%</strong> since its IPO in 1994. While this may seem modest compared to high-growth tech stocks, the power of monthly compounding cannot be understated. When dividends are reinvested monthly, the total return over a decade often outpaces quarterly payers with similar yields.</p>
+        <h2>2. Dividend Safety: Analyzing AFFO and Payout Ratio</h2>
+        <p>REITs 분석에서 가장 중요한 지표는 당기순이익이 아닌 **AFFO(Adjusted Funds From Operations)**입니다. 리얼티 인컴의 AFFO 배당 성향은 현재 약 75% 수준에서 유지되고 있습니다. 이는 벌어들인 현금의 75%만 배당으로 지급하고, 나머지 25%는 새로운 자산 매입이나 재무 건전성 강화에 재투자한다는 의미입니다. 100%에 육박하는 배당 성향을 가진 고위험 종목들과 달리, 리얼티 인컴은 '배당 함정(Yield Trap)'에서 완벽하게 자유롭습니다.</p>
 
-        <h2>3. Financial Health and Credit Advantages</h2>
-        <p>Financial health is the shield that protects your passive income. Realty Income holds an investment-grade credit rating of <strong>A3 from Moody’s and A- from S&P</strong>. This is a rare distinction in the REIT world. A high credit rating means the company can borrow money at significantly lower interest rates than its competitors.</p>
-        <p>In a "Higher-for-Longer" interest rate environment, this cost-of-capital advantage becomes a formidable moat. While smaller REITs struggle to refinance their debt, Realty Income can continue to acquire new properties that are "accretive" to earnings, meaning the rent they collect is significantly higher than the interest they pay on the debt used to buy the property.</p>
-
-        <h2>4. 2026 Outlook and Strategy Matrix</h2>
-        <p>Looking forward to 2026, we anticipate a stabilizing interest rate environment which will provide a tailwind for REIT valuations. Realty Income’s continued expansion into European markets (UK, Spain, Italy) provides a necessary hedge against U.S. regional economic shifts. The core investment thesis remains: <strong>Stability over Speculation.</strong></p>
-
-        <h3>Estimated Monthly Dividend Income (5.4% Yield Assumption)</h3>
-        <table class="stats-table">
+        <h2>3. 2026 Strategy Table: Capital to Monthly Income</h2>
+        <table class="data-table">
             <thead>
                 <tr>
                     <th>투자 원금 (USD)</th>
-                    <th>연간 예상 배당금</th>
-                    <th>월평균 예상 수령액</th>
+                    <th>연간 예상 배당금 (5.4% 기준)</th>
+                    <th>월평균 현금흐름</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>$10,000</td>
                     <td>$540</td>
-                    <td><strong>$45.00</strong></td>
-                </tr>
-                <tr>
-                    <td>$50,000</td>
-                    <td>$2,700</td>
-                    <td><strong>$225.00</strong></td>
+                    <td>$45.00</td>
                 </tr>
                 <tr>
                     <td>$100,000</td>
                     <td>$5,400</td>
-                    <td><strong>$450.00</strong></td>
+                    <td>$450.00</td>
                 </tr>
                 <tr>
-                    <td>$250,000</td>
-                    <td>$13,500</td>
-                    <td><strong>$1,125.00</strong></td>
+                    <td>$220,000</td>
+                    <td>$11,880</td>
+                    <td>$990.00 (목표 월 $1,000 근접)</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>5. Conclusion: Why Realty Income is a "Must-Have" Anchor</h2>
-        <p>리얼티 인컴(O)은 단기 시세 차익을 노리는 공격적인 투자자보다는, <strong>시간을 자산으로 전환할 줄 아는 현명한 투자자</strong>를 위한 종목입니다. 매달 지급되는 배당금은 단순한 수익 이상의 가치인 '심리적 안정'을 제공하며, 이는 하락장에서도 투자를 지속하게 만드는 가장 강력한 동력이 됩니다.</p>
-        <p>실시간 배당 데이터 및 나스닥, 코인 수익률과 결합된 하이브리드 포트폴리오 전략은 <a href="https://us-dividend-pro.com"><strong>us-dividend-pro.com</strong></a>에서 더욱 상세히 확인하실 수 있습니다. 데이터는 거짓말을 하지 않습니다. 당신의 현금흐름을 지금 바로 설계하십시오.</p>
-
-        <div class="footer">
-            <p>© 2025 US Dividend Pro Analysis Engine. All rights reserved.</p>
-            <p>본 분석은 정보 제공을 목적으로 하며, 특정 종목에 대한 투자 권유가 아닙니다.</p>
-        </div>
+        <h2>4. Conclusion: Investing in Time, Not Just Price</h2>
+        <p>리얼티 인컴 투자는 단기적인 주가 차익을 노리는 것이 아니라, 시간을 내 편으로 만들어 복리의 마법을 부리는 과정입니다. 실시간 데이터 분석과 더 정밀한 종목 비교는 us-dividend-pro.com에서 제공하는 알고리즘을 통해 확인하십시오.</p>
     </div>
 </body>
 </html>
