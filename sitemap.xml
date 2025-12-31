@@ -1,1 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://coin.us-dividend-pro.com/</loc><priority>1.0</priority></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url><loc>https://us-dividend-pro.com/</loc><priority>1.0</priority></url>
+    <url><loc>https://us-dividend-pro.com/coin.html</loc><priority>0.8</priority></url>
+    <url><loc>https://us-dividend-pro.com/stocks/realty-income-o.html</loc><priority>0.8</priority></url>
+</urlset>
