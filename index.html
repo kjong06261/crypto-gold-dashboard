@@ -1,264 +1,123 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>US Dividend Pro | 미국 배당주 & 현금흐름 전략</title>
-    <meta name="description" content="미국 배당성장주, 나스닥 테크주, 가상자산 스테이킹을 결합한 최적의 패시브 인컴 포트폴리오 분석">
+    <title>US Market Terminals | Institutional Intelligence</title>
+    <meta name="description" content="미국 주식, 나스닥 100, 배당주 및 가상자산 시장에 대한 전문가 수준의 심층 분석 리포트">
+    
     <style>
-        /* --- 기본 스타일 (사용자 선호: 화이트 & 블루) --- */
-        body { 
-            font-family: 'Pretendard', 'Malgun Gothic', sans-serif; 
-            line-height: 1.7; 
-            color: #333; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            background-color: #f4f7f6; 
+        /* --- 통합 디자인 (Dark Terminal Theme) --- */
+        :root {
+            --bg-body: #0d1117;
+            --bg-panel: #161b22;
+            --border: #30363d;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent-green: #238636;
+            --accent-blue: #58a6ff;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
         }
 
-        /* --- 헤더 --- */
-        header { 
-            background: linear-gradient(135deg, #1a237e 0%, #283593 100%); 
-            color: white; 
-            padding: 50px 20px; 
-            border-radius: 12px; 
-            text-align: center; 
-            margin-bottom: 40px; 
-            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.2);
-        }
-        header h1 { margin: 0 0 10px 0; font-size: 2.2rem; letter-spacing: -1px; }
-        header p { margin: 0; font-size: 1.1rem; opacity: 0.9; }
-
-        /* --- 메인 컨테이너 --- */
-        main { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-        }
-
-        .intro-section { 
-            border-bottom: 2px solid #f0f0f0; 
-            margin-bottom: 40px; 
-            padding-bottom: 30px; 
-        }
+        body { margin: 0; background-color: var(--bg-body); color: var(--text-main); font-family: var(--font-stack); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
         
-        .section-title {
-            font-size: 1.5rem;
-            color: #1a237e;
-            margin-bottom: 25px;
-            font-weight: 700;
-            border-left: 5px solid #1a237e;
-            padding-left: 15px;
-        }
+        /* 네비게이션 */
+        .navbar { border-bottom: 1px solid var(--border); padding: 0 20px; background: var(--bg-panel); position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1000px; margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: white; }
+        .nav-links a { margin-left: 20px; color: var(--text-muted); font-size: 0.9rem; font-weight: 600; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-blue); }
 
-        /* --- 분석 카드 (핵심 기능: 펼치기) --- */
-        .analysis-card { 
-            border: 1px solid #e0e0e0; 
+        /* 메인 헤더 (대시보드 느낌) */
+        .hero { padding: 60px 20px; text-align: center; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-body) 100%); }
+        .hero h1 { font-size: 2.5rem; color: white; margin: 0 0 10px 0; }
+        .hero p { color: var(--text-muted); font-size: 1.1rem; }
+
+        /* 블로그 컨텐츠 영역 */
+        .content-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        
+        .blog-post { 
+            background: var(--bg-panel); 
+            border: 1px solid var(--border); 
+            border-radius: 12px; 
             padding: 30px; 
-            border-radius: 12px; 
-            margin-bottom: 25px; 
-            transition: all 0.3s ease; 
-            background-color: #fff;
+            margin-bottom: 30px; 
+            transition: transform 0.2s;
         }
+        .blog-post:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
 
-        .analysis-card:hover { 
-            border-color: #1a237e; 
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
-            transform: translateY(-2px);
-        }
-
-        .tag-row { margin-bottom: 15px; }
-        
         .tag { 
-            background: #e8eaf6; 
-            color: #3949ab; 
-            padding: 4px 12px; 
-            border-radius: 6px; 
-            font-size: 0.8rem; 
-            font-weight: 600; 
-            display: inline-block;
-        }
-
-        .card-title { 
-            font-size: 1.4rem; 
+            display: inline-block; 
+            background: rgba(88, 166, 255, 0.15); 
+            color: var(--accent-blue); 
+            padding: 4px 10px; 
+            border-radius: 4px; 
+            font-size: 0.75rem; 
             font-weight: 700; 
-            color: #1a237e; 
-            margin: 0 0 10px 0; 
-            display: block;
+            margin-bottom: 15px; 
+            letter-spacing: 0.5px;
         }
 
-        .card-summary {
-            color: #555;
-            margin-bottom: 20px;
-        }
+        .post-title { margin: 0 0 15px 0; color: white; font-size: 1.6rem; }
+        .post-body { color: var(--text-muted); font-size: 1rem; text-align: justify; }
+        .highlight { color: var(--accent-green); font-weight: 700; }
 
-        /* --- 숨겨진 콘텐츠 (버튼 누르면 나옴) --- */
-        .full-content {
-            display: none; /* 기본 숨김 */
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px dashed #ddd;
-            background-color: #fafafa;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .full-content h3 {
-            color: #283593;
-            font-size: 1.1rem;
-            margin-top: 15px;
-            margin-bottom: 8px;
-        }
-        
-        .full-content p {
-            font-size: 0.95rem;
-            color: #444;
-            margin-bottom: 15px;
-        }
-
-        /* --- 버튼 스타일 --- */
-        .read-btn {
-            background-color: white;
-            color: #1a237e;
-            border: 1px solid #1a237e;
-            padding: 8px 20px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .read-btn:hover {
-            background-color: #1a237e;
-            color: white;
-        }
-
-        /* --- 노란색 전문가 박스 --- */
-        .expert-text { 
-            background: #fffde7; 
-            padding: 25px; 
-            border-radius: 12px; 
-            margin-top: 50px; 
-            border-left: 5px solid #fbc02d; 
-        }
-
-        /* --- 푸터 --- */
-        .footer { 
-            text-align: center; 
-            margin-top: 60px; 
-            color: #888; 
-            font-size: 0.85rem; 
-            border-top: 1px solid #ddd;
-            padding-top: 20px;
-        }
-
-        /* 모바일 최적화 */
-        @media (max-width: 600px) {
-            header { padding: 30px 15px; }
-            main { padding: 20px; }
-            .analysis-card { padding: 20px; }
-        }
+        footer { text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 60px; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>US Dividend Pro</h1>
-    <p>Professional Research for Passive Income Investors</p>
-</header>
-
-<main>
-    <section class="intro-section">
-        <h2>미국 주식 및 디지털 자산 현금흐름 최적화 전략</h2>
-        <p><strong>US Dividend Pro</strong>는 단순히 종목을 나열하는 곳이 아닙니다. 우리는 미국 배당성장주(Dividend Growth), 나스닥 테크 자산, 그리고 가상자산 스테이킹 수익률을 정밀하게 분석하여 <strong>'잠자는 동안에도 돈이 들어오는 시스템'</strong>을 구축하는 법을 연구합니다.</p>
-    </section>
-
-    <h2 class="section-title">심층 종목 분석 리포트 (Latest Analysis)</h2>
-
-    <article class="analysis-card">
-        <div class="tag-row"><span class="tag">REITs</span> <span class="tag">Monthly Dividend</span></div>
-        <h3 class="card-title">Realty Income (O): 월배당의 황제, 2026년에도 안전한가?</h3>
-        <p class="card-summary">
-            금리 인하 사이클이 시작되면 리츠(REITs)는 어떻게 반응할까? 리얼티 인컴의 AFFO 지급 여력과 부채 만기 구조를 정밀 진단합니다.
-        </p>
-        <button class="read-btn" onclick="toggleContent(this)">분석 리포트 읽기</button>
-
-        <div class="full-content">
-            <h3>1. 금리와 리츠의 상관관계</h3>
-            <p>리얼티 인컴은 채권과 유사한 성격을 가집니다. 2025-2026년 연준(Fed)의 금리 인하가 가시화됨에 따라, 리얼티 인컴의 자금 조달 비용(Cost of Capital)은 낮아지고, 이는 곧 수익성 개선(AFFO 증가)으로 이어질 전망입니다.</p>
-            <h3>2. 공실률과 포트폴리오 방어력</h3>
-            <p>최근 상업용 부동산 위기설에도 불구하고, 리얼티 인컴은 99% 수준의 임대율을 유지하고 있습니다. 특히 약국, 편의점 등 필수 소비재 위주의 포트폴리오에서 최근 데이터 센터 및 게이밍(카지노) 자산으로 확장을 시도하며 리스크를 분산하고 있습니다.</p>
-            <h3>3. 투자 결론</h3>
-            <p>현재 P/AFFO 밸류에이션은 역사적 저점 구간에 머물러 있습니다. 연 5% 이상의 배당 수익률과 월복리 효과를 고려할 때, 지금은 강력한 매수 기회로 판단됩니다.</p>
+    <nav class="navbar">
+        <div class="nav-inner">
+            <div class="logo">US MARKET TERMINALS</div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Finance</a>
+                <a href="#" class="active">Insights</a>
+            </div>
         </div>
-    </article>
+    </nav>
 
-    <article class="analysis-card">
-        <div class="tag-row"><span class="tag">CRYPTO</span> <span class="tag">Staking Economy</span></div>
-        <h3 class="card-title">Crypto 100 Terminal: 디지털 자산 스테이킹 전략</h3>
-        <p class="card-summary">
-            단순 보유를 넘어선 '이자 농사'. 상위 100개 가상자산의 스테이킹 보상률과 변동성을 분석하여 디지털 현금흐름을 창출합니다.
-        </p>
-        <button class="read-btn" onclick="toggleContent(this)">분석 리포트 읽기</button>
+    <header class="hero">
+        <h1>Market Insights & Strategy</h1>
+        <p>전통 금융 자산과 디지털 자산의 융합을 통한 현금흐름 최적화</p>
+    </header>
 
-        <div class="full-content">
-            <h3>1. 시세 차익 vs 스테이킹 보상</h3>
-            <p>많은 투자자가 비트코인의 가격 변동에만 집중합니다. 하지만 이더리움(ETH)이나 솔라나(SOL) 같은 PoS(지분증명) 코인은 네트워크 검증에 참여함으로써 연 3~7% 수준의 코인 자체 보상을 지급합니다. 이를 '디지털 배당'으로 접근해야 합니다.</p>
-            <h3>2. 변동성 헤징 전략</h3>
-            <p>코인 시장의 높은 변동성을 방어하기 위해, 스테이킹 보상을 수령하는 즉시 스테이블코인(USDT/USDC)으로 환전하여 재투자하는 전략을 추천합니다. 이는 하락장에서도 자산을 방어하는 강력한 수단이 됩니다.</p>
-        </div>
-    </article>
-
-    <article class="analysis-card">
-        <div class="tag-row"><span class="tag">ETF</span> <span class="tag">Strategy</span></div>
-        <h3 class="card-title">SCHD vs VIG: 어떤 배당 성장주를 담아야 할까?</h3>
-        <p class="card-summary">
-            당장 높은 배당을 주는 SCHD와, 배당 성장률이 높은 VIG. 2026년 시장 환경에서 승자는 누가 될 것인가?
-        </p>
-        <button class="read-btn" onclick="toggleContent(this)">분석 리포트 읽기</button>
-
-        <div class="full-content">
-            <h3>1. SCHD의 강력한 현금흐름</h3>
-            <p>Schwab US Dividend Equity ETF(SCHD)는 재무 건전성이 뛰어나고 배당을 꾸준히 늘려온 기업에 투자합니다. 약 3.5%의 시가 배당률은 은퇴자나 현금흐름이 필요한 투자자에게 최고의 선택지입니다.</p>
-            <h3>2. VIG의 기술주 성장성</h3>
-            <p>Vanguard Dividend Appreciation(VIG)는 배당 수익률 자체보다는 '10년 이상 배당을 늘려온 역사'를 봅니다. 이로 인해 마이크로소프트, 애플 같은 빅테크 비중이 높아, 상승장에서 더 높은 시세 차익을 기대할 수 있습니다.</p>
-            <h3>3. 황금 비율 6:4</h3>
-            <p>안정적인 현금흐름을 원한다면 SCHD에 60%, 기술주 성장을 놓치고 싶지 않다면 VIG에 40%를 배분하는 바벨 전략이 유효합니다.</p>
-        </div>
-    </article>
-
-    <div class="expert-text">
-        <h3>💡 왜 미국 배당주와 기술주를 섞어야 하는가?</h3>
-        <p>전통적인 배당주만으로는 자본의 성장이 더딜 수 있고, 기술주만으로는 현금흐름이 부족할 수 있습니다. <strong>US Dividend Pro</strong>의 핵심 철학은 리얼티 인컴(O) 같은 안정적인 배당 앵커와 나스닥 100의 성장성, 그리고 코인의 높은 수익률을 결합하여 시장의 변동성을 이겨내는 하이브리드 포트폴리오를 설계하는 것입니다. 우리는 구글 애드센스 수익만큼이나 강력한 배당 수익을 추구합니다.</p>
-    </div>
-</main>
-
-<footer class="footer">
-    <p>© 2025 US Dividend Pro. All rights reserved. <br> 본 사이트의 데이터는 공개된 시장 정보를 바탕으로 하며, 모든 투자 판단의 책임은 본인에게 있습니다.</p>
-</footer>
-
-<script>
-    function toggleContent(btn) {
-        // 버튼 바로 다음에 있는 div(숨겨진 내용) 찾기
-        var content = btn.nextElementSibling;
+    <div class="content-container">
         
-        // 현재 숨겨져 있는지 확인
-        if (content.style.display === "block") {
-            content.style.display = "none";
-            btn.innerText = "분석 리포트 읽기";
-            btn.style.backgroundColor = "white";
-            btn.style.color = "#1a237e";
-        } else {
-            content.style.display = "block";
-            btn.innerText = "내용 닫기";
-            btn.style.backgroundColor = "#1a237e";
-            btn.style.color = "white";
-        }
-    }
-</script>
+        <article class="blog-post">
+            <span class="tag">MARKET STRATEGY</span>
+            <h2 class="post-title">The 2026 Macro Pivot: Balancing Growth and Yield</h2>
+            <div class="post-body">
+                <p>2026년 글로벌 시장은 고금리의 여파가 잦아들고 실질적인 기업 이익의 질(Quality of Earnings)이 주가를 결정하는 시대로 진입했습니다. 나스닥 100을 주도하는 테크 기업들은 이제 강력한 현금흐름을 바탕으로 주주 환원을 강화하고 있습니다.</p>
+                <p>현명한 투자자라면 <span class="highlight">NVDA, MSFT</span>와 같은 고성장주와 <span class="highlight">Realty Income(O)</span> 같은 인컴 자산을 혼합해야 합니다. 당사의 데이터 분석 결과, 이러한 하이브리드 포트폴리오는 하락장에서 탁월한 방어력을 보여줍니다.</p>
+            </div>
+        </article>
+
+        <article class="blog-post">
+            <span class="tag">CRYPTO ANALYSIS</span>
+            <h2 class="post-title">Institutional Crypto Staking: Digital Dividends</h2>
+            <div class="post-body">
+                <p>가상자산 스테이킹은 단순한 이자 놀이가 아닌, 블록체인 네트워크 보안의 핵심 인프라 수익입니다. 이더리움(ETH)의 인출 유연성 확보 이후, 기관 자산가들은 이를 '디지털 채권'으로 활용하고 있습니다.</p>
+                <p>비트코인 ETF 안착으로 변동성이 안정화됨에 따라, 지금이 스테이킹 기반의 <span class="highlight">Passive Income</span> 전략을 구사하기에 최적의 시기입니다. 지속 가능한 연 5~8% 수익률 확보 전략을 확인하세요.</p>
+            </div>
+        </article>
+
+        <article class="blog-post">
+            <span class="tag">TECH INSIGHTS</span>
+            <h2 class="post-title">AI Infrastructure: The New Utility Asset Class</h2>
+            <div class="post-body">
+                <p>인공지능(AI)은 전 세계 에너지를 소모하는 거대한 인프라 자산입니다. 반도체 설계부터 데이터 센터 냉각 시스템까지, 나스닥 내 AI 밸류체인은 과거의 유틸리티 주식처럼 필수적인 역할을 수행하게 될 것입니다.</p>
+                <p>우리는 단순히 주가 차트가 아닌, 데이터 센터 가동률과 전력 효율성 지표를 통해 진정한 가치주를 선별해야 합니다.</p>
+            </div>
+        </article>
+
+    </div>
+
+    <footer>
+        <p>© 2025 US Market Terminals. All rights reserved.<br>Provided for informational purposes only.</p>
+    </footer>
 
 </body>
 </html>
