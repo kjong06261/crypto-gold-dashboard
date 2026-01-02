@@ -1,19 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>US Market Terminals | 기관급 마켓 데이터 분석 플랫폼</title>
-  <meta name="description" content="미국 주식, 나스닥 100, 배당주, 가상자산 데이터를 한 곳에서 분석하는 시장 터미널. 실시간 시세, 포트폴리오 리스크 관리, 고배당 리츠 분석 도구를 무료로 제공합니다.">
-  <meta name="keywords" content="미국 주식, 나스닥 100, 배당주, 가상자산, 투자 분석, 포트폴리오 최적화, 리츠, REITs, 비트코인, 크립토, FCF 분석">
+  <meta name="description" content="미국 주식, 나스닥 100, 배당주, 가상자산 데이터를 한 곳에서 분석하는 시장 터미널. 차트·지표·계산기를 통해 현금흐름과 리스크를 관리합니다. 개인 투자자를 위한 기관급 플랫폼.">
+  <meta name="keywords" content="미국 주식, 나스닥 100, 배당주, 가상자산, 투자 분석, 포트폴리오 최적화, 리츠, REITs, 비트코인, 크립토, 투자 데이터, 금융 분석">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://us-dividend-pro.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://us-dividend-pro.com/">
-  <meta property="og:title" content="US Market Terminals | 기관급 데이터 분석">
-  <meta property="og:description" content="개인 투자자를 위한 기관급 마켓 인텔리전스. 실시간 데이터와 전문 분석 도구를 경험하세요.">
+  <meta property="og:title" content="US Market Terminals | 기관급 마켓 데이터 분석">
+  <meta property="og:description" content="개인 투자자를 위한 기관급 마켓 인텔리전스 플랫폼">
   <meta property="og:image" content="https://us-dividend-pro.com/og-image.jpg">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -53,7 +52,6 @@
       --radius: 12px;
       --radius-sm: 8px;
       --radius-lg: 16px;
-      --shadow-lg: 0 12px 40px rgba(0,0,0,0.4);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -79,46 +77,59 @@
     /* ===== NAVIGATION ===== */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(10, 13, 18, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(10, 13, 18, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid transparent;
       transition: var(--transition);
     }
+    
     .nav.scrolled {
-      background: rgba(10, 13, 18, 0.98);
+      background: rgba(10, 13, 18, 0.95);
       border-bottom-color: var(--border);
     }
+    
     .navin {
       max-width: 1200px; margin: 0 auto; height: 64px;
       display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
     }
+    
     .logo {
       display: flex; align-items: center; gap: 10px;
       color: #fff; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.5px;
     }
+    
     .logo-mark {
       width: 32px; height: 32px;
       background: linear-gradient(135deg, var(--accent) 0%, var(--purple) 100%);
       border-radius: 8px; display: grid; place-items: center; font-size: 0.9rem;
     }
+    
     .nav-links { display: flex; align-items: center; gap: 4px; }
+    
     .nav-links a {
       color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;
       padding: 8px 14px; border-radius: var(--radius-sm); transition: var(--transition);
     }
+    
     .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
     .nav-links a.active { color: var(--accent); }
+    
     .nav-cta {
       background: var(--accent) !important; color: #fff !important; font-weight: 600 !important; margin-left: 8px;
     }
     .nav-cta:hover { background: var(--accent-light) !important; }
 
+    /* Accessibility Focus for Menu Toggle */
     .menu-toggle {
       display: none; flex-direction: column; gap: 5px; cursor: pointer;
       background: transparent; border: 0; padding: 8px; border-radius: 6px;
     }
-    .menu-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .menu-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    
     .menu-toggle span {
       width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition);
     }
@@ -128,11 +139,13 @@
       min-height: 100vh; display: flex; align-items: center;
       padding: 120px 24px 80px; position: relative; overflow: hidden;
     }
+    
     .hero-bg {
       position: absolute; inset: 0;
       background: radial-gradient(ellipse 100% 80% at 50% -30%, rgba(59, 130, 246, 0.12) 0%, transparent 60%);
       pointer-events: none;
     }
+    
     .hero-grid {
       position: absolute; inset: 0;
       background-image: linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
@@ -140,6 +153,7 @@
       mask-image: radial-gradient(ellipse 70% 50% at 50% 30%, black, transparent);
       -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 30%, black, transparent);
     }
+    
     .hero .container { position: relative; z-index: 1; text-align: center; max-width: 900px; }
     
     .hero-badge {
@@ -148,20 +162,24 @@
       color: var(--accent-light); padding: 6px 14px; border-radius: 99px;
       font-size: 0.8rem; font-weight: 600; margin-bottom: 24px;
     }
+    
     .hero-badge .dot {
       width: 6px; height: 6px; background: var(--success);
       border-radius: 50%; animation: pulse 2s ease-in-out infinite;
     }
+    
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
     
     .hero h1 {
       margin: 0 0 20px; color: #fff; font-size: clamp(2.2rem, 5.5vw, 3.5rem);
       font-weight: 900; line-height: 1.1; letter-spacing: -1.5px;
     }
+    
     .hero h1 .highlight {
       background: linear-gradient(135deg, var(--accent-light) 0%, var(--cyan) 50%, var(--purple) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
+    
     .hero-desc {
       margin: 0 auto 36px; max-width: 560px; color: var(--text-secondary);
       font-size: 1.1rem; line-height: 1.7;
@@ -172,32 +190,38 @@
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
       background: var(--border); border: 1px solid var(--border);
       border-radius: var(--radius-lg); overflow: hidden;
-      margin: 0 auto 40px; max-width: 760px;
+      margin: 0 auto 40px; max-width: 700px;
     }
+    
     .dash-item {
-      background: var(--panel); padding: 16px 10px; text-align: center; transition: var(--transition);
+      background: var(--panel); padding: 16px 12px; text-align: center; transition: var(--transition);
     }
     .dash-item:hover { background: var(--panel-hover); }
+    
     .dash-label {
-      font-size: 0.6rem; color: var(--muted); text-transform: uppercase;
+      font-size: 0.65rem; color: var(--muted); text-transform: uppercase;
       letter-spacing: 1px; margin-bottom: 6px; font-weight: 600;
     }
+    
     .dash-value {
-      font-size: 0.95rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums;
+      font-size: 1rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums;
     }
     .dash-value.up { color: var(--success); }
     .dash-value.down { color: var(--error); }
+    
     .dash-note {
-      margin-top: 4px; font-size: 0.6rem; color: var(--muted); opacity: 0.8; display: block;
+      margin-top: 4px; font-size: 0.65rem; color: var(--muted); opacity: 0.8;
     }
 
-    /* CTA Group */
+    /* CTA Buttons */
     .cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    
     .btn {
       display: inline-flex; align-items: center; gap: 8px; font-weight: 600;
       font-size: 0.95rem; padding: 12px 24px; border-radius: var(--radius-sm);
       border: 1px solid transparent; cursor: pointer; transition: var(--transition);
     }
+    
     .btn-primary {
       background: var(--accent); color: #fff; box-shadow: 0 2px 12px rgba(59, 130, 246, 0.3);
     }
@@ -205,6 +229,7 @@
       background: var(--accent-light); transform: translateY(-2px);
       box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4); color: #fff;
     }
+    
     .btn-secondary {
       background: transparent; color: var(--text); border-color: var(--border);
     }
@@ -225,7 +250,12 @@
       50% { transform: translateX(-50%) translateY(-6px); }
     }
 
-    /* Common Sections */
+    /* ===== FEATURES ===== */
+    .features {
+      padding: 100px 24px; background: var(--bg-alt);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    
     .section-header { text-align: center; margin-bottom: 56px; }
     .section-tag {
       display: inline-block; color: var(--accent); font-size: 0.75rem;
@@ -238,16 +268,12 @@
     .section-desc {
       color: var(--text-secondary); font-size: 1rem; max-width: 500px; margin: 0 auto;
     }
-
-    /* Features */
-    .features {
-      padding: 100px 24px; background: var(--bg-alt);
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    }
+    
     .features-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
       max-width: 1000px; margin: 0 auto;
     }
+    
     .feature-card {
       background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 28px 24px; transition: var(--transition);
@@ -256,6 +282,7 @@
       border-color: var(--accent); transform: translateY(-4px);
       box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 0 1px var(--accent-glow);
     }
+    
     .feature-icon {
       width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center;
       font-size: 1.3rem; margin-bottom: 16px;
@@ -264,14 +291,17 @@
     .feature-icon.green { background: var(--success-dim); }
     .feature-icon.purple { background: var(--purple-dim); }
     .feature-icon.orange { background: var(--warning-dim); }
+    
     .feature-card h3 { color: #fff; font-size: 1.05rem; font-weight: 700; margin: 0 0 8px; }
     .feature-card p { color: var(--text-secondary); font-size: 0.9rem; margin: 0; line-height: 1.6; }
 
-    /* Terminals */
+    /* ===== TERMINALS GRID ===== */
     .terminals { padding: 100px 24px; }
+    
     .terminals-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;
     }
+    
     .terminal-card {
       background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
       overflow: hidden; transition: var(--transition); display: flex; flex-direction: column;
@@ -279,9 +309,11 @@
     .terminal-card:hover {
       transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow-lg);
     }
+    
     .terminal-header {
       padding: 24px 24px 0; display: flex; align-items: center; justify-content: space-between;
     }
+    
     .terminal-badge {
       font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
       letter-spacing: 1px; padding: 5px 10px; border-radius: 6px;
@@ -290,18 +322,22 @@
     .terminal-badge.green { background: var(--success-dim); color: var(--success); }
     .terminal-badge.purple { background: var(--purple-dim); color: var(--purple); }
     .terminal-badge.orange { background: var(--warning-dim); color: var(--warning); }
+    
     .terminal-icon { font-size: 1.5rem; }
+    
     .terminal-body {
       padding: 20px 24px 24px; flex-grow: 1; display: flex; flex-direction: column;
     }
     .terminal-card h3 { color: #fff; font-size: 1.2rem; font-weight: 700; margin: 0 0 8px; }
     .terminal-card p { color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 20px; flex-grow: 1; line-height: 1.6; }
+    
     .terminal-meta {
       display: flex; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); margin-bottom: 16px;
     }
     .terminal-stat { display: flex; flex-direction: column; gap: 2px; }
     .terminal-stat-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
     .terminal-stat-value { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    
     .terminal-btn {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border);
@@ -311,10 +347,9 @@
     .terminal-btn:hover {
       background: var(--accent-glow); border-color: var(--accent); color: var(--accent);
     }
-    .terminal-btn svg { transition: var(--transition); }
     .terminal-btn:hover svg { transform: translateX(3px); }
 
-    /* Stats */
+    /* ===== STATS ===== */
     .stats {
       padding: 80px 24px; background: var(--bg-alt);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -330,7 +365,7 @@
     .stat-number .accent { color: var(--accent); }
     .stat-label { color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; }
 
-    /* Newsletter */
+    /* ===== NEWSLETTER ===== */
     .newsletter { padding: 100px 24px; }
     .newsletter-box { max-width: 520px; margin: 0 auto; text-align: center; }
     .newsletter-form { display: flex; gap: 10px; margin-top: 28px; }
@@ -347,7 +382,7 @@
     }
     .newsletter-btn:hover { background: var(--accent-light); }
 
-    /* SEO Content + FAQ */
+    /* ===== SEO CONTENT ===== */
     .seo-content { 
       max-width: 720px; margin: 0 auto; padding: 80px 24px 40px;
       line-height: 1.8;
@@ -368,17 +403,23 @@
       margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border);
     }
     .faq-item {
-      margin-bottom: 30px; padding: 24px; background: var(--panel);
+      margin-bottom: 30px; padding: 20px; background: var(--panel);
       border-radius: var(--radius); border: 1px solid var(--border);
     }
     .faq-item h4 {
       color: var(--accent-light); font-size: 1.05rem; font-weight: 700;
       margin: 0 0 12px; display: flex; align-items: center; gap: 10px;
     }
-    .faq-item p { color: var(--text-secondary); margin: 0; }
+    .faq-item h4:before {
+      content: "Q."; color: var(--accent); font-weight: 900;
+    }
+    .faq-item p {
+      color: var(--text-secondary); margin: 0; padding-left: 30px;
+    }
 
-    /* Footer */
+    /* ===== FOOTER ===== */
     footer { background: var(--bg-alt); border-top: 1px solid var(--border); }
+    
     .footer-main {
       display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 48px;
       max-width: 1200px; margin: 0 auto; padding: 64px 24px 48px;
@@ -395,6 +436,7 @@
     .footer-col li { margin-bottom: 12px; }
     .footer-col a { color: var(--text-secondary); font-size: 0.9rem; }
     .footer-col a:hover { color: var(--accent); }
+    
     .footer-bottom {
       display: flex; justify-content: space-between; align-items: center;
       max-width: 1200px; margin: 0 auto; padding: 24px 24px;
@@ -410,11 +452,12 @@
       border-color: var(--accent); color: var(--accent); background: var(--accent-glow);
     }
 
-    /* Animations */
+    /* ===== ANIMATIONS ===== */
     .fade-up {
       opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease;
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
+    
     .hero-badge { animation: fadeIn 0.5s ease forwards; }
     .hero h1 { animation: fadeIn 0.5s ease 0.1s forwards; opacity: 0; }
     .hero-desc { animation: fadeIn 0.5s ease 0.2s forwards; opacity: 0; }
@@ -422,17 +465,18 @@
     .cta-group { animation: fadeIn 0.5s ease 0.4s forwards; opacity: 0; }
     @keyframes fadeIn { to { opacity: 1; } }
 
-    /* Responsive */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-main { grid-template-columns: repeat(2, 1fr); }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    
     @media (max-width: 768px) {
       .nav-links {
         display: none; position: absolute; top: 64px; left: 0; right: 0;
         background: var(--panel); flex-direction: column; padding: 16px;
-        border-bottom: 1px solid var(--border); gap: 4px; box-shadow: var(--shadow-lg);
+        border-bottom: 1px solid var(--border); gap: 4px;
       }
       .nav-links.open { display: flex; }
       .nav-links a { padding: 12px 16px; }
@@ -473,7 +517,7 @@
         <a href="nasdaq.html" class="nav-cta">Get Started</a>
       </div>
       
-      <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기" aria-expanded="false">
+      <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -502,7 +546,7 @@
       <div class="live-dashboard">
         <div class="dash-item">
           <div class="dash-label">NY Time</div>
-          <div class="dash-value" id="us-clock">--:--</div>
+          <div class="dash-value" id="us-clock">--:--:--</div>
         </div>
         <div class="dash-item">
           <div class="dash-label">Status</div>
@@ -782,8 +826,8 @@
     <div class="newsletter-box fade-up">
       <span class="section-tag">Newsletter</span>
       <h2 class="section-title">시장 인사이트를 받아보세요</h2>
-      <p class="section-desc">주간 마켓 리포트와 투자 아이디어를 이메일로 받아보세요. (현재 베타 운영 중)</p>
-      <form class="newsletter-form" onsubmit="event.preventDefault(); alert('구독 신청이 완료되었습니다. (Beta)');">
+      <p class="section-desc">주간 마켓 리포트와 투자 아이디어를 이메일로 받아보세요.</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault(); alert('구독해 주셔서 감사합니다!');">
         <input type="email" class="newsletter-input" placeholder="이메일 주소" required>
         <button type="submit" class="newsletter-btn">구독하기</button>
       </form>
@@ -791,43 +835,129 @@
   </section>
 
   <article class="seo-content">
-    <h3>Why US Market Terminals?</h3>
+    <h3>US Market Terminals: 개인 투자자를 위한 기관급 데이터 분석 플랫폼</h3>
     <p>
-      현대 금융 시장은 데이터의 홍수 속에 있습니다. 성공적인 투자는 단순한 정보의 수집이 아니라, 노이즈를 제거하고 유의미한 신호를 포착하는 능력에서 비롯됩니다.
-      US Market Terminals는 개인 투자자들이 기관 투자자와 대등한 수준의 정보력을 갖출 수 있도록 설계된 웹 기반 터미널입니다.
+      현대 금융 시장은 데이터의 홍수 속에 있습니다. 성공적인 투자는 단순한 정보의 수집이 아니라,
+      노이즈를 제거하고 유의미한 신호를 포착하는 능력에서 비롯됩니다.
+      US Market Terminals는 개인 투자자들이 기관 투자자와 대등한 수준의 정보력을 갖출 수 있도록
+      설계된 웹 기반 터미널입니다.
     </p>
 
-    <h3>Core Philosophy: Barbell Strategy</h3>
+    <h3>투자 철학: 바벨 전략(Barbell Strategy)의 현대적 적용</h3>
     <p>
-      우리는 <strong>'Barbell Strategy(바벨 전략)'</strong>을 지향합니다. 포트폴리오의 한 축은 나스닥(Nasdaq-100) 중심의 기술 혁신 기업에 투자하여 자본 차익을 극대화하고,
-      다른 한 축은 리츠(REITs)와 고배당주를 통해 안정적인 현금 흐름(Cash Flow)을 창출하여 시장 변동성을 방어하는 전략입니다.
-      여기에 디지털 자산(Crypto)을 위성 자산으로 편입하여 추가적인 알파 수익을 추구합니다.
+      우리는 <strong>'Barbell Strategy(바벨 전략)'</strong>을 지향합니다.
+      포트폴리오의 한 축은 나스닥(Nasdaq-100) 중심의 기술 혁신 기업에 투자하여 자본 차익을 극대화하고,
+      다른 한 축은 리츠(REITs)와 고배당주를 통해 안정적인 현금 흐름(Cash Flow)을 창출하여
+      시장 변동성을 방어하는 전략입니다. 여기에 디지털 자산(Crypto)을 위성 자산으로 편입하여
+      추가적인 알파 수익을 추구합니다.
     </p>
     
-    <h3>Data-Driven Decisions</h3>
+    <h3>데이터 기반 의사결정(Data-Driven Decisions)</h3>
     <p>
-      모든 투자 결정은 데이터에 기반해야 합니다. 우리는 다음과 같은 핵심 지표를 활용합니다:
+      모든 투자 결정은 데이터에 기반해야 합니다. 우리는 FCF(잉여현금흐름), FFO(운용수익), 
+      AFFO(조정운용수익), P/E, P/S, EV/EBITDA 등 핵심 지표를 통해 기업의 실질적인 가치를 평가합니다.
+      감정이 아닌 숫자로, 추측이 아닌 분석으로 투자하세요.
+    </p>
+    
+    <h3>포트폴리오 구성 원칙</h3>
+    <p>
+      효과적인 포트폴리오 관리를 위해 다음 원칙을 따릅니다:
     </p>
     <ul>
-      <li><strong>FCF Yield (잉여현금흐름 수익률):</strong> 기업이 실제 벌어들이는 현금 능력 평가</li>
-      <li><strong>FFO/AFFO (운용 자금):</strong> 리츠(REITs) 투자의 핵심 건전성 지표</li>
-      <li><strong>Dividend Growth Rate (배당 성장률):</strong> 인플레이션을 방어하는 배당주의 힘</li>
-      <li><strong>On-chain Metrics:</strong> 비트코인 네트워크 활동성 및 보유자 분포 분석</li>
+      <li><strong>자산배분(Asset Allocation)</strong>: 나스닥 성장주 40%, 배당주/리츠 40%, 가상자산 10%, 현금 10%</li>
+      <li><strong>분산투자(Diversification)</strong>: 섹터별, 지역별, 자산군별 분산</li>
+      <li><strong>리스크 관리(Risk Management)</strong>: 최대 낙폭(MDD) 20% 이내 관리</li>
+      <li><strong>장기적 관점(Long-term Perspective)</strong>: 시장 타이밍보다 시간 투자</li>
     </ul>
-
+    
+    <h3>기술적 분석과 기본적 분석의 통합</h3>
+    <p>
+      기술적 분석(Technical Analysis)과 기본적 분석(Fundamental Analysis)은 상호보완적입니다:
+    </p>
+    <ul>
+      <li><strong>기본적 분석</strong>: FCF Yield, ROIC, Debt/EBITDA, Gross Margin 등 핵심 재무지표</li>
+      <li><strong>기술적 분석</strong>: RSI, MACD, Bollinger Bands, Volume Profile 등 차트 패턴</li>
+      <li><strong>양적 분석</strong>: 백테스팅, 시뮬레이션, 상관관계 분석</li>
+    </ul>
+    
+    <h3>배당 투자의 핵심 원칙</h3>
+    <p>
+      배당 투자는 안정적인 현금 흐름 창출이 목표입니다. 다음 기준으로 종목을 선별합니다:
+    </p>
+    <ol>
+      <li><strong>배당 성장률(DGR)</strong>: 연평균 5% 이상의 배당 성장</li>
+      <li><strong>지급 비율(Payout Ratio)</strong>: 75% 이하의 건강한 지급 비율</li>
+      <li><strong>배당 증가 기간</strong>: 최소 5년 이상의 연속 배당 증가</li>
+      <li><strong>FFO 성장률</strong>: 연간 3% 이상의 FFO 성장</li>
+    </ol>
+    
+    <h3>가상자산 투자 접근법</h3>
+    <p>
+      디지털 자산은 높은 변동성을 가집니다. 다음과 같은 원칙으로 접근합니다:
+    </p>
+    <ul>
+      <li><strong>DCA(정기적 투자)</strong>: 시장 타이밍보다 일정 간격 투자</li>
+      <li><strong>온체인 분석</strong>: Network Hashrate, Active Addresses, Exchange Flows 모니터링</li>
+      <li><strong>스테이킹</strong>: PoS 코인의 수동적 소득 창출</li>
+      <li><strong>보안</strong>: 하드웨어 지갑과 분산 보관</li>
+    </ul>
+    
+    <h3>리스크 관리 전략</h3>
+    <p>
+      모든 투자에는 리스크가 따릅니다. 다음과 같이 리스크를 관리합니다:
+    </p>
+    <ul>
+      <li><strong>손절매 규칙</strong>: 15-20% 하락 시 재평가</li>
+      <li><strong>헤징</strong>: VIX, 국채, 인버스 ETF를 통한 방어</li>
+      <li><strong>스트레스 테스트</strong>: 2008년, 2020년과 같은 위기 시나리오 대비</li>
+      <li><strong>유동성 관리</strong>: 시장 기회 대비 10% 현금 보유</li>
+    </ul>
+    
     <div class="faq-section">
       <h3>자주 묻는 질문 (FAQ)</h3>
+      
       <div class="faq-item">
         <h4>나스닥 100과 S&P 500의 차이는 무엇인가요?</h4>
-        <p>나스닥 100은 기술 및 바이오텍 기업 중심의 지수이며, 주로 성장주로 구성되어 있습니다. S&P 500은 미국 시장 전체를 대표하는 500개 대형주 지수로, 더 다양한 산업을 포함하고 있어 상대적으로 안정적입니다.</p>
+        <p>
+          나스닥 100은 기술 및 바이오텍 기업 중심의 지수이며, 주로 성장주로 구성되어 있습니다. 
+          S&P 500은 미국 시장 전체를 대표하는 500개 대형주 지수로, 더 다양한 산업을 포함하고 있습니다. 
+          나스닥은 변동성이 높지만 성장 잠재력이 크고, S&P 500은 더 안정적인 특성을 가집니다.
+        </p>
       </div>
+      
       <div class="faq-item">
-        <h4>배당주 투자 시 가장 중요한 지표는?</h4>
-        <p>가장 중요한 지표는 <strong>배당 지급 비율(Payout Ratio)</strong>과 <strong>배당 성장률</strong>입니다. 배당 수익률이 높아도 지급 비율이 100%를 넘으면 삭감 위험이 있습니다. 5년 이상 연속 배당 성장을 확인하세요.</p>
+        <h4>배당주 투자 시 가장 중요한 지표는 무엇인가요?</h4>
+        <p>
+          가장 중요한 지표는 배당 지급 비율(Payout Ratio)과 배당 성장률(Dividend Growth Rate)입니다. 
+          배당 수익률이 높더라도 지급 비율이 100%를 넘으면 지속 가능성이 낮습니다. 
+          또한 배당이 지속적으로 증가하는지 확인해야 합니다. FFO(AFFO for REITs)와 현금 흐름도 중요하게 봅니다.
+        </p>
       </div>
+      
       <div class="faq-item">
-        <h4>비트코인 투자 전략은?</h4>
-        <p>변동성이 큰 자산이므로 <strong>DCA(정기적 분할 투자)</strong> 방식이 가장 추천됩니다. 또한 온체인 지표와 거시경제(금리, 달러지수)를 함께 모니터링하여 리스크를 관리해야 합니다.</p>
+        <h4>비트코인 투자에 적합한 전략은 무엇인가요?</h4>
+        <p>
+          DCA(정기적 투자) 전략이 가장 추천됩니다. 또한 온체인 지표(MVRV, SOPR)와 
+          거시경제 지표(달러 지수, 금리)를 함께 모니터링하는 것이 중요합니다. 
+          포트폴리오의 5-10% 이내로 배분하고, 하드웨어 지갑을 통한 안전한 보관이 필수적입니다.
+        </p>
+      </div>
+      
+      <div class="faq-item">
+        <h4>리츠(REITs) 투자 시 주의할 점은 무엇인가요?</h4>
+        <p>
+          리츠는 배당 의무가 있어 수익의 90% 이상을 배당해야 합니다. 따라서 FFO(운용수익)와 AFFO(조정운용수익)를 꼭 확인해야 합니다. 
+          부채 비율(Debt/EBITDA), 임대료 수익률(Cap Rate), 점유율(Occupancy Rate)도 중요 지표입니다. 
+          섹터별(상업용, 주거용, 산업용)로 분산 투자하는 것이 좋습니다.
+        </p>
+      </div>
+      
+      <div class="faq-item">
+        <h4>포트폴리오 리밸런싱은 얼마나 자주 해야 하나요?</h4>
+        <p>
+          분기별로 포트폴리오를 검토하고, 자산 비율이 목표에서 5% 이상 벗어났을 때 조정하는 것을 추천합니다. 
+          리밸런싱은 세금 효율성을 고려하여 진행해야 하며, 손실 과세 처분(Tax-Loss Harvesting) 기회를 활용하는 것이 좋습니다.
+        </p>
       </div>
     </div>
   </article>
@@ -864,9 +994,9 @@
       <div class="footer-col">
         <h4>Legal</h4>
         <ul>
-          <li><a href="legal.html">이용약관</a></li>
           <li><a href="privacy.html">개인정보처리방침</a></li>
-          <li><a href="legal.html">면책조항</a></li>
+          <li><a href="terms.html">이용약관</a></li>
+          <li><a href="disclaimer.html">면책조항</a></li>
         </ul>
       </div>
     </div>
@@ -888,8 +1018,10 @@
     </div>
   </footer>
 
+  <!-- 광고 코드 (body 끝부분에 위치) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 
+  <!-- 구조화된 데이터 -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -899,8 +1031,13 @@
         "@id": "https://us-dividend-pro.com/#website",
         "url": "https://us-dividend-pro.com/",
         "name": "US Market Terminals",
-        "description": "Institutional Market Intelligence for Individual Investors",
-        "inLanguage": "ko-KR"
+        "description": "개인 투자자를 위한 기관급 미국 주식, 나스닥 100, 배당주, 가상자산 데이터 분석 플랫폼",
+        "inLanguage": "ko-KR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://us-dividend-pro.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       },
       {
         "@type": "Organization",
@@ -915,6 +1052,25 @@
         }
       },
       {
+        "@type": "Service",
+        "name": "금융 데이터 분석 서비스",
+        "serviceType": "투자 데이터 분석",
+        "provider": {
+          "@type": "Organization",
+          "name": "US Market Terminals"
+        },
+        "description": "나스닥 주식, 배당주, 가상자산에 대한 실시간 데이터와 분석 도구 제공",
+        "areaServed": {
+          "@type": "Country",
+          "name": "South Korea"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
         "@type": "FAQPage",
         "mainEntity": [
           {
@@ -922,7 +1078,7 @@
             "name": "나스닥 100과 S&P 500의 차이는 무엇인가요?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "나스닥 100은 기술주 중심의 성장 지수이며, S&P 500은 미국 대형주 전반을 포함하는 지수입니다."
+              "text": "나스닥 100은 기술 및 바이오텍 기업 중심의 지수이며, S&P 500은 미국 전체 대형주를 대표하는 지수입니다. 나스닥은 성장주 비중이 높고 변동성이 큰 특징이 있습니다."
             }
           },
           {
@@ -930,7 +1086,15 @@
             "name": "배당주 투자 시 가장 중요한 지표는 무엇인가요?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "배당 수익률보다 배당 지급 비율(Payout Ratio)과 배당 성장률(Dividend Growth)이 지속 가능성 면에서 더 중요합니다."
+              "text": "배당 지급 비율(Payout Ratio)과 배당 성장률이 가장 중요합니다. 배당 수익률보다 지속 가능성이 우선시 되어야 합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "비트코인 투자에 적합한 전략은 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DCA(정기적 투자) 전략이 가장 추천됩니다. 또한 온체인 지표와 거시경제 지표를 함께 모니터링하는 것이 중요합니다."
             }
           }
         ]
@@ -939,13 +1103,15 @@
   }
   </script>
 
+  <!-- 기존 스크립트 -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. UI Interactions (Menu, Scroll)
+      // ===== NAVIGATION =====
       const navbar = document.getElementById('navbar');
       const menuToggle = document.getElementById('menuToggle');
       const navLinks = document.getElementById('navLinks');
 
+      // Mobile menu closing function
       function closeMenu() {
         navLinks.classList.remove('open');
         menuToggle.setAttribute('aria-expanded', 'false');
@@ -957,38 +1123,48 @@
         menuToggle.setAttribute('aria-expanded', String(isOpen));
       });
 
-      // Accessibility & UX
-      navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      // Close on link click
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', closeMenu);
+      });
+
+      // Close on click outside
       document.addEventListener('click', (e) => {
         if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) closeMenu();
       });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 
+      // Close on Escape key (Accessibility Fix)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // Scroll effect
       window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
       });
 
-      // 2. Animations
+      // ===== SCROLL ANIMATIONS =====
       const fadeElements = document.querySelectorAll('.fade-up');
+      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -40px 0px' };
+      
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
           if (entry.isIntersecting) {
             setTimeout(() => entry.target.classList.add('visible'), i * 80);
           }
         });
-      }, { threshold: 0.1 });
+      }, observerOptions);
+      
       fadeElements.forEach(el => observer.observe(el));
 
-      // 3. Data Logic (Clock, Market Status, Crypto)
-      
-      // Update Clock (Standardized)
+      // ===== MARKET CLOCK =====
       function updateNYClock() {
         const now = new Date();
         document.getElementById('us-clock').innerText = 
           now.toLocaleTimeString("en-US", { hour12: false, timeZone: "America/New_York" });
       }
 
-      // Update Market Status
+      // ===== MARKET STATUS =====
       function updateMarketStatus() {
         const now = new Date();
         const nyDate = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
@@ -1001,84 +1177,114 @@
         const isWeekend = weekday === 'Sat' || weekday === 'Sun';
 
         if (isWeekend) {
-          el.innerText = "CLOSED"; el.className = "dash-value"; return;
+          el.innerText = "CLOSED";
+          el.className = "dash-value";
+          return;
         }
 
-        // 09:30 - 16:00 ET (Regular Market)
+        // Regular hours: 9:30-16:00, Pre: 4:00-9:30, After: 16:00-20:00
         if (totalMins >= 570 && totalMins < 960) {
-          el.innerText = "OPEN 🟢"; el.className = "dash-value up";
+          el.innerText = "OPEN 🟢";
+          el.className = "dash-value up";
         } else if (totalMins >= 240 && totalMins < 570) {
-          el.innerText = "PRE 🟠"; el.className = "dash-value"; el.style.color = "var(--warning)";
+          el.innerText = "PRE 🟠";
+          el.className = "dash-value";
+          el.style.color = "var(--warning)";
         } else if (totalMins >= 960 && totalMins < 1200) {
-          el.innerText = "AFTER 🟣"; el.className = "dash-value"; el.style.color = "var(--purple)";
+          el.innerText = "AFTER 🟣";
+          el.className = "dash-value";
+          el.style.color = "var(--purple)";
         } else {
-          el.innerText = "CLOSED 🔴"; el.className = "dash-value down";
+          el.innerText = "CLOSED 🔴";
+          el.className = "dash-value down";
         }
       }
 
-      // Crypto Fetch with Robust Error Handling
+      // ===== CRYPTO PRICES =====
+      
       let lastBtc = null;
       let lastEth = null;
 
       function formatTimeET() {
-        return `Upd: ${new Date().toLocaleTimeString("en-US", { hour12: false, timeZone: "America/New_York", hour:'2-digit', minute:'2-digit' })} ET`;
+        const t = new Date().toLocaleTimeString("en-US", { hour12: false, timeZone: "America/New_York" });
+        return `Upd: ${t} ET`;
       }
 
       async function fetchCrypto() {
         const btcEl = document.getElementById('btc-price');
         const ethEl = document.getElementById('eth-price');
-        const btcUpd = document.getElementById('btc-updated');
-        const ethUpd = document.getElementById('eth-updated');
-
-        // Fallback data if API fails completely first time
-        const fallbackData = { bitcoin: { usd: 95000, usd_24h_change: 0.5 }, ethereum: { usd: 3500, usd_24h_change: 0.5 } };
+        const btcUpdEl = document.getElementById('btc-updated');
+        const ethUpdEl = document.getElementById('eth-updated');
 
         try {
           const res = await fetch(
             'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true',
             { cache: 'no-store' }
           );
-          if (!res.ok) throw new Error("API Limit");
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
           const data = await res.json();
 
-          const fmt = (p, c) => ({
-            html: `$${Number(p).toLocaleString()} <span style="font-size:0.8em; opacity:0.8">(${c >= 0 ? '+' : ''}${Number(c).toFixed(2)}%)</span>`,
-            cls: c >= 0 ? 'up' : 'down'
-          });
+          const fmt = (price, change) => {
+            const isUp = change >= 0;
+            return {
+              html: `$${Number(price).toLocaleString()}`,
+              cls: isUp ? 'up' : 'down'
+            };
+          };
 
-          if(data.bitcoin) {
-            lastBtc = fmt(data.bitcoin.usd, data.bitcoin.usd_24h_change);
-            btcEl.innerHTML = lastBtc.html;
-            btcEl.className = `dash-value ${lastBtc.cls}`;
-            btcUpd.innerText = formatTimeET();
+          if (data.bitcoin) {
+            const btc = fmt(data.bitcoin.usd, data.bitcoin.usd_24h_change);
+            lastBtc = btc;
+            btcEl.innerHTML = btc.html;
+            btcEl.className = `dash-value ${btc.cls}`;
+            btcUpdEl.innerText = formatTimeET();
           }
-          if(data.ethereum) {
-            lastEth = fmt(data.ethereum.usd, data.ethereum.usd_24h_change);
-            ethEl.innerHTML = lastEth.html;
-            ethEl.className = `dash-value ${lastEth.cls}`;
-            ethUpd.innerText = formatTimeET();
+          
+          if (data.ethereum) {
+            const eth = fmt(data.ethereum.usd, data.ethereum.usd_24h_change);
+            lastEth = eth;
+            ethEl.innerHTML = eth.html;
+            ethEl.className = `dash-value ${eth.cls}`;
+            ethUpdEl.innerText = formatTimeET();
           }
-
         } catch (e) {
-          console.log("Crypto API Busy. Using Cache/Fallback.");
-          // If we have cached data, show "Cached" warning
+          console.log("Crypto API limit/error. Keeping cached data.");
           if(lastBtc) {
-             btcUpd.innerText = "⚠️ Cached";
-             ethUpd.innerText = "⚠️ Cached";
+             btcUpdEl.innerText = "⚠️ API Busy (Cached)";
           } else {
-             // First load fail? Use static fallback to avoid empty screen
-             btcEl.innerText = `$${fallbackData.bitcoin.usd.toLocaleString()}`;
-             ethEl.innerText = `$${fallbackData.ethereum.usd.toLocaleString()}`;
-             btcUpd.innerText = "Est.";
-             ethUpd.innerText = "Est.";
+             btcEl.innerText = "--"; 
+             btcUpdEl.innerText = "API Error";
+          }
+          
+          if(lastEth) {
+             ethUpdEl.innerText = "⚠️ API Busy (Cached)";
+          } else {
+             ethEl.innerText = "--";
+             ethUpdEl.innerText = "API Error";
           }
         }
       }
 
-      // Initialize
-      updateNYClock(); setInterval(updateNYClock, 1000);
-      updateMarketStatus(); setInterval(updateMarketStatus, 10000);
-      fetchCrypto(); setInterval(fetchCrypto, 300000); // 5 minutes interval to be safe
+      // ===== INIT =====
+      updateNYClock();
+      setInterval(updateNYClock, 1000);
+      
+      updateMarketStatus();
+      setInterval(updateMarketStatus, 10000);
+      
+      fetchCrypto();
+      setInterval(fetchCrypto, 60000);
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
     });
   </script>
 </body>
