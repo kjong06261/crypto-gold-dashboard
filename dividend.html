@@ -1,60 +1,346 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Dividend & ETF Market Data | US Dividend Pro</title>
-    <meta name="description" content="Comprehensive analysis of US Dividend Aristocrats, High-Yield REITs, and Dividend Growth ETFs for 2026.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* 사장님의 프리미엄 다크 테마 적용 */
-        :root { --bg:#05070a; --panel:#11141b; --border:#1e222d; --text:#d1d4dc; --link:#58a6ff; --accent:#00d084; }
-        body { margin:0; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, sans-serif; line-height:1.7; }
-        main { max-width:1100px; margin:40px auto; padding:0 30px; }
-        .card { background:var(--panel); padding:40px; border-radius:14px; border:1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        h1 { color:#fff; border-bottom: 2px solid var(--link); padding-bottom: 15px; font-size: 2.2rem; }
-        h2 { color:var(--link); margin-top: 40px; font-size: 1.6rem; border-left: 5px solid var(--accent); padding-left: 15px; }
-        h3 { color:var(--accent); margin-top: 30px; }
-        p { margin-bottom: 20px; text-align: justify; color: #b0b3b8; font-size: 1.05rem; }
-        .data-highlight { background: rgba(88, 166, 255, 0.05); border: 1px solid var(--border); padding: 25px; border-radius: 10px; margin: 30px 0; }
-        .nav-home { display: inline-block; margin-bottom: 20px; color: var(--link); text-decoration: none; font-weight: bold; }
-        footer { max-width:900px; margin:60px auto 40px auto; padding:0 20px; font-size:13px; line-height:1.6; color:#666; text-align:center; border-top: 1px solid var(--border); padding-top: 40px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dividend Stocks & ETF Analytics | US Market Terminals</title>
+  <meta name="description" content="미국 배당 귀족주, 고수익 리츠(REITs), 그리고 SCHD와 같은 배당 성장 ETF에 대한 심층 분석. 2026년 인컴 투자 전략 가이드.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://us-dividend-pro.com/dividend.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://us-dividend-pro.com/dividend.html">
+  <meta property="og:title" content="Dividend Cash Flow Analytics - US Market Terminals">
+  <meta property="og:image" content="https://us-dividend-pro.com/og-image.jpg">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* 메인 페이지와 동일한 CSS 시스템 */
+    :root {
+      --bg: #0a0d12;
+      --bg-alt: #0d1117;
+      --panel: #151b23;
+      --panel-hover: #1a222c;
+      --border: #2a3441;
+      --text: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --muted: #64748b;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --success: #22c55e;
+      --warning: #eab308;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      --radius: 12px;
+      --transition: all 0.2s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    body {
+      margin: 0; padding: 0;
+      background: var(--bg); color: var(--text);
+      font-family: var(--font); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navigation (Unified) */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10, 13, 18, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .navin {
+      max-width: 1200px; margin: 0 auto; height: 64px;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.1rem; }
+    .logo-mark { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent), #10b981); border-radius: 8px; display: grid; place-items: center; font-size: 0.9rem; }
+    
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;
+      padding: 8px 14px; border-radius: 6px;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent) !important; color: #fff !important; margin-left: 8px; }
+    .menu-toggle { display: none; background: transparent; border: 0; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 20px; height: 2px; background: #fff; margin: 4px 0; border-radius: 2px; }
+
+    /* Page Header */
+    .page-header {
+      padding: 100px 24px 60px; text-align: center;
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.15), transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-tag {
+      display: inline-block; color: var(--success); font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
+      background: rgba(16, 185, 129, 0.15); padding: 4px 12px; border-radius: 99px; border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .page-title {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #fff; margin: 0 0 20px;
+      line-height: 1.2;
+    }
+    .page-desc {
+      font-size: 1.1rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;
+    }
+
+    /* Content Layout */
+    .content-wrapper { padding: 60px 0; }
+    
+    /* Terminal Data Table */
+    .terminal-table-box {
+      background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; margin-bottom: 60px;
+    }
+    .table-header {
+      padding: 16px 24px; border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(255,255,255,0.02);
+    }
+    .table-title { font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
+    .live-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; box-shadow: 0 0 10px var(--success); }
+    
+    .data-table { width: 100%; border-collapse: collapse; }
+    .data-table th {
+      text-align: left; padding: 12px 24px; color: var(--muted); font-size: 0.8rem; text-transform: uppercase;
+      border-bottom: 1px solid var(--border); font-weight: 600;
+    }
+    .data-table td {
+      padding: 16px 24px; color: var(--text); border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: var(--panel-hover); }
+    .ticker { font-weight: 700; color: #fff; }
+    .name { color: var(--text-secondary); font-size: 0.9rem; }
+    .yield { color: var(--success); font-weight: 700; }
+    .freq { font-size: 0.8rem; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.1); }
+
+    /* Analysis Text Styling */
+    .analysis-section { max-width: 800px; margin: 0 auto; }
+    .analysis-card {
+      margin-bottom: 40px; padding-left: 24px; border-left: 2px solid var(--border);
+    }
+    .analysis-card h2 { color: #fff; font-size: 1.5rem; margin: 0 0 16px; }
+    .analysis-card p { margin-bottom: 16px; font-size: 1.05rem; }
+    .highlight-box {
+      background: rgba(16, 185, 129, 0.05); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; margin: 30px 0;
+    }
+    .highlight-box h3 { margin-top: 0; color: var(--success); }
+
+    /* Footer */
+    footer {
+      background: var(--bg-alt); border-top: 1px solid var(--border);
+      padding: 60px 24px; text-align: center; color: var(--text-secondary); font-size: 0.9rem;
+    }
+    .footer-links a { margin: 0 10px; color: var(--text-secondary); }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .data-table th:nth-child(3), .data-table td:nth-child(3) { display: none; } /* Hide Type */
+    }
+  </style>
 </head>
 <body>
 
-<main>
-    <a href="index.html" class="nav-home">← Back to Home</a>
-    <div class="card">
-        <h1>Dividend & ETF Market Data</h1>
-        <p>Welcome to the <strong>US Dividend Pro</strong> core terminal for dividend equity research. We provide high-precision monitoring of U.S. dividend-paying stocks, Dividend Aristocrats, and yield-focused ETFs. In a volatile 2026 market, consistent cash flow through dividends remains the most reliable hedge against inflation and economic uncertainty.</p>
-
-        <div class="data-highlight">
-            <h2 style="margin-top:0;">1. Strategic Income: The Power of Compound Dividends</h2>
-            <p>Dividend investing is more than just collecting a check; it's about the <span style="color:var(--accent); font-weight:bold;">Yield on Cost</span> and long-term capital preservation. Our dashboard tracks key metrics such as Payout Ratios, Dividend Growth Rates (5-year CAGR), and the reliability of monthly payers like <strong>Realty Income (O)</strong>. For investors seeking passive income, we emphasize stocks that have not only maintained but increased their dividends for over 25 consecutive years.</p>
-        </div>
-
-        <h2>2. High-Yield REITs and Infrastructure Analysis</h2>
-        <p>Real Estate Investment Trusts (REITs) provide a unique gateway to professional-grade property management income. By analyzing AFFO (Adjusted Funds From Operations), we help users distinguish between a sustainable 6% yield and a dangerous "yield trap." We focus on triple-net lease structures and data center REITs that are poised to benefit from the ongoing AI infrastructure boom in 2026.</p>
-
-        <h2>3. Dividend Growth ETFs: Diversified Cash Flow</h2>
-        <p>For those preferring a diversified approach, our ETF terminal monitors core holdings like <strong>SCHD</strong>, <strong>JEPI</strong>, and <strong>JEPQ</strong>. These instruments combine the stability of blue-chip value stocks with modern options-overlay strategies to generate enhanced monthly premiums. We provide the raw data required to analyze the underlying asset quality and expense ratios of these popular income vehicles.</p>
-
-        <div class="data-highlight">
-            <h3>📊 2026 Dividend Market Insights</h3>
-            <p>Current market data suggests a shift toward "Quality Yield." As interest rates stabilize, companies with strong balance sheets and low debt-to-equity ratios are becoming the preferred choice for income-focused portfolios. <strong>US Dividend Pro</strong> monitors over 300+ tickers to ensure you have the data needed for institutional-grade asset allocation.</p>
-        </div>
-
-        <h2>Conclusion: Building Your Financial Fortress</h2>
-        <p>Whether you are a retiree looking for monthly checks or a growth investor reinvesting dividends for the "Snowball Effect," our data terminal serves as your primary research hub. Data is the foundation of confidence. Use our insights to build a portfolio that works as hard as you do.</p>
+  <nav class="nav">
+    <div class="navin">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">📊</span> US MARKET TERMINALS
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="nasdaq.html">Nasdaq</a>
+        <a href="dividend.html" class="active">Dividends</a>
+        <a href="coin.html">Crypto</a>
+        <a href="blog.html">Insights</a>
+        <a href="nasdaq.html" class="nav-cta">Terminal</a>
+      </div>
+      <button class="menu-toggle"><span></span><span></span><span></span></button>
     </div>
-</main>
+  </nav>
 
-<footer>
-    <p><strong>US Dividend Pro</strong> is an independent market data dashboard providing publicly available financial information for research and educational purposes only.</p>
-    <p>Dividend and ETF data is sourced from public providers such as Yahoo Finance, Nasdaq public data, and SEC EDGAR filings where applicable.</p>
-    <p>This website does not provide investment advice. Users are solely responsible for their own investment decisions.</p>
-    <p style="font-size:12px;color:#777;">Independent Market Data • Public Sources Only • No Investment Advice • © 2025 US Dividend Pro</p>
-</footer>
+  <header class="page-header">
+    <div class="container">
+      <span class="page-tag">Income Strategy</span>
+      <h1 class="page-title">Dividend & ETF Intelligence</h1>
+      <p class="page-desc">
+        미국 배당 귀족주(Aristocrats), 고수익 리츠(REITs), 그리고 SCHD와 같은 배당 성장 ETF에 대한 종합 분석 데이터.
+      </p>
+    </div>
+  </header>
+
+  <main class="content-wrapper">
+    <div class="container">
+      
+      <div class="terminal-table-box">
+        <div class="table-header">
+          <span class="table-title"><span class="live-dot"></span> Top Dividend Picks (2026)</span>
+          <span style="font-size:0.8rem; color:var(--muted);">Yield Updated Daily</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Yield (Est.)</th>
+              <th>Type</th>
+              <th>Payout</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="ticker">SCHD</span><br><span class="name">Schwab US Div. Equity</span></td>
+              <td class="yield">3.45%</td>
+              <td>ETF</td>
+              <td><span class="freq">Qtr</span></td>
+              <td style="color:var(--success);">Buy</td>
+            </tr>
+            <tr>
+              <td><span class="ticker">O</span><br><span class="name">Realty Income</span></td>
+              <td class="yield">5.82%</td>
+              <td>REIT</td>
+              <td><span class="freq">Mon</span></td>
+              <td style="color:var(--success);">Strong Buy</td>
+            </tr>
+            <tr>
+              <td><span class="ticker">JEPI</span><br><span class="name">JPMorgan Equity Prem</span></td>
+              <td class="yield">7.20%</td>
+              <td>ETF (Covered Call)</td>
+              <td><span class="freq">Mon</span></td>
+              <td style="color:var(--warning);">Hold</td>
+            </tr>
+            <tr>
+              <td><span class="ticker">MAIN</span><br><span class="name">Main Street Capital</span></td>
+              <td class="yield">6.15%</td>
+              <td>BDC</td>
+              <td><span class="freq">Mon</span></td>
+              <td style="color:var(--success);">Buy</td>
+            </tr>
+            <tr>
+              <td><span class="ticker">KO</span><br><span class="name">Coca-Cola Co</span></td>
+              <td class="yield">3.10%</td>
+              <td>Aristocrat</td>
+              <td><span class="freq">Qtr</span></td>
+              <td style="color:var(--muted);">Neutral</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="analysis-section">
+        
+        <div class="analysis-card">
+          <h2>1. Strategic Income: 복리 배당의 힘</h2>
+          <p>
+            배당 투자는 단순히 체크를 받는 것 이상의 의미가 있습니다. 핵심은 
+            <span style="color:var(--success); font-weight:bold;">Yield on Cost(투자 원금 대비 수익률)</span>와 
+            장기적인 자본 보존에 있습니다.
+          </p>
+          <p>
+            우리의 대시보드는 Payout Ratio(배당 성향), 5년 연평균 배당 성장률(CAGR), 
+            그리고 <strong>Realty Income (O)</strong>과 같은 월배당 기업의 신뢰성을 추적합니다. 
+            특히 25년 이상 배당을 늘려온 '배당 귀족주'에 집중하여 인플레이션을 방어합니다.
+          </p>
+        </div>
+
+        <div class="analysis-card" style="border-color: var(--success);">
+          <h2>2. High-Yield REITs 및 인프라 분석</h2>
+          <p>
+            리츠(REITs)는 전문가 수준의 부동산 임대 수익을 창출할 수 있는 독특한 수단입니다. 
+            우리는 <strong>AFFO (조정 운영 자금)</strong>를 분석하여, 지속 가능한 6% 수익률과 위험한 "배당 함정(Yield Trap)"을 구별해냅니다.
+          </p>
+          <p>
+            특히 2026년 AI 인프라 붐의 수혜를 입을 데이터 센터 리츠와 안정적인 트리플 넷(Triple-net) 임대 구조를 가진 기업에 주목하고 있습니다.
+          </p>
+        </div>
+
+        <div class="highlight-box">
+          <h3>📊 2026 Dividend Market Insights</h3>
+          <p>
+            현재 시장 데이터는 <strong>"Quality Yield (우량 배당)"</strong>로의 이동을 시사합니다. 
+            금리가 안정화됨에 따라, 강력한 대차대조표와 낮은 부채 비율을 가진 기업들이 인컴 포트폴리오의 최우선 선택지가 되고 있습니다. 
+            <strong>US Dividend Pro</strong>는 300개 이상의 티커를 모니터링하여 기관급 자산 배분 데이터를 제공합니다.
+          </p>
+        </div>
+
+        <div class="analysis-card">
+          <h2>3. Dividend Growth ETFs: 다각화된 현금 흐름</h2>
+          <p>
+            개별 종목 리스크를 피하고 싶은 투자자를 위해 <strong>SCHD</strong>, <strong>JEPI</strong>, <strong>JEPQ</strong>와 같은 
+            핵심 ETF를 모니터링합니다. 
+          </p>
+          <p>
+            이들은 블루칩 가치주의 안정성과 현대적인 옵션 오버레이(커버드 콜) 전략을 결합하여 향상된 월간 프리미엄을 생성합니다. 
+            우리는 기초 자산의 품질과 비용 비율(Expense Ratio)을 분석하는 원천 데이터를 제공합니다.
+          </p>
+        </div>
+
+        <div style="margin-top: 50px;">
+          <h2>Conclusion: 당신의 금융 요새 구축</h2>
+          <p>
+            월배당을 노리는 은퇴자든, "스노우볼 효과"를 위해 배당을 재투자하는 성장 투자자든, 
+            우리의 데이터 터미널은 당신의 주요 리서치 허브가 될 것입니다. 
+            데이터는 확신의 기초입니다. 우리의 인사이트를 활용하여 견고한 포트폴리오를 구축하세요.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links" style="margin-bottom: 20px;">
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="legal.html">Terms & Disclaimer</a>
+      </div>
+      <p>
+        © 2026 US Market Terminals. All rights reserved.<br>
+        Dividend & ETF data sourced from public providers. Not financial advice.
+      </p>
+    </div>
+  </footer>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+
+  <script>
+    // 모바일 메뉴 토글 (메인과 동일 로직)
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const isFlex = navLinks.style.display === 'flex';
+        navLinks.style.display = isFlex ? 'none' : 'flex';
+        if(!isFlex) {
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '64px';
+          navLinks.style.left = '0';
+          navLinks.style.right = '0';
+          navLinks.style.background = '#151b23';
+          navLinks.style.padding = '20px';
+          navLinks.style.borderBottom = '1px solid #2a3441';
+          navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
