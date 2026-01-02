@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>US Market Terminals | Select Gateway</title>
-  <meta name="description" content="Institutional Grade Analytics Gateway.">
+  <meta name="description" content="Institutional Grade Analytics Gateway. Access Nasdaq, Crypto, and Dividend terminals.">
   <meta name="robots" content="index,follow">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   
@@ -15,6 +15,7 @@
       --panel: #11141b;
       --border: #1e222d;
       --text: #e2e8f0;
+      --text-dim: #94a3b8;
       --accent: #3b82f6;
     }
     body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; height: 100vh; display: flex; flex-direction: column; }
@@ -27,7 +28,7 @@
     .main { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
     
     h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin: 0 0 20px; letter-spacing: -2px; line-height: 1.1; }
-    p { color: #94a3b8; font-size: 1.2rem; max-width: 500px; margin: 0 auto 60px; }
+    p { color: var(--text-dim); font-size: 1.2rem; max-width: 500px; margin: 0 auto 60px; }
 
     /* The 3 Doors */
     .gateways { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 1000px; }
@@ -42,8 +43,25 @@
     .gate-desc { font-size: 0.9rem; color: #64748b; display: block; }
 
     /* Footer */
-    footer { padding: 40px; text-align: center; color: #475569; font-size: 0.8rem; }
-    .disclaimer { max-width: 600px; margin: 20px auto 0; font-size: 0.7rem; line-height: 1.4; opacity: 0.7; }
+    footer { 
+      padding: 40px 20px; text-align: center; 
+      border-top: 1px solid var(--border);
+      background: #080a0e;
+    }
+    .footer-links { 
+      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 25px; 
+    }
+    .footer-links a { 
+      color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-links .highlight { color: #e2e8f0; font-weight: 700; }
+    
+    .disclaimer { 
+      max-width: 700px; margin: 0 auto 20px; font-size: 0.75rem; 
+      color: #475569; line-height: 1.5; text-align: justify; text-align-last: center; 
+    }
+    .copyright { color: #334155; font-size: 0.8rem; }
   </style>
 </head>
 <body>
@@ -78,12 +96,29 @@
   </div>
 
   <footer>
-    <div>© 2026 US Market Terminals. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="guides.html" class="highlight">Market Guides</a>
+      <a href="glossary.html" class="highlight">Tools Glossary</a>
+      <span style="color:#2a3441">|</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="legal.html">Terms & Disclaimer</a>
+    </div>
+
     <div class="disclaimer">
-      <strong>DISCLAIMER:</strong> Informational purposes only. Not financial advice. 
-      Data provided by third parties and may be delayed. Consult a professional before investing.
+      <strong>IMPORTANT DISCLAIMER:</strong> 
+      The content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or trading advice. 
+      We are not a registered investment advisor. All data (charts, prices) is provided by third-party public sources and may be delayed or inaccurate. 
+      Past performance is not indicative of future results. Financial markets carry high risks. 
+      Please consult a certified financial professional before making any investment decisions. 
+      You use this site at your own risk.
+    </div>
+
+    <div class="copyright">
+      © 2026 US Market Terminals. All rights reserved.
     </div>
   </footer>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 
 </body>
 </html>
