@@ -2,301 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Market Insights | US Market Terminals</title>
-  <meta name="description" content="In-depth analysis reports and investment insights on US stocks, dividend strategies, and crypto trends.">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://us-dividend-pro.com/blog.html">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://us-dividend-pro.com/blog.html">
-  <meta property="og:title" content="Market Insights - US Market Terminals">
-  <meta property="og:image" content="https://us-dividend-pro.com/og-image.jpg">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Insights & Research | US Market Terminals</title>
+  <meta name="description" content="In-depth analysis on US Stock Market trends, macroeconomics, and asset allocation strategies for 2026.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
-    /* CSS Variables (Consistent Theme) */
-    :root {
-      --bg: #0a0d12;
-      --bg-alt: #0d1117;
-      --panel: #151b23;
-      --panel-hover: #1a222c;
-      --border: #2a3441;
-      --text: #e2e8f0;
-      --text-secondary: #94a3b8;
-      --accent: #3b82f6;
-      --accent-light: #60a5fa;
-      --accent-glow: rgba(59, 130, 246, 0.15);
-      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      --radius: 12px;
-      --transition: all 0.2s ease;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
+    /* Premium Dark Blog Theme */
+    :root { --bg: #0a0d12; --panel: #151b23; --border: #2a3441; --text: #e2e8f0; --accent: #3b82f6; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.7; }
     
-    body {
-      margin: 0; padding: 0;
-      background: var(--bg); color: var(--text);
-      font-family: var(--font); line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+    .nav { padding: 15px 20px; border-bottom: 1px solid var(--border); background: var(--panel); display: flex; justify-content: space-between; align-items: center; position:sticky; top:0; z-index:100; }
+    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; }
+    .back-btn { color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
 
-    a { text-decoration: none; color: inherit; transition: var(--transition); }
-    
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+    .header { text-align: center; margin-bottom: 60px; }
+    .header h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; }
+    .header p { color: #94a3b8; font-size: 1.1rem; }
 
-    /* Navigation */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(10, 13, 18, 0.85); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .navin {
-      max-width: 1200px; margin: 0 auto; height: 64px;
-      display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
-    }
-    .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.1rem; }
-    .logo-mark { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent), #a855f7); border-radius: 8px; display: grid; place-items: center; font-size: 0.9rem; }
-    
-    .nav-links { display: flex; align-items: center; gap: 4px; }
-    .nav-links a {
-      color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;
-      padding: 8px 14px; border-radius: 6px;
-    }
-    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
-    .nav-links a.active { color: var(--accent); }
-    .nav-cta { background: var(--accent) !important; color: #fff !important; margin-left: 8px; }
+    .article-preview { background: var(--panel); padding: 30px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 30px; transition: 0.2s; }
+    .article-preview:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .meta { color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+    .article-title { font-size: 1.5rem; margin: 0 0 15px; color: #fff; font-weight: 700; line-height: 1.3; }
+    .excerpt { color: #94a3b8; font-size: 1rem; margin-bottom: 20px; }
+    .read-more { color: #fff; font-weight: 600; font-size: 0.9rem; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
 
-    .menu-toggle { display: none; background: transparent; border: 0; cursor: pointer; padding: 8px; }
-    .menu-toggle span { display: block; width: 20px; height: 2px; background: #fff; margin: 4px 0; border-radius: 2px; }
-
-    /* Blog Hero */
-    .blog-hero {
-      padding: 120px 24px 60px; text-align: center;
-      background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
-      border-bottom: 1px solid var(--border);
-    }
-    .blog-title {
-      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #fff; margin-bottom: 16px;
-    }
-    .blog-desc {
-      color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1rem;
-    }
-
-    /* Blog Grid */
-    .blog-grid-section { padding: 60px 24px; }
-    .blog-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px;
-    }
-
-    .article-card {
-      background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
-      overflow: hidden; transition: var(--transition); display: flex; flex-direction: column;
-    }
-    .article-card:hover {
-      transform: translateY(-5px); border-color: var(--accent);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    
-    .article-img {
-      height: 200px; background: #222; position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center; font-size: 3rem;
-    }
-    .img-placeholder { width: 100%; height: 100%; display:grid; place-items:center; background: linear-gradient(135deg, #1e293b, #0f172a); }
-
-    .article-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
-    .article-tags { margin-bottom: 12px; }
-    .tag {
-      font-size: 0.75rem; font-weight: 700; color: var(--accent);
-      text-transform: uppercase; letter-spacing: 0.5px;
-      background: var(--accent-glow); padding: 4px 8px; border-radius: 4px;
-    }
-    .article-title {
-      font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0 0 10px;
-      line-height: 1.4;
-    }
-    .article-excerpt {
-      font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; flex-grow: 1;
-    }
-    .article-meta {
-      font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid var(--border);
-      padding-top: 15px; display: flex; justify-content: space-between; opacity: 0.8;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--bg-alt); border-top: 1px solid var(--border);
-      padding: 60px 24px; text-align: center; color: var(--text-secondary); font-size: 0.9rem;
-    }
-    .footer-links a { margin: 0 10px; color: var(--text-secondary); }
-    .footer-links a:hover { color: var(--accent); }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none; position: absolute; top: 64px; left: 0; right: 0;
-        background: var(--panel); flex-direction: column; padding: 16px;
-        border-bottom: 1px solid var(--border); gap: 4px;
-      }
-      .nav-links.open { display: flex; }
-      .menu-toggle { display: block; }
-      .blog-grid { grid-template-columns: 1fr; }
-    }
+    /* For AdSense to have enough text content */
+    .hidden-seo-text { display: block; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border); color: #475569; font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <div class="navin">
-      <a href="index.html" class="logo">
-        <span class="logo-mark">📊</span> US MARKET TERMINALS
-      </a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="nasdaq.html">Nasdaq</a>
-        <a href="dividend.html">Dividends</a>
-        <a href="coin.html">Crypto</a>
-        <a href="blog.html" class="active">Insights</a>
-        <a href="nasdaq.html" class="nav-cta">Terminal</a>
-      </div>
-      <button class="menu-toggle"><span></span><span></span><span></span></button>
-    </div>
+    <a href="index.html" class="logo">📊 US MARKET TERMINALS</a>
+    <a href="index.html" class="back-btn">Home</a>
   </nav>
 
-  <header class="blog-hero">
-    <div class="container">
-      <h1 class="blog-title">Market Insights</h1>
-      <p class="blog-desc">
-        Data-driven investment strategies, macroeconomic analysis, and deep-dive reports for building resilient portfolios.
-      </p>
+  <div class="container">
+    <div class="header">
+      <h1>Market Insights</h1>
+      <p>Institutional analysis for the independent investor.</p>
     </div>
-  </header>
 
-  <section class="blog-grid-section">
-    <div class="container blog-grid">
-      
-      <article class="article-card">
-        <a href="blog/nasdaq-growth-strategy.html" class="article-img"><div class="img-placeholder">📈</div></a>
-        <div class="article-content">
-          <div class="article-tags"><span class="tag">Strategy</span></div>
-          <h2 class="article-title"><a href="blog/nasdaq-growth-strategy.html">NASDAQ-100 Growth Strategy</a></h2>
-          <p class="article-excerpt">How to combine Nasdaq growth stocks with covered call strategies to maximize monthly cash flow.</p>
-          <div class="article-meta">
-            <span>By Analyst K</span>
-            <span class="dynamic-date" data-days="0">Loading...</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="article-card">
-        <a href="blog/dividend-aristocrats-2026.html" class="article-img"><div class="img-placeholder">💰</div></a>
-        <div class="article-content">
-          <div class="article-tags"><span class="tag">Dividend</span></div>
-          <h2 class="article-title"><a href="blog/dividend-aristocrats-2026.html">Dividend Aristocrats Top 5 Analysis</a></h2>
-          <p class="article-excerpt">Deep dive into Realty Income (O) and J&J (JNJ), examining valuation and sustainability for 2026.</p>
-          <div class="article-meta">
-            <span>By Editor</span>
-            <span class="dynamic-date" data-days="2">Loading...</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="article-card">
-        <a href="blog/crypto-staking-dividend.html" class="article-img"><div class="img-placeholder">₿</div></a>
-        <div class="article-content">
-          <div class="article-tags"><span class="tag">Crypto</span></div>
-          <h2 class="article-title"><a href="blog/crypto-staking-dividend.html">Crypto Staking: The New Dividend</a></h2>
-          <p class="article-excerpt">Institutional adoption trends and how to build a passive income portfolio with digital assets.</p>
-          <div class="article-meta">
-            <span>By CryptoQuant</span>
-            <span class="dynamic-date" data-days="5">Loading...</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="article-card">
-        <a href="blog/barbell-strategy-guide.html" class="article-img"><div class="img-placeholder">⚖️</div></a>
-        <div class="article-content">
-          <div class="article-tags"><span class="tag">Guide</span></div>
-          <h2 class="article-title"><a href="blog/barbell-strategy-guide.html">The Barbell Investment Strategy</a></h2>
-          <p class="article-excerpt">Balancing high-growth tech stocks with safe dividend anchors for a resilient portfolio.</p>
-          <div class="article-meta">
-            <span>By Tech Lead</span>
-            <span class="dynamic-date" data-days="7">Loading...</span>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-links" style="margin-bottom: 20px;">
-        <a href="about.html">About Us</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="legal.html">Terms & Disclaimer</a>
-      </div>
-      <p>
-        © 2026 US Market Terminals. All rights reserved.<br>
-        Data provided for informational purposes only. Not financial advice.
+    <article class="article-preview">
+      <span class="meta">Strategy • Jan 2026</span>
+      <h2 class="article-title">The "Barbell Strategy": Balancing AI Growth and Defensive Dividends</h2>
+      <p class="excerpt">
+        In the current 2026 macroeconomic environment, volatility is the new normal. 
+        The Barbell Strategy suggests pairing high-beta assets like Nvidia (NVDA) with low-beta cash flow generators like SCHD. 
+        This report analyzes how to construct a portfolio that captures upside while mitigating downside risk through strategic allocation.
+        We explore the correlation coefficients between the semiconductor sector and consumer staples to find the optimal hedge ratio.
       </p>
-      <p style="font-size: 0.8rem; color: #555; margin-top: 15px;">
-        Current Time (NY): <span id="live-clock" style="color:var(--accent); font-weight:600;">Loading...</span>
+      <a href="#" class="read-more">Read Full Report →</a>
+    </article>
+
+    <article class="article-preview">
+      <span class="meta">Crypto • Jan 2026</span>
+      <h2 class="article-title">Bitcoin as Treasury Reserve: The Corporate Shift</h2>
+      <p class="excerpt">
+        With the FASB accounting rule changes, more corporations are holding Bitcoin on their balance sheets. 
+        What does this mean for liquidity and volatility? 
+        We analyze the MicroStrategy model and its implications for the broader crypto market. 
+        On-chain metrics suggest a supply shock is imminent as institutional accumulation outpaces miner issuance.
       </p>
+      <a href="#" class="read-more">Read Full Report →</a>
+    </article>
+
+    <article class="article-preview">
+      <span class="meta">Macro • Dec 2025</span>
+      <h2 class="article-title">Fed Policy Pivot: Impact on REIT Valuations</h2>
+      <p class="excerpt">
+        Real Estate Investment Trusts (REITs) like Realty Income (O) are highly sensitive to interest rate fluctuations. 
+        As the Federal Reserve signals a potential rate cut cycle, we examine the historical performance of REITs during monetary easing. 
+        Our analysis suggests that the disconnect between NAV (Net Asset Value) and current market price offers a generational entry point for patient capital.
+      </p>
+      <a href="#" class="read-more">Read Full Report →</a>
+    </article>
+
+    <div class="hidden-seo-text">
+      <p><strong>About Our Research:</strong> US Market Terminals provides data-driven insights derived from public financial records, technical chart patterns, and macroeconomic indicators. Our goal is to empower individual investors with institutional-grade tools.</p>
     </div>
-  </footer>
+
+  </div>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
-
-  <script>
-    // 1. Dynamic Dates (Always look fresh)
-    function updateDates() {
-      const dates = document.querySelectorAll('.dynamic-date');
-      const now = new Date();
-      
-      dates.forEach(span => {
-        const daysAgo = parseInt(span.getAttribute('data-days'));
-        const date = new Date(now);
-        date.setDate(date.getDate() - daysAgo);
-        
-        // Format: Jan 02, 2026
-        span.innerText = date.toLocaleDateString("en-US", { 
-          month: 'short', day: 'numeric', year: 'numeric' 
-        });
-      });
-    }
-
-    // 2. Live Footer Clock
-    function updateClock() {
-      const now = new Date();
-      const timeStr = now.toLocaleString("en-US", { 
-        timeZone: "America/New_York",
-        year: 'numeric', month: 'short', day: 'numeric', 
-        hour: '2-digit', minute: '2-digit', second: '2-digit',
-        timeZoneName: 'short' 
-      });
-      document.getElementById('live-clock').innerText = timeStr;
-    }
-
-    // 3. Mobile Menu
-    const menuBtn = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if(menuBtn) {
-      menuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-        navLinks.style.display = navLinks.classList.contains('open') ? 'flex' : 'none';
-      });
-    }
-
-    // Init
-    updateDates();
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
 
 </body>
 </html>
