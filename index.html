@@ -7,10 +7,8 @@
   <meta name="description" content="미국 주식, 나스닥 100, 배당주, 가상자산 데이터를 한 곳에서 분석하는 시장 터미널. 차트·지표·계산기를 통해 현금흐름과 리스크를 관리합니다.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://us-dividend-pro.com/">
-
-  <!-- AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894"
-    crossorigin="anonymous"></script>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 
   <style>
     :root{
@@ -20,27 +18,49 @@
     }
     body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.7}
     a{color:inherit;text-decoration:none}
+    
+    /* Navigation */
     .nav{position:sticky;top:0;z-index:100;background:var(--panel);border-bottom:1px solid var(--border)}
     .navin{max-width:1100px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
     .logo{color:#fff;font-weight:800;letter-spacing:-.3px}
-    .nav a{margin-left:18px;color:var(--muted);font-weight:600}
-    .nav a:hover,.nav a.active{color:var(--accent)}
-    .hero{padding:64px 20px 48px;border-bottom:1px solid var(--border);
-      background:linear-gradient(180deg,var(--panel),var(--bg))}
-    .hero .wrap{max-width:900px;margin:0 auto;text-align:center}
-    .hero h1{margin:0 0 12px;color:#fff;font-size:2.2rem}
-    .hero p{margin:0 auto;max-width:700px;color:var(--muted)}
+    .nav-links a{margin-left:18px;color:var(--muted);font-weight:600;font-size:0.9rem}
+    .nav-links a:hover, .nav-links a.active{color:var(--accent)}
+
+    /* Hero Section */
+    .hero{padding:80px 20px 60px;border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg,var(--panel),var(--bg));text-align:center}
+    .hero .wrap{max-width:800px;margin:0 auto}
+    .hero h1{margin:0 0 16px;color:#fff;font-size:2.5rem;line-height:1.2}
+    .hero p{margin:0 auto;max-width:700px;color:var(--muted);font-size:1.1rem}
+
+    /* Grid Layout */
     .grid{max-width:1100px;margin:40px auto;padding:0 20px;
-      display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media(max-width:900px){.grid{grid-template-columns:1fr}}
-    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px}
-    .card h2{margin:0 0 8px;color:#fff;font-size:1.15rem}
-    .card p{margin:0 0 12px;color:var(--muted)}
-    .btn{display:inline-block;border:1px solid var(--border);border-radius:10px;padding:10px 12px}
-    .btn:hover{border-color:var(--accent)}
-    .badge{display:inline-block;border:1px solid rgba(88,166,255,.3);color:var(--accent);
-      border-radius:999px;padding:4px 10px;font-size:.75rem;font-weight:700;margin-bottom:10px}
-    footer{border-top:1px solid var(--border);margin-top:60px;padding:36px 20px;text-align:center;color:var(--muted);font-size:.85rem}
+      display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:20px}
+    
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:25px;transition:transform 0.2s}
+    .card:hover{transform:translateY(-3px);border-color:var(--accent)}
+    .card h2{margin:10px 0;color:#fff;font-size:1.3rem}
+    .card p{margin:0 0 20px;color:var(--muted);font-size:0.95rem;height:60px;overflow:hidden;}
+    
+    .btn{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:8px;padding:8px 16px;font-size:0.9rem;font-weight:600}
+    .btn:hover{background:var(--border);color:#fff}
+    
+    .badge{display:inline-block;background:rgba(88,166,255,0.1);border:1px solid rgba(88,166,255,0.3);color:var(--accent);
+      border-radius:99px;padding:4px 10px;font-size:.75rem;font-weight:700}
+
+    /* Text Content for AdSense (SEO) */
+    .seo-content {max-width: 800px; margin: 60px auto; padding: 0 20px; color: var(--muted);}
+    .seo-content h3 {color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-top: 40px;}
+    
+    footer{border-top:1px solid var(--border);margin-top:80px;padding:40px 20px;text-align:center;color:var(--muted);font-size:.85rem}
+    
+    /* Mobile Responsive */
+    @media(max-width:768px){
+      .navin{flex-direction:column;height:auto;padding:15px}
+      .nav-links{margin-top:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+      .nav-links a{margin:0 5px}
+      .card p {height: auto;} 
+    }
   </style>
 </head>
 
@@ -49,13 +69,12 @@
   <nav class="nav">
     <div class="navin">
       <div class="logo">US MARKET TERMINALS</div>
-      <div>
-        <a href="./index.html" class="active">Home</a>
-        <a href="./nasdaq.html">Nasdaq</a>
-        <a href="./dividend.html">Dividends</a>
-        <a href="./coin.html">Crypto</a>
-        <a href="./investor_ai.html">AI Tools</a>
-      </div>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="nasdaq.html">Nasdaq</a>
+        <a href="dividend.html">Dividends</a>
+        <a href="coin.html">Crypto</a>
+        <a href="blog.html">Insights (Blog)</a> </div>
     </div>
   </nav>
 
@@ -63,60 +82,82 @@
     <div class="wrap">
       <h1>Institutional Market Intelligence</h1>
       <p>
-        실시간 데이터·차트·계산기를 중심으로 미국 주식, 나스닥 100,
-        배당주, 가상자산 시장을 분석하는 터미널.
-        현금흐름과 리스크 관리에 초점을 둡니다.
+        개인 투자자를 위한 기관급 데이터 분석 플랫폼.<br>
+        나스닥 성장주부터 고배당 리츠, 가상자산까지<br>
+        실시간 데이터와 알고리즘으로 포트폴리오를 최적화하세요.
       </p>
     </div>
   </header>
 
   <main class="grid">
     <section class="card">
-      <span class="badge">NASDAQ</span>
-      <h2>Nasdaq Market Overview</h2>
-      <p>나스닥 100 지표, 섹터 흐름, 성장주 변동성을 한 화면에서 확인.</p>
-      <a class="btn" href="./nasdaq.html">Open →</a>
+      <span class="badge">GROWTH</span>
+      <h2>Nasdaq & Tech Analytics</h2>
+      <p>나스닥 100 주요 종목의 현금 흐름과 기술적 지표를 분석하여 성장 잠재력을 평가합니다.</p>
+      <a class="btn" href="nasdaq.html">Dashboard View →</a>
     </section>
 
     <section class="card">
-      <span class="badge">DIVIDENDS</span>
-      <h2>Dividend & Cash Flow</h2>
-      <p>배당 수익률, 지급 일정, 현금흐름 중심의 인컴 분석.</p>
-      <a class="btn" href="./dividend.html">Open →</a>
+      <span class="badge">INCOME</span>
+      <h2>Dividend Cash Flow</h2>
+      <p>SCHD, JEPI 및 배당 귀족주의 수익률, 배당락일, CAGR 성장률을 추적합니다.</p>
+      <a class="btn" href="dividend.html">Dashboard View →</a>
     </section>
 
     <section class="card">
-      <span class="badge">CRYPTO</span>
+      <span class="badge">DIGITAL ASSET</span>
       <h2>Crypto Market Terminal</h2>
-      <p>가상자산 가격, 변동성, 스테이킹 기반 수익 지표.</p>
-      <a class="btn" href="./coin.html">Open →</a>
+      <p>비트코인 및 알트코인의 실시간 시세, 스테이킹 수익률, 온체인 데이터를 제공합니다.</p>
+      <a class="btn" href="coin.html">Dashboard View →</a>
     </section>
 
     <section class="card">
-      <span class="badge">AI</span>
-      <h2>Investor AI Tools</h2>
-      <p>수익 계산기, 시나리오 분석, 투자 보조 도구.</p>
-      <a class="btn" href="./investor_ai.html">Open →</a>
+      <span class="badge">REITs Focus</span>
+      <h2>Realty Income (O) Deep Dive</h2>
+      <p>월배당의 대명사 리얼티 인컴의 FFO, AFFO 및 임대 수익 구조 심층 분석.</p>
+      <a class="btn" href="realty-income-o.html">Analysis View →</a>
     </section>
 
     <section class="card">
-      <span class="badge">REIT</span>
-      <h2>REIT Deep Dive</h2>
-      <p>순임대 구조와 배당 안정성 분석 페이지.</p>
-      <a class="btn" href="./realty-income-o.html">Open →</a>
+      <span class="badge">TOOLS</span>
+      <h2>Investor AI Calculator</h2>
+      <p>복리 수익 계산기, MDD 리스크 시뮬레이터 등 투자 보조 도구 모음.</p>
+      <a class="btn" href="investor_ai.html">Tools View →</a>
     </section>
 
     <section class="card">
-      <span class="badge">LEGAL</span>
-      <h2>Legal & Disclosure</h2>
-      <p>면책, 이용약관, 데이터 출처 안내.</p>
-      <a class="btn" href="./legal.html">Open →</a>
+      <span class="badge">EDITORIAL</span>
+      <h2>Market Insights</h2>
+      <p>시장 전망, 투자 철학, 데이터 분석 방법론에 대한 칼럼과 리포트.</p>
+      <a class="btn" href="blog.html">Read Articles →</a>
     </section>
   </main>
 
+  <article class="seo-content">
+    <h3>Why US Dividend Pro?</h3>
+    <p>
+      현대 금융 시장은 데이터의 홍수 속에 있습니다. 성공적인 투자는 단순한 정보의 수집이 아니라, 
+      노이즈를 제거하고 유의미한 신호를 포착하는 능력에서 비롯됩니다. 
+      US Dividend Pro는 개인 투자자들이 기관 투자자와 대등한 수준의 정보력을 갖출 수 있도록 
+      설계된 웹 기반 터미널입니다.
+    </p>
+    
+    <h3>Core Philosophy</h3>
+    <p>
+      우리는 <strong>'Barbell Strategy(바벨 전략)'</strong>을 지향합니다. 
+      포트폴리오의 한 축은 나스닥(Nasdaq-100) 중심의 기술 혁신 기업에 투자하여 자본 차익을 극대화하고, 
+      다른 한 축은 리츠(REITs)와 고배당주를 통해 안정적인 현금 흐름(Cash Flow)을 창출하여 
+      시장 변동성을 방어하는 전략입니다. 여기에 디지털 자산(Crypto)을 위성 자산으로 편입하여 
+      추가적인 알파 수익을 추구합니다.
+    </p>
+  </article>
+
   <footer>
-    © 2025 US Market Terminals. All rights reserved.<br>
-    본 사이트의 모든 정보는 참고용이며 투자 권유가 아닙니다.
+    <div style="margin-bottom: 20px;">
+      <a href="legal.html">이용약관 및 면책조항</a> | <a href="about.html">회사 소개</a>
+    </div>
+    © 2026 US Dividend Pro Analytics. All rights reserved.<br>
+    Data provided for informational purposes only. Not financial advice.
   </footer>
 
 </body>
