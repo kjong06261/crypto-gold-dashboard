@@ -1,36 +1,11 @@
-# US Market Terminals - Robots.txt
-# Created: 2026-01-02
-# Last Updated: 2026-01-02
-
 User-agent: *
 Allow: /
+
+# 관리자 페이지 및 개인 정보 폴더 접근 차단 (예시)
 Disallow: /admin/
 Disallow: /private/
-Disallow: /tmp/
-Disallow: /cgi-bin/
-Disallow: /wp-admin/
-Disallow: /wp-includes/
-Disallow: /search/
-Crawl-delay: 2
+Disallow: /config/
+Disallow: *.json  # 설정 파일 등은 검색 안 되게 (필요시)
 
-# Google Search Bots
-User-agent: Googlebot
-Allow: /
-Disallow: /admin/
-Crawl-delay: 1
-
-# Google AdSense Bots
-User-agent: Mediapartners-Google
-Allow: /
-Crawl-delay: 1
-
-User-agent: AdsBot-Google
-Allow: /
-Crawl-delay: 1
-
-# Sitemap
+# 사이트맵 위치 지정
 Sitemap: https://us-dividend-pro.com/sitemap.xml
-
-# Human readable comment
-# This site is optimized for Google AdSense and SEO
-# Contact: support@us-dividend-pro.com
