@@ -1,36 +1,22 @@
 # US Market Terminals - Robots.txt
-# Created: 2026-01-02
-# Last Updated: 2026-01-02
+# Optimized for Google AdSense & SEO
 
 User-agent: *
 Allow: /
-Disallow: /admin/
 Disallow: /private/
-Disallow: /tmp/
-Disallow: /cgi-bin/
-Disallow: /wp-admin/
-Disallow: /wp-includes/
 Disallow: /search/
-Crawl-delay: 2
 
-# Google Search Bots
-User-agent: Googlebot
-Allow: /
-Disallow: /admin/
-Crawl-delay: 1
-
-# Google AdSense Bots
+# Google AdSense Bot (Critical for Approval)
 User-agent: Mediapartners-Google
 Allow: /
-Crawl-delay: 1
 
+# Google Search Bot
+User-agent: Googlebot
+Allow: /
+
+# Google Ads Bot
 User-agent: AdsBot-Google
 Allow: /
-Crawl-delay: 1
 
-# Sitemap
+# Sitemap Location
 Sitemap: https://us-dividend-pro.com/sitemap.xml
-
-# Human readable comment
-# This site is optimized for Google AdSense and SEO
-# Contact: support@us-dividend-pro.com
