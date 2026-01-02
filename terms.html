@@ -1,43 +1,213 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이용약관 - US Market Terminals</title>
-    <meta name="description" content="US Market Terminals 서비스 이용약관입니다.">
-    <style>
-        body { font-family: 'Inter', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; background: #0a0d12; color: #e2e8f0; }
-        h1, h2 { color: #60a5fa; }
-        .date { color: #94a3b8; font-size: 0.9em; }
-        a { color: #3b82f6; text-decoration: none; }
-        a:hover { color: #60a5fa; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Terms of Service | US Market Terminals</title>
+  <meta name="description" content="Terms of Service for US Market Terminals. Please read these terms carefully before using our services.">
+  <meta name="robots" content="noindex, follow"> <link rel="canonical" href="https://us-dividend-pro.com/terms.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables (Consistent with Index) */
+    :root {
+      --bg: #0a0d12;
+      --bg-alt: #0d1117;
+      --panel: #151b23;
+      --panel-hover: #1a222c;
+      --border: #2a3441;
+      --text: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      --radius: 12px;
+      --transition: all 0.2s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    body {
+      margin: 0; padding: 0;
+      background: var(--bg); color: var(--text);
+      font-family: var(--font); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navigation */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10, 13, 18, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .navin {
+      max-width: 1200px; margin: 0 auto; height: 64px;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.1rem; }
+    .logo-mark { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent), #a855f7); border-radius: 8px; display: grid; place-items: center; font-size: 0.9rem; }
+    
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;
+      padding: 8px 14px; border-radius: 6px;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent) !important; color: #fff !important; margin-left: 8px; }
+    .menu-toggle { display: none; background: transparent; border: 0; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 20px; height: 2px; background: #fff; margin: 4px 0; border-radius: 2px; }
+
+    /* Content Box */
+    .legal-wrapper { padding: 100px 0 60px; }
+    .legal-card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 40px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    h1 { font-size: 2rem; color: #fff; border-bottom: 2px solid var(--border); padding-bottom: 20px; margin-top: 0; margin-bottom: 10px; }
+    .date { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 30px; display: block; }
+    
+    h2 { font-size: 1.3rem; color: #fff; margin-top: 40px; margin-bottom: 15px; border-left: 4px solid var(--accent); padding-left: 15px; }
+    p { color: var(--text-secondary); margin-bottom: 16px; font-size: 1rem; }
+    ul { padding-left: 20px; color: var(--text-secondary); margin-bottom: 20px; }
+    li { margin-bottom: 8px; }
+    strong { color: var(--text); }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 20px; color: var(--accent); font-weight: 600; font-size: 0.9rem;
+    }
+    .back-link:hover { color: var(--accent-light); transform: translateX(-3px); }
+
+    /* Footer */
+    footer {
+      background: var(--bg-alt); border-top: 1px solid var(--border);
+      padding: 60px 24px; text-align: center; color: var(--text-secondary); font-size: 0.9rem;
+    }
+    .footer-links a { margin: 0 10px; color: var(--text-secondary); }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .legal-card { padding: 30px 20px; }
+    }
+  </style>
 </head>
 <body>
-    <h1>이용약관</h1>
-    <p class="date">최종 업데이트: 2026년 1월 2일</p>
-    
-    <h2>제1조 (목적)</h2>
-    <p>본 약관은 US Market Terminals(이하 "본 사이트")의 서비스 이용과 관련한 조건을 규정합니다.</p>
-    
-    <h2>제2조 (서비스 내용)</h2>
-    <p>본 사이트는 다음 서비스를 제공합니다:</p>
-    <ul>
-        <li>금융 데이터 분석 정보 제공</li>
-        <li>투자 계산기 도구</li>
-        <li>시장 인사이트 콘텐츠</li>
-    </ul>
-    
-    <h2>제3조 (면책조항)</h2>
-    <p>본 사이트에서 제공하는 모든 정보는 참고용이며, 투자 권유나 금융 조언이 아닙니다.</p>
-    <p>사용자의 투자 결정에 따른 결과에 대해 본 사이트는 책임을 지지 않습니다.</p>
-    
-    <h2>제4조 (지식재산권)</h2>
-    <p>본 사이트의 모든 콘텐츠는 저작권법의 보호를 받습니다.</p>
-    
-    <h2>제5조 (준거법)</h2>
-    <p>본 약관은 대한민국 법률에 따라 규정되고 해석됩니다.</p>
-    
-    <p><a href="index.html">홈으로 돌아가기</a></p>
+
+  <nav class="nav">
+    <div class="navin">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">📊</span> US MARKET TERMINALS
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="nasdaq.html">Nasdaq</a>
+        <a href="dividend.html">Dividends</a>
+        <a href="coin.html">Crypto</a>
+        <a href="blog.html">Insights</a>
+        <a href="nasdaq.html" class="nav-cta">Terminal</a>
+      </div>
+      <button class="menu-toggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="legal-wrapper">
+    <div class="container">
+      <a href="index.html" class="back-link">← Back to Home</a>
+      
+      <div class="legal-card">
+        <h1>Terms of Service</h1>
+        <span class="date">Last Updated: January 2, 2026</span>
+        
+        <h2>1. Acceptance of Terms</h2>
+        <p>
+          By accessing and using <strong>US Market Terminals</strong> (the "Service"), you accept and agree to be bound by the terms and provision of this agreement. 
+          If you do not agree to abide by these terms, please do not use this Service.
+        </p>
+
+        <h2>2. Description of Service</h2>
+        <p>This website provides financial data, market analysis, investment calculators, and educational content for informational purposes only. The Service includes:</p>
+        <ul>
+          <li>Real-time and delayed market data for US stocks and crypto.</li>
+          <li>Dividend analysis and tracking tools.</li>
+          <li>Investment simulation calculators.</li>
+        </ul>
+
+        <h2>3. No Financial Advice (Disclaimer)</h2>
+        <p>
+          The content provided on US Market Terminals is for <strong>educational and informational purposes only</strong>. 
+          It does not constitute financial, investment, legal, or tax advice. 
+          We are not a registered broker-dealer or investment advisor.
+        </p>
+        <p>
+          You are solely responsible for your own investment decisions. We accept no liability for any loss or damage whatsoever caused in reliance upon such information or services.
+        </p>
+
+        <h2>4. Intellectual Property</h2>
+        <p>
+          All content included on this site, such as text, graphics, logos, images, and software, is the property of US Market Terminals and is protected by international copyright laws. 
+          Unauthorized use or reproduction of this content is strictly prohibited.
+        </p>
+
+        <h2>5. Limitation of Liability</h2>
+        <p>
+          In no event shall US Market Terminals be liable for any direct, indirect, incidental, special, or consequential damages arising out of or in any way connected with the use of this website or with the delay or inability to use this website.
+        </p>
+
+        <h2>6. Changes to Terms</h2>
+        <p>
+          We reserve the right to modify these terms at any time. You should check this page regularly. 
+          Your continued use of the Service after any such changes constitutes your acceptance of the new Terms of Service.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links" style="margin-bottom: 20px;">
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="legal.html">Terms & Disclaimer</a>
+      </div>
+      <p>
+        © 2026 US Market Terminals. All rights reserved.<br>
+        Independent Market Data • Public Sources Only • No Investment Advice
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const isFlex = navLinks.style.display === 'flex';
+        navLinks.style.display = isFlex ? 'none' : 'flex';
+        if(!isFlex) {
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '64px';
+          navLinks.style.left = '0';
+          navLinks.style.right = '0';
+          navLinks.style.background = '#151b23';
+          navLinks.style.padding = '20px';
+          navLinks.style.borderBottom = '1px solid #2a3441';
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
