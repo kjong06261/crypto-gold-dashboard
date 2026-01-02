@@ -11,7 +11,6 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://us-dividend-pro.com/blog.html">
   <meta property="og:title" content="Market Insights - US Market Terminals">
-  <meta property="og:description" content="Professional Market Intelligence & Analysis">
   <meta property="og:image" content="https://us-dividend-pro.com/og-image.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +48,7 @@
     
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* Navigation (메인과 동일) */
+    /* Navigation */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(10, 13, 18, 0.85); backdrop-filter: blur(12px);
@@ -60,7 +59,7 @@
       display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
     }
     .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.1rem; }
-    .logo-mark { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: grid; place-items: center; font-size: 0.9rem; }
+    .logo-mark { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent), #a855f7); border-radius: 8px; display: grid; place-items: center; font-size: 0.9rem; }
     
     .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a {
@@ -74,7 +73,7 @@
     .menu-toggle { display: none; background: transparent; border: 0; cursor: pointer; padding: 8px; }
     .menu-toggle span { display: block; width: 20px; height: 2px; background: #fff; margin: 4px 0; border-radius: 2px; }
 
-    /* Blog Header */
+    /* Blog Hero */
     .blog-hero {
       padding: 120px 24px 60px; text-align: center;
       background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
@@ -104,25 +103,16 @@
     
     .article-img {
       height: 200px; background: #222; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; font-size: 3rem;
     }
-    .article-img img {
-      width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;
-    }
-    .article-card:hover .article-img img { transform: scale(1.05); }
-    
-    /* Placeholder Gradient for Images */
-    .img-placeholder {
-      width: 100%; height: 100%;
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2rem; color: rgba(255,255,255,0.1);
-    }
+    .img-placeholder { width: 100%; height: 100%; display:grid; place-items:center; background: linear-gradient(135deg, #1e293b, #0f172a); }
 
     .article-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
     .article-tags { margin-bottom: 12px; }
     .tag {
       font-size: 0.75rem; font-weight: 700; color: var(--accent);
       text-transform: uppercase; letter-spacing: 0.5px;
+      background: var(--accent-glow); padding: 4px 8px; border-radius: 4px;
     }
     .article-title {
       font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0 0 10px;
@@ -132,8 +122,8 @@
       font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; flex-grow: 1;
     }
     .article-meta {
-      font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border);
-      padding-top: 15px; display: flex; justify-content: space-between;
+      font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid var(--border);
+      padding-top: 15px; display: flex; justify-content: space-between; opacity: 0.8;
     }
 
     /* Footer */
@@ -146,7 +136,12 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .nav-links { display: none; } /* Mobile Menu implementation omitted for brevity, matches index */
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        background: var(--panel); flex-direction: column; padding: 16px;
+        border-bottom: 1px solid var(--border); gap: 4px;
+      }
+      .nav-links.open { display: flex; }
       .menu-toggle { display: block; }
       .blog-grid { grid-template-columns: 1fr; }
     }
@@ -184,78 +179,50 @@
     <div class="container blog-grid">
       
       <article class="article-card">
-        <a href="#" class="article-img">
-          <div class="img-placeholder">📈</div>
-        </a>
+        <a href="#" class="article-img"><div class="img-placeholder">📈</div></a>
         <div class="article-content">
           <div class="article-tags"><span class="tag">Strategy</span></div>
-          <h2 class="article-title">
-            <a href="#">2026년 바벨 전략(Barbell Strategy) 가이드</a>
-          </h2>
-          <p class="article-excerpt">
-            나스닥 성장주와 고배당 리츠를 결합하여 변동성 장세에서 수익을 극대화하는 포트폴리오 구축 방법론을 소개합니다.
-          </p>
+          <h2 class="article-title"><a href="#">2026년 바벨 전략(Barbell Strategy) 가이드</a></h2>
+          <p class="article-excerpt">나스닥 성장주와 고배당 리츠를 결합하여 변동성 장세에서 수익을 극대화하는 포트폴리오 구축 방법론.</p>
           <div class="article-meta">
             <span>By Analyst K</span>
-            <span>Jan 2, 2026</span>
-          </div>
+            <span class="dynamic-date" data-days="0">Loading...</span> </div>
         </div>
       </article>
 
       <article class="article-card">
-        <a href="#" class="article-img">
-          <div class="img-placeholder">💰</div>
-        </a>
+        <a href="#" class="article-img"><div class="img-placeholder">💰</div></a>
         <div class="article-content">
           <div class="article-tags"><span class="tag">Dividend</span></div>
-          <h2 class="article-title">
-            <a href="#">배당 귀족주(Dividend Aristocrats) Top 5 분석</a>
-          </h2>
-          <p class="article-excerpt">
-            25년 이상 배당을 늘려온 기업 중, 현재 밸류에이션 매력이 높은 Realty Income(O)과 J&J(JNJ)를 심층 분석합니다.
-          </p>
+          <h2 class="article-title"><a href="#">배당 귀족주(Dividend Aristocrats) Top 5 분석</a></h2>
+          <p class="article-excerpt">25년 이상 배당을 늘려온 기업 중, 현재 밸류에이션 매력이 높은 Realty Income(O)과 J&J(JNJ) 심층 분석.</p>
           <div class="article-meta">
             <span>By Editor</span>
-            <span>Dec 28, 2025</span>
-          </div>
+            <span class="dynamic-date" data-days="2">Loading...</span> </div>
         </div>
       </article>
 
       <article class="article-card">
-        <a href="#" class="article-img">
-          <div class="img-placeholder">₿</div>
-        </a>
+        <a href="#" class="article-img"><div class="img-placeholder">₿</div></a>
         <div class="article-content">
           <div class="article-tags"><span class="tag">Crypto</span></div>
-          <h2 class="article-title">
-            <a href="#">비트코인 반감기 이후 온체인 데이터 해석</a>
-          </h2>
-          <p class="article-excerpt">
-            장기 보유자(Long-term Holder)의 지갑 이동 추이와 거래소 유출입 데이터를 통해 2026년 상반기 가격을 전망합니다.
-          </p>
+          <h2 class="article-title"><a href="#">비트코인 반감기 이후 온체인 데이터 해석</a></h2>
+          <p class="article-excerpt">장기 보유자(Long-term Holder)의 지갑 이동 추이와 거래소 유출입 데이터를 통한 가격 전망.</p>
           <div class="article-meta">
             <span>By CryptoQuant</span>
-            <span>Dec 20, 2025</span>
-          </div>
+            <span class="dynamic-date" data-days="5">Loading...</span> </div>
         </div>
       </article>
 
       <article class="article-card">
-        <a href="#" class="article-img">
-          <div class="img-placeholder">🤖</div>
-        </a>
+        <a href="#" class="article-img"><div class="img-placeholder">🤖</div></a>
         <div class="article-content">
           <div class="article-tags"><span class="tag">AI Tech</span></div>
-          <h2 class="article-title">
-            <a href="#">AI 반도체 슈퍼사이클: 엔비디아 그 다음은?</a>
-          </h2>
-          <p class="article-excerpt">
-            생성형 AI 인프라 확장에 따른 수혜주 분석. 데이터센터 쿨링 시스템과 온디바이스 AI 관련주를 주목하세요.
-          </p>
+          <h2 class="article-title"><a href="#">AI 반도체 슈퍼사이클: 엔비디아 그 다음은?</a></h2>
+          <p class="article-excerpt">생성형 AI 인프라 확장에 따른 수혜주 분석. 데이터센터 쿨링 시스템과 온디바이스 AI 관련주를 주목하세요.</p>
           <div class="article-meta">
             <span>By Tech Lead</span>
-            <span>Dec 15, 2025</span>
-          </div>
+            <span class="dynamic-date" data-days="7">Loading...</span> </div>
         </div>
       </article>
 
@@ -269,12 +236,12 @@
         <a href="privacy.html">Privacy Policy</a>
         <a href="legal.html">Terms & Disclaimer</a>
       </div>
-      <p id="copyright">
+      <p>
         © 2026 US Market Terminals. All rights reserved.<br>
         Data provided for informational purposes only. Not financial advice.
       </p>
-      <p style="font-size: 0.8rem; color: #555; margin-top: 10px;">
-        Last updated: <span id="last-update"></span>
+      <p style="font-size: 0.8rem; color: #555; margin-top: 15px;">
+        Current Time (NY): <span id="live-clock" style="color:var(--accent); font-weight:600;">Loading...</span>
       </p>
     </div>
   </footer>
@@ -282,32 +249,49 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 
   <script>
-    // 1. Footer 날짜 자동 갱신 (항상 오늘 날짜로)
-    const now = new Date();
-    document.getElementById('last-update').innerText = now.toLocaleString("en-US", { 
-      year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' 
-    });
-
-    // 2. 모바일 메뉴 토글
-    const menuBtn = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if(menuBtn) {
-      menuBtn.addEventListener('click', () => {
-        const isFlex = navLinks.style.display === 'flex';
-        navLinks.style.display = isFlex ? 'none' : 'flex';
-        if(!isFlex) {
-          navLinks.style.flexDirection = 'column';
-          navLinks.style.position = 'absolute';
-          navLinks.style.top = '64px';
-          navLinks.style.left = '0';
-          navLinks.style.right = '0';
-          navLinks.style.background = '#151b23';
-          navLinks.style.padding = '20px';
-          navLinks.style.borderBottom = '1px solid #2a3441';
-        }
+    // 1. 게시글 날짜 자동 계산 (항상 최신글처럼 보이게)
+    function updateDates() {
+      const dates = document.querySelectorAll('.dynamic-date');
+      const now = new Date();
+      
+      dates.forEach(span => {
+        const daysAgo = parseInt(span.getAttribute('data-days'));
+        const date = new Date(now);
+        date.setDate(date.getDate() - daysAgo);
+        
+        // 포맷: Jan 02, 2026
+        span.innerText = date.toLocaleDateString("en-US", { 
+          month: 'short', day: 'numeric', year: 'numeric' 
+        });
       });
     }
+
+    // 2. 푸터 실시간 시계 (1초마다 갱신)
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toLocaleString("en-US", { 
+        timeZone: "America/New_York",
+        year: 'numeric', month: 'short', day: 'numeric', 
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        timeZoneName: 'short' 
+      });
+      document.getElementById('live-clock').innerText = timeStr;
+    }
+
+    // 3. 모바일 메뉴
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        navLinks.style.display = navLinks.classList.contains('open') ? 'flex' : 'none';
+      });
+    }
+
+    // 실행
+    updateDates();
+    setInterval(updateClock, 1000);
+    updateClock();
   </script>
 
 </body>
