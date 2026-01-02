@@ -4,13 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Assets Matrix | US Market Terminals</title>
+  <meta name="description" content="Real-time cryptocurrency screener and market analysis. Track Bitcoin, Ethereum, and Altcoin volatility and market cap trends.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; }
-    .nav { padding: 15px 20px; border-bottom: 1px solid #2a3441; background: #151b23; display: flex; justify-content: space-between; align-items: center; }
+    /* Dark Theme */
+    body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; line-height: 1.6; }
+    .nav { padding: 15px 20px; border-bottom: 1px solid #2a3441; background: #151b23; display: flex; justify-content: space-between; align-items: center; position:sticky; top:0; z-index:100; }
     .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; }
     .back-btn { color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
-    .screen-container { height: 90vh; width: 100%; display: flex; flex-direction: column; }
+    
+    .screen-container { height: 80vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid #2a3441; }
+    
+    /* SEO Text Section */
+    .content-section { max-width: 800px; margin: 0 auto; padding: 60px 20px 100px; }
+    .content-section h2 { color: #fff; border-left: 4px solid #8b5cf6; padding-left: 15px; margin-top: 40px; }
+    .content-section p { color: #94a3b8; font-size: 1rem; text-align: justify; margin-bottom: 20px; }
+    .content-section li { margin-bottom: 10px; color: #94a3b8; }
   </style>
 </head>
 <body>
@@ -37,6 +46,36 @@
       </script>
     </div>
     </div>
+
+  <article class="content-section">
+    <h2>Crypto Market Dynamics & Valuation</h2>
+    <p>
+      The cryptocurrency market operates on a 24/7 basis, characterized by high volatility and rapid liquidity shifts. 
+      For strategic investors, understanding the correlation between Bitcoin (BTC) dominance and Altcoin market cycles is essential. 
+      This terminal provides a comprehensive view of market capitalization, volume, and price action across the digital asset ecosystem.
+    </p>
+
+    <h2>Understanding On-Chain Metrics</h2>
+    <p>
+      Unlike traditional equities, crypto assets can be analyzed using on-chain data. Key metrics to consider include:
+    </p>
+    <ul>
+      <li><strong>Hash Rate:</strong> A measure of the computational power securing the Bitcoin network. Higher hash rates generally indicate network security and miner confidence.</li>
+      <li><strong>Wallet Activity:</strong> The number of active addresses can signal user adoption trends before they are reflected in price.</li>
+      <li><strong>Exchange Inflow/Outflow:</strong> Large movements of assets onto exchanges often precede selling pressure, while outflows suggest accumulation.</li>
+    </ul>
+
+    <h2>Risk Management in Digital Assets</h2>
+    <p>
+      Due to the speculative nature of cryptocurrencies, risk management is paramount. 
+      Institutional strategies often involve position sizing based on the asset's beta relative to Bitcoin. 
+      Furthermore, the rise of DeFi (Decentralized Finance) has introduced new yield-generating mechanisms like staking, which must be weighed against smart contract risks.
+    </p>
+    
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 40px; border-top: 1px solid #2a3441; padding-top: 20px;">
+      <em>Disclaimer: Digital assets are highly volatile. This data is for educational purposes only. Not financial advice.</em>
+    </p>
+  </article>
 
 </body>
 </html>
