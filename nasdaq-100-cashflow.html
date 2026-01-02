@@ -1,87 +1,180 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나스닥100(NASDAQ-100) 하이브리드 전략: 성장주에서 월배당을 추출하는 법 | US Dividend Pro</title>
-    <style>
-        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.8; color: #333; max-width: 950px; margin: 0 auto; padding: 40px; background: #f8f9fa; }
-        .article { background: white; padding: 60px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 10px solid #0056b3; }
-        h1 { color: #003366; font-size: 2.5em; line-height: 1.2; margin-bottom: 30px; }
-        h2 { color: #0056b3; margin-top: 50px; border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 1.8em; }
-        h3 { color: #003366; margin-top: 30px; }
-        p { margin-bottom: 25px; text-align: justify; font-size: 1.1em; }
-        .info-box { background: #eef6ff; border: 1px solid #cce3ff; padding: 30px; border-radius: 12px; margin: 40px 0; }
-        .highlight { color: #d32f2f; font-weight: bold; }
-        .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
-        .data-table th, .data-table td { border: 1px solid #ddd; padding: 15px; text-align: center; }
-        .data-table th { background: #0056b3; color: white; }
-        footer { margin-top: 60px; text-align: center; font-size: 0.9em; color: #888; border-top: 1px solid #eee; padding-top: 30px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NASDAQ-100 Growth Strategy: Maximizing Cash Flow | US Market Terminals</title>
+  <meta name="description" content="Detailed guide on combining Nasdaq-100 growth potential with covered call income strategies.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Dark Terminal Theme */
+    :root {
+      --bg: #0a0d12;
+      --panel: #151b23;
+      --border: #2a3441;
+      --text: #e2e8f0;
+      --text-sec: #94a3b8;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+    }
+    
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; color: inherit; }
+    
+    /* Header */
+    header { border-bottom: 1px solid var(--border); padding: 20px; background: rgba(10,13,18,0.95); position: sticky; top: 0; backdrop-filter: blur(10px); z-index: 100; }
+    .nav-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 800; font-size: 1.1rem; color: #fff; }
+    .back-btn { font-size: 0.9rem; color: var(--text-sec); display: flex; align-items: center; gap: 5px; transition: 0.2s; }
+    .back-btn:hover { color: var(--accent); }
+
+    /* Content */
+    .container { max-width: 800px; margin: 60px auto; padding: 0 24px; }
+    
+    .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 20px; color: #fff; line-height: 1.2; }
+    .meta { color: var(--text-sec); font-size: 0.9rem; display: flex; gap: 15px; }
+
+    /* Body Text */
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 50px; margin-bottom: 20px; font-size: 1.6rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: var(--accent); margin-top: 30px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; }
+    .content strong { color: #fff; }
+    
+    /* Info Box */
+    .info-box { background: rgba(59, 130, 246, 0.08); border: 1px solid var(--border); border-radius: 12px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { margin-top: 0; color: #fff; display: flex; align-items: center; gap: 10px; }
+
+    /* Data Table */
+    .table-wrapper { overflow-x: auto; margin: 40px 0; border: 1px solid var(--border); border-radius: 12px; }
+    .data-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+    .data-table th { background: var(--panel); text-align: left; padding: 15px 20px; color: var(--text-sec); font-size: 0.85rem; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+    .data-table td { padding: 15px 20px; border-bottom: 1px solid var(--border); color: var(--text); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    
+    /* CTA Area */
+    .cta-section { margin-top: 80px; padding: 40px; background: linear-gradient(180deg, var(--panel) 0%, var(--bg) 100%); border: 1px solid var(--border); border-radius: 16px; text-align: center; }
+    .cta-btn { display: inline-block; background: var(--accent); color: white; padding: 14px 32px; border-radius: 8px; font-weight: 700; margin-top: 20px; transition: 0.2s; }
+    .cta-btn:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4); }
+
+    footer { margin-top: 80px; border-top: 1px solid var(--border); padding: 40px; text-align: center; color: var(--text-sec); font-size: 0.9rem; }
+  </style>
 </head>
 <body>
-    <div class="article">
-        <h1>NASDAQ-100: Growth Intelligence and Digital Dividend Strategy</h1>
-        <p><strong>[핵심 리서치 요약]</strong> 현대 투자 패러다임에서 나스닥(NASDAQ)은 더 이상 단순한 시세 차익형 자산이 아닙니다. 엔비디아(NVDA), 마이크로소프트(MSFT), 애플(AAPL)과 같은 초거대 빅테크 기업들이 창출하는 천문학적인 <strong>잉여현금흐름(Free Cash Flow)</strong>은 이제 '자사주 매입'과 '배당 성장'이라는 두 마리 토끼를 잡는 원동력이 되고 있습니다. 본 리포트는 2026년 매크로 환경에서 나스닥의 기술적 성장성과 커버드콜 옵션 전략을 결합하여 극대화된 월간 현금흐름을 추출하는 실전 운용법을 심층 분석합니다.</p>
 
-        <h2>1. The Evolution of Tech Giants into Cash Machines</h2>
-        <p>과거의 기술주들은 수익의 전액을 연구개발(R&D)과 설비투자(CAPEX)에 재투자하며 주주 환원에 소홀했습니다. 그러나 현재의 나스닥 100 지수를 주도하는 기업들은 다릅니다. 이들은 플랫폼 독점력을 바탕으로 인플레이션을 가격에 전가할 수 있는 강력한 <strong>Pricing Power</strong>를 보유하고 있습니다.</p>
-        <p>In the 2024-2026 era, AI-driven productivity gains have pushed operating margins to record highs. This financial fortitutde allows companies to initiate dividends, turning tech stocks into <span class="highlight">Sustainable Income Assets</span>. Investing in the NASDAQ-100 today means participating in the highest quality cash-flow engines the world has ever seen.</p>
-
-        [Image of a diagram showing the Free Cash Flow growth of major NASDAQ-100 tech companies compared to the S&P 500]
-
-        <h2>2. Covered Call Strategy: Maximizing Monthly Income</h2>
-        <p>나스닥 투자의 유일한 단점은 높은 변동성(Volatility)입니다. 하지만 <strong>커버드콜(Covered Call)</strong> 전략은 이 변동성을 오히려 수익으로 전환합니다. JEPQ나 QYLD와 같은 하이 프리미엄 ETF는 나스닥 100 지수 수익률을 추종하는 동시에 콜옵션을 매도하여 월간 단위의 강력한 인컴을 발생시킵니다.</p>
-        
-        <div class="info-box">
-            <h3>💡 Portfolio Engineering Concept</h3>
-            <p>기술주의 성장 잠재력을 훼손하지 않으면서 월 배당을 받는 최적의 공식은 <strong>'Core-Satellite'</strong> 모델입니다. 나스닥 100 지수 원형(QQQ)을 70% 보유하고, 나머지 30%를 고배당 커버드콜 전략(JEPQ)으로 구성하면 하락장 방어력과 상승장 참여율을 동시에 확보할 수 있습니다.</p>
-        </div>
-
-        <h2>3. 2026 Macro Outlook and Interest Rate Sensitivity</h2>
-        <p>2026년 나스닥 시장의 핵심 변수는 금리 안정화와 AI 실적의 현실화입니다. 기술주 투자 리스크의 핵심이었던 고금리 환경이 점진적으로 개선됨에 따라, 밸류에이션 부담이 낮아진 대형주 위주의 랠리가 예상됩니다. 특히 기업용 AI 솔루션을 통해 실질적인 순이익을 증명하는 기업들이 '수익의 질(Quality of Earnings)' 측면에서 차별화된 흐름을 보일 것입니다.</p>
-
-        [Image of a graph showing the correlation between NASDAQ-100 performance and US 10-year Treasury yields]
-
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Strategy Type</th>
-                    <th>Expected Yield (Est.)</th>
-                    <th>Growth Potential</th>
-                    <th>Risk Level</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>NASDAQ 100 (QQQ)</td>
-                    <td>0.5% - 0.8%</td>
-                    <td>★★★★★</td>
-                    <td>High</td>
-                </tr>
-                <tr>
-                    <td>Covered Call Hybrid (JEPQ)</td>
-                    <td>9.0% - 11.5%</td>
-                    <td>★★★☆☆</td>
-                    <td>Medium</td>
-                </tr>
-                <tr>
-                    <td>Multi-Asset (O + JEPQ)</td>
-                    <td>6.5% - 8.0%</td>
-                    <td>★★★★☆</td>
-                    <td>Low-Medium</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>4. Conclusion: Transforming Market Volatility into Wealth</h2>
-        <p>데이터 기반의 투자는 감정을 배제하고 시스템을 구축하는 과정입니다. 나스닥의 혁신적 성장에 커버드콜의 인컴 안정성을 더하십시오. us-dividend-pro.com이 제공하는 실시간 터미널 데이터는 당신의 자산이 24시간 쉬지 않고 일할 수 있는 최적의 경로를 제시합니다.</p>
-        
-        <p>더 상세한 종목별 배당 데이터는 <a href="/dividend.html"><strong>Dividend Analytics</strong></a> 섹션에서 확인하실 수 있습니다.</p>
-
-        <footer>
-            <p>© 2025 US Dividend Pro. All rights reserved. <br> Independent Market Research for Financial Independence.</p>
-        </footer>
+  <header>
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <a href="../blog.html" class="back-btn">← Back to Insights</a>
     </div>
+  </header>
+
+  <main class="container">
+    <article class="article-header">
+      <span class="tag">Growth Strategy</span>
+      <h1>NASDAQ-100: Growth Intelligence and Digital Dividend Strategy</h1>
+      <div class="meta">
+        <span>By Analyst K</span>
+        <span>•</span>
+        <span>Updated: Jan 2, 2026</span>
+      </div>
+    </article>
+
+    <div class="content">
+      <p>
+        In the modern investment paradigm, the Nasdaq is no longer just a vehicle for capital gains. 
+        Tech giants like <strong>NVIDIA (NVDA)</strong>, <strong>Microsoft (MSFT)</strong>, and <strong>Apple (AAPL)</strong> 
+        are generating astronomical <strong>Free Cash Flow (FCF)</strong>, enabling them to pursue both aggressive 
+        share buybacks and dividend growth simultaneously.
+      </p>
+      
+      <h2>1. The Evolution of Tech Giants into Cash Machines</h2>
+      <p>
+        Historically, tech companies reinvested all profits into R&D and CAPEX, neglecting shareholder returns. 
+        However, the companies leading the current Nasdaq-100 index possess immense <strong>Pricing Power</strong>.
+        In the 2024-2026 era, AI-driven productivity gains have pushed operating margins to record highs.
+      </p>
+
+      <h2>2. Covered Call Strategy: Maximizing Monthly Income</h2>
+      <p>
+        The only downside to Nasdaq investing is high <strong>Volatility</strong>. However, a <strong>Covered Call</strong> 
+        strategy converts this volatility into income. High-premium ETFs like <strong>JEPQ</strong> or <strong>QYLD</strong> 
+        track the Nasdaq-100 index while selling call options to generate powerful monthly income streams.
+      </p>
+
+      <div class="info-box">
+        <h3>💡 Portfolio Engineering Concept</h3>
+        <p>
+          The optimal formula is the <strong>'Core-Satellite'</strong> model. Holding 70% in the raw Nasdaq-100 index (QQQ) 
+          and allocating the remaining 30% to a high-yield covered call strategy (JEPQ) secures both downside protection 
+          and upside participation.
+        </p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Strategy Type</th>
+              <th>Expected Yield (Est.)</th>
+              <th>Growth Potential</th>
+              <th>Risk Level</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>NASDAQ 100 (QQQ)</td>
+              <td>0.5% - 0.8%</td>
+              <td>★★★★★</td>
+              <td>High</td>
+            </tr>
+            <tr>
+              <td>Covered Call Hybrid (JEPQ)</td>
+              <td>9.0% - 11.5%</td>
+              <td>★★★☆☆</td>
+              <td>Medium</td>
+            </tr>
+            <tr>
+              <td>Multi-Asset (O + JEPQ)</td>
+              <td>6.5% - 8.0%</td>
+              <td>★★★★☆</td>
+              <td>Low-Medium</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>3. Conclusion</h2>
+      <p>
+        Data-driven investing is about building a system. Combine the innovative growth of the Nasdaq 
+        with the income stability of covered calls. <strong>US Market Terminals</strong> provides the 
+        real-time data you need to execute this strategy effectively.
+      </p>
+    </div>
+
+    <div class="cta-section">
+      <h3>Ready to analyze the market?</h3>
+      <p style="color:var(--text-sec);">Check real-time Nasdaq data now.</p>
+      <a href="../nasdaq.html" class="cta-btn">Open Nasdaq Terminal</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 US Market Terminals. All rights reserved.</p>
+    <p>
+      <a href="../privacy.html">Privacy Policy</a> | 
+      <a href="../legal.html">Disclaimer</a>
+    </p>
+  </footer>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+
 </body>
 </html>
