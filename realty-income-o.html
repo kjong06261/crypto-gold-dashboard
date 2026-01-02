@@ -1,61 +1,313 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>리얼티 인컴(O) 심층 분석: 월 $1,000 패시브 인컴 엔진 설계 가이드</title>
-    <style>
-        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.8; color: #333; max-width: 900px; margin: 0 auto; padding: 40px; background: #f4f7f6; }
-        .article-container { background: white; padding: 50px; border-radius: 15px; shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        h1 { color: #1a237e; font-size: 2.5em; border-bottom: 4px solid #1a237e; padding-bottom: 15px; }
-        h2 { color: #283593; margin-top: 50px; background: #e8eaf6; padding: 10px 20px; border-radius: 5px; }
-        p { margin-bottom: 25px; font-size: 1.1em; text-align: justify; }
-        .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 1em; }
-        .data-table th, .data-table td { border: 1px solid #ddd; padding: 15px; text-align: center; }
-        .data-table th { background: #303f9f; color: white; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Realty Income (O) Analysis | US Market Terminals</title>
+  <meta name="description" content="Deep dive into Realty Income (O): The Monthly Dividend Company. Analysis of FFO, AFFO, and occupancy rates for 2026.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://us-dividend-pro.com/realty-income-o.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://us-dividend-pro.com/realty-income-o.html">
+  <meta property="og:title" content="Realty Income (O) Analytics - US Market Terminals">
+  <meta property="og:image" content="https://us-dividend-pro.com/og-image.jpg">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables (Consistent Dark Theme) */
+    :root {
+      --bg: #0a0d12;
+      --bg-alt: #0d1117;
+      --panel: #151b23;
+      --panel-hover: #1a222c;
+      --border: #2a3441;
+      --text: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --muted: #64748b;
+      --accent: #f59e0b; /* Orange for REITs */
+      --accent-glow: rgba(245, 158, 11, 0.15);
+      --success: #22c55e;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      --radius: 12px;
+      --transition: all 0.2s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    body {
+      margin: 0; padding: 0;
+      background: var(--bg); color: var(--text);
+      font-family: var(--font); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navigation */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10, 13, 18, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .navin {
+      max-width: 1200px; margin: 0 auto; height: 64px;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.1rem; }
+    .logo-mark { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent), #fbbf24); border-radius: 8px; display: grid; place-items: center; font-size: 0.9rem; }
+    
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;
+      padding: 8px 14px; border-radius: 6px;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent) !important; color: #fff !important; margin-left: 8px; }
+    .menu-toggle { display: none; background: transparent; border: 0; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 20px; height: 2px; background: #fff; margin: 4px 0; border-radius: 2px; }
+
+    /* Page Header */
+    .page-header {
+      padding: 100px 24px 60px; text-align: center;
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(245, 158, 11, 0.15), transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-tag {
+      display: inline-block; color: var(--accent); font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
+      background: var(--accent-glow); padding: 4px 12px; border-radius: 99px; border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .page-title {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #fff; margin: 0 0 20px;
+      line-height: 1.2;
+    }
+    .page-desc {
+      font-size: 1.1rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;
+    }
+
+    /* Content Layout */
+    .content-wrapper { padding: 60px 0; }
+    
+    /* Fundamentals Table */
+    .terminal-table-box {
+      background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; margin-bottom: 60px;
+    }
+    .table-header {
+      padding: 16px 24px; border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(255,255,255,0.02);
+    }
+    .table-title { font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
+    .live-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; box-shadow: 0 0 10px var(--success); }
+    
+    .data-table { width: 100%; border-collapse: collapse; }
+    .data-table th {
+      text-align: left; padding: 12px 24px; color: var(--muted); font-size: 0.8rem; text-transform: uppercase;
+      border-bottom: 1px solid var(--border); font-weight: 600;
+    }
+    .data-table td {
+      padding: 16px 24px; color: var(--text); border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    
+    /* Analysis Content */
+    .analysis-section { max-width: 800px; margin: 0 auto; }
+    .analysis-card {
+      margin-bottom: 40px; padding-left: 24px; border-left: 2px solid var(--border);
+    }
+    .analysis-card h2 { color: #fff; font-size: 1.5rem; margin: 0 0 16px; }
+    .analysis-card p { margin-bottom: 16px; font-size: 1.05rem; }
+    .highlight-box {
+      background: rgba(245, 158, 11, 0.05); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; margin: 30px 0;
+    }
+    .highlight-box h3 { margin-top: 0; color: var(--accent); }
+
+    /* Footer */
+    footer {
+      background: var(--bg-alt); border-top: 1px solid var(--border);
+      padding: 60px 24px; text-align: center; color: var(--text-secondary); font-size: 0.9rem;
+    }
+    .footer-links a { margin: 0 10px; color: var(--text-secondary); }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+    }
+  </style>
 </head>
 <body>
-    <div class="article-container">
-        <h1>Realty Income (O): The Ultimate Blueprint for Monthly Passive Income</h1>
-        <p>리얼티 인컴(Realty Income, O)은 단순한 부동산 투자 신탁(REITs)을 넘어, 전 세계 투자자들에게 '월세 받는 주식'의 표준으로 자리 잡았습니다. 1994년 상장 이후 650회 이상의 연속 배당을 지급하며, 54년 연속 배당 성장을 기록한 이 '배당 귀족주'는 예측 가능한 현금흐름(Cash Flow)을 설계하고자 하는 투자자들에게 필수적인 앵커 자산입니다.</p>
 
-        <h2>1. The Triple-Net Lease: A Structural Advantage</h2>
-        <p>리얼티 인컴의 강력함은 **Triple-Net (NNN) 임대 구조**에서 나옵니다. 이는 임차인이 부동산 세금, 보험료, 유지보수 비용을 모두 부담하는 구조입니다. 인플레이션으로 인해 원자재 값과 인건비가 상승하더라도, 리얼티 인컴은 운영 비용 리스크를 임차인에게 전가함으로써 순수익(AFFO)의 변동성을 최소화합니다. 이는 인플레이션 시기에도 배당 안전성이 훼손되지 않는 강력한 경제적 해자(Moat)를 형성합니다.</p>
-        <p>특히 포트폴리오의 80% 이상이 월마트, 세븐일레븐, 페덱스와 같은 필수 소비재 및 서비스 산업에 집중되어 있어, 경기 침체기에도 임대료 수취율이 98% 이하로 떨어진 적이 거의 없습니다. 이는 데이터가 증명하는 절대적인 안정성입니다.</p>
-
-        <h2>2. Dividend Safety: Analyzing AFFO and Payout Ratio</h2>
-        <p>REITs 분석에서 가장 중요한 지표는 당기순이익이 아닌 **AFFO(Adjusted Funds From Operations)**입니다. 리얼티 인컴의 AFFO 배당 성향은 현재 약 75% 수준에서 유지되고 있습니다. 이는 벌어들인 현금의 75%만 배당으로 지급하고, 나머지 25%는 새로운 자산 매입이나 재무 건전성 강화에 재투자한다는 의미입니다. 100%에 육박하는 배당 성향을 가진 고위험 종목들과 달리, 리얼티 인컴은 '배당 함정(Yield Trap)'에서 완벽하게 자유롭습니다.</p>
-
-        <h2>3. 2026 Strategy Table: Capital to Monthly Income</h2>
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>투자 원금 (USD)</th>
-                    <th>연간 예상 배당금 (5.4% 기준)</th>
-                    <th>월평균 현금흐름</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>$10,000</td>
-                    <td>$540</td>
-                    <td>$45.00</td>
-                </tr>
-                <tr>
-                    <td>$100,000</td>
-                    <td>$5,400</td>
-                    <td>$450.00</td>
-                </tr>
-                <tr>
-                    <td>$220,000</td>
-                    <td>$11,880</td>
-                    <td>$990.00 (목표 월 $1,000 근접)</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>4. Conclusion: Investing in Time, Not Just Price</h2>
-        <p>리얼티 인컴 투자는 단기적인 주가 차익을 노리는 것이 아니라, 시간을 내 편으로 만들어 복리의 마법을 부리는 과정입니다. 실시간 데이터 분석과 더 정밀한 종목 비교는 us-dividend-pro.com에서 제공하는 알고리즘을 통해 확인하십시오.</p>
+  <nav class="nav">
+    <div class="navin">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">📊</span> US MARKET TERMINALS
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="nasdaq.html">Nasdaq</a>
+        <a href="dividend.html">Dividends</a>
+        <a href="coin.html">Crypto</a>
+        <a href="blog.html">Insights</a>
+        <a href="nasdaq.html" class="nav-cta">Terminal</a>
+      </div>
+      <button class="menu-toggle"><span></span><span></span><span></span></button>
     </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <span class="page-tag">REITs Focus</span>
+      <h1 class="page-title">Realty Income (O) Analytics</h1>
+      <p class="page-desc">
+        Known as "The Monthly Dividend Company," Realty Income is a staple for income investors.
+        Here is the deep-dive analysis of its fundamentals.
+      </p>
+    </div>
+  </header>
+
+  <main class="content-wrapper">
+    <div class="container">
+      
+      <div class="terminal-table-box">
+        <div class="table-header">
+          <span class="table-title"><span class="live-dot"></span> Fundamental Snapshot</span>
+          <span style="font-size:0.8rem; color:var(--muted);">Ticker: O (NYSE)</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Value</th>
+              <th>YoY Growth</th>
+              <th>Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dividend Yield</td>
+              <td style="color:var(--success); font-weight:700;">5.82%</td>
+              <td>+0.4%</td>
+              <td>Attractive</td>
+            </tr>
+            <tr>
+              <td>Occupancy Rate</td>
+              <td>98.9%</td>
+              <td>-0.1%</td>
+              <td>Stable</td>
+            </tr>
+            <tr>
+              <td>AFFO Payout Ratio</td>
+              <td>74.2%</td>
+              <td>0.0%</td>
+              <td>Safe</td>
+            </tr>
+            <tr>
+              <td>Credit Rating</td>
+              <td>A- (S&P)</td>
+              <td>-</td>
+              <td>Investment Grade</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="analysis-section">
+        
+        <div class="analysis-card">
+          <h2>1. The Triple-Net Lease Advantage</h2>
+          <p>
+            Realty Income operates on a <strong>Triple-Net Lease (NNN)</strong> structure. 
+            This means the tenant is responsible for property taxes, insurance, and maintenance costs.
+          </p>
+          <p>
+            This model protects the company from inflation in operating costs, ensuring that 
+            gross revenue flows efficiently down to the bottom line (AFFO) to fund dividends.
+          </p>
+        </div>
+
+        <div class="highlight-box">
+          <h3>🏆 Dividend Aristocrat Status</h3>
+          <p>
+            Realty Income has declared <strong>650+ consecutive monthly dividends</strong> and increased the dividend 
+            over 120 times since its public listing. It is the gold standard for reliability in the REIT sector.
+          </p>
+        </div>
+
+        <div class="analysis-card" style="border-color: var(--accent);">
+          <h2>2. FFO vs. Net Income</h2>
+          <p>
+            For REITs, Net Income is a misleading metric due to depreciation. 
+            Investors must focus on <strong>FFO (Funds From Operations)</strong> and 
+            <strong>AFFO (Adjusted FFO)</strong>.
+          </p>
+          <p>
+            Currently, Realty Income trades at approximately 13x AFFO, which is below its historical average of 17x. 
+            This suggests the stock is currently undervalued relative to its cash flow generation capability.
+          </p>
+        </div>
+
+        <div class="analysis-card">
+          <h2>3. Risks & 2026 Outlook</h2>
+          <p>
+            The primary risk is interest rates. As rates remain elevated, the cost of debt for acquisitions increases. 
+            However, with an A- credit rating, Realty Income has a lower cost of capital than its competitors, 
+            allowing it to acquire distressed assets accretively.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links" style="margin-bottom: 20px;">
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="legal.html">Terms & Disclaimer</a>
+      </div>
+      <p>
+        © 2026 US Market Terminals. All rights reserved.<br>
+        Data provided for informational purposes only. Not financial advice.
+      </p>
+    </div>
+  </footer>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const isFlex = navLinks.style.display === 'flex';
+        navLinks.style.display = isFlex ? 'none' : 'flex';
+        if(!isFlex) {
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '64px';
+          navLinks.style.left = '0';
+          navLinks.style.right = '0';
+          navLinks.style.background = '#151b23';
+          navLinks.style.padding = '20px';
+          navLinks.style.borderBottom = '1px solid #2a3441';
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
