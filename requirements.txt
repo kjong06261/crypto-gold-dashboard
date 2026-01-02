@@ -1,5 +1,0 @@
-yfinance
-pandas
-lxml
-requests
-pytz
