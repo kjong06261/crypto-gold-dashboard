@@ -3,79 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Market Analysis Guides | US Market Terminals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <title>Market Insights | US Market Terminals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; line-height: 1.8; padding: 0; margin: 0; }
-    .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
-    .nav { padding: 20px; border-bottom: 1px solid #1f2937; background: #111827; }
-    .logo { color: #fff; font-weight: 800; text-decoration: none; }
+    /* Dark Theme Setup */
+    body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; line-height: 1.7; }
+    .nav { padding: 20px 40px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: #0a0d12; }
+    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; }
     
-    article { margin-bottom: 80px; border-bottom: 1px solid #1f2937; padding-bottom: 60px; }
-    h1 { font-size: 2.5rem; color: #fff; margin-bottom: 40px; }
-    h2 { font-size: 1.8rem; color: #60a5fa; margin-top: 40px; margin-bottom: 20px; }
-    h3 { font-size: 1.3rem; color: #e2e8f0; margin-top: 30px; }
-    p { color: #9ca3af; margin-bottom: 20px; font-size: 1.05rem; }
-    ul { color: #9ca3af; margin-bottom: 20px; }
-    li { margin-bottom: 10px; }
-    .highlight { background: rgba(59, 130, 246, 0.1); padding: 20px; border-left: 4px solid #3b82f6; border-radius: 4px; margin: 30px 0; }
+    .container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+    .article-header { text-align: center; margin-bottom: 60px; }
+    .article-header h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .article-header p { color: #64748b; font-size: 1.1rem; }
+
+    /* Article Cards */
+    .guide-card { background: #111827; border: 1px solid #1f2937; padding: 30px; border-radius: 12px; margin-bottom: 30px; transition: transform 0.2s; }
+    .guide-card:hover { transform: translateY(-5px); border-color: #3b82f6; }
+    .tag { display: inline-block; background: rgba(59, 130, 246, 0.1); color: #3b82f6; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; margin-bottom: 15px; }
+    .guide-card h2 { margin: 0 0 10px 0; font-size: 1.5rem; color: #fff; }
+    .guide-card p { color: #9ca3af; font-size: 0.95rem; margin-bottom: 20px; }
+    
+    /* 링크 스타일 */
+    .read-more { color: #fff; text-decoration: none; font-weight: 600; border-bottom: 1px solid #3b82f6; padding-bottom: 2px; display: inline-block; }
+    .read-more:hover { color: #3b82f6; }
+
+    footer { text-align: center; padding: 60px 0; color: #4b5563; font-size: 0.9rem; border-top: 1px solid #1e293b; margin-top: 80px; }
+    footer a { color: #6b7280; text-decoration: none; margin: 0 10px; }
+    footer a:hover { color: #fff; }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="index.html" class="logo">← Back to Terminal</a>
+    <a href="index.html" class="logo">📊 US MARKET TERMINALS</a>
+    <a href="index.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Back to Dashboard</a>
   </nav>
 
   <div class="container">
-    <h1>Strategic Market Guides</h1>
-    <p>Comprehensive strategies for Nasdaq trading, Dividend growth, and Crypto asset management.</p>
+    <div class="article-header">
+      <h1>Market Insights</h1>
+      <p>Institutional analysis for the independent investor.</p>
+    </div>
 
-    <article>
-      <h2>Guide 1: How to Analyze the S&P 500 Heatmap</h2>
+    <article class="guide-card">
+      <span class="tag">Strategy • Jan 2026</span>
+      <h2>The "Barbell Strategy": Balancing AI Growth and Defensive Dividends</h2>
       <p>
-        The Market Heatmap is one of the most powerful tools for institutional traders. Unlike a traditional list, a heatmap visualizes the entire market in a single frame. The size of each block represents the company's **Market Cap**, while the color represents its performance.
+        In the current 2026 macroeconomic environment, volatility is the new normal. 
+        The Barbell Strategy suggests pairing high-beta assets like Nvidia (NVDA) with low-beta cash flow generators like SCHD.
       </p>
-      <div class="highlight">
-        <strong>Pro Tip:</strong> Watch for "Sea of Red" days where mega-cap tech stocks (AAPL, MSFT, NVDA) are down. If defensive sectors like Utilities or Consumer Staples are green, it indicates a "Risk-Off" rotation, not a market crash.
-      </div>
-      <h3>Key Sectors to Watch</h3>
-      <ul>
-        <li><strong>Technology (XLK):</strong> High growth, high volatility. Sensitive to interest rates.</li>
-        <li><strong>Financials (XLF):</strong> Benefits from higher interest rates but sensitive to recession risks.</li>
-        <li><strong>Energy (XLE):</strong> Correlated with oil prices, often moves inversely to tech.</li>
-      </ul>
+      <a href="barbell-strategy.html" class="read-more">Read Full Report →</a>
     </article>
 
-    <article>
-      <h2>Guide 2: Crypto Screener Strategies for Volatility</h2>
+    <article class="guide-card">
+      <span class="tag">Crypto • Jan 2026</span>
+      <h2>Bitcoin as Treasury Reserve: The Corporate Shift</h2>
       <p>
-        In the 24/7 cryptocurrency market, volatility is a feature, not a bug. Our Crypto Matrix terminal helps you identify assets that are decoupling from Bitcoin (BTC).
+        With the FASB accounting rule changes, more corporations are holding Bitcoin on their balance sheets. 
+        What does this mean for liquidity and volatility?
       </p>
-      <h3>Understanding Bitcoin Dominance (BTC.D)</h3>
-      <p>
-        When BTC.D is rising, it means capital is flowing from Altcoins back to Bitcoin (Safety). When BTC.D is falling while Bitcoin price is stable, it signals "Altcoin Season" where smaller caps tend to outperform.
-      </p>
-      <h3>Volume vs. Market Cap</h3>
-      <p>
-        Look for coins with a high Volume/Market Cap ratio. This indicates high liquidity and active interest. A sudden spike in volume without a price move often precedes a violent breakout.
-      </p>
+      <a href="bitcoin-corporate.html" class="read-more">Read Full Report →</a>
     </article>
 
-    <article>
-      <h2>Guide 3: Dividend Investing for Beginners</h2>
+    <article class="guide-card">
+      <span class="tag">Macro • Dec 2025</span>
+      <h2>Fed Policy Pivot: Impact on REIT Valuations</h2>
       <p>
-        Dividend investing is not just about high yield. It is about **sustainable cash flow**. A yield of 10% might look attractive, but if the stock price drops 20%, your total return is negative.
+        Real Estate Investment Trusts (REITs) like Realty Income (O) are highly sensitive to interest rate fluctuations. 
+        As the Federal Reserve signals a potential rate cut cycle, we examine the historical performance...
       </p>
-      <div class="highlight">
-        <strong>The Payout Ratio Rule:</strong> Always check the payout ratio. For REITs (Real Estate Investment Trusts), a ratio of 90% is normal. For regular corporations, a ratio above 60% can be a warning sign of limited reinvestment capability.
-      </div>
-      <h3>The Power of Compounding</h3>
-      <p>
-        Reinvesting dividends (DRIP) allows you to purchase more shares when prices are low, lowering your average cost basis. This is the secret to the "Snowball Effect" in wealth accumulation.
-      </p>
+      <a href="realty-income-o.html" class="read-more">Read Full Report →</a>
     </article>
+
+    <div style="background:#1e293b; padding:20px; border-radius:8px; margin-top:40px; color:#94a3b8; font-size:0.9rem;">
+      <strong>About Our Research:</strong> US Market Terminals provides data-driven insights derived from public financial records, technical chart patterns, and macroeconomic indicators. Our goal is to empower individual investors with institutional-grade tools.
+    </div>
 
   </div>
+
+  <footer>
+    <div style="margin-bottom: 15px;">
+      <a href="privacy.html">Privacy Policy</a> • 
+      <a href="legal.html">Terms & Disclaimer</a>
+    </div>
+    © 2026 US Market Terminals. All rights reserved.
+  </footer>
+
 </body>
 </html>
