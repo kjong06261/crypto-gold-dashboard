@@ -3,91 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Market Insights | US Market Terminals</title>
+  <title>Market Insights</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; line-height: 1.7; }
-    .nav { padding: 20px 40px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: #0a0d12; }
-    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; }
-    
     .container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
-    .article-header { text-align: center; margin-bottom: 60px; }
-    .article-header h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .article-header p { color: #64748b; font-size: 1.1rem; }
-
-    /* 클릭 가능한 카드 스타일 */
+    h1 { text-align: center; font-size: 2.5rem; margin-bottom: 60px; color: #fff; }
     .card-link { text-decoration: none; display: block; margin-bottom: 30px; }
-    .guide-card { background: #111827; border: 1px solid #1f2937; padding: 30px; border-radius: 12px; transition: transform 0.2s, border-color 0.2s; }
-    .card-link:hover .guide-card { transform: translateY(-5px); border-color: #3b82f6; background: #161e2e; }
-    
-    .tag { display: inline-block; background: rgba(59, 130, 246, 0.1); color: #3b82f6; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; margin-bottom: 15px; }
-    .guide-card h2 { margin: 0 0 10px 0; font-size: 1.5rem; color: #fff; }
-    .guide-card p { color: #9ca3af; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; }
-    .read-more { color: #60a5fa; font-weight: 600; font-size: 0.9rem; }
-
-    footer { text-align: center; padding: 60px 0; color: #4b5563; font-size: 0.9rem; border-top: 1px solid #1e293b; margin-top: 80px; }
-    footer a { color: #6b7280; text-decoration: none; margin: 0 10px; }
-    footer a:hover { color: #fff; }
+    .guide-card { background: #111827; border: 1px solid #1f2937; padding: 30px; border-radius: 12px; }
+    .guide-card:hover { border-color: #3b82f6; }
+    h2 { color: #fff; margin: 0 0 10px 0; }
+    p { color: #9ca3af; }
+    .read-more { color: #60a5fa; font-weight: 600; }
+    .nav { padding: 20px; text-align: center; border-bottom: 1px solid #1f2937; }
+    .nav a { color: #fff; text-decoration: none; font-weight: 700; }
   </style>
 </head>
 <body>
-
-  <nav class="nav">
-    <a href="index.html" class="logo">📊 US MARKET TERMINALS</a>
-    <a href="index.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Back to Dashboard</a>
-  </nav>
-
+  <div class="nav"><a href="index.html">← Back to Dashboard</a></div>
   <div class="container">
-    <div class="article-header">
-      <h1>Market Insights</h1>
-      <p>Institutional analysis for the independent investor.</p>
-    </div>
+    <h1>Market Insights</h1>
 
-    <a href="insights/barbell-strategy.html" class="card-link">
-      <article class="guide-card">
-        <span class="tag">Strategy • Jan 2026</span>
+    <a href="barbell-strategy.html" class="card-link">
+      <div class="guide-card">
         <h2>The "Barbell Strategy": Balancing AI Growth and Defensive Dividends</h2>
-        <p>
-          In the current 2026 macroeconomic environment, volatility is the new normal. 
-          The Barbell Strategy suggests pairing high-beta assets like Nvidia (NVDA) with low-beta cash flow generators like SCHD.
-        </p>
+        <p>In the current 2026 macroeconomic environment, volatility is the new normal...</p>
         <span class="read-more">Read Full Report →</span>
-      </article>
+      </div>
     </a>
 
     <a href="bitcoin-corporate.html" class="card-link">
-      <article class="guide-card">
-        <span class="tag">Crypto • Jan 2026</span>
+      <div class="guide-card">
         <h2>Bitcoin as Treasury Reserve: The Corporate Shift</h2>
-        <p>
-          With the FASB accounting rule changes, more corporations are holding Bitcoin on their balance sheets. 
-          What does this mean for liquidity and volatility? We analyze the MicroStrategy model.
-        </p>
+        <p>With the FASB accounting rule changes, more corporations are holding Bitcoin...</p>
         <span class="read-more">Read Full Report →</span>
-      </article>
+      </div>
     </a>
 
-    <a href="docs/realty-income-o.html" class="card-link">
-      <article class="guide-card">
-        <span class="tag">Macro • Dec 2025</span>
+    <a href="realty-income-o.html" class="card-link">
+      <div class="guide-card">
         <h2>Fed Policy Pivot: Impact on REIT Valuations</h2>
-        <p>
-          Real Estate Investment Trusts (REITs) like Realty Income (O) are highly sensitive to interest rate fluctuations. 
-          As the Federal Reserve signals a potential rate cut cycle, we examine historical performance.
-        </p>
+        <p>Real Estate Investment Trusts (REITs) like Realty Income (O) are highly sensitive...</p>
         <span class="read-more">Read Full Report →</span>
-      </article>
+      </div>
     </a>
-
   </div>
-
-  <footer>
-    <div style="margin-bottom: 15px;">
-      <a href="privacy.html">Privacy Policy</a> • 
-      <a href="legal.html">Terms & Disclaimer</a>
-    </div>
-    © 2026 US Market Terminals. All rights reserved.
-  </footer>
-
 </body>
 </html>
