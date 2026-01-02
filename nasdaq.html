@@ -4,19 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nasdaq-100 Pro Terminal | US Market Terminals</title>
+  <meta name="description" content="Advanced charting and technical analysis for Nasdaq-100 (NDX). Real-time data for institutional investors.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* Dark Terminal Theme */
-    body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; }
-    .nav { padding: 15px 20px; border-bottom: 1px solid #2a3441; background: #151b23; display: flex; justify-content: space-between; align-items: center; }
+    body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; line-height: 1.6; }
+    .nav { padding: 15px 20px; border-bottom: 1px solid #2a3441; background: #151b23; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
     .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; }
     .back-btn { color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
     
     /* Chart Container */
-    .chart-wrapper { height: 85vh; width: 100%; display: flex; flex-direction: column; }
+    .chart-wrapper { height: 70vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid #2a3441; }
     .chart-header { padding: 20px; background: #0a0d12; }
     .chart-title { margin: 0; color: #fff; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
     .live-badge { background: #22c55e; color: #000; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; font-weight: 800; text-transform: uppercase; }
+
+    /* Content for AdSense (SEO Text) */
+    .content-section { max-width: 800px; margin: 0 auto; padding: 60px 20px 100px; }
+    .content-section h2 { color: #fff; border-left: 4px solid #3b82f6; padding-left: 15px; margin-top: 40px; }
+    .content-section p { color: #94a3b8; font-size: 1rem; text-align: justify; margin-bottom: 20px; }
+    .content-section ul { color: #94a3b8; list-style-type: square; padding-left: 20px; }
+    .content-section li { margin-bottom: 10px; }
   </style>
 </head>
 <body>
@@ -59,6 +67,36 @@
       </script>
     </div>
     </div>
+
+  <article class="content-section">
+    <h2>Market Analysis Methodology</h2>
+    <p>
+      The Nasdaq-100 Index (NDX) represents a modified capitalization-weighted index of 100 of the largest non-financial companies listed on the Nasdaq stock exchange. 
+      For institutional investors and independent traders, understanding the technical structure of NDX is crucial for gauging the sentiment of the broader technology sector, 
+      particularly in the fields of Artificial Intelligence (AI), semiconductors, and cloud computing.
+    </p>
+    
+    <h2>Key Technical Indicators to Watch</h2>
+    <p>
+      When utilizing this terminal, traders should focus on specific technical indicators that historically correlate with Nasdaq volatility:
+    </p>
+    <ul>
+      <li><strong>Moving Averages (MA):</strong> The 50-day and 200-day moving averages serve as critical support and resistance levels. A "Golden Cross" often signals bullish momentum.</li>
+      <li><strong>RSI (Relative Strength Index):</strong> An RSI above 70 typically indicates an overbought condition, while below 30 suggests oversold territory.</li>
+      <li><strong>Volume Profile:</strong> analyzing volume at specific price levels helps identify institutional accumulation or distribution zones.</li>
+    </ul>
+
+    <h2>Macro-Economic Correlation</h2>
+    <p>
+      The valuation of growth stocks within the Nasdaq-100 is highly sensitive to Federal Reserve interest rate policies. 
+      As the discount rate for future cash flows changes, the intrinsic value of high-growth tech companies fluctuates. 
+      This dashboard integrates real-time price action to help investors visualize these macroeconomic impacts instantly.
+    </p>
+    
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 40px; border-top: 1px solid #2a3441; padding-top: 20px;">
+      <em>Data Disclaimer: All charts and data points provided on this terminal are for informational purposes only. Trading financial instruments involves significant risk.</em>
+    </p>
+  </article>
 
 </body>
 </html>
