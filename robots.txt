@@ -1,16 +1,15 @@
 User-agent: *
 Allow: /
-Disallow: /private/
 Disallow: /admin/
+Disallow: /private/
 Disallow: /tmp/
 
-# 구글 애드센스 봇 접근 허용
+# AdSense / Ads review bots
 User-agent: Mediapartners-Google
 Allow: /
 
-# 구글 검색 봇 접근 허용
-User-agent: Googlebot
+User-agent: AdsBot-Google
 Allow: /
 
-# 사이트맵 위치 지정
+# Sitemap
 Sitemap: https://us-dividend-pro.com/sitemap.xml
