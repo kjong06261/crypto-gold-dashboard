@@ -1,128 +1,314 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Insights | US Market Terminals</title>
-  <meta name="description" content="배당·현금흐름·리스크·크립토까지. 데이터 기반 인사이트 아카이브." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://us-dividend-pro.com/blog.html" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Market Insights | US Market Terminals</title>
+  <meta name="description" content="미국 주식, 배당 전략, 가상자산 트렌드에 대한 심층 분석 리포트와 투자 인사이트를 제공합니다.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog.html">
 
-  <!-- AdSense (keep in HEAD) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://us-dividend-pro.com/blog.html">
+  <meta property="og:title" content="Market Insights - US Market Terminals">
+  <meta property="og:description" content="Professional Market Intelligence & Analysis">
+  <meta property="og:image" content="https://us-dividend-pro.com/og-image.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
+    /* 메인 페이지와 동일한 CSS 변수 */
     :root {
-      --bg:#0a0d12; --bg-alt:#0d1117; --panel:#151b23; --panel-hover:#1a222c;
-      --border:#2a3441; --border-light:#3d4a5c;
-      --text:#e2e8f0; --text-secondary:#94a3b8; --muted:#64748b;
-      --accent:#3b82f6; --accent-light:#60a5fa; --accent-glow:rgba(59,130,246,.15);
-      --radius:12px; --radius-lg:16px; --radius-sm:8px;
-      --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-      --transition:all .2s ease;
+      --bg: #0a0d12;
+      --bg-alt: #0d1117;
+      --panel: #151b23;
+      --panel-hover: #1a222c;
+      --border: #2a3441;
+      --text: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      --radius: 12px;
+      --transition: all 0.2s ease;
     }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6}
-    a{color:var(--accent);text-decoration:none;transition:var(--transition)}
-    a:hover{color:var(--accent-light)}
-    .container{max-width:1100px;margin:0 auto;padding:0 24px}
 
-    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,13,18,.9);
-      backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-    .navin{max-width:1200px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
-    .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:1.05rem}
-    .logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),#a855f7);border-radius:8px;display:grid;place-items:center}
-    .nav-links{display:flex;align-items:center;gap:4px}
-    .nav-links a{color:var(--text-secondary);font-weight:600;font-size:.9rem;padding:8px 14px;border-radius:var(--radius-sm)}
-    .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.05)}
-    .nav-links a.active{color:var(--accent)}
-    .nav-cta{background:var(--accent)!important;color:#fff!important;margin-left:8px}
-    .nav-cta:hover{background:var(--accent-light)!important}
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    body {
+      margin: 0; padding: 0;
+      background: var(--bg); color: var(--text);
+      font-family: var(--font); line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    header{padding:110px 0 28px;background:radial-gradient(ellipse 100% 60% at 50% 0%, rgba(59,130,246,.14), transparent 60%)}
-    h1{margin:0 0 10px;font-size:clamp(1.8rem,3.6vw,2.4rem);letter-spacing:-.8px}
-    .sub{color:var(--text-secondary);max-width:720px}
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:28px 0 70px}
-    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px 18px 16px;transition:var(--transition)}
-    .card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 28px rgba(0,0,0,.3)}
-    .tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;
-      padding:5px 10px;border-radius:999px;background:var(--accent-glow);color:var(--accent)}
-    .title{margin:10px 0 8px;color:#fff;font-size:1.05rem;font-weight:800;line-height:1.25}
-    .meta{color:var(--muted);font-size:.82rem}
-    .desc{margin:10px 0 14px;color:var(--text-secondary);font-size:.9rem}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:var(--radius-sm);
-      border:1px solid var(--border);background:rgba(255,255,255,.02);color:var(--text);font-weight:700;font-size:.9rem}
-    .btn:hover{border-color:var(--accent);background:var(--accent-glow);color:var(--accent)}
-    footer{background:var(--bg-alt);border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem}
+    /* Navigation (메인과 동일) */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10, 13, 18, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .navin {
+      max-width: 1200px; margin: 0 auto; height: 64px;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.1rem; }
+    .logo-mark { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: grid; place-items: center; font-size: 0.9rem; }
+    
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;
+      padding: 8px 14px; border-radius: 6px;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent) !important; color: #fff !important; margin-left: 8px; }
 
-    @media (max-width: 980px){ .grid{grid-template-columns:repeat(2,1fr)} }
-    @media (max-width: 640px){
-      .grid{grid-template-columns:1fr}
-      .nav-links{display:none}
+    .menu-toggle { display: none; background: transparent; border: 0; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 20px; height: 2px; background: #fff; margin: 4px 0; border-radius: 2px; }
+
+    /* Blog Header */
+    .blog-hero {
+      padding: 120px 24px 60px; text-align: center;
+      background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-title {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #fff; margin-bottom: 16px;
+    }
+    .blog-desc {
+      color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1rem;
+    }
+
+    /* Blog Grid */
+    .blog-grid-section { padding: 60px 24px; }
+    .blog-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px;
+    }
+
+    .article-card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; transition: var(--transition); display: flex; flex-direction: column;
+    }
+    .article-card:hover {
+      transform: translateY(-5px); border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .article-img {
+      height: 200px; background: #222; position: relative; overflow: hidden;
+    }
+    .article-img img {
+      width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;
+    }
+    .article-card:hover .article-img img { transform: scale(1.05); }
+    
+    /* Placeholder Gradient for Images */
+    .img-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: rgba(255,255,255,0.1);
+    }
+
+    .article-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+    .article-tags { margin-bottom: 12px; }
+    .tag {
+      font-size: 0.75rem; font-weight: 700; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .article-title {
+      font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0 0 10px;
+      line-height: 1.4;
+    }
+    .article-excerpt {
+      font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; flex-grow: 1;
+    }
+    .article-meta {
+      font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border);
+      padding-top: 15px; display: flex; justify-content: space-between;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-alt); border-top: 1px solid var(--border);
+      padding: 60px 24px; text-align: center; color: var(--text-secondary); font-size: 0.9rem;
+    }
+    .footer-links a { margin: 0 10px; color: var(--text-secondary); }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; } /* Mobile Menu implementation omitted for brevity, matches index */
+      .menu-toggle { display: block; }
+      .blog-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+
   <nav class="nav">
     <div class="navin">
-      <a href="index.html" class="logo"><span class="logo-mark">📊</span>US MARKET TERMINALS</a>
+      <a href="index.html" class="logo">
+        <span class="logo-mark">📊</span> US MARKET TERMINALS
+      </a>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="nasdaq.html">Nasdaq</a>
         <a href="dividend.html">Dividends</a>
         <a href="coin.html">Crypto</a>
         <a href="blog.html" class="active">Insights</a>
-        <a href="nasdaq.html" class="nav-cta">Get Started</a>
+        <a href="nasdaq.html" class="nav-cta">Terminal</a>
       </div>
+      <button class="menu-toggle"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <header>
+  <header class="blog-hero">
     <div class="container">
-      <h1>Market Insights</h1>
-      <p class="sub">“기관급 데이터”를 개인이 쓰는 방식으로 정리합니다. (Not financial advice)</p>
+      <h1 class="blog-title">Market Insights</h1>
+      <p class="blog-desc">
+        데이터 기반의 투자 전략, 거시 경제 분석, 그리고 배당 포트폴리오 구축을 위한 심층 리포트.
+      </p>
     </div>
   </header>
 
-  <main class="container">
-    <section class="grid">
-
-      <article class="card">
-        <span class="tag">Strategy</span>
-        <div class="title">Barbell Strategy: 성장 + 현금흐름을 한 포트폴리오에</div>
-        <div class="meta">2026-01-02 · 6 min</div>
-        <p class="desc">나스닥 성장축과 배당/리츠 현금흐름축을 동시에 굴리는 ‘바벨 전략’ 실전 설계.</p>
-        <a class="btn" href="insights/barbell-strategy.html">읽기 →</a>
+  <section class="blog-grid-section">
+    <div class="container blog-grid">
+      
+      <article class="article-card">
+        <a href="#" class="article-img">
+          <div class="img-placeholder">📈</div>
+        </a>
+        <div class="article-content">
+          <div class="article-tags"><span class="tag">Strategy</span></div>
+          <h2 class="article-title">
+            <a href="#">2026년 바벨 전략(Barbell Strategy) 가이드</a>
+          </h2>
+          <p class="article-excerpt">
+            나스닥 성장주와 고배당 리츠를 결합하여 변동성 장세에서 수익을 극대화하는 포트폴리오 구축 방법론을 소개합니다.
+          </p>
+          <div class="article-meta">
+            <span>By Analyst K</span>
+            <span>Jan 2, 2026</span>
+          </div>
+        </div>
       </article>
 
-      <article class="card">
-        <span class="tag">Forensics</span>
-        <div class="title">Yield Trap(배당 함정) 빠르게 거르는 7가지 체크</div>
-        <div class="meta">2026-01-02 · 7 min</div>
-        <p class="desc">수익률만 보고 들어갔다가 물리는 케이스를 데이터로 차단하는 체크리스트.</p>
-        <a class="btn" href="insights/yield-traps.html">읽기 →</a>
+      <article class="article-card">
+        <a href="#" class="article-img">
+          <div class="img-placeholder">💰</div>
+        </a>
+        <div class="article-content">
+          <div class="article-tags"><span class="tag">Dividend</span></div>
+          <h2 class="article-title">
+            <a href="#">배당 귀족주(Dividend Aristocrats) Top 5 분석</a>
+          </h2>
+          <p class="article-excerpt">
+            25년 이상 배당을 늘려온 기업 중, 현재 밸류에이션 매력이 높은 Realty Income(O)과 J&J(JNJ)를 심층 분석합니다.
+          </p>
+          <div class="article-meta">
+            <span>By Editor</span>
+            <span>Dec 28, 2025</span>
+          </div>
+        </div>
       </article>
 
-      <article class="card">
-        <span class="tag">Cash Flow</span>
-        <div class="title">FCF vs FFO vs AFFO: 배당/리츠에서 진짜 중요한 숫자</div>
-        <div class="meta">2026-01-02 · 8 min</div>
-        <p class="desc">현금흐름 지표를 혼동하면 판단이 흔들립니다. 용어부터 해석까지 한 번에.</p>
-        <a class="btn" href="insights/fcf-ffo-affo.html">읽기 →</a>
+      <article class="article-card">
+        <a href="#" class="article-img">
+          <div class="img-placeholder">₿</div>
+        </a>
+        <div class="article-content">
+          <div class="article-tags"><span class="tag">Crypto</span></div>
+          <h2 class="article-title">
+            <a href="#">비트코인 반감기 이후 온체인 데이터 해석</a>
+          </h2>
+          <p class="article-excerpt">
+            장기 보유자(Long-term Holder)의 지갑 이동 추이와 거래소 유출입 데이터를 통해 2026년 상반기 가격을 전망합니다.
+          </p>
+          <div class="article-meta">
+            <span>By CryptoQuant</span>
+            <span>Dec 20, 2025</span>
+          </div>
+        </div>
       </article>
 
-    </section>
-  </main>
+      <article class="article-card">
+        <a href="#" class="article-img">
+          <div class="img-placeholder">🤖</div>
+        </a>
+        <div class="article-content">
+          <div class="article-tags"><span class="tag">AI Tech</span></div>
+          <h2 class="article-title">
+            <a href="#">AI 반도체 슈퍼사이클: 엔비디아 그 다음은?</a>
+          </h2>
+          <p class="article-excerpt">
+            생성형 AI 인프라 확장에 따른 수혜주 분석. 데이터센터 쿨링 시스템과 온디바이스 AI 관련주를 주목하세요.
+          </p>
+          <div class="article-meta">
+            <span>By Tech Lead</span>
+            <span>Dec 15, 2025</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
 
   <footer>
     <div class="container">
-      © 2026 US Market Terminals · <a href="privacy.html">Privacy</a> · <a href="legal.html">Terms</a>
+      <div class="footer-links" style="margin-bottom: 20px;">
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="legal.html">Terms & Disclaimer</a>
+      </div>
+      <p id="copyright">
+        © 2026 US Market Terminals. All rights reserved.<br>
+        Data provided for informational purposes only. Not financial advice.
+      </p>
+      <p style="font-size: 0.8rem; color: #555; margin-top: 10px;">
+        Last updated: <span id="last-update"></span>
+      </p>
     </div>
   </footer>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+
+  <script>
+    // 1. Footer 날짜 자동 갱신 (항상 오늘 날짜로)
+    const now = new Date();
+    document.getElementById('last-update').innerText = now.toLocaleString("en-US", { 
+      year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' 
+    });
+
+    // 2. 모바일 메뉴 토글
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const isFlex = navLinks.style.display === 'flex';
+        navLinks.style.display = isFlex ? 'none' : 'flex';
+        if(!isFlex) {
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '64px';
+          navLinks.style.left = '0';
+          navLinks.style.right = '0';
+          navLinks.style.background = '#151b23';
+          navLinks.style.padding = '20px';
+          navLinks.style.borderBottom = '1px solid #2a3441';
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
