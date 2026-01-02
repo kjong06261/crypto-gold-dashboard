@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Barbell Strategy: 성장 + 현금흐름을 한 포트폴리오에 | US Market Terminals</title>
+  <meta name="description" content="바벨 전략을 나스닥 성장축 + 배당/리츠 현금흐름축으로 구현하는 실전 설계 가이드." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://us-dividend-pro.com/insights/barbell-strategy.html" />
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{--bg:#0a0d12;--bg-alt:#0d1117;--panel:#151b23;--border:#2a3441;--text:#e2e8f0;--text2:#94a3b8;--muted:#64748b;--accent:#3b82f6;--accent-glow:rgba(59,130,246,.15);--r:12px;--font:'Inter',system-ui}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.8}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:860px;margin:0 auto;padding:0 22px}
+    .top{padding:96px 0 20px;background:radial-gradient(ellipse 100% 60% at 50% 0%, rgba(59,130,246,.14), transparent 60%)}
+    h1{margin:0 0 10px;font-size:clamp(1.7rem,3.6vw,2.4rem);letter-spacing:-.8px}
+    .meta{color:var(--muted);font-size:.9rem}
+    .box{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin:22px 0}
+    h2{margin:30px 0 10px;font-size:1.2rem}
+    ul{margin:10px 0 10px 18px}
+    .hr{height:1px;background:var(--border);margin:28px 0}
+    .note{font-size:.95rem;color:var(--text2)}
+    footer{background:var(--bg-alt);border-top:1px solid var(--border);padding:18px 0;margin-top:48px;color:var(--muted);font-size:.85rem}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="container">
+      <p><a href="../blog.html">← Insights</a></p>
+      <h1>Barbell Strategy: 성장 + 현금흐름을 한 포트폴리오에</h1>
+      <div class="meta">2026-01-02 · Not financial advice</div>
+
+      <div class="box note">
+        요약: 바벨 전략은 “극단을 섞어 평균을 이기는” 방식입니다. 한쪽은 성장(나스닥/혁신)으로 자본차익을 노리고,
+        다른 한쪽은 배당/리츠로 현금흐름을 확보해 변동성을 줄입니다.
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>1) 왜 ‘중간’이 아니라 ‘극단’인가?</h2>
+    <p>
+      많은 포트폴리오는 “적당히 성장 + 적당히 배당”처럼 중간값을 섞습니다.
+      하지만 중간은 경기/금리/심리 변화에 동시에 흔들릴 때가 많습니다.
+      바벨 전략은 의도적으로 성격이 다른 두 축을 분리해, 한쪽이 흔들릴 때 다른 한쪽이 버티게 만듭니다.
+    </p>
+
+    <h2>2) 바벨의 두 축: (A) 성장축 (B) 현금흐름축</h2>
+    <div class="box">
+      <strong>(A) 성장축</strong> — 나스닥/테크/혁신<br/>
+      목표: 장기 자본차익, 트렌드·생산성·기술 사이클 수혜<br/><br/>
+      <strong>(B) 현금흐름축</strong> — 배당주/리츠/인컴 ETF<br/>
+      목표: 분배금(현금흐름) + 변동성 완충 + 리밸런싱 탄약
+    </div>
+
+    <h2>3) 비율 설계(실전)</h2>
+    <p>정답 비율은 없지만, 아래 원칙으로 설계하면 “설명 가능한 포트폴리오”가 됩니다.</p>
+    <ul>
+      <li><strong>리스크 허용</strong>이 높으면: 성장 70 / 현금흐름 30</li>
+      <li><strong>균형형</strong>이면: 성장 60 / 현금흐름 40</li>
+      <li><strong>변동성 스트레스</strong>가 크면: 성장 50 / 현금흐름 50</li>
+    </ul>
+    <p class="note">포인트는 ‘비율’보다도, 두 축을 <strong>서로 다른 논리</strong>로 들고 가는 것입니다.</p>
+
+    <h2>4) 리밸런싱 규칙(가장 쉬운 2개)</h2>
+    <div class="box">
+      <strong>룰 #1 (분기 1회)</strong> : 목표 비중에서 ±5% 벗어나면 원위치<br/>
+      <strong>룰 #2 (드로우다운 대응)</strong> : 성장축이 급락하면 현금흐름축 배당/현금으로 “싼 구간”을 분할 매수
+    </div>
+
+    <h2>5) 바벨 전략이 망하는 흔한 이유 3가지</h2>
+    <ul>
+      <li><strong>현금흐름축</strong>을 ‘고배당’만 보고 샀다가 배당 삭감(=Yield Trap)</li>
+      <li>성장축을 “한 섹터”로 몰아(예: 특정 테크만) 바벨이 아니라 ‘외줄’이 됨</li>
+      <li>리밸런싱을 안 해서, 결국 상승한 쪽만 커지고 위험이 한쪽으로 쏠림</li>
+    </ul>
+
+    <div class="hr"></div>
+
+    <div class="box">
+      다음 글 추천:
+      <ul>
+        <li><a href="yield-traps.html">Yield Trap(배당 함정) 7가지 체크</a></li>
+        <li><a href="fcf-ffo-affo.html">FCF vs FFO vs AFFO 정리</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 US Market Terminals · <a href="../privacy.html">Privacy</a> · <a href="../legal.html">Terms</a>
+    </div>
+  </footer>
+</body>
+</html>
