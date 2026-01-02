@@ -1,52 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Legal & Disclaimer | US Dividend Pro</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* 사장님 사이트의 프리미엄 다크 테마 적용 */
-        :root { --bg:#05070a; --panel:#11141b; --border:#1e222d; --text:#d1d4dc; --link:#58a6ff; --accent:#00d084; }
-        body { margin:0; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, sans-serif; line-height:1.7; }
-        main { max-width:900px; margin:60px auto; padding:0 30px; }
-        .card { background:var(--panel); padding:40px; border-radius:14px; border:1px solid var(--border); }
-        h1 { color:#fff; border-bottom: 2px solid var(--link); padding-bottom: 15px; font-size: 2rem; }
-        h2 { color:var(--link); margin-top: 35px; font-size: 1.4rem; }
-        p { margin-bottom: 20px; text-align: justify; color: #b0b3b8; }
-        .nav-home { display: inline-block; margin-bottom: 20px; color: var(--link); text-decoration: none; font-weight: bold; }
-        footer { text-align: center; padding: 40px 0; color: #666; font-size: 0.85rem; border-top: 1px solid var(--border); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Legal & Disclaimer | US Market Terminals</title>
+  <meta name="description" content="Legal disclaimer, terms of service, and risk disclosure for US Market Terminals.">
+  <meta name="robots" content="noindex, follow"> <link rel="canonical" href="https://us-dividend-pro.com/legal.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables (Consistent with Index) */
+    :root {
+      --bg: #0a0d12;
+      --bg-alt: #0d1117;
+      --panel: #151b23;
+      --panel-hover: #1a222c;
+      --border: #2a3441;
+      --text: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      --radius: 12px;
+      --transition: all 0.2s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    body {
+      margin: 0; padding: 0;
+      background: var(--bg); color: var(--text);
+      font-family: var(--font); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navigation */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10, 13, 18, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .navin {
+      max-width: 1200px; margin: 0 auto; height: 64px;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.1rem; }
+    .logo-mark { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent), #a855f7); border-radius: 8px; display: grid; place-items: center; font-size: 0.9rem; }
+    
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;
+      padding: 8px 14px; border-radius: 6px;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent) !important; color: #fff !important; margin-left: 8px; }
+    .menu-toggle { display: none; background: transparent; border: 0; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 20px; height: 2px; background: #fff; margin: 4px 0; border-radius: 2px; }
+
+    /* Legal Content Box */
+    .legal-wrapper { padding: 100px 0 60px; }
+    .legal-card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 40px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    h1 { font-size: 2rem; color: #fff; border-bottom: 2px solid var(--border); padding-bottom: 20px; margin-top: 0; margin-bottom: 30px; }
+    h2 { font-size: 1.3rem; color: #fff; margin-top: 40px; margin-bottom: 15px; border-left: 4px solid var(--accent); padding-left: 15px; }
+    p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1rem; text-align: justify; }
+    strong { color: var(--text); }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 20px; color: var(--accent); font-weight: 600; font-size: 0.9rem;
+    }
+    .back-link:hover { color: var(--accent-light); transform: translateX(-3px); }
+
+    /* Footer */
+    footer {
+      background: var(--bg-alt); border-top: 1px solid var(--border);
+      padding: 60px 24px; text-align: center; color: var(--text-secondary); font-size: 0.9rem;
+    }
+    .footer-links a { margin: 0 10px; color: var(--text-secondary); }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .legal-card { padding: 30px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-<main>
-    <a href="index.html" class="nav-home">← Back to Home</a>
-    <div class="card">
+  <nav class="nav">
+    <div class="navin">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">📊</span> US MARKET TERMINALS
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="nasdaq.html">Nasdaq</a>
+        <a href="dividend.html">Dividends</a>
+        <a href="coin.html">Crypto</a>
+        <a href="blog.html">Insights</a>
+        <a href="nasdaq.html" class="nav-cta">Terminal</a>
+      </div>
+      <button class="menu-toggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="legal-wrapper">
+    <div class="container">
+      <a href="index.html" class="back-link">← Back to Home</a>
+      
+      <div class="legal-card">
         <h1>Legal Notice & Disclaimer</h1>
         
-        <p>Welcome to <strong>US Dividend Pro</strong>. By accessing this website, you agree to the terms and conditions outlined in this disclaimer. Please read this notice carefully before using our market data terminal and analysis reports.</p>
+        <p>
+          Welcome to <strong>US Market Terminals</strong>. By accessing this website, you agree to the terms and conditions outlined in this disclaimer. 
+          Please read this notice carefully before using our market data terminal and analysis reports.
+        </p>
 
         <h2>1. No Investment Advice</h2>
-        <p>US Dividend Pro is an independent financial data provider. We are not registered broker-dealers, investment advisors, or financial institutions. The information provided on this website—including dividend yields, NASDAQ-100 analysis, and cryptocurrency staking data—is for <strong>educational and informational purposes only</strong>.</p>
-        <p>Nothing on this site should be interpreted as financial, legal, or tax advice. All investment decisions should be made based on your own research and in consultation with a qualified financial professional.</p>
+        <p>
+          US Market Terminals is an independent financial data provider. We are not registered broker-dealers, investment advisors, or financial institutions. 
+          The information provided on this website—including dividend yields, NASDAQ-100 analysis, and cryptocurrency staking data—is for 
+          <strong>educational and informational purposes only</strong>.
+        </p>
+        <p>
+          Nothing on this site should be interpreted as financial, legal, or tax advice. All investment decisions should be made based on your own research 
+          and in consultation with a qualified financial professional.
+        </p>
 
         <h2>2. Market Data Accuracy</h2>
-        <p>While we strive to provide the most accurate and up-to-date information by sourcing data from public providers (such as Yahoo Finance and public blockchain APIs), we do not guarantee the absolute accuracy, completeness, or timeliness of the data. Market conditions change rapidly, and "real-time" data may experience delays due to API constraints.</p>
+        <p>
+          While we strive to provide the most accurate and up-to-date information by sourcing data from public providers (such as Yahoo Finance, CoinGecko, and SEC filings), 
+          we do not guarantee the absolute accuracy, completeness, or timeliness of the data. Market conditions change rapidly, and "real-time" data may experience 
+          delays due to API constraints.
+        </p>
 
         <h2>3. Risk of Loss</h2>
-        <p>Investing in stocks, REITs, and cryptocurrencies involves a significant risk of loss. Dividend payments are not guaranteed and can be reduced or eliminated at any time by the issuing company. Digital assets (Cryptocurrency) are highly volatile and can lose 100% of their value. US Dividend Pro is not responsible for any financial losses incurred based on the use of our tools or content.</p>
+        <p>
+          Investing in stocks, REITs, and cryptocurrencies involves a significant risk of loss. Dividend payments are not guaranteed and can be reduced or eliminated 
+          at any time by the issuing company. Digital assets (Cryptocurrency) are highly volatile and can lose 100% of their value. 
+          US Market Terminals is not responsible for any financial losses incurred based on the use of our tools or content.
+        </p>
 
         <h2>4. External Links</h2>
-        <p>Our website may contain links to external sites. We do not endorse and are not responsible for the content, privacy policies, or practices of any third-party websites. Users access these links at their own risk.</p>
+        <p>
+          Our website may contain links to external sites. We do not endorse and are not responsible for the content, privacy policies, or practices of any 
+          third-party websites. Users access these links at their own risk.
+        </p>
 
         <h2>5. Professional Transparency</h2>
-        <p>US Dividend Pro operates as a transparent research platform. We do not handle user funds or execute trades. Our goal is to empower users with "text muscle" and data-driven insights to navigate the 2026 global market landscape effectively.</p>
+        <p>
+          US Market Terminals operates as a transparent research platform. We do not handle user funds or execute trades. Our goal is to empower users with 
+          data-driven insights to navigate the global market landscape effectively.
+        </p>
+      </div>
     </div>
-</main>
+  </main>
 
-<footer>
-    <p>© 2025 US Dividend Pro | Independent Market Data • Public Sources Only • No Investment Advice</p>
-</footer>
+  <footer>
+    <div class="container">
+      <div class="footer-links" style="margin-bottom: 20px;">
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="legal.html">Terms & Disclaimer</a>
+      </div>
+      <p>
+        © 2026 US Market Terminals. All rights reserved.<br>
+        Independent Market Data • Public Sources Only • No Investment Advice
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const isFlex = navLinks.style.display === 'flex';
+        navLinks.style.display = isFlex ? 'none' : 'flex';
+        if(!isFlex) {
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '64px';
+          navLinks.style.left = '0';
+          navLinks.style.right = '0';
+          navLinks.style.background = '#151b23';
+          navLinks.style.padding = '20px';
+          navLinks.style.borderBottom = '1px solid #2a3441';
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
