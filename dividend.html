@@ -3,15 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dividend & Market Map | US Market Terminals</title>
+  <title>Dividend Strategy & Heatmap | US Market Terminals</title>
+  <meta name="description" content="S&P 500 Market Heatmap and Dividend Aristocrat analysis. Track high-yield defensive stocks and sector performance.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; }
-    .nav { padding: 15px 20px; border-bottom: 1px solid #2a3441; background: #151b23; display: flex; justify-content: space-between; align-items: center; }
+    /* Dark Theme */
+    body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; line-height: 1.6; }
+    .nav { padding: 15px 20px; border-bottom: 1px solid #2a3441; background: #151b23; display: flex; justify-content: space-between; align-items: center; position:sticky; top:0; z-index:100; }
     .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; }
     .back-btn { color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
-    .map-container { height: 90vh; width: 100%; display: flex; flex-direction: column; }
+    
+    .map-container { height: 80vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid #2a3441; }
     .header-info { padding: 15px 20px; background: #0a0d12; color: #94a3b8; font-size: 0.9rem; border-bottom: 1px solid #1e2530; }
+
+    /* SEO Text Section */
+    .content-section { max-width: 800px; margin: 0 auto; padding: 60px 20px 100px; }
+    .content-section h2 { color: #fff; border-left: 4px solid #22c55e; padding-left: 15px; margin-top: 40px; }
+    .content-section p { color: #94a3b8; font-size: 1rem; text-align: justify; margin-bottom: 20px; }
   </style>
 </head>
 <body>
@@ -22,7 +30,7 @@
   </nav>
 
   <div class="header-info">
-    🔥 <strong>S&P 500 Market Map:</strong> Size represents Market Cap. Color represents Performance.
+    🔥 <strong>S&P 500 Heatmap:</strong> Visualize sector rotation and market breadth instantly.
   </div>
 
   <div class="map-container">
@@ -48,6 +56,31 @@
       </script>
     </div>
     </div>
+
+  <article class="content-section">
+    <h2>Dividend Growth Strategy</h2>
+    <p>
+      For long-term wealth preservation, Dividend Aristocrats—companies that have increased dividends for 25+ consecutive years—form the bedrock of many portfolios. 
+      Tickers like Realty Income (O) and Coca-Cola (KO) provide defensive characteristics during market volatility.
+    </p>
+
+    <h2>The Importance of Free Cash Flow (FCF)</h2>
+    <p>
+      A high dividend yield can sometimes be a "yield trap." Investors must analyze the Payout Ratio and Free Cash Flow. 
+      If a company pays out more in dividends than it generates in cash, the dividend is unsustainable. 
+      This terminal helps investors track sector performance to identify safe harbors.
+    </p>
+
+    <h2>Sector Rotation Analysis</h2>
+    <p>
+      The heatmap above illustrates the flow of capital between sectors (e.g., from Technology to Utilities). 
+      Understanding these cycles allows investors to position themselves ahead of the curve, capturing both capital appreciation and dividend income.
+    </p>
+    
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 40px; border-top: 1px solid #2a3441; padding-top: 20px;">
+      <em>Disclaimer: Past performance of any security is not indicative of future results. Information provided is for educational purposes.</em>
+    </p>
+  </article>
 
 </body>
 </html>
