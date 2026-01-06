@@ -3,41 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nasdaq-100 Pro Terminal | US Market Terminals</title>
-  <meta name="description" content="Advanced charting and technical analysis for Nasdaq-100 (NDX). Real-time data for institutional investors.">
+  <title>Nasdaq-100 Intelligence Terminal: Real-Time Tech Analysis | US Market Terminals</title>
+  <meta name="description" content="Professional Nasdaq-100 (NDX) charting terminal. Institutional grade technical analysis, AI sector correlation, and real-time market sentiment data.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Dark Terminal Theme */
-    body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; line-height: 1.6; }
-    .nav { padding: 15px 20px; border-bottom: 1px solid #2a3441; background: #151b23; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; }
-    .back-btn { color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    :root {
+      --bg: #0a0d12;
+      --panel: #151b23;
+      --border: #2a3441;
+      --text: #e2e8f0;
+      --text-sec: #94a3b8;
+      --accent: #3b82f6; /* Nasdaq Blue */
+    }
     
-    /* Chart Container */
-    .chart-wrapper { height: 70vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid #2a3441; }
-    .chart-header { padding: 20px; background: #0a0d12; }
-    .chart-title { margin: 0; color: #fff; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
-    .live-badge { background: #22c55e; color: #000; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; font-weight: 800; text-transform: uppercase; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+    
+    .nav { padding: 15px 20px; border-bottom: 1px solid var(--border); background: var(--panel); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; letter-spacing: -0.5px; }
+    .back-btn { color: var(--text-sec); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
+    .back-btn:hover { color: var(--accent); }
+    
+    /* Chart Section */
+    .chart-wrapper { height: 75vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .chart-header { padding: 20px; background: #0a0d12; border-bottom: 1px solid var(--border); }
+    .chart-title { margin: 0; color: #fff; font-size: 1.5rem; display: flex; align-items: center; gap: 12px; font-weight: 800; }
+    .live-badge { background: #22c55e; color: #000; font-size: 0.7rem; padding: 3px 10px; border-radius: 4px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; }
 
-    /* Content for AdSense (SEO Text) */
-    .content-section { max-width: 800px; margin: 0 auto; padding: 60px 20px 100px; }
-    .content-section h2 { color: #fff; border-left: 4px solid #3b82f6; padding-left: 15px; margin-top: 40px; }
-    .content-section p { color: #94a3b8; font-size: 1rem; text-align: justify; margin-bottom: 20px; }
-    .content-section ul { color: #94a3b8; list-style-type: square; padding-left: 20px; }
-    .content-section li { margin-bottom: 10px; }
+    /* Content Section (SEO & Analysis) */
+    .content-section { max-width: 900px; margin: 0 auto; padding: 80px 24px 120px; }
+    .content-section h1 { font-size: 2.2rem; color: #fff; font-weight: 900; margin-bottom: 30px; letter-spacing: -1px; }
+    .content-section h2 { color: #fff; font-size: 1.6rem; border-left: 5px solid var(--accent); padding-left: 20px; margin-top: 60px; margin-bottom: 20px; }
+    .content-section p { color: var(--text-sec); font-size: 1.1rem; text-align: justify; margin-bottom: 25px; line-height: 1.8; }
+    .content-section ul { padding-left: 20px; margin-bottom: 30px; }
+    .content-section li { margin-bottom: 15px; color: var(--text-sec); font-size: 1.05rem; }
+    .content-section strong { color: #fff; }
+
+    .analysis-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 35px; margin: 40px 0; }
+    .analysis-box h3 { margin-top: 0; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+
+    footer { text-align: center; padding: 60px 20px; border-top: 1px solid var(--border); color: #475569; font-size: 0.85rem; }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="index.html" class="logo">📊 US MARKET TERMINALS</a>
-    <a href="index.html" class="back-btn">Exit Terminal ✕</a>
+    <a href="/index.html" class="logo">US MARKET TERMINALS</a>
+    <a href="/index.html" class="back-btn">Exit Terminal ✕</a>
   </nav>
 
   <div class="chart-wrapper">
     <div class="chart-header">
-      <h1 class="chart-title">NASDAQ-100 Intelligence <span class="live-badge">Live Connection</span></h1>
-      <p style="color:#64748b; margin: 5px 0 0; font-size: 0.9rem;">Real-time technical analysis and institutional grade charting.</p>
+      <h1 class="chart-title">NASDAQ-100 Intelligence <span class="live-badge">Live Market Link</span></h1>
+      <p style="color:#64748b; margin: 8px 0 0; font-size: 0.95rem; font-weight: 500;">Advanced technical structure and institutional liquidity tracking.</p>
     </div>
 
     <div class="tradingview-widget-container" style="flex-grow: 1; width: 100%;">
@@ -66,37 +83,52 @@
       );
       </script>
     </div>
-    </div>
+  </div>
 
   <article class="content-section">
-    <h2>Market Analysis Methodology</h2>
+    <h1>Analyzing the Nasdaq-100: The Frontier of Innovation</h1>
     <p>
-      The Nasdaq-100 Index (NDX) represents a modified capitalization-weighted index of 100 of the largest non-financial companies listed on the Nasdaq stock exchange. 
-      For institutional investors and independent traders, understanding the technical structure of NDX is crucial for gauging the sentiment of the broader technology sector, 
-      particularly in the fields of Artificial Intelligence (AI), semiconductors, and cloud computing.
+      The <strong>Nasdaq-100 Index (NDX)</strong> is the world's preeminent growth benchmark, comprised of 100 of the largest non-financial companies listed on the Nasdaq Stock Market. In 2026, the index acts as a primary barometer for <strong>Artificial Intelligence (AI)</strong>, semiconductor demand, and software-as-a-service (SaaS) expansion. Navigating this terminal requires an understanding of both technical precision and macroeconomic fundamentals.
     </p>
-    
-    <h2>Key Technical Indicators to Watch</h2>
+
+    <div class="analysis-box">
+      <h3>Institutional Analysis: The Weight of Tech</h3>
+      <p>
+        Because the NDX is a modified capitalization-weighted index, performance is often driven by a handful of high-conviction companies known as the <strong>"Magnificent Seven."</strong> At US Market Terminals, we utilize real-time price action to identify rotation out of traditional growth and into emerging productivity tools, providing a holistic view of market breadth.
+      </p>
+    </div>
+
+    <h2>1. Strategic Technical Methodology</h2>
     <p>
-      When utilizing this terminal, traders should focus on specific technical indicators that historically correlate with Nasdaq volatility:
+      For high-probability trade setups, professional investors look for a confluence of multiple technical factors. When using the Nasdaq Pro Terminal, focus on the following core metrics:
     </p>
     <ul>
-      <li><strong>Moving Averages (MA):</strong> The 50-day and 200-day moving averages serve as critical support and resistance levels. A "Golden Cross" often signals bullish momentum.</li>
-      <li><strong>RSI (Relative Strength Index):</strong> An RSI above 70 typically indicates an overbought condition, while below 30 suggests oversold territory.</li>
-      <li><strong>Volume Profile:</strong> analyzing volume at specific price levels helps identify institutional accumulation or distribution zones.</li>
+      <li><strong>Institutional Moving Averages:</strong> The 50-day EMA (Exponential Moving Average) tracks short-term sentiment, while the 200-day SMA (Simple Moving Average) defines the long-term structural trend. Breakthroughs at these levels often signal significant capital shifts.</li>
+      <li><strong>Relative Strength Index (RSI):</strong> Beyond simple 70/30 levels, look for <strong>RSI Divergences</strong>. If the NDX makes a higher high while the RSI makes a lower high, it may indicate weakening momentum and a potential trend reversal.</li>
+      <li><strong>Fibonacci Confluence:</strong> Use the drawing tools to identify retracement levels from major swing lows. The 61.8% "Golden Pocket" is a frequent zone for institutional "dip buying."</li>
     </ul>
 
-    <h2>Macro-Economic Correlation</h2>
+    [Image of technical analysis chart showing RSI divergence and moving average crossover]
+
+    <h2>2. The Macro-Tech Nexus</h2>
     <p>
-      The valuation of growth stocks within the Nasdaq-100 is highly sensitive to Federal Reserve interest rate policies. 
-      As the discount rate for future cash flows changes, the intrinsic value of high-growth tech companies fluctuates. 
-      This dashboard integrates real-time price action to help investors visualize these macroeconomic impacts instantly.
+      In 2026, technology valuations are inextricably linked to the <strong>Real Yield of the US 10-Year Treasury</strong>. High-growth tech stocks are "long duration" assets, meaning their present value is sensitive to interest rate fluctuations. By monitoring the real-time chart above, investors can observe how the Nasdaq reacts to Federal Reserve announcements or CPI inflation data, allowing for more precise risk management.
+    </p>
+
+    <h2>3. Risk Disclosure & Capital Preservation</h2>
+    <p>
+      While the Nasdaq-100 offers significant growth potential, it also carries higher beta (volatility) compared to the S&P 500. A disciplined strategy involves setting stop-loss orders based on <strong>ATR (Average True Range)</strong> to account for the index's natural daily volatility. Capital preservation is the first rule of successful terminal usage.
     </p>
     
-    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 40px; border-top: 1px solid #2a3441; padding-top: 20px;">
-      <em>Data Disclaimer: All charts and data points provided on this terminal are for informational purposes only. Trading financial instruments involves significant risk.</em>
+    <p style="font-size: 0.85rem; color: #475569; margin-top: 60px; border-top: 1px solid var(--border); padding-top: 25px;">
+      <strong>Data Policy:</strong> Charting data is provided through the TradingView API. All market data is subject to delays and technical constraints. US Market Terminals does not provide direct financial advice; all data points are for educational and research purposes only.
     </p>
   </article>
+
+  <footer>
+    <p>© 2026 US Market Terminals. All rights reserved.</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+  </footer>
 
 </body>
 </html>
