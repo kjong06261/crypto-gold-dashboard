@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-card: #151b23;
+            --border: #2a3441;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --extreme-fear: #ef4444;
+            --fear: #f97316;
+            --neutral: #eab308;
+            --greed: #22c55e;
+            --extreme-greed: #10b981;
+        }
+
+        .gauge-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .gauge-header {
+            margin-bottom: 20px;
+        }
+
+        .gauge-title {
+            color: var(--text-main);
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .gauge-container {
+            position: relative;
+            width: 250px;
+            height: 125px;
+            margin: 0 auto 30px;
+            overflow: hidden;
+        }
+
+        /* 게이지 배경 (반원) */
+        .gauge-body {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 270deg,
+                var(--extreme-fear) 0%,
+                var(--fear) 20%,
+                var(--neutral) 40%,
+                var(--greed) 60%,
+                var(--extreme-greed) 80%,
+                var(--extreme-greed) 100%
+            );
+            mask: radial-gradient(circle, transparent 65%, black 66%);
+            -webkit-mask: radial-gradient(circle, transparent 65%, black 66%);
+        }
+
+        /* 바늘 */
+        .gauge-needle {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            height: 90px;
+            background: #fff;
+            border-radius: 4px;
+            transform-origin: bottom center;
+            transform: translateX(-50%) rotate(-90deg);
+            transition: transform 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            z-index: 2;
+        }
+
+        .gauge-center {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+            z-index: 3;
+        }
+
+        .gauge-value {
+            font-size: 48px;
+            font-weight: 800;
+            margin-top: 10px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .gauge-status {
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .update-time {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="gauge-card">
+    <div class="gauge-header">
+        <h2 class="gauge-title">📊 Market Fear & Greed Index</h2>
+    </div>
+
+    <div class="gauge-container">
+        <div class="gauge-body"></div>
+        <div class="gauge-needle" id="needle"></div>
+        <div class="gauge-center"></div>
+    </div>
+
+    <div class="gauge-status" id="status">NEUTRAL</div>
+    <div class="gauge-value" id="value">50</div>
+    <div class="update-time" id="update-time">Last Updated: --</div>
+</div>
+
+<script>
+    function setGauge(value) {
+        const needle = document.getElementById('needle');
+        const valueDisplay = document.getElementById('value');
+        const statusDisplay = document.getElementById('status');
+        
+        // 바늘 회전 (0 = -90deg, 100 = 90deg)
+        const rotation = (value / 100) * 180 - 90;
+        needle.style.transform = `translateX(-50%) rotate(${rotation}deg)`;
+        
+        // 텍스트 및 색상 변경
+        valueDisplay.innerText = value;
+        valueDisplay.style.color = getColor(value);
+        
+        let status = "";
+        if(value < 25) status = "EXTREME FEAR";
+        else if(value < 45) status = "FEAR";
+        else if(value < 55) status = "NEUTRAL";
+        else if(value < 75) status = "GREED";
+        else status = "EXTREME GREED";
+        
+        statusDisplay.innerText = status;
+        statusDisplay.style.color = getColor(value);
+        
+        document.getElementById('update-time').innerText = "Last Updated: " + new Date().toLocaleString();
+    }
+
+    function getColor(value) {
+        if(value < 25) return "#ef4444";
+        if(value < 45) return "#f97316";
+        if(value < 55) return "#eab308";
+        if(value < 75) return "#22c55e";
+        return "#10b981";
+    }
+
+    // 초기 실행 (예시 값 65 - 탐욕 상태)
+    // 실제 운영 시에는 이 값을 매일 업데이트하거나 API 연결이 필요합니다.
+    setTimeout(() => setGauge(65), 500);
+</script>
+
+</body>
+</html>
