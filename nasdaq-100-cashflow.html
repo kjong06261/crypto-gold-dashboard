@@ -6,66 +6,90 @@
   <title>NASDAQ-100 Growth Intelligence: 2026 Strategy | US Market Terminals</title>
   <meta name="description" content="In-depth analysis of Nasdaq-100 growth potential, Free Cash Flow (FCF) analysis of Big Tech, and optimized Covered Call income strategies for 2026.">
   
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0a0d12;
-      --panel: #151b23;
-      --border: #2a3441;
+      --bg: #05070a;
+      --panel: #0d1117;
+      --border: #1e222d;
       --text: #e2e8f0;
-      --text-sec: #94a3b8;
+      --text-dim: #94a3b8;
       --accent: #3b82f6;
       --accent-glow: rgba(59, 130, 246, 0.15);
     }
     
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
-    a { text-decoration: none; color: inherit; transition: 0.2s; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; transition: 0.3s; }
     
-    header { border-bottom: 1px solid var(--border); padding: 20px; background: rgba(10,13,18,0.95); position: sticky; top: 0; backdrop-filter: blur(10px); z-index: 100; }
-    .nav-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-weight: 800; font-size: 1.1rem; color: #fff; letter-spacing: -0.5px; }
-    .back-btn { font-size: 0.9rem; color: var(--text-sec); display: flex; align-items: center; gap: 5px; }
-    .back-btn:hover { color: var(--accent); }
+    /* Unified Navigation */
+    .nav { 
+      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
+    }
+    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+    .nav-links a { color: var(--text-dim); }
+    .nav-links a:hover { color: var(--accent); }
 
-    .container { max-width: 800px; margin: 60px auto; padding: 0 24px; }
+    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
     
     .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
-    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
-    h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 20px; color: #fff; line-height: 1.2; letter-spacing: -1.5px; }
-    .meta { color: var(--text-sec); font-size: 0.9rem; display: flex; gap: 15px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
+    .meta { color: var(--text-dim); font-size: 0.9rem; display: flex; gap: 15px; font-family: 'JetBrains Mono', monospace; }
 
     .content { font-size: 1.1rem; color: #cbd5e1; }
-    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 20px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
-    .content h3 { color: #fff; margin-top: 35px; font-size: 1.4rem; font-weight: 700; }
-    .content p { margin-bottom: 28px; text-align: justify; line-height: 1.9; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: -0.5px; }
+    .content p { margin-bottom: 30px; text-align: justify; line-height: 1.9; }
     .content strong { color: #fff; }
     
-    .info-box { background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 16px; padding: 30px; margin: 45px 0; }
-    .info-box h3 { margin-top: 0; color: #fff; font-size: 1.25rem; }
+    .info-box { background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 20px; padding: 35px; margin: 50px 0; }
+    .info-box h3 { margin-top: 0; color: #fff; font-size: 1.3rem; margin-bottom: 15px; }
 
-    .table-wrapper { overflow-x: auto; margin: 45px 0; border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .table-wrapper { overflow-x: auto; margin: 50px 0; border: 1px solid var(--border); border-radius: 20px; background: var(--panel); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
     .data-table { width: 100%; border-collapse: collapse; min-width: 600px; }
-    .data-table th { background: var(--panel); text-align: left; padding: 20px; color: var(--text-sec); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
-    .data-table td { padding: 20px; border-bottom: 1px solid var(--border); color: var(--text); font-size: 1rem; }
-    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table th { background: rgba(255,255,255,0.02); text-align: left; padding: 22px; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 1px solid var(--border); }
+    .data-table td { padding: 22px; border-bottom: 1px solid var(--border); color: var(--text); font-size: 1rem; }
+    .data-table tr:last-child td { border-bottom: none; }
     
-    .cta-section { margin-top: 80px; padding: 50px; background: linear-gradient(180deg, var(--panel) 0%, var(--bg) 100%); border: 1px solid var(--border); border-radius: 20px; text-align: center; }
-    .cta-btn { display: inline-block; background: var(--accent); color: white; padding: 16px 36px; border-radius: 10px; font-weight: 800; margin-top: 25px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+    .cta-section { margin-top: 100px; padding: 60px; background: linear-gradient(180deg, var(--panel) 0%, var(--bg) 100%); border: 1px solid var(--border); border-radius: 24px; text-align: center; }
+    .cta-btn { display: inline-block; background: var(--accent); color: white; padding: 18px 38px; border-radius: 12px; font-weight: 800; margin-top: 30px; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3); }
+    .cta-btn:hover { transform: translateY(-3px); background: #2563eb; }
 
-    footer { margin-top: 100px; border-top: 1px solid var(--border); padding: 50px 20px; text-align: center; color: var(--text-sec); font-size: 0.85rem; }
+    /* Unified Footer */
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 120px; }
+    .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
+    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      h1 { font-size: 2.2rem; }
+      .cta-section { padding: 40px 20px; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="nav-inner">
-      <a href="/" class="logo">US MARKET TERMINALS</a>
-      <a href="/blog.html" class="back-btn">← Back to Insights</a>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div class="nav-links">
+          <a href="/calculator.html">Calculator</a>
+          <a href="/market-pulse.html">Pulse</a>
+          <a href="/tools.html">Tools</a>
+          <a href="/blog.html" style="color: var(--accent);">Research</a>
+          <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <main class="container">
     <article class="article-header">
@@ -74,7 +98,7 @@
       <div class="meta">
         <span>Quantitative Research Team</span>
         <span>•</span>
-        <span>Updated: January 6, 2026</span>
+        <span>Jan 6, 2026</span>
       </div>
     </article>
 
@@ -146,21 +170,29 @@
 
     <div class="cta-section">
       <h3>Analyze the Nasdaq Concentration</h3>
-      <p style="color:var(--text-sec);">Track the Top 10 holdings and real-time P/E ratios on our terminal.</p>
+      <p style="color:var(--text-dim); margin-top: 10px;">Track the Top 10 holdings and real-time P/E ratios on our terminal.</p>
       <a href="/nasdaq.html" class="cta-btn">Open Nasdaq Pro Terminal</a>
     </div>
-
   </main>
 
   <footer>
-    <p>© 2026 US Market Terminals. All rights reserved.</p>
-    <div style="margin-top: 15px;">
-      <a href="/privacy.html" style="margin: 0 10px;">Privacy Policy</a> | 
-      <a href="/disclaimer.html" style="margin: 0 10px;">Disclaimer</a>
+    <div class="footer-links">
+        <a href="/about.html">About</a>
+        <a href="/resources.html">Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/legal.html">Terms & Disclaimer</a>
     </div>
+    <p class="footer-copy">
+        © 2026 US Market Terminals. All rights reserved. <br>
+        Institutional Grade Analytics • Data Integrity • Independent Research
+    </p>
+    <div class="footer-disclaimer">
+        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Financial Risk Disclosure</strong>
+        US Market Terminals is for educational and informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
+    </div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
   </footer>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 
 </body>
 </html>
