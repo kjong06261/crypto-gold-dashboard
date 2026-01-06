@@ -6,112 +6,140 @@
   
   <url>
     <loc>https://us-dividend-pro.com/</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>https://us-dividend-pro.com/nasdaq.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://us-dividend-pro.com/nasdaq-100-cashflow.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://us-dividend-pro.com/dividend.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://us-dividend-pro.com/coin.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
+    <loc>https://us-dividend-pro.com/bitcoin-corporate.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://us-dividend-pro.com/realty-income-o.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://us-dividend-pro.com/investor_ai.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://us-dividend-pro.com/guides.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://us-dividend-pro.com/glossary.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://us-dividend-pro.com/blog.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://us-dividend-pro.com/blog/nasdaq-growth-strategy.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://us-dividend-pro.com/blog/dividend-aristocrats-2026.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://us-dividend-pro.com/blog/crypto-staking-dividend.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://us-dividend-pro.com/blog/barbell-strategy-guide.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://us-dividend-pro.com/about.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://us-dividend-pro.com/legal.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://us-dividend-pro.com/privacy.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>https://us-dividend-pro.com/terms.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>https://us-dividend-pro.com/disclaimer.html</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
