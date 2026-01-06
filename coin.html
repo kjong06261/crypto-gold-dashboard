@@ -5,31 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Matrix Terminal: Real-Time Digital Asset Analysis | US Market Terminals</title>
   <meta name="description" content="Professional-grade cryptocurrency screener. Track Bitcoin dominance, Ethereum gas trends, and institutional on-chain metrics in real-time.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0a0d12;
-      --panel: #151b23;
-      --border: #2a3441;
+      --panel: #111827;
+      --border: #1f2937;
       --text: #e2e8f0;
       --text-sec: #94a3b8;
       --accent: #a855f7; /* Purple for Crypto */
+      --text-dim: #94a3b8;
     }
     
     body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
     
-    .nav { padding: 15px 20px; border-bottom: 1px solid var(--border); background: var(--panel); display: flex; justify-content: space-between; align-items: center; position:sticky; top:0; z-index:100; backdrop-filter: blur(10px); }
+    /* Navigation - Unified Style */
+    .nav { 
+      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(17, 24, 39, 0.8); 
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); 
+    }
+    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
     .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; letter-spacing: -0.5px; }
-    .back-btn { color: var(--text-sec); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
-    .back-btn:hover { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+    .nav-links a { text-decoration: none; color: var(--text-sec); transition: 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
     
+    /* Screen Container */
     .screen-container { height: 75vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     
-    /* SEO & Analysis Content Section */
+    /* Content Section */
     .content-section { max-width: 900px; margin: 0 auto; padding: 80px 24px 120px; }
     .content-section h1 { font-size: 2.2rem; color: #fff; font-weight: 900; margin-bottom: 30px; letter-spacing: -1px; }
     .content-section h2 { color: #fff; font-size: 1.6rem; border-left: 5px solid var(--accent); padding-left: 20px; margin-top: 60px; margin-bottom: 20px; }
-    .content-section h3 { color: #fff; font-size: 1.25rem; margin-top: 35px; }
     .content-section p { color: var(--text-sec); font-size: 1.1rem; text-align: justify; margin-bottom: 25px; line-height: 1.8; }
     .content-section ul { padding-left: 20px; margin-bottom: 30px; }
     .content-section li { margin-bottom: 15px; color: var(--text-sec); font-size: 1.05rem; }
@@ -38,14 +46,33 @@
     .analysis-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 35px; margin: 40px 0; }
     .analysis-box h3 { margin-top: 0; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
 
-    footer { text-align: center; padding: 60px 20px; border-top: 1px solid var(--border); color: #475569; font-size: 0.85rem; }
+    /* Footer - Unified Style */
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 0; }
+    .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { color: #475569; font-size: 0.8rem; line-height: 1.6; }
+    .footer-disclaimer { max-width: 700px; margin: 20px auto 0; font-size: 0.7rem; color: #334155; text-align: justify; text-align-last: center; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .content-section { padding-top: 40px; }
+    }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="/index.html" class="logo">US MARKET TERMINALS</a>
-    <a href="/index.html" class="back-btn">Exit Terminal ✕</a>
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div class="nav-links">
+          <a href="/calculator.html">Calculator</a>
+          <a href="/market-pulse.html">Pulse</a>
+          <a href="/tools.html">Tools</a>
+          <a href="/blog.html">Research</a>
+          <a href="/contact.html" style="background: var(--accent); color: #fff; padding: 6px 12px; border-radius: 6px; margin-left: 10px;">Contact</a>
+      </div>
+    </div>
   </nav>
 
   <div class="screen-container">
@@ -101,14 +128,23 @@
     <p>
       As we navigate through 2026, the correlation between the <strong>NASDAQ-100</strong> and <strong>Bitcoin</strong> has reached historical highs. This convergence is driven by the fact that both asset classes thrive on global liquidity and low real interest rates. Strategic investors use this terminal to spot lead-lag indicators between these two markets to optimize entry points.
     </p>
-    
-    <p style="font-size: 0.85rem; color: #475569; margin-top: 60px; border-top: 1px solid var(--border); padding-top: 25px;">
-      <strong>Institutional Disclaimer:</strong> Digital assets are highly speculative and carry significant risks of loss. Market data is provided by TradingView and third-party APIs. US Market Terminals does not guarantee the accuracy of real-time data. This content is for educational research purposes only.
-    </p>
   </article>
 
   <footer>
-    <p>© 2026 US Market Terminals. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="/about.html">About</a>
+        <a href="/resources.html">Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/legal.html">Terms & Disclaimer</a>
+    </div>
+    <p class="footer-copy">
+        © 2026 US Market Terminals. All rights reserved. <br>
+        Institutional Grade Analytics • Data Integrity • Independent Research
+    </p>
+    <div class="footer-disclaimer">
+        <strong>DISCLAIMER:</strong> US Market Terminals is for educational and informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
+    </div>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
   </footer>
 
