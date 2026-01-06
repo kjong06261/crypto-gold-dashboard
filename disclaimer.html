@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Disclaimer - US Market Terminals</title>
-  <meta name="robots" content="noindex, follow"> <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta name="robots" content="noindex, follow"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -15,62 +16,70 @@
     body {
       margin: 0; padding: 40px 20px;
       background: var(--bg); color: var(--text);
-      font-family: 'Inter', sans-serif; line-height: 1.7;
+      font-family: 'Inter', sans-serif; line-height: 1.8;
     }
-    .container { max-width: 800px; margin: 0 auto; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 0; }
     
-    h1 { color: #fff; border-bottom: 2px solid var(--border); padding-bottom: 15px; margin-bottom: 30px; }
-    h2 { color: #fff; font-size: 1.2rem; margin-top: 40px; margin-bottom: 10px; }
-    p { color: var(--muted); margin-bottom: 15px; font-size: 0.95rem; }
+    h1 { color: #fff; font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 15px; margin-bottom: 30px; letter-spacing: -1px; }
+    h2 { color: #fff; font-size: 1.3rem; margin-top: 45px; margin-bottom: 15px; }
+    p { color: var(--muted); margin-bottom: 20px; font-size: 1rem; text-align: justify; }
     
     .warning-box {
-      background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 20px; border-radius: 8px; margin-bottom: 30px; color: #fca5a5;
+      background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 25px; border-radius: 12px; margin-bottom: 40px; color: #fca5a5;
     }
+    .warning-box strong { color: #fff; display: block; margin-bottom: 8px; font-size: 1.1rem; }
     
     .back-link {
-      display: inline-block; margin-top: 40px; text-decoration: none;
-      color: #3b82f6; font-weight: 600;
+      display: inline-block; margin-top: 50px; text-decoration: none;
+      color: #3b82f6; font-weight: 600; font-size: 1rem; transition: 0.2s;
     }
-    .back-link:hover { text-decoration: underline; }
+    .back-link:hover { color: #fff; text-decoration: underline; }
+
+    footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border); text-align: center; color: #475569; font-size: 0.85rem; }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Disclaimer</h1>
+    <h1>Legal Disclaimer</h1>
 
     <div class="warning-box">
-      <strong>IMPORTANT NOTICE:</strong> The information provided on this website (US Market Terminals) does not constitute investment advice.
+      <strong>INVESTMENT RISK WARNING:</strong> 
+      Financial markets, including stocks, ETFs, and digital assets, involve a high degree of risk and potential loss of capital. The information provided on US Market Terminals is for educational and informational purposes only and should not be construed as professional financial advice.
     </div>
 
-    <h2>1. General Information Purpose</h2>
+    <h2>1. General Informational Purpose</h2>
     <p>
-      This website aims to visualize and provide general information and data regarding financial markets, including US stocks, ETFs, and digital assets. 
-      All data provided (including stock prices, yields, and indicators) is for informational and educational purposes only and is not guaranteed to be accurate, complete, or timely.
+      The content, data, and visualizations provided on this website are intended to help users understand market trends and asset allocation strategies. While we strive to provide high-quality insights, all information is provided "as is" without any warranty of any kind. <strong>US Market Terminals</strong> does not guarantee the accuracy, completeness, or timeliness of any market data (including prices, dividend yields, and technical indicators).
     </p>
 
-    <h2>2. Investment Responsibility</h2>
+    <h2>2. No Financial Advice</h2>
     <p>
-      All investment decisions are the sole responsibility of the user. 
-      The site operator assumes no legal liability for any investment results (including financial losses) based on the information provided on this site. 
-      Please consult with a qualified financial advisor or conduct your own independent research before making any actual investment decisions.
+      The operators of this website are not registered investment advisors, brokers, or tax professionals. No information on this site constitutes a recommendation to buy, sell, or hold any security or financial instrument. All investment decisions are the <strong>sole responsibility of the user</strong>. We strongly recommend consulting with a certified financial professional or conducting thorough independent research before committing capital to any investment.
     </p>
 
-    <h2>3. Data Delays and Errors</h2>
+    <h2>3. Market Data & API Limitations</h2>
     <p>
-      Market data provided on this site may be delayed (Delayed Quotes) and is not real-time unless specified. 
-      Errors may occur due to technical issues with API providers. 
-      Past performance is not indicative of future results.
+      Data displayed on our terminals (Nasdaq Pro, Crypto Matrix, Dividend Map) is sourced from third-party APIs and public financial records. Please be aware that market quotes may be delayed and may not reflect real-time conditions. We assume no liability for errors, omissions, or delays in data, nor for any actions taken in reliance on the information contained herein.
     </p>
 
-    <h2>4. Affiliate Links and Advertisements</h2>
+    <h2>4. Third-Party Links & Advertisements</h2>
     <p>
-      This website may contain affiliate links or Google AdSense advertisements. 
-      We are not responsible for the content, services, or products of third-party websites linked externally.
+      This website may feature Google AdSense advertisements or links to external third-party sites. US Market Terminals does not endorse and is not responsible for the content, privacy policies, or practices of any third-party websites. Any interaction with external links is at the user's own risk.
     </p>
 
-    <a href="index.html" class="back-link">← Back to Home</a>
+    <h2>5. Past Performance</h2>
+    <p>
+      Historical performance of stocks, dividends, or crypto assets is not a guarantee of future results. Market conditions can change rapidly, and previous success does not ensure future gains.
+    </p>
+
+    <a href="/" class="back-link">← Return to Terminal Gateway</a>
+
+    <footer>
+      © 2026 US Market Terminals. All rights reserved.<br>
+      Last Updated: January 06, 2026
+    </footer>
   </div>
 
 </body>
