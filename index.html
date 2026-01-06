@@ -9,7 +9,7 @@
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@500;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #05070a;
@@ -21,43 +21,44 @@
       --accent-glow: rgba(59, 130, 246, 0.2);
     }
 
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; transition: 0.3s; }
 
-    /* Navigation */
+    /* Unified Navigation */
     .nav { 
-      padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
-      border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.8); backdrop-filter: blur(10px);
-      position: sticky; top: 0; z-index: 1000;
+      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
     }
-    .logo { font-weight: 900; font-size: 1.2rem; color: #fff; letter-spacing: -1px; }
-    .nav-links { display: flex; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+    .nav-links a { color: var(--text-dim); }
     .nav-links a:hover { color: var(--accent); }
 
-    /* Live Market Pulse (Fear & Greed Mini) */
+    /* Live Market Pulse */
     .market-pulse {
       background: linear-gradient(90deg, var(--bg) 0%, var(--panel) 50%, var(--bg) 100%);
-      padding: 15px; border-bottom: 1px solid var(--border); text-align: center;
+      padding: 12px; border-bottom: 1px solid var(--border); text-align: center;
     }
-    .pulse-status { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #10b981; font-weight: 700; text-transform: uppercase; }
+    .pulse-status { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #10b981; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
     /* Hero Section */
-    .hero { padding: 80px 20px 40px; text-align: center; }
-    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; margin: 0 0 20px; letter-spacing: -3px; line-height: 1; }
-    .hero p { color: var(--text-dim); font-size: 1.2rem; max-width: 600px; margin: 0 auto 50px; line-height: 1.6; }
+    .hero { padding: 100px 20px 60px; text-align: center; }
+    h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 900; margin: 0 0 25px; letter-spacing: -3px; line-height: 0.95; color: #fff; }
+    .hero p { color: var(--text-dim); font-size: 1.25rem; max-width: 650px; margin: 0 auto 60px; line-height: 1.6; }
 
     /* 4-Grid Gateway */
     .gateways { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-      gap: 20px; width: 100%; max-width: 1100px; margin: 0 auto 80px; padding: 0 20px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+      gap: 24px; width: 100%; max-width: 1100px; margin: 0 auto 100px; padding: 0 24px;
     }
     .gate-card {
-      background: var(--panel); border: 1px solid var(--border); border-radius: 20px;
-      padding: 40px 30px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative; overflow: hidden;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 24px;
+      padding: 45px 35px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative; overflow: hidden; display: block;
     }
-    .gate-card:hover { transform: translateY(-12px); border-color: var(--accent); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+    .gate-card:hover { transform: translateY(-12px); border-color: var(--accent); box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6); }
     .gate-card::before {
       content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background: radial-gradient(circle at top right, var(--accent-glow), transparent 70%);
@@ -65,21 +66,21 @@
     }
     .gate-card:hover::before { opacity: 1; }
 
-    .gate-icon { font-size: 2.5rem; margin-bottom: 25px; display: block; }
-    .gate-title { font-size: 1.4rem; font-weight: 800; color: #fff; display: block; margin-bottom: 12px; }
-    .gate-desc { font-size: 0.9rem; color: #64748b; line-height: 1.5; }
+    .gate-icon { font-size: 2.8rem; margin-bottom: 25px; display: block; filter: drop-shadow(0 0 10px rgba(255,255,255,0.1)); }
+    .gate-title { font-size: 1.5rem; font-weight: 800; color: #fff; display: block; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .gate-desc { font-size: 0.95rem; color: #64748b; line-height: 1.6; }
 
-    /* Footer */
-    footer { padding: 80px 20px; background: #080a0e; border-top: 1px solid var(--border); text-align: center; }
-    .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
-    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 500; }
+    /* Unified Footer */
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; }
+    .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
     .footer-links a:hover { color: var(--accent); }
-    .highlight { color: #fff !important; font-weight: 700 !important; }
-
-    .disclaimer { max-width: 800px; margin: 0 auto 30px; font-size: 0.75rem; color: #334155; text-align: justify; text-align-last: center; line-height: 1.6; }
+    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
+    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
     @media (max-width: 768px) {
-      .nav { padding: 20px; }
+      .nav-links { display: none; }
+      .hero { padding-top: 60px; }
       .gateways { grid-template-columns: 1fr; }
     }
   </style>
@@ -87,11 +88,15 @@
 <body>
 
   <nav class="nav">
-    <a href="/" class="logo">US MARKET TERMINALS</a>
-    <div class="nav-links">
-      <a href="calculator.html">Calculator</a>
-      <a href="blog.html">Insights</a>
-      <a href="nasdaq.html" style="color: var(--accent);">Launch App</a>
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div class="nav-links">
+          <a href="calculator.html">Calculator</a>
+          <a href="market-pulse.html">Pulse</a>
+          <a href="tools.html">Tools</a>
+          <a href="blog.html">Research</a>
+          <a href="contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);">Contact</a>
+      </div>
     </div>
   </nav>
 
@@ -101,57 +106,53 @@
 
   <main class="hero">
     <h1>Professional Intelligence<br>For Every Investor.</h1>
-    <p>We bridge the gap between institutional data and individual strategy. Access our specialized terminals to gain the edge.</p>
+    <p>We bridge the gap between institutional data and individual strategy. Access our specialized terminals to gain the quantitative edge.</p>
 
     <div class="gateways">
       <a href="nasdaq.html" class="gate-card">
         <span class="gate-icon">📈</span>
         <span class="gate-title">Nasdaq Pro</span>
-        <span class="gate-desc">Advanced charting and real-time technical analysis for tech leaders.</span>
+        <span class="gate-desc">Advanced charting and real-time technical structure for growth leaders.</span>
       </a>
 
       <a href="coin.html" class="gate-card">
         <span class="gate-icon">⚡</span>
         <span class="gate-title">Crypto Matrix</span>
-        <span class="gate-desc">Institutional grade screener for Bitcoin and high-yield digital assets.</span>
+        <span class="gate-desc">Institutional grade screener for Bitcoin and high-alpha digital assets.</span>
       </a>
 
       <a href="dividend.html" class="gate-card">
         <span class="gate-icon">🗺️</span>
         <span class="gate-title">S&P 500 Map</span>
-        <span class="gate-desc">Heatmap visualization and Dividend Aristocrat yield intelligence.</span>
+        <span class="gate-desc">Heatmap visualization and Dividend Aristocrat yield sustainability.</span>
       </a>
 
       <a href="calculator.html" class="gate-card" style="border-color: rgba(16, 185, 129, 0.3);">
         <span class="gate-icon">🧮</span>
         <span class="gate-title">Strategy Lab</span>
-        <span class="gate-desc">Compound interest and dividend reinvestment simulator for retirement.</span>
+        <span class="gate-desc">Compound interest and dividend reinvestment simulator for wealth building.</span>
       </a>
     </div>
   </main>
 
   <footer>
     <div class="footer-links">
-      <a href="guides.html" class="highlight">Guides</a>
-      <a href="glossary.html" class="highlight">Glossary</a>
-      <a href="calculator.html" class="highlight">Calculator</a>
-      <a href="blog.html" class="highlight">Blog</a>
-      <span style="color:#1e222d">|</span>
-      <a href="privacy.html">Privacy</a>
-      <a href="legal.html">Terms</a>
-      <a href="disclaimer.html">Disclaimer</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="legal.html">Terms & Disclaimer</a>
     </div>
-
-    <div class="disclaimer">
-      <strong>FINANCIAL RISK DISCLOSURE:</strong> All data provided is for educational purposes only. US Market Terminals is not a registered investment advisor. The "Fear & Greed" index and "Strategy Lab" are hypothetical models. Investing in Nasdaq, Crypto, and Dividends involves risk of loss. Always consult with a licensed professional before committing capital.
+    <p class="footer-copy">
+        © 2026 US Market Terminals. All rights reserved. <br>
+        Institutional Grade Analytics • Data Integrity • Independent Research
+    </p>
+    <div class="footer-disclaimer">
+        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Financial Risk Disclosure</strong>
+        US Market Terminals is for educational and informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
     </div>
-
-    <div style="color: #1e293b; font-size: 0.8rem; font-weight: 600;">
-      © 2026 US MARKET TERMINALS • QUANTITATIVE RESEARCH DIVISION
-    </div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
   </footer>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 
 </body>
 </html>
