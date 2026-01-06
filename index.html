@@ -18,14 +18,14 @@
       --text-dim: #94a3b8;
       --accent: #3b82f6;
     }
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; height: 100vh; display: flex; flex-direction: column; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
     
     /* Navigation */
     .nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
     .logo { font-weight: 900; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -1px; }
     
     /* Main Content */
-    .main { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    .main { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 20px; }
     
     h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin: 0 0 20px; letter-spacing: -2px; line-height: 1.1; }
     p { color: var(--text-dim); font-size: 1.2rem; max-width: 500px; margin: 0 auto 60px; }
@@ -47,12 +47,13 @@
       padding: 40px 20px; text-align: center; 
       border-top: 1px solid var(--border);
       background: #080a0e;
+      margin-top: auto;
     }
     .footer-links { 
-      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 25px; 
+      display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 25px; 
     }
     .footer-links a { 
-      color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.2s;
+      color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: 0.2s;
     }
     .footer-links a:hover { color: var(--accent); }
     .footer-links .highlight { color: #e2e8f0; font-weight: 700; }
@@ -67,7 +68,7 @@
 <body>
 
   <nav class="nav">
-    <a href="#" class="logo">US MARKET TERMINALS</a>
+    <a href="/" class="logo">US MARKET TERMINALS</a>
   </nav>
 
   <div class="main">
@@ -99,9 +100,15 @@
     <div class="footer-links">
       <a href="guides.html" class="highlight">Market Guides</a>
       <a href="glossary.html" class="highlight">Tools Glossary</a>
+      <a href="blog.html" class="highlight">Insights Blog</a>
       <span style="color:#2a3441">|</span>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="legal.html">Terms & Disclaimer</a>
+      <a href="nasdaq-100-cashflow.html">Nasdaq Cashflow</a>
+      <a href="bitcoin-corporate.html">Bitcoin Corporate</a>
+      <a href="realty-income-o.html">Realty Income</a>
+      <span style="color:#2a3441">|</span>
+      <a href="privacy.html">Privacy</a>
+      <a href="legal.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
     </div>
 
     <div class="disclaimer">
