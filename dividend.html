@@ -3,34 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dividend Strategy & Heatmap | US Market Terminals</title>
-  <meta name="description" content="S&P 500 Market Heatmap and Dividend Aristocrat analysis. Track high-yield defensive stocks and sector performance.">
+  <title>Dividend Strategy & Market Heatmap | US Market Terminals</title>
+  <meta name="description" content="S&P 500 Market Heatmap and in-depth Dividend Aristocrat analysis. Track high-yield defensive stocks, payout ratios, and sector rotation for 2026.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Dark Theme */
-    body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; line-height: 1.6; }
-    .nav { padding: 15px 20px; border-bottom: 1px solid #2a3441; background: #151b23; display: flex; justify-content: space-between; align-items: center; position:sticky; top:0; z-index:100; }
-    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; }
-    .back-btn { color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    :root {
+      --bg: #0a0d12;
+      --panel: #151b23;
+      --border: #2a3441;
+      --text: #e2e8f0;
+      --text-sec: #94a3b8;
+      --accent: #22c55e; /* Green for Dividends */
+    }
     
-    .map-container { height: 80vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid #2a3441; }
-    .header-info { padding: 15px 20px; background: #0a0d12; color: #94a3b8; font-size: 0.9rem; border-bottom: 1px solid #1e2530; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+    
+    .nav { padding: 15px 20px; border-bottom: 1px solid var(--border); background: var(--panel); display: flex; justify-content: space-between; align-items: center; position:sticky; top:0; z-index:100; backdrop-filter: blur(10px); }
+    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; letter-spacing: -0.5px; }
+    .back-btn { color: var(--text-sec); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
+    .back-btn:hover { color: var(--accent); }
+    
+    .map-container { height: 75vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .header-info { padding: 12px 20px; background: #0d1117; color: var(--text-sec); font-size: 0.85rem; border-bottom: 1px solid var(--border); text-align: center; }
 
-    /* SEO Text Section */
-    .content-section { max-width: 800px; margin: 0 auto; padding: 60px 20px 100px; }
-    .content-section h2 { color: #fff; border-left: 4px solid #22c55e; padding-left: 15px; margin-top: 40px; }
-    .content-section p { color: #94a3b8; font-size: 1rem; text-align: justify; margin-bottom: 20px; }
+    /* Content Section */
+    .content-section { max-width: 900px; margin: 0 auto; padding: 80px 24px 120px; }
+    .content-section h1 { font-size: 2.2rem; color: #fff; font-weight: 900; margin-bottom: 30px; letter-spacing: -1px; }
+    .content-section h2 { color: #fff; font-size: 1.6rem; border-left: 5px solid var(--accent); padding-left: 20px; margin-top: 60px; margin-bottom: 20px; }
+    .content-section h3 { color: #fff; font-size: 1.25rem; margin-top: 35px; }
+    .content-section p { color: var(--text-sec); font-size: 1.1rem; text-align: justify; margin-bottom: 25px; line-height: 1.8; }
+    .content-section strong { color: #fff; }
+
+    .stat-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 35px; margin: 40px 0; }
+    .stat-box h3 { margin-top: 0; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+
+    footer { text-align: center; padding: 60px 20px; border-top: 1px solid var(--border); color: #475569; font-size: 0.85rem; }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="index.html" class="logo">📊 US MARKET TERMINALS</a>
-    <a href="index.html" class="back-btn">Exit Terminal ✕</a>
+    <a href="/index.html" class="logo">US MARKET TERMINALS</a>
+    <a href="/index.html" class="back-btn">Exit Terminal ✕</a>
   </nav>
 
   <div class="header-info">
-    🔥 <strong>S&P 500 Heatmap:</strong> Visualize sector rotation and market breadth instantly.
+    💡 <strong>Sector Performance:</strong> Visualize the S&P 500 breadth to identify defensive rotation.
   </div>
 
   <div class="map-container">
@@ -55,32 +73,55 @@
       }
       </script>
     </div>
-    </div>
+  </div>
 
   <article class="content-section">
-    <h2>Dividend Growth Strategy</h2>
+    <h1>Strategic Dividend Investing: Income in Volatile Markets</h1>
     <p>
-      For long-term wealth preservation, Dividend Aristocrats—companies that have increased dividends for 25+ consecutive years—form the bedrock of many portfolios. 
-      Tickers like Realty Income (O) and Coca-Cola (KO) provide defensive characteristics during market volatility.
+      As we navigate the 2026 economic cycle, the importance of <strong>Defensive Equity</strong> has never been more apparent. While growth sectors drive headlines, the compounding power of dividends provides a critical "Total Return" cushion for long-term investors. This terminal allows you to monitor sector-wide movements to identify where the "Smart Money" is seeking safety.
     </p>
 
-    <h2>The Importance of Free Cash Flow (FCF)</h2>
+    <div class="stat-box">
+      <h3>Analysis: The 2026 Dividend Landscape</h3>
+      <p>
+        In a higher-for-longer interest rate environment, dividend growth must be backed by <strong>Pricing Power</strong>. Companies in the Consumer Staples and Healthcare sectors, such as <strong>Coca-Cola (KO)</strong> and <strong>Johnson & Johnson (JNJ)</strong>, have historically demonstrated the ability to pass on inflationary costs to consumers, ensuring their 25+ year dividend growth streaks (Dividend Aristocrats) remain intact.
+      </p>
+    </div>
+
+    <h2>1. Identifying Sustainable Yield: Beyond the Percentage</h2>
     <p>
-      A high dividend yield can sometimes be a "yield trap." Investors must analyze the Payout Ratio and Free Cash Flow. 
-      If a company pays out more in dividends than it generates in cash, the dividend is unsustainable. 
-      This terminal helps investors track sector performance to identify safe harbors.
+      A common mistake among retail investors is chasing the highest yield without looking at the underlying balance sheet. This often leads to "Yield Traps." To avoid this, we focus on <strong>Free Cash Flow (FCF) Yield</strong>. A healthy company should generate significantly more cash from operations than it pays out in distributions.
+    </p>
+    <ul>
+      <li><strong>Dividend Payout Ratio:</strong> Aim for companies with a ratio below 60% (75% for REITs).</li>
+      <li><strong>Net Debt to EBITDA:</strong> High debt loads can threaten dividends when refinancing costs rise.</li>
+      <li><strong>Dividend Growth Rate:</strong> Look for a 5-year CAGR (Compound Annual Growth Rate) that consistently beats inflation.</li>
+    </ul>
+
+    
+
+    <h2>2. Sector Rotation & Capital Preservation</h2>
+    <p>
+      The heatmap above is a real-time window into <strong>Sector Rotation</strong>. When Technology (Growth) faces valuation pressure, capital often flows into "Value" sectors like Utilities or Real Estate. By monitoring these shifts, investors can rebalance their portfolios to capture capital appreciation while securing a 4-5% dividend yield floor.
+    </p>
+    <p>
+      Specifically, <strong>Real Estate Investment Trusts (REITs)</strong> like Realty Income (O) are currently being repriced as the Federal Reserve stabilizes rates. These monthly-paying assets provide the consistent liquidity needed to reinvest into the market during drawdowns.
     </p>
 
-    <h2>Sector Rotation Analysis</h2>
+    <h2>3. The Snowball Effect: Reinvestment Strategy</h2>
     <p>
-      The heatmap above illustrates the flow of capital between sectors (e.g., from Technology to Utilities). 
-      Understanding these cycles allows investors to position themselves ahead of the curve, capturing both capital appreciation and dividend income.
+      The true magic of dividend investing lies in <strong>DRIP (Dividend Reinvestment Plans)</strong>. By automatically reinvesting dividends, you utilize Dollar-Cost Averaging to acquire more shares when prices are suppressed. Over a decade, this "Snowball Effect" can turn a modest initial investment into a significant income-producing engine that funds financial freedom.
     </p>
     
-    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 40px; border-top: 1px solid #2a3441; padding-top: 20px;">
-      <em>Disclaimer: Past performance of any security is not indicative of future results. Information provided is for educational purposes.</em>
+    <p style="font-size: 0.85rem; color: #475569; margin-top: 60px; border-top: 1px solid var(--border); padding-top: 25px;">
+      <strong>Data Transparency:</strong> Heatmap data is provided by TradingView. US Market Terminals analyzes these trends to provide educational insights. All investments carry risk, and past performance is not a guarantee of future dividend increases.
     </p>
   </article>
+
+  <footer>
+    <p>© 2026 US Market Terminals. All rights reserved.</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+  </footer>
 
 </body>
 </html>
