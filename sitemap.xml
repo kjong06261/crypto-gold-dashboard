@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
     <loc>https://us-dividend-pro.com/</loc>
@@ -12,6 +9,13 @@
   </url>
   
   <url>
+    <loc>https://us-dividend-pro.com/calculator.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://us-dividend-pro.com/nasdaq.html</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>daily</changefreq>
@@ -19,16 +23,16 @@
   </url>
 
   <url>
-    <loc>https://us-dividend-pro.com/dividend.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
     <loc>https://us-dividend-pro.com/coin.html</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://us-dividend-pro.com/dividend.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
@@ -47,66 +51,17 @@
   </url>
 
   <url>
-    <loc>https://us-dividend-pro.com/blog/nasdaq-growth-strategy.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://us-dividend-pro.com/blog/dividend-aristocrats-2026.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://us-dividend-pro.com/blog/crypto-staking-dividend.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://us-dividend-pro.com/blog/barbell-strategy-guide.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://us-dividend-pro.com/guides.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://us-dividend-pro.com/blog.html</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://us-dividend-pro.com/glossary.html</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://us-dividend-pro.com/about.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://us-dividend-pro.com/legal.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
