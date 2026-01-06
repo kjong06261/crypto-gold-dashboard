@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | US Market Terminals</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #0a0d12;
+            --panel: #111827;
+            --border: #1f2937;
+            --text: #e2e8f0;
+            --accent: #3b82f6;
+            --muted: #94a3b8;
+            --red: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); 
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        .nav { 
+            padding: 20px 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-bottom: 1px solid var(--border); 
+            background: rgba(10, 13, 18, 0.9); 
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo { 
+            font-weight: 900; 
+            font-size: 1.1rem; 
+            color: #fff; 
+            text-decoration: none; 
+            letter-spacing: -1px; 
+        }
+        
+        .nav-links { 
+            display: flex; 
+            gap: 20px; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+        }
+        
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--muted); 
+            transition: 0.3s; 
+        }
+        
+        .nav-links a:hover { 
+            color: var(--accent); 
+        }
+
+        /* Main Content */
+        .error-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Grid Effect */
+        .error-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .error-content {
+            text-align: center;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glitch Effect for 404 */
+        .error-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(120px, 25vw, 200px);
+            font-weight: 700;
+            line-height: 1;
+            color: var(--red);
+            text-shadow: 
+                0 0 40px rgba(239, 68, 68, 0.3),
+                0 0 80px rgba(239, 68, 68, 0.2);
+            position: relative;
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            92% { opacity: 1; }
+            93% { opacity: 0.8; }
+            94% { opacity: 1; }
+            95% { opacity: 0.9; }
+            96% { opacity: 1; }
+        }
+
+        .error-code::before,
+        .error-code::after {
+            content: '404';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .error-code::before {
+            color: #3b82f6;
+            animation: glitch-1 2s infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+        }
+
+        .error-code::after {
+            color: #22c55e;
+            animation: glitch-2 2s infinite;
+            clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(3px, -3px); }
+            60% { transform: translate(-3px, -3px); }
+            80% { transform: translate(3px, 3px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(3px, -3px); }
+            40% { transform: translate(-3px, 3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(-3px, -3px); }
+        }
+
+        .error-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .error-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .error-title {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .error-message {
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        /* Action Buttons */
+        .error-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--panel);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Quick Links */
+        .quick-links {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .quick-links-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .quick-links-grid {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .quick-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            padding: 30px 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4b5563;
+            background: #080a0e;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .nav { 
+                padding: 15px 20px; 
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .error-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+        <div class="nav-links">
+            <a href="/nasdaq.html">Nasdaq</a>
+            <a href="/dividend.html">Dividend</a>
+            <a href="/coin.html">Crypto</a>
+            <a href="/calculator.html">Tools</a>
+        </div>
+    </nav>
+
+    <main class="error-container">
+        <div class="error-content">
+            <div class="error-badge">
+                <span>Connection Lost</span>
+            </div>
+            
+            <div class="error-code">404</div>
+            
+            <h1 class="error-title">Page Not Found</h1>
+            
+            <p class="error-message">
+                The asset you're looking for has been delisted or moved to a different exchange. 
+                This could be a broken link, a mistyped URL, or the page may have been removed.
+            </p>
+
+            <div class="error-actions">
+                <a href="/index.html" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                    Back to Terminal
+                </a>
+                <a href="/sitemap.xml" class="btn btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                    </svg>
+                    View Sitemap
+                </a>
+            </div>
+
+            <div class="quick-links">
+                <div class="quick-links-title">Popular Destinations</div>
+                <div class="quick-links-grid">
+                    <a href="/nasdaq.html" class="quick-link">📈 Nasdaq 100</a>
+                    <a href="/dividend.html" class="quick-link">💰 Dividends</a>
+                    <a href="/coin.html" class="quick-link">₿ Crypto</a>
+                    <a href="/calculator.html" class="quick-link">🧮 Calculator</a>
+                    <a href="/blog.html" class="quick-link">📝 Research</a>
+                    <a href="/about.html" class="quick-link">ℹ️ About</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 US Market Terminals. All rights reserved.
+    </footer>
+
+</body>
+</html>
