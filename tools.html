@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Tools & Analyzers | US Market Terminals</title>
+    <meta name="description" content="Access professional investment calculators, market sentiment gauges, and quantitative research tools for Nasdaq and Digital Assets.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://us-dividend-pro.com/tools.html">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #05070a;
+            --panel: #0d1117;
+            --border: #1e222d;
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --accent: #3b82f6;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --purple: #8b5cf6;
+            --red: #ef4444;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.7; 
+            background: var(--bg); 
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation Style */
+        .nav { 
+            padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.8); backdrop-filter: blur(10px);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo { font-weight: 900; font-size: 1.1rem; color: #fff; text-decoration: none; letter-spacing: -1px; }
+        .nav-links { display: flex; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hero */
+        .hero {
+            padding: 80px 24px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+        }
+        .hero-badge {
+            display: inline-flex;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 8px 16px; border-radius: 100px;
+            font-size: 11px; font-weight: 700; color: var(--green);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px;
+        }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; color: #fff; letter-spacing: -2px; margin-bottom: 16px; }
+        .hero p { font-size: 1.15rem; color: var(--text-dim); max-width: 650px; margin: 0 auto; }
+
+        /* Content Container */
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+
+        /* Section Header */
+        .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+        .section-icon { font-size: 24px; width: 48px; height: 48px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .section-title { font-size: 1.6rem; font-weight: 800; color: #fff; letter-spacing: -1px; }
+
+        /* Tools Grid */
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px; margin-bottom: 80px; }
+
+        .tool-card {
+            background: var(--panel); border: 1px solid var(--border); border-radius: 24px;
+            padding: 32px; transition: all 0.4s ease; display: flex; flex-direction: column;
+            position: relative; overflow: hidden;
+        }
+        .tool-card:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+
+        .tool-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+        .tool-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); }
+        
+        .tool-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; }
+        .badge-popular { background: rgba(245, 158, 11, 0.15); color: var(--yellow); }
+        .badge-new { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+
+        .tool-name { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .tool-description { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
+
+        .tool-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+        .tool-feature { font-size: 11px; font-weight: 600; padding: 6px 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 8px; color: var(--text-dim); }
+
+        .tool-link {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 14px 24px; background: var(--accent); color: #fff; text-decoration: none;
+            border-radius: 12px; font-weight: 700; font-size: 14px; transition: 0.3s;
+        }
+        .tool-link:hover { background: #2563eb; padding-right: 32px; }
+
+        /* Coming Soon */
+        .coming-soon { background: var(--panel); border: 1px dashed var(--border); border-radius: 24px; padding: 48px; text-align: center; }
+        .coming-soon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 32px; }
+        .coming-soon-item { padding: 16px; background: rgba(255,255,255,0.02); border-radius: 12px; font-size: 14px; font-weight: 600; color: var(--text-dim); display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        /* Footer */
+        footer { padding: 80px 24px; border-top: 1px solid var(--border); text-align: center; font-size: 0.85rem; color: #475569; background: #080a0e; }
+        footer a { color: #64748b; text-decoration: none; margin: 0 10px; font-weight: 600; }
+        footer a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .nav { padding: 20px; }
+            .nav-links { display: none; }
+            .tools-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/index.html" class="logo">US MARKET TERMINALS</a>
+        <div class="nav-links">
+            <a href="/calculator.html">Calculator</a>
+            <a href="/market-pulse.html">Pulse</a>
+            <a href="/nasdaq.html">Nasdaq</a>
+            <a href="/blog.html">Research</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-badge">Research Lab</div>
+        <h1>Quantitative Tools</h1>
+        <p>Institutional-grade calculators and sentiment indicators designed for the independent investor. Precision data for long-term compounding.</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="section-header">
+            <div class="section-icon">🌡️</div>
+            <h2 class="section-title">Sentiment Indicators</h2>
+        </div>
+
+        <div class="tools-grid">
+            <div class="tool-card" style="border-color: rgba(16, 185, 129, 0.4);">
+                <div class="tool-header">
+                    <div class="tool-icon" style="color: var(--green);">📊</div>
+                    <span class="tool-badge badge-new">Live</span>
+                </div>
+                <h3 class="tool-name">Market Thermometer</h3>
+                <p class="tool-description">Our lead indicator. Correlates Nasdaq VIX volatility with Crypto Fear & Greed and Put/Call ratios to identify extreme exhaustion points.</p>
+                <div class="tool-features">
+                    <span class="tool-feature">Multi-Asset Correlation</span>
+                    <span class="tool-feature">Real-time Pulse</span>
+                </div>
+                <a href="/market-pulse.html" class="tool-link">Launch Thermometer →</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon" style="color: var(--purple);">😱</div>
+                    <span class="tool-badge badge-popular">Popular</span>
+                </div>
+                <h3 class="tool-name">Crypto Matrix</h3>
+                <p class="tool-description">Advanced digital asset dashboard. Monitor BTC dominance, Fear & Greed, and altcoin season probability in one institutional view.</p>
+                <div class="tool-features">
+                    <span class="tool-feature">Staking Yields</span>
+                    <span class="tool-feature">Dominance Tracker</span>
+                </div>
+                <a href="/coin.html" class="tool-link">Open Crypto Matrix →</a>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-icon">🧮</div>
+            <h2 class="section-title">Strategy Simulators</h2>
+        </div>
+
+        <div class="tools-grid">
+            <div class="tool-card" style="border-color: rgba(59, 130, 246, 0.4);">
+                <div class="tool-header">
+                    <div class="tool-icon" style="color: var(--accent);">💰</div>
+                    <span class="tool-badge badge-popular">Core Tool</span>
+                </div>
+                <h3 class="tool-name">Strategy Lab (DRIP)</h3>
+                <p class="tool-description">Professional dividend reinvestment simulator. Models wealth growth with tax-adjusted variables and monthly contribution increments.</p>
+                <div class="tool-features">
+                    <span class="tool-feature">15.4% Tax Modeling</span>
+                    <span class="tool-feature">Compound Visualizer</span>
+                </div>
+                <a href="/calculator.html" class="tool-link">Run Simulation →</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon" style="color: var(--green);">⚖️</div>
+                </div>
+                <h3 class="tool-name">Barbell Allocation Lab</h3>
+                <p class="tool-description">Strategic framework for balancing high-growth Nasdaq tech with monthly-pay Dividend Aristocrats. Anti-fragile portfolio construction.</p>
+                <div class="tool-features">
+                    <span class="tool-feature">Risk Balancing</span>
+                    <span class="tool-feature">Yield Optimization</span>
+                </div>
+                <a href="/insights/barbell-strategy.html" class="tool-link">Study Framework →</a>
+            </div>
+        </div>
+
+        <div class="coming-soon">
+            <h3 class="section-title" style="margin-bottom: 10px;">Future Pipeline</h3>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">The following quantitative modules are currently in development.</p>
+            <div class="coming-soon-grid">
+                <div class="coming-soon-item"><span>🤖</span> AI Stock Screener</div>
+                <div class="coming-soon-item"><span>🔔</span> Volatility Alerts</div>
+                <div class="coming-soon-item"><span>📧</span> Weekly Quant Letter</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div style="margin-bottom: 25px;">
+            <a href="/about.html">About</a>
+            <a href="/resources.html">Resources</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/disclaimer.html">Disclaimer</a>
+        </div>
+        © 2026 US Market Terminals. All rights reserved.<br>
+        <span style="opacity: 0.5; display: block; margin-top: 10px;">Quantitative Research & Analysis • Institutional Data Integrity</span>
+    </footer>
+
+</body>
+</html>
