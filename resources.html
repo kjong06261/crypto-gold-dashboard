@@ -24,48 +24,33 @@
             --accent: #3b82f6;
             --green: #10b981;
             --yellow: #f59e0b;
-            --purple: #8b5cf6;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            line-height: 1.7; 
-            background: var(--bg); 
-            color: var(--text);
-            -webkit-font-smoothing: antialiased;
-        }
+        body { font-family: 'Inter', sans-serif; line-height: 1.7; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
 
-        /* Navigation Style (Unified) */
-        .nav { 
-            padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.8); backdrop-filter: blur(10px);
-            position: sticky; top: 0; z-index: 1000;
-        }
-        .logo { font-weight: 900; font-size: 1.1rem; color: #fff; text-decoration: none; letter-spacing: -1px; }
-        .nav-links { display: flex; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+        /* Unified Navigation */
+        .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
+        .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+        .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
         .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
-
         .page-header { text-align: center; margin-bottom: 60px; }
         .page-header h1 { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; color: #fff; letter-spacing: -2px; margin-bottom: 16px; }
         .page-header p { font-size: 1.1rem; color: var(--text-dim); max-width: 600px; margin: 0 auto; }
 
         .resource-section { margin-bottom: 80px; }
         .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-        .section-icon { font-size: 24px; padding: 10px; background: var(--panel); border-radius: 12px; border: 1px solid var(--border); }
         .section-title { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
 
         .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
 
-        /* Card Style */
         .resource-card {
             background: var(--panel); border: 1px solid var(--border); border-radius: 20px;
             padding: 28px; transition: all 0.3s ease; display: flex; flex-direction: column;
-            position: relative;
         }
         .resource-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
@@ -79,35 +64,31 @@
         .tag-data { background: rgba(245, 158, 11, 0.2); color: var(--yellow); }
 
         .resource-description { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
-
         .resource-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--accent); text-decoration: none; }
-        .resource-link:hover { text-decoration: underline; }
 
-        /* Disclaimer Styling */
-        .disclaimer-box { background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 16px; padding: 24px; margin-top: 40px; display: flex; gap: 16px; }
-        .disclaimer-text { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+        .disclaimer-box { background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 16px; padding: 24px; margin-top: 40px; }
 
-        footer { padding: 80px 24px; border-top: 1px solid var(--border); text-align: center; font-size: 0.85rem; color: #475569; background: #080a0e; }
-        footer a { color: #64748b; text-decoration: none; margin: 0 10px; font-weight: 600; }
-        footer a:hover { color: var(--accent); }
+        /* Unified Footer */
+        footer { margin-top: 80px; padding: 80px 24px 60px; border-top: 1px solid var(--border); background: #080a0e; text-align: center; }
+        .footer-nav { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-legal { margin-bottom: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .footer-notice { max-width: 700px; margin: 0 auto 20px; font-size: 0.75rem; color: #475569; line-height: 1.6; text-align: justify; text-align-last: center; }
 
-        @media (max-width: 768px) {
-            .nav { padding: 20px; }
-            .nav-links { display: none; }
-            .container { padding-top: 40px; }
-        }
+        @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
 </head>
 <body>
 
     <nav class="nav">
-        <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
-        <div class="nav-links">
-            <a href="/calculator.html">Calculator</a>
-            <a href="/market-pulse.html">Pulse</a>
-            <a href="/nasdaq.html">Nasdaq</a>
-            <a href="/dividend.html">Dividend</a>
-            <a href="/blog.html">Blog</a>
+        <div class="nav-container">
+            <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+            <div class="nav-links">
+                <a href="/calculator.html">Calculator</a>
+                <a href="/market-pulse.html">Pulse</a>
+                <a href="/tools.html">Tools</a>
+                <a href="/blog.html">Research</a>
+                <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -119,29 +100,21 @@
 
         <section class="resource-section">
             <div class="section-header">
-                <div class="section-icon">🛠️</div>
                 <h2 class="section-title">Proprietary Terminal Tools</h2>
             </div>
             <div class="resource-grid">
-                <div class="resource-card" style="border-color: rgba(59, 130, 246, 0.4);">
+                <div class="resource-card">
                     <div class="resource-header">
                         <div class="resource-logo">🧮</div>
-                        <div class="resource-info">
-                            <h3>Strategy Lab</h3>
-                            <span class="resource-tag tag-internal">Internal</span>
-                        </div>
+                        <div class="resource-info"><h3>Strategy Lab</h3><span class="resource-tag tag-internal">Internal</span></div>
                     </div>
                     <p class="resource-description">Our advanced compounding simulator. Model multi-decade wealth growth with tax-adjusted dividend reinvestment (DRIP) variables.</p>
                     <a href="/calculator.html" class="resource-link">Open Strategy Lab →</a>
                 </div>
-
-                <div class="resource-card" style="border-color: rgba(16, 185, 129, 0.4);">
+                <div class="resource-card">
                     <div class="resource-header">
                         <div class="resource-logo">🌡️</div>
-                        <div class="resource-info">
-                            <h3>Market Pulse</h3>
-                            <span class="resource-tag tag-internal">Internal</span>
-                        </div>
+                        <div class="resource-info"><h3>Market Pulse</h3><span class="resource-tag tag-internal">Internal</span></div>
                     </div>
                     <p class="resource-description">Live market sentiment gauge. We correlate Nasdaq VIX with Crypto volatility to identify extreme risk-on/risk-off exhaustion points.</p>
                     <a href="/market-pulse.html" class="resource-link">Check Market Pulse →</a>
@@ -151,83 +124,73 @@
 
         <section class="resource-section">
             <div class="section-header">
-                <div class="section-icon">🏛️</div>
                 <h2 class="section-title">Institutional Data Gateways</h2>
             </div>
             <div class="resource-grid">
                 <div class="resource-card">
                     <div class="resource-header">
                         <div class="resource-logo">📋</div>
-                        <div class="resource-info">
-                            <h3>SEC EDGAR</h3>
-                            <span class="resource-tag tag-official">Official</span>
-                        </div>
+                        <div class="resource-info"><h3>SEC EDGAR</h3><span class="resource-tag tag-official">Official</span></div>
                     </div>
-                    <p class="resource-description">The gold standard for fundamental equity research. Access all 10-K, 10-Q, and insider trading reports directly from the source.</p>
-                    <a href="https://www.sec.gov/edgar" target="_blank" rel="noopener noreferrer" class="resource-link">Access SEC Filings ↗</a>
+                    <p class="resource-description">The primary source for fundamental equity research. Access company filings, 10-K annual reports, and 13F institutional ownership data.</p>
+                    
+                    <a href="https://www.sec.gov/edgar" target="_blank" class="resource-link">Access SEC Filings ↗</a>
                 </div>
-
                 <div class="resource-card">
                     <div class="resource-header">
                         <div class="resource-logo">🏦</div>
-                        <div class="resource-info">
-                            <h3>St. Louis FRED</h3>
-                            <span class="resource-tag tag-official">Official</span>
-                        </div>
+                        <div class="resource-info"><h3>St. Louis FRED</h3><span class="resource-tag tag-official">Official</span></div>
                     </div>
-                    <p class="resource-description">Comprehensive macro indicators including interest rates, M2 money supply, and inflation data from the Federal Reserve.</p>
-                    <a href="https://fred.stlouisfed.org" target="_blank" rel="noopener noreferrer" class="resource-link">Macro Economic Data ↗</a>
+                    <p class="resource-description">Comprehensive macro indicators including Fed interest rates, M2 money supply, and yield curve data from the Federal Reserve.</p>
+                    
+                    <a href="https://fred.stlouisfed.org" target="_blank" class="resource-link">Macro Economic Data ↗</a>
                 </div>
             </div>
         </section>
 
         <section class="resource-section">
             <div class="section-header">
-                <div class="section-icon">📊</div>
-                <h2 class="section-title">Market Intelligence</h2>
+                <h2 class="section-title">Advanced Charting Engine</h2>
             </div>
             <div class="resource-grid">
                 <div class="resource-card">
                     <div class="resource-header">
                         <div class="resource-logo">📺</div>
-                        <div class="resource-info">
-                            <h3>TradingView</h3>
-                            <span class="resource-tag tag-data">Charting</span>
-                        </div>
+                        <div class="resource-info"><h3>TradingView</h3><span class="resource-tag tag-data">Charting</span></div>
                     </div>
-                    <p class="resource-description">World-class charting engine used by our analysts for technical confirmation and algorithmic pattern monitoring.</p>
-                    <a href="https://www.tradingview.com" target="_blank" rel="noopener noreferrer" class="resource-link">Global Live Charts ↗</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-logo">🦎</div>
-                    <div class="resource-info">
-                        <h3>CoinGecko</h3>
-                        <span class="resource-tag tag-data">Digital Assets</span>
-                    </div>
-                    <p class="resource-description">Independent cryptocurrency metrics. Essential for tracking staking yields, TVL, and digital asset liquidity across chains.</p>
-                    <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer" class="resource-link">Analyze Crypto Data ↗</a>
+                    <p class="resource-description">The real-time visualization engine powering our technical terminals. Essential for monitoring price structure and liquidity zones.</p>
+                    
+                    <a href="https://www.tradingview.com" target="_blank" class="resource-link">Global Live Charts ↗</a>
                 </div>
             </div>
         </section>
 
         <div class="disclaimer-box">
-            <div class="disclaimer-text">
-                <strong>🛡️ DATA DISCLOSURE:</strong> The resources provided above are external third-party platforms. US Market Terminals is not affiliated with these entities. Links are provided for informational and data-verification purposes only. Always perform independent due diligence.
+            <div class="footer-notice" style="margin:0; color:var(--yellow); opacity:0.8;">
+                <strong>🛡️ DATA DISCLOSURE:</strong> External resources are provided for data verification purposes only. US Market Terminals is not affiliated with official government entities or third-party platforms.
             </div>
         </div>
     </div>
 
     <footer>
-        <div style="margin-bottom: 25px;">
-            <a href="/about.html">About</a>
-            <a href="/calculator.html">Calculator</a>
-            <a href="/blog.html">Blog</a>
-            <a href="/privacy.html">Privacy</a>
-            <a href="/disclaimer.html">Disclaimer</a>
+        <div class="footer-nav">
+            <a href="/index.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Home</a>
+            <a href="/nasdaq.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Nasdaq Pro</a>
+            <a href="/coin.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Crypto Matrix</a>
+            <a href="/dividend.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Dividend Map</a>
+            <a href="/blog.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Research</a>
         </div>
-        © 2026 US Market Terminals. All rights reserved.<br>
-        <span style="opacity: 0.5; display: block; margin-top: 10px;">Quantitative Analysis • Institutional Integrity • Market Transparency</span>
+        <div class="footer-legal">
+            <a href="/privacy.html" style="color: #e2e8f0; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Privacy Policy</a>
+            <span style="color: #2a3441;">|</span>
+            <a href="/disclaimer.html" style="color: #e2e8f0; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Disclaimer</a>
+            <span style="color: #2a3441;">|</span>
+            <a href="/legal.html" style="color: #e2e8f0; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Terms</a>
+        </div>
+        <div class="footer-notice">
+            <strong>NOTICE:</strong> US Market Terminals is an independent data visualization platform. All market data is sourced from public third-party APIs and may be delayed. Content provided is for informational and educational purposes only and <strong>does not constitute financial, investment, or legal advice.</strong>
+        </div>
+        <div style="color: #334155; font-size: 0.8rem; letter-spacing: 0.5px;">© 2026 US Market Terminals. All rights reserved.</div>
     </footer>
 
 </body>
