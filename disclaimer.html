@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disclaimer | US Market Terminals</title>
+    <title>Financial Disclaimer | US Market Terminals</title>
+    <meta name="description" content="Official financial risk disclosure and legal disclaimer for US Market Terminals. Understanding the risks of investing and data limitations.">
     <meta name="robots" content="index, follow">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -17,59 +18,103 @@
             --accent: #3b82f6;
             --red: #ef4444;
         }
-        body { font-family: 'Inter', sans-serif; line-height: 1.8; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
-        .nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
-        .logo { font-weight: 900; font-size: 1.1rem; color: #fff; text-decoration: none; letter-spacing: -1px; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.8; background: var(--bg); color: var(--text); margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+        /* Unified Navigation */
+        .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
+        .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+        .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
         .container { max-width: 800px; margin: 0 auto; padding: 80px 24px; }
-        h1 { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 40px; border-bottom: 2px solid var(--red); padding-bottom: 10px; }
-        .legal-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 40px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .legal-section { margin-bottom: 30px; }
-        .legal-section h2 { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        .legal-text { font-size: 1rem; color: var(--text-dim); text-align: justify; }
-        .highlight { color: #fff; font-weight: 600; }
-        .back-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); text-decoration: none; font-weight: 700; margin-top: 40px; }
-        footer { padding: 60px 24px; text-align: center; font-size: 0.85rem; color: #475569; border-top: 1px solid var(--border); }
+        h1 { font-size: 2.8rem; font-weight: 800; color: #fff; margin-bottom: 40px; border-bottom: 3px solid var(--red); padding-bottom: 15px; letter-spacing: -1.5px; }
+        
+        .legal-box { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 45px; margin-bottom: 40px; box-shadow: 0 15px 45px rgba(0,0,0,0.4); }
+        .legal-section { margin-bottom: 35px; }
+        .legal-section h2 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 18px; text-transform: uppercase; letter-spacing: 1.5px; display: flex; align-items: center; gap: 10px; }
+        .legal-section h2::before { content: '⚠️'; font-size: 1rem; }
+        .legal-text { font-size: 1.05rem; color: var(--text-dim); text-align: justify; }
+        .highlight { color: #fff; font-weight: 700; }
+
+        .mit-license { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; background: rgba(0,0,0,0.3); padding: 25px; border-radius: 12px; border: 1px solid var(--border); color: #7e8c9a; line-height: 1.6; }
+
+        /* Unified Footer */
+        footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 60px; }
+        .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+        .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; }
+
+        @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 2.2rem; } .legal-box { padding: 30px 20px; } }
     </style>
 </head>
 <body>
     <nav class="nav">
-        <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+        <div class="nav-container">
+            <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+            <div class="nav-links">
+                <a href="/calculator.html">Calculator</a>
+                <a href="/market-pulse.html">Pulse</a>
+                <a href="/tools.html">Tools</a>
+                <a href="/blog.html">Research</a>
+                <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
+            </div>
+        </div>
     </nav>
+
     <div class="container">
-        <h1>Legal Disclaimer</h1>
+        <h1>Financial Disclaimer</h1>
         
         <div class="legal-box">
             <div class="legal-section">
-                <h2>1. Information Purposes Only</h2>
+                <h2>1. For Informational Purposes</h2>
                 <p class="legal-text">
-                    US Market Terminals is for <span class="highlight">educational and informational purposes only</span>. 
-                    Nothing on this site constitutes financial, investment, tax, or legal advice[cite: 5]. 
+                    <span class="highlight">US Market Terminals</span> is an independent research platform. All data, tools, and content are provided for <span class="highlight">educational and informational purposes only</span>. We are not registered investment advisors, brokers, or financial planners. Nothing on this site constitutes professional financial, investment, tax, or legal advice.
                 </p>
             </div>
 
             <div class="legal-section">
-                <h2>2. Investment Risk</h2>
+                <h2>2. Market Risk Disclosure</h2>
                 <p class="legal-text">
-                    <span class="highlight">All investments carry risk</span>, including the potential loss of principal. 
-                    Past performance does not guarantee future results. 
-                    Always conduct your own research and consult with a qualified financial advisor before making investment decisions.
+                    Investing in financial markets, including but not limited to stocks, ETFs, REITs, and cryptocurrencies, <span class="highlight">involves a high degree of risk</span>. There is always the potential for a total loss of principal. Past performance is not indicative of future results. You should always conduct your own due diligence or consult with a licensed professional.
                 </p>
             </div>
 
             <div class="legal-section">
-                <h2>3. Software License (MIT)</h2>
-                <p class="legal-text" style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 8px;">
-                    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED[cite: 2]. 
-                    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY[cite: 3].
+                <h2>3. Data Accuracy</h2>
+                <p class="legal-text">
+                    While we strive to provide accurate and real-time information sourced from reputable third-party APIs, <span class="highlight">we do not guarantee the completeness, accuracy, or timeliness</span> of the data. Market data may be delayed or subject to errors.
                 </p>
+            </div>
+
+            <div class="legal-section">
+                <h2>4. Software & Liability (MIT)</h2>
+                <div class="mit-license">
+                    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. 
+                    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+                    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE.
+                </div>
             </div>
         </div>
 
-        <a href="/index.html" class="back-btn">← Return to Main Terminal</a>
+        <p style="text-align: center;">
+            <a href="/index.html" style="color: var(--accent); font-weight: 700; text-decoration: none;">← Back to Intelligence Terminal</a>
+        </p>
     </div>
 
     <footer>
-        © 2026 US Market Terminals. All rights reserved.
+        <div class="footer-links">
+            <a href="/about.html">About</a>
+            <a href="/resources.html">Resources</a>
+            <a href="/faq.html">FAQ</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/legal.html">Terms & Disclaimer</a>
+        </div>
+        <p class="footer-copy">
+            © 2026 US Market Terminals. All rights reserved. <br>
+            Institutional Grade Analytics • Data Integrity • Market Transparency
+        </p>
     </footer>
 </body>
 </html>
