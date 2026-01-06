@@ -5,105 +5,136 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Financial Tools Glossary: Technical & Fundamental Indicators | US Market Terminals</title>
   <meta name="description" content="A comprehensive glossary of financial tools, technical indicators, and investment terms. Master RSI, MACD, Dividend Aristocrats, and more.">
-  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg: #0a0d12; --panel: #111827; --border: #1f2937;
-      --text: #e2e8f0; --accent: #3b82f6; --muted: #94a3b8;
+      --bg: #05070a;
+      --panel: #0d1117;
+      --border: #1e222d;
+      --text: #e2e8f0;
+      --accent: #3b82f6;
+      --muted: #94a3b8;
     }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; padding: 40px 20px; margin: 0; }
-    .container { max-width: 900px; margin: 0 auto; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; margin: 0; -webkit-font-smoothing: antialiased; }
     
-    h1 { font-size: 2.2rem; font-weight: 800; border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; color: #fff; letter-spacing: -1px; }
+    /* Unified Navigation */
+    .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
+    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+    .nav-links a { text-decoration: none; color: var(--muted); transition: 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 80px 24px; }
     
-    .term-box { margin-bottom: 25px; background: var(--panel); padding: 30px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s; }
-    .term-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+    h1 { font-size: 2.8rem; font-weight: 800; color: #fff; margin-bottom: 40px; letter-spacing: -2px; }
     
-    .term-title { color: var(--accent); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; display: block; letter-spacing: -0.5px; }
+    .term-box { margin-bottom: 25px; background: var(--panel); padding: 35px; border-radius: 20px; border: 1px solid var(--border); transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .term-box:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+    
+    .term-title { color: var(--accent); font-size: 1.4rem; font-weight: 800; margin-bottom: 15px; display: block; letter-spacing: -0.5px; }
     .term-desc { color: var(--muted); font-size: 1.05rem; text-align: justify; }
 
-    .nav-btn { display: inline-flex; align-items: center; margin-bottom: 30px; color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: 0.2s; }
-    .nav-btn:hover { color: #fff; }
+    /* Unified Footer */
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 80px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
+    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
-    footer { text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); color: #475569; font-size: 0.85rem; }
-    footer a { color: #64748b; text-decoration: none; margin: 0 10px; }
+    @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 2.2rem; } }
   </style>
 </head>
 <body>
+
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div class="nav-links">
+          <a href="/calculator.html">Calculator</a>
+          <a href="/market-pulse.html">Pulse</a>
+          <a href="/tools.html">Tools</a>
+          <a href="/blog.html">Research</a>
+          <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px; text-decoration: none;">Contact</a>
+      </div>
+    </div>
+  </nav>
+
   <div class="container">
-    <a href="/index.html" class="nav-btn">← Back to Terminal Gateway</a>
-    <h1>Financial Tools & Indicators Glossary</h1>
-    <p style="color: var(--muted); margin-bottom: 50px; font-size: 1.1rem;">
-      Master the essential metrics and technical indicators used by institutional traders. Our glossary provides deep insights into both fundamental and technical analysis tools.
+    <h1>Terminology Masterlist</h1>
+    <p style="color: var(--muted); margin-bottom: 60px; font-size: 1.15rem; max-width: 700px;">
+      Empower your investment strategy with deep insights into both fundamental and technical analysis indicators used by institutional researchers.
     </p>
 
     <div class="term-box">
       <span class="term-title">Accumulation/Distribution Line (A/D Line)</span>
       <div class="term-desc">
-        A volume-based technical indicator designed to measure the cumulative flow of money into and out of a security. By comparing price movements with volume, the A/D Line helps traders confirm the strength of a current trend. If the price is rising but the A/D Line is falling, it suggests potential distribution (selling) and a possible trend reversal.
+        A volume-based technical indicator designed to measure the cumulative flow of money into and out of a security. It confirms price trends and spots potential reversals by identifying divergences between price and volume flow.
       </div>
     </div>
 
     <div class="term-box">
       <span class="term-title">Bollinger Bands</span>
       <div class="term-desc">
-        A volatility-measuring tool consisting of a simple moving average and two standard deviation bands. When the market becomes more volatile, the bands widen; during periods of low volatility, the bands contract (known as a "Squeeze"). Traders use these bands to identify overbought or oversold conditions and to predict potential explosive breakouts.
+        A volatility indicator consisting of a middle SMA and two standard deviation bands. Narrowing bands (Squeezes) often precede explosive price movements, while touches of the upper/lower bands can signal overbought or oversold conditions.
       </div>
     </div>
+    
 
     <div class="term-box">
       <span class="term-title">Dividend Aristocrats</span>
       <div class="term-desc">
-        An elite group of S&P 500 companies that have consistently increased their annual dividend payouts for at least 25 consecutive years. These companies are often large-cap industry leaders with robust cash flows, making them highly desirable defensive assets for income-focused investors during recessionary periods or market downturns.
+        An elite tier of S&P 500 companies that have increased their dividend payouts for at least 25 consecutive years. They represent the gold standard of defensive, income-generating equity assets.
       </div>
     </div>
 
     <div class="term-box">
       <span class="term-title">Fibonacci Retracement</span>
       <div class="term-desc">
-        A technical analysis tool used to identify potential support and resistance levels based on the mathematical ratios of the Fibonacci sequence. The most common levels are 23.6%, 38.2%, 50%, and 61.8%. Traders plot these levels after a significant price move to find optimal entry points where the price is likely to bounce or stall.
+        A tool used to identify support and resistance levels based on mathematical ratios (23.6%, 38.2%, 61.8%). Institutional traders use these levels to find high-probability entry points after a major trend.
       </div>
     </div>
-
-    <div class="term-box">
-      <span class="term-title">Golden Cross</span>
-      <div class="term-desc">
-        A powerful bullish breakout signal that occurs when a short-term moving average (typically the 50-day) crosses above a long-term moving average (typically the 200-day). This pattern is widely used by institutional investors to confirm a long-term shift from a bear market to a bull market, signaling sustained upward momentum.
-      </div>
-    </div>
-
-    <div class="term-box">
-      <span class="term-title">Heatmap (Market Map)</span>
-      <div class="term-desc">
-        A sophisticated data visualization technique used to represent the relative size (Market Capitalization) and real-time performance of securities. By using color coding—typically green for price appreciation and red for depreciation—heatmaps allow investors to instantly scan sector rotation and identify market-wide trends at a single glance.
-      </div>
-    </div>
+    
 
     <div class="term-box">
       <span class="term-title">MACD (Moving Average Convergence Divergence)</span>
       <div class="term-desc">
-        A trend-following momentum oscillator that displays the relationship between two moving averages of a security’s price. By calculating the difference between a 12-day and 26-day EMA, the MACD provides signals for trend direction and strength. When the MACD line crosses above the signal line, it generates a bullish momentum signal.
+        A momentum oscillator that tracks the relationship between two EMAs. Signal line crossovers are used as primary triggers for trend-following entries and exits.
       </div>
     </div>
+    
 
     <div class="term-box">
       <span class="term-title">RSI (Relative Strength Index)</span>
       <div class="term-desc">
-        A momentum oscillator that measures the speed and change of price movements on a scale of 0 to 100. It is primarily used to identify overbought (typically above 70) or oversold (typically below 30) conditions. RSI is a staple tool for contrarian traders looking for price exhausted levels where a reversal is highly probable.
+        A momentum oscillator measuring the speed and change of price moves. Readings above 70 indicate overbought conditions, while readings below 30 signal oversold conditions.
       </div>
     </div>
+    
 
-    <footer>
-      <div style="margin-bottom: 20px;">
-        <a href="/index.html">Home</a> | <a href="/privacy.html">Privacy Policy</a> | <a href="/disclaimer.html">Disclaimer</a>
-      </div>
-      Data provided for educational purposes. © 2026 US Market Terminals. All rights reserved.
-    </footer>
   </div>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+
+  <footer>
+    <div class="footer-links">
+        <a href="/about.html">About</a>
+        <a href="/resources.html">Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/legal.html">Terms & Disclaimer</a>
+    </div>
+    <p class="footer-copy">
+        © 2026 US Market Terminals. All rights reserved. <br>
+        Institutional Grade Analytics • Data Integrity • Independent Research
+    </p>
+    <div class="footer-disclaimer">
+        <strong>Financial Risk Disclosure:</strong> US Market Terminals is for educational and informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal.
+    </div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+  </footer>
+
 </body>
 </html>
