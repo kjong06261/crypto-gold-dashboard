@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Fear & Greed Index | US Market Terminals</title>
+    <meta name="description" content="Real-time Market Fear & Greed Index. Analyze market sentiment and investor psychology to identify potential market tops and bottoms.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-card: #151b23;
-            --border: #2a3441;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
+            --bg: #05070a;
+            --panel: #0d1117;
+            --border: #1e222d;
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --accent: #3b82f6;
             --extreme-fear: #ef4444;
             --fear: #f97316;
             --neutral: #eab308;
@@ -16,168 +22,130 @@
             --extreme-greed: #10b981;
         }
 
-        .gauge-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            font-family: 'Inter', sans-serif;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; }
 
-        .gauge-header {
-            margin-bottom: 20px;
-        }
+        /* Unified Navigation */
+        .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
+        .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+        .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
 
-        .gauge-title {
-            color: var(--text-main);
-            font-size: 18px;
-            font-weight: 700;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
+        .container { max-width: 900px; margin: 0 auto; padding: 80px 24px; text-align: center; }
 
-        .gauge-container {
-            position: relative;
-            width: 250px;
-            height: 125px;
-            margin: 0 auto 30px;
-            overflow: hidden;
+        /* Gauge Styling */
+        .gauge-card { 
+            background: var(--panel); border: 1px solid var(--border); border-radius: 24px; 
+            padding: 50px 30px; width: 100%; max-width: 500px; margin: 0 auto 40px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
         }
-
-        /* 게이지 배경 (반원) */
-        .gauge-body {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: conic-gradient(
-                from 270deg,
-                var(--extreme-fear) 0%,
-                var(--fear) 20%,
-                var(--neutral) 40%,
-                var(--greed) 60%,
-                var(--extreme-greed) 80%,
-                var(--extreme-greed) 100%
-            );
+        .gauge-container { position: relative; width: 280px; height: 140px; margin: 0 auto 30px; overflow: hidden; }
+        .gauge-body { 
+            position: absolute; top: 0; left: 0; width: 280px; height: 280px; border-radius: 50%; 
+            background: conic-gradient(from 270deg, var(--extreme-fear) 0%, var(--fear) 20%, var(--neutral) 40%, var(--greed) 60%, var(--extreme-greed) 80%, var(--extreme-greed) 100%);
             mask: radial-gradient(circle, transparent 65%, black 66%);
             -webkit-mask: radial-gradient(circle, transparent 65%, black 66%);
         }
-
-        /* 바늘 */
-        .gauge-needle {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            height: 90px;
-            background: #fff;
-            border-radius: 4px;
-            transform-origin: bottom center;
-            transform: translateX(-50%) rotate(-90deg);
-            transition: transform 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-            z-index: 2;
+        .gauge-needle { 
+            position: absolute; bottom: 0; left: 50%; width: 4px; height: 100px; background: #fff; 
+            border-radius: 4px; transform-origin: bottom center; transform: translateX(-50%) rotate(-90deg); 
+            transition: transform 2s cubic-bezier(0.17, 0.67, 0.83, 0.67); z-index: 2; 
         }
+        .gauge-center { position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: #fff; border-radius: 50%; box-shadow: 0 0 15px rgba(255,255,255,0.5); z-index: 3; }
+        .gauge-value { font-family: 'JetBrains Mono', monospace; font-size: 64px; font-weight: 800; margin-top: 10px; }
+        .gauge-status { font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
 
-        .gauge-center {
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255,255,255,0.5);
-            z-index: 3;
-        }
-
-        .gauge-value {
-            font-size: 48px;
-            font-weight: 800;
-            margin-top: 10px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .gauge-status {
-            font-size: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .update-time {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
+        /* Unified Footer */
+        footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; }
+        .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+        .footer-disclaimer { max-width: 800px; margin: 20px auto 0; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
     </style>
 </head>
 <body>
 
-<div class="gauge-card">
-    <div class="gauge-header">
-        <h2 class="gauge-title">📊 Market Fear & Greed Index</h2>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+            <div class="nav-links">
+                <a href="/calculator.html">Calculator</a>
+                <a href="/market-pulse.html">Pulse</a>
+                <a href="/tools.html">Tools</a>
+                <a href="/blog.html">Research</a>
+                <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 6px 14px; border-radius: 8px;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 40px;">Market Sentiment Radar</h1>
+        
+        <div class="gauge-card">
+            <div class="gauge-container">
+                <div class="gauge-body"></div>
+                <div class="gauge-needle" id="needle"></div>
+                <div class="gauge-center"></div>
+            </div>
+            <div class="gauge-status" id="status">NEUTRAL</div>
+            <div class="gauge-value" id="value">50</div>
+            <p id="update-time" style="font-size: 12px; color: var(--text-dim); margin-top: 20px; font-family: 'JetBrains Mono';">Syncing with global liquidity data...</p>
+        </div>
+
+        <div style="max-width: 600px; margin: 0 auto; text-align: left; background: var(--panel); padding: 30px; border-radius: 20px; border: 1px solid var(--border);">
+            <h3 style="color:#fff; margin-top:0;">What is this index?</h3>
+            <p style="color: var(--text-dim); font-size: 0.95rem;">The Fear & Greed Index is a proprietary model that aggregates volatility (VIX), price momentum, and crypto-market sentiment. High greed often indicates a market top, while extreme fear can signal a generational buying opportunity.</p>
+        </div>
     </div>
 
-    <div class="gauge-container">
-        <div class="gauge-body"></div>
-        <div class="gauge-needle" id="needle"></div>
-        <div class="gauge-center"></div>
-    </div>
+    <footer>
+        <div class="footer-links">
+            <a href="/about.html">About</a>
+            <a href="/resources.html">Resources</a>
+            <a href="/faq.html">FAQ</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/legal.html">Terms</a>
+        </div>
+        <p style="color: #475569; font-size: 0.85rem; margin-bottom: 20px;">© 2026 US Market Terminals. All rights reserved.</p>
+        <div class="footer-disclaimer">
+            <strong>Financial Risk Disclosure:</strong> US Market Terminals is for educational purposes only. Market sentiment indicators are hypothetical models and not a guarantee of future performance.
+        </div>
+    </footer>
 
-    <div class="gauge-status" id="status">NEUTRAL</div>
-    <div class="gauge-value" id="value">50</div>
-    <div class="update-time" id="update-time">Last Updated: --</div>
-</div>
+    <script>
+        function setGauge(value) {
+            const needle = document.getElementById('needle');
+            const valueDisplay = document.getElementById('value');
+            const statusDisplay = document.getElementById('status');
+            
+            const rotation = (value / 100) * 180 - 90;
+            needle.style.transform = `translateX(-50%) rotate(${rotation}deg)`;
+            
+            valueDisplay.innerText = value;
+            valueDisplay.style.color = getColor(value);
+            
+            let status = "";
+            if(value < 25) status = "EXTREME FEAR";
+            else if(value < 45) status = "FEAR";
+            else if(value < 55) status = "NEUTRAL";
+            else if(value < 75) status = "GREED";
+            else status = "EXTREME GREED";
+            
+            statusDisplay.innerText = status;
+            statusDisplay.style.color = getColor(value);
+            document.getElementById('update-time').innerText = "Last Updated: " + new Date().toLocaleString();
+        }
 
-<script>
-    function setGauge(value) {
-        const needle = document.getElementById('needle');
-        const valueDisplay = document.getElementById('value');
-        const statusDisplay = document.getElementById('status');
-        
-        // 바늘 회전 (0 = -90deg, 100 = 90deg)
-        const rotation = (value / 100) * 180 - 90;
-        needle.style.transform = `translateX(-50%) rotate(${rotation}deg)`;
-        
-        // 텍스트 및 색상 변경
-        valueDisplay.innerText = value;
-        valueDisplay.style.color = getColor(value);
-        
-        let status = "";
-        if(value < 25) status = "EXTREME FEAR";
-        else if(value < 45) status = "FEAR";
-        else if(value < 55) status = "NEUTRAL";
-        else if(value < 75) status = "GREED";
-        else status = "EXTREME GREED";
-        
-        statusDisplay.innerText = status;
-        statusDisplay.style.color = getColor(value);
-        
-        document.getElementById('update-time').innerText = "Last Updated: " + new Date().toLocaleString();
-    }
+        function getColor(value) {
+            if(value < 25) return "#ef4444";
+            if(value < 45) return "#f97316";
+            if(value < 55) return "#eab308";
+            if(value < 75) return "#22c55e";
+            return "#10b981";
+        }
 
-    function getColor(value) {
-        if(value < 25) return "#ef4444";
-        if(value < 45) return "#f97316";
-        if(value < 55) return "#eab308";
-        if(value < 75) return "#22c55e";
-        return "#10b981";
-    }
-
-    // 초기 실행 (예시 값 65 - 탐욕 상태)
-    // 실제 운영 시에는 이 값을 매일 업데이트하거나 API 연결이 필요합니다.
-    setTimeout(() => setGauge(65), 500);
-</script>
-
+        // Default set to 65 (Greed) for demonstration
+        setTimeout(() => setGauge(65), 800);
+    </script>
 </body>
 </html>
