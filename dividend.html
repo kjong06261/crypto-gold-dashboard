@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dividend Strategy & Market Heatmap | US Market Terminals</title>
   <meta name="description" content="S&P 500 Market Heatmap and in-depth Dividend Aristocrat analysis. Track high-yield defensive stocks, payout ratios, and sector rotation for 2026.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -14,15 +17,23 @@
       --text: #e2e8f0;
       --text-sec: #94a3b8;
       --accent: #22c55e; /* Green for Dividends */
+      --text-dim: #94a3b8;
     }
     
     body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
     
-    .nav { padding: 15px 20px; border-bottom: 1px solid var(--border); background: var(--panel); display: flex; justify-content: space-between; align-items: center; position:sticky; top:0; z-index:100; backdrop-filter: blur(10px); }
-    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; letter-spacing: -0.5px; }
-    .back-btn { color: var(--text-sec); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
-    .back-btn:hover { color: var(--accent); }
+    /* Navigation - Unified Style */
+    .nav { 
+      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(10, 13, 18, 0.85); 
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
+    }
+    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; letter-spacing: -1px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+    .nav-links a { text-decoration: none; color: var(--text-sec); transition: 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
     
+    /* Layout Components */
     .map-container { height: 75vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .header-info { padding: 12px 20px; background: #0d1117; color: var(--text-sec); font-size: 0.85rem; border-bottom: 1px solid var(--border); text-align: center; }
 
@@ -32,19 +43,40 @@
     .content-section h2 { color: #fff; font-size: 1.6rem; border-left: 5px solid var(--accent); padding-left: 20px; margin-top: 60px; margin-bottom: 20px; }
     .content-section h3 { color: #fff; font-size: 1.25rem; margin-top: 35px; }
     .content-section p { color: var(--text-sec); font-size: 1.1rem; text-align: justify; margin-bottom: 25px; line-height: 1.8; }
+    .content-section ul { padding-left: 20px; margin-bottom: 30px; color: var(--text-sec); }
+    .content-section li { margin-bottom: 15px; font-size: 1.05rem; }
     .content-section strong { color: #fff; }
 
     .stat-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 35px; margin: 40px 0; }
     .stat-box h3 { margin-top: 0; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
 
-    footer { text-align: center; padding: 60px 20px; border-top: 1px solid var(--border); color: #475569; font-size: 0.85rem; }
+    /* Footer - Unified Style */
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 0; }
+    .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { color: #475569; font-size: 0.8rem; line-height: 1.6; margin-bottom: 20px; }
+    .footer-disclaimer { max-width: 700px; margin: 20px auto 0; font-size: 0.7rem; color: #334155; text-align: justify; text-align-last: center; line-height: 1.5; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .content-section { padding-top: 40px; }
+    }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="/index.html" class="logo">US MARKET TERMINALS</a>
-    <a href="/index.html" class="back-btn">Exit Terminal ✕</a>
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div class="nav-links">
+          <a href="/calculator.html">Calculator</a>
+          <a href="/market-pulse.html">Pulse</a>
+          <a href="/tools.html">Tools</a>
+          <a href="/blog.html">Research</a>
+          <a href="/contact.html" style="background: var(--accent); color: #fff; padding: 6px 12px; border-radius: 6px; margin-left: 10px;">Contact</a>
+      </div>
+    </div>
   </nav>
 
   <div class="header-info">
@@ -98,8 +130,6 @@
       <li><strong>Dividend Growth Rate:</strong> Look for a 5-year CAGR (Compound Annual Growth Rate) that consistently beats inflation.</li>
     </ul>
 
-    
-
     <h2>2. Sector Rotation & Capital Preservation</h2>
     <p>
       The heatmap above is a real-time window into <strong>Sector Rotation</strong>. When Technology (Growth) faces valuation pressure, capital often flows into "Value" sectors like Utilities or Real Estate. By monitoring these shifts, investors can rebalance their portfolios to capture capital appreciation while securing a 4-5% dividend yield floor.
@@ -110,16 +140,25 @@
 
     <h2>3. The Snowball Effect: Reinvestment Strategy</h2>
     <p>
-      The true magic of dividend investing lies in <strong>DRIP (Dividend Reinvestment Plans)</strong>. By automatically reinvesting dividends, you utilize Dollar-Cost Averaging to acquire more shares when prices are suppressed. Over a decade, this "Snowball Effect" can turn a modest initial investment into a significant income-producing engine that funds financial freedom.
-    </p>
-    
-    <p style="font-size: 0.85rem; color: #475569; margin-top: 60px; border-top: 1px solid var(--border); padding-top: 25px;">
-      <strong>Data Transparency:</strong> Heatmap data is provided by TradingView. US Market Terminals analyzes these trends to provide educational insights. All investments carry risk, and past performance is not a guarantee of future dividend increases.
+      The magic of dividend investing lies in <strong>DRIP (Dividend Reinvestment Plans)</strong>. By automatically reinvesting dividends, you acquire more shares when prices are suppressed. Over a decade, this "Snowball Effect" can turn a modest initial investment into a significant income-producing engine.
     </p>
   </article>
 
   <footer>
-    <p>© 2026 US Market Terminals. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="/about.html">About Research</a>
+        <a href="/resources.html">Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/legal.html">Terms & Disclaimer</a>
+    </div>
+    <p class="footer-copy">
+        © 2026 US Market Terminals. All rights reserved. <br>
+        Institutional Grade Analytics • Data Integrity • Independent Research
+    </p>
+    <div class="footer-disclaimer">
+        <strong>DISCLAIMER:</strong> US Market Terminals is for educational and informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
+    </div>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
   </footer>
 
