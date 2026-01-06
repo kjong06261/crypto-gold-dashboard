@@ -1,186 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found | US Market Terminals</title>
-    <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signal Lost | US Market Terminals</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚠️</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
+      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #ef4444; /* Error Red */
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5,7,10,0.8); backdrop-filter: blur(10px); }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.1rem; }
+
+    .error-main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+    .error-code { font-family: 'JetBrains Mono', monospace; font-size: 8rem; font-weight: 900; line-height: 1; color: var(--accent); opacity: 0.2; margin-bottom: -40px; }
+    .status-tag { background: rgba(239, 68, 68, 0.1); color: var(--accent); padding: 6px 16px; border-radius: 99px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(239, 68, 68, 0.2); margin-bottom: 24px; }
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg: #05070a;
-            --panel: #0d1117;
-            --border: #1e222d;
-            --text: #e2e8f0;
-            --text-dim: #94a3b8;
-            --accent: #3b82f6;
-            --red: #ef4444;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg); 
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            -webkit-font-smoothing: antialiased;
-        }
+    h1 { font-size: 3rem; font-weight: 900; color: #fff; margin-bottom: 16px; letter-spacing: -2px; }
+    p { color: var(--text-dim); font-size: 1.1rem; max-width: 500px; line-height: 1.6; margin-bottom: 40px; }
 
-        /* Navigation - Unified Style */
-        .nav { 
-            padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(13, 17, 23, 0.8); 
-            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); 
-        }
-        .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; letter-spacing: -1px; }
-        .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
-        .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
+    .btn-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .btn { padding: 14px 28px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 0.95rem; }
+    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
 
-        /* Error Container */
-        .error-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 24px;
-            position: relative;
-            overflow: hidden;
-        }
+    .grid-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 60px; max-width: 400px; width: 100%; }
+    .grid-item { background: var(--panel); border: 1px solid var(--border); padding: 16px; border-radius: 16px; text-decoration: none; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
+    .grid-item:hover { border-color: var(--text-dim); color: #fff; }
 
-        /* Background Grid */
-        .error-container::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-        }
-
-        .error-content { text-align: center; max-width: 600px; position: relative; z-index: 1; }
-
-        /* Glitch 404 */
-        .error-code {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(100px, 20vw, 180px);
-            font-weight: 700;
-            line-height: 1;
-            color: var(--red);
-            text-shadow: 0 0 30px rgba(239, 68, 68, 0.2);
-            position: relative;
-            animation: flicker 3s infinite;
-        }
-
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            92% { opacity: 1; }
-            93% { opacity: 0.8; }
-            95% { opacity: 0.9; }
-        }
-
-        .error-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);
-            padding: 8px 16px; border-radius: 100px;
-            font-family: 'JetBrains Mono', monospace; font-size: 11px;
-            color: var(--red); text-transform: uppercase; margin-bottom: 20px;
-        }
-
-        .error-title { font-size: clamp(24px, 4vw, 32px); font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -1px; }
-        .error-message { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin-bottom: 40px; }
-
-        /* Buttons */
-        .error-actions { display: flex; gap: 16px; justify-content: center; margin-bottom: 60px; }
-        .btn {
-            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
-            border-radius: 10px; font-weight: 700; font-size: 14px; text-decoration: none; transition: 0.3s;
-        }
-        .btn-primary { background: var(--accent); color: #fff; }
-        .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
-        .btn-secondary { background: var(--panel); color: var(--text); border: 1px solid var(--border); }
-        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-
-        /* Quick Links */
-        .quick-links-grid { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-        .quick-link {
-            padding: 8px 16px; background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border); border-radius: 8px;
-            font-size: 13px; font-weight: 600; color: var(--text-dim); text-decoration: none; transition: 0.2s;
-        }
-        .quick-link:hover { border-color: var(--accent); color: var(--accent); }
-
-        /* Footer - Unified Style */
-        footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; }
-        .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-        .footer-copy { color: #475569; font-size: 0.8rem; line-height: 1.6; }
-
-        @media (max-width: 600px) {
-            .nav-links { display: none; }
-            .error-actions { flex-direction: column; }
-        }
-    </style>
+    footer { padding: 60px 24px; border-top: 1px solid var(--border); text-align: center; font-size: 0.8rem; color: #475569; }
+  </style>
 </head>
 <body>
 
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
-            <div class="nav-links">
-                <a href="/calculator.html">Calculator</a>
-                <a href="/market-pulse.html">Pulse</a>
-                <a href="/tools.html">Tools</a>
-                <a href="/blog.html">Research</a>
-                <a href="/contact.html" style="background: var(--accent); color: #fff; padding: 6px 12px; border-radius: 6px; margin-left: 10px;">Contact</a>
-            </div>
-        </div>
-    </nav>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+    </div>
+  </nav>
 
-    <main class="error-container">
-        <div class="error-content">
-            <div class="error-badge"><span>Asset Delisted</span></div>
-            <div class="error-code">404</div>
-            <h1 class="error-title">Signal Lost</h1>
-            <p class="error-message">
-                The asset or page you are looking for has been delisted or moved to a different sector. 
-                Verify the URL or return to the main dashboard.
-            </p>
+  <main class="error-main">
+    <div class="error-code">404</div>
+    <div class="status-tag">Signal Lost • Asset Delisted</div>
+    <h1>System Override</h1>
+    <p>The asset or page you are looking for has been moved to a different sector or delisted from our terminals. Please verify the URL.</p>
 
-            <div class="error-actions">
-                <a href="/index.html" class="btn btn-primary">Return to Dashboard</a>
-                <a href="/sitemap.xml" class="btn btn-secondary">View Sitemap</a>
-            </div>
+    <div class="btn-group">
+      <a href="/index.html" class="btn btn-primary">Return to Dashboard</a>
+      <a href="/sitemap.xml" class="btn btn-secondary">View Sitemap</a>
+    </div>
 
-            <div class="quick-links-grid">
-                <a href="/nasdaq.html" class="quick-link">📈 Nasdaq</a>
-                <a href="/dividend.html" class="quick-link">💰 Dividends</a>
-                <a href="/coin.html" class="quick-link">₿ Crypto</a>
-                <a href="/calculator.html" class="quick-link">🧮 Tools</a>
-            </div>
-        </div>
-    </main>
+    <div class="grid-links">
+      <a href="/nasdaq.html" class="grid-item">📈 Nasdaq Pro</a>
+      <a href="/dividend.html" class="grid-item">💰 Dividends</a>
+      <a href="/coin.html" class="grid-item">₿ Crypto Matrix</a>
+      <a href="/calculator.html" class="grid-item">🧮 Strategy Lab</a>
+    </div>
+  </main>
 
-    <footer>
-        <div class="footer-links">
-            <a href="/about.html">About</a>
-            <a href="/resources.html">Resources</a>
-            <a href="/faq.html">FAQ</a>
-            <a href="/privacy.html">Privacy</a>
-            <a href="/legal.html">Terms</a>
-        </div>
-        <p class="footer-copy">© 2026 US Market Terminals. All rights reserved.</p>
-    </footer>
+  <footer>
+    <div style="margin-bottom: 20px;">
+      <a href="/about.html" style="color: #475569; text-decoration: none; margin: 0 10px;">About</a>
+      <a href="/faq.html" style="color: #475569; text-decoration: none; margin: 0 10px;">FAQ</a>
+      <a href="/privacy.html" style="color: #475569; text-decoration: none; margin: 0 10px;">Privacy</a>
+      <a href="/legal.html" style="color: #475569; text-decoration: none; margin: 0 10px;">Terms</a>
+    </div>
+    © 2026 US Market Terminals. All rights reserved.
+  </footer>
 
 </body>
 </html>
