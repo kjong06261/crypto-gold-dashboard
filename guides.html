@@ -3,93 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Market Insights | US Market Terminals</title>
+  <title>Market Insights & Research Guides | US Market Terminals</title>
+  <meta name="description" content="In-depth investment guides on the Barbell Strategy, Bitcoin corporate adoption, and REIT analysis for 2026. Institutional grade research for the independent investor.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    body { margin: 0; background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; line-height: 1.7; }
-    .nav { padding: 20px 40px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: #0a0d12; }
-    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; }
+    :root {
+      --bg: #0a0d12; --panel: #111827; --border: #1f2937;
+      --text: #e2e8f0; --accent: #3b82f6; --muted: #9ca3af;
+    }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.7; }
     
+    .nav { padding: 20px 40px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(10, 13, 18, 0.9); position: sticky; top: 0; backdrop-filter: blur(10px); z-index: 100; }
+    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; letter-spacing: -0.5px; }
+    .back-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
+    .back-link:hover { color: var(--accent); }
+
     .container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
-    .article-header { text-align: center; margin-bottom: 60px; }
-    .article-header h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .article-header p { color: #64748b; font-size: 1.1rem; }
+    .article-header { text-align: center; margin-bottom: 70px; }
+    .article-header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 15px; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1.5px; }
+    .article-header p { color: #64748b; font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
 
-    /* 카드 스타일 */
-    .guide-card { background: #111827; border: 1px solid #1f2937; padding: 30px; border-radius: 12px; margin-bottom: 30px; position: relative; }
-    .tag { display: inline-block; background: rgba(59, 130, 246, 0.1); color: #3b82f6; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; margin-bottom: 15px; }
+    /* 가이드 카드 섹션 */
+    .guide-card { background: var(--panel); border: 1px solid var(--border); padding: 40px; border-radius: 16px; margin-bottom: 35px; transition: 0.3s; }
+    .guide-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
     
-    /* 제목 링크 스타일 */
-    .title-link { text-decoration: none; color: #fff; font-size: 1.5rem; font-weight: 700; display: block; margin-bottom: 15px; }
-    .title-link:hover { color: #3b82f6; }
-
-    .guide-card p { color: #9ca3af; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; }
+    .tag { display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
     
-    /* 버튼 스타일 */
-    .read-more-btn { display: inline-block; color: #60a5fa; font-weight: 600; text-decoration: none; border: 1px solid #1e293b; padding: 10px 20px; border-radius: 6px; transition: 0.2s; }
-    .read-more-btn:hover { background: #1e293b; color: #fff; }
+    .title-link { text-decoration: none; color: #fff; font-size: 1.7rem; font-weight: 800; display: block; margin-bottom: 18px; line-height: 1.3; }
+    .guide-card p { color: var(--muted); font-size: 1.05rem; margin-bottom: 25px; line-height: 1.7; text-align: justify; }
+    
+    .read-more-btn { display: inline-flex; align-items: center; color: #fff; font-weight: 700; text-decoration: none; background: #1e293b; padding: 12px 24px; border-radius: 8px; font-size: 0.9rem; transition: 0.2s; }
+    .read-more-btn:hover { background: var(--accent); }
 
-    footer { text-align: center; padding: 60px 0; color: #4b5563; font-size: 0.9rem; border-top: 1px solid #1e293b; margin-top: 80px; }
-    footer a { color: #6b7280; text-decoration: none; margin: 0 10px; }
+    .seo-footer-text { margin-top: 80px; padding: 40px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px dashed var(--border); font-size: 0.9rem; color: #4b5563; }
+
+    footer { text-align: center; padding: 80px 0; color: #4b5563; font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 100px; }
+    footer a { color: #6b7280; text-decoration: none; margin: 0 15px; font-weight: 600; }
+    footer a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="index.html" class="logo">📊 US MARKET TERMINALS</a>
-    <a href="index.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Back to Dashboard</a>
+    <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+    <a href="/index.html" class="back-link">Back to Dashboard</a>
   </nav>
 
   <div class="container">
     <div class="article-header">
       <h1>Market Insights</h1>
-      <p>Institutional analysis for the independent investor.</p>
+      <p>Master the 2026 financial landscape with our data-driven investment guides and institutional research.</p>
     </div>
 
     <article class="guide-card">
       <span class="tag">Strategy • Jan 2026</span>
-      <a href="blog/barbell-strategy-guide.html" class="title-link">
+      <a href="/blog/barbell-strategy-guide.html" class="title-link">
         The "Barbell Strategy": Balancing AI Growth and Defensive Dividends
       </a>
       <p>
-        In the current 2026 macroeconomic environment, volatility is the new normal. 
-        The Barbell Strategy suggests pairing high-beta assets like Nvidia (NVDA) with low-beta cash flow generators like SCHD.
+        Navigate market volatility by pairing high-beta technology assets with stable cash-flow generators. This comprehensive report explores the mathematical correlation between AI growth and dividend aristocrats.
       </p>
-      <a href="blog/barbell-strategy-guide.html" class="read-more-btn">Read Full Report →</a>
+      <a href="/blog/barbell-strategy-guide.html" class="read-more-btn">Read Full Report →</a>
     </article>
 
     <article class="guide-card">
       <span class="tag">Crypto • Jan 2026</span>
-      <a href="bitcoin-corporate.html" class="title-link">
-        Bitcoin as Treasury Reserve: The Corporate Shift
+      <a href="/blog/bitcoin-corporate.html" class="title-link">
+        Bitcoin as Treasury Reserve: The Corporate Renaissance
       </a>
       <p>
-        With the FASB accounting rule changes, more corporations are holding Bitcoin on their balance sheets. 
-        What does this mean for liquidity and volatility? We analyze the MicroStrategy model.
+        Analyze how the 2026 FASB accounting rule changes are driving institutional adoption. We deep dive into the MicroStrategy model and the resulting exchange supply shock.
       </p>
-      <a href="bitcoin-corporate.html" class="read-more-btn">Read Full Report →</a>
+      <a href="/blog/bitcoin-corporate.html" class="read-more-btn">Read Full Report →</a>
     </article>
 
     <article class="guide-card">
       <span class="tag">Macro • Dec 2025</span>
-      <a href="realty-income-o.html" class="title-link">
-        Fed Policy Pivot: Impact on REIT Valuations
+      <a href="/realty-income-o.html" class="title-link">
+        Fed Policy Pivot: Real-Time Impact on REIT Valuations
       </a>
       <p>
-        Real Estate Investment Trusts (REITs) like Realty Income (O) are highly sensitive to interest rate fluctuations. 
-        As the Federal Reserve signals a potential rate cut cycle, we examine historical performance.
+        Real Estate Investment Trusts (REITs) like Realty Income (O) are at a valuation crossroads. Examine how Federal Reserve rate cycles influence monthly dividend sustainability.
       </p>
-      <a href="realty-income-o.html" class="read-more-btn">Read Full Report →</a>
+      <a href="/realty-income-o.html" class="read-more-btn">Read Full Report →</a>
     </article>
+
+    <div class="seo-footer-text">
+      <strong>Research Methodology:</strong> Our insights are derived from quantitative modeling, macroeconomic indicators, and institutional order flow analysis. US Market Terminals aims to provide the transparency needed for independent wealth management.
+    </div>
 
   </div>
 
   <footer>
-    <div style="margin-bottom: 15px;">
-      <a href="privacy.html">Privacy Policy</a> • 
-      <a href="legal.html">Terms & Disclaimer</a>
+    <div style="margin-bottom: 25px;">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+      <a href="/terms.html">Terms of Service</a>
     </div>
-    © 2026 US Market Terminals. All rights reserved.
+    <p>© 2026 US Market Terminals. All rights reserved.</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
   </footer>
 
 </body>
