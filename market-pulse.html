@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Thermometer | US Market Terminals</title>
+    <meta name="description" content="실시간 종합 시장 온도계 - 나스닥과 암호화폐 변동성을 결합한 독자적 시장 심리 지수">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #0a0d12;
+            --panel: #111827;
+            --border: #1f2937;
+            --text: #e2e8f0;
+            --accent: #3b82f6;
+            --muted: #94a3b8;
+            
+            /* Sentiment Colors */
+            --extreme-fear: #dc2626;
+            --fear: #f97316;
+            --neutral: #eab308;
+            --greed: #22c55e;
+            --extreme-greed: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Widget Container - 임베드용 */
+        .thermometer-widget {
+            max-width: 420px;
+            margin: 40px auto;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.3),
+                0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header */
+        .widget-header {
+            padding: 24px 28px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .widget-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .widget-title h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .live-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.15);
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--extreme-greed);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--extreme-greed);
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .widget-timestamp {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        /* Main Gauge Section */
+        .gauge-section {
+            padding: 32px 28px 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* SVG Gauge */
+        .gauge-container {
+            position: relative;
+            width: 280px;
+            height: 160px;
+            margin: 0 auto 24px;
+        }
+
+        .gauge-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .gauge-bg {
+            fill: none;
+            stroke: var(--border);
+            stroke-width: 18;
+            stroke-linecap: round;
+        }
+
+        .gauge-fill {
+            fill: none;
+            stroke-width: 18;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s ease, stroke 0.5s ease;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+
+        .gauge-center-value {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .gauge-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(180deg, #fff 0%, var(--muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gauge-label {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            transition: color 0.5s ease;
+        }
+
+        /* Sentiment Labels */
+        .sentiment-labels {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            margin-top: -8px;
+        }
+
+        .sentiment-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sentiment-label.fear { color: var(--extreme-fear); }
+        .sentiment-label.greed { color: var(--extreme-greed); }
+
+        /* Component Breakdown */
+        .components-section {
+            padding: 0 28px 28px;
+        }
+
+        .components-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .components-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .component-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .component-card:hover {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .component-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .component-name {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .component-icon {
+            font-size: 14px;
+        }
+
+        .component-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .component-bar {
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .component-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 1s ease, background 0.5s ease;
+        }
+
+        /* Market Status */
+        .market-status {
+            padding: 20px 28px;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid var(--border);
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            text-align: center;
+        }
+
+        .status-item {
+            padding: 12px 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+
+        .status-label {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .status-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .status-change {
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .status-change.positive { color: var(--greed); }
+        .status-change.negative { color: var(--extreme-fear); }
+
+        /* Footer */
+        .widget-footer {
+            padding: 16px 28px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-brand {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-source {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            color: #4b5563;
+        }
+
+        /* Interpretation Guide */
+        .interpretation {
+            padding: 20px 28px;
+            border-top: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+        }
+
+        .interpretation-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .interpretation-text {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .interpretation-text strong {
+            color: #fff;
+        }
+
+        /* Historical Mini Chart */
+        .history-section {
+            padding: 0 28px 24px;
+        }
+
+        .history-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .history-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 40px;
+        }
+
+        .history-bar {
+            flex: 1;
+            border-radius: 2px 2px 0 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .history-bar:hover {
+            opacity: 0.8;
+        }
+
+        .history-bar::after {
+            content: attr(data-value);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            color: var(--muted);
+            opacity: 0;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+            padding-bottom: 4px;
+        }
+
+        .history-bar:hover::after {
+            opacity: 1;
+        }
+
+        .history-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .history-label {
+            font-size: 9px;
+            color: #4b5563;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .component-card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .component-card:nth-child(1) { animation-delay: 0.1s; }
+        .component-card:nth-child(2) { animation-delay: 0.2s; }
+        .component-card:nth-child(3) { animation-delay: 0.3s; }
+        .component-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Responsive */
+        @media (max-width: 450px) {
+            .thermometer-widget {
+                margin: 20px 16px;
+                border-radius: 20px;
+            }
+
+            .gauge-container {
+                width: 240px;
+                height: 140px;
+            }
+
+            .gauge-number {
+                font-size: 44px;
+            }
+
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="thermometer-widget">
+        <!-- Header -->
+        <div class="widget-header">
+            <div class="widget-title">
+                <span style="font-size: 20px;">🌡️</span>
+                <h2>Market Thermometer</h2>
+            </div>
+            <div class="live-badge">
+                <span class="live-dot"></span>
+                <span>Live</span>
+            </div>
+        </div>
+
+        <!-- Main Gauge -->
+        <div class="gauge-section">
+            <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 200 120">
+                    <!-- Background Arc -->
+                    <path class="gauge-bg" 
+                          d="M 20 100 A 80 80 0 0 1 180 100" />
+                    <!-- Gradient Definition -->
+                    <defs>
+                        <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#dc2626"/>
+                            <stop offset="25%" style="stop-color:#f97316"/>
+                            <stop offset="50%" style="stop-color:#eab308"/>
+                            <stop offset="75%" style="stop-color:#22c55e"/>
+                            <stop offset="100%" style="stop-color:#10b981"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Fill Arc -->
+                    <path class="gauge-fill" id="gaugeFill"
+                          d="M 20 100 A 80 80 0 0 1 180 100"
+                          stroke="url(#gaugeGradient)"
+                          stroke-dasharray="251"
+                          stroke-dashoffset="251" />
+                    <!-- Needle -->
+                    <g id="gaugeNeedle" transform="rotate(0, 100, 100)">
+                        <line x1="100" y1="100" x2="100" y2="35" 
+                              stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="100" cy="100" r="8" fill="#fff"/>
+                        <circle cx="100" cy="100" r="4" fill="var(--panel)"/>
+                    </g>
+                </svg>
+                <div class="gauge-center-value">
+                    <div class="gauge-number" id="mainScore">--</div>
+                    <div class="gauge-label" id="sentimentLabel">Loading...</div>
+                </div>
+            </div>
+            <div class="sentiment-labels">
+                <span class="sentiment-label fear">Extreme Fear</span>
+                <span class="sentiment-label greed">Extreme Greed</span>
+            </div>
+        </div>
+
+        <!-- Component Breakdown -->
+        <div class="components-section">
+            <div class="components-title">Index Components</div>
+            <div class="component-grid">
+                <div class="component-card">
+                    <div class="component-header">
+                        <span class="component-name">Nasdaq VIX</span>
+                        <span class="component-icon">📈</span>
+                    </div>
+                    <div class="component-value" id="vixValue">--</div>
+                    <div class="component-bar">
+                        <div class="component-bar-fill" id="vixBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="component-card">
+                    <div class="component-header">
+                        <span class="component-name">Crypto Fear</span>
+                        <span class="component-icon">₿</span>
+                    </div>
+                    <div class="component-value" id="cryptoValue">--</div>
+                    <div class="component-bar">
+                        <div class="component-bar-fill" id="cryptoBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="component-card">
+                    <div class="component-header">
+                        <span class="component-name">Put/Call</span>
+                        <span class="component-icon">⚖️</span>
+                    </div>
+                    <div class="component-value" id="putcallValue">--</div>
+                    <div class="component-bar">
+                        <div class="component-bar-fill" id="putcallBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="component-card">
+                    <div class="component-header">
+                        <span class="component-name">Momentum</span>
+                        <span class="component-icon">🚀</span>
+                    </div>
+                    <div class="component-value" id="momentumValue">--</div>
+                    <div class="component-bar">
+                        <div class="component-bar-fill" id="momentumBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7-Day History -->
+        <div class="history-section">
+            <div class="history-title">7-Day Trend</div>
+            <div class="history-chart" id="historyChart"></div>
+            <div class="history-labels">
+                <span class="history-label">7D AGO</span>
+                <span class="history-label">TODAY</span>
+            </div>
+        </div>
+
+        <!-- Market Status -->
+        <div class="market-status">
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-label">S&P 500</div>
+                    <div class="status-value" id="spValue">--</div>
+                    <div class="status-change" id="spChange">--</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">BTC</div>
+                    <div class="status-value" id="btcValue">--</div>
+                    <div class="status-change" id="btcChange">--</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">VIX</div>
+                    <div class="status-value" id="vixIndex">--</div>
+                    <div class="status-change" id="vixChange">--</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interpretation -->
+        <div class="interpretation">
+            <div class="interpretation-title">
+                💡 Signal Interpretation
+            </div>
+            <p class="interpretation-text" id="interpretationText">
+                Loading market analysis...
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="widget-footer">
+            <span class="footer-brand">US Market Terminals</span>
+            <span class="footer-source">Updated: <span id="updateTime">--</span></span>
+        </div>
+    </div>
+
+    <script>
+        // Simulated market data (실제 운영시 API 연동)
+        function generateMarketData() {
+            // 시뮬레이션된 데이터 - 실제로는 API에서 가져옴
+            const baseScore = 45 + Math.random() * 30; // 45-75 범위
+            const variation = (Math.random() - 0.5) * 10;
+            
+            return {
+                mainScore: Math.round(baseScore + variation),
+                components: {
+                    vix: Math.round(35 + Math.random() * 40),
+                    crypto: Math.round(30 + Math.random() * 45),
+                    putcall: Math.round(40 + Math.random() * 35),
+                    momentum: Math.round(45 + Math.random() * 35)
+                },
+                markets: {
+                    sp500: { value: (5800 + Math.random() * 200).toFixed(0), change: ((Math.random() - 0.4) * 2).toFixed(2) },
+                    btc: { value: (95000 + Math.random() * 10000).toFixed(0), change: ((Math.random() - 0.45) * 5).toFixed(2) },
+                    vix: { value: (14 + Math.random() * 8).toFixed(1), change: ((Math.random() - 0.5) * 3).toFixed(2) }
+                },
+                history: Array.from({length: 7}, () => Math.round(35 + Math.random() * 40))
+            };
+        }
+
+        // Get sentiment label and color
+        function getSentiment(score) {
+            if (score <= 20) return { label: 'Extreme Fear', color: '#dc2626' };
+            if (score <= 40) return { label: 'Fear', color: '#f97316' };
+            if (score <= 60) return { label: 'Neutral', color: '#eab308' };
+            if (score <= 80) return { label: 'Greed', color: '#22c55e' };
+            return { label: 'Extreme Greed', color: '#10b981' };
+        }
+
+        // Get interpretation text
+        function getInterpretation(score) {
+            if (score <= 25) {
+                return `<strong>극단적 공포 구간</strong>입니다. 역사적으로 이 구간에서의 매수는 높은 수익률을 기록했습니다. 단, 추가 하락 가능성에 대비한 분할 매수를 권장합니다.`;
+            } else if (score <= 40) {
+                return `<strong>공포 구간</strong>입니다. 시장 참여자들의 불안감이 높습니다. 우량주 중심의 선별적 매수 기회를 모색해볼 수 있습니다.`;
+            } else if (score <= 60) {
+                return `<strong>중립 구간</strong>입니다. 시장이 방향성을 탐색 중입니다. 기존 포지션 유지하며 다음 시그널을 기다리는 것이 적절합니다.`;
+            } else if (score <= 75) {
+                return `<strong>탐욕 구간</strong>입니다. 상승 모멘텀이 강하나 과열 신호에 주의가 필요합니다. 일부 이익 실현을 고려해보세요.`;
+            } else {
+                return `<strong>극단적 탐욕 구간</strong>입니다. 시장 과열 경고입니다. 신규 매수보다는 현금 비중 확대와 리스크 관리에 집중하세요.`;
+            }
+        }
+
+        // Update gauge needle
+        function updateGauge(score) {
+            const needle = document.getElementById('gaugeNeedle');
+            const rotation = -90 + (score / 100) * 180; // -90 to 90 degrees
+            needle.setAttribute('transform', `rotate(${rotation}, 100, 100)`);
+
+            // Update fill
+            const fill = document.getElementById('gaugeFill');
+            const dashOffset = 251 - (score / 100) * 251;
+            fill.style.strokeDashoffset = dashOffset;
+        }
+
+        // Update component bar
+        function updateComponentBar(elementId, value, barId) {
+            document.getElementById(elementId).textContent = value;
+            const bar = document.getElementById(barId);
+            bar.style.width = value + '%';
+            bar.style.background = getSentiment(value).color;
+        }
+
+        // Render history chart
+        function renderHistory(history) {
+            const container = document.getElementById('historyChart');
+            container.innerHTML = '';
+            
+            const max = Math.max(...history);
+            
+            history.forEach((value, index) => {
+                const bar = document.createElement('div');
+                bar.className = 'history-bar';
+                bar.style.height = (value / max * 100) + '%';
+                bar.style.background = getSentiment(value).color;
+                bar.setAttribute('data-value', value);
+                container.appendChild(bar);
+            });
+        }
+
+        // Update market status
+        function updateMarketStatus(markets) {
+            document.getElementById('spValue').textContent = markets.sp500.value;
+            document.getElementById('btcValue').textContent = '$' + Number(markets.btc.value).toLocaleString();
+            document.getElementById('vixIndex').textContent = markets.vix.value;
+
+            const spChange = document.getElementById('spChange');
+            spChange.textContent = (markets.sp500.change >= 0 ? '+' : '') + markets.sp500.change + '%';
+            spChange.className = 'status-change ' + (markets.sp500.change >= 0 ? 'positive' : 'negative');
+
+            const btcChange = document.getElementById('btcChange');
+            btcChange.textContent = (markets.btc.change >= 0 ? '+' : '') + markets.btc.change + '%';
+            btcChange.className = 'status-change ' + (markets.btc.change >= 0 ? 'positive' : 'negative');
+
+            const vixChange = document.getElementById('vixChange');
+            vixChange.textContent = (markets.vix.change >= 0 ? '+' : '') + markets.vix.change + '%';
+            vixChange.className = 'status-change ' + (markets.vix.change <= 0 ? 'positive' : 'negative'); // VIX는 반대
+        }
+
+        // Main update function
+        function updateWidget() {
+            const data = generateMarketData();
+            const sentiment = getSentiment(data.mainScore);
+
+            // Update main score
+            document.getElementById('mainScore').textContent = data.mainScore;
+            document.getElementById('sentimentLabel').textContent = sentiment.label;
+            document.getElementById('sentimentLabel').style.color = sentiment.color;
+
+            // Update gauge
+            updateGauge(data.mainScore);
+
+            // Update components
+            updateComponentBar('vixValue', data.components.vix, 'vixBar');
+            updateComponentBar('cryptoValue', data.components.crypto, 'cryptoBar');
+            updateComponentBar('putcallValue', data.components.putcall, 'putcallBar');
+            updateComponentBar('momentumValue', data.components.momentum, 'momentumBar');
+
+            // Update history
+            renderHistory(data.history);
+
+            // Update market status
+            updateMarketStatus(data.markets);
+
+            // Update interpretation
+            document.getElementById('interpretationText').innerHTML = getInterpretation(data.mainScore);
+
+            // Update timestamp
+            const now = new Date();
+            document.getElementById('updateTime').textContent = 
+                now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Delay for animation effect
+            setTimeout(updateWidget, 500);
+        });
+
+        // Auto-refresh every 60 seconds (실제 운영시)
+        // setInterval(updateWidget, 60000);
+    </script>
+
+</body>
+</html>
