@@ -3,59 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - US Market Terminals</title>
-    <meta name="description" content="US Market Terminals is an institutional-grade data analytics platform designed for individual investors.">
+    <title>About Us | US Market Terminals - Data-Driven Market Intelligence</title>
+    <meta name="description" content="Learn about US Market Terminals, an institutional-grade research platform providing data-driven analytics for individual investors in 2026.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --bg: #0a0d12;
+            --panel: #111827;
+            --border: #1f2937;
+            --text: #e2e8f0;
+            --accent: #3b82f6;
+            --muted: #94a3b8;
+        }
+        
         body { 
             font-family: 'Inter', sans-serif; 
-            max-width: 800px; 
+            max-width: 850px; 
             margin: 0 auto; 
-            padding: 40px 20px; 
-            line-height: 1.6; 
-            background: #0a0d12; 
-            color: #e2e8f0; 
+            padding: 60px 24px; 
+            line-height: 1.8; 
+            background: var(--bg); 
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
         }
-        h1 { color: #60a5fa; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
-        h2 { color: #93c5fd; margin-top: 30px; }
-        .highlight { background: rgba(59, 130, 246, 0.1); padding: 20px; border-radius: 8px; margin: 20px 0; }
-        .mission { font-style: italic; color: #94a3b8; }
-        a { color: #3b82f6; text-decoration: none; }
-        a:hover { color: #60a5fa; }
-        ul, ol { padding-left: 20px; }
-        li { margin-bottom: 8px; }
+
+        h1 { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            color: #fff; 
+            border-bottom: 2px solid var(--accent); 
+            padding-bottom: 15px; 
+            margin-bottom: 40px;
+            letter-spacing: -1.5px;
+        }
+
+        h2 { 
+            color: #fff; 
+            font-size: 1.6rem; 
+            margin-top: 50px; 
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .highlight-card { 
+            background: var(--panel); 
+            padding: 35px; 
+            border-radius: 16px; 
+            border: 1px solid var(--border);
+            margin: 40px 0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .mission { 
+            font-size: 1.2rem; 
+            font-weight: 600;
+            font-style: italic; 
+            color: var(--accent); 
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        p { margin-bottom: 25px; color: var(--muted); font-size: 1.1rem; text-align: justify; }
+
+        .service-list { 
+            list-style: none; 
+            padding: 0; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .service-item {
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .service-item strong { color: #fff; display: block; margin-bottom: 8px; font-size: 1.15rem; }
+
+        .value-section {
+            border-left: 3px solid var(--accent);
+            padding-left: 25px;
+            margin: 40px 0;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .contact-btn:hover { background: #2563eb; transform: translateY(-2px); }
+
+        .back-home {
+            display: block;
+            margin-top: 80px;
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .back-home:hover { color: #fff; }
+
+        footer {
+            margin-top: 100px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.85rem;
+            color: #4b5563;
+        }
     </style>
 </head>
 <body>
-    <h1>About Us</h1>
+
+    <h1>About the Project</h1>
     
-    <div class="highlight">
-        <h2>US Market Terminals</h2>
-        <p class="mission">"Institutional Market Intelligence for Individual Investors"</p>
+    <div class="highlight-card">
+        <span class="mission">"Institutional Market Intelligence for Independent Investors"</span>
+        <p style="margin-bottom: 0;"><strong>US Market Terminals</strong> is a specialized financial research platform founded in 2024. We leverage advanced data visualization and quantitative modeling to democratize institutional-grade market insights for the global investing community.</p>
     </div>
     
-    <h2>Our Vision</h2>
-    <p>To empower every individual investor to make data-driven decisions by providing professional-grade analytics and tools previously available only to institutions.</p>
+    <h2>Our Core Vision</h2>
+    <p>In the complex financial landscape of 2026, information asymmetry remains the biggest hurdle for individual investors. Our vision is to empower every independent trader with the analytical tools, real-time data terminals, and systematic research necessary to make anti-fragile, data-driven decisions in US equities and digital asset markets.</p>
     
-    <h2>Our Services</h2>
-    <ul>
-        <li><strong>Nasdaq & Tech Analytics</strong>: In-depth analysis of Nasdaq-100 giants.</li>
-        <li><strong>Dividend Cash Flow</strong>: Tracking Dividend Aristocrats and yield sustainability.</li>
-        <li><strong>Crypto Market Terminal</strong>: Real-time data for digital assets and staking yields.</li>
-        <li><strong>Investor AI Calculator</strong>: Advanced tools for compound interest and risk simulation.</li>
-        <li><strong>Market Insights</strong>: Weekly reports on macroeconomic trends and strategies.</li>
-    </ul>
+    <h2>Our Specialized Services</h2>
+    <div class="service-list">
+        <div class="service-item">
+            <strong>Nasdaq Growth Analytics</strong>
+            Quantitative breakdown of Nasdaq-100 constituents, focusing on AI-driven productivity and FCF yield.
+        </div>
+        <div class="service-item">
+            <strong>Dividend Cash Flow Engine</strong>
+            Strategic tracking of Dividend Aristocrats and REITs using our proprietary AFFO sustainability models.
+        </div>
+        <div class="service-item">
+            <strong>Crypto Matrix Terminal</strong>
+            Comprehensive on-chain data analysis and staking yield monitoring for institutional-grade digital assets.
+        </div>
+        <div class="service-item">
+            <strong>Macro Research Reports</strong>
+            Deep-dive strategic insights on Federal Reserve policies, inflation hedges, and sector rotation.
+        </div>
+    </div>
     
-    <h2>Core Values</h2>
-    <ol>
-        <li><strong>Data Transparency</strong>: All analysis is grounded in verifiable data.</li>
-        <li><strong>Accessibility</strong>: Making complex financial data easy to understand.</li>
-        <li><strong>Objectivity</strong>: We analyze with numbers, not emotions.</li>
-        <li><strong>Sustainability</strong>: We view investing through a long-term lens.</li>
-    </ol>
+    <h2>Analytical Values (E-A-T Framework)</h2>
+    <div class="value-section">
+        <p><strong>1. Data Transparency:</strong> Every report published is grounded in verifiable public filings (SEC) and real-time API data streams.</p>
+        <p><strong>2. Objective Neutrality:</strong> We eliminate emotional bias by focusing strictly on mathematical indicators and historical backtesting.</p>
+        <p><strong>3. Long-Term Sustainability:</strong> Our research prioritizes wealth preservation and compounding growth over speculative short-term noise.</p>
+    </div>
     
-    <h2>Contact Us</h2>
-    <p>Inquiries: <a href="mailto:support@us-dividend-pro.com">support@us-dividend-pro.com</a></p>
+    <h2>Connect with Our Research Team</h2>
+    <p>We value collaboration and community feedback. For institutional inquiries, research partnerships, or technical support, please reach out to our analysts.</p>
     
-    <p><a href="index.html">← Back to Home</a></p>
+    <a href="mailto:support@us-dividend-pro.com" class="contact-btn">Contact Research Team</a>
+    
+    <a href="/index.html" class="back-home">← Return to Terminal Dashboard</a>
+
+    <footer>
+        © 2026 US Market Terminals Research Group. All rights reserved.<br>
+        Independent Analysis • Data Integrity • Market Transparency
+    </footer>
+
 </body>
 </html>
