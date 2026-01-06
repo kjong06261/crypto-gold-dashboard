@@ -4,86 +4,103 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Market Insights & Research | US Market Terminals</title>
-  <meta name="description" content="In-depth analysis on US Stock Market trends, macroeconomics, and asset allocation strategies for 2026.">
+  <meta name="description" content="In-depth analysis on US Stock Market trends, macroeconomics, and asset allocation strategies for 2026. Institutional grade research for independent investors.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
-    /* Premium Dark Blog Theme */
     :root { --bg: #0a0d12; --panel: #151b23; --border: #2a3441; --text: #e2e8f0; --accent: #3b82f6; }
     body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.7; }
     
-    .nav { padding: 15px 20px; border-bottom: 1px solid var(--border); background: var(--panel); display: flex; justify-content: space-between; align-items: center; position:sticky; top:0; z-index:100; }
-    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; }
-    .back-btn { color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    .nav { padding: 15px 20px; border-bottom: 1px solid var(--border); background: var(--panel); display: flex; justify-content: space-between; align-items: center; position:sticky; top:0; z-index:100; backdrop-filter: blur(10px); }
+    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; letter-spacing: -0.5px; }
+    .back-btn { color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
+    .back-btn:hover { color: var(--accent); }
 
-    .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+    .container { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
     .header { text-align: center; margin-bottom: 60px; }
-    .header h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; }
-    .header p { color: #94a3b8; font-size: 1.1rem; }
+    .header h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; }
+    .header p { color: #94a3b8; font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
 
-    .article-preview { background: var(--panel); padding: 30px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 30px; transition: 0.2s; }
-    .article-preview:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .meta { color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
-    .article-title { font-size: 1.5rem; margin: 0 0 15px; color: #fff; font-weight: 700; line-height: 1.3; }
-    .excerpt { color: #94a3b8; font-size: 1rem; margin-bottom: 20px; }
-    .read-more { color: #fff; font-weight: 600; font-size: 0.9rem; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+    .article-preview { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 30px; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; display: block; text-decoration: none; }
+    .article-preview:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    
+    .meta { color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; display: block; }
+    .article-title { font-size: 1.6rem; margin: 0 0 15px; color: #fff; font-weight: 800; line-height: 1.3; }
+    .excerpt { color: #94a3b8; font-size: 1rem; margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .read-more { color: #fff; font-weight: 700; font-size: 0.95rem; border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
 
-    /* For AdSense to have enough text content */
-    .hidden-seo-text { display: block; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border); color: #475569; font-size: 0.9rem; }
+    .hidden-seo-text { margin-top: 80px; padding: 40px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px dashed var(--border); color: #64748b; font-size: 0.9rem; }
+    .hidden-seo-text strong { color: #94a3b8; }
+    
+    footer { padding: 60px 20px; text-align: center; color: #475569; border-top: 1px solid var(--border); margin-top: 40px; }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="index.html" class="logo">📊 US MARKET TERMINALS</a>
-    <a href="index.html" class="back-btn">Home</a>
+    <a href="/index.html" class="logo">US MARKET TERMINALS</a>
+    <a href="/index.html" class="back-btn">Home</a>
   </nav>
 
   <div class="container">
     <div class="header">
       <h1>Market Insights</h1>
-      <p>Institutional analysis for the independent investor.</p>
+      <p>In-depth research and data-driven analysis for modern investors navigating the 2026 financial markets.</p>
     </div>
 
-    <article class="article-preview">
-      <span class="meta">Strategy • Jan 2026</span>
+    <a href="/blog/barbell-strategy-guide.html" class="article-preview">
+      <span class="meta">Asset Allocation • Jan 2026</span>
       <h2 class="article-title">The "Barbell Strategy": Balancing AI Growth and Defensive Dividends</h2>
       <p class="excerpt">
-        In the current 2026 macroeconomic environment, volatility is the new normal. 
-        The Barbell Strategy suggests pairing high-beta assets like Nvidia (NVDA) with low-beta cash flow generators like SCHD. 
-        This report analyzes how to construct a portfolio that captures upside while mitigating downside risk through strategic allocation.
-        We explore the correlation coefficients between the semiconductor sector and consumer staples to find the optimal hedge ratio.
+        Discover the optimal balance between high-beta AI growth stocks and stable dividend generators. We analyze correlation coefficients to help you construct a resilient 2026 portfolio.
       </p>
-      <a href="#" class="read-more">Read Full Report →</a>
-    </article>
+      <span class="read-more">Read Full Report →</span>
+    </a>
 
-    <article class="article-preview">
-      <span class="meta">Crypto • Jan 2026</span>
-      <h2 class="article-title">Bitcoin as Treasury Reserve: The Corporate Shift</h2>
+    <a href="/blog/crypto-staking-dividend.html" class="article-preview">
+      <span class="meta">Digital Assets • Jan 2026</span>
+      <h2 class="article-title">Crypto Staking: The New Frontier of Passive Income</h2>
       <p class="excerpt">
-        With the FASB accounting rule changes, more corporations are holding Bitcoin on their balance sheets. 
-        What does this mean for liquidity and volatility? 
-        We analyze the MicroStrategy model and its implications for the broader crypto market. 
-        On-chain metrics suggest a supply shock is imminent as institutional accumulation outpaces miner issuance.
+        Analyze the institutional shift toward PoS assets. Explore 2026 staking yields for ETH and SOL, and learn how "Digital Dividends" are reshaping modern cash flow strategies.
       </p>
-      <a href="#" class="read-more">Read Full Report →</a>
-    </article>
+      <span class="read-more">Read Full Report →</span>
+    </a>
 
-    <article class="article-preview">
-      <span class="meta">Macro • Dec 2025</span>
-      <h2 class="article-title">Fed Policy Pivot: Impact on REIT Valuations</h2>
+    <a href="/blog/dividend-aristocrats-2026.html" class="article-preview">
+      <span class="meta">Income Investing • Jan 2026</span>
+      <h2 class="article-title">Top 5 Dividend Aristocrats: Safe Havens for High-Rate Environments</h2>
       <p class="excerpt">
-        Real Estate Investment Trusts (REITs) like Realty Income (O) are highly sensitive to interest rate fluctuations. 
-        As the Federal Reserve signals a potential rate cut cycle, we examine the historical performance of REITs during monetary easing. 
-        Our analysis suggests that the disconnect between NAV (Net Asset Value) and current market price offers a generational entry point for patient capital.
+        Institutional analysis of Realty Income (O), J&J, and Coca-Cola. We filter the best 25+ year dividend growers based on current Free Cash Flow payout ratios.
       </p>
-      <a href="#" class="read-more">Read Full Report →</a>
-    </article>
+      <span class="read-more">Read Full Report →</span>
+    </a>
+
+    <a href="/blog/nasdaq-growth-strategy.html" class="article-preview">
+      <span class="meta">Equity Analysis • Jan 2026</span>
+      <h2 class="article-title">NASDAQ-100 Strategy: Harvesting Growth in the AI Era</h2>
+      <p class="excerpt">
+        How to optimize tech growth with hybrid income. An analysis of the Nasdaq-100 trajectory and the role of covered call strategies like JEPQ in a volatile market.
+      </p>
+      <span class="read-more">Read Full Report →</span>
+    </a>
+
+    <a href="/blog/bitcoin-corporate.html" class="article-preview">
+      <span class="meta">Macro Crypto • Jan 2026</span>
+      <h2 class="article-title">Bitcoin as Treasury Reserve: The Corporate Renaissance</h2>
+      <p class="excerpt">
+        Following FASB's fair value accounting changes, more firms are adopting the Bitcoin Standard. We explore the supply shock implications for 2026.
+      </p>
+      <span class="read-more">Read Full Report →</span>
+    </a>
 
     <div class="hidden-seo-text">
-      <p><strong>About Our Research:</strong> US Market Terminals provides data-driven insights derived from public financial records, technical chart patterns, and macroeconomic indicators. Our goal is to empower individual investors with institutional-grade tools.</p>
+      <p><strong>Methodology:</strong> US Market Terminals utilizes proprietary screening algorithms and macroeconomic modeling to provide actionable insights. Our research covers the S&P 500, NASDAQ-100, and emerging digital asset classes to deliver a holistic view of the 2026 financial landscape.</p>
     </div>
 
   </div>
+
+  <footer>
+    <p>© 2026 US Market Terminals. All rights reserved.</p>
+  </footer>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 
