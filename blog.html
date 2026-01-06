@@ -7,82 +7,50 @@
   <meta name="description" content="In-depth analysis on US Stock Market trends, macroeconomics, and asset allocation strategies for 2026. Institutional grade research for independent investors.">
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
     :root { 
-        --bg: #05070a; 
-        --panel: #0d1117; 
-        --border: #1e222d; 
-        --text: #e2e8f0; 
-        --text-dim: #94a3b8;
-        --accent: #3b82f6; 
+        --bg: #05070a; --panel: #0d1117; --border: #1e222d; 
+        --text: #e2e8f0; --text-dim: #94a3b8; --accent: #3b82f6; 
     }
-    
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
     
-    body { 
-        background: var(--bg); 
-        color: var(--text); 
-        font-family: 'Inter', sans-serif; 
-        line-height: 1.7; 
-        -webkit-font-smoothing: antialiased;
-    }
-    
-    /* Navigation - Unified Style */
-    .nav { 
-      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
-      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
-    }
-    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-    .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+    /* Navigation */
+    .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
+    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; }
     .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
     .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
     .nav-links a:hover { color: var(--accent); }
 
-    /* Content Container */
-    .container { max-width: 850px; margin: 0 auto; padding: 80px 24px; }
+    /* Content */
+    .container { max-width: 900px; margin: 0 auto; padding: 80px 24px; }
     .header { text-align: center; margin-bottom: 80px; }
-    .header h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 20px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; color: #fff; }
+    .header h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 20px; font-weight: 900; letter-spacing: -2px; color: #fff; }
     .header p { color: var(--text-dim); font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
 
-    /* Article Cards */
+    /* List Grid */
+    .article-list { display: flex; flex-direction: column; gap: 24px; }
     .article-preview { 
-        background: var(--panel); padding: 40px; border-radius: 24px; border: 1px solid var(--border); 
-        margin-bottom: 32px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-        display: block; text-decoration: none; position: relative; overflow: hidden;
+        background: var(--panel); padding: 35px; border-radius: 24px; border: 1px solid var(--border); 
+        text-decoration: none; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: block;
     }
-    .article-preview:hover { 
-        border-color: var(--accent); transform: translateY(-8px); 
-        box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
-    }
+    .article-preview:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
     
-    .meta { color: var(--accent); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; display: block; }
-    .article-title { font-size: 1.7rem; margin: 0 0 16px; color: #fff; font-weight: 800; line-height: 1.3; letter-spacing: -0.5px; }
-    .excerpt { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 30px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    .read-more { color: #fff; font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
-    .article-preview:hover .read-more { gap: 15px; color: var(--accent); }
+    .meta { color: var(--accent); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; display: block; font-family: 'JetBrains Mono', monospace; }
+    .article-title { font-size: 1.6rem; margin: 0 0 12px; color: #fff; font-weight: 800; letter-spacing: -0.5px; }
+    .excerpt { color: var(--text-dim); font-size: 1rem; margin-bottom: 20px; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .read-more { color: #fff; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; }
+    .article-preview:hover .read-more { color: var(--accent); }
 
-    /* Methodology Section */
-    .hidden-seo-text { 
-        margin-top: 100px; padding: 40px; background: rgba(255,255,255,0.02); 
-        border-radius: 20px; border: 1px dashed var(--border); color: #64748b; font-size: 0.95rem; 
-    }
-    .hidden-seo-text strong { color: var(--text-dim); }
-    
-    /* Footer - Unified Style */
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 80px; }
-    .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+    /* Footer */
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
     .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
     .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .container { padding-top: 40px; }
-      .article-preview { padding: 30px; }
-    }
+    @media (max-width: 768px) { .nav-links { display: none; } .container { padding-top: 40px; } }
   </style>
 </head>
 <body>
@@ -103,47 +71,81 @@
   <div class="container">
     <header class="header">
       <h1>Market Insights</h1>
-      <p>Institutional-grade research and quantitative analysis for modern investors navigating 2026.</p>
+      <p>Institutional-grade quantitative analysis and tactical research for 2026 investors.</p>
     </header>
 
-    <a href="/blog/barbell-strategy-guide.html" class="article-preview">
-      <span class="meta">Asset Allocation • Jan 2026</span>
-      <h2 class="article-title">The "Barbell Strategy": Balancing AI Growth and Defensive Dividends</h2>
-      <p class="excerpt">
-        Discover the optimal balance between high-beta AI growth stocks and stable dividend generators. We analyze correlation coefficients to help you construct a resilient 2026 portfolio.
-      </p>
-      <span class="read-more">Read Full Report →</span>
-    </a>
+    <div class="article-list">
+      
+      <a href="/blog/barbell-strategy-guide.html" class="article-preview">
+        <span class="meta">Asset Allocation • Jan 2026</span>
+        <h2 class="article-title">The Barbell Strategy: Re-Engineering Portfolios for the AI Era</h2>
+        <p class="excerpt">Discover the optimal balance between high-beta AI growth stocks and stable dividend generators to construct an anti-fragile 2026 portfolio.</p>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
 
-    <a href="/blog/crypto-staking-dividend.html" class="article-preview">
-      <span class="meta">Digital Assets • Jan 2026</span>
-      <h2 class="article-title">Crypto Staking: The New Frontier of Passive Income</h2>
-      <p class="excerpt">
-        Analyze the institutional shift toward PoS assets. Explore 2026 staking yields for ETH and SOL, and learn how "Digital Dividends" are reshaping modern cash flow strategies.
-      </p>
-      <span class="read-more">Read Full Report →</span>
-    </a>
+      <a href="/blog/bitcoin-corporate.html" class="article-preview">
+        <span class="meta">Digital Assets • Jan 2026</span>
+        <h2 class="article-title">Bitcoin as Treasury Reserve: The Corporate Renaissance</h2>
+        <p class="excerpt">Analyze how FASB accounting shifts and the "Bitcoin Standard" are transforming corporate balance sheets in 2026.</p>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
 
-    <a href="/blog/dividend-aristocrats-2026.html" class="article-preview">
-      <span class="meta">Income Investing • Jan 2026</span>
-      <h2 class="article-title">Top 5 Dividend Aristocrats: Safe Havens for High-Rate Environments</h2>
-      <p class="excerpt">
-        Institutional analysis of Realty Income (O), J&J, and Coca-Cola. We filter the best 25+ year dividend growers based on current Free Cash Flow payout ratios.
-      </p>
-      <span class="read-more">Read Full Report →</span>
-    </a>
+      <a href="/blog/crypto-staking-dividend.html" class="article-preview">
+        <span class="meta">On-Chain Research • Jan 2026</span>
+        <h2 class="article-title">Crypto Staking: The Evolution of Digital Dividends</h2>
+        <p class="excerpt">A deep dive into Ethereum and Solana staking yields. Understanding MEV rewards and liquid staking risk management.</p>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
 
-    <a href="/blog/nasdaq-growth-strategy.html" class="article-preview">
-      <span class="meta">Equity Analysis • Jan 2026</span>
-      <h2 class="article-title">NASDAQ-100 Strategy: Harvesting Growth in the AI Era</h2>
-      <p class="excerpt">
-        How to optimize tech growth with hybrid income. An analysis of the Nasdaq-100 trajectory and the role of covered call strategies like JEPQ in a volatile market.
-      </p>
-      <span class="read-more">Read Full Report →</span>
-    </a>
+      <a href="/blog/dividend-aristocrats-2026.html" class="article-preview">
+        <span class="meta">Income Strategy • Jan 2026</span>
+        <h2 class="article-title">Top 5 Dividend Aristocrats for 2026: Built for Resilience</h2>
+        <p class="excerpt">Quantitative screening of J&J, Coca-Cola, and Realty Income based on 2026 FCF payout ratios and interest coverage.</p>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
 
-    <div class="hidden-seo-text">
-      <p><strong>Methodology:</strong> US Market Terminals utilizes proprietary screening algorithms and macroeconomic modeling to provide actionable insights. Our research covers the S&P 500, NASDAQ-100, and emerging digital asset classes to deliver a holistic view of the 2026 financial landscape.</p>
+      <a href="/blog/nasdaq-growth-strategy.html" class="article-preview">
+        <span class="meta">Tech Growth • Jan 2026</span>
+        <h2 class="article-title">NASDAQ-100: Harvesting Growth in the Generative AI Era</h2>
+        <p class="excerpt">How to optimize tech allocation with the Core-Satellite framework. Tracking capital expenditure vs. revenue efficiency.</p>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
+
+      <a href="/blog/realty-income-o.html" class="article-preview">
+        <span class="meta">REIT Analysis • Jan 2026</span>
+        <h2 class="article-title">Realty Income (O): The Monthly Dividend Gold Standard</h2>
+        <p class="excerpt">An institutional look at the NNN lease model and AFFO sustainability in a 5% interest rate regime.</p>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
+
+      <a href="/blog/dividend-growth-strategy.html" class="article-preview">
+        <span class="meta">Yield Optimization • Jan 2026</span>
+        <h2 class="article-title">Dividend Growth Strategy: The Ultimate Wealth Engine</h2>
+        <p class="excerpt">Learn the power of Yield on Cost (YOC) and how to select stocks that consistently outperform inflation through payout hikes.</p>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
+
+      <a href="/blog/reits-ffo-guide.html" class="article-preview">
+        <span class="meta">Valuation Guide • Jan 2026</span>
+        <h2 class="article-title">FFO vs AFFO: The Pulse of REIT Investing</h2>
+        <p class="excerpt">Master the critical accounting metrics needed to evaluate real estate stock safety beyond traditional net income.</p>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
+
+      <a href="/blog/covered-call-hedging.html" class="article-preview">
+        <span class="meta">Risk Management • Jan 2026</span>
+        <h2 class="article-title">Monetizing Volatility: The Covered Call Hedge Strategy</h2>
+        <p class="excerpt">Using JEPQ and JEPI to generate defensive income and hedge Nasdaq downside while maintaining growth exposure.</p>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
+
+      <a href="/blog/inflation-portfolio-2026.html" class="article-preview">
+        <span class="meta">Macro Strategy • Jan 2026</span>
+        <h2 class="article-title">Defeating Inflation: The 2026 Resilience Portfolio</h2>
+        <p class="excerpt">A strategic blueprint combining hard assets, pricing power equities, and digital scarcity to protect purchasing power.</p>
+        <span class="read-more">Read Full Analysis →</span>
+      </a>
+
     </div>
   </div>
 
@@ -155,20 +157,10 @@
         <a href="/privacy.html">Privacy</a>
         <a href="/legal.html">Terms & Disclaimer</a>
     </div>
-    <p class="footer-copy">
-        © 2026 US Market Terminals. All rights reserved. <br>
-        Institutional Grade Analytics • Data Integrity • Independent spirit
-    </p>
     <div class="footer-disclaimer">
-        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Financial Risk Disclosure</strong>
-        US Market Terminals is for educational and informational purposes only. [cite: 4]
-        Nothing on this site constitutes financial, investment, tax, or legal advice. [cite: 5]
-        All investments carry risk, including the potential loss of principal. [cite: 6]
-        Past performance does not guarantee future results. [cite: 6]
-        Always conduct your own research and consult with a qualified financial advisor before making investment decisions. [cite: 7]
-        The software is provided "as is", without warranty of any kind. [cite: 2]
+        <strong>Financial Risk Disclosure</strong>
+        US Market Terminals is for educational purposes only. Investing involves high risk of loss. Past performance does not guarantee future results. All content is "as is" without warranty.
     </div>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
   </footer>
 
 </body>
