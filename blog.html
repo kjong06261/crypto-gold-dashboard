@@ -3,49 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Market Insights & Research | US Market Terminals</title>
+  <title>Market Insights & Research Hub | US Market Terminals</title>
   <meta name="description" content="In-depth analysis on US Stock Market trends, macroeconomics, and asset allocation strategies for 2026. Institutional grade research for independent investors.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #0a0d12; --panel: #151b23; --border: #2a3441; --text: #e2e8f0; --accent: #3b82f6; }
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.7; }
+    :root { 
+        --bg: #05070a; 
+        --panel: #0d1117; 
+        --border: #1e222d; 
+        --text: #e2e8f0; 
+        --text-dim: #94a3b8;
+        --accent: #3b82f6; 
+    }
     
-    .nav { padding: 15px 20px; border-bottom: 1px solid var(--border); background: var(--panel); display: flex; justify-content: space-between; align-items: center; position:sticky; top:0; z-index:100; backdrop-filter: blur(10px); }
-    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; letter-spacing: -0.5px; }
-    .back-btn { color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
-    .back-btn:hover { color: var(--accent); }
-
-    .container { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
-    .header { text-align: center; margin-bottom: 60px; }
-    .header h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; }
-    .header p { color: #94a3b8; font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
-
-    .article-preview { background: var(--panel); padding: 35px; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 30px; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; display: block; text-decoration: none; }
-    .article-preview:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     
-    .meta { color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; display: block; }
-    .article-title { font-size: 1.6rem; margin: 0 0 15px; color: #fff; font-weight: 800; line-height: 1.3; }
-    .excerpt { color: #94a3b8; font-size: 1rem; margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    .read-more { color: #fff; font-weight: 700; font-size: 0.95rem; border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
-
-    .hidden-seo-text { margin-top: 80px; padding: 40px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px dashed var(--border); color: #64748b; font-size: 0.9rem; }
-    .hidden-seo-text strong { color: #94a3b8; }
+    body { 
+        background: var(--bg); 
+        color: var(--text); 
+        font-family: 'Inter', sans-serif; 
+        line-height: 1.7; 
+        -webkit-font-smoothing: antialiased;
+    }
     
-    footer { padding: 60px 20px; text-align: center; color: #475569; border-top: 1px solid var(--border); margin-top: 40px; }
+    /* Navigation - Unified Style */
+    .nav { 
+      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
+    }
+    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+    .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+    .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* Content Container */
+    .container { max-width: 850px; margin: 0 auto; padding: 80px 24px; }
+    .header { text-align: center; margin-bottom: 80px; }
+    .header h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 20px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; color: #fff; }
+    .header p { color: var(--text-dim); font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
+
+    /* Article Cards */
+    .article-preview { 
+        background: var(--panel); padding: 40px; border-radius: 24px; border: 1px solid var(--border); 
+        margin-bottom: 32px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        display: block; text-decoration: none; position: relative; overflow: hidden;
+    }
+    .article-preview:hover { 
+        border-color: var(--accent); transform: translateY(-8px); 
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
+    }
+    
+    .meta { color: var(--accent); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; display: block; }
+    .article-title { font-size: 1.7rem; margin: 0 0 16px; color: #fff; font-weight: 800; line-height: 1.3; letter-spacing: -0.5px; }
+    .excerpt { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 30px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .read-more { color: #fff; font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
+    .article-preview:hover .read-more { gap: 15px; color: var(--accent); }
+
+    /* Methodology Section */
+    .hidden-seo-text { 
+        margin-top: 100px; padding: 40px; background: rgba(255,255,255,0.02); 
+        border-radius: 20px; border: 1px dashed var(--border); color: #64748b; font-size: 0.95rem; 
+    }
+    .hidden-seo-text strong { color: var(--text-dim); }
+    
+    /* Footer - Unified Style */
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 80px; }
+    .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
+    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .container { padding-top: 40px; }
+      .article-preview { padding: 30px; }
+    }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="/index.html" class="logo">US MARKET TERMINALS</a>
-    <a href="/index.html" class="back-btn">Home</a>
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div class="nav-links">
+          <a href="/calculator.html">Calculator</a>
+          <a href="/market-pulse.html">Pulse</a>
+          <a href="/tools.html">Tools</a>
+          <a href="/blog.html" style="color: var(--accent);">Research</a>
+          <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
+      </div>
+    </div>
   </nav>
 
   <div class="container">
-    <div class="header">
+    <header class="header">
       <h1>Market Insights</h1>
-      <p>In-depth research and data-driven analysis for modern investors navigating the 2026 financial markets.</p>
-    </div>
+      <p>Institutional-grade research and quantitative analysis for modern investors navigating 2026.</p>
+    </header>
 
     <a href="/blog/barbell-strategy-guide.html" class="article-preview">
       <span class="meta">Asset Allocation • Jan 2026</span>
@@ -83,26 +142,34 @@
       <span class="read-more">Read Full Report →</span>
     </a>
 
-    <a href="/blog/bitcoin-corporate.html" class="article-preview">
-      <span class="meta">Macro Crypto • Jan 2026</span>
-      <h2 class="article-title">Bitcoin as Treasury Reserve: The Corporate Renaissance</h2>
-      <p class="excerpt">
-        Following FASB's fair value accounting changes, more firms are adopting the Bitcoin Standard. We explore the supply shock implications for 2026.
-      </p>
-      <span class="read-more">Read Full Report →</span>
-    </a>
-
     <div class="hidden-seo-text">
       <p><strong>Methodology:</strong> US Market Terminals utilizes proprietary screening algorithms and macroeconomic modeling to provide actionable insights. Our research covers the S&P 500, NASDAQ-100, and emerging digital asset classes to deliver a holistic view of the 2026 financial landscape.</p>
     </div>
-
   </div>
 
   <footer>
-    <p>© 2026 US Market Terminals. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="/about.html">About</a>
+        <a href="/resources.html">Resources</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/legal.html">Terms & Disclaimer</a>
+    </div>
+    <p class="footer-copy">
+        © 2026 US Market Terminals. All rights reserved. <br>
+        Institutional Grade Analytics • Data Integrity • Independent spirit
+    </p>
+    <div class="footer-disclaimer">
+        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Financial Risk Disclosure</strong>
+        US Market Terminals is for educational and informational purposes only. [cite: 4]
+        Nothing on this site constitutes financial, investment, tax, or legal advice. [cite: 5]
+        All investments carry risk, including the potential loss of principal. [cite: 6]
+        Past performance does not guarantee future results. [cite: 6]
+        Always conduct your own research and consult with a qualified financial advisor before making investment decisions. [cite: 7]
+        The software is provided "as is", without warranty of any kind. [cite: 2]
+    </div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
   </footer>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 
 </body>
 </html>
