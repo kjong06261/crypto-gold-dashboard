@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Resources & Tools | US Market Terminals</title>
-    <meta name="description" content="Access professional-grade investment tools, official SEC data sources, and curated financial research materials for serious investors.">
+    <title>Investment Resources & Research Tools | US Market Terminals</title>
+    <meta name="description" content="Curated collection of institutional data sources, professional charting tools, and investment calculators for US market analysis.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://us-dividend-pro.com/resources.html">
 
@@ -37,7 +37,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation Style (Unified with Home) */
+        /* Navigation Style (Unified) */
         .nav { 
             padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.8); backdrop-filter: blur(10px);
@@ -76,7 +76,7 @@
         .resource-tag { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; }
         .tag-internal { background: rgba(59, 130, 246, 0.2); color: var(--accent); }
         .tag-official { background: rgba(16, 185, 129, 0.2); color: var(--green); }
-        .tag-data { background: rgba(139, 92, 246, 0.2); color: var(--purple); }
+        .tag-data { background: rgba(245, 158, 11, 0.2); color: var(--yellow); }
 
         .resource-description { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
 
@@ -86,10 +86,9 @@
         /* Disclaimer Styling */
         .disclaimer-box { background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 16px; padding: 24px; margin-top: 40px; display: flex; gap: 16px; }
         .disclaimer-text { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
-        .disclaimer-text strong { color: var(--yellow); }
 
-        footer { padding: 60px 24px; border-top: 1px solid var(--border); text-align: center; font-size: 0.85rem; color: #475569; background: #080a0e; }
-        footer a { color: #64748b; text-decoration: none; margin: 0 10px; }
+        footer { padding: 80px 24px; border-top: 1px solid var(--border); text-align: center; font-size: 0.85rem; color: #475569; background: #080a0e; }
+        footer a { color: #64748b; text-decoration: none; margin: 0 10px; font-weight: 600; }
         footer a:hover { color: var(--accent); }
 
         @media (max-width: 768px) {
@@ -102,7 +101,7 @@
 <body>
 
     <nav class="nav">
-        <a href="/index.html" class="logo">US MARKET TERMINALS</a>
+        <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
         <div class="nav-links">
             <a href="/calculator.html">Calculator</a>
             <a href="/market-pulse.html">Pulse</a>
@@ -115,13 +114,13 @@
     <div class="container">
         <header class="page-header">
             <h1>Research Resources</h1>
-            <p>Access the core data engines and research materials that power our institutional-grade market analysis.</p>
+            <p>Institutional-grade data engines and primary sources that power our market analysis and quantitative models.</p>
         </header>
 
         <section class="resource-section">
             <div class="section-header">
                 <div class="section-icon">🛠️</div>
-                <h2 class="section-title">Terminal Core Tools</h2>
+                <h2 class="section-title">Proprietary Terminal Tools</h2>
             </div>
             <div class="resource-grid">
                 <div class="resource-card" style="border-color: rgba(59, 130, 246, 0.4);">
@@ -129,11 +128,11 @@
                         <div class="resource-logo">🧮</div>
                         <div class="resource-info">
                             <h3>Strategy Lab</h3>
-                            <span class="resource-tag tag-internal">Internal Tool</span>
+                            <span class="resource-tag tag-internal">Internal</span>
                         </div>
                     </div>
-                    <p class="resource-description">Our advanced compounding & dividend reinvestment simulator. Model your 10-year wealth projection with tax-adjusted variables.</p>
-                    <a href="/calculator.html" class="resource-link">Launch Simulator →</a>
+                    <p class="resource-description">Our advanced compounding simulator. Model multi-decade wealth growth with tax-adjusted dividend reinvestment (DRIP) variables.</p>
+                    <a href="/calculator.html" class="resource-link">Open Strategy Lab →</a>
                 </div>
 
                 <div class="resource-card" style="border-color: rgba(16, 185, 129, 0.4);">
@@ -141,11 +140,11 @@
                         <div class="resource-logo">🌡️</div>
                         <div class="resource-info">
                             <h3>Market Pulse</h3>
-                            <span class="resource-tag tag-internal">Internal Tool</span>
+                            <span class="resource-tag tag-internal">Internal</span>
                         </div>
                     </div>
-                    <p class="resource-description">Real-time proprietary sentiment index. We correlate Nasdaq VIX with Crypto Fear & Greed to identify high-probability buy zones.</p>
-                    <a href="/market-pulse.html" class="resource-link">Check Market Temperature →</a>
+                    <p class="resource-description">Live market sentiment gauge. We correlate Nasdaq VIX with Crypto volatility to identify extreme risk-on/risk-off exhaustion points.</p>
+                    <a href="/market-pulse.html" class="resource-link">Check Market Pulse →</a>
                 </div>
             </div>
         </section>
@@ -161,11 +160,11 @@
                         <div class="resource-logo">📋</div>
                         <div class="resource-info">
                             <h3>SEC EDGAR</h3>
-                            <span class="resource-tag tag-official">Gov Official</span>
+                            <span class="resource-tag tag-official">Official</span>
                         </div>
                     </div>
-                    <p class="resource-description">Access primary source 10-K and 10-Q filings. The absolute gold standard for fundamental equity research and insider monitoring.</p>
-                    <a href="https://www.sec.gov/edgar" target="_blank" rel="noopener noreferrer" class="resource-link">Access EDGAR Database ↗</a>
+                    <p class="resource-description">The gold standard for fundamental equity research. Access all 10-K, 10-Q, and insider trading reports directly from the source.</p>
+                    <a href="https://www.sec.gov/edgar" target="_blank" rel="noopener noreferrer" class="resource-link">Access SEC Filings ↗</a>
                 </div>
 
                 <div class="resource-card">
@@ -173,19 +172,19 @@
                         <div class="resource-logo">🏦</div>
                         <div class="resource-info">
                             <h3>St. Louis FRED</h3>
-                            <span class="resource-tag tag-official">Gov Official</span>
+                            <span class="resource-tag tag-official">Official</span>
                         </div>
                     </div>
-                    <p class="resource-description">Comprehensive macro data including M2 Money Supply, Interest Rates, and Inflation indices directly from the Federal Reserve.</p>
-                    <a href="https://fred.stlouisfed.org" target="_blank" rel="noopener noreferrer" class="resource-link">View Macro Data ↗</a>
+                    <p class="resource-description">Comprehensive macro indicators including interest rates, M2 money supply, and inflation data from the Federal Reserve.</p>
+                    <a href="https://fred.stlouisfed.org" target="_blank" rel="noopener noreferrer" class="resource-link">Macro Economic Data ↗</a>
                 </div>
             </div>
         </section>
 
         <section class="resource-section">
             <div class="section-header">
-                <div class="section-icon">📈</div>
-                <h2 class="section-title">Visualization & Charts</h2>
+                <div class="section-icon">📊</div>
+                <h2 class="section-title">Market Intelligence</h2>
             </div>
             <div class="resource-grid">
                 <div class="resource-card">
@@ -193,22 +192,20 @@
                         <div class="resource-logo">📺</div>
                         <div class="resource-info">
                             <h3>TradingView</h3>
-                            <span class="resource-tag tag-data">Data Lab</span>
+                            <span class="resource-tag tag-data">Charting</span>
                         </div>
                     </div>
-                    <p class="resource-description">Professional charting engine used by our analysts for technical confirmation and algorithmic pattern recognition.</p>
-                    <a href="https://www.tradingview.com" target="_blank" rel="noopener noreferrer" class="resource-link">Open Global Charts ↗</a>
+                    <p class="resource-description">World-class charting engine used by our analysts for technical confirmation and algorithmic pattern monitoring.</p>
+                    <a href="https://www.tradingview.com" target="_blank" rel="noopener noreferrer" class="resource-link">Global Live Charts ↗</a>
                 </div>
 
                 <div class="resource-card">
-                    <div class="resource-header">
-                        <div class="resource-logo">🦎</div>
-                        <div class="resource-info">
-                            <h3>CoinGecko</h3>
-                            <span class="resource-tag tag-data">Data Lab</span>
-                        </div>
+                    <div class="resource-logo">🦎</div>
+                    <div class="resource-info">
+                        <h3>CoinGecko</h3>
+                        <span class="resource-tag tag-data">Digital Assets</span>
                     </div>
-                    <p class="resource-description">The preferred independent aggregator for digital asset metrics, staking yields, and on-chain liquidity monitoring.</p>
+                    <p class="resource-description">Independent cryptocurrency metrics. Essential for tracking staking yields, TVL, and digital asset liquidity across chains.</p>
                     <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer" class="resource-link">Analyze Crypto Data ↗</a>
                 </div>
             </div>
@@ -216,7 +213,7 @@
 
         <div class="disclaimer-box">
             <div class="disclaimer-text">
-                <strong>🛡️ RESEARCH INTEGRITY:</strong> The external links provided are third-party platforms. US Market Terminals maintains no affiliation with these entities. These are provided strictly for educational and data-verification purposes. Always perform independent verification before making capital commitments.
+                <strong>🛡️ DATA DISCLOSURE:</strong> The resources provided above are external third-party platforms. US Market Terminals is not affiliated with these entities. Links are provided for informational and data-verification purposes only. Always perform independent due diligence.
             </div>
         </div>
     </div>
@@ -230,7 +227,7 @@
             <a href="/disclaimer.html">Disclaimer</a>
         </div>
         © 2026 US Market Terminals. All rights reserved.<br>
-        <span style="opacity: 0.5;">Quantitative Analysis Division • Institutional Integrity</span>
+        <span style="opacity: 0.5; display: block; margin-top: 10px;">Quantitative Analysis • Institutional Integrity • Market Transparency</span>
     </footer>
 
 </body>
