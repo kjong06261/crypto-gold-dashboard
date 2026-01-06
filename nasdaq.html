@@ -11,37 +11,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0d12;
-      --panel: #151b23;
-      --border: #2a3441;
+      --bg: #05070a;
+      --panel: #0d1117;
+      --border: #1e222d;
       --text: #e2e8f0;
       --text-sec: #94a3b8;
       --accent: #3b82f6; /* Nasdaq Blue */
       --text-dim: #94a3b8;
     }
     
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
     
     /* Navigation - Unified Style */
     .nav { 
-      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(10, 13, 18, 0.85); 
+      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
       position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
     }
-    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-    .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.1rem; letter-spacing: -1px; }
+    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
     .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
     .nav-links a { text-decoration: none; color: var(--text-sec); transition: 0.3s; }
     .nav-links a:hover { color: var(--accent); }
     
     /* Chart Section */
     .chart-wrapper { height: 75vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .chart-header { padding: 20px; background: #0a0d12; border-bottom: 1px solid var(--border); }
+    .chart-header { padding: 20px; background: var(--bg); border-bottom: 1px solid var(--border); }
     .chart-title { margin: 0; color: #fff; font-size: 1.5rem; display: flex; align-items: center; gap: 12px; font-weight: 800; }
     .live-badge { background: #22c55e; color: #000; font-size: 0.7rem; padding: 3px 10px; border-radius: 4px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; }
 
-    /* Content Section (SEO & Analysis) */
+    /* Content Section */
     .content-section { max-width: 900px; margin: 0 auto; padding: 80px 24px 120px; }
-    .content-section h1 { font-size: 2.2rem; color: #fff; font-weight: 900; margin-bottom: 30px; letter-spacing: -1px; }
+    .content-section h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); color: #fff; font-weight: 900; margin-bottom: 30px; letter-spacing: -1px; }
     .content-section h2 { color: #fff; font-size: 1.6rem; border-left: 5px solid var(--accent); padding-left: 20px; margin-top: 60px; margin-bottom: 20px; }
     .content-section p { color: var(--text-sec); font-size: 1.1rem; text-align: justify; margin-bottom: 25px; line-height: 1.8; }
     .content-section ul { padding-left: 20px; margin-bottom: 30px; color: var(--text-sec); }
@@ -52,12 +53,12 @@
     .analysis-box h3 { margin-top: 0; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
 
     /* Footer - Unified Style */
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 0; }
-    .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; }
+    .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
     .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
     .footer-links a:hover { color: var(--accent); }
-    .footer-copy { color: #475569; font-size: 0.8rem; line-height: 1.6; margin-bottom: 20px; }
-    .footer-disclaimer { max-width: 700px; margin: 20px auto 0; font-size: 0.7rem; color: #334155; text-align: justify; text-align-last: center; line-height: 1.5; }
+    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
+    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -75,7 +76,7 @@
           <a href="/market-pulse.html">Pulse</a>
           <a href="/tools.html">Tools</a>
           <a href="/blog.html">Research</a>
-          <a href="/contact.html" style="background: var(--accent); color: #fff; padding: 6px 12px; border-radius: 6px; margin-left: 10px;">Contact</a>
+          <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
       </div>
     </div>
   </nav>
@@ -137,8 +138,6 @@
       <li><strong>Fibonacci Confluence:</strong> Use the drawing tools to identify retracement levels. The 61.8% "Golden Pocket" is a frequent zone for institutional "dip buying."</li>
     </ul>
 
-    
-
     <h2>2. The Macro-Tech Nexus</h2>
     <p>
       In 2026, technology valuations are inextricably linked to the <strong>Real Yield of the US 10-Year Treasury</strong>. High-growth tech stocks are "long duration" assets, meaning their present value is sensitive to interest rate fluctuations. By monitoring the real-time chart above, investors can observe how the Nasdaq reacts to Federal Reserve announcements or CPI inflation data.
@@ -152,7 +151,7 @@
 
   <footer>
     <div class="footer-links">
-        <a href="/about.html">About Research</a>
+        <a href="/about.html">About</a>
         <a href="/resources.html">Resources</a>
         <a href="/faq.html">FAQ</a>
         <a href="/privacy.html">Privacy</a>
@@ -163,7 +162,8 @@
         Institutional Grade Analytics • Data Integrity • Independent Research
     </p>
     <div class="footer-disclaimer">
-        <strong>DISCLAIMER:</strong> US Market Terminals is for educational and informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
+        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Financial Risk Disclosure</strong>
+        US Market Terminals is for educational and informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
     </div>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
   </footer>
