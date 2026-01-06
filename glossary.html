@@ -3,65 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Financial Tools Glossary | US Market Terminals</title>
+  <title>Financial Tools Glossary: Technical & Fundamental Indicators | US Market Terminals</title>
+  <meta name="description" content="A comprehensive glossary of financial tools, technical indicators, and investment terms. Master RSI, MACD, Dividend Aristocrats, and more.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    body { background: #0a0d12; color: #e2e8f0; font-family: 'Inter', sans-serif; line-height: 1.7; padding: 40px; }
+    :root {
+      --bg: #0a0d12; --panel: #111827; --border: #1f2937;
+      --text: #e2e8f0; --accent: #3b82f6; --muted: #94a3b8;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; padding: 40px 20px; margin: 0; }
     .container { max-width: 900px; margin: 0 auto; }
-    h1 { border-bottom: 2px solid #3b82f6; padding-bottom: 20px; margin-bottom: 40px; }
-    .term-box { margin-bottom: 30px; background: #111827; padding: 25px; border-radius: 12px; border: 1px solid #1f2937; }
-    .term-title { color: #3b82f6; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; display: block; }
-    .nav-btn { display: inline-block; margin-bottom: 30px; color: #94a3b8; text-decoration: none; }
+    
+    h1 { font-size: 2.2rem; font-weight: 800; border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; color: #fff; letter-spacing: -1px; }
+    
+    .term-box { margin-bottom: 25px; background: var(--panel); padding: 30px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s; }
+    .term-box:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+    
+    .term-title { color: var(--accent); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; display: block; letter-spacing: -0.5px; }
+    .term-desc { color: var(--muted); font-size: 1.05rem; text-align: justify; }
+
+    .nav-btn { display: inline-flex; align-items: center; margin-bottom: 30px; color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: 0.2s; }
+    .nav-btn:hover { color: #fff; }
+
+    footer { text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); color: #475569; font-size: 0.85rem; }
+    footer a { color: #64748b; text-decoration: none; margin: 0 10px; }
   </style>
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="nav-btn">← Back to Terminal</a>
-    <h1>Tools & Indicators Glossary</h1>
+    <a href="/index.html" class="nav-btn">← Back to Terminal Gateway</a>
+    <h1>Financial Tools & Indicators Glossary</h1>
+    <p style="color: var(--muted); margin-bottom: 50px; font-size: 1.1rem;">
+      Master the essential metrics and technical indicators used by institutional traders. Our glossary provides deep insights into both fundamental and technical analysis tools.
+    </p>
 
     <div class="term-box">
       <span class="term-title">Accumulation/Distribution Line (A/D Line)</span>
-      A volume-based indicator designed to measure the cumulative flow of money into and out of a security. It helps traders confirm trends by comparing price movements with volume.
+      <div class="term-desc">
+        A volume-based technical indicator designed to measure the cumulative flow of money into and out of a security. By comparing price movements with volume, the A/D Line helps traders confirm the strength of a current trend. If the price is rising but the A/D Line is falling, it suggests potential distribution (selling) and a possible trend reversal.
+      </div>
     </div>
 
     <div class="term-box">
       <span class="term-title">Bollinger Bands</span>
-      A volatility indicator consisting of a moving average (simple) and two standard deviation lines plotted above and below the moving average. When the bands tighten, it signals a period of low volatility.
+      <div class="term-desc">
+        A volatility-measuring tool consisting of a simple moving average and two standard deviation bands. When the market becomes more volatile, the bands widen; during periods of low volatility, the bands contract (known as a "Squeeze"). Traders use these bands to identify overbought or oversold conditions and to predict potential explosive breakouts.
+      </div>
     </div>
 
     <div class="term-box">
       <span class="term-title">Dividend Aristocrats</span>
-      S&P 500 companies that have increased their dividend payouts for at least 25 consecutive years. These are considered defensive assets during recessionary periods.
+      <div class="term-desc">
+        An elite group of S&P 500 companies that have consistently increased their annual dividend payouts for at least 25 consecutive years. These companies are often large-cap industry leaders with robust cash flows, making them highly desirable defensive assets for income-focused investors during recessionary periods or market downturns.
+      </div>
     </div>
 
     <div class="term-box">
       <span class="term-title">Fibonacci Retracement</span>
-      A technical tool used to identify potential support and resistance levels based on key numbers (23.6%, 38.2%, 50%, 61.8%). Traders use these levels to place entry and exit orders.
+      <div class="term-desc">
+        A technical analysis tool used to identify potential support and resistance levels based on the mathematical ratios of the Fibonacci sequence. The most common levels are 23.6%, 38.2%, 50%, and 61.8%. Traders plot these levels after a significant price move to find optimal entry points where the price is likely to bounce or stall.
+      </div>
     </div>
 
     <div class="term-box">
       <span class="term-title">Golden Cross</span>
-      A bullish breakout pattern formed from a crossover involving a security's short-term moving average (such as the 50-day moving average) breaking above its long-term moving average (such as the 200-day moving average).
+      <div class="term-desc">
+        A powerful bullish breakout signal that occurs when a short-term moving average (typically the 50-day) crosses above a long-term moving average (typically the 200-day). This pattern is widely used by institutional investors to confirm a long-term shift from a bear market to a bull market, signaling sustained upward momentum.
+      </div>
     </div>
 
     <div class="term-box">
       <span class="term-title">Heatmap (Market Map)</span>
-      A data visualization technique that shows the relative size (Market Cap) and performance (Color) of stocks in a single glance. Green indicates positive performance, while red indicates negative.
+      <div class="term-desc">
+        A sophisticated data visualization technique used to represent the relative size (Market Capitalization) and real-time performance of securities. By using color coding—typically green for price appreciation and red for depreciation—heatmaps allow investors to instantly scan sector rotation and identify market-wide trends at a single glance.
+      </div>
     </div>
 
     <div class="term-box">
       <span class="term-title">MACD (Moving Average Convergence Divergence)</span>
-      A trend-following momentum indicator that shows the relationship between two moving averages of a security’s price. It is calculated by subtracting the 26-period EMA from the 12-period EMA.
+      <div class="term-desc">
+        A trend-following momentum oscillator that displays the relationship between two moving averages of a security’s price. By calculating the difference between a 12-day and 26-day EMA, the MACD provides signals for trend direction and strength. When the MACD line crosses above the signal line, it generates a bullish momentum signal.
+      </div>
     </div>
 
     <div class="term-box">
       <span class="term-title">RSI (Relative Strength Index)</span>
-      A momentum oscillator that measures the speed and change of price movements. RSI oscillates between zero and 100. Traditionally, RSI is considered overbought when above 70 and oversold when below 30.
+      <div class="term-desc">
+        A momentum oscillator that measures the speed and change of price movements on a scale of 0 to 100. It is primarily used to identify overbought (typically above 70) or oversold (typically below 30) conditions. RSI is a staple tool for contrarian traders looking for price exhausted levels where a reversal is highly probable.
+      </div>
     </div>
-    
-    <div style="text-align:center; margin-top:50px; color:#64748b; font-size:0.8rem;">
-      Data provided for educational purposes. © 2026 US Market Terminals.
-    </div>
+
+    <footer>
+      <div style="margin-bottom: 20px;">
+        <a href="/index.html">Home</a> | <a href="/privacy.html">Privacy Policy</a> | <a href="/disclaimer.html">Disclaimer</a>
+      </div>
+      Data provided for educational purposes. © 2026 US Market Terminals. All rights reserved.
+    </footer>
   </div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
