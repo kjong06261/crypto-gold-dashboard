@@ -1,22 +1,32 @@
-# US Market Terminals - Robots.txt
-# Optimized for Google AdSense & SEO
+# US Market Terminals - Optimized Robots.txt
+# Last Updated: January 6, 2026
 
 User-agent: *
 Allow: /
 Disallow: /private/
 Disallow: /search/
+Disallow: /admin/
+Disallow: /cgi-bin/
 
-# Google AdSense Bot (Critical for Approval)
+# Google AdSense Bot (Critical for crawling ad-relevant content)
 User-agent: Mediapartners-Google
 Allow: /
 
-# Google Search Bot
+# Google Search Bot (Standard SEO)
 User-agent: Googlebot
 Allow: /
 
-# Google Ads Bot
+# Google Ads Bot (Quality score and landing page check)
 User-agent: AdsBot-Google
 Allow: /
+
+# Bing & Other Search Engines
+User-agent: Bingbot
+Allow: /
+
+# Prevent some aggressive scrapers but allow helpful ones
+User-agent: CCBot
+Disallow: /
 
 # Sitemap Location
 Sitemap: https://us-dividend-pro.com/sitemap.xml
