@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Market Insights & Research Hub | US Market Terminals</title>
-  <meta name="description" content="In-depth analysis on US Stock Market trends, macroeconomics, and asset allocation strategies for 2026. Institutional grade research for independent investors.">
+  <title>Educational Articles | US Market Terminals</title>
+  <meta name="description" content="Educational articles about financial concepts, market terminology, and investment basics. For learning purposes only.">
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -26,9 +26,12 @@
 
     /* Content */
     .container { max-width: 900px; margin: 0 auto; padding: 80px 24px; }
-    .header { text-align: center; margin-bottom: 80px; }
+    .header { text-align: center; margin-bottom: 60px; }
     .header h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 20px; font-weight: 900; letter-spacing: -2px; color: #fff; }
     .header p { color: var(--text-dim); font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
+
+    .warning-banner { max-width: 900px; margin: -30px auto 50px; padding: 20px 30px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 16px; text-align: center; }
+    .warning-banner p { color: #fbbf24; font-size: 0.9rem; margin: 0; }
 
     /* List Grid */
     .article-list { display: flex; flex-direction: column; gap: 24px; }
@@ -45,9 +48,11 @@
     .article-preview:hover .read-more { color: var(--accent); }
 
     /* Footer */
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px; text-align: center; margin-top: 100px; }
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 100px; }
     .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
     .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
     .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
     @media (max-width: 768px) { .nav-links { display: none; } .container { padding-top: 40px; } }
@@ -62,7 +67,7 @@
           <a href="/calculator.html">Calculator</a>
           <a href="/market-pulse.html">Pulse</a>
           <a href="/tools.html">Tools</a>
-          <a href="/blog.html" style="color: var(--accent);">Research</a>
+          <a href="/blog.html" style="color: var(--accent);">Learn</a>
           <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
       </div>
     </div>
@@ -70,80 +75,84 @@
 
   <div class="container">
     <header class="header">
-      <h1>Market Insights</h1>
-      <p>Institutional-grade quantitative analysis and tactical research for 2026 investors.</p>
+      <h1>Learning Resources</h1>
+      <p>Educational articles about financial concepts and market terminology. For learning purposes only.</p>
     </header>
+
+    <div class="warning-banner">
+      <p>⚠️ <strong>Educational Content Only:</strong> These articles explain financial concepts for learning purposes. They are not investment advice or recommendations.</p>
+    </div>
 
     <div class="article-list">
       
       <a href="/blog/barbell-strategy-guide.html" class="article-preview">
-        <span class="meta">Asset Allocation • Jan 2026</span>
-        <h2 class="article-title">The Barbell Strategy: Re-Engineering Portfolios for the AI Era</h2>
-        <p class="excerpt">Discover the optimal balance between high-beta AI growth stocks and stable dividend generators to construct an anti-fragile 2026 portfolio.</p>
-        <span class="read-more">Read Full Analysis →</span>
+        <span class="meta">Concepts • Educational</span>
+        <h2 class="article-title">Understanding the Barbell Strategy Concept</h2>
+        <p class="excerpt">Learn about the barbell portfolio concept, which combines different risk levels. This article explains the theory—not a recommendation to use it.</p>
+        <span class="read-more">Read Article →</span>
       </a>
 
       <a href="/blog/bitcoin-corporate.html" class="article-preview">
-        <span class="meta">Digital Assets • Jan 2026</span>
-        <h2 class="article-title">Bitcoin as Treasury Reserve: The Corporate Renaissance</h2>
-        <p class="excerpt">Analyze how FASB accounting shifts and the "Bitcoin Standard" are transforming corporate balance sheets in 2026.</p>
-        <span class="read-more">Read Full Analysis →</span>
+        <span class="meta">Concepts • Educational</span>
+        <h2 class="article-title">Bitcoin on Corporate Balance Sheets: An Overview</h2>
+        <p class="excerpt">An educational overview of how some companies have added Bitcoin to their treasury. Discusses accounting treatment and considerations.</p>
+        <span class="read-more">Read Article →</span>
       </a>
 
       <a href="/blog/crypto-staking-dividend.html" class="article-preview">
-        <span class="meta">On-Chain Research • Jan 2026</span>
-        <h2 class="article-title">Crypto Staking: The Evolution of Digital Dividends</h2>
-        <p class="excerpt">A deep dive into Ethereum and Solana staking yields. Understanding MEV rewards and liquid staking risk management.</p>
-        <span class="read-more">Read Full Analysis →</span>
+        <span class="meta">Concepts • Educational</span>
+        <h2 class="article-title">What Is Crypto Staking? A Basic Explainer</h2>
+        <p class="excerpt">Learn how proof-of-stake networks work and what staking means. This explains the concept—staking involves significant risks.</p>
+        <span class="read-more">Read Article →</span>
       </a>
 
       <a href="/blog/dividend-aristocrats-2026.html" class="article-preview">
-        <span class="meta">Income Strategy • Jan 2026</span>
-        <h2 class="article-title">Top 5 Dividend Aristocrats for 2026: Built for Resilience</h2>
-        <p class="excerpt">Quantitative screening of J&J, Coca-Cola, and Realty Income based on 2026 FCF payout ratios and interest coverage.</p>
-        <span class="read-more">Read Full Analysis →</span>
+        <span class="meta">Concepts • Educational</span>
+        <h2 class="article-title">What Are Dividend Aristocrats? Understanding the Concept</h2>
+        <p class="excerpt">Learn what qualifies a company as a "Dividend Aristocrat" and how this classification is defined. Not a recommendation of any specific stocks.</p>
+        <span class="read-more">Read Article →</span>
       </a>
 
       <a href="/blog/nasdaq-growth-strategy.html" class="article-preview">
-        <span class="meta">Tech Growth • Jan 2026</span>
-        <h2 class="article-title">NASDAQ-100: Harvesting Growth in the Generative AI Era</h2>
-        <p class="excerpt">How to optimize tech allocation with the Core-Satellite framework. Tracking capital expenditure vs. revenue efficiency.</p>
-        <span class="read-more">Read Full Analysis →</span>
+        <span class="meta">Concepts • Educational</span>
+        <h2 class="article-title">Understanding the Nasdaq-100 Index</h2>
+        <p class="excerpt">Learn about what the Nasdaq-100 index tracks, how it's weighted, and why investors often discuss it. Educational overview only.</p>
+        <span class="read-more">Read Article →</span>
       </a>
 
       <a href="/blog/realty-income-o.html" class="article-preview">
-        <span class="meta">REIT Analysis • Jan 2026</span>
-        <h2 class="article-title">Realty Income (O): The Monthly Dividend Gold Standard</h2>
-        <p class="excerpt">An institutional look at the NNN lease model and AFFO sustainability in a 5% interest rate regime.</p>
-        <span class="read-more">Read Full Analysis →</span>
+        <span class="meta">Concepts • Educational</span>
+        <h2 class="article-title">Understanding REITs: Realty Income as a Case Study</h2>
+        <p class="excerpt">Learn about REIT structures using Realty Income as an example. Explains NNN leases and AFFO metrics—not a stock recommendation.</p>
+        <span class="read-more">Read Article →</span>
       </a>
 
       <a href="/blog/dividend-growth-strategy.html" class="article-preview">
-        <span class="meta">Yield Optimization • Jan 2026</span>
-        <h2 class="article-title">Dividend Growth Strategy: The Ultimate Wealth Engine</h2>
-        <p class="excerpt">Learn the power of Yield on Cost (YOC) and how to select stocks that consistently outperform inflation through payout hikes.</p>
-        <span class="read-more">Read Full Analysis →</span>
+        <span class="meta">Concepts • Educational</span>
+        <h2 class="article-title">Understanding Dividend Growth Investing</h2>
+        <p class="excerpt">Learn about the concept of dividend growth investing and terms like "Yield on Cost." Educational explanation of the approach.</p>
+        <span class="read-more">Read Article →</span>
       </a>
 
       <a href="/blog/reits-ffo-guide.html" class="article-preview">
-        <span class="meta">Valuation Guide • Jan 2026</span>
-        <h2 class="article-title">FFO vs AFFO: The Pulse of REIT Investing</h2>
-        <p class="excerpt">Master the critical accounting metrics needed to evaluate real estate stock safety beyond traditional net income.</p>
-        <span class="read-more">Read Full Analysis →</span>
+        <span class="meta">Terminology • Educational</span>
+        <h2 class="article-title">FFO vs AFFO: Understanding REIT Metrics</h2>
+        <p class="excerpt">Learn what FFO (Funds From Operations) and AFFO mean in REIT analysis. Explains the terminology and why these metrics exist.</p>
+        <span class="read-more">Read Article →</span>
       </a>
 
       <a href="/blog/covered-call-hedging.html" class="article-preview">
-        <span class="meta">Risk Management • Jan 2026</span>
-        <h2 class="article-title">Monetizing Volatility: The Covered Call Hedge Strategy</h2>
-        <p class="excerpt">Using JEPQ and JEPI to generate defensive income and hedge Nasdaq downside while maintaining growth exposure.</p>
-        <span class="read-more">Read Full Analysis →</span>
+        <span class="meta">Concepts • Educational</span>
+        <h2 class="article-title">What Are Covered Calls? A Concept Explainer</h2>
+        <p class="excerpt">Learn how covered call strategies work conceptually. Options trading involves significant risks—this is educational only.</p>
+        <span class="read-more">Read Article →</span>
       </a>
 
       <a href="/blog/inflation-portfolio-2026.html" class="article-preview">
-        <span class="meta">Macro Strategy • Jan 2026</span>
-        <h2 class="article-title">Defeating Inflation: The 2026 Resilience Portfolio</h2>
-        <p class="excerpt">A strategic blueprint combining hard assets, pricing power equities, and digital scarcity to protect purchasing power.</p>
-        <span class="read-more">Read Full Analysis →</span>
+        <span class="meta">Concepts • Educational</span>
+        <h2 class="article-title">Understanding Inflation and Investments</h2>
+        <p class="excerpt">Learn about how inflation affects investments and what asset classes investors commonly discuss. Educational overview only.</p>
+        <span class="read-more">Read Article →</span>
       </a>
 
     </div>
@@ -157,9 +166,13 @@
         <a href="/privacy.html">Privacy</a>
         <a href="/legal.html">Terms & Disclaimer</a>
     </div>
+    <p class="footer-copy">
+        © 2026 US Market Terminals. All rights reserved. <br>
+        Educational Content • For Informational Purposes Only
+    </p>
     <div class="footer-disclaimer">
-        <strong>Financial Risk Disclosure</strong>
-        US Market Terminals is for educational purposes only. Investing involves high risk of loss. Past performance does not guarantee future results. All content is "as is" without warranty.
+        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Important Disclaimer</strong>
+        US Market Terminals provides educational content for informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results. Always consult qualified professionals before making investment decisions.
     </div>
   </footer>
 
