@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | US Market Terminals - Data-Driven Market Intelligence</title>
-    <meta name="description" content="Learn about US Market Terminals, an institutional-grade research platform providing data-driven analytics for individual investors in 2026.">
+    <title>About | US Market Terminals - Educational Resources</title>
+    <meta name="description" content="Learn about US Market Terminals, an educational website providing learning resources about US markets and basic financial concepts.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,18 +52,25 @@
             background: var(--panel); padding: 40px; border-radius: 20px; border: 1px solid var(--border);
             margin: 40px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
         }
-        .mission { font-size: 1.25rem; font-weight: 700; font-style: italic; color: var(--accent); margin-bottom: 15px; display: block; }
         
         p { margin-bottom: 25px; color: var(--text-dim); font-size: 1.1rem; text-align: justify; }
 
-        .service-list { 
+        .warning-box { 
+            background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); 
+            border-radius: 16px; padding: 30px; margin: 40px 0;
+        }
+        .warning-box h3 { color: #f59e0b; margin-bottom: 15px; font-size: 1.2rem; }
+        .warning-box p { color: #fbbf24; margin-bottom: 0; }
+
+        .content-list { 
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 40px 0;
         }
-        .service-item {
+        .content-item {
             background: rgba(255,255,255,0.02); padding: 25px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s;
         }
-        .service-item:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .service-item strong { color: #fff; display: block; margin-bottom: 10px; font-size: 1.2rem; }
+        .content-item:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .content-item strong { color: #fff; display: block; margin-bottom: 10px; font-size: 1.2rem; }
+        .content-item p { margin-bottom: 0; font-size: 1rem; }
 
         .contact-btn {
             display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; 
@@ -75,7 +82,9 @@
         footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 100px; }
         .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-        .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
+        .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -92,52 +101,64 @@
                 <a href="/calculator.html">Calculator</a>
                 <a href="/market-pulse.html">Pulse</a>
                 <a href="/tools.html">Tools</a>
-                <a href="/blog.html">Research</a>
+                <a href="/blog.html">Learn</a>
                 <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
             </div>
         </div>
     </nav>
 
     <div class="container">
-        <h1>About the Project</h1>
+        <h1>About This Website</h1>
         
         <div class="highlight-card">
-            <span class="mission">"Institutional Market Intelligence for Independent Investors"</span>
-            <p style="margin-bottom: 0; color: var(--text);"><strong>US Market Terminals</strong> is a specialized financial research platform. We leverage advanced data visualization and quantitative modeling to democratize institutional-grade market insights for the global investing community.</p>
+            <p style="margin-bottom: 0; color: var(--text);"><strong>US Market Terminals</strong> is an educational website created to help people learn about basic financial concepts, market terminology, and publicly available data sources. This is a personal project, not a professional financial service.</p>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠️ Important Disclaimer</h3>
+            <p>This website is for educational purposes only. It does not provide investment advice, real-time market data, or trading recommendations. We are not registered investment advisors. Always consult qualified financial professionals before making investment decisions.</p>
         </div>
         
-        <h2>Our Core Vision</h2>
-        <p>In the complex financial landscape of 2026, information asymmetry remains the biggest hurdle for individual investors. Our vision is to empower every independent trader with the analytical tools, real-time data terminals, and systematic research necessary to make anti-fragile, data-driven decisions in US equities and digital asset markets.</p>
+        <h2>What This Site Offers</h2>
+        <p>This website provides free educational resources to help visitors understand basic financial concepts. All content is meant for learning purposes only.</p>
         
-        <h2>Our Specialized Services</h2>
-        <div class="service-list">
-            <div class="service-item">
-                <strong>Nasdaq Growth Analytics</strong>
-                Quantitative breakdown of Nasdaq-100 constituents, focusing on AI-driven productivity and FCF yield.
+        <div class="content-list">
+            <div class="content-item">
+                <strong>Educational Articles</strong>
+                <p>Written guides explaining financial concepts like compound interest, dividends, index funds, and market terminology.</p>
             </div>
-            <div class="service-item">
-                <strong>Dividend Cash Flow Engine</strong>
-                Strategic tracking of Dividend Aristocrats and REITs using our proprietary AFFO sustainability models.
+            <div class="content-item">
+                <strong>Demo Calculators</strong>
+                <p>Simple tools to illustrate how compound interest works. Results are hypothetical examples, not predictions.</p>
             </div>
-            <div class="service-item">
-                <strong>Crypto Matrix Terminal</strong>
-                Comprehensive on-chain data analysis and staking yield monitoring for institutional-grade digital assets.
+            <div class="content-item">
+                <strong>Chart Embeds</strong>
+                <p>Third-party TradingView widgets for reference. We don't control this data—it may be delayed.</p>
             </div>
-            <div class="service-item">
-                <strong>Macro Research Reports</strong>
-                Deep-dive strategic insights on Federal Reserve policies, inflation hedges, and sector rotation.
+            <div class="content-item">
+                <strong>Resource Links</strong>
+                <p>Links to official sources like SEC EDGAR, FRED, Investor.gov, and other educational websites.</p>
             </div>
         </div>
         
-        <h2>Analytical Values</h2>
-        <p><strong>1. Data Transparency:</strong> Every report published is grounded in verifiable public filings (SEC) and real-time API data streams.</p>
-        <p><strong>2. Objective Neutrality:</strong> We eliminate emotional bias by focusing strictly on mathematical indicators and historical backtesting.</p>
-        <p><strong>3. Long-Term Sustainability:</strong> Our research prioritizes wealth preservation and compounding growth over short-term noise.</p>
+        <h2>What This Site Does NOT Offer</h2>
+        <p>To be clear about what this website is and isn't:</p>
+        <p>❌ <strong>No investment advice</strong> — We don't tell you what to buy, sell, or hold.</p>
+        <p>❌ <strong>No real-time data</strong> — Any market data shown may be delayed or for demonstration only.</p>
+        <p>❌ <strong>No proprietary analysis</strong> — We don't have special algorithms or exclusive data sources.</p>
+        <p>❌ <strong>No professional services</strong> — This is an educational website, not a financial firm.</p>
         
-        <h2>Connect with Us</h2>
-        <p>We value collaboration and community feedback. For institutional inquiries, research partnerships, or technical support, please reach out to our team.</p>
+        <h2>Data Sources</h2>
+        <p>When we reference market information, it comes from publicly available sources including:</p>
+        <p>• <strong>SEC EDGAR</strong> — For company filings and disclosures</p>
+        <p>• <strong>FRED</strong> — For economic data from the Federal Reserve</p>
+        <p>• <strong>TradingView</strong> — For embedded chart widgets</p>
+        <p>• <strong>Company Investor Relations</strong> — For official company information</p>
         
-        <a href="/contact.html" class="contact-btn">Message Research Team</a>
+        <h2>Contact</h2>
+        <p>If you have questions, feedback, or notice any errors on the site, feel free to reach out.</p>
+        
+        <a href="/contact.html" class="contact-btn">Send a Message</a>
     </div>
 
     <footer>
@@ -150,8 +171,12 @@
         </div>
         <p class="footer-copy">
             © 2026 US Market Terminals. All rights reserved. <br>
-            Independent Analysis • Data Integrity • Market Transparency
+            Educational Content • For Informational Purposes Only
         </p>
+        <div class="footer-disclaimer">
+            <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Important Disclaimer</strong>
+            US Market Terminals provides educational content for informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results. Always consult qualified professionals before making investment decisions.
+        </div>
     </footer>
 
 </body>
