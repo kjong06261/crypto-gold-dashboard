@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is a Bond? | US Market Terminals</title>
+  <meta name="description" content="Educational overview explaining what bonds are, how they work, and key concepts including coupon rates, maturity, and credit risk.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
+      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.1);
+      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; transition: 0.3s; }
+    
+    .nav { 
+      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
+    }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
+
+    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
+
+    .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
+
+    .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
+    .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
+
+    .content { font-size: 1.1rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: -0.5px; }
+    .content p { margin-bottom: 28px; text-align: justify; line-height: 1.9; }
+    .content strong { color: #fff; }
+
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    .info-box p:last-child { margin-bottom: 0; }
+
+    .key-point { background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #34d399; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #6ee7b7; font-size: 0.95rem; }
+
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
+    .reading-section ul { margin: 0; padding-left: 20px; }
+    .reading-section li { margin-bottom: 10px; }
+    .reading-section a { color: #93c5fd; }
+    .reading-section a:hover { color: #bfdbfe; }
+
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+
+    @media (max-width: 768px) { h1 { font-size: 2rem; } .content { font-size: 1rem; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">Educational Content</div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="warning-box">
+      <h4>⚠️ Educational Purpose Only</h4>
+      <p>This article explains basic concepts about bonds for educational purposes. It is not investment advice. All investments carry risk, including loss of principal. Consult a qualified financial advisor before making any investment decisions.</p>
+    </div>
+
+    <article class="article-header">
+      <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
+      <span class="tag">Fundamentals</span>
+      <h1>What is a Bond?</h1>
+      <div class="meta">
+        <span>Beginner Guide</span>
+        <span>•</span>
+        <span>5 min read</span>
+      </div>
+    </article>
+
+    <div class="content">
+      <p>
+        A <strong>bond</strong> is essentially a loan that you make to a borrower—typically a government or corporation. In exchange for lending your money, the borrower promises to pay you interest and return your principal at a specified future date. Bonds are one of the main asset classes alongside stocks and are often considered a more conservative investment.
+      </p>
+
+      <h2>1. How Bonds Work</h2>
+      <p>
+        When you buy a bond, you're lending money to the issuer. The issuer agrees to pay you a specified interest rate (called the coupon) and to repay the original amount (called the principal or face value) when the bond matures.
+      </p>
+      <p>
+        For example, if you buy a $1,000 bond with a 5% annual coupon that matures in 10 years, you would receive $50 per year in interest payments, and after 10 years, you'd get your $1,000 back.
+      </p>
+
+      <div class="info-box">
+        <h3>📋 Key Terms</h3>
+        <p><strong>Face Value (Par):</strong> The amount the bond will be worth at maturity, typically $1,000</p>
+        <p><strong>Coupon Rate:</strong> The annual interest rate paid on the bond</p>
+        <p><strong>Maturity Date:</strong> When the bond expires and principal is repaid</p>
+        <p><strong>Yield:</strong> The effective return on a bond, which can differ from the coupon rate</p>
+      </div>
+
+      <h2>2. Types of Bonds</h2>
+      <p>
+        <strong>Government Bonds:</strong> Issued by national governments. U.S. Treasury bonds are considered among the safest investments because they're backed by the U.S. government. However, "safe" doesn't mean risk-free—they can still lose value if interest rates rise.
+      </p>
+      <p>
+        <strong>Municipal Bonds:</strong> Issued by state and local governments to fund public projects. Interest is often exempt from federal taxes and sometimes state taxes.
+      </p>
+      <p>
+        <strong>Corporate Bonds:</strong> Issued by companies to raise capital. They typically offer higher interest rates than government bonds but carry more risk.
+      </p>
+
+      <div class="key-point">
+        <h4>💡 The Risk-Return Tradeoff</h4>
+        <p>Generally, bonds that offer higher interest rates carry more risk. A company offering a 10% yield is likely considered riskier than the U.S. government offering 4%. The higher rate compensates investors for taking on additional risk.</p>
+      </div>
+
+      <h2>3. How Bond Prices Move</h2>
+      <p>
+        Bond prices and interest rates move in opposite directions. When interest rates rise, existing bond prices fall. When interest rates fall, existing bond prices rise.
+      </p>
+      <p>
+        This happens because of competition. If you own a bond paying 3% and new bonds are issued paying 5%, your bond becomes less attractive. Its price must drop so that buyers get a competitive return.
+      </p>
+
+      <h2>4. Credit Risk</h2>
+      <p>
+        Credit risk is the possibility that the bond issuer won't be able to make interest payments or repay the principal. Rating agencies like Moody's, S&P, and Fitch assess this risk and assign credit ratings.
+      </p>
+      <p>
+        Bonds rated BBB- or higher are considered "investment grade." Bonds rated below this are called "high-yield" or "junk" bonds—they offer higher interest rates but have a greater chance of default.
+      </p>
+
+      <h2>5. Risks of Bond Ownership</h2>
+      <p>
+        Many people think bonds are "safe," but they carry several risks:
+      </p>
+      <p>
+        <strong>Interest Rate Risk:</strong> If rates rise, your bond's market value falls. This matters if you need to sell before maturity.
+      </p>
+      <p>
+        <strong>Credit/Default Risk:</strong> The issuer might not pay. Even highly-rated issuers can run into trouble.
+      </p>
+      <p>
+        <strong>Inflation Risk:</strong> If inflation exceeds your bond's interest rate, your purchasing power declines even though you're receiving payments.
+      </p>
+      <p>
+        <strong>Reinvestment Risk:</strong> When your bond matures or pays interest, you might have to reinvest at lower rates.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Bonds are debt instruments that pay interest and return principal at maturity. They're often viewed as less volatile than stocks, but they're not risk-free. Interest rate changes, credit risk, and inflation can all affect bond returns. Understanding these basics is essential before considering bonds as part of any investment approach.
+      </p>
+
+      <div class="reading-section">
+        <h3>📚 Further Reading</h3>
+        <ul>
+          <li><a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products/bonds" target="_blank" rel="noopener">SEC: Introduction to Bonds</a></li>
+          <li><a href="https://www.investopedia.com/terms/b/bond.asp" target="_blank" rel="noopener">Investopedia: Bond Definition</a></li>
+          <li><a href="https://www.treasurydirect.gov/marketable-securities/" target="_blank" rel="noopener">TreasuryDirect: U.S. Treasury Securities</a></li>
+        </ul>
+      </div>
+
+      <div class="warning-box" style="margin-top: 50px;">
+        <h4>⚠️ Final Reminder</h4>
+        <p>This article is for educational purposes only and does not constitute investment advice. Bond investments can lose value, and issuers can default. Always do your own research and consider consulting a qualified financial advisor before investing.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms & Disclaimer</a>
+    </div>
+    <div class="footer-disclaimer">
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk. Past performance does not guarantee future results.
+    </div>
+  </footer>
+
+</body>
+</html>
