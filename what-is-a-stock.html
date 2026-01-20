@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is a Stock? | US Market Terminals</title>
+  <meta name="description" content="Educational overview explaining what stocks are, how they work, and key concepts for beginners including shares, equity, and ownership.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
+      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.1);
+      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; transition: 0.3s; }
+    
+    .nav { 
+      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
+    }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
+
+    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
+
+    .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
+
+    .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
+    .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
+
+    .content { font-size: 1.1rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: -0.5px; }
+    .content p { margin-bottom: 28px; text-align: justify; line-height: 1.9; }
+    .content strong { color: #fff; }
+
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    .info-box p:last-child { margin-bottom: 0; }
+
+    .key-point { background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
+    .reading-section ul { margin: 0; padding-left: 20px; }
+    .reading-section li { margin-bottom: 10px; }
+    .reading-section a { color: #93c5fd; }
+    .reading-section a:hover { color: #bfdbfe; }
+
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+
+    @media (max-width: 768px) { h1 { font-size: 2rem; } .content { font-size: 1rem; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">Educational Content</div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="warning-box">
+      <h4>⚠️ Educational Purpose Only</h4>
+      <p>This article explains basic concepts about stocks for educational purposes. It is not investment advice. All investments carry risk, including loss of principal. Consult a qualified financial advisor before making any investment decisions.</p>
+    </div>
+
+    <article class="article-header">
+      <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
+      <span class="tag">Fundamentals</span>
+      <h1>What is a Stock?</h1>
+      <div class="meta">
+        <span>Beginner Guide</span>
+        <span>•</span>
+        <span>5 min read</span>
+      </div>
+    </article>
+
+    <div class="content">
+      <p>
+        A <strong>stock</strong> represents a share of ownership in a company. When you buy a stock, you become a partial owner—called a shareholder—of that business. This is one of the most fundamental concepts in investing, yet it's often misunderstood by beginners.
+      </p>
+
+      <h2>1. How Stocks Work</h2>
+      <p>
+        Companies issue stocks to raise money. Instead of borrowing from a bank, a company can sell small pieces of ownership to the public. In exchange for your money, you receive shares that represent your ownership stake.
+      </p>
+      <p>
+        For example, if a company has 1,000,000 shares outstanding and you own 1,000 shares, you own 0.1% of that company. As a shareholder, you typically have certain rights, such as voting on major company decisions and receiving dividends if the company distributes profits.
+      </p>
+
+      <div class="info-box">
+        <h3>📋 Key Terms</h3>
+        <p><strong>Share:</strong> A single unit of ownership in a company</p>
+        <p><strong>Shareholder:</strong> A person or entity that owns shares in a company</p>
+        <p><strong>Outstanding Shares:</strong> The total number of shares that exist for a company</p>
+        <p><strong>Equity:</strong> Another word for stock or ownership</p>
+      </div>
+
+      <h2>2. How Stock Prices Move</h2>
+      <p>
+        Stock prices change based on supply and demand. If more people want to buy a stock than sell it, the price tends to go up. If more people want to sell than buy, the price tends to go down.
+      </p>
+      <p>
+        Many factors influence this supply and demand: company earnings, economic conditions, industry trends, investor sentiment, and countless other variables. This is why predicting stock prices is extremely difficult—even for professionals.
+      </p>
+
+      <div class="key-point">
+        <h4>💡 Important to Understand</h4>
+        <p>Stock prices can be volatile, meaning they can change significantly in short periods. A stock's price going up or down doesn't necessarily reflect the company's actual value—it reflects what buyers and sellers think it's worth at that moment.</p>
+      </div>
+
+      <h2>3. Types of Stock</h2>
+      <p>
+        There are two main types of stock that companies issue:
+      </p>
+      <p>
+        <strong>Common Stock</strong> is the most typical form. Common shareholders can vote on company matters and may receive dividends, but they're last in line if the company goes bankrupt.
+      </p>
+      <p>
+        <strong>Preferred Stock</strong> is a hybrid between stocks and bonds. Preferred shareholders typically receive fixed dividends and have priority over common shareholders if the company liquidates, but usually don't have voting rights.
+      </p>
+
+      <h2>4. How to Buy Stocks</h2>
+      <p>
+        Stocks are bought and sold on stock exchanges, such as the New York Stock Exchange (NYSE) or NASDAQ. Individual investors typically access these exchanges through brokerage accounts.
+      </p>
+      <p>
+        When you place an order to buy a stock, you're matched with someone willing to sell at that price. The transaction happens almost instantly during market hours.
+      </p>
+
+      <h2>5. Risks of Stock Ownership</h2>
+      <p>
+        Owning stocks comes with significant risks that every investor should understand:
+      </p>
+      <p>
+        <strong>Market Risk:</strong> Stock prices can decline due to overall market conditions, even if the company itself is performing well.
+      </p>
+      <p>
+        <strong>Company Risk:</strong> A specific company can underperform, face financial difficulties, or even go bankrupt—potentially making your shares worthless.
+      </p>
+      <p>
+        <strong>Volatility Risk:</strong> Stock prices can swing dramatically in short periods, which can be stressful and may lead to poor decision-making.
+      </p>
+      <p>
+        <strong>No Guaranteed Returns:</strong> Unlike savings accounts or bonds, stocks don't promise any return. You could lose some or all of your investment.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Stocks represent ownership in companies and are one of the primary ways people invest. Understanding what stocks are is just the first step—there's much more to learn about how to evaluate companies, build portfolios, and manage risk. Remember that all stock investments carry the potential for loss, and past performance never guarantees future results.
+      </p>
+
+      <div class="reading-section">
+        <h3>📚 Further Reading</h3>
+        <ul>
+          <li><a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks" target="_blank" rel="noopener">SEC: Introduction to Stocks</a></li>
+          <li><a href="https://www.investopedia.com/terms/s/stock.asp" target="_blank" rel="noopener">Investopedia: Stock Definition</a></li>
+          <li><a href="https://www.finra.org/investors/learn-to-invest/types-investments/stocks" target="_blank" rel="noopener">FINRA: Understanding Stocks</a></li>
+        </ul>
+      </div>
+
+      <div class="warning-box" style="margin-top: 50px;">
+        <h4>⚠️ Final Reminder</h4>
+        <p>This article is for educational purposes only and does not constitute investment advice. Stock investments can lose value, including your entire principal. Always do your own research and consider consulting a qualified financial advisor before investing.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms & Disclaimer</a>
+    </div>
+    <div class="footer-disclaimer">
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk. Past performance does not guarantee future results.
+    </div>
+  </footer>
+
+</body>
+</html>
