@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Legal Notice & Financial Disclaimer | US Market Terminals</title>
-  <meta name="description" content="Official legal notice, financial disclaimer, and risk disclosure for US Market Terminals. Understanding the risks of market volatility and data accuracy.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Use | US Market Terminals</title>
+  <meta name="description" content="Terms of use and legal information for US Market Terminals. Please read these terms before using our website.">
   <meta name="robots" content="noindex, follow"> 
   <link rel="canonical" href="https://us-dividend-pro.com/legal.html">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -21,10 +21,6 @@
       --text: #e2e8f0;
       --text-secondary: #94a3b8;
       --accent: #3b82f6;
-      --accent-light: #60a5fa;
-      --font: 'Inter', sans-serif;
-      --radius: 12px;
-      --transition: all 0.2s ease;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -32,64 +28,60 @@
     body {
       margin: 0; padding: 0;
       background: var(--bg); color: var(--text);
-      font-family: var(--font); line-height: 1.8;
+      font-family: 'Inter', sans-serif; line-height: 1.8;
       -webkit-font-smoothing: antialiased;
     }
 
-    a { text-decoration: none; color: inherit; transition: var(--transition); }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
 
     /* Navigation */
     .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10, 13, 18, 0.85); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border); padding: 15px 0;
     }
-    .navin {
-      max-width: 1200px; margin: 0 auto; height: 64px;
+    .nav-container {
+      max-width: 1200px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
     }
-    .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; font-size: 1.1rem; }
-    .logo-mark { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent), #a855f7); border-radius: 8px; display: grid; place-items: center; font-size: 0.9rem; }
+    .logo { display: flex; align-items: center; gap: 8px; color: #fff; font-weight: 800; font-size: 1.1rem; }
     
-    .nav-links { display: flex; align-items: center; gap: 4px; }
-    .nav-links a {
-      color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;
-      padding: 8px 14px; border-radius: 6px;
-    }
-    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
-    .nav-cta { background: var(--accent) !important; color: #fff !important; margin-left: 8px; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+    .nav-links a { color: var(--text-secondary); }
+    .nav-links a:hover { color: var(--accent); }
 
-    /* Legal Content Box */
-    .legal-wrapper { padding: 120px 0 80px; }
-    .legal-card {
-      background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 50px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    }
+    /* Content */
+    .content-wrapper { max-width: 800px; margin: 0 auto; padding: 80px 24px; }
     
-    h1 { font-size: 2.2rem; color: #fff; border-bottom: 2px solid var(--border); padding-bottom: 20px; margin-top: 0; margin-bottom: 40px; letter-spacing: -1px; }
-    h2 { font-size: 1.4rem; color: #fff; margin-top: 50px; margin-bottom: 20px; border-left: 4px solid var(--accent); padding-left: 20px; }
-    p { color: var(--text-secondary); margin-bottom: 25px; font-size: 1.05rem; text-align: justify; }
+    h1 { font-size: 2.2rem; color: #fff; margin-bottom: 15px; letter-spacing: -1px; }
+    .last-updated { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 40px; }
+    
+    h2 { font-size: 1.3rem; color: #fff; margin-top: 50px; margin-bottom: 20px; }
+    p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1rem; line-height: 1.8; }
     strong { color: #fff; }
+    ul { color: var(--text-secondary); padding-left: 20px; margin-bottom: 20px; }
+    li { margin-bottom: 10px; line-height: 1.7; }
 
-    .back-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-bottom: 25px; color: var(--accent); font-weight: 700; font-size: 0.95rem;
-    }
-    .back-link:hover { color: var(--accent-light); transform: translateX(-5px); }
+    .legal-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 40px; margin-bottom: 30px; }
+
+    .related-links { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border); }
+    .related-links h3 { color: #fff; font-size: 1rem; margin-bottom: 15px; }
+    .related-links a { color: var(--accent); margin-right: 25px; font-size: 0.95rem; }
+    .related-links a:hover { text-decoration: underline; }
 
     /* Footer */
     footer {
       background: var(--bg-alt); border-top: 1px solid var(--border);
-      padding: 80px 24px; text-align: center; color: var(--text-secondary); font-size: 0.9rem;
+      padding: 60px 24px; text-align: center;
     }
-    .footer-links { margin-bottom: 30px; }
-    .footer-links a { margin: 0 15px; color: var(--text-secondary); font-weight: 600; }
-    .footer-links a:hover { color: var(--accent); text-decoration: underline; }
+    .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-secondary); font-size: 0.85rem; font-weight: 600; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { color: #475569; font-size: 0.85rem; }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .legal-card { padding: 35px 24px; }
+      .legal-box { padding: 25px 20px; }
       h1 { font-size: 1.8rem; }
     }
   </style>
@@ -97,81 +89,149 @@
 <body>
 
   <nav class="nav">
-    <div class="navin">
-      <a href="/index.html" class="logo">
-        <span class="logo-mark">📊</span> US MARKET TERMINALS
-      </a>
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
       <div class="nav-links">
-        <a href="/index.html">Home</a>
-        <a href="/nasdaq.html">Nasdaq</a>
-        <a href="/dividend.html">Dividends</a>
-        <a href="/coin.html">Crypto</a>
-        <a href="/blog.html">Insights</a>
-        <a href="/nasdaq.html" class="nav-cta">Launch Terminal</a>
+        <a href="/calculator.html">Calculator</a>
+        <a href="/market-pulse.html">Pulse</a>
+        <a href="/tools.html">Tools</a>
+        <a href="/blog.html">Research</a>
+        <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
       </div>
     </div>
   </nav>
 
-  <main class="legal-wrapper">
-    <div class="container">
-      <a href="/index.html" class="back-link">← Return to Main Gateway</a>
-      
-      <div class="legal-card">
-        <h1>Legal Notice & Financial Disclaimer</h1>
-        
-        <p>
-          Welcome to <strong>US Market Terminals</strong>. By accessing this platform and utilizing our data visualization tools, you acknowledge and agree to the terms and conditions set forth in this legal notice. Our goal is to provide transparency and clarity regarding the nature of the financial information presented.
-        </p>
+  <main class="content-wrapper">
+    <h1>Terms of Use</h1>
+    <p class="last-updated">Last Updated: January 2026</p>
+    
+    <p>
+      Welcome to US Market Terminals. By accessing or using this website, you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, please do not use this website.
+    </p>
 
-        <h2>1. No Investment Advice (Financial Disclosure)</h2>
-        <p>
-          US Market Terminals operates as an independent financial research and data visualization platform. We are <strong>not</strong> registered investment advisors, brokers, or financial planners. The content provided on this website—including but not limited to technical indicators, dividend yield analysis, and crypto on-chain data—is for <strong>educational and informational purposes only</strong>.
-        </p>
-        <p>
-          Nothing on this site constitutes a solicitation, recommendation, or offer to buy or sell any securities or other financial instruments. All investment decisions are the sole responsibility of the user. We strongly recommend consulting with a certified financial professional before making any commitment of capital.
-        </p>
+    <div class="legal-box">
+      <h2 style="margin-top: 0;">1. About This Website</h2>
+      <p>
+        US Market Terminals is an educational website that displays market data through embedded third-party widgets and provides articles explaining financial concepts. We are <strong>not</strong> a financial services company, investment advisor, broker-dealer, or financial planner.
+      </p>
+      <p>
+        This website is intended solely for educational and informational purposes. We do not provide personalized financial advice, investment recommendations, or portfolio management services.
+      </p>
+    </div>
 
-        <h2>2. Data Accuracy & API Limitations</h2>
-        <p>
-          We source our market data from reputable public providers and third-party APIs (including Yahoo Finance, TradingView, and various blockchain explorers). While we aim for maximum precision, <strong>we do not guarantee the accuracy, completeness, or timeliness of the data</strong>. 
-        </p>
-        <p>
-          Financial markets are dynamic, and data may be subject to delays (Delayed Quotes) or technical errors beyond our control. Users should verify all data points independently before taking any market action.
-        </p>
+    <h2>2. No Investment Advice</h2>
+    <p>
+      Nothing on this website constitutes investment advice, financial advice, trading advice, or any other form of advice. The content is provided for general informational purposes only.
+    </p>
+    <p>
+      You should not make any investment decision based solely on information from this website. <strong>Always conduct your own research and consult with qualified financial, legal, and tax professionals</strong> before making any financial decisions.
+    </p>
 
-        <h2>3. High-Risk Asset Disclosure</h2>
-        <p>
-          Trading and investing in stocks, REITs, and digital assets carry a significant risk of capital loss. 
-          <strong>Dividend payments</strong> are discretionary and can be suspended by the issuing company at any time. 
-          <strong>Digital assets (Cryptocurrencies)</strong> are extremely volatile and may lose 100% of their value without prior notice. 
-          Past performance is never an indicator of future results. US Market Terminals assumes no liability for financial losses incurred.
-        </p>
+    <h2>3. No Recommendations</h2>
+    <p>
+      US Market Terminals does not recommend, endorse, or express opinions about any specific securities, investments, or financial strategies. When individual securities are mentioned in educational content, they are used as examples to illustrate concepts—not as recommendations to buy, sell, or hold.
+    </p>
 
-        <h2>4. Advertising & External Links</h2>
-        <p>
-          This website may feature <strong>Google AdSense</strong> advertisements and links to third-party platforms. We do not control, endorse, or assume responsibility for the content, privacy policies, or commercial practices of external sites. Clicking on these links is done at the user's own discretion and risk.
-        </p>
+    <h2>4. Data and Information</h2>
+    <p>
+      Market data displayed on this website is provided through third-party services such as TradingView widgets. We do not independently verify this data and make no guarantees regarding its:
+    </p>
+    <ul>
+      <li>Accuracy or correctness</li>
+      <li>Completeness</li>
+      <li>Timeliness (data may be delayed)</li>
+      <li>Suitability for any particular purpose</li>
+    </ul>
+    <p>
+      For important financial decisions, always verify data against official primary sources such as stock exchange websites, SEC filings, or company investor relations pages.
+    </p>
 
-        <h2>5. Operational Transparency</h2>
-        <p>
-          US Market Terminals is strictly a research and visualization terminal. We do not handle user funds, manage portfolios, or facilitate trading execution. Our mission is to democratize institutional-grade data for independent investors through anti-fragile research models.
-        </p>
-      </div>
+    <h2>5. Investment Risks</h2>
+    <p>
+      All investments involve risk, including the possible loss of principal. Specific risks include but are not limited to:
+    </p>
+    <ul>
+      <li><strong>Market Risk:</strong> Securities prices can decline due to market conditions.</li>
+      <li><strong>Dividend Risk:</strong> Dividends are not guaranteed and can be reduced or eliminated at any time.</li>
+      <li><strong>Cryptocurrency Risk:</strong> Digital assets are extremely volatile and may lose all value.</li>
+      <li><strong>Interest Rate Risk:</strong> Changes in interest rates can affect security prices.</li>
+    </ul>
+    <p>
+      Past performance does not guarantee future results. US Market Terminals assumes no liability for any financial losses.
+    </p>
+
+    <h2>6. Third-Party Content and Links</h2>
+    <p>
+      This website contains embedded content from third-party providers (such as TradingView widgets) and may include links to external websites. We do not control, endorse, or assume responsibility for third-party content, privacy policies, or practices.
+    </p>
+    <p>
+      Clicking on external links or interacting with embedded content is at your own risk. The inclusion of any link does not imply endorsement.
+    </p>
+
+    <h2>7. Advertising</h2>
+    <p>
+      This website displays advertisements through third-party advertising networks, including Google AdSense. These advertisements are served based on various factors and may use cookies or similar technologies. The appearance of an advertisement does not constitute an endorsement of the advertised product or service.
+    </p>
+
+    <h2>8. Intellectual Property</h2>
+    <p>
+      The original content on this website, including text, graphics, and design elements, is owned by US Market Terminals or its content suppliers. You may not reproduce, distribute, or create derivative works without permission, except for personal, non-commercial use.
+    </p>
+    <p>
+      Market data and embedded widgets are provided by third parties and are subject to their respective terms of use and intellectual property rights.
+    </p>
+
+    <h2>9. Limitation of Liability</h2>
+    <p>
+      To the maximum extent permitted by law, US Market Terminals and its operators shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from:
+    </p>
+    <ul>
+      <li>Your use of or inability to use this website</li>
+      <li>Any errors or omissions in content or data</li>
+      <li>Any investment decisions you make</li>
+      <li>Any unauthorized access to your data</li>
+      <li>Any third-party content or websites</li>
+    </ul>
+
+    <h2>10. Indemnification</h2>
+    <p>
+      You agree to indemnify and hold harmless US Market Terminals and its operators from any claims, damages, or expenses arising from your use of this website or violation of these terms.
+    </p>
+
+    <h2>11. Changes to Terms</h2>
+    <p>
+      We reserve the right to modify these Terms of Use at any time. Changes will be effective immediately upon posting. Your continued use of the website after changes constitutes acceptance of the modified terms. We encourage you to review this page periodically.
+    </p>
+
+    <h2>12. Governing Law</h2>
+    <p>
+      These Terms of Use shall be governed by and construed in accordance with applicable laws. Any disputes shall be subject to the exclusive jurisdiction of the appropriate courts.
+    </p>
+
+    <h2>13. Contact</h2>
+    <p>
+      If you have questions about these Terms of Use, please contact us through our <a href="/contact.html" style="color: var(--accent);">contact page</a>.
+    </p>
+
+    <div class="related-links">
+      <h3>Related Policies</h3>
+      <a href="/disclaimer.html">Disclaimer</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/faq.html">FAQ</a>
     </div>
   </main>
 
   <footer>
-    <div class="container">
-      <div class="footer-links">
-        <a href="/about.html">About Research</a>
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/legal.html">Terms & Disclaimer</a>
-      </div>
-      <p>
-        © 2026 US Market Terminals. All rights reserved.<br>
-        <span style="opacity: 0.7;">Institutional Grade Analytics • Public Data Sources • Professional Research Platform</span>
-      </p>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/resources.html">Resources</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/disclaimer.html">Disclaimer</a>
     </div>
+    <p class="footer-copy">
+      © 2026 US Market Terminals. All rights reserved.
+    </p>
   </footer>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
