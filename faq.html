@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - Frequently Asked Questions | US Market Terminals</title>
-    <meta name="description" content="Common questions about US Market Terminals, dividend investing strategies, and how to use our professional market analysis tools.">
+    <title>Frequently Asked Questions | US Market Terminals</title>
+    <meta name="description" content="Common questions about US Market Terminals, how to use our tools, data sources, and important disclaimers about our educational content.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://us-dividend-pro.com/faq.html">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <script type="application/ld+json">
     {
@@ -22,7 +22,7 @@
                 "name": "What is US Market Terminals?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "US Market Terminals is an institutional-grade financial research platform providing real-time data visualization, investment simulators, and market sentiment analysis for independent investors."
+                    "text": "US Market Terminals is an educational website that displays market data through embedded widgets and provides educational content about financial markets including stocks, dividends, cryptocurrencies, and precious metals."
                 }
             },
             {
@@ -30,7 +30,15 @@
                 "name": "Is the market data real-time?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Stock market data typically has a 15-20 minute delay from official exchanges, while cryptocurrency data is provided in real-time 24/7."
+                    "text": "Market data is provided through third-party widgets such as TradingView. Stock market data may have delays of 15-20 minutes, while cryptocurrency data is typically closer to real-time. Check the data provider's terms for specific delay information."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does US Market Terminals provide investment advice?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. US Market Terminals provides educational content only. We do not provide investment advice, financial planning, or recommendations to buy or sell any securities. Always consult qualified professionals for investment decisions."
                 }
             }
         ]
@@ -50,7 +58,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; line-height: 1.7; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
 
-        /* Unified Navigation */
         .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
         .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
         .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
@@ -79,21 +86,23 @@
         .faq-item.open { border-color: var(--accent); background: rgba(255,255,255,0.01); }
         .faq-question { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; cursor: pointer; gap: 15px; }
         .faq-question h3 { font-size: 1rem; font-weight: 600; color: #fff; }
-        .faq-toggle { width: 28px; height: 28px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .faq-toggle { width: 28px; height: 28px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: 0.3s; flex-shrink: 0; }
         .faq-item.open .faq-toggle { background: var(--accent); transform: rotate(180deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-        .faq-item.open .faq-answer { max-height: 400px; }
+        .faq-item.open .faq-answer { max-height: 500px; }
         .faq-answer-content { padding: 0 24px 24px; color: var(--text-dim); font-size: 0.95rem; line-height: 1.8; }
         .faq-answer-content a { color: var(--accent); text-decoration: none; font-weight: 600; }
 
-        .contact-cta { background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; margin-top: 60px; }
-        .contact-btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 12px; font-weight: 700; margin-top: 20px; transition: 0.3s; }
+        .contact-cta { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; margin-top: 60px; }
+        .contact-cta h2 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; }
+        .contact-cta p { color: var(--text-dim); margin-bottom: 20px; }
+        .contact-btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 12px; font-weight: 700; transition: 0.3s; }
         .contact-btn:hover { background: #2563eb; transform: translateY(-2px); }
 
-        /* Unified Footer */
-        footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 80px; }
-        .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 80px; }
+        .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+        .footer-links a:hover { color: var(--accent); }
         .footer-disclaimer { max-width: 800px; margin: 20px auto 0; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
         @media (max-width: 768px) { .nav-links { display: none; } }
@@ -107,9 +116,8 @@
             <div class="nav-links">
                 <a href="/calculator.html">Calculator</a>
                 <a href="/market-pulse.html">Pulse</a>
-                <a href="/nasdaq.html">Nasdaq</a>
-                <a href="/dividend.html">Dividend</a>
-                <a href="/blog.html">Blog</a>
+                <a href="/tools.html">Tools</a>
+                <a href="/blog.html">Research</a>
                 <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
             </div>
         </div>
@@ -117,8 +125,8 @@
 
     <div class="container">
         <header class="page-header">
-            <h1>Support Center</h1>
-            <p>Answers to common inquiries about our research terminals and methodology.</p>
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about US Market Terminals and how to use our tools.</p>
         </header>
 
         <div class="search-box">
@@ -130,47 +138,121 @@
             <button class="category-tab active" data-category="all">All Questions</button>
             <button class="category-tab" data-category="general">General</button>
             <button class="category-tab" data-category="tools">Tools</button>
-            <button class="category-tab" data-category="data">Data Info</button>
+            <button class="category-tab" data-category="data">Data</button>
+            <button class="category-tab" data-category="legal">Legal</button>
         </div>
 
         <div id="faqContent">
+            <!-- General Section -->
             <section class="faq-section" data-section="general">
-                <h2 class="section-title">Institutional Overview</h2>
+                <h2 class="section-title">General Questions</h2>
+                
                 <div class="faq-item" data-category="general">
-                    <div class="faq-question"><h3>What is the purpose of US Market Terminals?</h3><div class="faq-toggle">▼</div></div>
-                    <div class="faq-answer"><div class="faq-answer-content">We bridge the gap between institutional data and individual investors by providing specialized research terminals for US Growth, Dividend, and Digital Assets.</div></div>
+                    <div class="faq-question"><h3>What is US Market Terminals?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">US Market Terminals is an educational website that displays market data through embedded widgets and provides educational content about financial markets. We cover U.S. equities, dividend investing, cryptocurrencies, and precious metals. Our goal is to present market information in an accessible format along with educational context.</div></div>
                 </div>
+                
                 <div class="faq-item" data-category="general">
-                    <div class="faq-question"><h3>Is there any subscription cost?</h3><div class="faq-toggle">▼</div></div>
-                    <div class="faq-answer"><div class="faq-answer-content">No. Our platform is 100% free to use. We believe financial intelligence should be accessible to every independent investor.</div></div>
+                    <div class="faq-question"><h3>Is US Market Terminals free to use?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">Yes. All tools and content on this website are available at no cost. The site is supported by advertisements. There are no premium features, subscriptions, or hidden fees.</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question"><h3>Who operates this website?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">US Market Terminals is an independent educational project. We are not affiliated with any brokerage, investment firm, or financial institution. We do not manage money or execute trades on behalf of users.</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question"><h3>Do I need to create an account?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">No. US Market Terminals does not require registration or login. All tools and content are accessible without creating an account. We do not collect personal information beyond standard website analytics.</div></div>
                 </div>
             </section>
 
+            <!-- Tools Section -->
             <section class="faq-section" data-section="tools">
-                <h2 class="section-title">Terminal Tools</h2>
+                <h2 class="section-title">Tools & Calculators</h2>
+                
                 <div class="faq-item" data-category="tools">
-                    <div class="faq-question"><h3>How reliable is the Strategy Lab simulator?</h3><div class="faq-toggle">▼</div></div>
-                    <div class="faq-answer"><div class="faq-answer-content">The <a href="/calculator.html">Strategy Lab</a> uses a mathematical compounding model that accounts for 15.4% dividend tax and reinvestment. While accurate for modeling, it is a hypothetical projection.</div></div>
+                    <div class="faq-question"><h3>How do the calculators work?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">Our calculators use mathematical formulas to compute hypothetical scenarios based on the inputs you provide. For example, the dividend calculator projects future values using compound interest formulas. These are educational tools showing how math works—they are not predictions of actual investment returns.</div></div>
                 </div>
+                
                 <div class="faq-item" data-category="tools">
-                    <div class="faq-question"><h3>What does the Market Pulse indicate?</h3><div class="faq-toggle">▼</div></div>
-                    <div class="faq-answer"><div class="faq-answer-content">The <a href="/market-pulse.html">Market Pulse</a> is a sentiment gauge. It monitors Nasdaq volatility and Crypto Fear/Greed to help identify market exhaustion points.</div></div>
+                    <div class="faq-question"><h3>Are the calculator results accurate?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">The calculators perform accurate mathematical computations based on the inputs provided. However, real-world investment returns are affected by many factors not captured in simple models, including market volatility, dividend changes, taxes, fees, and inflation. Calculator results should be viewed as educational illustrations, not financial projections.</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="tools">
+                    <div class="faq-question"><h3>What does the Market Pulse show?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">The <a href="/market-pulse.html">Market Pulse</a> page displays various market indicators and sentiment data through embedded widgets. It shows information like fear/greed indices and volatility measures. These are descriptive metrics showing current market conditions—they are not signals or recommendations for trading decisions.</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="tools">
+                    <div class="faq-question"><h3>Can I save my calculator inputs?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">Currently, calculator inputs are not saved between sessions. If you refresh the page or close your browser, you will need to re-enter your inputs. You may want to note down scenarios you find useful for future reference.</div></div>
                 </div>
             </section>
 
+            <!-- Data Section -->
             <section class="faq-section" data-section="data">
-                <h2 class="section-title">Data Integrity</h2>
+                <h2 class="section-title">Data & Sources</h2>
+                
                 <div class="faq-item" data-category="data">
-                    <div class="faq-question"><h3>Where do you source your analytics data?</h3><div class="faq-toggle">▼</div></div>
-                    <div class="faq-answer"><div class="faq-answer-content">We integrate data from primary public sources: SEC EDGAR for company filings, TradingView for technical charts, and Alternative.me for crypto sentiment.</div></div>
+                    <div class="faq-question"><h3>Where does the market data come from?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">Market data is displayed through embedded widgets from third-party providers, primarily TradingView. We do not independently collect or verify market data. The data displayed is subject to each provider's terms, accuracy, and delay policies.</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="data">
+                    <div class="faq-question"><h3>Is the market data real-time?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">It depends on the data type and provider. Stock market data from major exchanges typically has a 15-20 minute delay unless you have a paid real-time data subscription with the provider. Cryptocurrency data is generally closer to real-time. Always check the data provider's specific terms for delay information.</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="data">
+                    <div class="faq-question"><h3>Why might some data appear incorrect?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">Since we display data from third-party providers, we cannot guarantee accuracy. Data may be delayed, contain errors, or differ from other sources due to different calculation methods. For important financial decisions, always verify data against primary sources like official exchange websites or regulatory filings (e.g., SEC EDGAR).</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="data">
+                    <div class="faq-question"><h3>How often is website content updated?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">Market data widgets update according to their provider's schedule (real-time or delayed). Educational articles and static content are updated periodically as needed. Check publication or last-updated dates on individual articles to assess currency of information.</div></div>
+                </div>
+            </section>
+
+            <!-- Legal Section -->
+            <section class="faq-section" data-section="legal">
+                <h2 class="section-title">Legal & Disclaimers</h2>
+                
+                <div class="faq-item" data-category="legal">
+                    <div class="faq-question"><h3>Does US Market Terminals provide investment advice?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">No. US Market Terminals provides educational content only. We are not registered investment advisors, brokers, or financial planners. Nothing on this website constitutes investment advice, financial planning, or a recommendation to buy or sell any security. Always consult qualified professionals for investment decisions.</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="legal">
+                    <div class="faq-question"><h3>Can you recommend which stocks to buy?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">No. We do not provide stock recommendations, buy/sell signals, price targets, or personalized investment guidance. When specific securities are mentioned in educational content, they are used as examples to illustrate concepts—not as recommendations. Investment decisions should be based on your own research and professional advice.</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="legal">
+                    <div class="faq-question"><h3>What are the risks of using this information?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">All investments carry risk, including potential loss of principal. Information on this website may be incomplete, inaccurate, or outdated. Market data may be delayed. Calculator projections are hypothetical and do not reflect actual investment performance. You are solely responsible for any financial decisions you make. See our <a href="/disclaimer.html">full disclaimer</a> for details.</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="legal">
+                    <div class="faq-question"><h3>How is my privacy protected?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">We collect minimal data. Standard website analytics may track page views and general usage patterns. We do not require registration or collect personal financial information. Third-party services like advertising networks may use cookies. See our <a href="/privacy.html">Privacy Policy</a> for complete details.</div></div>
+                </div>
+                
+                <div class="faq-item" data-category="legal">
+                    <div class="faq-question"><h3>Why are there advertisements on this site?</h3><div class="faq-toggle">▼</div></div>
+                    <div class="faq-answer"><div class="faq-answer-content">Advertisements help support the operation of this free website. Ads are served by third-party networks and their appearance does not constitute an endorsement of the advertised products or services. We do not control the specific ads displayed.</div></div>
                 </div>
             </section>
         </div>
 
         <div class="contact-cta">
-            <h2>Need Specific Analysis?</h2>
-            <p>Our research team is available for technical questions and partnership inquiries.</p>
-            <a href="/contact.html" class="contact-btn">Message Research Team</a>
+            <h2>Still Have Questions?</h2>
+            <p>If you couldn't find the answer you're looking for, feel free to reach out.</p>
+            <a href="/contact.html" class="contact-btn">Contact Us</a>
         </div>
     </div>
 
@@ -184,7 +266,7 @@
         </div>
         <p style="color: #475569; font-size: 0.85rem; margin-bottom: 20px;">© 2026 US Market Terminals. All rights reserved.</p>
         <div class="footer-disclaimer">
-            <strong>Financial Risk Disclosure:</strong> US Market Terminals is for educational and informational purposes only. Investing involves risk. Past performance does not guarantee future results.
+            <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including potential loss of principal. Past performance does not guarantee future results.
         </div>
     </footer>
 
