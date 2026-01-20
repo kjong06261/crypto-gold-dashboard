@@ -16,7 +16,6 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
     
-    /* Navigation */
     .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
     .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
     .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; }
@@ -24,38 +23,42 @@
     .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
     .nav-links a:hover { color: var(--accent); }
 
-    /* Content */
-    .container { max-width: 900px; margin: 0 auto; padding: 80px 24px; }
-    .header { text-align: center; margin-bottom: 60px; }
-    .header h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 20px; font-weight: 900; letter-spacing: -2px; color: #fff; }
-    .header p { color: var(--text-dim); font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
+    .container { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
+    .header { text-align: center; margin-bottom: 40px; }
+    .header h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 15px; font-weight: 900; letter-spacing: -1.5px; color: #fff; }
+    .header p { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-    .warning-banner { max-width: 900px; margin: -30px auto 50px; padding: 20px 30px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 16px; text-align: center; }
-    .warning-banner p { color: #fbbf24; font-size: 0.9rem; margin: 0; }
+    .warning-banner { max-width: 900px; margin: 0 auto 40px; padding: 18px 25px; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 12px; text-align: center; }
+    .warning-banner p { color: var(--text-dim); font-size: 0.9rem; margin: 0; }
 
-    /* List Grid */
-    .article-list { display: flex; flex-direction: column; gap: 24px; }
-    .article-preview { 
-        background: var(--panel); padding: 35px; border-radius: 24px; border: 1px solid var(--border); 
-        text-decoration: none; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: block;
-    }
-    .article-preview:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .category-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; justify-content: center; }
+    .category-nav a { padding: 8px 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
+    .category-nav a:hover { border-color: var(--accent); color: var(--accent); }
+
+    .section-title { font-size: 1.4rem; font-weight: 800; color: #fff; margin: 50px 0 25px; padding-bottom: 15px; border-bottom: 2px solid var(--border); }
+    .section-title:first-of-type { margin-top: 0; }
+
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
     
-    .meta { color: var(--accent); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; display: block; font-family: 'JetBrains Mono', monospace; }
-    .article-title { font-size: 1.6rem; margin: 0 0 12px; color: #fff; font-weight: 800; letter-spacing: -0.5px; }
-    .excerpt { color: var(--text-dim); font-size: 1rem; margin-bottom: 20px; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .read-more { color: #fff; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; }
-    .article-preview:hover .read-more { color: var(--accent); }
+    .article-card { 
+        background: var(--panel); padding: 25px; border-radius: 16px; border: 1px solid var(--border); 
+        text-decoration: none; transition: 0.3s; display: flex; flex-direction: column;
+    }
+    .article-card:hover { border-color: rgba(59, 130, 246, 0.4); transform: translateY(-3px); }
+    
+    .card-meta { color: var(--accent); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+    .card-title { font-size: 1.1rem; margin: 0 0 10px; color: #fff; font-weight: 700; line-height: 1.4; }
+    .card-excerpt { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-link { color: var(--accent); font-weight: 600; font-size: 0.85rem; margin-top: 15px; }
 
-    /* Footer */
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 100px; }
-    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 80px; }
+    .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
     .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
     .footer-links a:hover { color: var(--accent); }
-    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
-    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px; }
+    .footer-disclaimer { max-width: 800px; margin: 0 auto; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
-    @media (max-width: 768px) { .nav-links { display: none; } .container { padding-top: 40px; } }
+    @media (max-width: 768px) { .nav-links { display: none; } .article-grid { grid-template-columns: 1fr; } .category-nav { gap: 6px; } .category-nav a { padding: 6px 12px; font-size: 0.8rem; } }
   </style>
 </head>
 <body>
@@ -75,87 +78,248 @@
 
   <div class="container">
     <header class="header">
-      <h1>Learning Resources</h1>
-      <p>Educational articles about financial concepts and market terminology. For learning purposes only.</p>
+      <h1>Educational Articles</h1>
+      <p>Learn about financial concepts and market terminology. For educational purposes only—not investment advice.</p>
     </header>
 
     <div class="warning-banner">
-      <p>⚠️ <strong>Educational Content Only:</strong> These articles explain financial concepts for learning purposes. They are not investment advice or recommendations.</p>
+      <p><strong>Educational Content Only:</strong> These articles explain financial concepts for learning purposes. They are not investment advice or recommendations to buy or sell any securities.</p>
     </div>
 
-    <div class="article-list">
+    <nav class="category-nav">
+      <a href="#basics">Basics</a>
+      <a href="#terminology">Terminology</a>
+      <a href="#concepts">Concepts</a>
+      <a href="#markets">Markets</a>
+    </nav>
+
+    <!-- BASICS SECTION -->
+    <h2 class="section-title" id="basics">📚 Investment Basics</h2>
+    <div class="article-grid">
       
-      <a href="/blog/barbell-strategy-guide.html" class="article-preview">
-        <span class="meta">Concepts • Educational</span>
-        <h2 class="article-title">Understanding the Barbell Strategy Concept</h2>
-        <p class="excerpt">Learn about the barbell portfolio concept, which combines different risk levels. This article explains the theory—not a recommendation to use it.</p>
-        <span class="read-more">Read Article →</span>
+      <a href="/blog/what-is-a-stock.html" class="article-card">
+        <span class="card-meta">Basics</span>
+        <h3 class="card-title">What Is a Stock?</h3>
+        <p class="card-excerpt">Learn what stocks represent, how ownership works, and basic terminology around equity investments.</p>
+        <span class="card-link">Read →</span>
       </a>
 
-      <a href="/blog/bitcoin-corporate.html" class="article-preview">
-        <span class="meta">Concepts • Educational</span>
-        <h2 class="article-title">Bitcoin on Corporate Balance Sheets: An Overview</h2>
-        <p class="excerpt">An educational overview of how some companies have added Bitcoin to their treasury. Discusses accounting treatment and considerations.</p>
-        <span class="read-more">Read Article →</span>
+      <a href="/blog/what-is-a-bond.html" class="article-card">
+        <span class="card-meta">Basics</span>
+        <h3 class="card-title">What Is a Bond?</h3>
+        <p class="card-excerpt">Understand how bonds work, including principal, interest payments, and maturity dates.</p>
+        <span class="card-link">Read →</span>
       </a>
 
-      <a href="/blog/crypto-staking-dividend.html" class="article-preview">
-        <span class="meta">Concepts • Educational</span>
-        <h2 class="article-title">What Is Crypto Staking? A Basic Explainer</h2>
-        <p class="excerpt">Learn how proof-of-stake networks work and what staking means. This explains the concept—staking involves significant risks.</p>
-        <span class="read-more">Read Article →</span>
+      <a href="/blog/what-is-an-etf.html" class="article-card">
+        <span class="card-meta">Basics</span>
+        <h3 class="card-title">What Is an ETF?</h3>
+        <p class="card-excerpt">Learn about Exchange-Traded Funds—how they work, how they differ from mutual funds, and basic structures.</p>
+        <span class="card-link">Read →</span>
       </a>
 
-      <a href="/blog/dividend-aristocrats-2026.html" class="article-preview">
-        <span class="meta">Concepts • Educational</span>
-        <h2 class="article-title">What Are Dividend Aristocrats? Understanding the Concept</h2>
-        <p class="excerpt">Learn what qualifies a company as a "Dividend Aristocrat" and how this classification is defined. Not a recommendation of any specific stocks.</p>
-        <span class="read-more">Read Article →</span>
+      <a href="/blog/what-is-a-dividend.html" class="article-card">
+        <span class="card-meta">Basics</span>
+        <h3 class="card-title">What Is a Dividend?</h3>
+        <p class="card-excerpt">Understand what dividends are, how they're paid, and key dates like ex-dividend and record dates.</p>
+        <span class="card-link">Read →</span>
       </a>
 
-      <a href="/blog/nasdaq-growth-strategy.html" class="article-preview">
-        <span class="meta">Concepts • Educational</span>
-        <h2 class="article-title">Understanding the Nasdaq-100 Index</h2>
-        <p class="excerpt">Learn about what the Nasdaq-100 index tracks, how it's weighted, and why investors often discuss it. Educational overview only.</p>
-        <span class="read-more">Read Article →</span>
+      <a href="/blog/what-are-treasury-bonds.html" class="article-card">
+        <span class="card-meta">Basics</span>
+        <h3 class="card-title">What Are Treasury Bonds?</h3>
+        <p class="card-excerpt">Learn about U.S. Treasury securities—T-bills, T-notes, and T-bonds—and how they work.</p>
+        <span class="card-link">Read →</span>
       </a>
 
-      <a href="/blog/realty-income-o.html" class="article-preview">
-        <span class="meta">Concepts • Educational</span>
-        <h2 class="article-title">Understanding REITs: Realty Income as a Case Study</h2>
-        <p class="excerpt">Learn about REIT structures using Realty Income as an example. Explains NNN leases and AFFO metrics—not a stock recommendation.</p>
-        <span class="read-more">Read Article →</span>
+      <a href="/blog/what-is-a-401k.html" class="article-card">
+        <span class="card-meta">Basics</span>
+        <h3 class="card-title">What Is a 401(k)?</h3>
+        <p class="card-excerpt">Understand how 401(k) retirement accounts work, including contributions, employer matching, and tax treatment.</p>
+        <span class="card-link">Read →</span>
       </a>
 
-      <a href="/blog/dividend-growth-strategy.html" class="article-preview">
-        <span class="meta">Concepts • Educational</span>
-        <h2 class="article-title">Understanding Dividend Growth Investing</h2>
-        <p class="excerpt">Learn about the concept of dividend growth investing and terms like "Yield on Cost." Educational explanation of the approach.</p>
-        <span class="read-more">Read Article →</span>
+      <a href="/blog/what-is-compound-interest.html" class="article-card">
+        <span class="card-meta">Basics</span>
+        <h3 class="card-title">What Is Compound Interest?</h3>
+        <p class="card-excerpt">Learn how compound interest works and why it's a fundamental concept in finance.</p>
+        <span class="card-link">Read →</span>
       </a>
 
-      <a href="/blog/reits-ffo-guide.html" class="article-preview">
-        <span class="meta">Terminology • Educational</span>
-        <h2 class="article-title">FFO vs AFFO: Understanding REIT Metrics</h2>
-        <p class="excerpt">Learn what FFO (Funds From Operations) and AFFO mean in REIT analysis. Explains the terminology and why these metrics exist.</p>
-        <span class="read-more">Read Article →</span>
+      <a href="/blog/what-is-diversification.html" class="article-card">
+        <span class="card-meta">Basics</span>
+        <h3 class="card-title">What Is Diversification?</h3>
+        <p class="card-excerpt">Understand the concept of diversification and why investors spread money across different assets.</p>
+        <span class="card-link">Read →</span>
       </a>
 
-      <a href="/blog/covered-call-hedging.html" class="article-preview">
-        <span class="meta">Concepts • Educational</span>
-        <h2 class="article-title">What Are Covered Calls? A Concept Explainer</h2>
-        <p class="excerpt">Learn how covered call strategies work conceptually. Options trading involves significant risks—this is educational only.</p>
-        <span class="read-more">Read Article →</span>
-      </a>
-
-      <a href="/blog/inflation-portfolio-2026.html" class="article-preview">
-        <span class="meta">Concepts • Educational</span>
-        <h2 class="article-title">Understanding Inflation and Investments</h2>
-        <p class="excerpt">Learn about how inflation affects investments and what asset classes investors commonly discuss. Educational overview only.</p>
-        <span class="read-more">Read Article →</span>
+      <a href="/blog/what-is-inflation.html" class="article-card">
+        <span class="card-meta">Basics</span>
+        <h3 class="card-title">What Is Inflation?</h3>
+        <p class="card-excerpt">Learn what inflation means, how it's measured, and why it matters for purchasing power.</p>
+        <span class="card-link">Read →</span>
       </a>
 
     </div>
+
+    <!-- TERMINOLOGY SECTION -->
+    <h2 class="section-title" id="terminology">📖 Financial Terminology</h2>
+    <div class="article-grid">
+
+      <a href="/blog/understanding-pe-ratio.html" class="article-card">
+        <span class="card-meta">Terminology</span>
+        <h3 class="card-title">Understanding the P/E Ratio</h3>
+        <p class="card-excerpt">Learn what the price-to-earnings ratio measures and how it's calculated.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/understanding-volatility-vix.html" class="article-card">
+        <span class="card-meta">Terminology</span>
+        <h3 class="card-title">Understanding Volatility and the VIX</h3>
+        <p class="card-excerpt">Learn what volatility means in finance and how the VIX index is constructed.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/understanding-interest-rates.html" class="article-card">
+        <span class="card-meta">Terminology</span>
+        <h3 class="card-title">Understanding Interest Rates</h3>
+        <p class="card-excerpt">Learn about different types of interest rates and how central bank policy affects them.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/understanding-index-funds.html" class="article-card">
+        <span class="card-meta">Terminology</span>
+        <h3 class="card-title">Understanding Index Funds</h3>
+        <p class="card-excerpt">Learn what index funds are, how passive investing works, and common index benchmarks.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/understanding-expense-ratios.html" class="article-card">
+        <span class="card-meta">Terminology</span>
+        <h3 class="card-title">Understanding Expense Ratios</h3>
+        <p class="card-excerpt">Learn what expense ratios are in mutual funds and ETFs and how they affect returns.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/understanding-bid-ask-spread.html" class="article-card">
+        <span class="card-meta">Terminology</span>
+        <h3 class="card-title">Understanding Bid-Ask Spread</h3>
+        <p class="card-excerpt">Learn what the bid-ask spread is and why it matters when buying or selling securities.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/what-is-market-capitalization.html" class="article-card">
+        <span class="card-meta">Terminology</span>
+        <h3 class="card-title">What Is Market Capitalization?</h3>
+        <p class="card-excerpt">Understand how market cap is calculated and the difference between large-cap, mid-cap, and small-cap.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/what-is-a-stock-split.html" class="article-card">
+        <span class="card-meta">Terminology</span>
+        <h3 class="card-title">What Is a Stock Split?</h3>
+        <p class="card-excerpt">Learn what happens during a stock split and why companies do them.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/reits-ffo-guide.html" class="article-card">
+        <span class="card-meta">Terminology</span>
+        <h3 class="card-title">FFO vs AFFO: REIT Metrics Explained</h3>
+        <p class="card-excerpt">Learn what FFO and AFFO mean in REIT analysis and why these metrics exist.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+    </div>
+
+    <!-- CONCEPTS SECTION -->
+    <h2 class="section-title" id="concepts">💡 Investment Concepts</h2>
+    <div class="article-grid">
+
+      <a href="/blog/what-is-dollar-cost-averaging.html" class="article-card">
+        <span class="card-meta">Concepts</span>
+        <h3 class="card-title">What Is Dollar-Cost Averaging?</h3>
+        <p class="card-excerpt">Learn about the concept of investing fixed amounts at regular intervals regardless of price.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/dividend-growth-strategy.html" class="article-card">
+        <span class="card-meta">Concepts</span>
+        <h3 class="card-title">Understanding Dividend Growth Investing</h3>
+        <p class="card-excerpt">Learn about the dividend growth concept and terms like "Yield on Cost."</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/dividend-aristocrats-2026.html" class="article-card">
+        <span class="card-meta">Concepts</span>
+        <h3 class="card-title">What Are Dividend Aristocrats?</h3>
+        <p class="card-excerpt">Learn how companies qualify for "Dividend Aristocrat" status and what the classification means.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/barbell-strategy-guide.html" class="article-card">
+        <span class="card-meta">Concepts</span>
+        <h3 class="card-title">Understanding the Barbell Strategy</h3>
+        <p class="card-excerpt">Learn about the barbell portfolio concept that combines different risk levels.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/covered-call-hedging.html" class="article-card">
+        <span class="card-meta">Concepts</span>
+        <h3 class="card-title">What Are Covered Calls?</h3>
+        <p class="card-excerpt">Learn how covered call strategies work conceptually. Options involve significant risks.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/inflation-portfolio-2026.html" class="article-card">
+        <span class="card-meta">Concepts</span>
+        <h3 class="card-title">Understanding Inflation and Investments</h3>
+        <p class="card-excerpt">Learn how inflation affects investments and asset classes commonly discussed.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/realty-income-o.html" class="article-card">
+        <span class="card-meta">Concepts</span>
+        <h3 class="card-title">Understanding REITs: A Case Study</h3>
+        <p class="card-excerpt">Learn about REIT structures using Realty Income as an educational example.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/crypto-staking-dividend.html" class="article-card">
+        <span class="card-meta">Concepts</span>
+        <h3 class="card-title">What Is Crypto Staking?</h3>
+        <p class="card-excerpt">Learn how proof-of-stake networks work and what staking means. Involves significant risks.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/bitcoin-corporate.html" class="article-card">
+        <span class="card-meta">Concepts</span>
+        <h3 class="card-title">Bitcoin on Corporate Balance Sheets</h3>
+        <p class="card-excerpt">An overview of how some companies have added Bitcoin to their treasury.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+    </div>
+
+    <!-- MARKETS SECTION -->
+    <h2 class="section-title" id="markets">📈 Markets Overview</h2>
+    <div class="article-grid">
+
+      <a href="/blog/bull-vs-bear-markets.html" class="article-card">
+        <span class="card-meta">Markets</span>
+        <h3 class="card-title">Bull vs Bear Markets Explained</h3>
+        <p class="card-excerpt">Learn what defines bull and bear markets and how these terms are used.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+      <a href="/blog/nasdaq-growth-strategy.html" class="article-card">
+        <span class="card-meta">Markets</span>
+        <h3 class="card-title">Understanding the Nasdaq-100 Index</h3>
+        <p class="card-excerpt">Learn what the Nasdaq-100 tracks, how it's weighted, and why it's discussed.</p>
+        <span class="card-link">Read →</span>
+      </a>
+
+    </div>
+
   </div>
 
   <footer>
@@ -163,16 +327,15 @@
         <a href="/about.html">About</a>
         <a href="/resources.html">Resources</a>
         <a href="/faq.html">FAQ</a>
+        <a href="/glossary.html">Glossary</a>
         <a href="/privacy.html">Privacy</a>
         <a href="/legal.html">Terms & Disclaimer</a>
     </div>
     <p class="footer-copy">
-        © 2026 US Market Terminals. All rights reserved. <br>
-        Educational Content • For Informational Purposes Only
+        © 2026 US Market Terminals. All rights reserved.
     </p>
     <div class="footer-disclaimer">
-        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Important Disclaimer</strong>
-        US Market Terminals provides educational content for informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results. Always consult qualified professionals before making investment decisions.
+        <strong>Disclaimer:</strong> US Market Terminals provides educational content for informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results. Always consult qualified professionals before making investment decisions.
     </div>
   </footer>
 
