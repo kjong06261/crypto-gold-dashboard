@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Market Insights & Research Guides | US Market Terminals</title>
-  <meta name="description" content="In-depth investment guides on the Barbell Strategy, Bitcoin corporate adoption, and REIT analysis for 2026. Institutional grade research for the independent investor.">
+  <title>Educational Guides & Articles | US Market Terminals</title>
+  <meta name="description" content="Educational articles about investing concepts, market terminology, and financial topics. Learn about dividends, REITs, cryptocurrency, and portfolio concepts.">
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -32,7 +32,6 @@
         -webkit-font-smoothing: antialiased;
     }
     
-    /* Unified Navigation */
     .nav { 
       padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
       position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
@@ -44,38 +43,44 @@
     .nav-links a:hover { color: var(--accent); }
 
     .container { max-width: 850px; margin: 0 auto; padding: 80px 24px; }
-    .article-header { text-align: center; margin-bottom: 70px; }
-    .article-header h1 { font-size: clamp(2.5rem, 5vw, 3.2rem); font-weight: 800; margin-bottom: 20px; color: #fff; letter-spacing: -2px; }
-    .article-header p { color: var(--text-dim); font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
+    .article-header { text-align: center; margin-bottom: 40px; }
+    .article-header h1 { font-size: clamp(2.2rem, 5vw, 2.8rem); font-weight: 800; margin-bottom: 20px; color: #fff; letter-spacing: -1.5px; }
+    .article-header p { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+    .disclaimer-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 50px; text-align: center; }
+    .disclaimer-box p { color: var(--text-dim); font-size: 0.9rem; margin: 0; }
 
     /* Guide Card Styling */
     .guide-card { 
-        background: var(--panel); border: 1px solid var(--border); padding: 45px; 
-        border-radius: 24px; margin-bottom: 35px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        background: var(--panel); border: 1px solid var(--border); padding: 40px; 
+        border-radius: 20px; margin-bottom: 25px; transition: 0.3s; 
     }
-    .guide-card:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .guide-card:hover { border-color: rgba(59, 130, 246, 0.3); }
     
-    .tag { display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .tag { display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
     
-    .title-link { text-decoration: none; color: #fff; font-size: 1.8rem; font-weight: 800; display: block; margin-bottom: 20px; line-height: 1.3; letter-spacing: -0.5px; }
-    .guide-card p { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 30px; text-align: justify; }
+    .title-link { text-decoration: none; color: #fff; font-size: 1.5rem; font-weight: 700; display: block; margin-bottom: 15px; line-height: 1.4; }
+    .title-link:hover { color: var(--accent); }
+    .guide-card p { color: var(--text-dim); font-size: 1rem; margin-bottom: 25px; line-height: 1.8; }
     
-    .read-more-btn { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; text-decoration: none; background: #1e293b; padding: 14px 28px; border-radius: 12px; font-size: 0.95rem; transition: 0.3s; }
-    .read-more-btn:hover { background: var(--accent); transform: translateX(5px); }
+    .read-more-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: 0.3s; }
+    .read-more-btn:hover { gap: 12px; }
 
-    .seo-footer-text { margin-top: 100px; padding: 40px; background: rgba(255,255,255,0.02); border-radius: 20px; border: 1px dashed var(--border); font-size: 0.95rem; color: #64748b; }
+    .more-coming { margin-top: 50px; padding: 40px; background: var(--panel); border: 1px dashed var(--border); border-radius: 16px; text-align: center; }
+    .more-coming h3 { color: #fff; margin-bottom: 10px; }
+    .more-coming p { color: var(--text-dim); font-size: 0.95rem; margin: 0; }
 
-    /* Unified Footer */
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 100px; }
-    .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 80px; }
+    .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
     .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
-    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px; }
+    .footer-disclaimer { max-width: 800px; margin: 0 auto; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .container { padding-top: 40px; }
-      .guide-card { padding: 30px; }
+      .guide-card { padding: 25px; }
     }
   </style>
 </head>
@@ -96,46 +101,83 @@
 
   <div class="container">
     <div class="article-header">
-      <h1>Market Research Guides</h1>
-      <p>Master the 2026 financial landscape with our data-driven investment frameworks and institutional analysis.</p>
+      <h1>Educational Guides</h1>
+      <p>Articles explaining financial concepts, investment terminology, and market topics. These guides are for educational purposes only.</p>
+    </div>
+
+    <div class="disclaimer-box">
+      <p><strong>Note:</strong> These articles provide general educational information, not investment advice. Always conduct your own research and consult qualified professionals before making financial decisions.</p>
     </div>
 
     <article class="guide-card">
-      <span class="tag">Strategy • Jan 2026</span>
-      <a href="/blog/barbell-strategy-guide.html" class="title-link">
-        The "Barbell Strategy": Balancing AI Growth and Defensive Dividends
+      <span class="tag">Concepts</span>
+      <a href="/insights/barbell-strategy.html" class="title-link">
+        What Is the Barbell Strategy? An Overview
       </a>
       <p>
-        Navigate market volatility by pairing high-beta technology assets with stable cash-flow generators. This report explores the mathematical correlation between AI growth and dividend aristocrats.
+        The barbell strategy is a portfolio construction concept that allocates assets to two extremes while avoiding the middle. This article explains what the barbell approach means, its historical origins, and the general reasoning behind it. The concept has applications in both fixed income and equity portfolios.
       </p>
-      
-      <a href="/blog/barbell-strategy-guide.html" class="read-more-btn">Read Full Report →</a>
+      <a href="/insights/barbell-strategy.html" class="read-more-btn">Read Article →</a>
     </article>
 
     <article class="guide-card">
-      <span class="tag">Crypto • Jan 2026</span>
+      <span class="tag">Cryptocurrency</span>
       <a href="/blog/bitcoin-corporate.html" class="title-link">
-        Bitcoin as Treasury Reserve: The Corporate Renaissance
+        Corporate Bitcoin Holdings: Background and Context
       </a>
       <p>
-        Analyze how the 2026 FASB accounting rule changes are driving institutional adoption. We deep dive into the MicroStrategy model and the resulting exchange supply shock.
+        Some publicly traded companies have added Bitcoin to their balance sheets. This article provides background on this trend, including relevant accounting rule changes and examples of companies that have disclosed Bitcoin holdings. It explains the mechanics without recommending any particular approach.
       </p>
-      <a href="/blog/bitcoin-corporate.html" class="read-more-btn">Read Full Report →</a>
+      <a href="/blog/bitcoin-corporate.html" class="read-more-btn">Read Article →</a>
     </article>
 
     <article class="guide-card">
-      <span class="tag">Macro • Dec 2025</span>
-      <a href="/realty-income-o.html" class="title-link">
-        Fed Policy Pivot: Real-Time Impact on REIT Valuations
+      <span class="tag">REITs</span>
+      <a href="/docs/realty-income-o.html" class="title-link">
+        Understanding REITs: Structure and Characteristics
       </a>
       <p>
-        Real Estate Investment Trusts (REITs) like Realty Income (O) are at a valuation crossroads. Examine how Federal Reserve rate cycles influence monthly dividend sustainability.
+        Real Estate Investment Trusts (REITs) are a category of investment that owns income-producing real estate. This guide explains what REITs are, how they're structured, their tax treatment, and factors that generally affect REIT valuations such as interest rate environments.
       </p>
-      <a href="/realty-income-o.html" class="read-more-btn">Read Full Report →</a>
+      <a href="/docs/realty-income-o.html" class="read-more-btn">Read Article →</a>
     </article>
 
-    <div class="seo-footer-text">
-      <strong>Research Methodology:</strong> Our insights are derived from quantitative modeling, macroeconomic indicators, and institutional order flow analysis. US Market Terminals aims to provide the transparency needed for independent wealth management.
+    <article class="guide-card">
+      <span class="tag">Dividends</span>
+      <a href="/blog/dividend-growth-strategy.html" class="title-link">
+        Dividend Investing Basics: Key Concepts
+      </a>
+      <p>
+        An introduction to dividend investing terminology and concepts. This article covers what dividends are, how yield is calculated, what payout ratios indicate, and the difference between classifications like Dividend Aristocrats and Dividend Kings. Understanding these terms helps when researching dividend-paying stocks.
+      </p>
+      <a href="/blog/dividend-growth-strategy.html" class="read-more-btn">Read Article →</a>
+    </article>
+
+    <article class="guide-card">
+      <span class="tag">Basics</span>
+      <a href="/glossary.html" class="title-link">
+        Financial Terms Glossary
+      </a>
+      <p>
+        A reference guide to common financial terminology including technical indicators, fundamental metrics, and investment concepts. From P/E ratios to moving averages, this glossary provides brief definitions to help you understand financial discussions and reports.
+      </p>
+      <a href="/glossary.html" class="read-more-btn">View Glossary →</a>
+    </article>
+
+    <article class="guide-card">
+      <span class="tag">Market Data</span>
+      <a href="/resources.html" class="title-link">
+        Financial Resources & Data Sources
+      </a>
+      <p>
+        A curated list of free, publicly available resources for learning about financial markets. Includes official government sources like SEC EDGAR and FRED, charting platforms, and educational websites. All links are to external third-party sites.
+      </p>
+      <a href="/resources.html" class="read-more-btn">View Resources →</a>
+    </article>
+
+    <div class="more-coming">
+      <h3>More Guides Coming</h3>
+      <p>We periodically add new educational content. Check back for additional articles on market concepts and terminology.</p>
     </div>
   </div>
 
@@ -148,15 +190,10 @@
         <a href="/legal.html">Terms & Disclaimer</a>
     </div>
     <p class="footer-copy">
-        © 2026 US Market Terminals. All rights reserved. <br>
-        Institutional Grade Analytics • Data Integrity • Independent spirit
+        © 2026 US Market Terminals. All rights reserved.
     </p>
     <div class="footer-disclaimer">
-        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Financial Risk Disclosure</strong>
-        US Market Terminals is for educational and informational purposes only.
-        Nothing on this site constitutes financial, investment, tax, or legal advice.
-        All investments carry risk, including the potential loss of principal.
-        Past performance does not guarantee future results.
+        <strong>Disclaimer:</strong> US Market Terminals provides educational content only. These articles are for informational purposes and do not constitute financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
     </div>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
   </footer>
