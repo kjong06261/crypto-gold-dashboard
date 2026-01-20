@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nasdaq-100 Intelligence Terminal: Real-Time Tech Analysis | US Market Terminals</title>
-  <meta name="description" content="Professional Nasdaq-100 (NDX) charting terminal. Institutional grade technical analysis, AI sector correlation, and real-time market sentiment data.">
+  <title>Nasdaq-100 Index Overview: Educational Guide | US Market Terminals</title>
+  <meta name="description" content="Educational overview of the Nasdaq-100 (NDX) index. Learn about index composition, common technical analysis concepts, and how to research market data.">
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   
@@ -16,7 +16,7 @@
       --border: #1e222d;
       --text: #e2e8f0;
       --text-sec: #94a3b8;
-      --accent: #3b82f6; /* Nasdaq Blue */
+      --accent: #3b82f6;
       --text-dim: #94a3b8;
     }
     
@@ -38,7 +38,7 @@
     .chart-wrapper { height: 75vh; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .chart-header { padding: 20px; background: var(--bg); border-bottom: 1px solid var(--border); }
     .chart-title { margin: 0; color: #fff; font-size: 1.5rem; display: flex; align-items: center; gap: 12px; font-weight: 800; }
-    .live-badge { background: #22c55e; color: #000; font-size: 0.7rem; padding: 3px 10px; border-radius: 4px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; }
+    .embed-badge { background: #64748b; color: #fff; font-size: 0.7rem; padding: 3px 10px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
     /* Content Section */
     .content-section { max-width: 900px; margin: 0 auto; padding: 80px 24px 120px; }
@@ -49,8 +49,15 @@
     .content-section li { margin-bottom: 15px; font-size: 1.05rem; }
     .content-section strong { color: #fff; }
 
-    .analysis-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 35px; margin: 40px 0; }
-    .analysis-box h3 { margin-top: 0; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 35px; margin: 40px 0; }
+    .info-box h3 { margin-top: 0; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+
+    .warning-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 16px; padding: 35px; margin: 40px 0; }
+    .warning-box h3 { margin-top: 0; color: #f59e0b; font-weight: 800; }
+    .warning-box p { margin-bottom: 0; color: #fbbf24; }
+
+    .source-note { background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; padding: 20px; margin: 20px 0; font-size: 0.9rem; color: var(--text-dim); }
+    .source-note a { color: var(--accent); }
 
     /* Footer - Unified Style */
     footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; }
@@ -75,7 +82,7 @@
           <a href="/calculator.html">Calculator</a>
           <a href="/market-pulse.html">Pulse</a>
           <a href="/tools.html">Tools</a>
-          <a href="/blog.html">Research</a>
+          <a href="/blog.html">Learn</a>
           <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
       </div>
     </div>
@@ -83,8 +90,8 @@
 
   <div class="chart-wrapper">
     <div class="chart-header">
-      <h1 class="chart-title">NASDAQ-100 Intelligence <span class="live-badge">Live Market Link</span></h1>
-      <p style="color:#64748b; margin: 8px 0 0; font-size: 0.95rem; font-weight: 500;">Advanced technical structure and institutional liquidity tracking.</p>
+      <h1 class="chart-title">Nasdaq-100 Index Chart <span class="embed-badge">TradingView Embed</span></h1>
+      <p style="color:#64748b; margin: 8px 0 0; font-size: 0.95rem; font-weight: 500;">Third-party charting tool provided by TradingView. Data may be delayed.</p>
     </div>
 
     <div class="tradingview-widget-container" style="flex-grow: 1; width: 100%;">
@@ -116,37 +123,91 @@
   </div>
 
   <article class="content-section">
-    <h1>Analyzing the Nasdaq-100: The Frontier of Innovation</h1>
+    <h1>Understanding the Nasdaq-100 Index</h1>
+
+    <div class="warning-box">
+      <h3>⚠️ Educational Content Only</h3>
+      <p>This page provides educational information about the Nasdaq-100 index. It is not investment advice. The chart above is a third-party embed from TradingView and may have delayed data. Always verify information from official sources before making any decisions.</p>
+    </div>
+
     <p>
-      The <strong>Nasdaq-100 Index (NDX)</strong> is the world's preeminent growth benchmark, comprised of 100 of the largest non-financial companies listed on the Nasdaq Stock Market. In 2026, the index acts as a primary barometer for <strong>Artificial Intelligence (AI)</strong>, semiconductor demand, and software-as-a-service (SaaS) expansion. Navigating this terminal requires an understanding of both technical precision and macroeconomic fundamentals.
+      The <strong>Nasdaq-100 Index (NDX)</strong> tracks 100 of the largest non-financial companies listed on the Nasdaq Stock Market. The index is often used as a benchmark for technology and growth-oriented companies, though it also includes companies from other sectors such as consumer services, healthcare, and industrials.
     </p>
 
-    <div class="analysis-box">
-      <h3>Institutional Analysis: The Weight of Tech</h3>
+    <div class="info-box">
+      <h3>About This Chart</h3>
       <p>
-        Because the NDX is a modified capitalization-weighted index, performance is often driven by a handful of high-conviction companies known as the <strong>"Magnificent Seven."</strong> At US Market Terminals, we utilize real-time price action to identify rotation out of traditional growth and into emerging productivity tools, providing a holistic view of market breadth.
+        The chart displayed above is provided by <strong>TradingView</strong>, a third-party charting platform. We do not control the data, timing, or accuracy of this widget. For official Nasdaq-100 data, please visit <a href="https://www.nasdaq.com/market-activity/quotes/nasdaq-ndx-index" target="_blank" rel="noopener" style="color: var(--accent);">Nasdaq's official website</a>.
       </p>
     </div>
 
-    <h2>1. Strategic Technical Methodology</h2>
+    <h2>1. What Is the Nasdaq-100?</h2>
     <p>
-      For high-probability trade setups, professional investors look for a confluence of multiple technical factors. When using the Nasdaq Pro Terminal, focus on the following core metrics:
+      The Nasdaq-100 is a <strong>modified capitalization-weighted index</strong>, meaning larger companies have more influence on the index's performance. It excludes financial companies (banks, insurance companies, etc.), which distinguishes it from broader market indices.
+    </p>
+    <p>
+      <strong>Key characteristics:</strong>
     </p>
     <ul>
-      <li><strong>Institutional Moving Averages:</strong> The 50-day EMA tracks short-term sentiment, while the 200-day SMA defines the long-term structural trend. Breakthroughs at these levels often signal significant capital shifts.</li>
-      <li><strong>Relative Strength Index (RSI):</strong> Beyond simple 70/30 levels, look for <strong>RSI Divergences</strong>. If the NDX makes a higher high while the RSI makes a lower high, it may indicate weakening momentum.</li>
-      <li><strong>Fibonacci Confluence:</strong> Use the drawing tools to identify retracement levels. The 61.8% "Golden Pocket" is a frequent zone for institutional "dip buying."</li>
+      <li><strong>Composition:</strong> 100 of the largest non-financial companies on Nasdaq</li>
+      <li><strong>Weighting:</strong> Modified market-cap weighted (with caps to prevent excessive concentration)</li>
+      <li><strong>Rebalancing:</strong> Quarterly, with annual reconstitution</li>
+      <li><strong>Sectors:</strong> Primarily technology, but also includes consumer discretionary, healthcare, and others</li>
     </ul>
 
-    <h2>2. The Macro-Tech Nexus</h2>
+    <h2>2. Common Technical Analysis Concepts</h2>
     <p>
-      In 2026, technology valuations are inextricably linked to the <strong>Real Yield of the US 10-Year Treasury</strong>. High-growth tech stocks are "long duration" assets, meaning their present value is sensitive to interest rate fluctuations. By monitoring the real-time chart above, investors can observe how the Nasdaq reacts to Federal Reserve announcements or CPI inflation data.
+      Many investors and traders study charts using technical analysis. Below are some commonly discussed concepts. <strong>Note:</strong> Technical analysis is one of many approaches to studying markets, and there is ongoing debate about its effectiveness. These descriptions are for educational purposes only.
+    </p>
+    <ul>
+      <li><strong>Moving Averages:</strong> Calculate the average price over a specific period. The 50-day and 200-day moving averages are frequently referenced in financial media.</li>
+      <li><strong>Relative Strength Index (RSI):</strong> A momentum indicator that measures the speed and magnitude of price changes. Values range from 0 to 100.</li>
+      <li><strong>Support and Resistance:</strong> Price levels where buying or selling activity has historically been observed. These are not predictive guarantees.</li>
+      <li><strong>Volume:</strong> The number of shares traded. Some analysts study volume patterns alongside price movements.</li>
+    </ul>
+
+    <div class="source-note">
+      <strong>Learning Resources:</strong> To learn more about technical analysis concepts, consider resources from <a href="https://www.investopedia.com/technical-analysis-4689657" target="_blank" rel="noopener">Investopedia</a> or educational materials from FINRA and the SEC.
+    </div>
+
+    <h2>3. Index Concentration</h2>
+    <p>
+      One characteristic of the Nasdaq-100 that analysts frequently discuss is its <strong>concentration</strong>. A relatively small number of large companies can represent a significant portion of the index's total value. This means the index's performance can be heavily influenced by the results of just a few companies.
+    </p>
+    <p>
+      Investors researching index funds or ETFs that track the Nasdaq-100 may want to review the fund's prospectus to understand exactly how the index is replicated and what risks are involved.
     </p>
 
-    <h2>3. Risk Disclosure & Capital Preservation</h2>
+    <h2>4. Macroeconomic Factors</h2>
     <p>
-      While the Nasdaq-100 offers significant growth potential, it also carries higher beta (volatility) compared to the S&P 500. A disciplined strategy involves setting stop-loss orders based on <strong>ATR (Average True Range)</strong> to account for the index's natural daily volatility. Capital preservation is the first rule of successful terminal usage.
+      Like all equity indices, the Nasdaq-100 can be influenced by broader economic factors including:
     </p>
+    <ul>
+      <li>Interest rate changes by the Federal Reserve</li>
+      <li>Inflation data (CPI, PCE)</li>
+      <li>Corporate earnings reports</li>
+      <li>Economic growth indicators (GDP)</li>
+      <li>Global trade and geopolitical events</li>
+    </ul>
+    <p>
+      Understanding these relationships requires ongoing research and study. Economic conditions change, and past relationships between variables may not persist in the future.
+    </p>
+
+    <h2>5. Where to Find Official Data</h2>
+    <p>
+      For accurate and timely information about the Nasdaq-100:
+    </p>
+    <ul>
+      <li><a href="https://www.nasdaq.com" target="_blank" rel="noopener" style="color: var(--accent);">Nasdaq Official Website</a> — Index methodology, constituents, and real-time data</li>
+      <li><a href="https://www.sec.gov/edgar" target="_blank" rel="noopener" style="color: var(--accent);">SEC EDGAR</a> — Company filings and financial statements</li>
+      <li><a href="https://fred.stlouisfed.org" target="_blank" rel="noopener" style="color: var(--accent);">FRED (Federal Reserve Economic Data)</a> — Economic indicators and historical data</li>
+    </ul>
+
+    <div class="warning-box">
+      <h3>⚠️ Important Reminder</h3>
+      <p>This content is for educational purposes only. It does not constitute investment advice, trading recommendations, or an endorsement of any particular strategy. All investments involve risk, including potential loss of principal. Consult with qualified financial professionals before making investment decisions.</p>
+    </div>
+
   </article>
 
   <footer>
@@ -159,11 +220,11 @@
     </div>
     <p class="footer-copy">
         © 2026 US Market Terminals. All rights reserved. <br>
-        Institutional Grade Analytics • Data Integrity • Independent Research
+        Educational Content • For Informational Purposes Only
     </p>
     <div class="footer-disclaimer">
-        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Financial Risk Disclosure</strong>
-        US Market Terminals is for educational and informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
+        <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Important Disclaimer</strong>
+        US Market Terminals provides educational content for informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. The chart on this page is provided by TradingView, a third-party service, and may display delayed data. We do not guarantee the accuracy of any information displayed. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
     </div>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
   </footer>
