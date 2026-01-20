@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Tools & Analyzers | US Market Terminals</title>
-    <meta name="description" content="Access professional investment calculators, market sentiment gauges, and quantitative research tools for Nasdaq and Digital Assets.">
+    <title>Educational Tools & Demos | US Market Terminals</title>
+    <meta name="description" content="Educational demo tools for learning about compound interest, market sentiment concepts, and basic financial calculations.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://us-dividend-pro.com/tools.html">
 
@@ -43,12 +43,15 @@
             background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
         }
         .hero-badge {
-            display: inline-flex; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);
-            padding: 8px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; color: var(--green);
+            display: inline-flex; background: rgba(100, 116, 139, 0.2); border: 1px solid rgba(100, 116, 139, 0.3);
+            padding: 8px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; color: var(--text-dim);
             text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px;
         }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; color: #fff; letter-spacing: -2px; margin-bottom: 16px; }
         .hero p { font-size: 1.15rem; color: var(--text-dim); max-width: 650px; margin: 0 auto; }
+
+        .warning-banner { max-width: 800px; margin: -30px auto 0; padding: 20px 30px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 16px; }
+        .warning-banner p { color: #fbbf24; font-size: 0.9rem; margin: 0; text-align: center; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
 
@@ -67,8 +70,8 @@
         .tool-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
         .tool-icon { font-size: 32px; width: 60px; height: 60px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 16px; display: flex; align-items: center; justify-content: center; }
         .tool-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .badge-popular { background: rgba(245, 158, 11, 0.15); color: var(--yellow); }
-        .badge-new { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+        .badge-demo { background: rgba(100, 116, 139, 0.3); color: #94a3b8; }
+        .badge-embed { background: rgba(59, 130, 246, 0.15); color: var(--accent); }
 
         .tool-name { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.5px; }
         .tool-description { font-size: 1rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
@@ -83,14 +86,16 @@
         }
         .tool-link:hover { background: #2563eb; transform: scale(1.02); }
 
-        .coming-soon { background: var(--panel); border: 1px dashed var(--border); border-radius: 24px; padding: 60px 40px; text-align: center; }
-        .coming-soon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 32px; }
-        .coming-soon-item { padding: 18px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 14px; font-weight: 600; color: var(--text-dim); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .info-section { background: var(--panel); border: 1px solid var(--border); border-radius: 24px; padding: 40px; text-align: center; }
+        .info-section h3 { color: #fff; margin-bottom: 16px; }
+        .info-section p { color: var(--text-dim); font-size: 0.95rem; max-width: 600px; margin: 0 auto; }
 
         /* Unified Footer */
         footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 80px; }
         .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
         .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
         @media (max-width: 768px) { .nav-links { display: none; } .tools-grid { grid-template-columns: 1fr; } }
@@ -105,95 +110,95 @@
                 <a href="/calculator.html">Calculator</a>
                 <a href="/market-pulse.html">Pulse</a>
                 <a href="/tools.html" style="color: var(--accent);">Tools</a>
-                <a href="/blog.html">Research</a>
+                <a href="/blog.html">Learn</a>
                 <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-badge">Quantitative Research Lab</div>
-        <h1>Intelligence Tools</h1>
-        <p>Institutional-grade analysis modules designed for individual investors. Access precision data for long-term compounding and risk management.</p>
+        <div class="hero-badge">Educational Demos</div>
+        <h1>Learning Tools</h1>
+        <p>Simple educational demos to help you understand financial concepts. These are for learning purposes only—not investment tools.</p>
     </header>
+
+    <div class="warning-banner">
+        <p>⚠️ <strong>Important:</strong> All tools on this page are educational demonstrations only. They do not provide real market data, investment signals, or financial advice.</p>
+    </div>
 
     <div class="container">
         
         <div class="section-header">
-            <h2 class="section-title">Sentiment & Market Radar</h2>
+            <h2 class="section-title">Concept Demonstrations</h2>
         </div>
 
         <div class="tools-grid">
             <div class="tool-card">
                 <div class="tool-header">
                     <div class="tool-icon">🌡️</div>
-                    <span class="tool-badge badge-new">Live</span>
+                    <span class="tool-badge badge-demo">Demo</span>
                 </div>
-                <h3 class="tool-name">Market Thermometer</h3>
-                <p class="tool-description">Our lead indicator. Aggregates Nasdaq VIX, Crypto Fear/Greed, and Put/Call ratios to identify market exhaustion points.</p>
+                <h3 class="tool-name">Sentiment Gauge Demo</h3>
+                <p class="tool-description">An educational demonstration of how market sentiment indicators are conceptualized. Uses randomized values for illustration—not real market data.</p>
                 <div class="tool-features">
-                    <span class="tool-feature">Sentiment Mapping</span>
-                    <span class="tool-feature">Real-time Data</span>
+                    <span class="tool-feature">Concept Demo</span>
+                    <span class="tool-feature">Randomized Values</span>
                 </div>
-                <a href="/market-pulse.html" class="tool-link">Launch Thermometer →</a>
+                <a href="/market-pulse.html" class="tool-link">View Demo →</a>
             </div>
 
             <div class="tool-card">
                 <div class="tool-header">
                     <div class="tool-icon">🤖</div>
-                    <span class="tool-badge badge-popular">Popular</span>
+                    <span class="tool-badge badge-demo">Demo</span>
                 </div>
-                <h3 class="tool-name">Fear & Greed Gauge</h3>
-                <p class="tool-description">Visualize the pendulum of investor psychology. High greed often signals tops; extreme fear marks generational bottoms.</p>
+                <h3 class="tool-name">Fear & Greed Concept</h3>
+                <p class="tool-description">Learn about the concept of fear and greed indicators that some investors reference. This demo shows how such gauges are typically visualized.</p>
                 <div class="tool-features">
-                    <span class="tool-feature">Contrarian Signal</span>
-                    <span class="tool-feature">VIX Correlation</span>
+                    <span class="tool-feature">Educational</span>
+                    <span class="tool-feature">Concept Explanation</span>
                 </div>
-                <a href="/gauge.html" class="tool-link">Check Sentiment →</a>
+                <a href="/gauge.html" class="tool-link">Learn More →</a>
             </div>
         </div>
 
         <div class="section-header">
-            <h2 class="section-title">Investment Simulators</h2>
+            <h2 class="section-title">Educational Calculators</h2>
         </div>
 
         <div class="tools-grid">
-            <div class="tool-card" style="border-color: rgba(59, 130, 246, 0.4);">
+            <div class="tool-card">
                 <div class="tool-header">
                     <div class="tool-icon">🧮</div>
-                    <span class="tool-badge badge-popular">Essential</span>
+                    <span class="tool-badge badge-demo">Demo</span>
                 </div>
-                <h3 class="tool-name">Strategy Lab (DRIP)</h3>
-                <p class="tool-description">The ultimate dividend reinvestment simulator. Models wealth growth with tax-adjusted variables and monthly compounding.</p>
+                <h3 class="tool-name">Compound Interest Calculator</h3>
+                <p class="tool-description">A simple calculator to illustrate how compound interest works over time. Results are hypothetical examples for educational purposes only.</p>
                 <div class="tool-features">
-                    <span class="tool-feature">Tax-Adjusted (15.4%)</span>
-                    <span class="tool-feature">Wealth Projection</span>
+                    <span class="tool-feature">Hypothetical Examples</span>
+                    <span class="tool-feature">Learning Tool</span>
                 </div>
-                <a href="/calculator.html" class="tool-link">Run Simulation →</a>
+                <a href="/calculator.html" class="tool-link">Try Calculator →</a>
             </div>
 
             <div class="tool-card">
                 <div class="tool-header">
                     <div class="tool-icon">🗺️</div>
+                    <span class="tool-badge badge-embed">TradingView</span>
                 </div>
-                <h3 class="tool-name">S&P 500 Heatmap</h3>
-                <p class="tool-description">Scan the entire US market landscape in real-time. Identify sector rotation and find defensive dividend yield strength.</p>
+                <h3 class="tool-name">Market Overview</h3>
+                <p class="tool-description">Third-party TradingView widget showing market data. We do not control this data—it may be delayed. Visit TradingView for official information.</p>
                 <div class="tool-features">
-                    <span class="tool-feature">Sector Performance</span>
-                    <span class="tool-feature">Yield Discovery</span>
+                    <span class="tool-feature">Third-Party Embed</span>
+                    <span class="tool-feature">May Be Delayed</span>
                 </div>
-                <a href="/dividend.html" class="tool-link">Explore Map →</a>
+                <a href="/dividend.html" class="tool-link">View Widget →</a>
             </div>
         </div>
 
-        <div class="coming-soon">
-            <h3 class="section-title" style="margin-bottom: 12px; justify-content: center; display: flex;">Future Roadmap</h3>
-            <p style="color: var(--text-dim); font-size: 0.95rem;">Our quantitative developers are currently engineering the following analytical modules.</p>
-            <div class="coming-soon-grid">
-                <div class="coming-soon-item">🚀 AI Momentum Screener</div>
-                <div class="coming-soon-item">⚖️ Barbell Allocation Lab</div>
-                <div class="coming-soon-item">📊 Institutional FCF Tracker</div>
-            </div>
+        <div class="info-section">
+            <h3>About These Tools</h3>
+            <p>These educational demos are designed to help you understand basic financial concepts. They are not investment tools and should not be used to make financial decisions. For actual market data and analysis, please consult official sources and qualified financial professionals.</p>
         </div>
     </div>
 
@@ -205,13 +210,13 @@
             <a href="/privacy.html">Privacy</a>
             <a href="/legal.html">Terms & Disclaimer</a>
         </div>
-        <p style="color: #475569; font-size: 0.85rem; margin-bottom: 25px;">
+        <p class="footer-copy">
             © 2026 US Market Terminals. All rights reserved. <br>
-            Institutional Grade Analytics • Data Integrity • Independent Research
+            Educational Content • For Informational Purposes Only
         </p>
         <div class="footer-disclaimer">
-            <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Financial Risk Disclosure</strong>
-            US Market Terminals is for educational and informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal.
+            <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Important Disclaimer</strong>
+            US Market Terminals provides educational content for informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All tools are demonstrations for learning purposes. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
         </div>
     </footer>
 
