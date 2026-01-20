@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Interest Rates | US Market Terminals</title>
+  <meta name="description" content="Educational guide explaining interest rates, how they work, the Federal Reserve's role, and how rates affect the economy and investments.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #10b981; --accent-glow: rgba(16, 185, 129, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); }
+    * { margin: 0; padding: 0; box-sizing: border-box; } body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; } a { text-decoration: none; }
+    .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; } .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
+    .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; } .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
+    .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
+    .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
+    .content { font-size: 1.1rem; color: #cbd5e1; } .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content p { margin-bottom: 28px; text-align: justify; line-height: 1.9; } .content strong { color: #fff; }
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; } .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    .key-point { background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #34d399; margin-bottom: 10px; font-size: 1rem; } .key-point p { margin: 0; color: #6ee7b7; font-size: 0.95rem; }
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; } .reading-section ul { margin: 0; padding-left: 20px; } .reading-section li { margin-bottom: 10px; } .reading-section a { color: #93c5fd; }
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; } .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <nav class="nav"><div class="nav-container"><a href="/index.html" class="logo">📊 US MARKET TERMINALS</a><div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">Educational Content</div></div></nav>
+  <main class="container">
+    <div class="warning-box"><h4>⚠️ Educational Purpose Only</h4><p>This article explains interest rates as an economic concept. It is not financial advice. Rates change frequently and their effects are complex. Consult qualified professionals for financial decisions.</p></div>
+    <article class="article-header">
+      <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
+      <span class="tag">Economics</span>
+      <h1>Understanding Interest Rates</h1>
+      <div class="meta"><span>Intermediate Guide</span><span>•</span><span>6 min read</span></div>
+    </article>
+    <div class="content">
+      <p><strong>Interest rates</strong> represent the cost of borrowing money or the reward for saving it. They are one of the most important variables in economics, affecting everything from mortgages to stock prices to business investment decisions.</p>
+
+      <h2>1. What is an Interest Rate?</h2>
+      <p>At its simplest, an interest rate is the percentage charged on borrowed money or paid on deposited money. If you borrow $100 at a 5% annual interest rate, you'll owe $105 after one year. If you deposit $100 in a savings account at 3% interest, you'll have $103 after one year.</p>
+      <p>Interest rates can be thought of as the "price of money"—higher rates make borrowing more expensive and saving more rewarding.</p>
+
+      <h2>2. The Federal Reserve's Role</h2>
+      <p>In the United States, the Federal Reserve (often called "the Fed") influences short-term interest rates through its monetary policy. The Fed sets the <strong>federal funds rate</strong>—the rate at which banks lend to each other overnight.</p>
+      <p>When the Fed raises rates, borrowing becomes more expensive throughout the economy. When it lowers rates, borrowing becomes cheaper. These decisions ripple through the entire financial system.</p>
+
+      <div class="info-box">
+        <h3>📊 Key Interest Rate Terms</h3>
+        <p><strong>Federal Funds Rate:</strong> The Fed's target rate for overnight bank lending</p>
+        <p><strong>Prime Rate:</strong> The rate banks charge their best customers, typically Fed funds + 3%</p>
+        <p><strong>Yield:</strong> The return on an investment, often expressed as an interest rate</p>
+        <p><strong>APR:</strong> Annual Percentage Rate—the yearly cost of borrowing including fees</p>
+        <p><strong>APY:</strong> Annual Percentage Yield—the yearly return on savings including compounding</p>
+      </div>
+
+      <h2>3. How Rates Affect the Economy</h2>
+      <p><strong>When rates rise:</strong> Borrowing costs increase, which can slow economic activity. Mortgages, car loans, and business loans become more expensive. This can reduce spending and investment, potentially slowing inflation but also economic growth.</p>
+      <p><strong>When rates fall:</strong> Borrowing becomes cheaper, which can stimulate economic activity. Lower mortgage rates may boost housing demand; cheaper business loans may encourage investment. However, too-low rates can fuel inflation or asset bubbles.</p>
+
+      <div class="key-point"><h4>⚠️ Not a Direct Relationship</h4><p>The relationship between rates and markets is complex. Rising rates don't always hurt stocks, and falling rates don't always help them. Many other factors influence economic and market outcomes.</p></div>
+
+      <h2>4. Rates and Investments</h2>
+      <p><strong>Bonds:</strong> When interest rates rise, existing bond prices typically fall (and vice versa). This is because new bonds offer higher yields, making old bonds less attractive.</p>
+      <p><strong>Stocks:</strong> Higher rates can pressure stock valuations by making future earnings less valuable in today's terms and by making bonds more competitive. However, this relationship isn't always consistent.</p>
+      <p><strong>Savings:</strong> Higher rates generally mean better returns on savings accounts, CDs, and money market funds.</p>
+      <p><strong>Real Estate:</strong> Higher mortgage rates typically reduce home affordability, potentially cooling housing markets.</p>
+
+      <h2>5. Real vs. Nominal Rates</h2>
+      <p>The <strong>nominal rate</strong> is the stated rate—what you see advertised. The <strong>real rate</strong> adjusts for inflation. If your savings account pays 3% but inflation is 4%, your real return is -1%—your purchasing power actually decreased.</p>
+
+      <h2>Conclusion</h2>
+      <p>Interest rates are fundamental to understanding economics and finance. They represent the cost of borrowing and the reward for saving, and they influence nearly every financial decision from consumer purchases to corporate investments. The Federal Reserve's rate decisions have wide-ranging effects, though these effects are complex and not always predictable.</p>
+
+      <div class="reading-section">
+        <h3>📚 Further Reading</h3>
+        <ul>
+          <li><a href="https://www.federalreserve.gov/monetarypolicy.htm" target="_blank" rel="noopener">Federal Reserve: Monetary Policy</a></li>
+          <li><a href="https://www.investopedia.com/terms/i/interestrate.asp" target="_blank" rel="noopener">Investopedia: Interest Rates</a></li>
+        </ul>
+      </div>
+      <div class="warning-box" style="margin-top: 50px;"><h4>⚠️ Final Reminder</h4><p>This article is for educational purposes only. Interest rates and their effects are complex and change frequently. Consult qualified professionals for financial decisions.</p></div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a><a href="/legal.html">Terms</a></div>
+    <div class="footer-disclaimer"><strong>Disclaimer:</strong> US Market Terminals provides educational content only. All investments carry risk.</div>
+  </footer>
+</body>
+</html>
