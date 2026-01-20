@@ -1,18 +1,30 @@
 # 📊 US Market Terminals
 
-**Institutional-Grade Market Intelligence for Independent Investors**
+**Educational Resources for Learning About US Markets**
 
-US Market Terminals is a specialized financial research platform designed to bridge the information gap between Wall Street and Main Street.
+US Market Terminals is an educational website providing learning resources and simple demo tools for understanding basic financial concepts.
 
-## 🚀 Core Features
-* **Nasdaq 100 Analysis**: FCF yields & growth metrics.
-* **Market Thermometer**: Proprietary sentiment index.
-* **Strategy Lab**: Dividend reinvestment simulator.
+## 📚 About This Site
+
+This website offers:
+- Educational articles about market concepts
+- Simple calculators for illustrating compound interest
+- Third-party chart embeds (via TradingView) for reference
+- Links to official data sources (SEC, FRED, etc.)
+
+**Important:** This site is for educational purposes only. It does not provide investment advice, real-time data, or trading recommendations.
 
 ## 📂 Project Structure
-* `index.html`: Main Dashboard
-* `calculator.html`: Investment Tools
-* `nasdaq.html`: Tech Sector Analysis
+
+* `index.html`: Homepage
+* `calculator.html`: Compound Interest Calculator (Demo)
+* `blog.html`: Educational Articles
+* `resources.html`: Links to Official Data Sources
+
+## ⚠️ Disclaimer
+
+All content is for educational and informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal.
 
 ## 📄 License
-© 2026 US Market Terminals. MIT License.
+
+© 2026 US Market Terminals. All rights reserved.
