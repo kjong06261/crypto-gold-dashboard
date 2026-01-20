@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Disclaimer | US Market Terminals</title>
-    <meta name="description" content="Official financial risk disclosure and legal disclaimer for US Market Terminals. Understanding the risks of investing and data limitations.">
+    <title>Disclaimer | US Market Terminals</title>
+    <meta name="description" content="Important disclaimers and disclosures for US Market Terminals. Understand the limitations of our educational content and data displays.">
     <meta name="robots" content="index, follow">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #05070a;
@@ -20,7 +20,6 @@
         }
         body { font-family: 'Inter', sans-serif; line-height: 1.8; background: var(--bg); color: var(--text); margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
 
-        /* Unified Navigation */
         .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
         .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
         .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
@@ -29,24 +28,34 @@
         .nav-links a:hover { color: var(--accent); }
 
         .container { max-width: 800px; margin: 0 auto; padding: 80px 24px; }
-        h1 { font-size: 2.8rem; font-weight: 800; color: #fff; margin-bottom: 40px; border-bottom: 3px solid var(--red); padding-bottom: 15px; letter-spacing: -1.5px; }
+        h1 { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 20px; letter-spacing: -1.5px; }
+        .last-updated { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 40px; }
         
-        .legal-box { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 45px; margin-bottom: 40px; box-shadow: 0 15px 45px rgba(0,0,0,0.4); }
-        .legal-section { margin-bottom: 35px; }
-        .legal-section h2 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 18px; text-transform: uppercase; letter-spacing: 1.5px; display: flex; align-items: center; gap: 10px; }
-        .legal-section h2::before { content: '⚠️'; font-size: 1rem; }
-        .legal-text { font-size: 1.05rem; color: var(--text-dim); text-align: justify; }
-        .highlight { color: #fff; font-weight: 700; }
+        .intro-text { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 40px; line-height: 1.8; }
 
-        .mit-license { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; background: rgba(0,0,0,0.3); padding: 25px; border-radius: 12px; border: 1px solid var(--border); color: #7e8c9a; line-height: 1.6; }
+        .legal-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 40px; margin-bottom: 30px; }
+        .legal-section { margin-bottom: 30px; }
+        .legal-section:last-child { margin-bottom: 0; }
+        .legal-section h2 { font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 15px; }
+        .legal-text { font-size: 1rem; color: var(--text-dim); text-align: justify; line-height: 1.8; }
+        .legal-text strong { color: #fff; }
 
-        /* Unified Footer */
-        footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 60px; }
-        .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .warning-box { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 30px; margin-bottom: 40px; }
+        .warning-box h3 { color: var(--red); margin: 0 0 15px 0; font-size: 1.1rem; }
+        .warning-box p { color: var(--text-dim); margin: 0; font-size: 1rem; line-height: 1.8; }
+
+        .related-links { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border); }
+        .related-links h3 { color: #fff; font-size: 1rem; margin-bottom: 15px; }
+        .related-links a { color: var(--accent); text-decoration: none; margin-right: 20px; font-size: 0.95rem; }
+        .related-links a:hover { text-decoration: underline; }
+
+        footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 60px; }
+        .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+        .footer-links a:hover { color: var(--accent); }
         .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; }
 
-        @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 2.2rem; } .legal-box { padding: 30px 20px; } }
+        @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 2rem; } .legal-box { padding: 25px 20px; } }
     </style>
 </head>
 <body>
@@ -64,43 +73,98 @@
     </nav>
 
     <div class="container">
-        <h1>Financial Disclaimer</h1>
+        <h1>Disclaimer</h1>
+        <p class="last-updated">Last Updated: January 2026</p>
         
+        <p class="intro-text">
+            Please read this disclaimer carefully before using US Market Terminals. By accessing or using this website, you acknowledge that you have read, understood, and agree to be bound by the following terms and limitations.
+        </p>
+
+        <div class="warning-box">
+            <h3>Important Notice</h3>
+            <p>
+                US Market Terminals is an educational website that displays publicly available market data. This website does not provide investment advice, financial planning services, or personalized recommendations. Nothing on this site should be construed as a solicitation or offer to buy or sell any security or financial instrument.
+            </p>
+        </div>
+
         <div class="legal-box">
             <div class="legal-section">
-                <h2>1. For Informational Purposes</h2>
+                <h2>1. Educational Purpose Only</h2>
                 <p class="legal-text">
-                    <span class="highlight">US Market Terminals</span> is an independent research platform. All data, tools, and content are provided for <span class="highlight">educational and informational purposes only</span>. We are not registered investment advisors, brokers, or financial planners. Nothing on this site constitutes professional financial, investment, tax, or legal advice.
+                    All content on US Market Terminals, including but not limited to articles, data displays, calculators, and tools, is provided <strong>for educational and informational purposes only</strong>. The information presented is intended to help visitors understand financial concepts and market data. It is not intended to serve as the basis for any investment decision.
                 </p>
             </div>
 
             <div class="legal-section">
-                <h2>2. Market Risk Disclosure</h2>
+                <h2>2. Not Financial Advice</h2>
                 <p class="legal-text">
-                    Investing in financial markets, including but not limited to stocks, ETFs, REITs, and cryptocurrencies, <span class="highlight">involves a high degree of risk</span>. There is always the potential for a total loss of principal. Past performance is not indicative of future results. You should always conduct your own due diligence or consult with a licensed professional.
+                    US Market Terminals is <strong>not a registered investment advisor, broker-dealer, or financial planner</strong>. We do not provide personalized investment advice, tax advice, or legal advice. The general information on this site is not a substitute for professional advice tailored to your individual circumstances. Before making any financial decisions, you should consult with qualified professionals who can assess your specific situation.
                 </p>
             </div>
 
             <div class="legal-section">
-                <h2>3. Data Accuracy</h2>
+                <h2>3. Investment Risk</h2>
                 <p class="legal-text">
-                    While we strive to provide accurate and real-time information sourced from reputable third-party APIs, <span class="highlight">we do not guarantee the completeness, accuracy, or timeliness</span> of the data. Market data may be delayed or subject to errors.
+                    All investments carry risk, including the potential loss of principal. The value of investments can go down as well as up. <strong>Past performance is not indicative of future results.</strong> Different types of investments involve varying degrees of risk, and there can be no assurance that any specific investment will be profitable. Cryptocurrencies and other digital assets are particularly volatile and speculative. You should carefully consider your investment objectives, risk tolerance, and financial situation before engaging with any financial market.
                 </p>
             </div>
 
             <div class="legal-section">
-                <h2>4. Software & Liability (MIT)</h2>
-                <div class="mit-license">
-                    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. 
-                    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-                    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE.
-                </div>
+                <h2>4. Data Accuracy and Limitations</h2>
+                <p class="legal-text">
+                    Market data displayed on this website is provided through third-party services such as TradingView widgets. While we endeavor to present accurate information, <strong>we do not guarantee the accuracy, completeness, timeliness, or reliability</strong> of any data displayed. Market data may be delayed, contain errors, or become outdated. For official financial data, please refer to primary sources such as stock exchanges, regulatory filings (SEC EDGAR), or official company publications.
+                </p>
+            </div>
+
+            <div class="legal-section">
+                <h2>5. Third-Party Links and Content</h2>
+                <p class="legal-text">
+                    This website may contain links to third-party websites, embedded content, or references to external resources. These links are provided for convenience and informational purposes only. US Market Terminals <strong>does not endorse, control, or assume responsibility</strong> for the content, privacy policies, or practices of any third-party websites. Accessing third-party sites is at your own risk.
+                </p>
+            </div>
+
+            <div class="legal-section">
+                <h2>6. Advertising Disclosure</h2>
+                <p class="legal-text">
+                    This website may display advertisements provided by third-party advertising networks, including Google AdSense. These advertisements are served based on various factors and may use cookies or similar technologies to display relevant content. <strong>The appearance of advertisements does not constitute an endorsement</strong> of the advertised products or services. We have no control over the content of third-party advertisements.
+                </p>
+            </div>
+
+            <div class="legal-section">
+                <h2>7. No Warranties</h2>
+                <p class="legal-text">
+                    This website and its content are provided <strong>"as is" and "as available"</strong> without warranties of any kind, either express or implied. We disclaim all warranties, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components.
+                </p>
+            </div>
+
+            <div class="legal-section">
+                <h2>8. Limitation of Liability</h2>
+                <p class="legal-text">
+                    To the fullest extent permitted by applicable law, US Market Terminals and its operators shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, this website or its content. This includes, without limitation, damages for loss of profits, data, or other intangible losses, even if we have been advised of the possibility of such damages.
+                </p>
+            </div>
+
+            <div class="legal-section">
+                <h2>9. User Responsibility</h2>
+                <p class="legal-text">
+                    You are solely responsible for evaluating the accuracy, completeness, and usefulness of any information provided on this website. You are also solely responsible for any investment decisions you make. <strong>We strongly encourage you to conduct your own research</strong> and due diligence before making any financial decisions. Consider seeking advice from qualified financial, legal, and tax professionals.
+                </p>
+            </div>
+
+            <div class="legal-section">
+                <h2>10. Changes to This Disclaimer</h2>
+                <p class="legal-text">
+                    We reserve the right to modify this disclaimer at any time without prior notice. Changes will be effective immediately upon posting to this page. Your continued use of the website after any changes indicates your acceptance of the modified disclaimer. We encourage you to review this page periodically for updates.
+                </p>
             </div>
         </div>
 
-        <p style="text-align: center;">
-            <a href="/index.html" style="color: var(--accent); font-weight: 700; text-decoration: none;">← Back to Intelligence Terminal</a>
-        </p>
+        <div class="related-links">
+            <h3>Related Policies</h3>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/legal.html">Terms of Use</a>
+            <a href="/contact.html">Contact Us</a>
+        </div>
     </div>
 
     <footer>
@@ -112,8 +176,7 @@
             <a href="/legal.html">Terms & Disclaimer</a>
         </div>
         <p class="footer-copy">
-            © 2026 US Market Terminals. All rights reserved. <br>
-            Institutional Grade Analytics • Data Integrity • Market Transparency
+            © 2026 US Market Terminals. All rights reserved.
         </p>
     </footer>
 </body>
