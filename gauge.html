@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Fear & Greed Index | US Market Terminals</title>
-    <meta name="description" content="Real-time Market Fear & Greed Index. Analyze market sentiment and investor psychology to identify potential market tops and bottoms.">
+    <title>Understanding Market Sentiment Indicators | US Market Terminals</title>
+    <meta name="description" content="Learn about market sentiment indicators like the Fear and Greed Index. Educational explanation of how these metrics are calculated and their limitations.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;800&display=swap" rel="stylesheet">
     <style>
@@ -24,7 +24,6 @@
 
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; }
 
-        /* Unified Navigation */
         .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
         .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
         .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
@@ -32,13 +31,21 @@
         .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 80px 24px; text-align: center; }
+        .container { max-width: 900px; margin: 0 auto; padding: 80px 24px; }
+
+        .page-header { text-align: center; margin-bottom: 40px; }
+        .page-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 15px; color: #fff; }
+        .page-header p { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        .demo-notice { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 15px 20px; margin-bottom: 40px; text-align: center; }
+        .demo-notice p { color: var(--text-dim); font-size: 0.9rem; margin: 0; }
+        .demo-notice strong { color: var(--accent); }
 
         /* Gauge Styling */
         .gauge-card { 
             background: var(--panel); border: 1px solid var(--border); border-radius: 24px; 
-            padding: 50px 30px; width: 100%; max-width: 500px; margin: 0 auto 40px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+            padding: 50px 30px; width: 100%; max-width: 500px; margin: 0 auto 50px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center;
         }
         .gauge-container { position: relative; width: 280px; height: 140px; margin: 0 auto 30px; overflow: hidden; }
         .gauge-body { 
@@ -55,12 +62,38 @@
         .gauge-center { position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: #fff; border-radius: 50%; box-shadow: 0 0 15px rgba(255,255,255,0.5); z-index: 3; }
         .gauge-value { font-family: 'JetBrains Mono', monospace; font-size: 64px; font-weight: 800; margin-top: 10px; }
         .gauge-status { font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .gauge-note { font-size: 0.8rem; color: var(--text-dim); margin-top: 20px; font-style: italic; }
 
-        /* Unified Footer */
-        footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; }
-        .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        /* Content Section */
+        .content-section { text-align: left; }
+        .content-section h2 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-top: 50px; margin-bottom: 20px; }
+        .content-section h3 { font-size: 1.2rem; font-weight: 700; color: #fff; margin-top: 30px; margin-bottom: 15px; }
+        .content-section p { color: var(--text-dim); font-size: 1rem; margin-bottom: 20px; line-height: 1.8; }
+        .content-section ul { color: var(--text-dim); padding-left: 20px; margin-bottom: 25px; }
+        .content-section li { margin-bottom: 12px; line-height: 1.7; }
+        .content-section strong { color: #fff; }
+
+        .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 30px 0; }
+        .info-box h4 { color: var(--accent); margin: 0 0 15px 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .info-box p { margin: 0; }
+
+        .warning-box { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 30px; margin: 30px 0; }
+        .warning-box h4 { color: #ef4444; margin: 0 0 15px 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .warning-box p { color: var(--text-dim); margin: 0; line-height: 1.8; }
+
+        .scale-table { width: 100%; border-collapse: collapse; margin: 25px 0; }
+        .scale-table th, .scale-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border); }
+        .scale-table th { color: #fff; font-weight: 600; font-size: 0.9rem; }
+        .scale-table td { color: var(--text-dim); font-size: 0.95rem; }
+        .scale-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 10px; }
+
+        footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; }
+        .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+        .footer-links a:hover { color: var(--accent); }
         .footer-disclaimer { max-width: 800px; margin: 20px auto 0; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+
+        @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -79,7 +112,14 @@
     </nav>
 
     <div class="container">
-        <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 40px;">Market Sentiment Radar</h1>
+        <div class="page-header">
+            <h1>Understanding Market Sentiment Indicators</h1>
+            <p>Learn how sentiment indicators like the Fear & Greed Index work and what they measure.</p>
+        </div>
+
+        <div class="demo-notice">
+            <p><strong>Educational Demo:</strong> The gauge below shows a simulated value for demonstration purposes. It does not reflect real-time market data. For actual sentiment data, see the resources linked at the bottom of this page.</p>
+        </div>
         
         <div class="gauge-card">
             <div class="gauge-container">
@@ -89,12 +129,117 @@
             </div>
             <div class="gauge-status" id="status">NEUTRAL</div>
             <div class="gauge-value" id="value">50</div>
-            <p id="update-time" style="font-size: 12px; color: var(--text-dim); margin-top: 20px; font-family: 'JetBrains Mono';">Syncing with global liquidity data...</p>
+            <p class="gauge-note">Simulated value for educational demonstration only</p>
         </div>
 
-        <div style="max-width: 600px; margin: 0 auto; text-align: left; background: var(--panel); padding: 30px; border-radius: 20px; border: 1px solid var(--border);">
-            <h3 style="color:#fff; margin-top:0;">What is this index?</h3>
-            <p style="color: var(--text-dim); font-size: 0.95rem;">The Fear & Greed Index is a proprietary model that aggregates volatility (VIX), price momentum, and crypto-market sentiment. High greed often indicates a market top, while extreme fear can signal a generational buying opportunity.</p>
+        <div class="content-section">
+            <h2>What Is a Fear & Greed Index?</h2>
+            <p>
+                A Fear & Greed Index is a type of sentiment indicator that attempts to measure the overall emotional state of market participants. The concept is based on the observation that investor behavior tends to swing between fear (risk aversion) and greed (risk appetite), and these emotions can influence market prices.
+            </p>
+            <p>
+                Various financial media outlets and data providers publish their own versions of fear and greed indices. The most well-known include CNN's Fear & Greed Index for traditional markets and Alternative.me's Crypto Fear & Greed Index for cryptocurrency markets. Each uses different methodologies and data inputs.
+            </p>
+
+            <h2>How Are These Indices Calculated?</h2>
+            <p>
+                Different providers use different methodologies, but common inputs include:
+            </p>
+            <ul>
+                <li><strong>Volatility:</strong> Measures like the VIX (CBOE Volatility Index) that track expected market volatility. Higher volatility often corresponds to fear.</li>
+                <li><strong>Market Momentum:</strong> Whether prices are trending up or down relative to recent averages.</li>
+                <li><strong>Trading Volume:</strong> Unusual volume patterns can indicate heightened investor activity.</li>
+                <li><strong>Put/Call Ratios:</strong> The ratio of put options to call options, which can indicate hedging behavior.</li>
+                <li><strong>Safe Haven Demand:</strong> Flows into traditionally "safe" assets like bonds or gold.</li>
+                <li><strong>Social Media Sentiment:</strong> Some indices analyze social media posts and search trends.</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>Scale Interpretation</h4>
+                <table class="scale-table">
+                    <tr>
+                        <th>Range</th>
+                        <th>Label</th>
+                        <th>General Meaning</th>
+                    </tr>
+                    <tr>
+                        <td><span class="scale-indicator" style="background: #ef4444;"></span>0-24</td>
+                        <td>Extreme Fear</td>
+                        <td>Widespread pessimism among market participants</td>
+                    </tr>
+                    <tr>
+                        <td><span class="scale-indicator" style="background: #f97316;"></span>25-44</td>
+                        <td>Fear</td>
+                        <td>Generally cautious sentiment</td>
+                    </tr>
+                    <tr>
+                        <td><span class="scale-indicator" style="background: #eab308;"></span>45-55</td>
+                        <td>Neutral</td>
+                        <td>Balanced sentiment, neither fearful nor greedy</td>
+                    </tr>
+                    <tr>
+                        <td><span class="scale-indicator" style="background: #22c55e;"></span>56-74</td>
+                        <td>Greed</td>
+                        <td>Generally optimistic sentiment</td>
+                    </tr>
+                    <tr>
+                        <td><span class="scale-indicator" style="background: #10b981;"></span>75-100</td>
+                        <td>Extreme Greed</td>
+                        <td>Widespread optimism among market participants</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2>Limitations of Sentiment Indicators</h2>
+            <p>
+                While sentiment indicators are popular, they have significant limitations that users should understand:
+            </p>
+
+            <h3>Not Predictive</h3>
+            <p>
+                Sentiment indicators describe current conditions—they do not predict future market movements. Markets can remain in "extreme" territory for extended periods, and sentiment readings at any level can persist or reverse without warning.
+            </p>
+
+            <h3>Lagging Nature</h3>
+            <p>
+                Many inputs used in sentiment calculations are based on recent price movements. By the time a sentiment indicator shows "extreme fear," prices may have already declined significantly. Similarly, "extreme greed" readings often appear after prices have already risen.
+            </p>
+
+            <h3>Methodology Differences</h3>
+            <p>
+                Different providers calculate their indices differently, leading to potentially conflicting readings. There is no standardized or "official" fear and greed index, and each version reflects its creator's choices about what data to include and how to weight it.
+            </p>
+
+            <h3>Self-Fulfilling or Self-Defeating</h3>
+            <p>
+                If enough market participants use sentiment indicators to make decisions, their collective actions could either reinforce or counteract the signal, making the indicator less reliable over time.
+            </p>
+
+            <div class="warning-box">
+                <h4>Important Warning</h4>
+                <p>
+                    Sentiment indicators should not be used as trading signals or the basis for investment decisions. There is no reliable evidence that buying during "extreme fear" or selling during "extreme greed" leads to better investment outcomes. Past sentiment readings have no predictive power for future returns. Always conduct thorough research and consider consulting financial professionals before making investment decisions.
+                </p>
+            </div>
+
+            <h2>Where to Find Actual Sentiment Data</h2>
+            <p>
+                If you're interested in viewing real sentiment data, here are some publicly available sources:
+            </p>
+            <ul>
+                <li><strong>CNN Fear & Greed Index:</strong> Available on CNN Business website for traditional stock markets</li>
+                <li><strong>Alternative.me:</strong> Publishes a daily Crypto Fear & Greed Index</li>
+                <li><strong>CBOE VIX:</strong> The "fear index" for stock market volatility, available on CBOE's website</li>
+                <li><strong>AAII Sentiment Survey:</strong> Weekly survey of individual investor sentiment</li>
+            </ul>
+            <p>
+                These external resources provide actual data rather than the simulated demonstration shown on this page.
+            </p>
+
+            <h2>Conclusion</h2>
+            <p>
+                Fear and greed indices are popular tools for visualizing market sentiment, but they are descriptive rather than predictive. They can provide context about general market mood but should not be used as the primary basis for investment decisions. Understanding their construction and limitations helps place them in proper perspective as one of many data points available to market observers.
+            </p>
         </div>
     </div>
 
@@ -104,11 +249,11 @@
             <a href="/resources.html">Resources</a>
             <a href="/faq.html">FAQ</a>
             <a href="/privacy.html">Privacy</a>
-            <a href="/legal.html">Terms</a>
+            <a href="/legal.html">Terms & Disclaimer</a>
         </div>
         <p style="color: #475569; font-size: 0.85rem; margin-bottom: 20px;">© 2026 US Market Terminals. All rights reserved.</p>
         <div class="footer-disclaimer">
-            <strong>Financial Risk Disclosure:</strong> US Market Terminals is for educational purposes only. Market sentiment indicators are hypothetical models and not a guarantee of future performance.
+            <strong>Disclaimer:</strong> US Market Terminals provides educational content only. The sentiment gauge above is a simulated demonstration and does not reflect real market data. Sentiment indicators are not predictive and should not be used as trading signals. Nothing on this site constitutes financial advice. All investments carry risk.
         </div>
     </footer>
 
@@ -133,7 +278,6 @@
             
             statusDisplay.innerText = status;
             statusDisplay.style.color = getColor(value);
-            document.getElementById('update-time').innerText = "Last Updated: " + new Date().toLocaleString();
         }
 
         function getColor(value) {
@@ -144,8 +288,10 @@
             return "#10b981";
         }
 
-        // Default set to 65 (Greed) for demonstration
-        setTimeout(() => setGauge(65), 800);
+        // Demo value - cycles through different values for educational demonstration
+        const demoValues = [25, 45, 55, 72, 50];
+        let currentIndex = Math.floor(Math.random() * demoValues.length);
+        setTimeout(() => setGauge(demoValues[currentIndex]), 800);
     </script>
 </body>
 </html>
