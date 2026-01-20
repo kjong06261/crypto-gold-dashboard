@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is an ETF? | US Market Terminals</title>
+  <meta name="description" content="Educational overview explaining what ETFs (Exchange-Traded Funds) are, how they work, and key concepts including index tracking, expense ratios, and liquidity.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
+      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #8b5cf6;
+      --accent-glow: rgba(139, 92, 246, 0.1);
+      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; transition: 0.3s; }
+    
+    .nav { 
+      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
+    }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
+
+    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
+
+    .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
+
+    .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
+    .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
+
+    .content { font-size: 1.1rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: -0.5px; }
+    .content p { margin-bottom: 28px; text-align: justify; line-height: 1.9; }
+    .content strong { color: #fff; }
+
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    .info-box p:last-child { margin-bottom: 0; }
+
+    .key-point { background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #a78bfa; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #c4b5fd; font-size: 0.95rem; }
+
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
+    .reading-section ul { margin: 0; padding-left: 20px; }
+    .reading-section li { margin-bottom: 10px; }
+    .reading-section a { color: #93c5fd; }
+    .reading-section a:hover { color: #bfdbfe; }
+
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+
+    @media (max-width: 768px) { h1 { font-size: 2rem; } .content { font-size: 1rem; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">Educational Content</div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="warning-box">
+      <h4>⚠️ Educational Purpose Only</h4>
+      <p>This article explains basic concepts about ETFs for educational purposes. It is not investment advice or a recommendation to buy any specific ETF. All investments carry risk. Consult a qualified financial advisor before making any investment decisions.</p>
+    </div>
+
+    <article class="article-header">
+      <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
+      <span class="tag">Fundamentals</span>
+      <h1>What is an ETF?</h1>
+      <div class="meta">
+        <span>Beginner Guide</span>
+        <span>•</span>
+        <span>6 min read</span>
+      </div>
+    </article>
+
+    <div class="content">
+      <p>
+        An <strong>ETF (Exchange-Traded Fund)</strong> is a type of investment fund that trades on stock exchanges, just like individual stocks. ETFs typically hold a collection of assets—such as stocks, bonds, or commodities—and allow investors to buy shares that represent a portion of that collection.
+      </p>
+
+      <h2>1. How ETFs Work</h2>
+      <p>
+        An ETF pools money from many investors to buy a basket of securities. When you purchase a share of an ETF, you're buying a small piece of all the underlying holdings.
+      </p>
+      <p>
+        For example, an ETF that tracks the S&P 500 index would hold shares of the 500 companies in that index. By buying one share of the ETF, you gain exposure to all 500 companies at once.
+      </p>
+
+      <div class="info-box">
+        <h3>📋 Key Terms</h3>
+        <p><strong>Underlying Holdings:</strong> The actual securities (stocks, bonds, etc.) that the ETF owns</p>
+        <p><strong>Expense Ratio:</strong> The annual fee charged by the ETF, expressed as a percentage of assets</p>
+        <p><strong>NAV (Net Asset Value):</strong> The total value of the ETF's holdings divided by shares outstanding</p>
+        <p><strong>Tracking:</strong> How closely the ETF follows its benchmark index</p>
+      </div>
+
+      <h2>2. ETFs vs. Mutual Funds</h2>
+      <p>
+        ETFs and mutual funds are similar—both pool investor money to buy securities. The main differences are:
+      </p>
+      <p>
+        <strong>Trading:</strong> ETFs trade throughout the day on exchanges like stocks. Mutual funds only trade once per day after markets close.
+      </p>
+      <p>
+        <strong>Minimum Investment:</strong> You can buy as little as one share of an ETF. Mutual funds often have minimum investment requirements.
+      </p>
+      <p>
+        <strong>Fees:</strong> ETFs often (but not always) have lower expense ratios than actively managed mutual funds.
+      </p>
+
+      <div class="key-point">
+        <h4>💡 Important to Understand</h4>
+        <p>Lower fees don't automatically mean better returns. An ETF's performance depends on what it holds and market conditions. Always look at total costs including trading commissions and bid-ask spreads.</p>
+      </div>
+
+      <h2>3. Types of ETFs</h2>
+      <p>
+        <strong>Index ETFs:</strong> Track a specific market index like the S&P 500 or Nasdaq 100. These are designed to match the index's performance, not beat it.
+      </p>
+      <p>
+        <strong>Sector ETFs:</strong> Focus on specific industries like technology, healthcare, or energy.
+      </p>
+      <p>
+        <strong>Bond ETFs:</strong> Hold fixed-income securities like government or corporate bonds.
+      </p>
+      <p>
+        <strong>Commodity ETFs:</strong> Provide exposure to commodities like gold, oil, or agricultural products.
+      </p>
+      <p>
+        <strong>Thematic ETFs:</strong> Target specific investment themes like clean energy, artificial intelligence, or cybersecurity.
+      </p>
+
+      <h2>4. Expense Ratios Explained</h2>
+      <p>
+        The expense ratio is an annual fee that covers the ETF's operating costs. It's expressed as a percentage of your investment. For example, a 0.10% expense ratio means you pay $1 per year for every $1,000 invested.
+      </p>
+      <p>
+        Expense ratios vary widely. Some broad market index ETFs charge as little as 0.03%, while specialized or actively managed ETFs might charge 0.50% or more. These fees are deducted automatically from the fund's assets.
+      </p>
+
+      <h2>5. Risks of ETF Investing</h2>
+      <p>
+        ETFs are often marketed as simple and safe, but they carry real risks:
+      </p>
+      <p>
+        <strong>Market Risk:</strong> If the underlying holdings decline, the ETF declines. Diversification reduces but doesn't eliminate risk.
+      </p>
+      <p>
+        <strong>Tracking Error:</strong> An ETF might not perfectly match its index due to fees, timing, or other factors.
+      </p>
+      <p>
+        <strong>Liquidity Risk:</strong> Some ETFs have low trading volume, making it harder to buy or sell at desired prices.
+      </p>
+      <p>
+        <strong>Concentration Risk:</strong> Sector or thematic ETFs can be heavily concentrated in specific areas, increasing volatility.
+      </p>
+      <p>
+        <strong>Complexity Risk:</strong> Some ETFs use leverage, derivatives, or complex strategies that may not behave as expected.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        ETFs are investment funds that trade on exchanges and typically provide diversified exposure to a basket of securities. They've become popular due to their accessibility and often lower costs compared to some alternatives. However, ETFs still carry market risk and other considerations. Understanding what an ETF holds and how it works is essential before considering any investment.
+      </p>
+
+      <div class="reading-section">
+        <h3>📚 Further Reading</h3>
+        <ul>
+          <li><a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs" target="_blank" rel="noopener">SEC: Mutual Funds and ETFs</a></li>
+          <li><a href="https://www.investopedia.com/terms/e/etf.asp" target="_blank" rel="noopener">Investopedia: ETF Definition</a></li>
+          <li><a href="https://www.finra.org/investors/learn-to-invest/types-investments/investment-funds/exchange-traded-fund" target="_blank" rel="noopener">FINRA: Exchange-Traded Funds</a></li>
+        </ul>
+      </div>
+
+      <div class="warning-box" style="margin-top: 50px;">
+        <h4>⚠️ Final Reminder</h4>
+        <p>This article is for educational purposes only and does not constitute investment advice or a recommendation to buy any specific ETF. ETF investments can lose value. Always read the prospectus and consider consulting a qualified financial advisor before investing.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms & Disclaimer</a>
+    </div>
+    <div class="footer-disclaimer">
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk. Past performance does not guarantee future results.
+    </div>
+  </footer>
+
+</body>
+</html>
