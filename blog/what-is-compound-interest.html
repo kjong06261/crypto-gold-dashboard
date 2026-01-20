@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is Compound Interest? | US Market Terminals</title>
+  <meta name="description" content="Educational overview explaining what compound interest is, how it works, and why it matters for long-term financial planning.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #10b981; --accent-glow: rgba(16, 185, 129, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); }
+    * { margin: 0; padding: 0; box-sizing: border-box; } body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; } a { text-decoration: none; }
+    .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; } .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
+    .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; } .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
+    .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
+    .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
+    .content { font-size: 1.1rem; color: #cbd5e1; } .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content p { margin-bottom: 28px; text-align: justify; line-height: 1.9; } .content strong { color: #fff; }
+    .formula-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; font-family: 'JetBrains Mono', monospace; text-align: center; }
+    .formula-box .formula { font-size: 1.2rem; color: var(--accent); margin: 15px 0; }
+    .example-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .example-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .key-point { background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #34d399; margin-bottom: 10px; font-size: 1rem; } .key-point p { margin: 0; color: #6ee7b7; font-size: 0.95rem; }
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; } .reading-section ul { margin: 0; padding-left: 20px; } .reading-section li { margin-bottom: 10px; } .reading-section a { color: #93c5fd; }
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; } .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <nav class="nav"><div class="nav-container"><a href="/index.html" class="logo">📊 US MARKET TERMINALS</a><div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">Educational Content</div></div></nav>
+  <main class="container">
+    <div class="warning-box"><h4>⚠️ Educational Purpose Only</h4><p>This article explains compound interest as a mathematical concept. Examples shown are hypothetical and don't guarantee any investment returns. All investments carry risk. Consult a qualified financial advisor.</p></div>
+    <article class="article-header">
+      <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
+      <span class="tag">Fundamentals</span>
+      <h1>What is Compound Interest?</h1>
+      <div class="meta"><span>Beginner Guide</span><span>•</span><span>5 min read</span></div>
+    </article>
+    <div class="content">
+      <p><strong>Compound interest</strong> is interest calculated on both the initial principal and the accumulated interest from previous periods. It's sometimes called "interest on interest" and is a fundamental concept in finance.</p>
+
+      <h2>1. Simple vs. Compound Interest</h2>
+      <p><strong>Simple interest</strong> is calculated only on the original principal. If you invest $1,000 at 5% simple interest, you earn $50 per year, every year—always based on the original $1,000.</p>
+      <p><strong>Compound interest</strong> is calculated on the principal plus any accumulated interest. In year one, you earn $50 on $1,000. In year two, you earn interest on $1,050. The base keeps growing.</p>
+
+      <div class="formula-box">
+        <div style="color: var(--text-dim); font-size: 0.9rem;">Compound Interest Formula</div>
+        <div class="formula">A = P(1 + r/n)^(nt)</div>
+        <div style="color: var(--text-dim); font-size: 0.85rem; margin-top: 15px;">A = Final amount | P = Principal | r = Interest rate | n = Compounding frequency | t = Time in years</div>
+      </div>
+
+      <h2>2. The Power of Time</h2>
+      <p>Compound interest has a more dramatic effect over longer periods. The longer money compounds, the faster it grows—this is often called the "snowball effect."</p>
+
+      <div class="example-box">
+        <h3>📊 Hypothetical Example</h3>
+        <p style="margin-bottom: 12px;">$10,000 invested at a hypothetical 7% annual return:</p>
+        <p style="margin-bottom: 8px; font-family: 'JetBrains Mono', monospace;">After 10 years: ~$19,672</p>
+        <p style="margin-bottom: 8px; font-family: 'JetBrains Mono', monospace;">After 20 years: ~$38,697</p>
+        <p style="margin-bottom: 8px; font-family: 'JetBrains Mono', monospace;">After 30 years: ~$76,123</p>
+        <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 15px;">*This is a mathematical illustration only. Actual investment returns vary and can be negative. Past performance doesn't guarantee future results.</p>
+      </div>
+
+      <div class="key-point"><h4>⚠️ Important Reality Check</h4><p>Compound interest calculations assume a consistent, positive return. Real investments don't work this way—returns vary year to year and can be negative. These examples illustrate a mathematical concept, not guaranteed outcomes.</p></div>
+
+      <h2>3. Compounding Frequency</h2>
+      <p>How often interest compounds affects the final amount. Interest can compound annually, semi-annually, quarterly, monthly, or even daily.</p>
+      <p>More frequent compounding results in slightly higher returns, all else being equal. However, the difference is often small compared to other factors like the interest rate and time period.</p>
+
+      <h2>4. The Rule of 72</h2>
+      <p>The "Rule of 72" is a quick way to estimate how long it takes for money to double. Divide 72 by the interest rate to get the approximate number of years.</p>
+      <p>At 6% interest: 72 ÷ 6 = 12 years to double. At 8% interest: 72 ÷ 8 = 9 years to double. This is an approximation that works reasonably well for typical interest rates.</p>
+
+      <h2>5. Compound Interest Works Both Ways</h2>
+      <p>Compound interest can work against you when you're borrowing money. Credit card debt, for example, compounds—meaning you can end up paying interest on previously accumulated interest, causing debt to grow rapidly if not paid off.</p>
+
+      <h2>Conclusion</h2>
+      <p>Compound interest is a mathematical concept where interest accumulates on both principal and previous interest. While it's a powerful concept for understanding long-term growth, real-world returns are variable and uncertain. Understanding compound interest helps with financial literacy, but it shouldn't be confused with guaranteed investment outcomes.</p>
+
+      <div class="reading-section">
+        <h3>📚 Further Reading</h3>
+        <ul>
+          <li><a href="https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" target="_blank" rel="noopener">SEC: Compound Interest Calculator</a></li>
+          <li><a href="https://www.investopedia.com/terms/c/compoundinterest.asp" target="_blank" rel="noopener">Investopedia: Compound Interest</a></li>
+        </ul>
+      </div>
+      <div class="warning-box" style="margin-top: 50px;"><h4>⚠️ Final Reminder</h4><p>This article explains a mathematical concept for educational purposes. Real investment returns are variable and can be negative. Never assume consistent returns when making financial plans. Consult a qualified financial advisor.</p></div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a><a href="/legal.html">Terms</a></div>
+    <div class="footer-disclaimer"><strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk.</div>
+  </footer>
+</body>
+</html>
