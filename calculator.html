@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dividend Compound Simulator | US Market Terminals</title>
-    <meta name="description" content="Calculate your long-term wealth growth with our institutional-grade dividend reinvestment simulator. Visualize the power of compounding.">
+    <title>Compound Interest Calculator (Demo) | US Market Terminals</title>
+    <meta name="description" content="Educational compound interest calculator to learn how compounding works over time. For educational purposes only - results are hypothetical.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -20,6 +20,7 @@
             --text-secondary: #8b949e;
             --text-muted: #484f58;
             --border-color: #30363d;
+            --warning: #f59e0b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,9 +36,12 @@
 
         .simulator-container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
         .simulator-header { text-align: center; margin-bottom: 40px; }
-        .simulator-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green-glow); padding: 8px 16px; border-radius: 100px; font-size: 11px; font-weight: 600; color: var(--accent-green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        .simulator-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(100, 116, 139, 0.2); border: 1px solid rgba(100, 116, 139, 0.3); padding: 8px 16px; border-radius: 100px; font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
         .simulator-title { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -1.5px; }
-        .simulator-subtitle { font-size: 16px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+        .simulator-subtitle { font-size: 16px; color: var(--text-secondary); max-width: 550px; margin: 0 auto; }
+
+        .warning-banner { max-width: 900px; margin: 0 auto 30px; padding: 20px 24px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 16px; }
+        .warning-banner p { color: #fbbf24; font-size: 0.9rem; margin: 0; text-align: center; }
 
         .simulator-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; }
         .input-section { padding: 32px; background: var(--bg-secondary); }
@@ -51,13 +55,17 @@
         .simulator-input.has-prefix { padding-left: 36px; }
         .simulator-input:focus { outline: none; border-color: var(--accent-green); }
 
-        .calculate-btn { width: 100%; margin-top: 28px; padding: 16px; background: var(--accent-green); border: none; border-radius: 12px; color: #fff; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .calculate-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4); }
+        .calculate-btn { width: 100%; margin-top: 28px; padding: 16px; background: var(--accent-blue); border: none; border-radius: 12px; color: #fff; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .calculate-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4); }
 
         .results-section { padding: 32px; display: none; background: var(--bg-secondary); border-top: 1px solid var(--border-color); }
         .results-section.active { display: block; }
-        .monthly-section { background: rgba(16, 185, 129, 0.05); border: 1px solid var(--accent-green-glow); border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 24px; }
-        .monthly-value { font-family: 'JetBrains Mono'; font-size: 32px; font-weight: 700; color: var(--accent-green); }
+        
+        .results-warning { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 12px; padding: 16px; margin-bottom: 24px; }
+        .results-warning p { color: var(--warning); font-size: 0.85rem; margin: 0; text-align: center; }
+
+        .monthly-section { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 24px; }
+        .monthly-value { font-family: 'JetBrains Mono'; font-size: 32px; font-weight: 700; color: var(--accent-blue); }
 
         .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
         .result-card { background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; }
@@ -69,18 +77,24 @@
         .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; }
         .bar { width: 100%; border-radius: 2px 2px 0 0; }
         .bar.principal { background: var(--accent-blue); }
-        .bar.dividend { background: var(--accent-green); }
+        .bar.dividend { background: var(--accent-blue); }
 
-        /* Preset Buttons */
-        .preset-buttons { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
-        .preset-btn { padding: 8px 12px; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-secondary); font-size: 12px; cursor: pointer; }
-        .preset-btn:hover { border-color: var(--accent-green); color: #fff; }
+        /* Info Box */
+        .info-box { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-top: 30px; }
+        .info-box h3 { color: #fff; font-size: 1.1rem; margin-bottom: 12px; }
+        .info-box p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 10px; }
+        .info-box ul { color: var(--text-secondary); font-size: 0.9rem; padding-left: 20px; }
+        .info-box li { margin-bottom: 8px; }
 
         /* Unified Footer */
         footer { background: #080a0e; border-top: 1px solid var(--border-color); padding: 80px 24px 60px; text-align: center; margin-top: 80px; }
         .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-        .footer-disclaimer { max-width: 800px; margin: 20px auto 0; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+        .footer-links a:hover { color: var(--accent-blue); }
+        .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
+        .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+
+        @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -89,10 +103,10 @@
         <div class="nav-container">
             <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
             <div class="nav-links">
-                <a href="/calculator.html">Calculator</a>
+                <a href="/calculator.html" style="color: var(--accent-blue);">Calculator</a>
                 <a href="/market-pulse.html">Pulse</a>
                 <a href="/tools.html">Tools</a>
-                <a href="/blog.html">Research</a>
+                <a href="/blog.html">Learn</a>
                 <a href="/contact.html" style="background: var(--accent-blue); color: #fff !important; padding: 6px 14px; border-radius: 8px;">Contact</a>
             </div>
         </div>
@@ -100,42 +114,46 @@
 
     <div class="simulator-container">
         <header class="simulator-header">
-            <div class="simulator-badge"><span>Institutional Grade</span></div>
-            <h1 class="simulator-title">Strategy Lab</h1>
-            <p class="simulator-subtitle">Visualize the exponential power of dividend reinvestment and long-term compounding.</p>
+            <div class="simulator-badge"><span>Educational Demo</span></div>
+            <h1 class="simulator-title">Compound Interest Calculator</h1>
+            <p class="simulator-subtitle">A simple tool to illustrate how compound interest works over time. Results are hypothetical examples only.</p>
         </header>
+
+        <div class="warning-banner">
+            <p>⚠️ <strong>For Educational Purposes Only:</strong> This calculator produces hypothetical illustrations, not predictions. Actual investment results will differ. This is not investment advice.</p>
+        </div>
 
         <div class="simulator-card">
             <div class="input-section">
                 <div class="input-grid">
                     <div class="input-group">
-                        <label class="input-label">Initial Principal</label>
+                        <label class="input-label">Starting Amount</label>
                         <div class="input-wrapper">
                             <span class="input-prefix">$</span>
                             <input type="text" id="principal" class="simulator-input has-prefix" value="10,000">
                         </div>
                     </div>
                     <div class="input-group">
-                        <label class="input-label">Monthly Addition</label>
+                        <label class="input-label">Monthly Contribution</label>
                         <div class="input-wrapper">
                             <span class="input-prefix">$</span>
                             <input type="text" id="monthly" class="simulator-input has-prefix" value="500">
                         </div>
                     </div>
                     <div class="input-group">
-                        <label class="input-label">Dividend Yield (%)</label>
+                        <label class="input-label">Annual Yield (%)</label>
                         <div class="input-wrapper">
-                            <input type="number" id="dividend-rate" class="simulator-input" value="4.5" step="0.1">
+                            <input type="number" id="dividend-rate" class="simulator-input" value="4.0" step="0.1">
                         </div>
                     </div>
                     <div class="input-group">
-                        <label class="input-label">Stock Growth (%)</label>
+                        <label class="input-label">Annual Growth (%)</label>
                         <div class="input-wrapper">
                             <input type="number" id="growth-rate" class="simulator-input" value="5.0" step="0.1">
                         </div>
                     </div>
                     <div class="input-group">
-                        <label class="input-label">Investment Years</label>
+                        <label class="input-label">Time Period (Years)</label>
                         <div class="input-wrapper">
                             <input type="number" id="years" class="simulator-input" value="10">
                         </div>
@@ -148,41 +166,53 @@
                     </div>
                 </div>
 
-                <div class="preset-buttons">
-                    <button class="preset-btn" onclick="setPreset('schd')">SCHD (Moderate)</button>
-                    <button class="preset-btn" onclick="setPreset('o')">REITs (Income)</button>
-                    <button class="preset-btn" onclick="setPreset('jepi')">JEPI (High Yield)</button>
-                </div>
-
-                <button class="calculate-btn" onclick="calculate()">RUN SIMULATION</button>
+                <button class="calculate-btn" onclick="calculate()">Calculate Example</button>
             </div>
 
             <div class="results-section" id="results">
+                <div class="results-warning">
+                    <p>⚠️ These are hypothetical illustrations only. They assume constant rates which never occur in real markets. Actual results will vary significantly.</p>
+                </div>
+
                 <div class="monthly-section">
-                    <div class="input-label" style="margin-bottom:8px">Estimated Monthly Income (After-Tax)</div>
+                    <div class="input-label" style="margin-bottom:8px">Hypothetical Monthly Income (Example)</div>
                     <div class="monthly-value" id="monthly-dividend">$0</div>
                 </div>
 
                 <div class="results-grid">
                     <div class="result-card">
-                        <div class="result-label">Total Portfolio Value</div>
-                        <div class="result-value" id="total-value" style="color:var(--accent-green)">$0</div>
+                        <div class="result-label">Hypothetical End Value</div>
+                        <div class="result-value" id="total-value" style="color:var(--accent-blue)">$0</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">Total Invested</div>
+                        <div class="result-label">Total Contributions</div>
                         <div class="result-value" id="total-invested">$0</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">Accumulated Dividends</div>
+                        <div class="result-label">Hypothetical Earnings</div>
                         <div class="result-value" id="total-dividends">$0</div>
                     </div>
                 </div>
 
                 <div class="chart-container">
-                    <div class="input-label" style="margin-bottom:15px">Wealth Growth Projection</div>
+                    <div class="input-label" style="margin-bottom:15px">Hypothetical Growth Illustration</div>
                     <div class="chart-bars" id="chart-bars"></div>
                 </div>
             </div>
+        </div>
+
+        <div class="info-box">
+            <h3>About This Calculator</h3>
+            <p>This tool demonstrates the mathematical concept of compound interest. It is designed for educational purposes to help you understand how compounding works in theory.</p>
+            <p><strong>Important limitations:</strong></p>
+            <ul>
+                <li>Assumes constant rates, which never happen in real markets</li>
+                <li>Does not account for market volatility, fees, or inflation</li>
+                <li>Real investment returns vary significantly year to year</li>
+                <li>Past performance does not guarantee future results</li>
+                <li>This is not a prediction or projection of actual returns</li>
+            </ul>
+            <p style="margin-top: 15px; margin-bottom: 0;">For actual financial planning, consult with a qualified financial advisor who can assess your individual situation.</p>
         </div>
     </div>
 
@@ -194,25 +224,19 @@
             <a href="/privacy.html">Privacy</a>
             <a href="/legal.html">Terms & Disclaimer</a>
         </div>
-        <p style="color: #475569; font-size: 0.85rem; margin-bottom: 20px;">© 2026 US Market Terminals. All rights reserved.</p>
+        <p class="footer-copy">
+            © 2026 US Market Terminals. All rights reserved. <br>
+            Educational Content • For Informational Purposes Only
+        </p>
         <div class="footer-disclaimer">
-            <strong>Financial Risk Disclosure:</strong> US Market Terminals is for educational purposes only. Investing involves risk. Past performance does not guarantee future results.
+            <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Important Disclaimer</strong>
+            US Market Terminals provides educational content for informational purposes only. This calculator produces hypothetical illustrations, not predictions or guarantees. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results. Always consult qualified professionals before making investment decisions.
         </div>
     </footer>
 
     <script>
         function formatNumber(num) { return Math.round(num).toLocaleString(); }
         function parseNum(str) { return parseInt(str.toString().replace(/[^\d]/g, '')) || 0; }
-
-        function setPreset(type) {
-            const presets = {
-                'schd': { div: 3.5, growth: 8 },
-                'o': { div: 5.5, growth: 3 },
-                'jepi': { div: 8.5, growth: 1 }
-            };
-            document.getElementById('dividend-rate').value = presets[type].div;
-            document.getElementById('growth-rate').value = presets[type].growth;
-        }
 
         function calculate() {
             const principal = parseNum(document.getElementById('principal').value);
