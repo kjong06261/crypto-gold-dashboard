@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Resources & Research Tools | US Market Terminals</title>
-    <meta name="description" content="Curated collection of institutional data sources, professional charting tools, and investment calculators for US market analysis.">
+    <title>Learning Resources & Educational Tools | US Market Terminals</title>
+    <meta name="description" content="Curated collection of educational resources, official data sources, and learning tools for understanding US markets.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://us-dividend-pro.com/resources.html">
 
@@ -59,9 +59,10 @@
         .resource-info h3 { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
 
         .resource-tag { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; }
-        .tag-internal { background: rgba(59, 130, 246, 0.2); color: var(--accent); }
+        .tag-demo { background: rgba(100, 116, 139, 0.3); color: #94a3b8; }
         .tag-official { background: rgba(16, 185, 129, 0.2); color: var(--green); }
-        .tag-data { background: rgba(245, 158, 11, 0.2); color: var(--yellow); }
+        .tag-external { background: rgba(245, 158, 11, 0.2); color: var(--yellow); }
+        .tag-education { background: rgba(59, 130, 246, 0.2); color: var(--accent); }
 
         .resource-description { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
         .resource-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--accent); text-decoration: none; }
@@ -70,9 +71,11 @@
 
         /* Unified Footer */
         footer { margin-top: 80px; padding: 80px 24px 60px; border-top: 1px solid var(--border); background: #080a0e; text-align: center; }
-        .footer-nav { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-legal { margin-bottom: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .footer-notice { max-width: 700px; margin: 0 auto 20px; font-size: 0.75rem; color: #475569; line-height: 1.6; text-align: justify; text-align-last: center; }
+        .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
+        .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
 
         @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
@@ -86,7 +89,7 @@
                 <a href="/calculator.html">Calculator</a>
                 <a href="/market-pulse.html">Pulse</a>
                 <a href="/tools.html">Tools</a>
-                <a href="/blog.html">Research</a>
+                <a href="/blog.html">Learn</a>
                 <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
             </div>
         </div>
@@ -94,37 +97,37 @@
 
     <div class="container">
         <header class="page-header">
-            <h1>Research Resources</h1>
-            <p>Institutional-grade data engines and primary sources that power our market analysis and quantitative models.</p>
+            <h1>Learning Resources</h1>
+            <p>A curated collection of educational tools and official data sources for learning about US markets.</p>
         </header>
 
         <section class="resource-section">
             <div class="section-header">
-                <h2 class="section-title">Proprietary Terminal Tools</h2>
+                <h2 class="section-title">Educational Demo Tools</h2>
             </div>
             <div class="resource-grid">
                 <div class="resource-card">
                     <div class="resource-header">
                         <div class="resource-logo">🧮</div>
-                        <div class="resource-info"><h3>Strategy Lab</h3><span class="resource-tag tag-internal">Internal</span></div>
+                        <div class="resource-info"><h3>Compound Interest Calculator</h3><span class="resource-tag tag-demo">Demo</span></div>
                     </div>
-                    <p class="resource-description">Our advanced compounding simulator. Model multi-decade wealth growth with tax-adjusted dividend reinvestment (DRIP) variables.</p>
-                    <a href="/calculator.html" class="resource-link">Open Strategy Lab →</a>
+                    <p class="resource-description">A simple calculator to explore how compound interest works over time. For educational purposes only—results are hypothetical illustrations, not predictions.</p>
+                    <a href="/calculator.html" class="resource-link">Try Calculator →</a>
                 </div>
                 <div class="resource-card">
                     <div class="resource-header">
                         <div class="resource-logo">🌡️</div>
-                        <div class="resource-info"><h3>Market Pulse</h3><span class="resource-tag tag-internal">Internal</span></div>
+                        <div class="resource-info"><h3>Sentiment Gauge Demo</h3><span class="resource-tag tag-demo">Demo</span></div>
                     </div>
-                    <p class="resource-description">Live market sentiment gauge. We correlate Nasdaq VIX with Crypto volatility to identify extreme risk-on/risk-off exhaustion points.</p>
-                    <a href="/market-pulse.html" class="resource-link">Check Market Pulse →</a>
+                    <p class="resource-description">An educational demonstration of how sentiment indicators are conceptualized. Uses randomized demo values—not real market data.</p>
+                    <a href="/market-pulse.html" class="resource-link">View Demo →</a>
                 </div>
             </div>
         </section>
 
         <section class="resource-section">
             <div class="section-header">
-                <h2 class="section-title">Institutional Data Gateways</h2>
+                <h2 class="section-title">Official Government Data Sources</h2>
             </div>
             <div class="resource-grid">
                 <div class="resource-card">
@@ -132,65 +135,83 @@
                         <div class="resource-logo">📋</div>
                         <div class="resource-info"><h3>SEC EDGAR</h3><span class="resource-tag tag-official">Official</span></div>
                     </div>
-                    <p class="resource-description">The primary source for fundamental equity research. Access company filings, 10-K annual reports, and 13F institutional ownership data.</p>
-                    
-                    <a href="https://www.sec.gov/edgar" target="_blank" class="resource-link">Access SEC Filings ↗</a>
+                    <p class="resource-description">The official SEC database for company filings including 10-K annual reports, 10-Q quarterly reports, and 13F institutional holdings disclosures.</p>
+                    <a href="https://www.sec.gov/edgar" target="_blank" rel="noopener" class="resource-link">Visit SEC EDGAR ↗</a>
                 </div>
                 <div class="resource-card">
                     <div class="resource-header">
                         <div class="resource-logo">🏦</div>
-                        <div class="resource-info"><h3>St. Louis FRED</h3><span class="resource-tag tag-official">Official</span></div>
+                        <div class="resource-info"><h3>FRED (Federal Reserve)</h3><span class="resource-tag tag-official">Official</span></div>
                     </div>
-                    <p class="resource-description">Comprehensive macro indicators including Fed interest rates, M2 money supply, and yield curve data from the Federal Reserve.</p>
-                    
-                    <a href="https://fred.stlouisfed.org" target="_blank" class="resource-link">Macro Economic Data ↗</a>
+                    <p class="resource-description">Federal Reserve Economic Data provides free access to economic indicators including interest rates, inflation data, employment statistics, and more.</p>
+                    <a href="https://fred.stlouisfed.org" target="_blank" rel="noopener" class="resource-link">Visit FRED ↗</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-logo">🎓</div>
+                        <div class="resource-info"><h3>Investor.gov</h3><span class="resource-tag tag-official">Official</span></div>
+                    </div>
+                    <p class="resource-description">The SEC's official investor education website with guides on investing basics, avoiding fraud, and understanding financial products.</p>
+                    <a href="https://www.investor.gov" target="_blank" rel="noopener" class="resource-link">Visit Investor.gov ↗</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-logo">📊</div>
+                        <div class="resource-info"><h3>FINRA Investor Education</h3><span class="resource-tag tag-official">Official</span></div>
+                    </div>
+                    <p class="resource-description">FINRA provides tools and educational resources including BrokerCheck, fund analyzers, and guides on investment basics.</p>
+                    <a href="https://www.finra.org/investors" target="_blank" rel="noopener" class="resource-link">Visit FINRA ↗</a>
                 </div>
             </div>
         </section>
 
         <section class="resource-section">
             <div class="section-header">
-                <h2 class="section-title">Advanced Charting Engine</h2>
+                <h2 class="section-title">Third-Party Educational Resources</h2>
             </div>
             <div class="resource-grid">
                 <div class="resource-card">
                     <div class="resource-header">
                         <div class="resource-logo">📺</div>
-                        <div class="resource-info"><h3>TradingView</h3><span class="resource-tag tag-data">Charting</span></div>
+                        <div class="resource-info"><h3>TradingView</h3><span class="resource-tag tag-external">External</span></div>
                     </div>
-                    <p class="resource-description">The real-time visualization engine powering our technical terminals. Essential for monitoring price structure and liquidity zones.</p>
-                    
-                    <a href="https://www.tradingview.com" target="_blank" class="resource-link">Global Live Charts ↗</a>
+                    <p class="resource-description">A popular charting platform used by many investors to view price charts and technical indicators. We embed their charts on some pages for reference.</p>
+                    <a href="https://www.tradingview.com" target="_blank" rel="noopener" class="resource-link">Visit TradingView ↗</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-logo">📚</div>
+                        <div class="resource-info"><h3>Investopedia</h3><span class="resource-tag tag-education">Education</span></div>
+                    </div>
+                    <p class="resource-description">A comprehensive resource for learning financial terms, concepts, and investment basics. Useful for understanding terminology used in market discussions.</p>
+                    <a href="https://www.investopedia.com" target="_blank" rel="noopener" class="resource-link">Visit Investopedia ↗</a>
                 </div>
             </div>
         </section>
 
         <div class="disclaimer-box">
-            <div class="footer-notice" style="margin:0; color:var(--yellow); opacity:0.8;">
-                <strong>🛡️ DATA DISCLOSURE:</strong> External resources are provided for data verification purposes only. US Market Terminals is not affiliated with official government entities or third-party platforms.
+            <div style="color:var(--yellow); opacity:0.9; font-size: 0.85rem; line-height: 1.6;">
+                <strong>⚠️ Important Notice:</strong> External resources are provided for educational reference only. US Market Terminals is not affiliated with any government entities, exchanges, or third-party platforms listed above. Always verify information from official sources before making any decisions.
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-nav">
-            <a href="/index.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Home</a>
-            <a href="/nasdaq.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Nasdaq Pro</a>
-            <a href="/coin.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Crypto Matrix</a>
-            <a href="/dividend.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Dividend Map</a>
-            <a href="/blog.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Research</a>
+        <div class="footer-links">
+            <a href="/about.html">About</a>
+            <a href="/resources.html">Resources</a>
+            <a href="/faq.html">FAQ</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/legal.html">Terms & Disclaimer</a>
         </div>
-        <div class="footer-legal">
-            <a href="/privacy.html" style="color: #e2e8f0; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Privacy Policy</a>
-            <span style="color: #2a3441;">|</span>
-            <a href="/disclaimer.html" style="color: #e2e8f0; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Disclaimer</a>
-            <span style="color: #2a3441;">|</span>
-            <a href="/legal.html" style="color: #e2e8f0; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Terms</a>
+        <p class="footer-copy">
+            © 2026 US Market Terminals. All rights reserved. <br>
+            Educational Content • For Informational Purposes Only
+        </p>
+        <div class="footer-disclaimer">
+            <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Important Disclaimer</strong>
+            US Market Terminals provides educational content for informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results. Always consult qualified professionals before making investment decisions.
         </div>
-        <div class="footer-notice">
-            <strong>NOTICE:</strong> US Market Terminals is an independent data visualization platform. All market data is sourced from public third-party APIs and may be delayed. Content provided is for informational and educational purposes only and <strong>does not constitute financial, investment, or legal advice.</strong>
-        </div>
-        <div style="color: #334155; font-size: 0.8rem; letter-spacing: 0.5px;">© 2026 US Market Terminals. All rights reserved.</div>
     </footer>
 
 </body>
