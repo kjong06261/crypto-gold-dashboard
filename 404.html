@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signal Lost | US Market Terminals</title>
+  <title>Page Not Found | US Market Terminals</title>
   
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚠️</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
       --bg: #05070a; --panel: #0d1117; --border: #1e222d;
-      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #ef4444; /* Error Red */
+      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #3b82f6;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
@@ -22,14 +22,14 @@
 
     .error-main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
     .error-code { font-family: 'JetBrains Mono', monospace; font-size: 8rem; font-weight: 900; line-height: 1; color: var(--accent); opacity: 0.2; margin-bottom: -40px; }
-    .status-tag { background: rgba(239, 68, 68, 0.1); color: var(--accent); padding: 6px 16px; border-radius: 99px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(239, 68, 68, 0.2); margin-bottom: 24px; }
+    .status-tag { background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 6px 16px; border-radius: 99px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(59, 130, 246, 0.2); margin-bottom: 24px; }
     
     h1 { font-size: 3rem; font-weight: 900; color: #fff; margin-bottom: 16px; letter-spacing: -2px; }
     p { color: var(--text-dim); font-size: 1.1rem; max-width: 500px; line-height: 1.6; margin-bottom: 40px; }
 
     .btn-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
     .btn { padding: 14px 28px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 0.95rem; }
-    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-primary { background: var(--accent); color: #fff; }
     .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
     .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
 
@@ -50,20 +50,20 @@
 
   <main class="error-main">
     <div class="error-code">404</div>
-    <div class="status-tag">Signal Lost • Asset Delisted</div>
-    <h1>System Override</h1>
-    <p>The asset or page you are looking for has been moved to a different sector or delisted from our terminals. Please verify the URL.</p>
+    <div class="status-tag">Page Not Found</div>
+    <h1>Oops!</h1>
+    <p>The page you're looking for doesn't exist or has been moved. Please check the URL or navigate back to our homepage.</p>
 
     <div class="btn-group">
-      <a href="/index.html" class="btn btn-primary">Return to Dashboard</a>
+      <a href="/index.html" class="btn btn-primary">Go to Homepage</a>
       <a href="/sitemap.xml" class="btn btn-secondary">View Sitemap</a>
     </div>
 
     <div class="grid-links">
-      <a href="/nasdaq.html" class="grid-item">📈 Nasdaq Pro</a>
-      <a href="/dividend.html" class="grid-item">💰 Dividends</a>
-      <a href="/coin.html" class="grid-item">₿ Crypto Matrix</a>
-      <a href="/calculator.html" class="grid-item">🧮 Strategy Lab</a>
+      <a href="/blog.html" class="grid-item">📚 Learn</a>
+      <a href="/resources.html" class="grid-item">🔗 Resources</a>
+      <a href="/faq.html" class="grid-item">❓ FAQ</a>
+      <a href="/contact.html" class="grid-item">✉️ Contact</a>
     </div>
   </main>
 
