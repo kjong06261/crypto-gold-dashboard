@@ -3,17 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Resources & Educational Tools | US Market Terminals</title>
-    <meta name="description" content="Curated collection of educational resources, official data sources, and learning tools for understanding US markets.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://us-dividend-pro.com/resources.html">
-
+    <title>Financial Resources & Educational Links | US Market Terminals</title>
+    <meta name="description" content="A curated list of free financial data sources, educational websites, and official government resources for learning about markets.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #05070a;
@@ -22,14 +15,9 @@
             --text: #e2e8f0;
             --text-dim: #94a3b8;
             --accent: #3b82f6;
-            --green: #10b981;
-            --yellow: #f59e0b;
         }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.7; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
-
-        /* Unified Navigation */
         .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
         .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
         .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
@@ -37,47 +25,34 @@
         .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
-        .page-header { text-align: center; margin-bottom: 60px; }
-        .page-header h1 { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; color: #fff; letter-spacing: -2px; margin-bottom: 16px; }
-        .page-header p { font-size: 1.1rem; color: var(--text-dim); max-width: 600px; margin: 0 auto; }
+        .container { max-width: 900px; margin: 0 auto; padding: 80px 24px; }
+        h1 { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 20px; text-align: center; letter-spacing: -1.5px; }
+        .intro-text { text-align: center; color: var(--text-dim); font-size: 1.1rem; max-width: 700px; margin: 0 auto 20px; line-height: 1.8; }
 
-        .resource-section { margin-bottom: 80px; }
-        .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-        .section-title { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+        .disclaimer-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 50px; text-align: center; }
+        .disclaimer-box p { color: var(--text-dim); font-size: 0.9rem; margin: 0; }
 
-        .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+        .section { margin-bottom: 60px; }
+        .section-header { margin-bottom: 25px; }
+        .section-header h2 { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+        .section-header p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; }
 
-        .resource-card {
-            background: var(--panel); border: 1px solid var(--border); border-radius: 20px;
-            padding: 28px; transition: all 0.3s ease; display: flex; flex-direction: column;
-        }
-        .resource-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .resource-card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: 0.3s; text-decoration: none; display: block; }
+        .resource-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        
+        .resource-type { font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+        .resource-card h3 { font-size: 1.1rem; color: #fff; margin-bottom: 10px; }
+        .resource-card p { color: var(--text-dim); font-size: 0.9rem; margin: 0; line-height: 1.6; }
+        .external-icon { font-size: 0.8rem; opacity: 0.5; margin-left: 5px; }
 
-        .resource-header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
-        .resource-logo { font-size: 28px; width: 50px; height: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
-        .resource-info h3 { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
-
-        .resource-tag { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; }
-        .tag-demo { background: rgba(100, 116, 139, 0.3); color: #94a3b8; }
-        .tag-official { background: rgba(16, 185, 129, 0.2); color: var(--green); }
-        .tag-external { background: rgba(245, 158, 11, 0.2); color: var(--yellow); }
-        .tag-education { background: rgba(59, 130, 246, 0.2); color: var(--accent); }
-
-        .resource-description { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
-        .resource-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--accent); text-decoration: none; }
-
-        .disclaimer-box { background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 16px; padding: 24px; margin-top: 40px; }
-
-        /* Unified Footer */
-        footer { margin-top: 80px; padding: 80px 24px 60px; border-top: 1px solid var(--border); background: #080a0e; text-align: center; }
-        .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        footer { margin-top: 80px; padding: 60px 24px; border-top: 1px solid var(--border); background: #080a0e; text-align: center; }
+        .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
         .footer-links a:hover { color: var(--accent); }
-        .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
-        .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+        .footer-disclaimer { max-width: 700px; margin: 20px auto 0; font-size: 0.75rem; color: #475569; line-height: 1.7; text-align: justify; text-align-last: center; }
 
-        @media (max-width: 768px) { .nav-links { display: none; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .resource-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -89,111 +64,152 @@
                 <a href="/calculator.html">Calculator</a>
                 <a href="/market-pulse.html">Pulse</a>
                 <a href="/tools.html">Tools</a>
-                <a href="/blog.html">Learn</a>
+                <a href="/blog.html">Research</a>
                 <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
             </div>
         </div>
     </nav>
 
     <div class="container">
-        <header class="page-header">
-            <h1>Learning Resources</h1>
-            <p>A curated collection of educational tools and official data sources for learning about US markets.</p>
-        </header>
-
-        <section class="resource-section">
-            <div class="section-header">
-                <h2 class="section-title">Educational Demo Tools</h2>
-            </div>
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <div class="resource-header">
-                        <div class="resource-logo">🧮</div>
-                        <div class="resource-info"><h3>Compound Interest Calculator</h3><span class="resource-tag tag-demo">Demo</span></div>
-                    </div>
-                    <p class="resource-description">A simple calculator to explore how compound interest works over time. For educational purposes only—results are hypothetical illustrations, not predictions.</p>
-                    <a href="/calculator.html" class="resource-link">Try Calculator →</a>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-header">
-                        <div class="resource-logo">🌡️</div>
-                        <div class="resource-info"><h3>Sentiment Gauge Demo</h3><span class="resource-tag tag-demo">Demo</span></div>
-                    </div>
-                    <p class="resource-description">An educational demonstration of how sentiment indicators are conceptualized. Uses randomized demo values—not real market data.</p>
-                    <a href="/market-pulse.html" class="resource-link">View Demo →</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="resource-section">
-            <div class="section-header">
-                <h2 class="section-title">Official Government Data Sources</h2>
-            </div>
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <div class="resource-header">
-                        <div class="resource-logo">📋</div>
-                        <div class="resource-info"><h3>SEC EDGAR</h3><span class="resource-tag tag-official">Official</span></div>
-                    </div>
-                    <p class="resource-description">The official SEC database for company filings including 10-K annual reports, 10-Q quarterly reports, and 13F institutional holdings disclosures.</p>
-                    <a href="https://www.sec.gov/edgar" target="_blank" rel="noopener" class="resource-link">Visit SEC EDGAR ↗</a>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-header">
-                        <div class="resource-logo">🏦</div>
-                        <div class="resource-info"><h3>FRED (Federal Reserve)</h3><span class="resource-tag tag-official">Official</span></div>
-                    </div>
-                    <p class="resource-description">Federal Reserve Economic Data provides free access to economic indicators including interest rates, inflation data, employment statistics, and more.</p>
-                    <a href="https://fred.stlouisfed.org" target="_blank" rel="noopener" class="resource-link">Visit FRED ↗</a>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-header">
-                        <div class="resource-logo">🎓</div>
-                        <div class="resource-info"><h3>Investor.gov</h3><span class="resource-tag tag-official">Official</span></div>
-                    </div>
-                    <p class="resource-description">The SEC's official investor education website with guides on investing basics, avoiding fraud, and understanding financial products.</p>
-                    <a href="https://www.investor.gov" target="_blank" rel="noopener" class="resource-link">Visit Investor.gov ↗</a>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-header">
-                        <div class="resource-logo">📊</div>
-                        <div class="resource-info"><h3>FINRA Investor Education</h3><span class="resource-tag tag-official">Official</span></div>
-                    </div>
-                    <p class="resource-description">FINRA provides tools and educational resources including BrokerCheck, fund analyzers, and guides on investment basics.</p>
-                    <a href="https://www.finra.org/investors" target="_blank" rel="noopener" class="resource-link">Visit FINRA ↗</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="resource-section">
-            <div class="section-header">
-                <h2 class="section-title">Third-Party Educational Resources</h2>
-            </div>
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <div class="resource-header">
-                        <div class="resource-logo">📺</div>
-                        <div class="resource-info"><h3>TradingView</h3><span class="resource-tag tag-external">External</span></div>
-                    </div>
-                    <p class="resource-description">A popular charting platform used by many investors to view price charts and technical indicators. We embed their charts on some pages for reference.</p>
-                    <a href="https://www.tradingview.com" target="_blank" rel="noopener" class="resource-link">Visit TradingView ↗</a>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-header">
-                        <div class="resource-logo">📚</div>
-                        <div class="resource-info"><h3>Investopedia</h3><span class="resource-tag tag-education">Education</span></div>
-                    </div>
-                    <p class="resource-description">A comprehensive resource for learning financial terms, concepts, and investment basics. Useful for understanding terminology used in market discussions.</p>
-                    <a href="https://www.investopedia.com" target="_blank" rel="noopener" class="resource-link">Visit Investopedia ↗</a>
-                </div>
-            </div>
-        </section>
+        <h1>Financial Resources</h1>
+        <p class="intro-text">
+            A collection of free, publicly available resources for learning about financial markets. These external links provide access to official data, educational materials, and research tools.
+        </p>
 
         <div class="disclaimer-box">
-            <div style="color:var(--yellow); opacity:0.9; font-size: 0.85rem; line-height: 1.6;">
-                <strong>⚠️ Important Notice:</strong> External resources are provided for educational reference only. US Market Terminals is not affiliated with any government entities, exchanges, or third-party platforms listed above. Always verify information from official sources before making any decisions.
-            </div>
+            <p><strong>Note:</strong> These are third-party websites. US Market Terminals does not control, endorse, or guarantee the accuracy of external content. Links are provided for educational reference only.</p>
         </div>
+
+        <!-- Official Government Sources -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Official Government Sources</h2>
+                <p>Government agencies provide free access to official financial data, company filings, and economic statistics. These are primary sources often used by researchers and analysts.</p>
+            </div>
+            <div class="resource-grid">
+                <a href="https://www.sec.gov/edgar/searchedgar/companysearch" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Company Filings</span>
+                    <h3>SEC EDGAR <span class="external-icon">↗</span></h3>
+                    <p>Free access to all public company filings including annual reports (10-K), quarterly reports (10-Q), and insider trading disclosures.</p>
+                </a>
+
+                <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Economic Data</span>
+                    <h3>Federal Reserve (FRED) <span class="external-icon">↗</span></h3>
+                    <p>Comprehensive database of U.S. economic data including interest rates, inflation, employment, and GDP statistics from the St. Louis Fed.</p>
+                </a>
+
+                <a href="https://www.bls.gov/" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Labor Statistics</span>
+                    <h3>Bureau of Labor Statistics <span class="external-icon">↗</span></h3>
+                    <p>Official source for employment data, Consumer Price Index (CPI), Producer Price Index (PPI), and wage statistics.</p>
+                </a>
+
+                <a href="https://www.investor.gov/" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Investor Education</span>
+                    <h3>Investor.gov (SEC) <span class="external-icon">↗</span></h3>
+                    <p>SEC's official investor education website with guides on investing basics, avoiding fraud, and understanding financial products.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Market Data Providers -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Market Data & Charts</h2>
+                <p>These platforms provide market data visualization, charting tools, and price information. Most offer free tiers with optional paid features for additional data.</p>
+            </div>
+            <div class="resource-grid">
+                <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Charts & Screeners</span>
+                    <h3>TradingView <span class="external-icon">↗</span></h3>
+                    <p>Popular charting platform with technical analysis tools, stock screeners, and community features. Free tier available with delayed data.</p>
+                </a>
+
+                <a href="https://finance.yahoo.com/" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">General Finance</span>
+                    <h3>Yahoo Finance <span class="external-icon">↗</span></h3>
+                    <p>Free stock quotes, financial news, portfolio tracking, and basic company financials. Widely used for general market information.</p>
+                </a>
+
+                <a href="https://www.finviz.com/" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Stock Screener</span>
+                    <h3>Finviz <span class="external-icon">↗</span></h3>
+                    <p>Visual stock screener with heat maps, fundamental filters, and technical analysis. Free version provides delayed quotes and basic screening.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Educational Resources -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Educational Resources</h2>
+                <p>These resources provide educational content about investing concepts, financial literacy, and market mechanics. They can help build foundational knowledge.</p>
+            </div>
+            <div class="resource-grid">
+                <a href="https://www.investopedia.com/" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Financial Education</span>
+                    <h3>Investopedia <span class="external-icon">↗</span></h3>
+                    <p>Comprehensive financial dictionary and educational articles covering investing concepts, terminology, and financial planning basics.</p>
+                </a>
+
+                <a href="https://www.khanacademy.org/economics-finance-domain" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Free Courses</span>
+                    <h3>Khan Academy Finance <span class="external-icon">↗</span></h3>
+                    <p>Free video courses on economics, finance, and capital markets. Good for learning fundamentals at your own pace.</p>
+                </a>
+
+                <a href="https://www.bogleheads.org/wiki/Main_Page" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Community Wiki</span>
+                    <h3>Bogleheads Wiki <span class="external-icon">↗</span></h3>
+                    <p>Community-maintained wiki focused on passive investing principles, asset allocation, and retirement planning concepts.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Cryptocurrency Resources -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Cryptocurrency Data</h2>
+                <p>Resources specific to cryptocurrency markets. Note that crypto markets are highly volatile and speculative. These tools display market data but should not be used as the basis for trading decisions.</p>
+            </div>
+            <div class="resource-grid">
+                <a href="https://coinmarketcap.com/" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Crypto Data</span>
+                    <h3>CoinMarketCap <span class="external-icon">↗</span></h3>
+                    <p>Cryptocurrency price tracking, market capitalization rankings, and basic metrics for thousands of digital assets.</p>
+                </a>
+
+                <a href="https://alternative.me/crypto/fear-and-greed-index/" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Sentiment Index</span>
+                    <h3>Crypto Fear & Greed Index <span class="external-icon">↗</span></h3>
+                    <p>Sentiment indicator that aggregates various market signals. Shows current market sentiment but should not be used as a trading signal.</p>
+                </a>
+
+                <a href="https://www.blockchain.com/explorer" target="_blank" rel="noopener noreferrer" class="resource-card">
+                    <span class="resource-type">Blockchain Data</span>
+                    <h3>Blockchain Explorer <span class="external-icon">↗</span></h3>
+                    <p>View Bitcoin and Ethereum blockchain transactions, addresses, and blocks. Useful for verifying transactions and exploring on-chain data.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Important Notes -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Using These Resources</h2>
+                <p>When using external financial resources, keep these considerations in mind:</p>
+            </div>
+            <div style="background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px;">
+                <ul style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.8; padding-left: 20px; margin: 0;">
+                    <li style="margin-bottom: 12px;"><strong style="color: #fff;">Verify important data:</strong> For significant financial decisions, verify data against multiple sources, preferably official primary sources like SEC filings.</li>
+                    <li style="margin-bottom: 12px;"><strong style="color: #fff;">Understand data delays:</strong> Free data sources often have delays of 15-20 minutes. Real-time data typically requires paid subscriptions.</li>
+                    <li style="margin-bottom: 12px;"><strong style="color: #fff;">Educational vs. advice:</strong> These resources provide information and education, not personalized financial advice. Consider consulting professionals for your specific situation.</li>
+                    <li style="margin-bottom: 12px;"><strong style="color: #fff;">External content:</strong> We don't control third-party websites. Their content, accuracy, and availability may change without notice.</li>
+                    <li><strong style="color: #fff;">No endorsement:</strong> Listing a resource here does not constitute an endorsement or recommendation of any product or service.</li>
+                </ul>
+            </div>
+        </section>
     </div>
 
     <footer>
@@ -204,15 +220,12 @@
             <a href="/privacy.html">Privacy</a>
             <a href="/legal.html">Terms & Disclaimer</a>
         </div>
-        <p class="footer-copy">
-            © 2026 US Market Terminals. All rights reserved. <br>
-            Educational Content • For Informational Purposes Only
-        </p>
+        <p style="color: #475569; font-size: 0.85rem; margin-bottom: 20px;">© 2026 US Market Terminals. All rights reserved.</p>
         <div class="footer-disclaimer">
-            <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Important Disclaimer</strong>
-            US Market Terminals provides educational content for informational purposes only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results. Always consult qualified professionals before making investment decisions.
+            <strong>Disclaimer:</strong> US Market Terminals provides educational content only. External links are provided for reference and do not constitute endorsements. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk.
         </div>
-    </footer>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+</footer>
 
 </body>
 </html>
