@@ -3,72 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Understanding Inflation and Investment Concepts | US Market Terminals</title>
-  <meta name="description" content="Educational overview of how inflation affects different asset classes and common concepts discussed in the context of inflation hedging.">
-  
+  <title>Understanding Inflation and Investing | Complete Guide | US Market Terminals</title>
+  <meta name="description" content="Comprehensive guide to inflation and investing, including how inflation affects asset classes, real vs nominal returns, inflation hedges like TIPS and I-Bonds, and strategies to consider.">
+  <meta name="keywords" content="inflation investing, inflation hedge, real returns, TIPS, I-Bonds, CPI, purchasing power, commodities inflation, stocks inflation">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog/understanding-inflation-investing.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
-      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #ef4444;
-      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
-    }
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #ef4444; --accent-glow: rgba(239, 68, 68, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); --green: #22c55e; --green-glow: rgba(34, 197, 94, 0.1); --blue: #3b82f6; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; transition: 0.3s; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; }
     
     .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
-    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
-
-    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
-
-    /* Warning Boxes */
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; }
+    
+    .container { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    
     .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
-    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; }
     .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
-
-    .article-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 50px; }
-    .tag { display: inline-block; background: rgba(239, 68, 68, 0.1); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; border: 1px solid rgba(239, 68, 68, 0.2); }
+    
+    .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
     .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
-
-    .content { font-size: 1.1rem; color: #cbd5e1; }
-    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; }
-    .content p { margin-bottom: 30px; text-align: justify; line-height: 1.9; }
-
-    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem; }
-
-    /* Context Box */
-    .context-box { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 16px; padding: 25px; margin: 40px 0; }
-    .context-box h4 { color: #f87171; margin-bottom: 12px; font-size: 1rem; }
-    .context-box p { margin: 0; font-size: 0.95rem; color: #fca5a5; }
-
-    /* Risk Section */
-    .risk-section { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .risk-section h3 { color: #f87171; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem; }
-    .risk-section ul { margin: 0; padding-left: 20px; }
-    .risk-section li { margin-bottom: 12px; color: #fca5a5; }
-
-    /* Further Reading */
-    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: #fff; margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; line-height: 1.9; }
+    .content strong { color: #fff; }
+    .content ul, .content ol { margin-bottom: 24px; padding-left: 24px; }
+    .content li { margin-bottom: 12px; }
+    
+    .formula-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; font-family: 'JetBrains Mono', monospace; text-align: center; }
+    .formula-box .formula { font-size: 1.1rem; color: var(--accent); margin: 15px 0; }
+    .formula-box .example { font-size: 0.95rem; color: var(--text-dim); margin-top: 15px; }
+    
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    
+    .key-point { background: var(--accent-glow); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #f87171; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #fca5a5; font-size: 0.95rem; }
+    
+    .green-box { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .green-box h4 { color: #4ade80; margin-bottom: 10px; font-size: 1rem; }
+    .green-box p { margin: 0; color: #86efac; font-size: 0.95rem; }
+    
+    .blue-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .blue-box h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .blue-box p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    .data-table th { background: var(--accent-glow); color: var(--accent); font-weight: 700; text-align: left; padding: 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table .highlight { color: var(--accent); font-weight: 700; }
+    .data-table .green { color: var(--green); font-weight: 700; }
+    .data-table .dim { color: var(--text-dim); }
+    .data-table .red { color: #f87171; font-weight: 700; }
+    .data-table .blue { color: var(--blue); font-weight: 700; }
+    
+    /* Comparison Grid */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .compare-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .compare-box h4 { margin-bottom: 16px; font-size: 1.1rem; color: #fff; }
+    .compare-box ul { margin: 0; padding-left: 20px; }
+    .compare-box li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dim); }
+    .compare-box.good { border-color: rgba(34, 197, 94, 0.3); }
+    .compare-box.good h4 { color: var(--green); }
+    .compare-box.bad { border-color: rgba(239, 68, 68, 0.3); }
+    .compare-box.bad h4 { color: #f87171; }
+    
+    /* FAQ Section */
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+    .faq-answer { padding: 0 24px 20px; color: var(--text-dim); line-height: 1.8; display: block; }
+    
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
     .reading-section ul { margin: 0; padding-left: 20px; }
     .reading-section li { margin-bottom: 10px; }
     .reading-section a { color: #93c5fd; }
-    .reading-section a:hover { color: #bfdbfe; }
-
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 120px; }
-    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+    
+    /* Related Articles */
+    .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+    .related-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .related-card h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
+    .related-card p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+    
+    @media (max-width: 768px) {
+      .data-table { font-size: 0.85rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .related-articles { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <div class="nav-container">
       <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
@@ -77,113 +123,881 @@
   </nav>
 
   <main class="container">
-
-    <!-- Top Warning -->
     <div class="warning-box">
       <h4>⚠️ Educational Purpose Only</h4>
-      <p>This article explains concepts commonly discussed in relation to inflation and investing. It is not investment advice or a recommendation to buy any asset. No investment strategy guarantees protection against inflation. All investments carry risk of loss. Consult a qualified financial advisor before making investment decisions.</p>
+      <p>This article explains concepts related to inflation and investing. It is not investment advice. No strategy guarantees protection against inflation. All investments carry risk of loss. Consult a qualified financial advisor.</p>
     </div>
 
     <article class="article-header">
       <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
-      <span class="tag">Concept Overview</span>
-      <h1>Understanding Inflation and Investment Concepts</h1>
-      <div class="meta"><span>Concept Explanation</span> • <span>Jan 2026</span></div>
+      <span class="tag">Economic Concepts</span>
+      <h1>Understanding Inflation and Investing</h1>
+      <div class="meta">
+        <span>Intermediate Guide</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>14 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>Updated January 2026</span>
+      </div>
     </article>
 
     <div class="content">
-      <p>
-        Inflation—the general increase in prices over time—is a topic frequently discussed in investing contexts. This article provides an educational overview of how inflation is commonly discussed in relation to different asset classes, along with important limitations and risks to consider.
-      </p>
+      <p><strong>Inflation</strong>—the general increase in prices over time—erodes the purchasing power of money. A dollar today buys less than a dollar ten years ago, and will likely buy less ten years from now. Understanding how inflation affects investments is crucial for long-term financial planning.</p>
 
-      <h2>1. How Inflation Affects Different Assets</h2>
-      <p>
-        Different asset classes have historically behaved differently during inflationary periods, though past performance doesn't predict future results. Understanding these historical patterns can provide context for discussions about inflation:
-      </p>
-      <p>
-        <strong>Cash and Fixed-Rate Bonds:</strong> These typically lose purchasing power during inflation, as their nominal returns may not keep pace with rising prices. However, they also provide stability and liquidity that other assets may not.
-      </p>
-      <p>
-        <strong>Equities:</strong> Some analysts argue that stocks of companies with "pricing power"—the ability to raise prices—may fare better during inflation. However, stock prices are affected by many factors beyond inflation, and can decline significantly regardless of inflation environment.
-      </p>
-      <p>
-        <strong>Commodities and Real Assets:</strong> Gold, real estate, and other tangible assets are sometimes discussed as inflation hedges, though their actual performance during inflationary periods has been mixed historically.
-      </p>
+      <p>In this comprehensive guide, we'll explore how inflation is measured, its historical patterns, how different asset classes perform during inflation, real vs. nominal returns, specific inflation-protection investments like TIPS and I-Bonds, and the significant limitations of any "inflation hedge" strategy.</p>
 
-      <div class="context-box">
-        <h4>⚠️ Important Context</h4>
-        <p>The term "inflation hedge" is frequently used but often misunderstood. No asset class has reliably protected purchasing power across all inflationary periods. An asset that performed well during one inflationary episode may perform poorly during another. Historical correlations between assets and inflation are inconsistent.</p>
+      <!-- Table of Contents -->
+      <div class="info-box">
+        <h3>📑 Table of Contents</h3>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li>How Inflation is Measured</li>
+          <li>Historical Inflation Data</li>
+          <li>Real vs. Nominal Returns</li>
+          <li>How Inflation Affects Asset Classes</li>
+          <li>Treasury Inflation-Protected Securities (TIPS)</li>
+          <li>Series I Savings Bonds</li>
+          <li>Stocks and Inflation</li>
+          <li>Commodities and Gold</li>
+          <li>Real Estate and Inflation</li>
+          <li>FAQ: Frequently Asked Questions</li>
+        </ol>
       </div>
 
-      <h2>2. The "Pricing Power" Concept</h2>
-      <p>
-        Some investment discussions focus on companies with "pricing power"—the theoretical ability to raise prices without losing customers. Consumer staples companies (food, beverages, household goods) and certain technology companies are often cited as examples.
-      </p>
-      <p>
-        However, having pricing power doesn't guarantee stock price performance. Companies with strong pricing power can still see their stock prices decline due to valuation concerns, competition, management issues, or broader market conditions. The concept is more complex in practice than in theory.
-      </p>
+      <h2>1. How Inflation is Measured</h2>
+      <p>Several indices track inflation in the United States:</p>
 
-      <h2>3. Scarcity-Based Assets</h2>
-      <p>
-        Some investors discuss assets with limited supply—like gold or Bitcoin—as potential inflation hedges based on the logic that their scarcity provides value when currency purchasing power declines.
-      </p>
-      <p>
-        However, these assets come with their own risks: gold produces no income and can underperform for extended periods; Bitcoin is extremely volatile and has limited historical data during various inflation regimes. Neither has a guaranteed relationship with inflation.
-      </p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Measured By</th>
+            <th>What It Tracks</th>
+            <th>Use Case</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>CPI-U</strong></td>
+            <td>Bureau of Labor Statistics</td>
+            <td>Urban consumer prices</td>
+            <td class="highlight">Most commonly cited</td>
+          </tr>
+          <tr>
+            <td><strong>CPI-W</strong></td>
+            <td>Bureau of Labor Statistics</td>
+            <td>Urban wage earners</td>
+            <td>Social Security adjustments</td>
+          </tr>
+          <tr>
+            <td><strong>Core CPI</strong></td>
+            <td>Bureau of Labor Statistics</td>
+            <td>CPI excluding food & energy</td>
+            <td>Less volatile indicator</td>
+          </tr>
+          <tr>
+            <td><strong>PCE</strong></td>
+            <td>Bureau of Economic Analysis</td>
+            <td>Personal consumption expenditures</td>
+            <td class="highlight">Fed's preferred measure</td>
+          </tr>
+          <tr>
+            <td><strong>Core PCE</strong></td>
+            <td>Bureau of Economic Analysis</td>
+            <td>PCE excluding food & energy</td>
+            <td>Fed's target (~2%)</td>
+          </tr>
+          <tr>
+            <td><strong>PPI</strong></td>
+            <td>Bureau of Labor Statistics</td>
+            <td>Producer/wholesale prices</td>
+            <td>Leading indicator</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <!-- Risk Section -->
-      <div class="risk-section">
-        <h3>⚠️ Significant Risks and Limitations</h3>
-        <ul>
-          <li><strong>No Guaranteed Hedge:</strong> No asset class reliably protects against inflation in all scenarios</li>
-          <li><strong>Timing Risk:</strong> Assets discussed as inflation hedges may underperform for years, even during inflationary periods</li>
-          <li><strong>Volatility:</strong> Many assets discussed as inflation hedges (commodities, Bitcoin, real estate) can be highly volatile</li>
-          <li><strong>Opportunity Cost:</strong> Overweighting inflation hedges may mean missing returns from other asset classes</li>
-          <li><strong>Complexity:</strong> Inflation's effects on asset prices are complex and depend on many factors including whether inflation is expected or unexpected</li>
-          <li><strong>Historical Limitations:</strong> Each inflationary period has unique characteristics; past patterns may not repeat</li>
-          <li><strong>Diversification Trade-offs:</strong> Concentrating in assets perceived as inflation hedges may reduce portfolio diversification</li>
-          <li><strong>Real vs. Nominal Returns:</strong> An asset can have positive nominal returns while still losing purchasing power after inflation</li>
-        </ul>
+      <h3>CPI Components</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Approximate Weight</th>
+            <th>Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Housing</strong></td>
+            <td class="highlight">~33%</td>
+            <td>Rent, owners' equivalent rent</td>
+          </tr>
+          <tr>
+            <td><strong>Transportation</strong></td>
+            <td>~17%</td>
+            <td>Vehicles, gas, insurance</td>
+          </tr>
+          <tr>
+            <td><strong>Food</strong></td>
+            <td>~14%</td>
+            <td>Groceries, dining out</td>
+          </tr>
+          <tr>
+            <td><strong>Medical Care</strong></td>
+            <td>~8%</td>
+            <td>Insurance, services, drugs</td>
+          </tr>
+          <tr>
+            <td><strong>Education/Communication</strong></td>
+            <td>~7%</td>
+            <td>Tuition, phone, internet</td>
+          </tr>
+          <tr>
+            <td><strong>Recreation</strong></td>
+            <td>~5%</td>
+            <td>Entertainment, hobbies</td>
+          </tr>
+          <tr>
+            <td><strong>Apparel</strong></td>
+            <td>~3%</td>
+            <td>Clothing, shoes</td>
+          </tr>
+          <tr>
+            <td><strong>Other</strong></td>
+            <td>~13%</td>
+            <td>Personal care, misc.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>2. Historical Inflation Data</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Average Annual CPI</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1920s</td>
+            <td>-1.1%</td>
+            <td>Deflationary decade</td>
+          </tr>
+          <tr>
+            <td>1930s</td>
+            <td>-2.0%</td>
+            <td>Great Depression deflation</td>
+          </tr>
+          <tr>
+            <td>1940s</td>
+            <td class="red">+5.4%</td>
+            <td>WWII, post-war demand</td>
+          </tr>
+          <tr>
+            <td>1950s</td>
+            <td>+2.2%</td>
+            <td>Relatively stable</td>
+          </tr>
+          <tr>
+            <td>1960s</td>
+            <td>+2.5%</td>
+            <td>Rising by end of decade</td>
+          </tr>
+          <tr>
+            <td>1970s</td>
+            <td class="red">+7.4%</td>
+            <td>Oil shocks, stagflation</td>
+          </tr>
+          <tr>
+            <td>1980s</td>
+            <td>+5.1%</td>
+            <td>Volcker tightening</td>
+          </tr>
+          <tr>
+            <td>1990s</td>
+            <td>+2.9%</td>
+            <td>Disinflation</td>
+          </tr>
+          <tr>
+            <td>2000s</td>
+            <td>+2.5%</td>
+            <td>Relatively stable</td>
+          </tr>
+          <tr>
+            <td>2010s</td>
+            <td class="green">+1.7%</td>
+            <td>Low inflation era</td>
+          </tr>
+          <tr>
+            <td>2020-2024</td>
+            <td class="red">~4.5%</td>
+            <td>COVID, supply chains, stimulus</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Purchasing Power Erosion</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Inflation Rate</th>
+            <th>Years to Lose 25% Purchasing Power</th>
+            <th>Years to Lose 50%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="green">2%</td>
+            <td>~14 years</td>
+            <td>~35 years</td>
+          </tr>
+          <tr>
+            <td>3%</td>
+            <td>~10 years</td>
+            <td>~23 years</td>
+          </tr>
+          <tr>
+            <td>5%</td>
+            <td>~6 years</td>
+            <td>~14 years</td>
+          </tr>
+          <tr>
+            <td class="red">7%</td>
+            <td>~4 years</td>
+            <td>~10 years</td>
+          </tr>
+          <tr>
+            <td class="red">10%</td>
+            <td>~3 years</td>
+            <td>~7 years</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>📉 The Rule of 72</h4>
+        <p>To estimate how long it takes for inflation to cut purchasing power in half, divide 72 by the inflation rate. At 3% inflation: 72 ÷ 3 = 24 years. At 7% inflation: 72 ÷ 7 ≈ 10 years. This simple rule illustrates why even "moderate" inflation matters over long time horizons.</p>
       </div>
 
-      <h2>4. Academic Perspectives</h2>
-      <p>
-        Academic research on inflation hedging has produced mixed results. Studies have found that the effectiveness of various inflation hedges depends heavily on the time period examined, the type of inflation (demand-pull vs. cost-push), and whether inflation was anticipated or unexpected.
-      </p>
-      <p>
-        Many financial economists suggest that diversification across multiple asset classes, rather than concentrated bets on specific "inflation hedges," may be a more reliable approach—though this too offers no guarantees.
-      </p>
+      <h2>3. Real vs. Nominal Returns</h2>
+      <p>Nominal returns are what you see; real returns are what you keep after inflation:</p>
+
+      <div class="formula-box">
+        <div style="color: var(--text-dim); margin-bottom: 10px;">Real Return Formula (Approximation)</div>
+        <div class="formula">Real Return ≈ Nominal Return - Inflation Rate</div>
+        <div class="example">8% nominal - 3% inflation = ~5% real return</div>
+      </div>
+
+      <h3>Real vs. Nominal Return Examples</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Nominal Return</th>
+            <th>Inflation</th>
+            <th>Real Return</th>
+            <th>Assessment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Stock market average</td>
+            <td>10%</td>
+            <td>3%</td>
+            <td class="green">+7%</td>
+            <td>Strong real gain</td>
+          </tr>
+          <tr>
+            <td>Bond yield</td>
+            <td>5%</td>
+            <td>3%</td>
+            <td class="green">+2%</td>
+            <td>Modest real gain</td>
+          </tr>
+          <tr>
+            <td>Savings account</td>
+            <td>4%</td>
+            <td>5%</td>
+            <td class="red">-1%</td>
+            <td>Losing purchasing power</td>
+          </tr>
+          <tr>
+            <td>Cash under mattress</td>
+            <td>0%</td>
+            <td>3%</td>
+            <td class="red">-3%</td>
+            <td>Guaranteed loss</td>
+          </tr>
+          <tr>
+            <td>2022 bonds</td>
+            <td>-13%</td>
+            <td>7%</td>
+            <td class="red">-20%</td>
+            <td>Devastating year</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. How Inflation Affects Asset Classes</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Asset Class</th>
+            <th>During Low Inflation</th>
+            <th>During High Inflation</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cash</strong></td>
+            <td>Small real loss</td>
+            <td class="red">Significant real loss</td>
+            <td>Fixed value erodes with prices</td>
+          </tr>
+          <tr>
+            <td><strong>Long-Term Bonds</strong></td>
+            <td class="green">Good performance</td>
+            <td class="red">Poor performance</td>
+            <td>Fixed payments worth less; rates rise</td>
+          </tr>
+          <tr>
+            <td><strong>Short-Term Bonds</strong></td>
+            <td>Modest</td>
+            <td>Less bad than long bonds</td>
+            <td>Can reinvest at higher rates sooner</td>
+          </tr>
+          <tr>
+            <td><strong>TIPS</strong></td>
+            <td>Lower returns</td>
+            <td class="green">Inflation protection</td>
+            <td>Principal adjusts with CPI</td>
+          </tr>
+          <tr>
+            <td><strong>Stocks (Value)</strong></td>
+            <td>Moderate</td>
+            <td>Mixed</td>
+            <td>Real assets; pricing power varies</td>
+          </tr>
+          <tr>
+            <td><strong>Stocks (Growth)</strong></td>
+            <td class="green">Strong</td>
+            <td class="red">Often poor</td>
+            <td>Higher rates hurt valuations</td>
+          </tr>
+          <tr>
+            <td><strong>Commodities</strong></td>
+            <td>Often poor</td>
+            <td class="green">Often good</td>
+            <td>Prices rise with inflation</td>
+          </tr>
+          <tr>
+            <td><strong>Gold</strong></td>
+            <td>Mixed</td>
+            <td>Mixed</td>
+            <td>Depends on real rates, sentiment</td>
+          </tr>
+          <tr>
+            <td><strong>Real Estate</strong></td>
+            <td>Moderate</td>
+            <td>Often good (but not always)</td>
+            <td>Hard asset; rents can rise</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ No Reliable Hedge</h4>
+        <p>The term "inflation hedge" implies reliable protection. In reality, no asset class has consistently protected purchasing power across all inflationary periods. An asset that worked in the 1970s may not work today. Each inflation episode has unique characteristics.</p>
+      </div>
+
+      <h2>5. Treasury Inflation-Protected Securities (TIPS)</h2>
+      <p>TIPS are U.S. government bonds designed to protect against inflation:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>How It Works</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Principal Adjustment</strong></td>
+            <td class="highlight">Principal increases with CPI-U inflation</td>
+          </tr>
+          <tr>
+            <td><strong>Interest Payments</strong></td>
+            <td>Fixed rate paid on adjusted principal</td>
+          </tr>
+          <tr>
+            <td><strong>Maturity</strong></td>
+            <td>5, 10, or 30 years</td>
+          </tr>
+          <tr>
+            <td><strong>Deflation Protection</strong></td>
+            <td>At maturity, receive greater of adjusted or original principal</td>
+          </tr>
+          <tr>
+            <td><strong>Tax Treatment</strong></td>
+            <td class="red">Phantom income: taxed on inflation adjustment annually</td>
+          </tr>
+          <tr>
+            <td><strong>Where to Buy</strong></td>
+            <td>TreasuryDirect, brokers, ETFs (TIP, SCHP)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>TIPS Example</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Inflation (CPI)</th>
+            <th>Principal</th>
+            <th>Interest (2%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Year 0</td>
+            <td>-</td>
+            <td>$10,000</td>
+            <td>$200</td>
+          </tr>
+          <tr>
+            <td>Year 1</td>
+            <td>3%</td>
+            <td>$10,300</td>
+            <td>$206</td>
+          </tr>
+          <tr>
+            <td>Year 2</td>
+            <td>4%</td>
+            <td>$10,712</td>
+            <td>$214</td>
+          </tr>
+          <tr>
+            <td>Year 3</td>
+            <td>2%</td>
+            <td>$10,926</td>
+            <td>$219</td>
+          </tr>
+          <tr>
+            <td>Maturity</td>
+            <td>-</td>
+            <td class="highlight">$10,926</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="compare-grid">
+        <div class="compare-box good">
+          <h4>✅ TIPS Advantages</h4>
+          <ul>
+            <li>Guaranteed inflation protection</li>
+            <li>U.S. government backing</li>
+            <li>Deflation floor at maturity</li>
+            <li>Diversification benefit</li>
+            <li>Real yield known at purchase</li>
+          </ul>
+        </div>
+        <div class="compare-box bad">
+          <h4>❌ TIPS Disadvantages</h4>
+          <ul>
+            <li>Phantom income taxation</li>
+            <li>Lower yields than nominal bonds</li>
+            <li>Price volatility before maturity</li>
+            <li>CPI may not match your inflation</li>
+            <li>Can have negative real yields</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>6. Series I Savings Bonds</h2>
+      <p>I-Bonds are another inflation-protected option with different features:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>I-Bonds</th>
+            <th>TIPS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Purchase Limit</strong></td>
+            <td class="red">$10,000/year electronically</td>
+            <td>No limit</td>
+          </tr>
+          <tr>
+            <td><strong>Interest Rate</strong></td>
+            <td>Fixed rate + inflation rate</td>
+            <td>Fixed rate on inflation-adjusted principal</td>
+          </tr>
+          <tr>
+            <td><strong>Tax Deferral</strong></td>
+            <td class="green">Yes—until redemption</td>
+            <td class="red">No—taxed annually</td>
+          </tr>
+          <tr>
+            <td><strong>State Tax</strong></td>
+            <td class="green">Exempt</td>
+            <td class="green">Exempt</td>
+          </tr>
+          <tr>
+            <td><strong>Holding Period</strong></td>
+            <td>Min 1 year; 3-month penalty if &lt;5 years</td>
+            <td>Can sell anytime (market price)</td>
+          </tr>
+          <tr>
+            <td><strong>Liquidity</strong></td>
+            <td class="red">Lower—can't sell on market</td>
+            <td class="green">Higher—trades on market</td>
+          </tr>
+          <tr>
+            <td><strong>Deflation Protection</strong></td>
+            <td>Can't go below zero composite rate</td>
+            <td>Principal floor at maturity</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="green-box">
+        <h4>💡 I-Bond Strategy</h4>
+        <p>I-Bonds are often recommended for emergency funds or short-term savings due to their tax deferral, safety, and inflation protection. The $10,000 annual limit makes them unsuitable as a primary portfolio component, but they can be a useful complement. Tax deferral is especially valuable in high-income years.</p>
+      </div>
+
+      <h2>7. Stocks and Inflation</h2>
+      <p>The relationship between stocks and inflation is complex:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Stock Type</th>
+            <th>Low Inflation</th>
+            <th>Moderate Inflation</th>
+            <th>High Inflation</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Growth Stocks</strong></td>
+            <td class="green">Often outperform</td>
+            <td>Mixed</td>
+            <td class="red">Often underperform</td>
+          </tr>
+          <tr>
+            <td><strong>Value Stocks</strong></td>
+            <td>Often lag</td>
+            <td class="green">Often do well</td>
+            <td>Mixed</td>
+          </tr>
+          <tr>
+            <td><strong>Dividend Stocks</strong></td>
+            <td>Steady</td>
+            <td>Steady</td>
+            <td>Depends on payout growth</td>
+          </tr>
+          <tr>
+            <td><strong>Consumer Staples</strong></td>
+            <td>Defensive</td>
+            <td class="green">Pricing power</td>
+            <td>Relatively resilient</td>
+          </tr>
+          <tr>
+            <td><strong>Energy/Materials</strong></td>
+            <td>Often lag</td>
+            <td class="green">Often outperform</td>
+            <td class="green">Often outperform</td>
+          </tr>
+          <tr>
+            <td><strong>REITs</strong></td>
+            <td>Good (low rates)</td>
+            <td>Mixed</td>
+            <td class="red">Rate-sensitive</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>"Pricing Power" Concept</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Characteristic</th>
+            <th>High Pricing Power</th>
+            <th>Low Pricing Power</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Brand Strength</strong></td>
+            <td class="green">Strong brand loyalty</td>
+            <td>Commodity products</td>
+          </tr>
+          <tr>
+            <td><strong>Competition</strong></td>
+            <td>Limited substitutes</td>
+            <td class="red">Many competitors</td>
+          </tr>
+          <tr>
+            <td><strong>Customer Dependence</strong></td>
+            <td>Switching costs high</td>
+            <td>Easy to switch</td>
+          </tr>
+          <tr>
+            <td><strong>Examples</strong></td>
+            <td>Apple, Coca-Cola, Microsoft</td>
+            <td>Airlines, basic retail</td>
+          </tr>
+          <tr>
+            <td><strong>Caveat</strong></td>
+            <td colspan="2" class="dim">Pricing power doesn't guarantee stock performance</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>8. Commodities and Gold</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Inflation Argument</th>
+            <th>Counter-Argument</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Broad Commodities</strong></td>
+            <td class="green">Prices rise with inflation</td>
+            <td class="red">Volatile, no income, roll costs</td>
+          </tr>
+          <tr>
+            <td><strong>Gold</strong></td>
+            <td class="green">Scarcity, historical store of value</td>
+            <td class="red">No yield, depends on real rates</td>
+          </tr>
+          <tr>
+            <td><strong>Energy (Oil/Gas)</strong></td>
+            <td class="green">Often rises with inflation</td>
+            <td class="red">Supply/demand driven, volatile</td>
+          </tr>
+          <tr>
+            <td><strong>Agricultural</strong></td>
+            <td>Food price inflation</td>
+            <td class="red">Weather-dependent, complex</td>
+          </tr>
+          <tr>
+            <td><strong>Industrial Metals</strong></td>
+            <td>Economic demand</td>
+            <td class="red">Cyclical, not pure inflation hedge</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Gold's Historical Performance</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Gold Performance</th>
+            <th>Inflation Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1970s</td>
+            <td class="green">+1,400%</td>
+            <td>High inflation, gold freed from $35</td>
+          </tr>
+          <tr>
+            <td>1980-2000</td>
+            <td class="red">-50% (nominal)</td>
+            <td>Disinflation, rising real rates</td>
+          </tr>
+          <tr>
+            <td>2001-2011</td>
+            <td class="green">+600%</td>
+            <td>Low real rates, financial crisis</td>
+          </tr>
+          <tr>
+            <td>2012-2018</td>
+            <td class="red">-30%</td>
+            <td>Low inflation, rising rates</td>
+          </tr>
+          <tr>
+            <td>2019-2024</td>
+            <td class="green">+70%</td>
+            <td>Pandemic, inflation, geopolitics</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>⚠️ Gold Is Not a Reliable Inflation Hedge</h4>
+        <p>Gold can go years or decades without keeping pace with inflation. Its price depends more on real interest rates (nominal rates minus inflation) than on inflation alone. When real rates rise (as in 2022), gold often struggles even as inflation is high. Gold is better viewed as a portfolio diversifier than a pure inflation hedge.</p>
+      </div>
+
+      <h2>9. Real Estate and Inflation</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Real Estate Type</th>
+            <th>Inflation Protection</th>
+            <th>Key Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Residential (Own Home)</strong></td>
+            <td class="green">Property values often rise with inflation</td>
+            <td>Illiquid, concentrated, maintenance</td>
+          </tr>
+          <tr>
+            <td><strong>Rental Properties</strong></td>
+            <td class="green">Rents can increase with inflation</td>
+            <td>Management, vacancy, rates affect value</td>
+          </tr>
+          <tr>
+            <td><strong>REITs</strong></td>
+            <td>Partial—rents rise, but rate-sensitive</td>
+            <td class="red">Stock market volatility, rate hikes</td>
+          </tr>
+          <tr>
+            <td><strong>Commercial Real Estate</strong></td>
+            <td>Long leases may lag inflation</td>
+            <td>Sector-specific (office struggles)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="compare-grid">
+        <div class="compare-box good">
+          <h4>✅ Real Estate Pros (Inflation)</h4>
+          <ul>
+            <li>Hard asset with intrinsic value</li>
+            <li>Rents typically rise with inflation</li>
+            <li>Fixed-rate mortgage gets cheaper</li>
+            <li>Replacement cost increases</li>
+          </ul>
+        </div>
+        <div class="compare-box bad">
+          <h4>❌ Real Estate Cons (Inflation)</h4>
+          <ul>
+            <li>Rising rates hurt affordability</li>
+            <li>Property values can decline</li>
+            <li>Taxes and costs also inflate</li>
+            <li>REITs are rate-sensitive</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>10. FAQ: Frequently Asked Questions</h2>
+      
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question">What's the best inflation hedge?</div>
+          <div class="faq-answer">There is no single "best" inflation hedge. Different assets perform differently in various inflation environments. TIPS and I-Bonds provide direct CPI linkage but may underperform in other scenarios. Stocks have historically outpaced inflation long-term but can suffer during high-inflation periods. Commodities often do well during inflation but are volatile. A diversified approach across multiple asset classes is generally more reliable than concentrating in any single "hedge."</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Should I hold cash if inflation is high?</div>
+          <div class="faq-answer">Cash loses purchasing power during inflation—that's guaranteed. However, cash provides liquidity and stability that other assets don't. In 2022, cash lost ~7% in real terms, but stocks lost more. The question isn't whether cash loses to inflation (it does), but whether alternatives are better in your specific situation. High-yield savings accounts, money market funds, and short-term T-bills can partially offset inflation while maintaining liquidity.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Do stocks protect against inflation?</div>
+          <div class="faq-answer">Over very long periods (20+ years), U.S. stocks have historically outpaced inflation. But in shorter timeframes and during high-inflation episodes, stocks can underperform. In the 1970s stagflation, stocks had negative real returns for the decade. In 2022, both stocks and bonds fell while inflation was high. Stocks represent ownership in real businesses that can raise prices, but many other factors affect stock prices. View stocks as a long-term wealth builder, not a short-term inflation hedge.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Are TIPS a good investment right now?</div>
+          <div class="faq-answer">Whether TIPS are "good" depends on your goals and expectations. TIPS guarantee a real return (currently around 2% for 10-year TIPS as of 2025). If inflation is higher than the market expects, TIPS outperform nominal bonds. If inflation is lower than expected, TIPS underperform. TIPS are most valuable when you want guaranteed inflation protection and are willing to accept potentially lower returns in low-inflation scenarios. They make sense as part of a diversified portfolio.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How much should I allocate to inflation hedges?</div>
+          <div class="faq-answer">There's no universal answer—it depends on your time horizon, risk tolerance, and inflation expectations. Some advisors suggest 5-15% in explicit inflation hedges (TIPS, commodities) for moderate investors. Others argue a well-diversified portfolio of stocks, bonds, and real estate provides adequate implicit inflation protection. Over-allocating to inflation hedges can mean missing returns from other asset classes. Consider your specific situation rather than following generic rules.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is Bitcoin an inflation hedge?</div>
+          <div class="faq-answer">Bitcoin is sometimes called "digital gold" with fixed supply, theoretically making it an inflation hedge. However, empirical evidence is limited. In 2022, when inflation peaked, Bitcoin fell ~65%. It's highly correlated with risk assets, not inversely correlated with inflation. Bitcoin may have long-term inflation-hedging properties as the asset matures, but it's currently too volatile and has too short a track record to be a reliable hedge. It's better viewed as a speculative asset.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Why did bonds fall when inflation rose in 2022?</div>
+          <div class="faq-answer">When inflation rises, central banks typically raise interest rates to fight it. Higher interest rates make existing bonds (with lower fixed rates) less valuable—why buy a 2% bond when new bonds pay 5%? Bond prices fall until their yields match the new rate environment. Long-duration bonds are most sensitive because their cash flows stretch further into the future. In 2022, the Fed raised rates aggressively, causing the worst bond market in decades. This is a normal relationship—high inflation is bad for bonds.</div>
+        </div>
+      </div>
 
       <h2>Conclusion</h2>
-      <p>
-        Inflation is a legitimate concern for long-term investors, but discussions about "inflation-proof" portfolios often oversimplify a complex topic. No asset class or strategy guarantees protection against inflation. Those concerned about inflation should consider how various approaches might fit their individual circumstances, risk tolerance, and overall financial plan—ideally with guidance from a qualified financial advisor.
-      </p>
+      <p>Inflation is a real concern for long-term investors—it erodes purchasing power and can turn nominal gains into real losses. But discussions about "inflation-proof" portfolios often oversimplify a complex topic. No asset class reliably protects against inflation across all scenarios.</p>
 
-      <!-- Further Reading -->
+      <p>Key takeaways:</p>
+      <ul>
+        <li>Inflation is measured by CPI, PCE, and other indices</li>
+        <li>Real return = Nominal return minus inflation</li>
+        <li>Cash and fixed-rate bonds lose purchasing power during inflation</li>
+        <li>TIPS provide direct CPI-linked inflation protection</li>
+        <li>I-Bonds offer tax-deferred inflation protection (limited to $10K/year)</li>
+        <li>Stocks historically outpace inflation long-term but not always short-term</li>
+        <li>Commodities and gold have mixed records as inflation hedges</li>
+        <li>Real estate can hedge inflation but is rate-sensitive</li>
+        <li>No single asset reliably protects in all inflation environments</li>
+        <li>Diversification is generally more reliable than concentrated bets</li>
+      </ul>
+
+      <p>Rather than seeking a single "inflation hedge," consider how different assets in a diversified portfolio might behave under various scenarios—including but not limited to high inflation. Your personal inflation rate may differ from CPI, and your investment time horizon matters more than any single year's inflation.</p>
+
+      <!-- Related Articles -->
+      <h3 style="margin-top: 60px; margin-bottom: 24px;">📚 Related Articles</h3>
+      <div class="related-articles">
+        <a href="/blog/what-is-inflation.html" class="related-card">
+          <h4>What Is Inflation?</h4>
+          <p>Basic inflation concepts explained</p>
+        </a>
+        <a href="/blog/what-are-treasury-bonds.html" class="related-card">
+          <h4>Treasury Bonds</h4>
+          <p>Understanding government securities</p>
+        </a>
+        <a href="/blog/understanding-interest-rates.html" class="related-card">
+          <h4>Interest Rates</h4>
+          <p>How rates affect investments</p>
+        </a>
+      </div>
+
       <div class="reading-section">
-        <h3>📚 Further Reading</h3>
+        <h3>📖 Official Resources</h3>
         <ul>
-          <li><a href="https://www.investopedia.com/terms/i/inflation.asp" target="_blank" rel="noopener">Investopedia: Inflation</a> – Basic concepts explained</li>
-          <li><a href="https://www.bls.gov/cpi/" target="_blank" rel="noopener">Bureau of Labor Statistics: CPI</a> – Official inflation data</li>
-          <li><a href="https://www.sec.gov/investor/pubs/ininvest.htm" target="_blank" rel="noopener">SEC: Investor Resources</a> – General investment education</li>
+          <li><a href="https://www.bls.gov/cpi/" target="_blank" rel="noopener">Bureau of Labor Statistics: CPI</a></li>
+          <li><a href="https://www.treasurydirect.gov/savings-bonds/i-bonds/" target="_blank" rel="noopener">TreasuryDirect: I-Bonds</a></li>
+          <li><a href="https://www.treasurydirect.gov/marketable-securities/tips/" target="_blank" rel="noopener">TreasuryDirect: TIPS</a></li>
         </ul>
       </div>
 
-      <!-- Final Warning -->
       <div class="warning-box" style="margin-top: 50px;">
         <h4>⚠️ Final Reminder</h4>
-        <p>This article is for educational purposes only and does not constitute investment advice or a recommendation to buy, sell, or hold any asset. No investment strategy guarantees protection against inflation or positive returns. All investments carry risk of loss. Consult a qualified financial advisor before making investment decisions.</p>
+        <p>This article is for educational purposes only and does not constitute investment advice. No investment strategy guarantees protection against inflation or positive returns. All investments carry risk of loss. Past performance does not predict future results. Consult a qualified financial advisor before making investment decisions.</p>
       </div>
-
     </div>
   </main>
 
   <footer>
-    <p style="color: #475569; font-size: 0.85rem; margin-bottom: 20px;">© 2026 US Market Terminals. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms</a>
+    </div>
     <div class="footer-disclaimer">
-        <strong>Risk Disclosure:</strong> This content is for educational and informational purposes only. It does not constitute investment advice, financial advice, or any recommendation to buy, sell, or hold any asset. No strategy guarantees protection against inflation. All investments carry risk of loss. Consult a qualified financial advisor before making investment decisions.
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk including the potential loss of principal. Past performance does not guarantee future results.
     </div>
   </footer>
-
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
