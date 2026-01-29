@@ -3,100 +3,865 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What is Inflation? | US Market Terminals</title>
-  <meta name="description" content="Educational guide explaining what inflation is, how it's measured, its causes, and how it affects purchasing power and investments.">
+  <title>What is Inflation? Complete Guide with Historical Data | US Market Terminals</title>
+  <meta name="description" content="Comprehensive guide explaining inflation, how it's measured (CPI, PCE), causes, historical rates, impact on purchasing power and investments, and how the Federal Reserve responds.">
+  <meta name="keywords" content="inflation, CPI, consumer price index, purchasing power, Federal Reserve, interest rates, cost of living, deflation, hyperinflation">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog/what-is-inflation.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #f59e0b; --accent-glow: rgba(245, 158, 11, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); }
-    * { margin: 0; padding: 0; box-sizing: border-box; } body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; } a { text-decoration: none; }
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #f59e0b; --accent-glow: rgba(245, 158, 11, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); --green: #22c55e; --green-glow: rgba(34, 197, 94, 0.1); --blue: #3b82f6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; }
+    
     .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
     .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; } .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; }
+    
+    .container { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    
     .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
-    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; } .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; }
+    .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
+    
     .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
     .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
     .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
-    .content { font-size: 1.1rem; color: #cbd5e1; } .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; }
-    .content p { margin-bottom: 28px; text-align: justify; line-height: 1.9; } .content strong { color: #fff; }
+    
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: #fff; margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; line-height: 1.9; }
+    .content strong { color: #fff; }
+    .content ul, .content ol { margin-bottom: 24px; padding-left: 24px; }
+    .content li { margin-bottom: 12px; }
+    
     .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
-    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; } .info-box p { margin-bottom: 12px; font-size: 1rem; }
-    .key-point { background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
-    .key-point h4 { color: #fbbf24; margin-bottom: 10px; font-size: 1rem; } .key-point p { margin: 0; color: #fcd34d; font-size: 0.95rem; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    
+    .key-point { background: var(--accent-glow); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #fbbf24; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #fcd34d; font-size: 0.95rem; }
+    
+    .green-box { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .green-box h4 { color: #4ade80; margin-bottom: 10px; font-size: 1rem; }
+    .green-box p { margin: 0; color: #86efac; font-size: 0.95rem; }
+    
+    .blue-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .blue-box h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .blue-box p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    .data-table th { background: var(--accent-glow); color: var(--accent); font-weight: 700; text-align: left; padding: 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table .highlight { color: var(--accent); font-weight: 700; }
+    .data-table .green { color: var(--green); font-weight: 700; }
+    .data-table .dim { color: var(--text-dim); }
+    .data-table .red { color: #f87171; font-weight: 700; }
+    .data-table .blue { color: var(--blue); font-weight: 700; }
+    
+    /* Comparison Grid */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .compare-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .compare-box h4 { margin-bottom: 16px; font-size: 1.1rem; color: #fff; }
+    .compare-box ul { margin: 0; padding-left: 20px; }
+    .compare-box li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dim); }
+    .compare-box.demand { border-color: rgba(245, 158, 11, 0.3); }
+    .compare-box.demand h4 { color: var(--accent); }
+    .compare-box.cost { border-color: rgba(59, 130, 246, 0.3); }
+    .compare-box.cost h4 { color: var(--blue); }
+    
+    /* FAQ Section */
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+    .faq-answer { padding: 0 24px 20px; color: var(--text-dim); line-height: 1.8; display: block; }
+    
     .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
-    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; } .reading-section ul { margin: 0; padding-left: 20px; } .reading-section li { margin-bottom: 10px; } .reading-section a { color: #93c5fd; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
+    .reading-section ul { margin: 0; padding-left: 20px; }
+    .reading-section li { margin-bottom: 10px; }
+    .reading-section a { color: #93c5fd; }
+    
+    /* Related Articles */
+    .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+    .related-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .related-card h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
+    .related-card p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    
     footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
-    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; } .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
     .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+    
+    @media (max-width: 768px) {
+      .data-table { font-size: 0.85rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .related-articles { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <nav class="nav"><div class="nav-container"><a href="/index.html" class="logo">📊 US MARKET TERMINALS</a><div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">Educational Content</div></div></nav>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">Educational Content</div>
+    </div>
+  </nav>
+
   <main class="container">
-    <div class="warning-box"><h4>⚠️ Educational Purpose Only</h4><p>This article explains inflation as an economic concept. It is not financial advice. Economic conditions change constantly. Consult qualified professionals for financial decisions.</p></div>
+    <div class="warning-box">
+      <h4>⚠️ Educational Purpose Only</h4>
+      <p>This article explains inflation as an economic concept. It is not financial advice. Economic conditions change constantly and future inflation is unpredictable. Consult qualified professionals for financial decisions.</p>
+    </div>
+
     <article class="article-header">
       <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
       <span class="tag">Economics</span>
       <h1>What is Inflation?</h1>
-      <div class="meta"><span>Intermediate Guide</span><span>•</span><span>6 min read</span></div>
+      <div class="meta">
+        <span>Intermediate Guide</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>14 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>Updated January 2026</span>
+      </div>
     </article>
+
     <div class="content">
-      <p><strong>Inflation</strong> is the rate at which the general level of prices for goods and services rises over time, causing purchasing power to fall. When inflation occurs, each unit of currency buys fewer things than it did before.</p>
+      <p><strong>Inflation</strong> is the rate at which the general level of prices for goods and services rises over time, causing purchasing power to fall. When inflation occurs, each unit of currency buys fewer things than it did before. Understanding inflation is essential for anyone making long-term financial decisions.</p>
 
-      <h2>1. How Inflation is Measured</h2>
-      <p>In the United States, inflation is primarily measured using two indices:</p>
-      <p><strong>Consumer Price Index (CPI):</strong> Tracks the average change in prices paid by urban consumers for a basket of goods and services, including food, housing, transportation, and medical care.</p>
-      <p><strong>Personal Consumption Expenditures (PCE):</strong> The Federal Reserve's preferred measure, which has a broader scope and adjusts for changes in consumer behavior.</p>
+      <p>In this comprehensive guide, we'll explore how inflation is measured, what causes it, historical inflation rates, how it impacts your money and investments, and what the Federal Reserve does about it.</p>
 
+      <!-- Table of Contents -->
       <div class="info-box">
-        <h3>📊 Inflation Terminology</h3>
-        <p><strong>Inflation Rate:</strong> The percentage change in prices over a period (usually year-over-year)</p>
-        <p><strong>Core Inflation:</strong> Excludes volatile food and energy prices for a "cleaner" reading</p>
-        <p><strong>Deflation:</strong> When prices decline—the opposite of inflation</p>
-        <p><strong>Hyperinflation:</strong> Extremely rapid inflation, often exceeding 50% per month</p>
+        <h3>📑 Table of Contents</h3>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li>How Inflation is Measured</li>
+          <li>Types of Inflation</li>
+          <li>What Causes Inflation?</li>
+          <li>Historical U.S. Inflation Rates</li>
+          <li>Impact on Purchasing Power</li>
+          <li>Inflation and Different Investments</li>
+          <li>The Federal Reserve's Response</li>
+          <li>FAQ: Frequently Asked Questions</li>
+        </ol>
       </div>
 
-      <h2>2. What Causes Inflation?</h2>
-      <p><strong>Demand-Pull Inflation:</strong> When demand for goods and services exceeds supply, prices rise. This can happen when consumers have more money to spend or when the economy is growing rapidly.</p>
-      <p><strong>Cost-Push Inflation:</strong> When production costs increase (raw materials, wages, energy), businesses pass those costs to consumers through higher prices.</p>
-      <p><strong>Monetary Factors:</strong> When the money supply grows faster than economic output, more money chases the same amount of goods, potentially driving prices up.</p>
+      <h2>1. How Inflation is Measured</h2>
+      <p>In the United States, inflation is primarily measured using price indices that track the cost of goods and services over time:</p>
 
-      <h2>3. Impact on Purchasing Power</h2>
-      <p>Inflation erodes purchasing power. If you have $100 and inflation is 3%, that $100 will buy roughly 3% less next year. Over time, this compounds significantly.</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Full Name</th>
+            <th>Measured By</th>
+            <th>Used For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>CPI</strong></td>
+            <td>Consumer Price Index</td>
+            <td>Bureau of Labor Statistics</td>
+            <td>Most common inflation measure, Social Security adjustments</td>
+          </tr>
+          <tr>
+            <td><strong>Core CPI</strong></td>
+            <td>CPI excluding food & energy</td>
+            <td>Bureau of Labor Statistics</td>
+            <td>Less volatile reading of underlying inflation</td>
+          </tr>
+          <tr>
+            <td><strong>PCE</strong></td>
+            <td>Personal Consumption Expenditures</td>
+            <td>Bureau of Economic Analysis</td>
+            <td class="highlight">Federal Reserve's preferred measure</td>
+          </tr>
+          <tr>
+            <td><strong>Core PCE</strong></td>
+            <td>PCE excluding food & energy</td>
+            <td>Bureau of Economic Analysis</td>
+            <td>Fed's primary policy target</td>
+          </tr>
+          <tr>
+            <td><strong>PPI</strong></td>
+            <td>Producer Price Index</td>
+            <td>Bureau of Labor Statistics</td>
+            <td>Measures wholesale prices, leading indicator</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <div class="key-point"><h4>📉 Example of Erosion</h4><p>At 3% annual inflation, $100 today would have the purchasing power of roughly $74 in 10 years and $55 in 20 years. This is why simply holding cash loses value over time in inflationary environments.</p></div>
+      <h3>CPI Basket Composition</h3>
+      <p>The CPI tracks prices for a "basket" of goods and services that typical consumers buy:</p>
 
-      <h2>4. Inflation and Investments</h2>
-      <p>Inflation affects different investments in different ways:</p>
-      <p><strong>Cash/Savings:</strong> Loses purchasing power if interest rates are below inflation</p>
-      <p><strong>Bonds:</strong> Fixed payments become less valuable in real terms; bond prices often fall when inflation rises</p>
-      <p><strong>Stocks:</strong> Mixed effects—some companies can raise prices, others cannot absorb higher costs</p>
-      <p><strong>Real Estate:</strong> Often cited as an inflation hedge, though results vary significantly</p>
-      <p>No asset class is guaranteed to outpace inflation in all environments.</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>CPI Weight (Approx.)</th>
+            <th>Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Housing</strong></td>
+            <td class="highlight">~34%</td>
+            <td>Rent, owner's equivalent rent, utilities</td>
+          </tr>
+          <tr>
+            <td><strong>Transportation</strong></td>
+            <td>~15%</td>
+            <td>Cars, gas, insurance, public transit</td>
+          </tr>
+          <tr>
+            <td><strong>Food</strong></td>
+            <td>~14%</td>
+            <td>Groceries, dining out</td>
+          </tr>
+          <tr>
+            <td><strong>Medical Care</strong></td>
+            <td>~8%</td>
+            <td>Health insurance, hospital services, drugs</td>
+          </tr>
+          <tr>
+            <td><strong>Education & Communication</strong></td>
+            <td>~7%</td>
+            <td>Tuition, phone, internet</td>
+          </tr>
+          <tr>
+            <td><strong>Recreation</strong></td>
+            <td>~5%</td>
+            <td>TVs, streaming, sports equipment</td>
+          </tr>
+          <tr>
+            <td><strong>Apparel</strong></td>
+            <td>~3%</td>
+            <td>Clothing, shoes</td>
+          </tr>
+          <tr>
+            <td><strong>Other</strong></td>
+            <td>~14%</td>
+            <td>Personal care, alcohol, tobacco</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <h2>5. The Federal Reserve's Role</h2>
-      <p>The Federal Reserve aims to maintain stable prices, typically targeting 2% annual inflation. When inflation rises significantly above this target, the Fed may raise interest rates to slow economic activity and reduce inflationary pressure.</p>
-      <p>These policy decisions have wide-ranging effects on borrowing costs, employment, and investment returns.</p>
+      <div class="key-point">
+        <h4>💡 Why "Core" Inflation Matters</h4>
+        <p>Food and energy prices are extremely volatile—they can swing 20-30% based on weather, geopolitics, or supply disruptions. "Core" inflation excludes these to show the underlying trend. If core inflation is low but headline inflation is high due to an oil spike, the spike may be temporary.</p>
+      </div>
+
+      <h2>2. Types of Inflation</h2>
+      <p>Economists categorize inflation by severity and characteristics:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Annual Rate</th>
+            <th>Characteristics</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Low/Creeping</strong></td>
+            <td class="green">1-3%</td>
+            <td>Healthy, expected, easily planned for</td>
+            <td>Fed's 2% target</td>
+          </tr>
+          <tr>
+            <td><strong>Moderate/Walking</strong></td>
+            <td class="highlight">3-10%</td>
+            <td>Noticeable, concerning, erodes savings</td>
+            <td>U.S. in 2022</td>
+          </tr>
+          <tr>
+            <td><strong>High/Galloping</strong></td>
+            <td class="red">10-50%</td>
+            <td>Severe economic disruption</td>
+            <td>U.S. in 1970s-80s</td>
+          </tr>
+          <tr>
+            <td><strong>Hyperinflation</strong></td>
+            <td class="red">50%+ per month</td>
+            <td>Currency collapse, economic chaos</td>
+            <td>Zimbabwe 2008, Venezuela 2018</td>
+          </tr>
+          <tr>
+            <td><strong>Deflation</strong></td>
+            <td class="blue">Negative</td>
+            <td>Prices falling, can indicate weak demand</td>
+            <td>Japan 1990s-2000s, U.S. Great Depression</td>
+          </tr>
+          <tr>
+            <td><strong>Stagflation</strong></td>
+            <td>High + stagnant growth</td>
+            <td>Worst of both worlds</td>
+            <td>U.S. 1970s oil crisis</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>3. What Causes Inflation?</h2>
+      <p>Inflation has multiple potential causes, often working together:</p>
+
+      <div class="compare-grid">
+        <div class="compare-box demand">
+          <h4>📈 Demand-Pull Inflation</h4>
+          <ul>
+            <li>Too much money chasing too few goods</li>
+            <li>Consumer spending exceeds supply</li>
+            <li>Often occurs during economic booms</li>
+            <li>Low unemployment drives wage increases</li>
+            <li>"Too much demand"</li>
+          </ul>
+        </div>
+        <div class="compare-box cost">
+          <h4>📉 Cost-Push Inflation</h4>
+          <ul>
+            <li>Rising production costs passed to consumers</li>
+            <li>Raw material price spikes (oil, metals)</li>
+            <li>Supply chain disruptions</li>
+            <li>Wage increases without productivity gains</li>
+            <li>"Supply problems"</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Detailed Causes</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Cause</th>
+            <th>Mechanism</th>
+            <th>Historical Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Money Supply Growth</strong></td>
+            <td>More money → more spending → higher prices</td>
+            <td>Quantitative easing programs</td>
+          </tr>
+          <tr>
+            <td><strong>Government Spending</strong></td>
+            <td>Deficit spending increases demand</td>
+            <td>COVID stimulus (2020-2021)</td>
+          </tr>
+          <tr>
+            <td><strong>Supply Shocks</strong></td>
+            <td>Sudden supply reductions raise prices</td>
+            <td>1973 oil embargo</td>
+          </tr>
+          <tr>
+            <td><strong>Wage-Price Spiral</strong></td>
+            <td>Higher wages → higher costs → higher prices → demands for higher wages</td>
+            <td>1970s inflation</td>
+          </tr>
+          <tr>
+            <td><strong>Currency Devaluation</strong></td>
+            <td>Weaker currency → more expensive imports</td>
+            <td>Emerging market crises</td>
+          </tr>
+          <tr>
+            <td><strong>Inflation Expectations</strong></td>
+            <td>If people expect inflation, they act in ways that cause it</td>
+            <td>Self-fulfilling prophecy</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. Historical U.S. Inflation Rates</h2>
+      <p>Understanding historical inflation provides context for today's economic environment:</p>
+
+      <h3>Decade Averages</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Decade</th>
+            <th>Average Annual Inflation</th>
+            <th>Notable Events</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1950s</td>
+            <td>2.1%</td>
+            <td>Post-war stability</td>
+          </tr>
+          <tr>
+            <td>1960s</td>
+            <td>2.3%</td>
+            <td>Vietnam War spending begins</td>
+          </tr>
+          <tr>
+            <td>1970s</td>
+            <td class="red">7.1%</td>
+            <td>Oil shocks, stagflation</td>
+          </tr>
+          <tr>
+            <td>1980s</td>
+            <td>5.6%</td>
+            <td>Volcker's rate hikes tame inflation</td>
+          </tr>
+          <tr>
+            <td>1990s</td>
+            <td class="green">3.0%</td>
+            <td>Great Moderation begins</td>
+          </tr>
+          <tr>
+            <td>2000s</td>
+            <td class="green">2.6%</td>
+            <td>Generally stable</td>
+          </tr>
+          <tr>
+            <td>2010s</td>
+            <td class="green">1.8%</td>
+            <td>Below Fed target, post-crisis</td>
+          </tr>
+          <tr>
+            <td>2020s (so far)</td>
+            <td class="highlight">~4.5%</td>
+            <td>COVID disruptions, post-pandemic spike</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Notable Inflation Periods</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Peak Inflation</th>
+            <th>Cause</th>
+            <th>Resolution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1973-1974</td>
+            <td class="red">12.3%</td>
+            <td>Arab oil embargo</td>
+            <td>Embargo ended, recession</td>
+          </tr>
+          <tr>
+            <td>1979-1980</td>
+            <td class="red">14.8%</td>
+            <td>Iranian revolution, oil shock</td>
+            <td>Volcker raises rates to 20%</td>
+          </tr>
+          <tr>
+            <td>2008</td>
+            <td>5.6%</td>
+            <td>Oil spike, housing bubble</td>
+            <td>Financial crisis caused deflation</td>
+          </tr>
+          <tr>
+            <td>2022</td>
+            <td class="red">9.1%</td>
+            <td>COVID supply chains, stimulus, energy</td>
+            <td>Fed rate hikes (ongoing)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="blue-box">
+        <h4>📊 Long-Term Perspective</h4>
+        <p>Average U.S. inflation since 1913: approximately 3.2% annually. This means prices have risen about 30x over the past century. Something costing $1 in 1913 would cost roughly $30 today.</p>
+      </div>
+
+      <h2>5. Impact on Purchasing Power</h2>
+      <p>Inflation's most direct effect is reducing how much your money can buy:</p>
+
+      <h3>Purchasing Power Erosion Over Time</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Years</th>
+            <th>At 2% Inflation</th>
+            <th>At 3% Inflation</th>
+            <th>At 5% Inflation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Starting</strong></td>
+            <td>$100</td>
+            <td>$100</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td><strong>After 5 Years</strong></td>
+            <td>$90.57</td>
+            <td>$86.26</td>
+            <td>$78.35</td>
+          </tr>
+          <tr>
+            <td><strong>After 10 Years</strong></td>
+            <td>$82.03</td>
+            <td>$74.41</td>
+            <td class="red">$61.39</td>
+          </tr>
+          <tr>
+            <td><strong>After 20 Years</strong></td>
+            <td>$67.30</td>
+            <td class="red">$55.37</td>
+            <td class="red">$37.69</td>
+          </tr>
+          <tr>
+            <td><strong>After 30 Years</strong></td>
+            <td class="highlight">$55.21</td>
+            <td class="red">$41.20</td>
+            <td class="red">$23.14</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Shows purchasing power of $100 in today's dollars.</p>
+
+      <div class="key-point">
+        <h4>📉 The Hidden Tax</h4>
+        <p>At 3% annual inflation, your money loses half its purchasing power in about 24 years. At 5% inflation, it takes only 14 years. This is why simply holding cash "safe" actually loses value over time. Inflation is sometimes called a "hidden tax" on savings.</p>
+      </div>
+
+      <h3>Real-World Price Changes</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>1990 Price</th>
+            <th>2024 Price</th>
+            <th>Increase</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gallon of Gas</td>
+            <td>$1.16</td>
+            <td>~$3.50</td>
+            <td>+200%</td>
+          </tr>
+          <tr>
+            <td>Movie Ticket</td>
+            <td>$4.23</td>
+            <td>~$12.00</td>
+            <td>+184%</td>
+          </tr>
+          <tr>
+            <td>Dozen Eggs</td>
+            <td>$1.00</td>
+            <td>~$3.50</td>
+            <td>+250%</td>
+          </tr>
+          <tr>
+            <td>New Car (Average)</td>
+            <td>$15,500</td>
+            <td>~$48,000</td>
+            <td class="red">+210%</td>
+          </tr>
+          <tr>
+            <td>College Tuition (Public)</td>
+            <td>$3,500/yr</td>
+            <td>~$11,000/yr</td>
+            <td class="red">+214%</td>
+          </tr>
+          <tr>
+            <td>Median Home Price</td>
+            <td>$122,900</td>
+            <td>~$420,000</td>
+            <td class="red">+242%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Approximate values; actual prices vary by location.</p>
+
+      <h2>6. Inflation and Different Investments</h2>
+      <p>Inflation affects different assets in different ways:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Asset Type</th>
+            <th>Inflation Impact</th>
+            <th>Historical Performance vs Inflation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cash/Savings</strong></td>
+            <td class="red">Loses purchasing power if rates < inflation</td>
+            <td class="red">Typically negative real return</td>
+          </tr>
+          <tr>
+            <td><strong>Bonds (Fixed Rate)</strong></td>
+            <td class="red">Fixed payments worth less over time</td>
+            <td>Often negative during high inflation</td>
+          </tr>
+          <tr>
+            <td><strong>TIPS</strong></td>
+            <td class="green">Designed to track inflation</td>
+            <td>Provides inflation protection by design</td>
+          </tr>
+          <tr>
+            <td><strong>Stocks</strong></td>
+            <td>Mixed—depends on company pricing power</td>
+            <td class="green">Historically beats inflation long-term</td>
+          </tr>
+          <tr>
+            <td><strong>Real Estate</strong></td>
+            <td>Often rises with inflation</td>
+            <td>Generally keeps pace, but varies</td>
+          </tr>
+          <tr>
+            <td><strong>Commodities</strong></td>
+            <td>Prices often rise with inflation</td>
+            <td>Mixed; volatile</td>
+          </tr>
+          <tr>
+            <td><strong>Gold</strong></td>
+            <td>Traditional inflation hedge</td>
+            <td>Mixed record; long-term preservation</td>
+          </tr>
+          <tr>
+            <td><strong>I Bonds</strong></td>
+            <td class="green">Rate tied to CPI</td>
+            <td class="green">Guaranteed to match CPI</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Real vs. Nominal Returns</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Nominal Return</th>
+            <th>Inflation</th>
+            <th>Real Return</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Savings Account</td>
+            <td>4%</td>
+            <td>3%</td>
+            <td class="green">+1%</td>
+          </tr>
+          <tr>
+            <td>Savings Account</td>
+            <td>2%</td>
+            <td>5%</td>
+            <td class="red">-3%</td>
+          </tr>
+          <tr>
+            <td>Stock Market (hypothetical)</td>
+            <td>10%</td>
+            <td>3%</td>
+            <td class="green">+7%</td>
+          </tr>
+          <tr>
+            <td>Bond</td>
+            <td>5%</td>
+            <td>8%</td>
+            <td class="red">-3%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="green-box">
+        <h4>📐 Real Return Formula</h4>
+        <p><strong>Real Return ≈ Nominal Return - Inflation Rate</strong><br><br>
+        If your investment earns 8% and inflation is 3%, your "real" return (actual increase in purchasing power) is approximately 5%. If inflation is higher than your return, you're losing purchasing power even though your account balance increased.</p>
+      </div>
+
+      <h2>7. The Federal Reserve's Response</h2>
+      <p>The Federal Reserve has a "dual mandate" to promote maximum employment and stable prices (typically defined as 2% inflation).</p>
+
+      <h3>Fed Tools to Fight Inflation</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>How It Works</th>
+            <th>Effect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Federal Funds Rate</strong></td>
+            <td>Raises benchmark interest rate</td>
+            <td>Makes borrowing more expensive, slows spending</td>
+          </tr>
+          <tr>
+            <td><strong>Quantitative Tightening</strong></td>
+            <td>Reduces balance sheet, removes money from system</td>
+            <td>Less money in circulation</td>
+          </tr>
+          <tr>
+            <td><strong>Forward Guidance</strong></td>
+            <td>Communicates future policy intentions</td>
+            <td>Shapes expectations, influences behavior</td>
+          </tr>
+          <tr>
+            <td><strong>Reserve Requirements</strong></td>
+            <td>Changes how much banks must hold</td>
+            <td>Affects money creation by banks</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Historical Fed Response to Inflation</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Inflation Peak</th>
+            <th>Fed Action</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1979-1982</td>
+            <td>14.8%</td>
+            <td>Volcker raised rates to 20%</td>
+            <td>Inflation fell to 3%; caused recession</td>
+          </tr>
+          <tr>
+            <td>2008</td>
+            <td>5.6%</td>
+            <td>Cut rates, then QE</td>
+            <td>Deflation fears; very low inflation 2010s</td>
+          </tr>
+          <tr>
+            <td>2022-2023</td>
+            <td>9.1%</td>
+            <td>Raised rates from 0% to 5.5%</td>
+            <td>Inflation falling (ongoing)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ The Trade-Off</h4>
+        <p>Fighting inflation often requires slowing the economy, which can cause unemployment and recession. The Fed must balance price stability against economic growth and employment. There's no painless solution to high inflation once it takes hold.</p>
+      </div>
+
+      <h2>8. FAQ: Frequently Asked Questions</h2>
+      
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question">Is some inflation good?</div>
+          <div class="faq-answer">Most economists believe mild inflation (around 2%) is healthy. It encourages spending (since money loses value over time), makes it easier for employers to adjust real wages, and provides a buffer against deflation. The Fed explicitly targets 2% inflation as optimal. Zero or negative inflation (deflation) can actually be more problematic, as it can lead to economic stagnation.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Why does the government "want" inflation?</div>
+          <div class="faq-answer">The government doesn't necessarily "want" inflation, but moderate inflation serves several purposes: (1) it encourages economic activity rather than hoarding cash, (2) it reduces the real burden of government debt over time, (3) it provides flexibility for wage adjustments, and (4) it creates a buffer against deflation. The Fed's 2% target represents a balance between these benefits and the costs of higher inflation.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How can I protect my savings from inflation?</div>
+          <div class="faq-answer">Options include: (1) I Bonds and TIPS that adjust for inflation, (2) stocks, which historically outpace inflation long-term, (3) real estate, which often rises with inflation, (4) high-yield savings accounts that at least minimize losses. No strategy is guaranteed to work in all environments. Diversification across asset types is a common approach. Simply holding cash in a low-interest account is almost certain to lose purchasing power over time.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's the difference between CPI and "real" inflation?</div>
+          <div class="faq-answer">CPI measures a standardized basket of goods that may not match your personal spending. If you spend more on categories rising faster than average (like healthcare or education), your personal "inflation" may be higher than CPI. Similarly, if you don't drive much, gas price spikes affect you less than CPI suggests. CPI is an average—individual experiences vary.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can inflation be predicted?</div>
+          <div class="faq-answer">Inflation is notoriously difficult to predict, even for experts. The Fed, economists, and markets all make forecasts, but they're often wrong—sometimes significantly. Even in early 2021, most predictions underestimated the inflation surge that followed. Short-term inflation is influenced by unpredictable events (wars, pandemics, weather). Long-term inflation depends on policy decisions not yet made. Treat all inflation forecasts with healthy skepticism.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's the relationship between inflation and interest rates?</div>
+          <div class="faq-answer">Generally, higher inflation leads to higher interest rates. The Fed raises rates to combat inflation, and markets demand higher yields on bonds to compensate for inflation eroding returns. When inflation is low, rates tend to be low as well. This relationship affects everything from mortgage rates to savings account yields to stock valuations.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is deflation worse than inflation?</div>
+          <div class="faq-answer">Many economists consider deflation more dangerous than moderate inflation. When prices fall, consumers delay purchases (waiting for lower prices), businesses cut investment, debt burdens increase in real terms, and the economy can spiral downward. Japan's "lost decades" of deflation/stagnation illustrate the dangers. This is one reason the Fed targets 2% inflation rather than 0%—it provides a buffer against accidentally falling into deflation.</div>
+        </div>
+      </div>
 
       <h2>Conclusion</h2>
-      <p>Inflation is the general increase in prices over time that reduces purchasing power. It's measured through indices like CPI and influenced by supply, demand, and monetary factors. Understanding inflation is important for long-term financial planning, though predicting future inflation rates is extremely difficult.</p>
+      <p>Inflation is the general increase in prices over time that reduces purchasing power. It's measured through indices like CPI and influenced by supply, demand, and monetary factors. Understanding inflation is essential for long-term financial planning.</p>
+
+      <p>Key takeaways:</p>
+      <ul>
+        <li>Inflation measures how fast prices rise over time</li>
+        <li>The Fed targets 2% annual inflation as "healthy"</li>
+        <li>CPI and PCE are the main measurement tools</li>
+        <li>Causes include demand-pull, cost-push, and monetary factors</li>
+        <li>Inflation erodes purchasing power—3% annually cuts value in half in ~24 years</li>
+        <li>Different investments respond differently to inflation</li>
+        <li>The Fed fights inflation by raising interest rates</li>
+        <li>Future inflation is unpredictable, even for experts</li>
+      </ul>
+
+      <p>While protecting against inflation is important, predicting future inflation rates is extremely difficult. Focus on building a diversified portfolio appropriate for your situation rather than trying to perfectly hedge against inflation.</p>
+
+      <!-- Related Articles -->
+      <h3 style="margin-top: 60px; margin-bottom: 24px;">📚 Related Articles</h3>
+      <div class="related-articles">
+        <a href="/blog/what-is-compound-interest.html" class="related-card">
+          <h4>What Is Compound Interest?</h4>
+          <p>How money grows over time</p>
+        </a>
+        <a href="/blog/understanding-interest-rates.html" class="related-card">
+          <h4>Understanding Interest Rates</h4>
+          <p>How rates affect borrowing and saving</p>
+        </a>
+        <a href="/blog/what-is-diversification.html" class="related-card">
+          <h4>What Is Diversification?</h4>
+          <p>Spreading risk across investments</p>
+        </a>
+      </div>
 
       <div class="reading-section">
-        <h3>📚 Further Reading</h3>
+        <h3>📖 Official Resources</h3>
         <ul>
           <li><a href="https://www.bls.gov/cpi/" target="_blank" rel="noopener">Bureau of Labor Statistics: Consumer Price Index</a></li>
           <li><a href="https://www.federalreserve.gov/faqs/economy_14419.htm" target="_blank" rel="noopener">Federal Reserve: Why does the Fed care about inflation?</a></li>
-          <li><a href="https://www.investopedia.com/terms/i/inflation.asp" target="_blank" rel="noopener">Investopedia: Inflation</a></li>
+          <li><a href="https://www.treasurydirect.gov/savings-bonds/i-bonds/" target="_blank" rel="noopener">TreasuryDirect: I Bonds</a></li>
         </ul>
       </div>
-      <div class="warning-box" style="margin-top: 50px;"><h4>⚠️ Final Reminder</h4><p>This article is for educational purposes only. Future inflation rates are unpredictable, and no investment strategy guarantees protection against inflation. Consult qualified professionals for financial decisions.</p></div>
+
+      <div class="warning-box" style="margin-top: 50px;">
+        <h4>⚠️ Final Reminder</h4>
+        <p>This article is for educational purposes only. Future inflation rates are unpredictable, and no investment strategy guarantees protection against inflation. Economic conditions change constantly. Past performance and historical data do not guarantee future results. Consult qualified professionals for financial decisions.</p>
+      </div>
     </div>
   </main>
+
   <footer>
-    <div class="footer-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a><a href="/legal.html">Terms</a></div>
-    <div class="footer-disclaimer"><strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial advice. All investments carry risk.</div>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms</a>
+    </div>
+    <div class="footer-disclaimer">
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk including the potential loss of principal. Past performance does not guarantee future results.
+    </div>
   </footer>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
