@@ -3,75 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What is a Stock? | US Market Terminals</title>
-  <meta name="description" content="Educational overview explaining what stocks are, how they work, and key concepts for beginners including shares, equity, and ownership.">
-  
+  <title>What is a Stock? Complete Beginner's Guide to Stock Ownership | US Market Terminals</title>
+  <meta name="description" content="Comprehensive guide explaining what stocks are, how they work, types of stocks, how to buy them, and key risks. Learn the fundamentals of stock market investing.">
+  <meta name="keywords" content="what is a stock, stock market basics, how stocks work, common stock, preferred stock, stock ownership, equity investing">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog/what-is-a-stock.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
-      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #3b82f6;
-      --accent-glow: rgba(59, 130, 246, 0.1);
-      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
-    }
-    
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #3b82f6; --accent-glow: rgba(59, 130, 246, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); --green: #22c55e; --green-glow: rgba(34, 197, 94, 0.1); --purple: #8b5cf6; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; transition: 0.3s; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; }
     
-    .nav { 
-      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
-      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
-    }
+    .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
     .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
-
-    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
-
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; }
+    
+    .container { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    
     .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
-    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; }
     .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
-
+    
     .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
-    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
     .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
-
-    .content { font-size: 1.1rem; color: #cbd5e1; }
-    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: -0.5px; }
-    .content p { margin-bottom: 28px; text-align: justify; line-height: 1.9; }
+    
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: #fff; margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; line-height: 1.9; }
     .content strong { color: #fff; }
-
+    .content ul, .content ol { margin-bottom: 24px; padding-left: 24px; }
+    .content li { margin-bottom: 12px; }
+    
     .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
     .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
     .info-box p { margin-bottom: 12px; font-size: 1rem; }
-    .info-box p:last-child { margin-bottom: 0; }
-
-    .key-point { background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    
+    .key-point { background: var(--accent-glow); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
     .key-point h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
     .key-point p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
-
+    
+    .green-box { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .green-box h4 { color: #4ade80; margin-bottom: 10px; font-size: 1rem; }
+    .green-box p { margin: 0; color: #86efac; font-size: 0.95rem; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    .data-table th { background: var(--accent-glow); color: var(--accent); font-weight: 700; text-align: left; padding: 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table .highlight { color: var(--accent); font-weight: 700; }
+    .data-table .green { color: var(--green); font-weight: 700; }
+    .data-table .dim { color: var(--text-dim); }
+    .data-table .red { color: #f87171; }
+    
+    /* Comparison Grid */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .compare-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .compare-box h4 { margin-bottom: 16px; font-size: 1.1rem; color: #fff; }
+    .compare-box ul { margin: 0; padding-left: 20px; }
+    .compare-box li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dim); }
+    .compare-box.common { border-color: rgba(59, 130, 246, 0.3); }
+    .compare-box.common h4 { color: var(--accent); }
+    .compare-box.preferred { border-color: rgba(139, 92, 246, 0.3); }
+    .compare-box.preferred h4 { color: var(--purple); }
+    
+    /* FAQ Section */
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+    .faq-answer { padding: 0 24px 20px; color: var(--text-dim); line-height: 1.8; display: block; }
+    
     .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
     .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
     .reading-section ul { margin: 0; padding-left: 20px; }
     .reading-section li { margin-bottom: 10px; }
     .reading-section a { color: #93c5fd; }
-    .reading-section a:hover { color: #bfdbfe; }
-
+    
+    /* Related Articles */
+    .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+    .related-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .related-card h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
+    .related-card p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    
     footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
     .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
     .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
     .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
-
-    @media (max-width: 768px) { h1 { font-size: 2rem; } .content { font-size: 1rem; } }
+    
+    @media (max-width: 768px) {
+      .data-table { font-size: 0.85rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .related-articles { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <div class="nav-container">
       <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
@@ -80,7 +114,6 @@
   </nav>
 
   <main class="container">
-
     <div class="warning-box">
       <h4>⚠️ Educational Purpose Only</h4>
       <p>This article explains basic concepts about stocks for educational purposes. It is not investment advice. All investments carry risk, including loss of principal. Consult a qualified financial advisor before making any investment decisions.</p>
@@ -89,103 +122,596 @@
     <article class="article-header">
       <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
       <span class="tag">Fundamentals</span>
-      <h1>What is a Stock?</h1>
+      <h1>What is a Stock? Complete Guide</h1>
       <div class="meta">
         <span>Beginner Guide</span>
-        <span>•</span>
-        <span>5 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>15 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>Updated January 2026</span>
       </div>
     </article>
 
     <div class="content">
-      <p>
-        A <strong>stock</strong> represents a share of ownership in a company. When you buy a stock, you become a partial owner—called a shareholder—of that business. This is one of the most fundamental concepts in investing, yet it's often misunderstood by beginners.
-      </p>
+      <p>A <strong>stock</strong> represents a share of ownership in a company. When you buy a stock, you become a partial owner—called a shareholder—of that business. This is one of the most fundamental concepts in investing, and understanding it is essential for anyone interested in building wealth through the financial markets.</p>
+
+      <p>In this comprehensive guide, we'll cover everything you need to know about stocks: how they work, the different types, how stock prices move, how to buy them, and the risks involved.</p>
+
+      <!-- Table of Contents -->
+      <div class="info-box">
+        <h3>📑 Table of Contents</h3>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li>How Stocks Work</li>
+          <li>Stock Ownership: What You Actually Own</li>
+          <li>Types of Stock: Common vs Preferred</li>
+          <li>How Stock Prices Move</li>
+          <li>Major Stock Exchanges</li>
+          <li>How to Buy Stocks</li>
+          <li>Key Stock Metrics to Understand</li>
+          <li>Risks of Stock Ownership</li>
+          <li>Stocks vs Other Investments</li>
+          <li>FAQ: Frequently Asked Questions</li>
+        </ol>
+      </div>
 
       <h2>1. How Stocks Work</h2>
-      <p>
-        Companies issue stocks to raise money. Instead of borrowing from a bank, a company can sell small pieces of ownership to the public. In exchange for your money, you receive shares that represent your ownership stake.
-      </p>
-      <p>
-        For example, if a company has 1,000,000 shares outstanding and you own 1,000 shares, you own 0.1% of that company. As a shareholder, you typically have certain rights, such as voting on major company decisions and receiving dividends if the company distributes profits.
-      </p>
+      <p>Companies issue stocks to raise money. Instead of borrowing from a bank (which would create debt), a company can sell small pieces of ownership to the public. In exchange for your money, you receive shares that represent your ownership stake in the company.</p>
 
-      <div class="info-box">
-        <h3>📋 Key Terms</h3>
-        <p><strong>Share:</strong> A single unit of ownership in a company</p>
-        <p><strong>Shareholder:</strong> A person or entity that owns shares in a company</p>
-        <p><strong>Outstanding Shares:</strong> The total number of shares that exist for a company</p>
-        <p><strong>Equity:</strong> Another word for stock or ownership</p>
-      </div>
-
-      <h2>2. How Stock Prices Move</h2>
-      <p>
-        Stock prices change based on supply and demand. If more people want to buy a stock than sell it, the price tends to go up. If more people want to sell than buy, the price tends to go down.
-      </p>
-      <p>
-        Many factors influence this supply and demand: company earnings, economic conditions, industry trends, investor sentiment, and countless other variables. This is why predicting stock prices is extremely difficult—even for professionals.
-      </p>
+      <p>This process typically happens through an <strong>Initial Public Offering (IPO)</strong>, where a private company "goes public" by selling shares on a stock exchange for the first time. After the IPO, shares trade between investors on the open market.</p>
 
       <div class="key-point">
-        <h4>💡 Important to Understand</h4>
-        <p>Stock prices can be volatile, meaning they can change significantly in short periods. A stock's price going up or down doesn't necessarily reflect the company's actual value—it reflects what buyers and sellers think it's worth at that moment.</p>
+        <h4>📐 Ownership Calculation</h4>
+        <p><strong>Your Ownership % = (Your Shares ÷ Total Shares Outstanding) × 100</strong><br><br>
+        Example: If a company has 1,000,000 shares outstanding and you own 1,000 shares, you own 0.1% of the company.</p>
       </div>
 
-      <h2>3. Types of Stock</h2>
-      <p>
-        There are two main types of stock that companies issue:
-      </p>
-      <p>
-        <strong>Common Stock</strong> is the most typical form. Common shareholders can vote on company matters and may receive dividends, but they're last in line if the company goes bankrupt.
-      </p>
-      <p>
-        <strong>Preferred Stock</strong> is a hybrid between stocks and bonds. Preferred shareholders typically receive fixed dividends and have priority over common shareholders if the company liquidates, but usually don't have voting rights.
-      </p>
+      <h2>2. Stock Ownership: What You Actually Own</h2>
+      <p>When you buy stock, you become a partial owner of the company. But what does that actually mean? Here's what shareholders typically receive:</p>
 
-      <h2>4. How to Buy Stocks</h2>
-      <p>
-        Stocks are bought and sold on stock exchanges, such as the New York Stock Exchange (NYSE) or NASDAQ. Individual investors typically access these exchanges through brokerage accounts.
-      </p>
-      <p>
-        When you place an order to buy a stock, you're matched with someone willing to sell at that price. The transaction happens almost instantly during market hours.
-      </p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Shareholder Right</th>
+            <th>Description</th>
+            <th>Common Stock</th>
+            <th>Preferred Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Voting Rights</strong></td>
+            <td>Vote on major company decisions (board elections, mergers)</td>
+            <td class="green">✓ Yes</td>
+            <td class="dim">Usually No</td>
+          </tr>
+          <tr>
+            <td><strong>Dividends</strong></td>
+            <td>Receive portion of company profits (if declared)</td>
+            <td>Variable</td>
+            <td class="green">Fixed Priority</td>
+          </tr>
+          <tr>
+            <td><strong>Capital Gains</strong></td>
+            <td>Profit if stock price increases</td>
+            <td class="green">✓ Yes</td>
+            <td class="green">✓ Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Liquidation Rights</strong></td>
+            <td>Claim on assets if company dissolves</td>
+            <td class="dim">Last in line</td>
+            <td>Before common</td>
+          </tr>
+          <tr>
+            <td><strong>Limited Liability</strong></td>
+            <td>Can only lose what you invested</td>
+            <td class="green">✓ Yes</td>
+            <td class="green">✓ Yes</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <h2>5. Risks of Stock Ownership</h2>
-      <p>
-        Owning stocks comes with significant risks that every investor should understand:
-      </p>
-      <p>
-        <strong>Market Risk:</strong> Stock prices can decline due to overall market conditions, even if the company itself is performing well.
-      </p>
-      <p>
-        <strong>Company Risk:</strong> A specific company can underperform, face financial difficulties, or even go bankrupt—potentially making your shares worthless.
-      </p>
-      <p>
-        <strong>Volatility Risk:</strong> Stock prices can swing dramatically in short periods, which can be stressful and may lead to poor decision-making.
-      </p>
-      <p>
-        <strong>No Guaranteed Returns:</strong> Unlike savings accounts or bonds, stocks don't promise any return. You could lose some or all of your investment.
-      </p>
+      <div class="green-box">
+        <h4>💡 Limited Liability Protection</h4>
+        <p>One of the key benefits of stock ownership is limited liability. If a company goes bankrupt, you can lose your entire investment, but creditors cannot come after your personal assets. Your maximum loss is limited to what you paid for the shares.</p>
+      </div>
+
+      <h2>3. Types of Stock: Common vs Preferred</h2>
+      <p>Companies can issue different classes of stock with different rights and characteristics:</p>
+
+      <div class="compare-grid">
+        <div class="compare-box common">
+          <h4>📊 Common Stock</h4>
+          <ul>
+            <li>Most widely traded type</li>
+            <li>Voting rights (usually 1 vote per share)</li>
+            <li>Variable dividends (not guaranteed)</li>
+            <li>Higher growth potential</li>
+            <li>Last claim on assets in bankruptcy</li>
+            <li>Price more volatile</li>
+          </ul>
+        </div>
+        <div class="compare-box preferred">
+          <h4>⭐ Preferred Stock</h4>
+          <ul>
+            <li>Hybrid of stock and bond</li>
+            <li>Usually no voting rights</li>
+            <li>Fixed dividend payments</li>
+            <li>Dividend priority over common</li>
+            <li>Higher claim in bankruptcy</li>
+            <li>Price more stable</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Stock Classes Explained</h3>
+      <p>Some companies issue multiple classes of common stock with different voting rights:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Typical Voting Rights</th>
+            <th>Who Usually Owns</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Class A</strong></td>
+            <td>1 vote per share</td>
+            <td>Public investors</td>
+            <td>GOOGL</td>
+          </tr>
+          <tr>
+            <td><strong>Class B</strong></td>
+            <td>10+ votes per share</td>
+            <td>Founders, insiders</td>
+            <td>BRK.B</td>
+          </tr>
+          <tr>
+            <td><strong>Class C</strong></td>
+            <td>No voting rights</td>
+            <td>Public investors</td>
+            <td>GOOG</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. How Stock Prices Move</h2>
+      <p>Stock prices change based on <strong>supply and demand</strong>. If more people want to buy a stock than sell it, the price tends to go up. If more people want to sell than buy, the price tends to go down.</p>
+
+      <h3>Factors That Influence Stock Prices</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>How It Affects Price</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Company Earnings</strong></td>
+            <td>Higher earnings → Higher price (usually)</td>
+            <td>Quarterly earnings beat expectations</td>
+          </tr>
+          <tr>
+            <td><strong>Revenue Growth</strong></td>
+            <td>Growing sales → Positive sentiment</td>
+            <td>Company reports 20% revenue increase</td>
+          </tr>
+          <tr>
+            <td><strong>Economic Conditions</strong></td>
+            <td>Strong economy → Higher stock prices (generally)</td>
+            <td>GDP growth, low unemployment</td>
+          </tr>
+          <tr>
+            <td><strong>Interest Rates</strong></td>
+            <td>Higher rates → Often lower stock prices</td>
+            <td>Federal Reserve raises rates</td>
+          </tr>
+          <tr>
+            <td><strong>Industry Trends</strong></td>
+            <td>Growing industry → Sector gains</td>
+            <td>AI boom lifts tech stocks</td>
+          </tr>
+          <tr>
+            <td><strong>Investor Sentiment</strong></td>
+            <td>Fear/Greed drives short-term moves</td>
+            <td>Market panic, FOMO buying</td>
+          </tr>
+          <tr>
+            <td><strong>News & Events</strong></td>
+            <td>Unexpected events cause volatility</td>
+            <td>CEO resignation, product recall</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>⚠️ Important to Understand</h4>
+        <p>Stock prices can be extremely volatile, meaning they can change significantly in short periods. A stock's price going up or down doesn't necessarily reflect the company's actual value—it reflects what buyers and sellers think it's worth at that moment. Predicting short-term price movements is extremely difficult, even for professionals.</p>
+      </div>
+
+      <h2>5. Major Stock Exchanges</h2>
+      <p>Stocks are bought and sold on stock exchanges. Here are the major U.S. exchanges:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Exchange</th>
+            <th>Full Name</th>
+            <th>Notable Characteristics</th>
+            <th>Example Companies</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>NYSE</strong></td>
+            <td>New York Stock Exchange</td>
+            <td>Largest by market cap, traditional companies</td>
+            <td>JPM, JNJ, WMT</td>
+          </tr>
+          <tr>
+            <td><strong>NASDAQ</strong></td>
+            <td>National Association of Securities Dealers Automated Quotations</td>
+            <td>Tech-heavy, electronic trading</td>
+            <td>AAPL, MSFT, GOOGL</td>
+          </tr>
+          <tr>
+            <td><strong>NYSE American</strong></td>
+            <td>(formerly AMEX)</td>
+            <td>Smaller companies, ETFs</td>
+            <td>Various small caps</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Trading Hours</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Session</th>
+            <th>Time (Eastern)</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pre-Market</strong></td>
+            <td>4:00 AM - 9:30 AM</td>
+            <td>Lower volume, wider spreads</td>
+          </tr>
+          <tr>
+            <td><strong>Regular Hours</strong></td>
+            <td class="highlight">9:30 AM - 4:00 PM</td>
+            <td>Main trading session</td>
+          </tr>
+          <tr>
+            <td><strong>After-Hours</strong></td>
+            <td>4:00 PM - 8:00 PM</td>
+            <td>Lower volume, wider spreads</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>6. How to Buy Stocks</h2>
+      <p>Individual investors access stock exchanges through brokerage accounts. Here's the basic process:</p>
+
+      <h3>Step-by-Step Process</h3>
+      <ol>
+        <li><strong>Open a brokerage account</strong> - Choose a broker (examples: Fidelity, Schwab, Interactive Brokers)</li>
+        <li><strong>Fund your account</strong> - Transfer money from your bank</li>
+        <li><strong>Research stocks</strong> - Analyze companies you're interested in</li>
+        <li><strong>Place an order</strong> - Specify the stock, quantity, and order type</li>
+        <li><strong>Order executes</strong> - Your order is matched with a seller</li>
+        <li><strong>Settlement</strong> - Trade settles in T+1 (one business day)</li>
+      </ol>
+
+      <h3>Order Types</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Order Type</th>
+            <th>How It Works</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Market Order</strong></td>
+            <td>Buy/sell immediately at current price</td>
+            <td>When speed matters more than exact price</td>
+          </tr>
+          <tr>
+            <td><strong>Limit Order</strong></td>
+            <td>Buy/sell only at specified price or better</td>
+            <td>When you want price control</td>
+          </tr>
+          <tr>
+            <td><strong>Stop Order</strong></td>
+            <td>Triggers market order when price hits target</td>
+            <td>To limit losses or protect gains</td>
+          </tr>
+          <tr>
+            <td><strong>Stop-Limit Order</strong></td>
+            <td>Triggers limit order when price hits target</td>
+            <td>Combines stop and limit features</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>7. Key Stock Metrics to Understand</h2>
+      <p>When evaluating stocks, investors look at various metrics:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Formula</th>
+            <th>What It Tells You</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Market Cap</strong></td>
+            <td>Share Price × Shares Outstanding</td>
+            <td>Total company value</td>
+          </tr>
+          <tr>
+            <td><strong>P/E Ratio</strong></td>
+            <td>Share Price ÷ Earnings Per Share</td>
+            <td>How much you pay per $1 of earnings</td>
+          </tr>
+          <tr>
+            <td><strong>EPS</strong></td>
+            <td>Net Income ÷ Shares Outstanding</td>
+            <td>Profit per share</td>
+          </tr>
+          <tr>
+            <td><strong>Dividend Yield</strong></td>
+            <td>Annual Dividend ÷ Share Price</td>
+            <td>Income return percentage</td>
+          </tr>
+          <tr>
+            <td><strong>P/B Ratio</strong></td>
+            <td>Share Price ÷ Book Value Per Share</td>
+            <td>Price relative to net assets</td>
+          </tr>
+          <tr>
+            <td><strong>52-Week Range</strong></td>
+            <td>Highest and lowest prices in past year</td>
+            <td>Price volatility context</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Market Capitalization Categories</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Market Cap Range</th>
+            <th>Characteristics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mega Cap</strong></td>
+            <td>$200B+</td>
+            <td>Largest, most stable companies</td>
+          </tr>
+          <tr>
+            <td><strong>Large Cap</strong></td>
+            <td>$10B - $200B</td>
+            <td>Established, well-known companies</td>
+          </tr>
+          <tr>
+            <td><strong>Mid Cap</strong></td>
+            <td>$2B - $10B</td>
+            <td>Growing companies, moderate risk</td>
+          </tr>
+          <tr>
+            <td><strong>Small Cap</strong></td>
+            <td>$300M - $2B</td>
+            <td>Higher growth potential, higher risk</td>
+          </tr>
+          <tr>
+            <td><strong>Micro Cap</strong></td>
+            <td>Under $300M</td>
+            <td>Speculative, very high risk</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>8. Risks of Stock Ownership</h2>
+      <p>Owning stocks comes with significant risks that every investor should understand:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Risk Type</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Market Risk</strong></td>
+            <td>Overall market decline affects all stocks</td>
+            <td>2008 financial crisis, 2020 COVID crash</td>
+          </tr>
+          <tr>
+            <td><strong>Company Risk</strong></td>
+            <td>Specific company underperforms or fails</td>
+            <td>Bankruptcy, fraud, poor management</td>
+          </tr>
+          <tr>
+            <td><strong>Volatility Risk</strong></td>
+            <td>Prices swing dramatically in short periods</td>
+            <td>20% drop in one week</td>
+          </tr>
+          <tr>
+            <td><strong>Liquidity Risk</strong></td>
+            <td>Can't sell quickly without price impact</td>
+            <td>Thinly traded small caps</td>
+          </tr>
+          <tr>
+            <td><strong>Inflation Risk</strong></td>
+            <td>Returns don't keep pace with inflation</td>
+            <td>5% return with 6% inflation = loss</td>
+          </tr>
+          <tr>
+            <td><strong>Currency Risk</strong></td>
+            <td>Foreign stocks affected by exchange rates</td>
+            <td>Dollar strengthens vs euro</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ No Guaranteed Returns</h4>
+        <p>Unlike savings accounts or bonds, stocks don't promise any return. You could lose some or all of your investment. Historical average returns don't guarantee future results. Many individual stocks underperform or become worthless.</p>
+      </div>
+
+      <h2>9. Stocks vs Other Investments</h2>
+      <p>Understanding how stocks compare to other investment types:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Investment</th>
+            <th>Potential Return</th>
+            <th>Risk Level</th>
+            <th>Liquidity</th>
+            <th>Income</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Stocks</strong></td>
+            <td class="highlight">Higher</td>
+            <td class="red">Higher</td>
+            <td class="green">High</td>
+            <td>Dividends (variable)</td>
+          </tr>
+          <tr>
+            <td><strong>Bonds</strong></td>
+            <td>Moderate</td>
+            <td>Lower</td>
+            <td>Moderate</td>
+            <td>Interest (fixed)</td>
+          </tr>
+          <tr>
+            <td><strong>Savings Account</strong></td>
+            <td class="dim">Low</td>
+            <td class="green">Very Low</td>
+            <td class="green">Very High</td>
+            <td>Interest (variable)</td>
+          </tr>
+          <tr>
+            <td><strong>Real Estate</strong></td>
+            <td>Moderate-High</td>
+            <td>Moderate</td>
+            <td class="red">Low</td>
+            <td>Rent</td>
+          </tr>
+          <tr>
+            <td><strong>Gold</strong></td>
+            <td>Variable</td>
+            <td>Moderate</td>
+            <td>Moderate</td>
+            <td>None</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>10. FAQ: Frequently Asked Questions</h2>
+      
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question">How much money do I need to start investing in stocks?</div>
+          <div class="faq-answer">With many modern brokerages offering commission-free trading and fractional shares, you can start with very small amounts—even $1 in some cases. However, having enough to diversify across multiple stocks is generally advisable. The most important thing is to only invest money you can afford to lose.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's the difference between a stock and a share?</div>
+          <div class="faq-answer">The terms are often used interchangeably. Technically, "stock" refers to ownership in a company in general ("I own stock in Apple"), while "share" refers to a specific unit of ownership ("I own 100 shares of Apple"). In practice, most people use them to mean the same thing.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can I lose more money than I invest in stocks?</div>
+          <div class="faq-answer">With regular stock purchases (not using margin or options), you cannot lose more than you invested. The worst case is the stock goes to zero and you lose 100% of that investment. However, if you borrow money to invest (margin trading), you can lose more than your initial investment.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How are stocks taxed?</div>
+          <div class="faq-answer">In the U.S., profits from selling stocks are subject to capital gains tax. If you held the stock for more than one year, you pay long-term capital gains rates (0%, 15%, or 20% depending on income). If held for less than one year, gains are taxed as ordinary income. Dividends may be taxed at qualified or ordinary rates. Tax laws vary by jurisdiction.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Should I buy individual stocks or index funds?</div>
+          <div class="faq-answer">This depends on your goals, knowledge, and time commitment. Index funds provide instant diversification and require less research, making them suitable for many investors. Individual stocks offer the potential for higher returns but require more research and carry more risk. Many investors use a combination of both.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What happens to my stocks if my broker goes bankrupt?</div>
+          <div class="faq-answer">In the U.S., brokerage accounts are protected by SIPC (Securities Investor Protection Corporation) up to $500,000, including $250,000 for cash. Your stocks are held in your name, not the broker's, so they should be transferred to another broker. However, SIPC doesn't protect against investment losses.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How often should I check my stock investments?</div>
+          <div class="faq-answer">Long-term investors often benefit from checking less frequently—perhaps monthly or quarterly. Checking daily can lead to emotional decision-making based on short-term volatility. However, staying informed about companies you own and major market events is reasonable. Find a balance that works for you without causing anxiety.</div>
+        </div>
+      </div>
 
       <h2>Conclusion</h2>
-      <p>
-        Stocks represent ownership in companies and are one of the primary ways people invest. Understanding what stocks are is just the first step—there's much more to learn about how to evaluate companies, build portfolios, and manage risk. Remember that all stock investments carry the potential for loss, and past performance never guarantees future results.
-      </p>
+      <p>Stocks represent ownership in companies and are one of the primary ways people invest to build wealth over time. Understanding what stocks are is just the first step—there's much more to learn about how to evaluate companies, build portfolios, manage risk, and develop an investment strategy that fits your goals.</p>
+
+      <p>Key takeaways:</p>
+      <ul>
+        <li>A stock represents partial ownership in a company</li>
+        <li>Common stock offers voting rights; preferred stock offers dividend priority</li>
+        <li>Stock prices move based on supply and demand, influenced by many factors</li>
+        <li>You can buy stocks through a brokerage account</li>
+        <li>All stock investments carry risk, including potential total loss</li>
+        <li>Understanding key metrics helps evaluate investments</li>
+        <li>Diversification and long-term thinking are common risk management strategies</li>
+      </ul>
+
+      <p>Remember that all stock investments carry the potential for loss, and past performance never guarantees future results. Consider your financial situation, goals, and risk tolerance before investing.</p>
+
+      <!-- Related Articles -->
+      <h3 style="margin-top: 60px; margin-bottom: 24px;">📚 Related Articles</h3>
+      <div class="related-articles">
+        <a href="/blog/what-is-an-etf.html" class="related-card">
+          <h4>What Is an ETF?</h4>
+          <p>Learn about Exchange-Traded Funds and how they differ from individual stocks</p>
+        </a>
+        <a href="/blog/what-is-a-dividend.html" class="related-card">
+          <h4>What Is a Dividend?</h4>
+          <p>Complete guide to dividend investing and passive income</p>
+        </a>
+        <a href="/blog/understanding-pe-ratio.html" class="related-card">
+          <h4>Understanding P/E Ratio</h4>
+          <p>Learn how to use the price-to-earnings ratio</p>
+        </a>
+      </div>
 
       <div class="reading-section">
-        <h3>📚 Further Reading</h3>
+        <h3>📖 Official Resources</h3>
         <ul>
           <li><a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks" target="_blank" rel="noopener">SEC: Introduction to Stocks</a></li>
-          <li><a href="https://www.investopedia.com/terms/s/stock.asp" target="_blank" rel="noopener">Investopedia: Stock Definition</a></li>
           <li><a href="https://www.finra.org/investors/learn-to-invest/types-investments/stocks" target="_blank" rel="noopener">FINRA: Understanding Stocks</a></li>
+          <li><a href="https://www.sipc.org/" target="_blank" rel="noopener">SIPC: Investor Protection</a></li>
         </ul>
       </div>
 
       <div class="warning-box" style="margin-top: 50px;">
         <h4>⚠️ Final Reminder</h4>
-        <p>This article is for educational purposes only and does not constitute investment advice. Stock investments can lose value, including your entire principal. Always do your own research and consider consulting a qualified financial advisor before investing.</p>
+        <p>This article is for educational purposes only and does not constitute investment advice. Stock investments can lose value, including your entire principal. Past performance does not guarantee future results. Always do your own research and consider consulting a qualified financial advisor before investing.</p>
       </div>
-
     </div>
   </main>
 
@@ -194,12 +720,13 @@
       <a href="/about.html">About</a>
       <a href="/contact.html">Contact</a>
       <a href="/privacy.html">Privacy</a>
-      <a href="/legal.html">Terms & Disclaimer</a>
+      <a href="/legal.html">Terms</a>
     </div>
     <div class="footer-disclaimer">
-      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk. Past performance does not guarantee future results.
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk including the potential loss of principal. Past performance does not guarantee future results.
     </div>
   </footer>
-
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
