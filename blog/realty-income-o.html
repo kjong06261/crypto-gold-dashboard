@@ -2,82 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Understanding Triple-Net Lease REITs | US Market Terminals</title>
-  <meta name="description" content="Educational overview of Triple-Net Lease (NNN) REITs, how they work, common metrics used in REIT analysis, and associated risks.">
-  
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Triple-Net Lease REITs | Complete Guide to NNN REITs | US Market Terminals</title>
+  <meta name="description" content="Comprehensive guide to Triple-Net Lease (NNN) REITs, how they work, tenant responsibilities, major NNN REITs, key metrics, lease structures, advantages, and risks to consider.">
+  <meta name="keywords" content="triple net lease, NNN REIT, net lease REIT, Realty Income, National Retail Properties, STORE Capital, cap rate, lease escalator, tenant credit risk">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog/understanding-triple-net-lease-reits.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏢</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
-      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #f59e0b;
-      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
-    }
-    
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #f59e0b; --accent-glow: rgba(245, 158, 11, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); --green: #22c55e; --green-glow: rgba(34, 197, 94, 0.1); --blue: #3b82f6; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; transition: 0.3s; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; }
     
-    .nav { 
-      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
-      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
-    }
-    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
-
-    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
-
-    /* Warning Boxes */
+    .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; }
+    
+    .container { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    
     .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
-    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; }
     .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
     
-    .article-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 50px; }
-    .tag { display: inline-block; background: rgba(245, 158, 11, 0.1); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(245, 158, 11, 0.2); }
+    .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
     .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
-
-    .content { font-size: 1.1rem; color: #cbd5e1; }
-    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: -0.5px; }
-    .content p { margin-bottom: 30px; text-align: justify; line-height: 1.9; }
+    
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: #fff; margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; line-height: 1.9; }
     .content strong { color: #fff; }
-
-    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem; }
-
-    /* Context Box */
-    .context-box { background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 16px; padding: 25px; margin: 40px 0; }
-    .context-box h4 { color: #fbbf24; margin-bottom: 12px; font-size: 1rem; }
-    .context-box p { margin: 0; font-size: 0.95rem; color: #fcd34d; }
-
-    /* Risk Section */
-    .risk-section { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .risk-section h3 { color: #f87171; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem; }
-    .risk-section ul { margin: 0; padding-left: 20px; }
-    .risk-section li { margin-bottom: 12px; color: #fca5a5; }
-
-    /* Further Reading */
-    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .content ul, .content ol { margin-bottom: 24px; padding-left: 24px; }
+    .content li { margin-bottom: 12px; }
+    
+    .formula-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; font-family: 'JetBrains Mono', monospace; text-align: center; }
+    .formula-box .formula { font-size: 1.1rem; color: var(--accent); margin: 15px 0; }
+    .formula-box .example { font-size: 0.95rem; color: var(--text-dim); margin-top: 15px; }
+    
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    
+    .key-point { background: var(--accent-glow); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #fbbf24; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #fcd34d; font-size: 0.95rem; }
+    
+    .green-box { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .green-box h4 { color: #4ade80; margin-bottom: 10px; font-size: 1rem; }
+    .green-box p { margin: 0; color: #86efac; font-size: 0.95rem; }
+    
+    .blue-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .blue-box h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .blue-box p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    .data-table th { background: var(--accent-glow); color: var(--accent); font-weight: 700; text-align: left; padding: 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table .highlight { color: var(--accent); font-weight: 700; }
+    .data-table .green { color: var(--green); font-weight: 700; }
+    .data-table .dim { color: var(--text-dim); }
+    .data-table .red { color: #f87171; font-weight: 700; }
+    .data-table .blue { color: var(--blue); font-weight: 700; }
+    
+    /* Comparison Grid */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .compare-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .compare-box h4 { margin-bottom: 16px; font-size: 1.1rem; color: #fff; }
+    .compare-box ul { margin: 0; padding-left: 20px; }
+    .compare-box li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dim); }
+    .compare-box.nnn { border-color: rgba(34, 197, 94, 0.3); }
+    .compare-box.nnn h4 { color: var(--green); }
+    .compare-box.gross { border-color: rgba(239, 68, 68, 0.3); }
+    .compare-box.gross h4 { color: #f87171; }
+    
+    /* FAQ Section */
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+    .faq-answer { padding: 0 24px 20px; color: var(--text-dim); line-height: 1.8; display: block; }
+    
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
     .reading-section ul { margin: 0; padding-left: 20px; }
     .reading-section li { margin-bottom: 10px; }
     .reading-section a { color: #93c5fd; }
-    .reading-section a:hover { color: #bfdbfe; }
-
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 120px; }
-    .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
-
-    @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 2.2rem; } }
+    
+    /* Related Articles */
+    .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+    .related-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .related-card h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
+    .related-card p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+    
+    @media (max-width: 768px) {
+      .data-table { font-size: 0.85rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .related-articles { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <div class="nav-container">
       <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
@@ -86,134 +123,813 @@
   </nav>
 
   <main class="container">
-
-    <!-- Top Warning -->
     <div class="warning-box">
       <h4>⚠️ Educational Purpose Only</h4>
-      <p>This article explains what Triple-Net Lease REITs are and how they work. It is not investment advice or a recommendation to buy any security. REIT investments involve significant risks including interest rate sensitivity and real estate market cycles. Dividends are not guaranteed. Consult a qualified financial advisor before making investment decisions.</p>
+      <p>This article explains Triple-Net Lease REITs for educational purposes. It is not investment advice or a recommendation to buy any security. REIT investments involve significant risks including interest rate sensitivity and dividend cuts. Consult a qualified financial advisor.</p>
     </div>
 
     <article class="article-header">
       <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
-      <span class="tag">Concept Overview</span>
+      <span class="tag">REIT Analysis</span>
       <h1>Understanding Triple-Net Lease REITs</h1>
       <div class="meta">
-        <span>Concept Explanation</span>
-        <span>•</span>
-        <span>Jan 2026</span>
+        <span>Intermediate Guide</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>14 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>Updated January 2026</span>
       </div>
     </article>
 
     <div class="content">
-      <p>
-        <strong>Triple-Net Lease (NNN) REITs</strong> are a category of Real Estate Investment Trusts that own properties leased to tenants under specific contractual arrangements. This article provides an educational overview of how these structures work, common metrics used in their analysis, and important risks to consider.
-      </p>
+      <p><strong>Triple-Net Lease (NNN) REITs</strong> are a category of Real Estate Investment Trusts that own properties leased to tenants under agreements where tenants pay property taxes, insurance, and maintenance costs in addition to rent. This structure creates predictable cash flows for landlords—but success depends entirely on tenant quality and economic conditions.</p>
+
+      <p>In this comprehensive guide, we'll explore how triple-net leases work, the different types of NNN properties, how to evaluate these REITs, their advantages, significant risks, and what investors should consider before investing in this sector.</p>
+
+      <!-- Table of Contents -->
+      <div class="info-box">
+        <h3>📑 Table of Contents</h3>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li>What is a Triple-Net Lease?</li>
+          <li>Types of Net Leases</li>
+          <li>How NNN REITs Work</li>
+          <li>Common NNN Property Types</li>
+          <li>Key Metrics for NNN REITs</li>
+          <li>Lease Structure Details</li>
+          <li>Advantages of NNN REITs</li>
+          <li>Significant Risks</li>
+          <li>Interest Rate Sensitivity</li>
+          <li>FAQ: Frequently Asked Questions</li>
+        </ol>
+      </div>
 
       <h2>1. What is a Triple-Net Lease?</h2>
-      <p>
-        In a triple-net lease arrangement, the tenant is responsible for three categories of expenses in addition to rent: property taxes, insurance, and maintenance. This differs from gross leases where the landlord covers these costs.
-      </p>
-      <p>
-        Proponents argue this structure provides more predictable cash flows for landlords, as operating expenses are passed to tenants. However, this also means tenants must be financially strong enough to cover these obligations—if tenants struggle, the entire arrangement can be at risk.
-      </p>
+      <p>In a <strong>triple-net (NNN) lease</strong>, the tenant pays three categories of expenses in addition to base rent: property taxes, insurance, and maintenance. The landlord receives "net" rent with minimal operating responsibilities.</p>
 
-      <div class="context-box">
-        <h4>📋 Important Context</h4>
-        <p>The "stability" of NNN leases depends entirely on tenant quality. If a tenant goes bankrupt or closes locations, the REIT must find new tenants, often at significant cost. Historical track records during past economic cycles don't guarantee future stability.</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Expense Category</th>
+            <th>Triple-Net (NNN)</th>
+            <th>Gross Lease</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Base Rent</strong></td>
+            <td>Tenant pays</td>
+            <td>Tenant pays</td>
+          </tr>
+          <tr>
+            <td><strong>Property Taxes</strong></td>
+            <td class="green">Tenant pays</td>
+            <td class="red">Landlord pays</td>
+          </tr>
+          <tr>
+            <td><strong>Insurance</strong></td>
+            <td class="green">Tenant pays</td>
+            <td class="red">Landlord pays</td>
+          </tr>
+          <tr>
+            <td><strong>Maintenance/Repairs</strong></td>
+            <td class="green">Tenant pays</td>
+            <td class="red">Landlord pays</td>
+          </tr>
+          <tr>
+            <td><strong>Landlord's Responsibility</strong></td>
+            <td class="highlight">Roof & structure only (sometimes)</td>
+            <td>All property expenses</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>💡 The "Three Nets"</h4>
+        <p>The name "triple-net" comes from the three categories of expenses passed to tenants: (1) Net of property taxes, (2) Net of insurance, (3) Net of maintenance. This contrasts with "gross leases" where landlords pay these costs and build them into higher rent.</p>
       </div>
 
-      <h2>2. Common REIT Metrics</h2>
-      <p>
-        Those researching REITs often encounter specific metrics that differ from those used for other stocks. Understanding these terms can be helpful for educational purposes:
-      </p>
+      <h2>2. Types of Net Leases</h2>
+      <p>Not all net leases are created equal. Understanding the spectrum helps evaluate different REITs:</p>
 
-      <div class="info-box">
-        <h3>📊 Key REIT Terminology</h3>
-        <p style="margin-bottom: 15px;"><strong>FFO (Funds From Operations):</strong> Net income plus depreciation minus gains on property sales. Used because real estate depreciation is an accounting convention that may not reflect actual property value changes.</p>
-        <p style="margin-bottom: 15px;"><strong>AFFO (Adjusted FFO):</strong> FFO minus capital expenditures needed to maintain properties. Some consider this a better measure of sustainable cash flow, though calculations vary between companies.</p>
-        <p style="margin-bottom: 15px;"><strong>Payout Ratio:</strong> Dividends as a percentage of FFO or AFFO. High ratios may indicate limited room for dividend growth or potential sustainability concerns.</p>
-        <p style="margin-bottom: 15px;"><strong>Occupancy Rate:</strong> Percentage of properties that are leased. High occupancy is generally preferred, but can mask issues if achieved through below-market rents.</p>
-        <p style="margin-bottom: 0;"><strong>Cap Rate:</strong> Net operating income divided by property value. Lower cap rates mean higher prices relative to income.</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Lease Type</th>
+            <th>Tenant Pays</th>
+            <th>Landlord Pays</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Gross Lease</strong></td>
+            <td>Base rent only</td>
+            <td class="red">All operating expenses</td>
+          </tr>
+          <tr>
+            <td><strong>Single-Net (N)</strong></td>
+            <td>Rent + property taxes</td>
+            <td>Insurance, maintenance</td>
+          </tr>
+          <tr>
+            <td><strong>Double-Net (NN)</strong></td>
+            <td>Rent + taxes + insurance</td>
+            <td>Maintenance only</td>
+          </tr>
+          <tr>
+            <td><strong>Triple-Net (NNN)</strong></td>
+            <td class="green">Rent + taxes + insurance + maintenance</td>
+            <td class="highlight">Minimal (roof/structure)</td>
+          </tr>
+          <tr>
+            <td><strong>Absolute NNN / Bondable</strong></td>
+            <td class="green">All expenses, no exceptions</td>
+            <td class="green">Nothing—even roof/structure</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="blue-box">
+        <h4>📋 Absolute NNN vs. Standard NNN</h4>
+        <p>In "absolute" or "bondable" NNN leases, tenants are responsible for literally everything—including roof replacement and structural repairs. These are the purest form of net lease. Standard NNN leases typically leave roof and structural responsibilities with the landlord, creating some capital expenditure exposure.</p>
       </div>
 
-      <h2>3. Interest Rate Sensitivity</h2>
-      <p>
-        REITs, including NNN REITs, are often sensitive to interest rate changes. When interest rates rise, REIT prices often decline for several reasons: higher rates increase borrowing costs, make bond yields more competitive with REIT dividends, and can reduce property values.
-      </p>
-      <p>
-        Some argue that REITs with investment-grade credit ratings can better manage rate increases through access to cheaper financing. However, credit ratings can change, and even highly-rated REITs have experienced significant price declines during rate hiking cycles.
-      </p>
+      <h2>3. How NNN REITs Work</h2>
+      <p>NNN REITs acquire properties with existing tenants on long-term leases, collect rent, and distribute income to shareholders:</p>
 
-      <h2>4. Tenant and Sector Concentration</h2>
-      <p>
-        NNN REITs often have concentrated exposure to specific tenant types—retail, convenience stores, pharmacies, restaurants, etc. This concentration creates risks if those sectors face structural challenges (e.g., e-commerce disruption to retail) or if individual tenants face financial difficulties.
-      </p>
-      <p>
-        Long lease terms (often 10-20 years) are sometimes presented as providing stability. However, long leases can become liabilities if tenants struggle, as properties may be difficult to re-lease or require significant modifications for new tenants.
-      </p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>What Happens</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Acquire Property</strong></td>
+            <td>REIT buys property leased to tenant</td>
+            <td>Buy Walgreens location for $5M</td>
+          </tr>
+          <tr>
+            <td><strong>2. Collect Rent</strong></td>
+            <td>Tenant pays monthly/quarterly rent</td>
+            <td>Walgreens pays $350K/year rent</td>
+          </tr>
+          <tr>
+            <td><strong>3. Minimal Expenses</strong></td>
+            <td>Tenant covers taxes, insurance, maintenance</td>
+            <td>REIT keeps most of the rent</td>
+          </tr>
+          <tr>
+            <td><strong>4. Distribute Income</strong></td>
+            <td>REIT pays dividends to shareholders</td>
+            <td>90%+ of taxable income distributed</td>
+          </tr>
+          <tr>
+            <td><strong>5. Grow Portfolio</strong></td>
+            <td>Acquire more properties, raise rent</td>
+            <td>Use debt, equity to buy more</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <!-- Risk Section -->
-      <div class="risk-section">
-        <h3>⚠️ Significant Risks of NNN REITs</h3>
-        <ul>
-          <li><strong>Interest Rate Sensitivity:</strong> REIT prices often decline significantly when interest rates rise</li>
-          <li><strong>Tenant Credit Risk:</strong> NNN lease benefits depend on tenant ability to pay; bankruptcies can result in vacant properties</li>
-          <li><strong>Sector Disruption:</strong> Retail and other NNN tenant sectors face ongoing structural challenges</li>
-          <li><strong>Dividend Cuts:</strong> Despite track records, REITs can and do reduce dividends during economic stress</li>
-          <li><strong>Illiquidity of Underlying Assets:</strong> Real estate cannot be quickly sold during market stress</li>
-          <li><strong>Leverage Risk:</strong> Most REITs use significant debt, amplifying both gains and losses</li>
-          <li><strong>Valuation Risk:</strong> Popular REITs can become overvalued, leading to poor future returns</li>
-          <li><strong>Geographic Concentration:</strong> Property portfolios may be concentrated in regions facing economic challenges</li>
-          <li><strong>Re-leasing Risk:</strong> Finding new tenants for specialized properties can be costly and time-consuming</li>
-          <li><strong>Tax Complexity:</strong> REIT dividends have complex tax treatment that varies by jurisdiction</li>
-        </ul>
+      <h3>NNN REIT Business Model</h3>
+      <div class="formula-box">
+        <div style="color: var(--text-dim); margin-bottom: 10px;">Cap Rate Formula</div>
+        <div class="formula">Cap Rate = Net Operating Income ÷ Property Value</div>
+        <div class="example">$350,000 NOI ÷ $5,000,000 = 7.0% Cap Rate</div>
       </div>
 
-      <h2>5. Dividend Track Records</h2>
-      <p>
-        Some NNN REITs highlight long histories of dividend payments or increases. While impressive, these track records are backward-looking. Companies that maintained dividends through past cycles may not do so through future ones, especially if facing new challenges like e-commerce disruption or prolonged high interest rates.
-      </p>
-      <p>
-        The designation of "Dividend Aristocrat" or similar labels reflects historical performance only and provides no guarantee of future dividend stability or growth.
-      </p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Revenue/Expense</th>
+            <th>Amount</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Annual Rent</strong></td>
+            <td class="green">$350,000</td>
+            <td>Tenant pays this to REIT</td>
+          </tr>
+          <tr>
+            <td><strong>Property Taxes</strong></td>
+            <td>$0 (tenant pays)</td>
+            <td>Passed to tenant</td>
+          </tr>
+          <tr>
+            <td><strong>Insurance</strong></td>
+            <td>$0 (tenant pays)</td>
+            <td>Passed to tenant</td>
+          </tr>
+          <tr>
+            <td><strong>Maintenance</strong></td>
+            <td>$0 (tenant pays)</td>
+            <td>Passed to tenant</td>
+          </tr>
+          <tr>
+            <td><strong>REIT Admin Costs</strong></td>
+            <td>-$15,000</td>
+            <td>G&A allocation</td>
+          </tr>
+          <tr>
+            <td><strong>Interest Expense</strong></td>
+            <td>-$100,000</td>
+            <td>If 50% financed at 6%</td>
+          </tr>
+          <tr>
+            <td><strong>Net to REIT</strong></td>
+            <td class="highlight">$235,000</td>
+            <td>Before depreciation</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. Common NNN Property Types</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Property Type</th>
+            <th>Typical Tenants</th>
+            <th>Lease Terms</th>
+            <th>Risk Profile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pharmacies</strong></td>
+            <td>Walgreens, CVS</td>
+            <td>15-25 years</td>
+            <td>Moderate (competition, mail-order)</td>
+          </tr>
+          <tr>
+            <td><strong>Convenience/Gas</strong></td>
+            <td>7-Eleven, Circle K</td>
+            <td>15-20 years</td>
+            <td>Moderate (EV transition)</td>
+          </tr>
+          <tr>
+            <td><strong>Dollar Stores</strong></td>
+            <td>Dollar General, Dollar Tree</td>
+            <td>10-15 years</td>
+            <td>Lower (recession-resistant)</td>
+          </tr>
+          <tr>
+            <td><strong>QSR (Fast Food)</strong></td>
+            <td>McDonald's, Taco Bell</td>
+            <td>15-20 years</td>
+            <td>Moderate (franchise credit varies)</td>
+          </tr>
+          <tr>
+            <td><strong>Casual Dining</strong></td>
+            <td>Olive Garden, Chili's</td>
+            <td>10-20 years</td>
+            <td class="red">Higher (discretionary)</td>
+          </tr>
+          <tr>
+            <td><strong>Auto Parts/Service</strong></td>
+            <td>O'Reilly, AutoZone</td>
+            <td>15 years</td>
+            <td>Moderate (EV headwind long-term)</td>
+          </tr>
+          <tr>
+            <td><strong>Fitness</strong></td>
+            <td>LA Fitness, Planet Fitness</td>
+            <td>10-15 years</td>
+            <td class="red">Higher (discretionary, COVID impact)</td>
+          </tr>
+          <tr>
+            <td><strong>Industrial/Warehouse</strong></td>
+            <td>FedEx, Amazon</td>
+            <td>10-15 years</td>
+            <td class="green">Lower (e-commerce tailwind)</td>
+          </tr>
+          <tr>
+            <td><strong>Medical/Dental</strong></td>
+            <td>DaVita, medical groups</td>
+            <td>10-15 years</td>
+            <td>Moderate (reimbursement risk)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ Tenant Concentration Risk</h4>
+        <p>Some NNN REITs have significant exposure to specific tenants or industries. If a major tenant goes bankrupt (e.g., Rite Aid in 2023), the REIT may face multiple vacant properties simultaneously. Always check top tenant concentration—if one tenant represents &gt;10% of rent, that's notable concentration risk.</p>
+      </div>
+
+      <h2>5. Key Metrics for NNN REITs</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>What It Measures</th>
+            <th>What to Look For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>FFO per Share</strong></td>
+            <td>Funds from operations per share</td>
+            <td>Steady or growing year-over-year</td>
+          </tr>
+          <tr>
+            <td><strong>AFFO per Share</strong></td>
+            <td>Adjusted FFO (after maintenance CapEx)</td>
+            <td class="highlight">NNN REITs: FFO ≈ AFFO (low CapEx)</td>
+          </tr>
+          <tr>
+            <td><strong>AFFO Payout Ratio</strong></td>
+            <td>Dividend ÷ AFFO</td>
+            <td class="green">&lt;85% generally healthy</td>
+          </tr>
+          <tr>
+            <td><strong>Occupancy Rate</strong></td>
+            <td>% of properties leased</td>
+            <td class="green">&gt;98% typical for quality NNN</td>
+          </tr>
+          <tr>
+            <td><strong>Debt/EBITDA</strong></td>
+            <td>Leverage relative to earnings</td>
+            <td>&lt;6x generally conservative</td>
+          </tr>
+          <tr>
+            <td><strong>WALT (Weighted Avg Lease Term)</strong></td>
+            <td>Average remaining lease duration</td>
+            <td>&gt;8 years provides stability</td>
+          </tr>
+          <tr>
+            <td><strong>Investment Grade Tenants %</strong></td>
+            <td>Tenants with BBB- or better rating</td>
+            <td>Higher = lower credit risk</td>
+          </tr>
+          <tr>
+            <td><strong>Same-Store NOI Growth</strong></td>
+            <td>Rent growth on existing properties</td>
+            <td>1-2% typical from escalators</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>NNN REIT Comparison (Hypothetical Example)</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>REIT A</th>
+            <th>REIT B</th>
+            <th>REIT C</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Properties</td>
+            <td>15,000+</td>
+            <td>3,500</td>
+            <td>2,000</td>
+          </tr>
+          <tr>
+            <td>Dividend Yield</td>
+            <td>5.5%</td>
+            <td>5.2%</td>
+            <td class="red">7.8%</td>
+          </tr>
+          <tr>
+            <td>AFFO Payout Ratio</td>
+            <td class="green">76%</td>
+            <td class="green">72%</td>
+            <td class="red">95%</td>
+          </tr>
+          <tr>
+            <td>Occupancy</td>
+            <td class="green">98.8%</td>
+            <td class="green">99.2%</td>
+            <td>96.5%</td>
+          </tr>
+          <tr>
+            <td>Debt/EBITDA</td>
+            <td>5.4x</td>
+            <td>5.2x</td>
+            <td class="red">6.8x</td>
+          </tr>
+          <tr>
+            <td>WALT</td>
+            <td>9.2 years</td>
+            <td>10.5 years</td>
+            <td>7.1 years</td>
+          </tr>
+          <tr>
+            <td>IG Tenants %</td>
+            <td>43%</td>
+            <td>48%</td>
+            <td class="red">28%</td>
+          </tr>
+          <tr>
+            <td>Dividend Track Record</td>
+            <td>25+ years growth</td>
+            <td>30+ years growth</td>
+            <td>Cut dividend in 2020</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Hypothetical comparison for educational purposes. Not actual REITs or recommendations.</p>
+
+      <div class="blue-box">
+        <h4>📊 Reading the Comparison</h4>
+        <p>REIT C's higher yield (7.8%) looks attractive, but the 95% payout ratio, higher debt, lower occupancy, and prior dividend cut suggest elevated risk. REITs A and B have more conservative profiles with room for dividend growth. High yield often signals higher risk—investigate why.</p>
+      </div>
+
+      <h2>6. Lease Structure Details</h2>
+      <p>Understanding lease structures helps evaluate cash flow predictability:</p>
+
+      <h3>Rent Escalation Types</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Escalation Type</th>
+            <th>How It Works</th>
+            <th>Typical Rate</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fixed Increases</strong></td>
+            <td>Rent rises by set % annually</td>
+            <td class="highlight">1-2% per year</td>
+          </tr>
+          <tr>
+            <td><strong>CPI-Linked</strong></td>
+            <td>Rent tied to inflation index</td>
+            <td>CPI, often capped at 2-3%</td>
+          </tr>
+          <tr>
+            <td><strong>Percentage Rent</strong></td>
+            <td>Base rent + % of tenant sales</td>
+            <td>Rare in NNN; more common in malls</td>
+          </tr>
+          <tr>
+            <td><strong>Step-Ups</strong></td>
+            <td>Increases at specific intervals</td>
+            <td>5-10% every 5 years</td>
+          </tr>
+          <tr>
+            <td><strong>Flat/No Escalation</strong></td>
+            <td>Rent stays constant</td>
+            <td class="red">0%—erodes with inflation</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Lease Term and Renewal Options</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Typical Structure</th>
+            <th>What It Means</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Initial Term</strong></td>
+            <td>10-25 years</td>
+            <td>Guaranteed rent period</td>
+          </tr>
+          <tr>
+            <td><strong>Renewal Options</strong></td>
+            <td>2-4 options × 5 years each</td>
+            <td>Tenant can extend (not required)</td>
+          </tr>
+          <tr>
+            <td><strong>Renewal Rent</strong></td>
+            <td>Fair market value or % increase</td>
+            <td>May reset lower than current rent</td>
+          </tr>
+          <tr>
+            <td><strong>Early Termination</strong></td>
+            <td>Rare; may have penalties</td>
+            <td>Some leases have "kick-out" clauses</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>⚠️ Lease Expiration Risk</h4>
+        <p>When leases expire, tenants may not renew—or may negotiate lower rent. Check the REIT's lease expiration schedule. If &gt;10% of rent expires in any single year, that's concentration risk. Quality REITs spread expirations across many years.</p>
+      </div>
+
+      <h2>7. Advantages of NNN REITs</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Advantage</th>
+            <th>Why It Matters</th>
+            <th>Caveat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Predictable Cash Flow</strong></td>
+            <td>Long leases with set rent</td>
+            <td>Only if tenant pays</td>
+          </tr>
+          <tr>
+            <td><strong>Low Operating Expenses</strong></td>
+            <td>Tenants cover most costs</td>
+            <td>Some roof/structure CapEx remains</td>
+          </tr>
+          <tr>
+            <td><strong>FFO ≈ AFFO</strong></td>
+            <td>Minimal maintenance CapEx</td>
+            <td>Re-tenanting can be expensive</td>
+          </tr>
+          <tr>
+            <td><strong>Diversification</strong></td>
+            <td>Many properties across geographies</td>
+            <td>May still have tenant concentration</td>
+          </tr>
+          <tr>
+            <td><strong>Inflation Protection</strong></td>
+            <td>Rent escalators increase income</td>
+            <td>1-2% may lag true inflation</td>
+          </tr>
+          <tr>
+            <td><strong>Monthly Dividends</strong></td>
+            <td>Some NNN REITs pay monthly</td>
+            <td>Frequency doesn't affect total return</td>
+          </tr>
+          <tr>
+            <td><strong>Dividend Growth</strong></td>
+            <td>Many have long growth records</td>
+            <td class="red">Past growth ≠ future growth</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>8. Significant Risks</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Risk</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="red"><strong>Interest Rate Sensitivity</strong></td>
+            <td>REIT prices often fall when rates rise</td>
+            <td>2022: NNN REITs fell 20-30% as rates spiked</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Tenant Credit Risk</strong></td>
+            <td>Tenant bankruptcy leaves property vacant</td>
+            <td>Rite Aid, Red Lobster, movie theaters</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Re-Leasing Risk</strong></td>
+            <td>Specialized buildings hard to re-tenant</td>
+            <td>Bank branches, theaters have limited use</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Sector Disruption</strong></td>
+            <td>Structural decline in tenant industries</td>
+            <td>E-commerce vs. retail, EVs vs. gas stations</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Leverage Risk</strong></td>
+            <td>Debt amplifies losses in downturns</td>
+            <td>Refinancing at higher rates hurts FFO</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Geographic Concentration</strong></td>
+            <td>Properties clustered in weak regions</td>
+            <td>Rust Belt, declining rural areas</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Dividend Cut Risk</strong></td>
+            <td>Dividends can be reduced</td>
+            <td>Multiple NNN REITs cut in 2020 COVID</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Valuation Risk</strong></td>
+            <td>Popular REITs can become overpriced</td>
+            <td>High P/FFO = low future returns</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Tenant Bankruptcy Impact</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>What Happens</th>
+            <th>REIT Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tenant Bankruptcy - Affirm Lease</strong></td>
+            <td>Tenant keeps location, continues paying</td>
+            <td class="green">Minimal impact</td>
+          </tr>
+          <tr>
+            <td><strong>Tenant Bankruptcy - Reject Lease</strong></td>
+            <td>Tenant vacates; property becomes vacant</td>
+            <td class="red">Lost rent until re-leased</td>
+          </tr>
+          <tr>
+            <td><strong>Vacant Property</strong></td>
+            <td>REIT must find new tenant</td>
+            <td class="red">6-18 months vacancy typical</td>
+          </tr>
+          <tr>
+            <td><strong>Re-Tenanting Costs</strong></td>
+            <td>Build-out, broker commissions</td>
+            <td class="red">$50-200+ per sq ft for improvements</td>
+          </tr>
+          <tr>
+            <td><strong>Rent Reset</strong></td>
+            <td>New lease may be at lower rent</td>
+            <td class="red">10-30% rent decline possible</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>9. Interest Rate Sensitivity</h2>
+      <p>NNN REITs are often considered "bond-like" due to their predictable cash flows—but this means they're sensitive to interest rate changes:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>When Rates Rise</th>
+            <th>Impact on NNN REITs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Borrowing Costs ↑</strong></td>
+            <td class="red">Higher interest expense reduces FFO</td>
+          </tr>
+          <tr>
+            <td><strong>Bond Yields ↑</strong></td>
+            <td class="red">REIT dividends less attractive vs. bonds</td>
+          </tr>
+          <tr>
+            <td><strong>Cap Rates ↑</strong></td>
+            <td class="red">Property values decline</td>
+          </tr>
+          <tr>
+            <td><strong>Stock Prices ↓</strong></td>
+            <td class="red">Dividend yields rise to compete with bonds</td>
+          </tr>
+          <tr>
+            <td><strong>Acquisition Costs ↑</strong></td>
+            <td>Harder to grow accretively</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Historical Rate Sensitivity</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Fed Funds Change</th>
+            <th>NNN REIT Performance</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2022</td>
+            <td>0% → 4.5%</td>
+            <td class="red">-20% to -35% typical</td>
+          </tr>
+          <tr>
+            <td>2015-2018</td>
+            <td>0% → 2.5%</td>
+            <td>Modest underperformance</td>
+          </tr>
+          <tr>
+            <td>2020-2021</td>
+            <td>Near 0%</td>
+            <td class="green">Strong recovery from COVID lows</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ Rates and REIT Valuations</h4>
+        <p>When the 10-Year Treasury yields 5%, a 5% REIT dividend yield becomes less attractive—investors can get similar income with less risk from government bonds. NNN REITs often need to yield 1-2% more than treasuries to attract capital, which means stock prices must fall (pushing yields up) when rates rise.</p>
+      </div>
+
+      <h2>10. FAQ: Frequently Asked Questions</h2>
+      
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question">Are NNN REIT dividends safe?</div>
+          <div class="faq-answer">No dividend is guaranteed "safe." NNN REITs with long dividend growth records, low payout ratios (&lt;85% of AFFO), high occupancy (&gt;98%), and conservative debt levels have generally been more reliable—but multiple NNN REITs cut dividends during COVID-19, and tenant bankruptcies can impact any REIT. Evaluate each REIT individually and don't assume past performance guarantees future dividends.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Why do NNN REITs have higher yields than other stocks?</div>
+          <div class="faq-answer">REITs must distribute at least 90% of taxable income as dividends, leaving less for reinvestment. This creates higher current yields but slower internal growth. NNN REITs also carry specific risks (tenant credit, interest rates) that investors demand compensation for. Higher yield often means higher risk—be cautious of yields significantly above sector averages.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What happens when a NNN lease expires?</div>
+          <div class="faq-answer">Several outcomes: (1) Tenant renews at existing or negotiated rent, (2) Tenant exercises renewal option at predetermined terms, (3) Tenant doesn't renew, property becomes vacant. Re-leasing specialized properties (bank branches, theaters) can take 6-18 months and require expensive modifications. Even successful re-leasing may be at lower rent if market conditions have changed.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do NNN REITs grow?</div>
+          <div class="faq-answer">Three main ways: (1) <strong>Rent escalators</strong>—1-2% annual increases in existing leases, (2) <strong>Acquisitions</strong>—buying new properties using debt, equity, or retained earnings, (3) <strong>Development</strong>—some REITs build new properties. Growth depends heavily on capital markets access. When stock prices are low (high yields), issuing equity is dilutive, limiting growth ability.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Are NNN REITs good for retirement income?</div>
+          <div class="faq-answer">They can be part of a diversified income portfolio, but shouldn't be the only source. Risks include: dividend cuts, stock price volatility (2022 saw 30%+ declines), and tax complexity (REIT dividends often taxed as ordinary income, not qualified dividends). Consider total return, not just yield. A REIT yielding 6% that drops 20% is worse than a stock yielding 2% that rises 10%.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's the difference between retail NNN REITs and industrial NNN REITs?</div>
+          <div class="faq-answer">Retail NNN REITs own properties leased to retailers (pharmacies, dollar stores, restaurants). Industrial NNN REITs own warehouses/distribution centers leased to logistics companies. Industrial has benefited from e-commerce growth with stronger fundamentals recently. Retail faces more disruption risk but may offer higher yields. Different risk/reward profiles.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I evaluate NNN REIT valuation?</div>
+          <div class="faq-answer">Common metrics: (1) <strong>P/FFO</strong>—price relative to FFO (like P/E), (2) <strong>Dividend Yield</strong>—compare to historical range and peers, (3) <strong>Premium/Discount to NAV</strong>—price vs. estimated property value. Compare to historical averages for that specific REIT and sector peers. A REIT trading at 20x FFO when it historically trades at 15x may be overvalued.</div>
+        </div>
+      </div>
 
       <h2>Conclusion</h2>
-      <p>
-        Triple-Net Lease REITs represent one category within the broader REIT universe. While proponents cite predictable cash flows from their lease structures, these investments involve significant risks including interest rate sensitivity, tenant credit exposure, and sector-specific challenges. Those researching this asset class should carefully consider how REIT exposure fits their overall portfolio and risk tolerance.
-      </p>
+      <p>Triple-Net Lease REITs offer a relatively simple real estate investment structure: tenants pay operating expenses, landlords collect net rent, and shareholders receive dividends. The predictable cash flows appeal to income-focused investors, and many NNN REITs have impressive dividend growth track records.</p>
 
-      <!-- Further Reading -->
+      <p>Key takeaways:</p>
+      <ul>
+        <li>Triple-net means tenants pay taxes, insurance, and maintenance</li>
+        <li>NNN REITs own properties with long-term leases (10-25 years)</li>
+        <li>Low operating expenses mean FFO ≈ AFFO (minimal CapEx)</li>
+        <li>Key metrics: AFFO payout ratio, occupancy, WALT, debt/EBITDA</li>
+        <li>Rent escalators (1-2%/year) provide modest built-in growth</li>
+        <li>Major risks: interest rate sensitivity, tenant credit, sector disruption</li>
+        <li>High yields may signal higher risk—investigate why</li>
+        <li>Past dividend records don't guarantee future payments</li>
+        <li>Check tenant concentration and lease expiration schedules</li>
+        <li>Consider total return, not just dividend yield</li>
+      </ul>
+
+      <p>NNN REITs can play a role in diversified portfolios, but investors should understand the risks are real. Interest rates, tenant credit quality, and sector disruption can all impact returns. Due diligence and realistic expectations are essential.</p>
+
+      <!-- Related Articles -->
+      <h3 style="margin-top: 60px; margin-bottom: 24px;">📚 Related Articles</h3>
+      <div class="related-articles">
+        <a href="/blog/understanding-ffo-affo.html" class="related-card">
+          <h4>Understanding FFO and AFFO</h4>
+          <p>Key metrics for REIT analysis</p>
+        </a>
+        <a href="/blog/what-is-a-dividend.html" class="related-card">
+          <h4>What Is a Dividend?</h4>
+          <p>How companies return value to shareholders</p>
+        </a>
+        <a href="/blog/understanding-interest-rates.html" class="related-card">
+          <h4>Interest Rates</h4>
+          <p>How rates affect REIT valuations</p>
+        </a>
+      </div>
+
       <div class="reading-section">
-        <h3>📚 Further Reading</h3>
+        <h3>📖 Official Resources</h3>
         <ul>
-          <li><a href="https://www.investopedia.com/terms/r/reit.asp" target="_blank" rel="noopener">Investopedia: REITs</a> – Basic concepts explained</li>
-          <li><a href="https://www.reit.com/what-reit" target="_blank" rel="noopener">Nareit: What is a REIT?</a> – Industry association educational resource</li>
-          <li><a href="https://www.sec.gov/investor/pubs/reits.htm" target="_blank" rel="noopener">SEC: REITs</a> – Regulatory information</li>
+          <li><a href="https://www.reit.com/what-reit" target="_blank" rel="noopener">Nareit: What Is a REIT?</a></li>
+          <li><a href="https://www.sec.gov/investor/pubs/reits.htm" target="_blank" rel="noopener">SEC: REITs Investor Bulletin</a></li>
+          <li><a href="https://www.investopedia.com/terms/n/netnetnet.asp" target="_blank" rel="noopener">Investopedia: Triple Net Lease</a></li>
         </ul>
       </div>
 
-      <!-- Final Warning -->
       <div class="warning-box" style="margin-top: 50px;">
         <h4>⚠️ Final Reminder</h4>
-        <p>This article is for educational purposes only and does not constitute investment advice or a recommendation to buy, sell, or hold any security. REIT investments involve significant risks including interest rate sensitivity, tenant credit risk, and dividend cuts. Past dividend history does not guarantee future payments. Consult a qualified financial advisor before making investment decisions.</p>
+        <p>This article is for educational purposes only and does not constitute investment advice or a recommendation to buy, sell, or hold any security. REIT investments involve significant risks including interest rate sensitivity, tenant credit risk, sector disruption, and potential dividend cuts. Past dividend history does not guarantee future payments. Consult a qualified financial advisor before making investment decisions.</p>
       </div>
-
     </div>
   </main>
 
   <footer>
     <div class="footer-links">
-        <a href="/about.html">About</a>
-        <a href="/resources.html">Resources</a>
-        <a href="/faq.html">FAQ</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/legal.html">Terms & Disclaimer</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms</a>
     </div>
-    <p class="footer-copy">© 2026 US Market Terminals. All rights reserved.</p>
     <div class="footer-disclaimer">
-        <strong>Risk Disclosure:</strong> This content is for educational and informational purposes only. It does not constitute investment advice, financial advice, or any recommendation to buy, sell, or hold any security. REIT investments involve significant risks including interest rate sensitivity and potential dividend cuts. Past performance does not indicate future results. Consult a qualified financial advisor before making investment decisions.
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk including the potential loss of principal. Past performance does not guarantee future results.
     </div>
   </footer>
-
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
