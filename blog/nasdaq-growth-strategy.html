@@ -3,82 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Understanding Technology Sector Investment Concepts | US Market Terminals</title>
-  <meta name="description" content="Educational overview of technology sector investing concepts, including growth vs. income approaches and common portfolio construction frameworks.">
-  
+  <title>Understanding Technology Sector Investing | Complete Guide | US Market Terminals</title>
+  <meta name="description" content="Comprehensive guide to technology sector investing, including NASDAQ-100, tech valuations, sub-sectors, growth vs income approaches, covered call strategies, and key risks to consider.">
+  <meta name="keywords" content="technology investing, NASDAQ-100, tech stocks, QQQ, growth investing, tech valuation, P/E ratio, covered call ETF, semiconductor stocks, software stocks">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog/understanding-technology-sector.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
-      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #3b82f6;
-      --accent-glow: rgba(59, 130, 246, 0.1);
-      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
-    }
-    
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #3b82f6; --accent-glow: rgba(59, 130, 246, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); --green: #22c55e; --green-glow: rgba(34, 197, 94, 0.1); }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; transition: 0.3s; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; }
     
-    .nav { 
-      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
-      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
-    }
-    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
-
-    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
-
-    /* Warning Boxes */
+    .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; }
+    
+    .container { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    
     .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
-    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; }
     .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
     
     .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
-    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
-    .meta { color: var(--text-dim); font-size: 0.9rem; display: flex; gap: 15px; font-family: 'JetBrains Mono', monospace; }
-
-    .content { font-size: 1.1rem; color: #cbd5e1; }
-    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: -0.5px; }
-    .content p { margin-bottom: 30px; text-align: justify; line-height: 1.9; }
-    .content strong { color: #fff; }
+    .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
     
-    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem; }
-
-    /* Context Box */
-    .context-box { background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 16px; padding: 25px; margin: 40px 0; }
-    .context-box h4 { color: #60a5fa; margin-bottom: 12px; font-size: 1rem; }
-    .context-box p { margin: 0; font-size: 0.95rem; color: #93c5fd; }
-
-    /* Risk Section */
-    .risk-section { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .risk-section h3 { color: #f87171; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem; }
-    .risk-section ul { margin: 0; padding-left: 20px; }
-    .risk-section li { margin-bottom: 12px; color: #fca5a5; }
-
-    /* Further Reading */
-    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: #fff; margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; line-height: 1.9; }
+    .content strong { color: #fff; }
+    .content ul, .content ol { margin-bottom: 24px; padding-left: 24px; }
+    .content li { margin-bottom: 12px; }
+    
+    .formula-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; font-family: 'JetBrains Mono', monospace; text-align: center; }
+    .formula-box .formula { font-size: 1.1rem; color: var(--accent); margin: 15px 0; }
+    .formula-box .example { font-size: 0.95rem; color: var(--text-dim); margin-top: 15px; }
+    
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    
+    .key-point { background: var(--accent-glow); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    .green-box { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .green-box h4 { color: #4ade80; margin-bottom: 10px; font-size: 1rem; }
+    .green-box p { margin: 0; color: #86efac; font-size: 0.95rem; }
+    
+    .blue-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .blue-box h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .blue-box p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    .data-table th { background: var(--accent-glow); color: var(--accent); font-weight: 700; text-align: left; padding: 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table .highlight { color: var(--accent); font-weight: 700; }
+    .data-table .green { color: var(--green); font-weight: 700; }
+    .data-table .dim { color: var(--text-dim); }
+    .data-table .red { color: #f87171; font-weight: 700; }
+    .data-table .blue { color: var(--accent); font-weight: 700; }
+    
+    /* Comparison Grid */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .compare-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .compare-box h4 { margin-bottom: 16px; font-size: 1.1rem; color: #fff; }
+    .compare-box ul { margin: 0; padding-left: 20px; }
+    .compare-box li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dim); }
+    .compare-box.growth { border-color: rgba(59, 130, 246, 0.3); }
+    .compare-box.growth h4 { color: var(--accent); }
+    .compare-box.income { border-color: rgba(34, 197, 94, 0.3); }
+    .compare-box.income h4 { color: var(--green); }
+    
+    /* FAQ Section */
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+    .faq-answer { padding: 0 24px 20px; color: var(--text-dim); line-height: 1.8; display: block; }
+    
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
     .reading-section ul { margin: 0; padding-left: 20px; }
     .reading-section li { margin-bottom: 10px; }
     .reading-section a { color: #93c5fd; }
-    .reading-section a:hover { color: #bfdbfe; }
-
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 120px; }
-    .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
-
-    @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 2.2rem; } }
+    
+    /* Related Articles */
+    .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+    .related-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .related-card h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
+    .related-card p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+    
+    @media (max-width: 768px) {
+      .data-table { font-size: 0.85rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .related-articles { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <div class="nav-container">
       <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
@@ -87,126 +123,846 @@
   </nav>
 
   <main class="container">
-
-    <!-- Top Warning -->
     <div class="warning-box">
       <h4>⚠️ Educational Purpose Only</h4>
-      <p>This article explains concepts commonly discussed in technology sector investing. It is not investment advice or a recommendation to buy any security or ETF. Technology stocks are highly volatile and can lose significant value. Consult a qualified financial advisor before making investment decisions.</p>
+      <p>This article explains technology sector investing concepts. It is not investment advice or a recommendation to buy any security. Technology stocks are highly volatile and can lose significant value. Consult a qualified financial advisor.</p>
     </div>
 
     <article class="article-header">
-      <a href="/guides.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
-      <span class="tag">Concept Overview</span>
-      <h1>Understanding Technology Sector Investment Concepts</h1>
+      <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
+      <span class="tag">Sector Analysis</span>
+      <h1>Understanding Technology Sector Investing</h1>
       <div class="meta">
-        <span>Concept Explanation</span>
-        <span>•</span>
-        <span>Jan 2026</span>
+        <span>Intermediate Guide</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>14 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>Updated January 2026</span>
       </div>
     </article>
 
     <div class="content">
-      <p>
-        The technology sector, as represented by indices like the <strong>NASDAQ-100</strong>, has been a significant area of investor interest. This article provides an educational overview of concepts commonly discussed in technology investing, along with important risks and limitations to consider.
-      </p>
+      <p>The <strong>technology sector</strong> has been one of the most significant areas of investor interest over the past two decades. From the dot-com bubble to the rise of smartphones, cloud computing, and artificial intelligence, technology companies have reshaped the global economy—and investor portfolios.</p>
 
-      <h2>1. Growth vs. Income Approaches</h2>
-      <p>
-        Technology investing discussions often distinguish between "growth" and "income" approaches. Growth-focused strategies prioritize capital appreciation, accepting that most technology companies pay little or no dividends. Income-focused approaches in tech are less common but have emerged through derivative-based products.
-      </p>
-      <p>
-        Some ETF products use covered call strategies on technology indices to generate income. These products involve trade-offs: they may provide regular distributions but typically cap upside potential during strong rallies. The advertised yields of such products can be misleading and may include return of capital.
-      </p>
+      <p>In this comprehensive guide, we'll explore how the technology sector is defined, major tech indices, sub-sectors within tech, key valuation metrics, growth vs. income approaches, the concentration risks of tech investing, and the significant risks investors should understand.</p>
 
-      <div class="context-box">
-        <h4>⚠️ Important Context on Tech "Income" Products</h4>
-        <p>Products that generate "income" from technology stocks through options strategies involve significant complexity. High advertised yields may not translate to strong total returns, and these products typically underperform during bull markets while providing limited downside protection during bear markets.</p>
-      </div>
-
-      <h2>2. Valuation Concepts</h2>
-      <p>
-        Technology stock discussions often reference valuation metrics like <strong>P/E ratios</strong>, <strong>PEG ratios</strong> (Price/Earnings-to-Growth), and <strong>Free Cash Flow</strong> margins. Understanding these terms can be helpful for educational purposes:
-      </p>
-
+      <!-- Table of Contents -->
       <div class="info-box">
-        <h3>📊 Common Valuation Terminology</h3>
-        <p style="margin-bottom: 15px;"><strong>P/E Ratio:</strong> Stock price divided by earnings per share. High P/E ratios in tech reflect expectations of future growth, but these expectations may not materialize.</p>
-        <p style="margin-bottom: 15px;"><strong>PEG Ratio:</strong> P/E ratio divided by expected earnings growth rate. Sometimes used to assess whether growth expectations justify valuation, though growth projections are often inaccurate.</p>
-        <p style="margin-bottom: 15px;"><strong>Free Cash Flow (FCF):</strong> Cash generated after capital expenditures. Some analysts view FCF as more reliable than accounting earnings, though it too can be manipulated or misinterpreted.</p>
-        <p style="margin-bottom: 0;"><strong>Concentration Risk:</strong> Large tech indices are often heavily weighted toward a small number of very large companies, reducing diversification benefits.</p>
+        <h3>📑 Table of Contents</h3>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li>What is the Technology Sector?</li>
+          <li>Major Technology Indices</li>
+          <li>Technology Sub-Sectors</li>
+          <li>Key Valuation Metrics</li>
+          <li>Growth vs. Income Approaches</li>
+          <li>Covered Call Strategies</li>
+          <li>Concentration Risk</li>
+          <li>Historical Volatility</li>
+          <li>Significant Risks</li>
+          <li>FAQ: Frequently Asked Questions</li>
+        </ol>
       </div>
 
-      <h2>3. Portfolio Construction Frameworks</h2>
-      <p>
-        Some investors discuss "Core-Satellite" approaches, where a broad index holding serves as a "core" while smaller "satellite" positions provide exposure to specific themes or sectors. This is one framework among many, and its effectiveness depends on execution and market conditions.
-      </p>
-      <p>
-        Other frameworks include equal-weight approaches, factor-based strategies, and various active management styles. No single framework has proven consistently superior across all market environments.
-      </p>
+      <h2>1. What is the Technology Sector?</h2>
+      <p>The technology sector includes companies involved in the research, development, and distribution of technology-based goods and services. This includes software, hardware, semiconductors, internet services, and more.</p>
 
-      <!-- Risk Section -->
-      <div class="risk-section">
-        <h3>⚠️ Significant Risks of Technology Investing</h3>
-        <ul>
-          <li><strong>Extreme Volatility:</strong> Technology stocks can experience drawdowns of 30-50% or more, even in fundamentally strong companies</li>
-          <li><strong>Concentration Risk:</strong> Major tech indices are heavily weighted toward a small number of companies, amplifying single-stock risk</li>
-          <li><strong>Valuation Risk:</strong> High valuations based on growth expectations may not be justified if growth disappoints</li>
-          <li><strong>Competitive Disruption:</strong> Today's technology leaders can be disrupted by new entrants or technological shifts</li>
-          <li><strong>Regulatory Risk:</strong> Large technology companies face increasing regulatory scrutiny globally</li>
-          <li><strong>Interest Rate Sensitivity:</strong> Growth stocks, including tech, are often sensitive to interest rate changes</li>
-          <li><strong>Thematic Risk:</strong> Popular themes (AI, cloud, etc.) may not deliver expected returns if already priced in</li>
-          <li><strong>Covered Call Trade-offs:</strong> Income strategies on tech indices cap upside while providing limited downside protection</li>
-          <li><strong>Past Performance:</strong> Strong historical returns in technology do not guarantee future performance</li>
-        </ul>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Classification</th>
+            <th>What It Includes</th>
+            <th>Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>GICS Information Technology</strong></td>
+            <td>Software, hardware, semiconductors, IT services</td>
+            <td>Apple, Microsoft, NVIDIA</td>
+          </tr>
+          <tr>
+            <td><strong>Communication Services</strong></td>
+            <td>Internet media, telecom (includes some "tech")</td>
+            <td>Alphabet, Meta, Netflix</td>
+          </tr>
+          <tr>
+            <td><strong>Consumer Discretionary</strong></td>
+            <td>E-commerce (includes some "tech")</td>
+            <td>Amazon, Tesla</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>📋 Classification Confusion</h4>
+        <p>Sector classifications don't always match intuition. Alphabet (Google) and Meta (Facebook) are in "Communication Services," not Technology. Amazon and Tesla are in "Consumer Discretionary." The NASDAQ-100 index includes many of these regardless of GICS sector, which is why it's often considered a "tech" benchmark despite being broader.</p>
       </div>
 
-      <h2>4. Sector Cycles and Sentiment</h2>
-      <p>
-        Technology sector performance is influenced by economic cycles, interest rates, and investor sentiment. Periods of strong performance often attract significant capital inflows, which can push valuations higher regardless of fundamentals. These dynamics can reverse quickly during market stress.
-      </p>
-      <p>
-        Academic research suggests that sectors with strong recent performance often underperform in subsequent periods—a phenomenon sometimes called "mean reversion." This doesn't mean technology will underperform, but it suggests caution about extrapolating recent returns.
-      </p>
+      <h2>2. Major Technology Indices</h2>
+      <p>Several indices track technology stocks, each with different methodologies:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Holdings</th>
+            <th>Methodology</th>
+            <th>Popular ETF</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>NASDAQ-100</strong></td>
+            <td>100 largest non-financial NASDAQ stocks</td>
+            <td>Modified market-cap weighted</td>
+            <td class="highlight">QQQ</td>
+          </tr>
+          <tr>
+            <td><strong>S&P 500 Info Tech</strong></td>
+            <td>~70 IT sector stocks in S&P 500</td>
+            <td>Market-cap weighted</td>
+            <td>XLK</td>
+          </tr>
+          <tr>
+            <td><strong>NYSE FANG+</strong></td>
+            <td>10 highly traded tech/growth stocks</td>
+            <td>Equal weighted</td>
+            <td>FNGU (3x leveraged)</td>
+          </tr>
+          <tr>
+            <td><strong>PHLX Semiconductor (SOX)</strong></td>
+            <td>30 semiconductor companies</td>
+            <td>Modified market-cap</td>
+            <td>SOXX, SMH</td>
+          </tr>
+          <tr>
+            <td><strong>S&P North American Tech Software</strong></td>
+            <td>Software companies</td>
+            <td>Market-cap weighted</td>
+            <td>IGV</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>NASDAQ-100 Sector Composition</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Sector</th>
+            <th>Approximate Weight</th>
+            <th>Key Holdings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Information Technology</strong></td>
+            <td class="highlight">~50-55%</td>
+            <td>Apple, Microsoft, NVIDIA, Broadcom</td>
+          </tr>
+          <tr>
+            <td><strong>Communication Services</strong></td>
+            <td>~15-18%</td>
+            <td>Alphabet, Meta, Netflix</td>
+          </tr>
+          <tr>
+            <td><strong>Consumer Discretionary</strong></td>
+            <td>~12-15%</td>
+            <td>Amazon, Tesla, Costco</td>
+          </tr>
+          <tr>
+            <td><strong>Healthcare</strong></td>
+            <td>~6-8%</td>
+            <td>Amgen, Gilead, Vertex</td>
+          </tr>
+          <tr>
+            <td><strong>Consumer Staples</strong></td>
+            <td>~4-6%</td>
+            <td>PepsiCo, Mondelez, Kraft</td>
+          </tr>
+          <tr>
+            <td><strong>Other</strong></td>
+            <td>~5-8%</td>
+            <td>Industrials, Utilities</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Weights approximate and change over time. NASDAQ-100 excludes financials.</p>
+
+      <h2>3. Technology Sub-Sectors</h2>
+      <p>The tech sector isn't monolithic—different sub-sectors have different characteristics:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Sub-Sector</th>
+            <th>Business Model</th>
+            <th>Key Characteristics</th>
+            <th>Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Semiconductors</strong></td>
+            <td>Design/manufacture chips</td>
+            <td class="red">Cyclical, capital intensive</td>
+            <td>NVIDIA, AMD, Intel, TSMC</td>
+          </tr>
+          <tr>
+            <td><strong>Software (SaaS)</strong></td>
+            <td>Subscription software</td>
+            <td class="green">Recurring revenue, high margins</td>
+            <td>Microsoft, Salesforce, Adobe</td>
+          </tr>
+          <tr>
+            <td><strong>Internet/Platforms</strong></td>
+            <td>Advertising, subscriptions</td>
+            <td>Network effects, data-driven</td>
+            <td>Alphabet, Meta, Netflix</td>
+          </tr>
+          <tr>
+            <td><strong>Hardware</strong></td>
+            <td>Physical devices</td>
+            <td>Product cycles, commoditization risk</td>
+            <td>Apple, Dell, HP</td>
+          </tr>
+          <tr>
+            <td><strong>E-Commerce</strong></td>
+            <td>Online retail/marketplace</td>
+            <td>Logistics, thin margins</td>
+            <td>Amazon, Shopify</td>
+          </tr>
+          <tr>
+            <td><strong>IT Services</strong></td>
+            <td>Consulting, outsourcing</td>
+            <td>Labor-intensive, steady</td>
+            <td>Accenture, IBM</td>
+          </tr>
+          <tr>
+            <td><strong>Cybersecurity</strong></td>
+            <td>Security software/services</td>
+            <td class="green">Growing demand, mission-critical</td>
+            <td>CrowdStrike, Palo Alto</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud Infrastructure</strong></td>
+            <td>Computing/storage services</td>
+            <td class="green">High growth, scale advantages</td>
+            <td>AWS (Amazon), Azure (Microsoft)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="blue-box">
+        <h4>🤖 The AI Theme</h4>
+        <p>Artificial intelligence has become a dominant investment theme. Companies across sub-sectors benefit differently: NVIDIA (chips for AI training), Microsoft (Azure AI, OpenAI partnership), Alphabet (AI in search/cloud). But "AI exposure" is often already priced into valuations—buying after a theme is widely recognized may not produce outsized returns.</p>
+      </div>
+
+      <h2>4. Key Valuation Metrics</h2>
+      <p>Technology stocks often trade at premium valuations, making traditional metrics like P/E less useful. Here are metrics commonly used:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Formula</th>
+            <th>What It Measures</th>
+            <th>Caveat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>P/E Ratio</strong></td>
+            <td>Price ÷ EPS</td>
+            <td>Price relative to current earnings</td>
+            <td>Less useful for unprofitable companies</td>
+          </tr>
+          <tr>
+            <td><strong>Forward P/E</strong></td>
+            <td>Price ÷ Expected EPS</td>
+            <td>Price relative to future earnings</td>
+            <td>Estimates often wrong</td>
+          </tr>
+          <tr>
+            <td><strong>PEG Ratio</strong></td>
+            <td>P/E ÷ EPS Growth Rate</td>
+            <td>Valuation adjusted for growth</td>
+            <td class="highlight">PEG &lt;1 considered "cheap"</td>
+          </tr>
+          <tr>
+            <td><strong>P/S Ratio</strong></td>
+            <td>Price ÷ Sales per Share</td>
+            <td>Useful for unprofitable companies</td>
+            <td>Ignores profitability entirely</td>
+          </tr>
+          <tr>
+            <td><strong>EV/Revenue</strong></td>
+            <td>Enterprise Value ÷ Revenue</td>
+            <td>Values company including debt</td>
+            <td>Common for high-growth SaaS</td>
+          </tr>
+          <tr>
+            <td><strong>EV/EBITDA</strong></td>
+            <td>Enterprise Value ÷ EBITDA</td>
+            <td>Operating profitability</td>
+            <td>Better than P/E for comparisons</td>
+          </tr>
+          <tr>
+            <td><strong>FCF Yield</strong></td>
+            <td>Free Cash Flow ÷ Market Cap</td>
+            <td>Cash generation relative to price</td>
+            <td class="green">Higher = potentially cheaper</td>
+          </tr>
+          <tr>
+            <td><strong>Rule of 40</strong></td>
+            <td>Revenue Growth % + Profit Margin %</td>
+            <td>SaaS health metric</td>
+            <td>&gt;40 considered healthy</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="formula-box">
+        <div style="color: var(--text-dim); margin-bottom: 10px;">PEG Ratio Example</div>
+        <div class="formula">PEG = P/E Ratio ÷ Annual EPS Growth Rate</div>
+        <div class="example">Stock with 30 P/E and 25% growth = 30 ÷ 25 = 1.2 PEG</div>
+      </div>
+
+      <h3>Tech Valuation Ranges</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Company Type</th>
+            <th>Typical P/E Range</th>
+            <th>Typical P/S Range</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mega-Cap Tech (AAPL, MSFT)</strong></td>
+            <td>25-35x</td>
+            <td>6-10x</td>
+            <td>Premium for quality, scale</td>
+          </tr>
+          <tr>
+            <td><strong>High-Growth SaaS</strong></td>
+            <td>N/A (often unprofitable)</td>
+            <td class="highlight">10-25x</td>
+            <td>Valued on revenue growth</td>
+          </tr>
+          <tr>
+            <td><strong>Semiconductors</strong></td>
+            <td>15-35x</td>
+            <td>5-15x</td>
+            <td>Cyclical; expands/contracts</td>
+          </tr>
+          <tr>
+            <td><strong>Mature Tech (IBM, Cisco)</strong></td>
+            <td>10-15x</td>
+            <td>1-3x</td>
+            <td>Lower growth = lower multiple</td>
+          </tr>
+          <tr>
+            <td><strong>Internet Platforms</strong></td>
+            <td>20-40x</td>
+            <td>5-12x</td>
+            <td>Varies with ad market</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ High Valuations = High Expectations</h4>
+        <p>When a stock trades at 50x earnings, the market expects exceptional growth. If that growth disappoints even slightly, the stock can fall dramatically—not because the company failed, but because expectations were too high. Many "great companies" have been poor investments when bought at extreme valuations.</p>
+      </div>
+
+      <h2>5. Growth vs. Income Approaches</h2>
+      <p>Technology investing typically emphasizes growth over income, but both approaches exist:</p>
+
+      <div class="compare-grid">
+        <div class="compare-box growth">
+          <h4>📈 Growth Approach</h4>
+          <ul>
+            <li>Focus on capital appreciation</li>
+            <li>Accept little/no dividends</li>
+            <li>Reinvest in high-growth companies</li>
+            <li>Higher volatility</li>
+            <li>Traditional tech investing</li>
+            <li>ETF example: QQQ</li>
+          </ul>
+        </div>
+        <div class="compare-box income">
+          <h4>💵 Income Approach</h4>
+          <ul>
+            <li>Focus on current income</li>
+            <li>Use options strategies for yield</li>
+            <li>Accept capped upside</li>
+            <li>Covered call ETFs</li>
+            <li>May underperform in bull markets</li>
+            <li>ETF examples: QYLD, JEPQ</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Tech Dividend Yields (Rare)</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Dividend Yield</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Microsoft</strong></td>
+            <td>~0.7-0.8%</td>
+            <td>Growing dividend; primarily growth stock</td>
+          </tr>
+          <tr>
+            <td><strong>Apple</strong></td>
+            <td>~0.5%</td>
+            <td>Buybacks more significant than dividends</td>
+          </tr>
+          <tr>
+            <td><strong>Cisco</strong></td>
+            <td>~3%</td>
+            <td>Mature; higher yield but slower growth</td>
+          </tr>
+          <tr>
+            <td><strong>IBM</strong></td>
+            <td>~3-4%</td>
+            <td>Legacy tech; restructuring</td>
+          </tr>
+          <tr>
+            <td><strong>NVIDIA</strong></td>
+            <td class="dim">~0.03%</td>
+            <td>Token dividend; growth-focused</td>
+          </tr>
+          <tr>
+            <td><strong>Amazon, Alphabet, Meta</strong></td>
+            <td class="dim">0%</td>
+            <td>No dividends (buybacks instead)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>6. Covered Call Strategies</h2>
+      <p>Some ETFs generate "income" from tech stocks using covered call options. Understanding the trade-offs is important:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>How Covered Calls Work</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mechanism</strong></td>
+            <td>Fund owns stocks + sells call options for premium</td>
+          </tr>
+          <tr>
+            <td><strong>Income Source</strong></td>
+            <td>Option premiums generate cash for distributions</td>
+          </tr>
+          <tr>
+            <td><strong>Trade-off</strong></td>
+            <td class="red">Upside capped if stocks rally past strike price</td>
+          </tr>
+          <tr>
+            <td><strong>Downside</strong></td>
+            <td class="red">Limited protection—only premium cushion</td>
+          </tr>
+          <tr>
+            <td><strong>Best Environment</strong></td>
+            <td>Flat to modestly up markets</td>
+          </tr>
+          <tr>
+            <td><strong>Worst Environment</strong></td>
+            <td>Strong bull markets (miss upside)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Tech Covered Call ETFs</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ETF</th>
+            <th>Strategy</th>
+            <th>Distribution Yield</th>
+            <th>Expense Ratio</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>QYLD</strong></td>
+            <td>NASDAQ-100 covered calls (at-the-money)</td>
+            <td class="highlight">~11-12%</td>
+            <td>0.60%</td>
+          </tr>
+          <tr>
+            <td><strong>JEPQ</strong></td>
+            <td>NASDAQ-focused active + ELNs</td>
+            <td>~9-11%</td>
+            <td>0.35%</td>
+          </tr>
+          <tr>
+            <td><strong>XYLD</strong></td>
+            <td>S&P 500 covered calls</td>
+            <td>~10-11%</td>
+            <td>0.60%</td>
+          </tr>
+          <tr>
+            <td><strong>JEPI</strong></td>
+            <td>S&P 500-focused active + ELNs</td>
+            <td>~7-9%</td>
+            <td>0.35%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Yields fluctuate based on volatility. ELN = Equity-Linked Notes.</p>
+
+      <div class="warning-box">
+        <h4>⚠️ Yield vs. Total Return</h4>
+        <p>High advertised yields can be misleading. A fund yielding 12% that loses 15% in NAV isn't generating real income—it's returning your capital. Compare total returns (price change + distributions) against a simple index fund like QQQ over full market cycles, not just yield.</p>
+      </div>
+
+      <h2>7. Concentration Risk</h2>
+      <p>One of the most significant risks in tech investing is concentration—a small number of companies dominate the indices:</p>
+
+      <h3>NASDAQ-100 Top Holdings</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Company</th>
+            <th>Approximate Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>Apple</strong></td>
+            <td class="highlight">~8-10%</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Microsoft</strong></td>
+            <td class="highlight">~9-10%</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>NVIDIA</strong></td>
+            <td class="highlight">~7-8%</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Amazon</strong></td>
+            <td>~5-6%</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Alphabet (combined)</strong></td>
+            <td>~5-6%</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>Meta</strong></td>
+            <td>~4-5%</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><strong>Broadcom</strong></td>
+            <td>~4%</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><strong>Tesla</strong></td>
+            <td>~3%</td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong>Top 10 Total</strong></td>
+            <td class="red">~50-55%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>⚠️ The "Magnificent Seven" Phenomenon</h4>
+        <p>In 2023-2024, seven stocks (Apple, Microsoft, Alphabet, Amazon, NVIDIA, Meta, Tesla) drove most of the market's gains. This concentration means that owning "the index" provides less diversification than many assume. If these few stocks falter, index returns suffer even if most stocks do well.</p>
+      </div>
+
+      <h2>8. Historical Volatility</h2>
+      <p>Technology stocks are among the most volatile in the market:</p>
+
+      <h3>Major Tech Drawdowns</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Event</th>
+            <th>NASDAQ-100 Decline</th>
+            <th>Recovery Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2000-2002</td>
+            <td>Dot-Com Crash</td>
+            <td class="red">-83%</td>
+            <td class="red">~15 years to new highs</td>
+          </tr>
+          <tr>
+            <td>2008</td>
+            <td>Financial Crisis</td>
+            <td class="red">-54%</td>
+            <td>~3 years</td>
+          </tr>
+          <tr>
+            <td>2020</td>
+            <td>COVID Crash</td>
+            <td class="red">-30%</td>
+            <td>~5 months</td>
+          </tr>
+          <tr>
+            <td>2022</td>
+            <td>Rate Hikes/Inflation</td>
+            <td class="red">-33%</td>
+            <td>~2 years</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Volatility Comparison</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Index/Sector</th>
+            <th>Typical Annual Volatility</th>
+            <th>Max Drawdown (2000-2024)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>NASDAQ-100 (QQQ)</strong></td>
+            <td class="red">~20-25%</td>
+            <td class="red">-83%</td>
+          </tr>
+          <tr>
+            <td><strong>S&P 500 (SPY)</strong></td>
+            <td>~15-18%</td>
+            <td>-57%</td>
+          </tr>
+          <tr>
+            <td><strong>Semiconductors (SMH)</strong></td>
+            <td class="red">~30%+</td>
+            <td class="red">-85%</td>
+          </tr>
+          <tr>
+            <td><strong>Bonds (AGG)</strong></td>
+            <td class="green">~4-6%</td>
+            <td>-18%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ The Dot-Com Lesson</h4>
+        <p>The NASDAQ-100 peaked in March 2000 and didn't return to that level until 2015—fifteen years later. Investors who bought at the peak and held through had zero gains for a decade and a half. Past recoveries don't guarantee future ones, and the next bear market could be different.</p>
+      </div>
+
+      <h2>9. Significant Risks</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Risk</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="red"><strong>Valuation Risk</strong></td>
+            <td>High prices may not be justified</td>
+            <td>2000 dot-com bubble; 2021 speculative tech</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Interest Rate Sensitivity</strong></td>
+            <td>Growth stocks hurt by rising rates</td>
+            <td>2022: Rates ↑, NASDAQ ↓33%</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Concentration Risk</strong></td>
+            <td>Few stocks dominate indices</td>
+            <td>Top 10 = 50%+ of NASDAQ-100</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Competitive Disruption</strong></td>
+            <td>Tech leaders can be displaced</td>
+            <td>Nokia, BlackBerry, Yahoo</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Regulatory Risk</strong></td>
+            <td>Government scrutiny of big tech</td>
+            <td>Antitrust cases, EU regulations</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Earnings Disappointment</strong></td>
+            <td>Missing expectations tanks stocks</td>
+            <td>Meta -26% in one day (2022)</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Cyclicality</strong></td>
+            <td>Semiconductors, hardware are cyclical</td>
+            <td>Chip shortages → gluts</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Thematic Crowding</strong></td>
+            <td>Popular themes may be overpriced</td>
+            <td>AI, cloud already priced in?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>What Can Go Wrong</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Impact on Tech</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Recession</strong></td>
+            <td>Ad spending cuts; enterprise IT budget freezes</td>
+          </tr>
+          <tr>
+            <td><strong>Rising Rates</strong></td>
+            <td>Future earnings worth less; multiples compress</td>
+          </tr>
+          <tr>
+            <td><strong>Regulation</strong></td>
+            <td>Breakups, fines, restrictions on data use</td>
+          </tr>
+          <tr>
+            <td><strong>AI Disappointment</strong></td>
+            <td>If AI doesn't deliver ROI, valuations reset</td>
+          </tr>
+          <tr>
+            <td><strong>Geopolitics</strong></td>
+            <td>China-Taiwan tensions disrupt chip supply</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>10. FAQ: Frequently Asked Questions</h2>
+      
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question">Is the NASDAQ-100 the same as "the tech sector"?</div>
+          <div class="faq-answer">No. The NASDAQ-100 includes the 100 largest non-financial companies listed on NASDAQ, regardless of sector. While it's heavily weighted toward technology (~50-55%), it also includes healthcare, consumer discretionary, and other sectors. The "official" tech sector (GICS Information Technology) is tracked by ETFs like XLK and excludes companies like Alphabet, Meta, and Amazon.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Should I invest in QQQ or individual tech stocks?</div>
+          <div class="faq-answer">QQQ provides diversification across 100 companies, reducing single-stock risk. Individual stocks can outperform dramatically (or underperform dramatically). Most investors lack the time and expertise to pick winners consistently. ETFs offer simplicity and diversification but are still concentrated in mega-caps. The right choice depends on your risk tolerance, time horizon, and willingness to research individual companies.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Are covered call ETFs like QYLD good for income?</div>
+          <div class="faq-answer">They provide regular distributions, but "good" depends on context. In strong bull markets, covered call funds significantly underperform the index because upside is capped. In flat or declining markets, they may outperform slightly due to premium income. Over full market cycles, total returns often lag the underlying index. If you need current income and accept limited upside, they may fit. If you're focused on wealth building, a growth-focused approach typically outperforms.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How much of my portfolio should be in tech?</div>
+          <div class="faq-answer">There's no universal answer—it depends on your goals, risk tolerance, and other holdings. The S&P 500 is already ~30% technology (GICS definition), so owning just SPY gives significant tech exposure. Adding QQQ or sector funds increases concentration. Some guidelines suggest limiting any single sector to 20-30% of a portfolio, but appropriate allocation varies by individual circumstances.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is AI a good investment theme?</div>
+          <div class="faq-answer">AI is transformative technology, but "good theme" doesn't always mean "good investment." By the time a theme is widely recognized (like AI in 2023-2024), much of the expected value may be priced in. Companies benefiting from AI trade at premium valuations. If AI delivers more than expected, investors win. If it disappoints or takes longer than expected, stocks can fall sharply even if AI is ultimately successful. Timing and valuation matter as much as the underlying trend.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Why do tech stocks fall when interest rates rise?</div>
+          <div class="faq-answer">Growth stocks derive most of their value from future earnings. When interest rates rise, those future earnings are discounted at a higher rate, reducing their present value. Also, higher rates make bonds more attractive relative to stocks, and increase borrowing costs for companies that need capital. Tech stocks with high valuations and distant profitability are most affected. Mature, profitable tech companies are less sensitive.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What happened in the dot-com crash, and could it happen again?</div>
+          <div class="faq-answer">In 1999-2000, internet stocks reached extreme valuations based on "new economy" hype. Many companies had no earnings, revenue, or viable business models. When the bubble burst, the NASDAQ fell 83% and took 15 years to recover. Could it happen again? Today's tech giants are more established and profitable than 2000's speculative companies. But pockets of speculation exist, and sustained overvaluation followed by multiple compression is always possible. The magnitude might differ, but tech corrections remain a real risk.</div>
+        </div>
+      </div>
 
       <h2>Conclusion</h2>
-      <p>
-        Technology sector investing involves concepts like growth vs. income trade-offs, various valuation frameworks, and portfolio construction approaches. Like all sector-specific investing, it involves concentration risks that may not be appropriate for all investors. Those considering technology investments should carefully evaluate how such exposure fits their overall portfolio, risk tolerance, and financial goals.
-      </p>
+      <p>Technology sector investing offers exposure to some of the world's most innovative and fastest-growing companies. The sector has driven substantial market gains over the past two decades. But that success comes with significant risks: extreme volatility, concentration in a few mega-cap names, sensitivity to interest rates and valuations, and the ever-present possibility of disruption.</p>
 
-      <!-- Further Reading -->
+      <p>Key takeaways:</p>
+      <ul>
+        <li>Technology sector includes software, hardware, semiconductors, internet, and more</li>
+        <li>NASDAQ-100 is ~50-55% tech but includes other sectors; not "pure" tech</li>
+        <li>Valuations matter: high P/E ratios mean high expectations</li>
+        <li>PEG ratio and FCF yield can help assess growth stock valuations</li>
+        <li>Growth approach prioritizes capital appreciation; income approach uses options</li>
+        <li>Covered call ETFs cap upside for income—understand the trade-offs</li>
+        <li>Concentration risk: top 10 stocks = 50%+ of major tech indices</li>
+        <li>Historical drawdowns of 30-80% have occurred multiple times</li>
+        <li>Interest rate sensitivity affects growth stocks disproportionately</li>
+        <li>Themes like AI may already be priced in when widely recognized</li>
+      </ul>
+
+      <p>Technology exposure can be appropriate as part of a diversified portfolio, but investors should understand they're accepting higher volatility and concentration risk in exchange for growth potential. No approach guarantees success, and past performance—no matter how impressive—does not predict future results.</p>
+
+      <!-- Related Articles -->
+      <h3 style="margin-top: 60px; margin-bottom: 24px;">📚 Related Articles</h3>
+      <div class="related-articles">
+        <a href="/blog/what-is-an-etf.html" class="related-card">
+          <h4>What Is an ETF?</h4>
+          <p>Understanding exchange-traded funds</p>
+        </a>
+        <a href="/blog/understanding-pe-ratio.html" class="related-card">
+          <h4>Understanding P/E Ratio</h4>
+          <p>Valuation metric fundamentals</p>
+        </a>
+        <a href="/blog/what-is-diversification.html" class="related-card">
+          <h4>What Is Diversification?</h4>
+          <p>Spreading risk across investments</p>
+        </a>
+      </div>
+
       <div class="reading-section">
-        <h3>📚 Further Reading</h3>
+        <h3>📖 Official Resources</h3>
         <ul>
-          <li><a href="https://www.investopedia.com/terms/n/nasdaq100.asp" target="_blank" rel="noopener">Investopedia: NASDAQ-100</a> – Index overview</li>
-          <li><a href="https://www.sec.gov/investor/pubs/ininvest.htm" target="_blank" rel="noopener">SEC: Investor Resources</a> – General investment education</li>
-          <li><a href="https://www.finra.org/investors/learn-to-invest" target="_blank" rel="noopener">FINRA: Learn to Invest</a> – Educational resources</li>
+          <li><a href="https://www.nasdaq.com/market-activity/quotes/nasdaq-ndx-index" target="_blank" rel="noopener">NASDAQ: NDX Index</a></li>
+          <li><a href="https://www.sec.gov/investor/pubs/ininvest.htm" target="_blank" rel="noopener">SEC: Investor Resources</a></li>
+          <li><a href="https://www.finra.org/investors/learn-to-invest" target="_blank" rel="noopener">FINRA: Learn to Invest</a></li>
         </ul>
       </div>
 
-      <!-- Final Warning -->
       <div class="warning-box" style="margin-top: 50px;">
         <h4>⚠️ Final Reminder</h4>
-        <p>This article is for educational purposes only and does not constitute investment advice or a recommendation to buy, sell, or hold any security. Technology stocks are highly volatile and can lose significant value. Past performance does not indicate future results. Consult a qualified financial advisor before making investment decisions.</p>
+        <p>This article is for educational purposes only and does not constitute investment advice or a recommendation to buy, sell, or hold any security. Technology stocks are highly volatile and can lose significant value. Past performance does not predict future results. Consult a qualified financial advisor before making investment decisions.</p>
       </div>
-
     </div>
   </main>
 
   <footer>
     <div class="footer-links">
-        <a href="/about.html">About</a>
-        <a href="/resources.html">Resources</a>
-        <a href="/faq.html">FAQ</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/legal.html">Terms & Disclaimer</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms</a>
     </div>
-    <p class="footer-copy">
-        © 2026 US Market Terminals. All rights reserved.
-    </p>
     <div class="footer-disclaimer">
-        <strong>Risk Disclosure:</strong> This content is for educational and informational purposes only. It does not constitute investment advice, financial advice, or any recommendation to buy, sell, or hold any security. Technology investments involve significant volatility and risk of loss. Past performance does not indicate future results. Consult a qualified financial advisor before making investment decisions.
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk including the potential loss of principal. Past performance does not guarantee future results.
     </div>
   </footer>
-
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
