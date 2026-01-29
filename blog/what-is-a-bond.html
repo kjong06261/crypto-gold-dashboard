@@ -3,75 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What is a Bond? | US Market Terminals</title>
-  <meta name="description" content="Educational overview explaining what bonds are, how they work, and key concepts including coupon rates, maturity, and credit risk.">
-  
+  <title>What is a Bond? Complete Guide to Fixed Income Investing | US Market Terminals</title>
+  <meta name="description" content="Comprehensive guide explaining bonds, how they work, types of bonds (Treasury, corporate, municipal), bond pricing, yields, credit ratings, risks, and how interest rates affect bond values.">
+  <meta name="keywords" content="bonds, fixed income, Treasury bonds, corporate bonds, municipal bonds, bond yield, coupon rate, credit rating, interest rate risk">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog/what-is-a-bond.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
-      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #10b981;
-      --accent-glow: rgba(16, 185, 129, 0.1);
-      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
-    }
-    
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #10b981; --accent-glow: rgba(16, 185, 129, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); --green: #22c55e; --green-glow: rgba(34, 197, 94, 0.1); --blue: #3b82f6; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; transition: 0.3s; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; }
     
-    .nav { 
-      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
-      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
-    }
+    .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
     .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
-
-    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
-
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; }
+    
+    .container { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    
     .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
-    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; }
     .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
-
+    
     .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
-    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
     .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
-
-    .content { font-size: 1.1rem; color: #cbd5e1; }
-    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: -0.5px; }
-    .content p { margin-bottom: 28px; text-align: justify; line-height: 1.9; }
+    
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: #fff; margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; line-height: 1.9; }
     .content strong { color: #fff; }
-
+    .content ul, .content ol { margin-bottom: 24px; padding-left: 24px; }
+    .content li { margin-bottom: 12px; }
+    
+    .formula-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; font-family: 'JetBrains Mono', monospace; text-align: center; }
+    .formula-box .formula { font-size: 1.2rem; color: var(--accent); margin: 15px 0; }
+    .formula-box .example { font-size: 0.95rem; color: var(--text-dim); margin-top: 15px; }
+    
     .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
     .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
     .info-box p { margin-bottom: 12px; font-size: 1rem; }
-    .info-box p:last-child { margin-bottom: 0; }
-
-    .key-point { background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    
+    .key-point { background: var(--accent-glow); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
     .key-point h4 { color: #34d399; margin-bottom: 10px; font-size: 1rem; }
     .key-point p { margin: 0; color: #6ee7b7; font-size: 0.95rem; }
-
+    
+    .green-box { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .green-box h4 { color: #4ade80; margin-bottom: 10px; font-size: 1rem; }
+    .green-box p { margin: 0; color: #86efac; font-size: 0.95rem; }
+    
+    .blue-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .blue-box h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .blue-box p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    .data-table th { background: var(--accent-glow); color: var(--accent); font-weight: 700; text-align: left; padding: 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table .highlight { color: var(--accent); font-weight: 700; }
+    .data-table .green { color: var(--green); font-weight: 700; }
+    .data-table .dim { color: var(--text-dim); }
+    .data-table .red { color: #f87171; font-weight: 700; }
+    .data-table .blue { color: var(--blue); font-weight: 700; }
+    
+    /* Comparison Grid */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .compare-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .compare-box h4 { margin-bottom: 16px; font-size: 1.1rem; color: #fff; }
+    .compare-box ul { margin: 0; padding-left: 20px; }
+    .compare-box li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dim); }
+    .compare-box.stocks { border-color: rgba(139, 92, 246, 0.3); }
+    .compare-box.stocks h4 { color: #a78bfa; }
+    .compare-box.bonds { border-color: rgba(16, 185, 129, 0.3); }
+    .compare-box.bonds h4 { color: var(--accent); }
+    
+    /* FAQ Section */
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+    .faq-answer { padding: 0 24px 20px; color: var(--text-dim); line-height: 1.8; display: block; }
+    
     .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
     .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
     .reading-section ul { margin: 0; padding-left: 20px; }
     .reading-section li { margin-bottom: 10px; }
     .reading-section a { color: #93c5fd; }
-    .reading-section a:hover { color: #bfdbfe; }
-
+    
+    /* Related Articles */
+    .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+    .related-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .related-card h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
+    .related-card p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    
     footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
     .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
     .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
     .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
-
-    @media (max-width: 768px) { h1 { font-size: 2rem; } .content { font-size: 1rem; } }
+    
+    @media (max-width: 768px) {
+      .data-table { font-size: 0.85rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .related-articles { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <div class="nav-container">
       <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
@@ -80,10 +123,9 @@
   </nav>
 
   <main class="container">
-
     <div class="warning-box">
       <h4>⚠️ Educational Purpose Only</h4>
-      <p>This article explains basic concepts about bonds for educational purposes. It is not investment advice. All investments carry risk, including loss of principal. Consult a qualified financial advisor before making any investment decisions.</p>
+      <p>This article explains basic concepts about bonds for educational purposes. It is not investment advice. All investments carry risk, including loss of principal. Bond prices can decline. Consult a qualified financial advisor before making investment decisions.</p>
     </div>
 
     <article class="article-header">
@@ -92,100 +134,675 @@
       <h1>What is a Bond?</h1>
       <div class="meta">
         <span>Beginner Guide</span>
-        <span>•</span>
-        <span>5 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>14 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>Updated January 2026</span>
       </div>
     </article>
 
     <div class="content">
-      <p>
-        A <strong>bond</strong> is essentially a loan that you make to a borrower—typically a government or corporation. In exchange for lending your money, the borrower promises to pay you interest and return your principal at a specified future date. Bonds are one of the main asset classes alongside stocks and are often considered a more conservative investment.
-      </p>
+      <p>A <strong>bond</strong> is essentially a loan that you make to a borrower—typically a government or corporation. In exchange for lending your money, the borrower promises to pay you interest and return your principal at a specified future date. Bonds are one of the main asset classes alongside stocks and are often considered a more conservative investment.</p>
+
+      <p>In this comprehensive guide, we'll explore how bonds work, the different types, how bond prices and yields move, credit ratings, the risks involved, and how bonds compare to stocks.</p>
+
+      <!-- Table of Contents -->
+      <div class="info-box">
+        <h3>📑 Table of Contents</h3>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li>How Bonds Work</li>
+          <li>Key Bond Terms</li>
+          <li>Types of Bonds</li>
+          <li>How Bond Prices and Yields Move</li>
+          <li>Credit Ratings</li>
+          <li>Risks of Bond Ownership</li>
+          <li>Bonds vs. Stocks</li>
+          <li>FAQ: Frequently Asked Questions</li>
+        </ol>
+      </div>
 
       <h2>1. How Bonds Work</h2>
-      <p>
-        When you buy a bond, you're lending money to the issuer. The issuer agrees to pay you a specified interest rate (called the coupon) and to repay the original amount (called the principal or face value) when the bond matures.
-      </p>
-      <p>
-        For example, if you buy a $1,000 bond with a 5% annual coupon that matures in 10 years, you would receive $50 per year in interest payments, and after 10 years, you'd get your $1,000 back.
-      </p>
+      <p>When you buy a bond, you're lending money to the issuer. The issuer agrees to pay you a specified interest rate (called the coupon) and to repay the original amount (called the principal or face value) when the bond matures.</p>
 
-      <div class="info-box">
-        <h3>📋 Key Terms</h3>
-        <p><strong>Face Value (Par):</strong> The amount the bond will be worth at maturity, typically $1,000</p>
-        <p><strong>Coupon Rate:</strong> The annual interest rate paid on the bond</p>
-        <p><strong>Maturity Date:</strong> When the bond expires and principal is repaid</p>
-        <p><strong>Yield:</strong> The effective return on a bond, which can differ from the coupon rate</p>
+      <div class="formula-box">
+        <div style="color: var(--text-dim); margin-bottom: 10px;">Basic Bond Structure</div>
+        <div class="formula">You lend $1,000 → Receive interest payments → Get $1,000 back at maturity</div>
       </div>
 
-      <h2>2. Types of Bonds</h2>
-      <p>
-        <strong>Government Bonds:</strong> Issued by national governments. U.S. Treasury bonds are considered among the safest investments because they're backed by the U.S. government. However, "safe" doesn't mean risk-free—they can still lose value if interest rates rise.
-      </p>
-      <p>
-        <strong>Municipal Bonds:</strong> Issued by state and local governments to fund public projects. Interest is often exempt from federal taxes and sometimes state taxes.
-      </p>
-      <p>
-        <strong>Corporate Bonds:</strong> Issued by companies to raise capital. They typically offer higher interest rates than government bonds but carry more risk.
-      </p>
+      <h3>Bond Payment Example</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Bond Details</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Face Value (Par)</td>
+            <td>$1,000</td>
+          </tr>
+          <tr>
+            <td>Coupon Rate</td>
+            <td>5%</td>
+          </tr>
+          <tr>
+            <td>Annual Interest Payment</td>
+            <td class="highlight">$50</td>
+          </tr>
+          <tr>
+            <td>Maturity</td>
+            <td>10 years</td>
+          </tr>
+          <tr>
+            <td>Total Interest Over Life</td>
+            <td>$500 (10 × $50)</td>
+          </tr>
+          <tr>
+            <td>Total Return at Maturity</td>
+            <td class="green">$1,500 ($1,000 + $500)</td>
+          </tr>
+        </tbody>
+      </table>
 
       <div class="key-point">
-        <h4>💡 The Risk-Return Tradeoff</h4>
-        <p>Generally, bonds that offer higher interest rates carry more risk. A company offering a 10% yield is likely considered riskier than the U.S. government offering 4%. The higher rate compensates investors for taking on additional risk.</p>
+        <h4>💡 Key Insight</h4>
+        <p>Unlike stocks, bonds have a defined end date (maturity) when you get your principal back. If you hold a bond to maturity and the issuer doesn't default, you know exactly what you'll receive. This predictability is a major reason investors include bonds in their portfolios.</p>
       </div>
 
-      <h2>3. How Bond Prices Move</h2>
-      <p>
-        Bond prices and interest rates move in opposite directions. When interest rates rise, existing bond prices fall. When interest rates fall, existing bond prices rise.
-      </p>
-      <p>
-        This happens because of competition. If you own a bond paying 3% and new bonds are issued paying 5%, your bond becomes less attractive. Its price must drop so that buyers get a competitive return.
-      </p>
+      <h2>2. Key Bond Terms</h2>
+      <p>Understanding bond terminology is essential for evaluating fixed income investments:</p>
 
-      <h2>4. Credit Risk</h2>
-      <p>
-        Credit risk is the possibility that the bond issuer won't be able to make interest payments or repay the principal. Rating agencies like Moody's, S&P, and Fitch assess this risk and assign credit ratings.
-      </p>
-      <p>
-        Bonds rated BBB- or higher are considered "investment grade." Bonds rated below this are called "high-yield" or "junk" bonds—they offer higher interest rates but have a greater chance of default.
-      </p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>Definition</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Face Value (Par)</strong></td>
+            <td>Amount repaid at maturity</td>
+            <td>$1,000 (most common)</td>
+          </tr>
+          <tr>
+            <td><strong>Coupon Rate</strong></td>
+            <td>Annual interest rate as % of face value</td>
+            <td>5% = $50/year on $1,000 bond</td>
+          </tr>
+          <tr>
+            <td><strong>Coupon Payment</strong></td>
+            <td>Actual interest paid (usually semi-annual)</td>
+            <td>$25 every 6 months</td>
+          </tr>
+          <tr>
+            <td><strong>Maturity Date</strong></td>
+            <td>When principal is repaid</td>
+            <td>January 15, 2035</td>
+          </tr>
+          <tr>
+            <td><strong>Current Yield</strong></td>
+            <td>Coupon ÷ Current Price</td>
+            <td>$50 ÷ $950 = 5.26%</td>
+          </tr>
+          <tr>
+            <td><strong>Yield to Maturity (YTM)</strong></td>
+            <td>Total return if held to maturity</td>
+            <td>Accounts for price, coupons, time</td>
+          </tr>
+          <tr>
+            <td><strong>Duration</strong></td>
+            <td>Price sensitivity to interest rate changes</td>
+            <td>Higher duration = more volatile</td>
+          </tr>
+          <tr>
+            <td><strong>Premium</strong></td>
+            <td>Bond trading above par</td>
+            <td>$1,050 for $1,000 bond</td>
+          </tr>
+          <tr>
+            <td><strong>Discount</strong></td>
+            <td>Bond trading below par</td>
+            <td>$950 for $1,000 bond</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <h2>5. Risks of Bond Ownership</h2>
-      <p>
-        Many people think bonds are "safe," but they carry several risks:
-      </p>
-      <p>
-        <strong>Interest Rate Risk:</strong> If rates rise, your bond's market value falls. This matters if you need to sell before maturity.
-      </p>
-      <p>
-        <strong>Credit/Default Risk:</strong> The issuer might not pay. Even highly-rated issuers can run into trouble.
-      </p>
-      <p>
-        <strong>Inflation Risk:</strong> If inflation exceeds your bond's interest rate, your purchasing power declines even though you're receiving payments.
-      </p>
-      <p>
-        <strong>Reinvestment Risk:</strong> When your bond matures or pays interest, you might have to reinvest at lower rates.
-      </p>
+      <h2>3. Types of Bonds</h2>
+      <p>Bonds are categorized by issuer, each with different risk and return characteristics:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Bond Type</th>
+            <th>Issuer</th>
+            <th>Risk Level</th>
+            <th>Typical Yield</th>
+            <th>Tax Treatment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Treasury Bonds</strong></td>
+            <td>U.S. Federal Government</td>
+            <td class="green">Lowest (AAA)</td>
+            <td>Lowest</td>
+            <td>Federal tax; no state tax</td>
+          </tr>
+          <tr>
+            <td><strong>Treasury Notes</strong></td>
+            <td>U.S. Federal Government</td>
+            <td class="green">Lowest (AAA)</td>
+            <td>Lowest</td>
+            <td>Federal tax; no state tax</td>
+          </tr>
+          <tr>
+            <td><strong>Treasury Bills</strong></td>
+            <td>U.S. Federal Government</td>
+            <td class="green">Lowest (AAA)</td>
+            <td>Lowest</td>
+            <td>Federal tax; no state tax</td>
+          </tr>
+          <tr>
+            <td><strong>TIPS</strong></td>
+            <td>U.S. Federal Government</td>
+            <td class="green">Lowest</td>
+            <td>Inflation-adjusted</td>
+            <td>Federal tax; no state tax</td>
+          </tr>
+          <tr>
+            <td><strong>I Bonds</strong></td>
+            <td>U.S. Federal Government</td>
+            <td class="green">Lowest</td>
+            <td>Inflation-adjusted</td>
+            <td>Deferred until redemption</td>
+          </tr>
+          <tr>
+            <td><strong>Municipal Bonds</strong></td>
+            <td>State/Local Governments</td>
+            <td>Low-Moderate</td>
+            <td>Lower (tax advantage)</td>
+            <td class="highlight">Often tax-free</td>
+          </tr>
+          <tr>
+            <td><strong>Investment Grade Corporate</strong></td>
+            <td>Corporations (BBB- or higher)</td>
+            <td>Moderate</td>
+            <td>Moderate</td>
+            <td>Fully taxable</td>
+          </tr>
+          <tr>
+            <td><strong>High-Yield (Junk) Bonds</strong></td>
+            <td>Corporations (BB+ or lower)</td>
+            <td class="red">Higher</td>
+            <td class="highlight">Higher</td>
+            <td>Fully taxable</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>U.S. Treasury Securities by Maturity</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Security Type</th>
+            <th>Maturity</th>
+            <th>Interest Payment</th>
+            <th>Minimum Purchase</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Treasury Bills (T-Bills)</strong></td>
+            <td>4-52 weeks</td>
+            <td>Sold at discount, no coupon</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td><strong>Treasury Notes (T-Notes)</strong></td>
+            <td>2-10 years</td>
+            <td>Semi-annual coupon</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td><strong>Treasury Bonds (T-Bonds)</strong></td>
+            <td>20-30 years</td>
+            <td>Semi-annual coupon</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td><strong>TIPS</strong></td>
+            <td>5, 10, 30 years</td>
+            <td>Semi-annual (inflation-adjusted)</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td><strong>I Bonds</strong></td>
+            <td>30 years (1-year min hold)</td>
+            <td>Accrues (paid at redemption)</td>
+            <td>$25 electronic</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="green-box">
+        <h4>💡 Municipal Bond Tax Advantage</h4>
+        <p>Municipal bond interest is often exempt from federal taxes, and sometimes state/local taxes too. A 3% muni yield might equal a 4%+ taxable yield for someone in a high tax bracket. This is called "tax-equivalent yield."</p>
+      </div>
+
+      <h2>4. How Bond Prices and Yields Move</h2>
+      <p>Bond prices and interest rates move in <strong>opposite directions</strong>. This is one of the most important concepts in bond investing.</p>
+
+      <div class="formula-box">
+        <div class="formula">Interest Rates ↑ = Bond Prices ↓</div>
+        <div class="formula">Interest Rates ↓ = Bond Prices ↑</div>
+        <div class="example">This inverse relationship is fundamental to understanding bond markets</div>
+      </div>
+
+      <h3>Why Prices and Rates Move Inversely</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>What Happens</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Rates Rise</strong></td>
+            <td>Your existing bond pays less than new bonds → your bond's price falls to compensate buyers</td>
+            <td>You hold 3% bond; new bonds pay 5% → your bond price drops</td>
+          </tr>
+          <tr>
+            <td><strong>Rates Fall</strong></td>
+            <td>Your existing bond pays more than new bonds → your bond's price rises</td>
+            <td>You hold 5% bond; new bonds pay 3% → your bond price rises</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Interest Rate Impact Example</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Your Bond</th>
+            <th>When Rates Are 5%</th>
+            <th>If Rates Rise to 7%</th>
+            <th>If Rates Fall to 3%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Face Value</td>
+            <td>$1,000</td>
+            <td>$1,000</td>
+            <td>$1,000</td>
+          </tr>
+          <tr>
+            <td>Coupon Rate</td>
+            <td>5%</td>
+            <td>5%</td>
+            <td>5%</td>
+          </tr>
+          <tr>
+            <td>Annual Payment</td>
+            <td>$50</td>
+            <td>$50</td>
+            <td>$50</td>
+          </tr>
+          <tr>
+            <td><strong>Market Price</strong></td>
+            <td>$1,000 (par)</td>
+            <td class="red">~$860 (discount)</td>
+            <td class="green">~$1,180 (premium)</td>
+          </tr>
+          <tr>
+            <td>Current Yield</td>
+            <td>5.0%</td>
+            <td>5.8%</td>
+            <td>4.2%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Prices are approximate and depend on remaining maturity.</p>
+
+      <div class="key-point">
+        <h4>⚠️ Duration: Measuring Price Sensitivity</h4>
+        <p><strong>Duration</strong> measures how sensitive a bond's price is to interest rate changes. Longer-term bonds have higher duration and are more volatile. A bond with 10-year duration might lose ~10% if rates rise 1%. A 2-year duration bond might lose ~2%.</p>
+      </div>
+
+      <h2>5. Credit Ratings</h2>
+      <p>Credit rating agencies assess the likelihood that a bond issuer will repay its debts:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Moody's</th>
+            <th>S&P/Fitch</th>
+            <th>Grade</th>
+            <th>Risk Level</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aaa</td>
+            <td>AAA</td>
+            <td class="green">Investment Grade</td>
+            <td class="green">Lowest</td>
+            <td>Highest quality, minimal risk</td>
+          </tr>
+          <tr>
+            <td>Aa1-Aa3</td>
+            <td>AA+/AA/AA-</td>
+            <td class="green">Investment Grade</td>
+            <td class="green">Very Low</td>
+            <td>High quality, very low risk</td>
+          </tr>
+          <tr>
+            <td>A1-A3</td>
+            <td>A+/A/A-</td>
+            <td class="green">Investment Grade</td>
+            <td>Low</td>
+            <td>Upper-medium grade</td>
+          </tr>
+          <tr>
+            <td>Baa1-Baa3</td>
+            <td class="highlight">BBB+/BBB/BBB-</td>
+            <td class="highlight">Investment Grade</td>
+            <td>Moderate</td>
+            <td>Medium grade, adequate</td>
+          </tr>
+          <tr>
+            <td>Ba1-Ba3</td>
+            <td>BB+/BB/BB-</td>
+            <td class="red">High Yield (Junk)</td>
+            <td class="red">Substantial</td>
+            <td>Speculative elements</td>
+          </tr>
+          <tr>
+            <td>B1-B3</td>
+            <td>B+/B/B-</td>
+            <td class="red">High Yield (Junk)</td>
+            <td class="red">High</td>
+            <td>Highly speculative</td>
+          </tr>
+          <tr>
+            <td>Caa-C</td>
+            <td>CCC-C</td>
+            <td class="red">High Yield (Junk)</td>
+            <td class="red">Very High</td>
+            <td>Near or in default</td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>D</td>
+            <td class="red">Default</td>
+            <td class="red">In Default</td>
+            <td>Not paying obligations</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ Rating Caveats</h4>
+        <p>Credit ratings are opinions, not guarantees. Highly-rated bonds can still default (remember Lehman Brothers was investment grade before collapse). Ratings can change. Don't rely solely on ratings—they're one input among many.</p>
+      </div>
+
+      <h2>6. Risks of Bond Ownership</h2>
+      <p>Many people think bonds are "safe," but they carry several important risks:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Risk Type</th>
+            <th>Description</th>
+            <th>Most Affected</th>
+            <th>Mitigation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Interest Rate Risk</strong></td>
+            <td>Bond prices fall when rates rise</td>
+            <td>Long-term bonds</td>
+            <td>Shorter duration, hold to maturity</td>
+          </tr>
+          <tr>
+            <td><strong>Credit/Default Risk</strong></td>
+            <td>Issuer fails to pay</td>
+            <td>High-yield, corporate bonds</td>
+            <td>Diversify, stick to investment grade</td>
+          </tr>
+          <tr>
+            <td><strong>Inflation Risk</strong></td>
+            <td>Fixed payments lose purchasing power</td>
+            <td>Long-term, fixed-rate bonds</td>
+            <td>TIPS, I Bonds, shorter maturities</td>
+          </tr>
+          <tr>
+            <td><strong>Reinvestment Risk</strong></td>
+            <td>Must reinvest at lower rates</td>
+            <td>High-coupon bonds, callable bonds</td>
+            <td>Bond ladders, longer maturities</td>
+          </tr>
+          <tr>
+            <td><strong>Liquidity Risk</strong></td>
+            <td>Can't sell without price impact</td>
+            <td>Smaller issues, municipal bonds</td>
+            <td>Treasuries, large corporate issues</td>
+          </tr>
+          <tr>
+            <td><strong>Call Risk</strong></td>
+            <td>Issuer repays early (when rates fall)</td>
+            <td>Callable bonds</td>
+            <td>Non-callable bonds, Treasuries</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>2022: A Lesson in Bond Risk</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Bond Type</th>
+            <th>2022 Return</th>
+            <th>What Happened</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Long-Term Treasury Bonds</td>
+            <td class="red">-30%</td>
+            <td>Fed raised rates aggressively</td>
+          </tr>
+          <tr>
+            <td>Investment Grade Corporate</td>
+            <td class="red">-15%</td>
+            <td>Rising rates + spread widening</td>
+          </tr>
+          <tr>
+            <td>Aggregate Bond Index (BND)</td>
+            <td class="red">-13%</td>
+            <td>Worst year in decades</td>
+          </tr>
+          <tr>
+            <td>Short-Term Treasury</td>
+            <td class="red">-4%</td>
+            <td>Less sensitive to rates</td>
+          </tr>
+          <tr>
+            <td>I Bonds</td>
+            <td class="green">+9.6%</td>
+            <td>Inflation protection worked</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="blue-box">
+        <h4>📊 The 2022 Lesson</h4>
+        <p>2022 showed that bonds can have significant losses, especially long-duration bonds when rates rise rapidly. "Safe" doesn't mean "can't lose money." Understanding duration and interest rate risk is crucial for bond investors.</p>
+      </div>
+
+      <h2>7. Bonds vs. Stocks</h2>
+
+      <div class="compare-grid">
+        <div class="compare-box bonds">
+          <h4>📋 Bonds</h4>
+          <ul>
+            <li>You're a lender (creditor)</li>
+            <li>Fixed interest payments</li>
+            <li>Principal returned at maturity</li>
+            <li>Higher priority in bankruptcy</li>
+            <li>Generally lower volatility</li>
+            <li>Limited upside potential</li>
+            <li>Sensitive to interest rates</li>
+          </ul>
+        </div>
+        <div class="compare-box stocks">
+          <h4>📈 Stocks</h4>
+          <ul>
+            <li>You're an owner (equity holder)</li>
+            <li>Dividends not guaranteed</li>
+            <li>No maturity date or return of principal</li>
+            <li>Last in line in bankruptcy</li>
+            <li>Generally higher volatility</li>
+            <li>Unlimited upside potential</li>
+            <li>Sensitive to company performance</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Historical Returns Comparison</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Asset Class</th>
+            <th>Long-Term Avg Annual Return</th>
+            <th>Typical Volatility</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>U.S. Stocks</strong></td>
+            <td class="green">~10%</td>
+            <td class="red">High (~15-20%)</td>
+            <td>Long-term growth</td>
+          </tr>
+          <tr>
+            <td><strong>Long-Term Government Bonds</strong></td>
+            <td>~5%</td>
+            <td>Moderate (~10%)</td>
+            <td>Income, moderate risk</td>
+          </tr>
+          <tr>
+            <td><strong>Short-Term Government Bonds</strong></td>
+            <td>~3%</td>
+            <td class="green">Low (~2-3%)</td>
+            <td>Stability, short-term</td>
+          </tr>
+          <tr>
+            <td><strong>Corporate Bonds</strong></td>
+            <td>~6%</td>
+            <td>Moderate (~8%)</td>
+            <td>Income + some growth</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Historical returns vary by time period. Past performance doesn't guarantee future results.</p>
+
+      <h2>8. FAQ: Frequently Asked Questions</h2>
+      
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question">Are bonds "safe" investments?</div>
+          <div class="faq-answer">It depends on what you mean by "safe." U.S. Treasury bonds have minimal default risk—the government is extremely unlikely to not pay. But all bonds carry interest rate risk—if rates rise, bond prices fall. In 2022, some bond funds lost 30%+. Bonds are generally less volatile than stocks, but they're not risk-free.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Why would I buy bonds if stocks have higher returns?</div>
+          <div class="faq-answer">Bonds provide: (1) more predictable income, (2) lower volatility, (3) diversification from stocks, and (4) principal protection if held to maturity. While stocks have higher long-term returns, they can lose 40-50% in bad years. Bonds can cushion portfolio volatility and provide stability, especially for retirees or those with shorter time horizons.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Should I buy individual bonds or bond funds?</div>
+          <div class="faq-answer">Individual bonds: you control exactly what you own, can hold to maturity and ignore price fluctuations, but requires larger investment for diversification. Bond funds: instant diversification, professional management, but no maturity date (so you can't "wait it out"), and NAV fluctuates daily. Both approaches have merit depending on your situation and investment size.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's the difference between yield and coupon rate?</div>
+          <div class="faq-answer">Coupon rate is the fixed interest rate stated on the bond (e.g., 5%). Yield reflects your actual return based on what you paid. If you buy a 5% coupon bond at a discount ($950), your current yield is higher than 5% ($50/$950 = 5.26%). If you pay a premium ($1,050), your yield is lower ($50/$1,050 = 4.76%). Yield to Maturity (YTM) accounts for the full picture including price changes at maturity.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do rising interest rates affect my bonds?</div>
+          <div class="faq-answer">Rising rates cause existing bond prices to fall. The longer your bond's duration, the bigger the price drop. However, if you hold to maturity, you still get your full principal back (assuming no default). Rising rates also mean you can reinvest coupon payments at higher rates. Short-term pain, potentially long-term gain.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What are TIPS and I Bonds?</div>
+          <div class="faq-answer">TIPS (Treasury Inflation-Protected Securities) and I Bonds are government bonds that adjust for inflation. TIPS' principal adjusts with CPI; I Bonds' interest rate adjusts. Both protect purchasing power against inflation. I Bonds are especially popular because they're accessible ($25 minimum), tax-deferred, and have had high rates during recent inflation. Purchase limits apply ($10K/year for I Bonds).</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can I lose all my money in bonds?</div>
+          <div class="faq-answer">For U.S. government bonds, essentially no—the federal government can print money to pay obligations. For corporate bonds, yes—if a company defaults and has no assets, bondholders can lose their entire investment. High-yield "junk" bonds have meaningful default rates. Diversification across many issuers reduces this risk significantly. Bond funds spread risk across hundreds of bonds.</div>
+        </div>
+      </div>
 
       <h2>Conclusion</h2>
-      <p>
-        Bonds are debt instruments that pay interest and return principal at maturity. They're often viewed as less volatile than stocks, but they're not risk-free. Interest rate changes, credit risk, and inflation can all affect bond returns. Understanding these basics is essential before considering bonds as part of any investment approach.
-      </p>
+      <p>Bonds are debt instruments where you lend money to governments or corporations in exchange for interest payments and return of principal at maturity. They're a core asset class that can provide income, diversification, and relative stability compared to stocks.</p>
+
+      <p>Key takeaways:</p>
+      <ul>
+        <li>Bonds = lending money; Stocks = owning a company</li>
+        <li>Bond prices and interest rates move in opposite directions</li>
+        <li>Longer-duration bonds are more sensitive to rate changes</li>
+        <li>Credit ratings indicate default risk (but aren't guarantees)</li>
+        <li>Types range from ultra-safe Treasuries to high-yield corporate bonds</li>
+        <li>"Safe" doesn't mean "can't lose money"—2022 proved this</li>
+        <li>TIPS and I Bonds offer inflation protection</li>
+        <li>Bonds provide portfolio diversification and income</li>
+      </ul>
+
+      <p>Understanding bonds and their risks is essential for building a diversified portfolio. While they're generally less volatile than stocks, they require careful attention to interest rate risk, credit risk, and inflation risk.</p>
+
+      <!-- Related Articles -->
+      <h3 style="margin-top: 60px; margin-bottom: 24px;">📚 Related Articles</h3>
+      <div class="related-articles">
+        <a href="/blog/what-is-inflation.html" class="related-card">
+          <h4>What Is Inflation?</h4>
+          <p>How inflation erodes bond purchasing power</p>
+        </a>
+        <a href="/blog/what-is-diversification.html" class="related-card">
+          <h4>What Is Diversification?</h4>
+          <p>Balancing stocks and bonds in a portfolio</p>
+        </a>
+        <a href="/blog/what-is-compound-interest.html" class="related-card">
+          <h4>What Is Compound Interest?</h4>
+          <p>How interest payments grow over time</p>
+        </a>
+      </div>
 
       <div class="reading-section">
-        <h3>📚 Further Reading</h3>
+        <h3>📖 Official Resources</h3>
         <ul>
           <li><a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products/bonds" target="_blank" rel="noopener">SEC: Introduction to Bonds</a></li>
-          <li><a href="https://www.investopedia.com/terms/b/bond.asp" target="_blank" rel="noopener">Investopedia: Bond Definition</a></li>
-          <li><a href="https://www.treasurydirect.gov/marketable-securities/" target="_blank" rel="noopener">TreasuryDirect: U.S. Treasury Securities</a></li>
+          <li><a href="https://www.treasurydirect.gov/" target="_blank" rel="noopener">TreasuryDirect: Buy Government Securities</a></li>
+          <li><a href="https://www.finra.org/investors/learn-to-invest/types-investments/bonds" target="_blank" rel="noopener">FINRA: Understanding Bonds</a></li>
         </ul>
       </div>
 
       <div class="warning-box" style="margin-top: 50px;">
         <h4>⚠️ Final Reminder</h4>
-        <p>This article is for educational purposes only and does not constitute investment advice. Bond investments can lose value, and issuers can default. Always do your own research and consider consulting a qualified financial advisor before investing.</p>
+        <p>This article is for educational purposes only and does not constitute investment advice. Bond investments can lose value, and issuers can default. Interest rate changes significantly impact bond prices. Past performance does not guarantee future results. Consult a qualified financial advisor before making investment decisions.</p>
       </div>
-
     </div>
   </main>
 
@@ -194,12 +811,13 @@
       <a href="/about.html">About</a>
       <a href="/contact.html">Contact</a>
       <a href="/privacy.html">Privacy</a>
-      <a href="/legal.html">Terms & Disclaimer</a>
+      <a href="/legal.html">Terms</a>
     </div>
     <div class="footer-disclaimer">
-      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk. Past performance does not guarantee future results.
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk including the potential loss of principal. Past performance does not guarantee future results.
     </div>
   </footer>
-
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
