@@ -3,95 +3,926 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What are Treasury Bonds? | US Market Terminals</title>
-  <meta name="description" content="Educational guide explaining U.S. Treasury securities including T-Bills, T-Notes, and T-Bonds, how they work, and their role in portfolios.">
+  <title>What are Treasury Bonds? Complete Guide to U.S. Government Securities | US Market Terminals</title>
+  <meta name="description" content="Comprehensive guide to U.S. Treasury securities including T-Bills, T-Notes, T-Bonds, TIPS, and I Bonds. Learn how they work, how to buy them, yield curves, and their role in portfolios.">
+  <meta name="keywords" content="Treasury bonds, T-Bills, T-Notes, T-Bonds, TIPS, I Bonds, TreasuryDirect, yield curve, government bonds, fixed income">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog/what-are-treasury-bonds.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #3b82f6; --accent-glow: rgba(59, 130, 246, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); }
-    * { margin: 0; padding: 0; box-sizing: border-box; } body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; } a { text-decoration: none; }
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #3b82f6; --accent-glow: rgba(59, 130, 246, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); --green: #22c55e; --green-glow: rgba(34, 197, 94, 0.1); }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; }
+    
     .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
     .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; } .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; }
+    
+    .container { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    
     .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
-    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; } .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; }
+    .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
+    
     .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
     .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
     .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
-    .content { font-size: 1.1rem; color: #cbd5e1; } .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; }
-    .content p { margin-bottom: 28px; text-align: justify; line-height: 1.9; } .content strong { color: #fff; }
+    
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: #fff; margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; line-height: 1.9; }
+    .content strong { color: #fff; }
+    .content ul, .content ol { margin-bottom: 24px; padding-left: 24px; }
+    .content li { margin-bottom: 12px; }
+    
+    .formula-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; font-family: 'JetBrains Mono', monospace; text-align: center; }
+    .formula-box .formula { font-size: 1.2rem; color: var(--accent); margin: 15px 0; }
+    .formula-box .example { font-size: 0.95rem; color: var(--text-dim); margin-top: 15px; }
+    
     .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
-    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; } .info-box p { margin-bottom: 12px; font-size: 1rem; }
-    .key-point { background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
-    .key-point h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; } .key-point p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    
+    .key-point { background: var(--accent-glow); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    .green-box { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .green-box h4 { color: #4ade80; margin-bottom: 10px; font-size: 1rem; }
+    .green-box p { margin: 0; color: #86efac; font-size: 0.95rem; }
+    
+    .blue-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .blue-box h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .blue-box p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    .data-table th { background: var(--accent-glow); color: var(--accent); font-weight: 700; text-align: left; padding: 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table .highlight { color: var(--accent); font-weight: 700; }
+    .data-table .green { color: var(--green); font-weight: 700; }
+    .data-table .dim { color: var(--text-dim); }
+    .data-table .red { color: #f87171; font-weight: 700; }
+    .data-table .blue { color: var(--accent); font-weight: 700; }
+    
+    /* Comparison Grid */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .compare-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .compare-box h4 { margin-bottom: 16px; font-size: 1.1rem; color: #fff; }
+    .compare-box ul { margin: 0; padding-left: 20px; }
+    .compare-box li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dim); }
+    .compare-box.tips { border-color: rgba(59, 130, 246, 0.3); }
+    .compare-box.tips h4 { color: var(--accent); }
+    .compare-box.ibonds { border-color: rgba(34, 197, 94, 0.3); }
+    .compare-box.ibonds h4 { color: var(--green); }
+    
+    /* FAQ Section */
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+    .faq-answer { padding: 0 24px 20px; color: var(--text-dim); line-height: 1.8; display: block; }
+    
     .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
-    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; } .reading-section ul { margin: 0; padding-left: 20px; } .reading-section li { margin-bottom: 10px; } .reading-section a { color: #93c5fd; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
+    .reading-section ul { margin: 0; padding-left: 20px; }
+    .reading-section li { margin-bottom: 10px; }
+    .reading-section a { color: #93c5fd; }
+    
+    /* Related Articles */
+    .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+    .related-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .related-card h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
+    .related-card p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    
     footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
-    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; } .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
     .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+    
+    @media (max-width: 768px) {
+      .data-table { font-size: 0.85rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .related-articles { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <nav class="nav"><div class="nav-container"><a href="/index.html" class="logo">📊 US MARKET TERMINALS</a><div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">Educational Content</div></div></nav>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">Educational Content</div>
+    </div>
+  </nav>
+
   <main class="container">
-    <div class="warning-box"><h4>⚠️ Educational Purpose Only</h4><p>This article explains Treasury securities for educational purposes. It is not investment advice. All investments carry risk including Treasuries. Consult a qualified financial advisor.</p></div>
+    <div class="warning-box">
+      <h4>⚠️ Educational Purpose Only</h4>
+      <p>This article explains U.S. Treasury securities for educational purposes. It is not investment advice. All investments carry risk, including Treasuries. Interest rate changes can cause losses. Consult a qualified financial advisor.</p>
+    </div>
+
     <article class="article-header">
       <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
       <span class="tag">Fixed Income</span>
       <h1>What are Treasury Bonds?</h1>
-      <div class="meta"><span>Intermediate Guide</span><span>•</span><span>5 min read</span></div>
+      <div class="meta">
+        <span>Intermediate Guide</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>14 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>Updated January 2026</span>
+      </div>
     </article>
+
     <div class="content">
-      <p><strong>Treasury securities</strong> are debt instruments issued by the U.S. government to finance its operations. When you buy a Treasury, you're lending money to the federal government, which promises to repay with interest. They're often considered among the lowest-risk investments available.</p>
+      <p><strong>Treasury securities</strong> are debt instruments issued by the U.S. government to finance its operations. When you buy a Treasury, you're lending money to the federal government, which promises to repay with interest. They're often considered among the lowest-risk investments available because they're backed by the "full faith and credit" of the U.S. government.</p>
+
+      <p>In this comprehensive guide, we'll explore the different types of Treasury securities, how they work, how to buy them, the yield curve, inflation-protected options, risks, and how Treasuries fit into an investment portfolio.</p>
+
+      <!-- Table of Contents -->
+      <div class="info-box">
+        <h3>📑 Table of Contents</h3>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li>Types of Treasury Securities</li>
+          <li>How Treasury Securities Work</li>
+          <li>How to Buy Treasuries</li>
+          <li>Understanding the Yield Curve</li>
+          <li>Inflation-Protected Securities: TIPS vs. I Bonds</li>
+          <li>Tax Treatment</li>
+          <li>Interest Rate Risk and Duration</li>
+          <li>Treasury ETFs and Funds</li>
+          <li>Risks of Treasury Investing</li>
+          <li>FAQ: Frequently Asked Questions</li>
+        </ol>
+      </div>
 
       <h2>1. Types of Treasury Securities</h2>
-      <div class="info-box">
-        <h3>📊 Treasury Security Types</h3>
-        <p><strong>Treasury Bills (T-Bills):</strong> Short-term, maturing in 4 weeks to 1 year. Sold at a discount; you receive face value at maturity.</p>
-        <p><strong>Treasury Notes (T-Notes):</strong> Medium-term, maturing in 2-10 years. Pay interest every 6 months.</p>
-        <p><strong>Treasury Bonds (T-Bonds):</strong> Long-term, maturing in 20-30 years. Pay interest every 6 months.</p>
-        <p><strong>TIPS (Treasury Inflation-Protected Securities):</strong> Principal adjusts with inflation (CPI). Available in 5, 10, and 30-year terms.</p>
-        <p><strong>I Bonds:</strong> Savings bonds with rates tied to inflation. Subject to purchase limits.</p>
+      <p>The U.S. Treasury issues several types of securities with different maturities and characteristics:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Security Type</th>
+            <th>Maturity</th>
+            <th>Interest Payment</th>
+            <th>Minimum Purchase</th>
+            <th>Key Feature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Treasury Bills (T-Bills)</strong></td>
+            <td>4, 8, 13, 17, 26, 52 weeks</td>
+            <td>Sold at discount</td>
+            <td>$100</td>
+            <td>Short-term, no coupon payments</td>
+          </tr>
+          <tr>
+            <td><strong>Treasury Notes (T-Notes)</strong></td>
+            <td>2, 3, 5, 7, 10 years</td>
+            <td>Semi-annual coupon</td>
+            <td>$100</td>
+            <td class="highlight">Most commonly traded</td>
+          </tr>
+          <tr>
+            <td><strong>Treasury Bonds (T-Bonds)</strong></td>
+            <td>20, 30 years</td>
+            <td>Semi-annual coupon</td>
+            <td>$100</td>
+            <td>Long-term, highest duration</td>
+          </tr>
+          <tr>
+            <td><strong>TIPS</strong></td>
+            <td>5, 10, 30 years</td>
+            <td>Semi-annual (inflation-adjusted)</td>
+            <td>$100</td>
+            <td class="green">Principal adjusts with CPI</td>
+          </tr>
+          <tr>
+            <td><strong>I Bonds</strong></td>
+            <td>30 years (1-year min hold)</td>
+            <td>Accrues (paid at redemption)</td>
+            <td>$25 electronic</td>
+            <td class="green">Rate adjusts with inflation</td>
+          </tr>
+          <tr>
+            <td><strong>FRNs (Floating Rate Notes)</strong></td>
+            <td>2 years</td>
+            <td>Quarterly (variable)</td>
+            <td>$100</td>
+            <td>Rate adjusts with T-Bill rates</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>2. How Treasury Securities Work</h2>
+      
+      <h3>T-Bills: Zero-Coupon Securities</h3>
+      <p>T-Bills don't pay periodic interest. Instead, they're sold at a <strong>discount</strong> to face value and you receive the full face value at maturity. The difference is your interest.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>T-Bill Example</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Face Value</td>
+            <td>$10,000</td>
+          </tr>
+          <tr>
+            <td>Purchase Price (26-week bill at 5% annual)</td>
+            <td>$9,756</td>
+          </tr>
+          <tr>
+            <td>Maturity (26 weeks later)</td>
+            <td>$10,000</td>
+          </tr>
+          <tr>
+            <td><strong>Interest Earned</strong></td>
+            <td class="highlight">$244</td>
+          </tr>
+          <tr>
+            <td>Annualized Yield</td>
+            <td>~5.0%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>T-Notes and T-Bonds: Coupon Securities</h3>
+      <p>Notes and Bonds pay interest (coupon) every 6 months. At maturity, you receive your final coupon payment plus the face value.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>10-Year T-Note Example</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Face Value</td>
+            <td>$10,000</td>
+          </tr>
+          <tr>
+            <td>Coupon Rate</td>
+            <td>4.5%</td>
+          </tr>
+          <tr>
+            <td>Annual Interest</td>
+            <td>$450</td>
+          </tr>
+          <tr>
+            <td>Semi-Annual Payment</td>
+            <td class="highlight">$225 every 6 months</td>
+          </tr>
+          <tr>
+            <td>Total Payments Over 10 Years</td>
+            <td>20 payments × $225 = $4,500</td>
+          </tr>
+          <tr>
+            <td>At Maturity</td>
+            <td>Final $225 + $10,000 face value</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>💡 Price vs. Yield</h4>
+        <p>When you buy a Treasury at auction, you receive the stated coupon rate. But on the secondary market, prices fluctuate. If you pay more than face value (premium), your effective yield is lower than the coupon. If you pay less (discount), your yield is higher. The "yield to maturity" (YTM) accounts for this difference.</p>
       </div>
-
-      <h2>2. Why Treasuries are Considered "Safe"</h2>
-      <p>U.S. Treasuries are backed by the "full faith and credit" of the federal government. The U.S. has never defaulted on its debt obligations, and the government can raise taxes or, theoretically, create money to meet its obligations.</p>
-      <p>This doesn't mean Treasuries are risk-free—they carry interest rate risk and inflation risk—but credit risk (the risk of not being repaid) is considered minimal.</p>
-
-      <div class="key-point"><h4>⚠️ "Safe" Doesn't Mean "Risk-Free"</h4><p>If you sell a Treasury before maturity, you may receive less than you paid if interest rates have risen. And if inflation exceeds your Treasury's yield, your purchasing power decreases. Treasuries guarantee repayment of principal at maturity, not positive real returns.</p></div>
 
       <h2>3. How to Buy Treasuries</h2>
-      <p><strong>TreasuryDirect:</strong> The government's website where you can buy Treasuries directly without fees.</p>
-      <p><strong>Brokerage Accounts:</strong> Most brokerages allow purchasing Treasuries on the secondary market.</p>
-      <p><strong>Treasury ETFs/Funds:</strong> Funds that hold baskets of Treasuries, providing diversification and liquidity.</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Best For</th>
+            <th>Fees</th>
+            <th>Pros</th>
+            <th>Cons</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>TreasuryDirect.gov</strong></td>
+            <td>Buy-and-hold investors</td>
+            <td class="green">None</td>
+            <td>No fees, direct from government, required for I Bonds</td>
+            <td>Clunky interface, can't sell easily</td>
+          </tr>
+          <tr>
+            <td><strong>Brokerage (Secondary)</strong></td>
+            <td>Active traders, flexibility</td>
+            <td>Low/None</td>
+            <td>Easy to buy/sell, integrates with portfolio</td>
+            <td>Slight bid-ask spread</td>
+          </tr>
+          <tr>
+            <td><strong>Brokerage (Auction)</strong></td>
+            <td>New issues at auction</td>
+            <td class="green">None</td>
+            <td>Auction prices, convenient</td>
+            <td>Not all brokers offer all auctions</td>
+          </tr>
+          <tr>
+            <td><strong>Treasury ETFs</strong></td>
+            <td>Diversification, liquidity</td>
+            <td>Expense ratio (0.03-0.15%)</td>
+            <td>Instant diversification, very liquid</td>
+            <td>No maturity date, ongoing fees</td>
+          </tr>
+          <tr>
+            <td><strong>Treasury Mutual Funds</strong></td>
+            <td>401(k), automatic investing</td>
+            <td>Expense ratio varies</td>
+            <td>Auto-invest, available in retirement plans</td>
+            <td>Higher fees than ETFs typically</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <h2>4. The Yield Curve</h2>
-      <p>The <strong>yield curve</strong> plots Treasury yields across different maturities. Normally, longer-term Treasuries yield more than shorter-term ones to compensate for the longer commitment.</p>
-      <p>When short-term yields exceed long-term yields, it's called an "inverted yield curve"—historically associated with economic recessions, though the relationship isn't guaranteed.</p>
+      <h3>TreasuryDirect Purchase Limits</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Security</th>
+            <th>Annual Purchase Limit</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>T-Bills</td>
+            <td>$10 million per auction</td>
+            <td>Non-competitive bids</td>
+          </tr>
+          <tr>
+            <td>T-Notes</td>
+            <td>$10 million per auction</td>
+            <td>Non-competitive bids</td>
+          </tr>
+          <tr>
+            <td>T-Bonds</td>
+            <td>$10 million per auction</td>
+            <td>Non-competitive bids</td>
+          </tr>
+          <tr>
+            <td>TIPS</td>
+            <td>$10 million per auction</td>
+            <td>Non-competitive bids</td>
+          </tr>
+          <tr>
+            <td><strong>I Bonds</strong></td>
+            <td class="highlight">$10,000/person (electronic)</td>
+            <td>+$5,000 paper via tax refund</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <h2>5. Risks of Treasury Investing</h2>
-      <p><strong>Interest Rate Risk:</strong> If rates rise, the market value of your Treasuries falls. This matters if you sell before maturity.</p>
-      <p><strong>Inflation Risk:</strong> Fixed payments may lose purchasing power if inflation exceeds expectations.</p>
-      <p><strong>Opportunity Cost:</strong> Lower yields mean potentially lower returns compared to riskier investments.</p>
-      <p><strong>Reinvestment Risk:</strong> When your Treasury matures, you may have to reinvest at lower rates.</p>
+      <h2>4. Understanding the Yield Curve</h2>
+      <p>The <strong>yield curve</strong> plots Treasury yields across different maturities. It's one of the most watched indicators in finance.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Yield Curve Shape</th>
+            <th>What It Looks Like</th>
+            <th>What It May Indicate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Normal (Upward Sloping)</strong></td>
+            <td>Short rates < Long rates</td>
+            <td class="green">Economic growth expected</td>
+          </tr>
+          <tr>
+            <td><strong>Flat</strong></td>
+            <td>Short rates ≈ Long rates</td>
+            <td>Uncertainty, transition period</td>
+          </tr>
+          <tr>
+            <td><strong>Inverted</strong></td>
+            <td>Short rates > Long rates</td>
+            <td class="red">Recession warning (historically)</td>
+          </tr>
+          <tr>
+            <td><strong>Steep</strong></td>
+            <td>Large gap between short and long</td>
+            <td>Strong growth expected, Fed may be accommodative</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Sample Yield Curve Data</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Maturity</th>
+            <th>Normal Curve</th>
+            <th>Inverted Curve</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 Month</td>
+            <td>4.50%</td>
+            <td class="red">5.40%</td>
+          </tr>
+          <tr>
+            <td>3 Month</td>
+            <td>4.60%</td>
+            <td class="red">5.35%</td>
+          </tr>
+          <tr>
+            <td>6 Month</td>
+            <td>4.70%</td>
+            <td class="red">5.25%</td>
+          </tr>
+          <tr>
+            <td>1 Year</td>
+            <td>4.85%</td>
+            <td>5.10%</td>
+          </tr>
+          <tr>
+            <td>2 Year</td>
+            <td>5.00%</td>
+            <td>4.80%</td>
+          </tr>
+          <tr>
+            <td>5 Year</td>
+            <td>5.20%</td>
+            <td>4.50%</td>
+          </tr>
+          <tr>
+            <td>10 Year</td>
+            <td class="highlight">5.40%</td>
+            <td>4.30%</td>
+          </tr>
+          <tr>
+            <td>30 Year</td>
+            <td class="highlight">5.60%</td>
+            <td>4.40%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ Yield Curve Caution</h4>
+        <p>While an inverted yield curve has preceded past recessions, it's not a perfect predictor. The timing between inversion and recession varies (6 months to 2 years historically). And sometimes inversions occur without recession. It's an indicator, not a guarantee.</p>
+      </div>
+
+      <h2>5. Inflation-Protected Securities: TIPS vs. I Bonds</h2>
+      <p>Both TIPS and I Bonds protect against inflation, but they work differently:</p>
+
+      <div class="compare-grid">
+        <div class="compare-box tips">
+          <h4>📊 TIPS</h4>
+          <ul>
+            <li>Traded on secondary market</li>
+            <li>Principal adjusts with CPI</li>
+            <li>Pay semi-annual coupon on adjusted principal</li>
+            <li>No purchase limit</li>
+            <li>Subject to "phantom income" tax issue</li>
+            <li>Can be bought via ETFs (TIP, SCHP)</li>
+            <li>Price fluctuates daily</li>
+          </ul>
+        </div>
+        <div class="compare-box ibonds">
+          <h4>💰 I Bonds</h4>
+          <ul>
+            <li>Only through TreasuryDirect</li>
+            <li>Interest rate adjusts with CPI</li>
+            <li>Interest accrues (paid at redemption)</li>
+            <li>$10,000/year limit per person</li>
+            <li>Tax deferred until redemption</li>
+            <li>Cannot be sold (only redeemed)</li>
+            <li>No price volatility</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>TIPS vs. I Bonds Detailed Comparison</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>TIPS</th>
+            <th>I Bonds</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>How to Buy</strong></td>
+            <td>TreasuryDirect, brokers, ETFs</td>
+            <td>TreasuryDirect only</td>
+          </tr>
+          <tr>
+            <td><strong>Maturities</strong></td>
+            <td>5, 10, 30 years</td>
+            <td>30 years (redeemable after 1 year)</td>
+          </tr>
+          <tr>
+            <td><strong>Annual Limit</strong></td>
+            <td class="green">None</td>
+            <td class="red">$10,000 electronic + $5,000 paper</td>
+          </tr>
+          <tr>
+            <td><strong>Inflation Adjustment</strong></td>
+            <td>Principal adjusts</td>
+            <td>Interest rate adjusts</td>
+          </tr>
+          <tr>
+            <td><strong>Interest Payment</strong></td>
+            <td>Semi-annual cash</td>
+            <td>Accrues (paid at redemption)</td>
+          </tr>
+          <tr>
+            <td><strong>Minimum Hold</strong></td>
+            <td>None (can sell anytime)</td>
+            <td class="red">1 year minimum</td>
+          </tr>
+          <tr>
+            <td><strong>Early Redemption Penalty</strong></td>
+            <td>Market price (could be loss)</td>
+            <td>3 months interest if < 5 years</td>
+          </tr>
+          <tr>
+            <td><strong>Tax Timing</strong></td>
+            <td>Annual (phantom income issue)</td>
+            <td class="green">Deferred until redemption</td>
+          </tr>
+          <tr>
+            <td><strong>Liquidity</strong></td>
+            <td class="green">High (market-traded)</td>
+            <td class="red">Low (redemption only)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="green-box">
+        <h4>💡 I Bonds Sweet Spot</h4>
+        <p>I Bonds are particularly attractive for their simplicity: no price volatility, tax-deferred growth, and guaranteed inflation protection. The main limitation is the $10,000 annual purchase limit. They're excellent for emergency funds or shorter-term savings where you want inflation protection without market risk.</p>
+      </div>
+
+      <h2>6. Tax Treatment</h2>
+      <p>Treasury interest has a unique tax advantage: it's exempt from state and local income taxes.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Tax Type</th>
+            <th>Treasury Interest</th>
+            <th>Corporate Bond Interest</th>
+            <th>Municipal Bond Interest</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Federal Income Tax</strong></td>
+            <td class="red">Taxable</td>
+            <td class="red">Taxable</td>
+            <td class="green">Usually exempt</td>
+          </tr>
+          <tr>
+            <td><strong>State Income Tax</strong></td>
+            <td class="green">Exempt</td>
+            <td class="red">Taxable</td>
+            <td>Varies (often exempt if in-state)</td>
+          </tr>
+          <tr>
+            <td><strong>Local Income Tax</strong></td>
+            <td class="green">Exempt</td>
+            <td class="red">Taxable</td>
+            <td>Varies</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>State Tax Benefit Example</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Treasury</th>
+            <th>Corporate Bond</th>
+            <th>Difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Interest Earned</td>
+            <td>$5,000</td>
+            <td>$5,000</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Federal Tax (24% bracket)</td>
+            <td>$1,200</td>
+            <td>$1,200</td>
+            <td>$0</td>
+          </tr>
+          <tr>
+            <td>State Tax (CA: 9.3%)</td>
+            <td class="green">$0</td>
+            <td>$465</td>
+            <td class="green">$465 saved</td>
+          </tr>
+          <tr>
+            <td><strong>Total Tax</strong></td>
+            <td class="highlight">$1,200</td>
+            <td>$1,665</td>
+            <td class="green">$465 saved</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Tax benefit is most valuable in high-tax states like CA, NY, NJ.</p>
+
+      <h2>7. Interest Rate Risk and Duration</h2>
+      <p>Even "safe" Treasuries can lose money if you sell before maturity and rates have risen. <strong>Duration</strong> measures this sensitivity:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Treasury Type</th>
+            <th>Approximate Duration</th>
+            <th>If Rates Rise 1%</th>
+            <th>If Rates Fall 1%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3-Month T-Bill</td>
+            <td>~0.25 years</td>
+            <td class="dim">~-0.25%</td>
+            <td class="dim">~+0.25%</td>
+          </tr>
+          <tr>
+            <td>2-Year T-Note</td>
+            <td>~1.9 years</td>
+            <td class="dim">~-1.9%</td>
+            <td class="dim">~+1.9%</td>
+          </tr>
+          <tr>
+            <td>5-Year T-Note</td>
+            <td>~4.5 years</td>
+            <td>~-4.5%</td>
+            <td>~+4.5%</td>
+          </tr>
+          <tr>
+            <td>10-Year T-Note</td>
+            <td>~8 years</td>
+            <td class="red">~-8%</td>
+            <td class="green">~+8%</td>
+          </tr>
+          <tr>
+            <td>30-Year T-Bond</td>
+            <td>~18 years</td>
+            <td class="red">~-18%</td>
+            <td class="green">~+18%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>📐 Duration Rule of Thumb</h4>
+        <p>If interest rates rise by 1%, a bond loses approximately its duration percentage in price. A 10-year Treasury with 8-year duration drops ~8% in price if rates rise 1%. This is why long-term Treasuries lost 30%+ in 2022 when the Fed raised rates rapidly.</p>
+      </div>
+
+      <h2>8. Treasury ETFs and Funds</h2>
+      <p>For most investors, Treasury ETFs offer the easiest way to invest in Treasuries with instant diversification:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ETF</th>
+            <th>Focus</th>
+            <th>Duration</th>
+            <th>Expense Ratio</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>BIL</strong></td>
+            <td>1-3 Month T-Bills</td>
+            <td>~0.1 years</td>
+            <td>0.1356%</td>
+            <td>Cash alternative</td>
+          </tr>
+          <tr>
+            <td><strong>SHV</strong></td>
+            <td>Short-term Treasury</td>
+            <td>~0.3 years</td>
+            <td>0.15%</td>
+            <td>Very short-term</td>
+          </tr>
+          <tr>
+            <td><strong>SHY</strong></td>
+            <td>1-3 Year Treasury</td>
+            <td>~1.9 years</td>
+            <td>0.15%</td>
+            <td>Short-term allocation</td>
+          </tr>
+          <tr>
+            <td><strong>IEI</strong></td>
+            <td>3-7 Year Treasury</td>
+            <td>~4.4 years</td>
+            <td>0.15%</td>
+            <td>Intermediate</td>
+          </tr>
+          <tr>
+            <td><strong>IEF</strong></td>
+            <td>7-10 Year Treasury</td>
+            <td>~7.5 years</td>
+            <td>0.15%</td>
+            <td class="highlight">Core bond allocation</td>
+          </tr>
+          <tr>
+            <td><strong>TLT</strong></td>
+            <td>20+ Year Treasury</td>
+            <td>~17 years</td>
+            <td>0.15%</td>
+            <td>Long duration, rate bets</td>
+          </tr>
+          <tr>
+            <td><strong>TIP</strong></td>
+            <td>TIPS (all maturities)</td>
+            <td>~6.8 years</td>
+            <td>0.19%</td>
+            <td>Inflation protection</td>
+          </tr>
+          <tr>
+            <td><strong>GOVT</strong></td>
+            <td>All Treasury maturities</td>
+            <td>~6 years</td>
+            <td class="green">0.05%</td>
+            <td>Broad Treasury exposure</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>9. Risks of Treasury Investing</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Risk Type</th>
+            <th>Description</th>
+            <th>Impact</th>
+            <th>Mitigation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Interest Rate Risk</strong></td>
+            <td>Prices fall when rates rise</td>
+            <td class="red">Can be significant for long-term bonds</td>
+            <td>Shorter duration, hold to maturity</td>
+          </tr>
+          <tr>
+            <td><strong>Inflation Risk</strong></td>
+            <td>Fixed payments lose purchasing power</td>
+            <td class="red">Real returns can be negative</td>
+            <td>TIPS, I Bonds, shorter maturities</td>
+          </tr>
+          <tr>
+            <td><strong>Reinvestment Risk</strong></td>
+            <td>Must reinvest at lower rates when bond matures</td>
+            <td>Lower future income</td>
+            <td>Bond ladders, longer maturities</td>
+          </tr>
+          <tr>
+            <td><strong>Opportunity Cost</strong></td>
+            <td>Lower returns than riskier assets</td>
+            <td>Less wealth accumulation over time</td>
+            <td>Balanced portfolio, appropriate allocation</td>
+          </tr>
+          <tr>
+            <td><strong>Credit Risk</strong></td>
+            <td>Government default</td>
+            <td class="green">Minimal for U.S. Treasuries</td>
+            <td>Considered "risk-free" for credit</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ 2022: A Lesson in "Safe" Asset Risk</h4>
+        <p>In 2022, long-term Treasury bonds (TLT) lost over 30% as the Fed raised rates aggressively. Even the "safest" bonds can have significant losses if you need to sell before maturity. "Safe from default" doesn't mean "safe from loss."</p>
+      </div>
+
+      <h2>10. FAQ: Frequently Asked Questions</h2>
+      
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question">Are Treasuries really "risk-free"?</div>
+          <div class="faq-answer">Treasuries are considered "risk-free" only in terms of credit risk—the U.S. government is extremely unlikely to default. But they carry real risks: interest rate risk (prices fall when rates rise), inflation risk (purchasing power can decline), and opportunity cost (lower returns than riskier investments). The term "risk-free rate" in finance refers specifically to the absence of default risk.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Should I use TreasuryDirect or a brokerage?</div>
+          <div class="faq-answer">TreasuryDirect is best for I Bonds (only available there) and if you're certain you'll hold to maturity. Brokerages are better for flexibility—you can sell before maturity if needed, and it's easier to manage alongside other investments. Many investors use both: TreasuryDirect for I Bonds and a brokerage for other Treasuries.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's the difference between T-Bills, T-Notes, and T-Bonds?</div>
+          <div class="faq-answer">The main difference is maturity. T-Bills: 4-52 weeks, sold at discount, no coupon payments. T-Notes: 2-10 years, semi-annual coupon payments. T-Bonds: 20-30 years, semi-annual coupon payments. Longer maturities typically offer higher yields but carry more interest rate risk. The 10-year T-Note is the most commonly referenced Treasury.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Should I buy TIPS or I Bonds for inflation protection?</div>
+          <div class="faq-answer">I Bonds are simpler: no price volatility, tax-deferred, and easier to understand. TIPS offer more flexibility and no purchase limits but have "phantom income" tax issues and price volatility. For most individual investors saving up to $10,000/year, I Bonds are often the better choice. TIPS (or TIPS ETFs) are better for larger allocations or institutional investors.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Why would anyone buy 30-year Treasuries?</div>
+          <div class="faq-answer">Long-term Treasuries serve several purposes: (1) locking in current rates for predictable income, (2) portfolio insurance—they often rise when stocks crash, (3) pension funds matching long-term liabilities, (4) speculation on falling rates. They're volatile but can provide strong returns when rates fall. In 2008, long Treasuries returned +20% while stocks fell -37%.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How much of my portfolio should be in Treasuries?</div>
+          <div class="faq-answer">There's no one-size-fits-all answer. Common frameworks: 100-minus-your-age in stocks (rest in bonds), or target-date funds that adjust automatically. Younger investors with long time horizons might hold less; retirees needing income and stability typically hold more. Treasuries provide stability and income but sacrifice growth potential. Consider your goals, timeline, and risk tolerance.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What happens if the U.S. government defaults?</div>
+          <div class="faq-answer">A true default has never happened and is considered extremely unlikely—the U.S. can print dollars to pay dollar-denominated debt. However, debt ceiling standoffs create periodic uncertainty. If a technical default occurred, it would likely be brief and resolved quickly due to the catastrophic consequences. Most experts consider U.S. Treasury default risk negligible, though not literally zero.</div>
+        </div>
+      </div>
 
       <h2>Conclusion</h2>
-      <p>Treasury securities are government-issued debt instruments often used for capital preservation. While they carry minimal credit risk, they're still subject to interest rate and inflation risks. Understanding the different types and their characteristics can help in evaluating whether they fit your financial situation.</p>
+      <p>Treasury securities are government-issued debt instruments that form the foundation of the global financial system. They're considered among the safest investments due to minimal credit risk, but they still carry interest rate and inflation risks.</p>
+
+      <p>Key takeaways:</p>
+      <ul>
+        <li>T-Bills (short), T-Notes (medium), T-Bonds (long) differ mainly by maturity</li>
+        <li>TIPS and I Bonds protect against inflation in different ways</li>
+        <li>Treasury interest is exempt from state and local taxes</li>
+        <li>The yield curve signals economic expectations</li>
+        <li>Duration measures interest rate sensitivity</li>
+        <li>Long-term Treasuries can have significant price volatility</li>
+        <li>ETFs like IEF, TLT, and TIP offer easy Treasury exposure</li>
+        <li>"Risk-free" refers only to credit risk—not price or inflation risk</li>
+      </ul>
+
+      <p>Whether used for capital preservation, portfolio diversification, or income generation, understanding Treasury securities helps you make informed decisions about the fixed income portion of your portfolio.</p>
+
+      <!-- Related Articles -->
+      <h3 style="margin-top: 60px; margin-bottom: 24px;">📚 Related Articles</h3>
+      <div class="related-articles">
+        <a href="/blog/what-is-a-bond.html" class="related-card">
+          <h4>What Is a Bond?</h4>
+          <p>Understanding fixed income fundamentals</p>
+        </a>
+        <a href="/blog/what-is-inflation.html" class="related-card">
+          <h4>What Is Inflation?</h4>
+          <p>Why inflation protection matters</p>
+        </a>
+        <a href="/blog/what-is-diversification.html" class="related-card">
+          <h4>What Is Diversification?</h4>
+          <p>Building a balanced portfolio</p>
+        </a>
+      </div>
 
       <div class="reading-section">
-        <h3>📚 Further Reading</h3>
+        <h3>📖 Official Resources</h3>
         <ul>
-          <li><a href="https://www.treasurydirect.gov/" target="_blank" rel="noopener">TreasuryDirect.gov</a> — Official government site</li>
-          <li><a href="https://www.investopedia.com/terms/t/treasurybond.asp" target="_blank" rel="noopener">Investopedia: Treasury Bonds</a></li>
+          <li><a href="https://www.treasurydirect.gov/" target="_blank" rel="noopener">TreasuryDirect.gov — Buy Treasuries Direct</a></li>
+          <li><a href="https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics" target="_blank" rel="noopener">U.S. Treasury — Interest Rate Statistics</a></li>
+          <li><a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products" target="_blank" rel="noopener">SEC — Bonds and Fixed Income</a></li>
         </ul>
       </div>
-      <div class="warning-box" style="margin-top: 50px;"><h4>⚠️ Final Reminder</h4><p>This article is for educational purposes only. Even Treasuries carry risks. Consult a qualified financial advisor before making investment decisions.</p></div>
+
+      <div class="warning-box" style="margin-top: 50px;">
+        <h4>⚠️ Final Reminder</h4>
+        <p>This article is for educational purposes only and does not constitute investment advice. Even Treasuries carry risks—interest rate changes can cause significant losses if sold before maturity. Past performance does not guarantee future results. Consult a qualified financial advisor before making investment decisions.</p>
+      </div>
     </div>
   </main>
+
   <footer>
-    <div class="footer-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a><a href="/legal.html">Terms</a></div>
-    <div class="footer-disclaimer"><strong>Disclaimer:</strong> US Market Terminals provides educational content only. All investments carry risk.</div>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms</a>
+    </div>
+    <div class="footer-disclaimer">
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk including the potential loss of principal. Past performance does not guarantee future results.
+    </div>
   </footer>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
