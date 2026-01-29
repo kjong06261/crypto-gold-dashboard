@@ -3,78 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Understanding Dividend Growth Investing Concepts | US Market Terminals</title>
-  <meta name="description" content="Educational overview of Dividend Growth Investing (DGI), common metrics used, and important risks and limitations to consider.">
-  
+  <title>Understanding Dividend Growth Investing | Complete DGI Guide | US Market Terminals</title>
+  <meta name="description" content="Comprehensive guide to Dividend Growth Investing (DGI), including key metrics, Dividend Aristocrats, compound growth calculations, payout ratios, DRIP strategies, and important risks.">
+  <meta name="keywords" content="dividend growth investing, DGI, dividend aristocrats, dividend kings, payout ratio, yield on cost, DRIP, dividend reinvestment, dividend growth rate">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog/understanding-dividend-growth-investing.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
-      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #10b981;
-      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
-    }
-    
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #10b981; --accent-glow: rgba(16, 185, 129, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); --green: #22c55e; --green-glow: rgba(34, 197, 94, 0.1); --blue: #3b82f6; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; transition: 0.3s; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; }
     
     .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
-    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
-
-    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
-
-    /* Warning Boxes */
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; }
+    
+    .container { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    
     .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
-    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; }
     .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
-
-    .article-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 50px; }
-    .tag { display: inline-block; background: rgba(16, 185, 129, 0.1); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; border: 1px solid rgba(16, 185, 129, 0.2); }
+    
+    .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
     .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
-
-    .content { font-size: 1.1rem; color: #cbd5e1; }
-    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: -0.5px; }
-    .content p { margin-bottom: 30px; text-align: justify; line-height: 1.9; }
+    
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: #fff; margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; line-height: 1.9; }
     .content strong { color: #fff; }
-
-    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem; }
-
-    /* Context Box */
-    .context-box { background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 16px; padding: 25px; margin: 40px 0; }
-    .context-box h4 { color: #34d399; margin-bottom: 12px; font-size: 1rem; }
-    .context-box p { margin: 0; font-size: 0.95rem; color: #6ee7b7; }
-
-    /* Risk Section */
-    .risk-section { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .risk-section h3 { color: #f87171; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem; }
-    .risk-section ul { margin: 0; padding-left: 20px; }
-    .risk-section li { margin-bottom: 12px; color: #fca5a5; }
-
-    /* Further Reading */
-    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .content ul, .content ol { margin-bottom: 24px; padding-left: 24px; }
+    .content li { margin-bottom: 12px; }
+    
+    .formula-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; font-family: 'JetBrains Mono', monospace; text-align: center; }
+    .formula-box .formula { font-size: 1.1rem; color: var(--accent); margin: 15px 0; }
+    .formula-box .example { font-size: 0.95rem; color: var(--text-dim); margin-top: 15px; }
+    
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    
+    .key-point { background: var(--accent-glow); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #34d399; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #6ee7b7; font-size: 0.95rem; }
+    
+    .green-box { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .green-box h4 { color: #4ade80; margin-bottom: 10px; font-size: 1rem; }
+    .green-box p { margin: 0; color: #86efac; font-size: 0.95rem; }
+    
+    .blue-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .blue-box h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .blue-box p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    .data-table th { background: var(--accent-glow); color: var(--accent); font-weight: 700; text-align: left; padding: 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table .highlight { color: var(--accent); font-weight: 700; }
+    .data-table .green { color: var(--green); font-weight: 700; }
+    .data-table .dim { color: var(--text-dim); }
+    .data-table .red { color: #f87171; font-weight: 700; }
+    .data-table .blue { color: var(--blue); font-weight: 700; }
+    
+    /* Comparison Grid */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .compare-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .compare-box h4 { margin-bottom: 16px; font-size: 1.1rem; color: #fff; }
+    .compare-box ul { margin: 0; padding-left: 20px; }
+    .compare-box li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dim); }
+    .compare-box.dgi { border-color: rgba(16, 185, 129, 0.3); }
+    .compare-box.dgi h4 { color: var(--accent); }
+    .compare-box.high-yield { border-color: rgba(239, 68, 68, 0.3); }
+    .compare-box.high-yield h4 { color: #f87171; }
+    
+    /* FAQ Section */
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+    .faq-answer { padding: 0 24px 20px; color: var(--text-dim); line-height: 1.8; display: block; }
+    
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
     .reading-section ul { margin: 0; padding-left: 20px; }
     .reading-section li { margin-bottom: 10px; }
     .reading-section a { color: #93c5fd; }
-    .reading-section a:hover { color: #bfdbfe; }
-
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 120px; }
-    .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
-
-    @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 2.2rem; } }
+    
+    /* Related Articles */
+    .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+    .related-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .related-card h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
+    .related-card p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+    
+    @media (max-width: 768px) {
+      .data-table { font-size: 0.85rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .related-articles { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <div class="nav-container">
       <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
@@ -83,121 +123,868 @@
   </nav>
 
   <main class="container">
-
-    <!-- Top Warning -->
     <div class="warning-box">
       <h4>⚠️ Educational Purpose Only</h4>
-      <p>This article explains what Dividend Growth Investing (DGI) is and common concepts associated with it. It is not investment advice or a recommendation to use any strategy. Dividends are not guaranteed and can be reduced or eliminated. All equity investments carry risk of loss. Consult a qualified financial advisor before making investment decisions.</p>
+      <p>This article explains Dividend Growth Investing concepts. It is not investment advice. Dividends are not guaranteed and can be reduced or eliminated. All equity investments carry risk of loss. Consult a qualified financial advisor.</p>
     </div>
 
     <article class="article-header">
       <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
-      <span class="tag">Concept Overview</span>
-      <h1>Understanding Dividend Growth Investing Concepts</h1>
-      <div class="meta"><span>Concept Explanation</span> • <span>Jan 2026</span></div>
+      <span class="tag">Income Investing</span>
+      <h1>Understanding Dividend Growth Investing</h1>
+      <div class="meta">
+        <span>Intermediate Guide</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>14 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>Updated January 2026</span>
+      </div>
     </article>
 
     <div class="content">
-      <p>
-        <strong>Dividend Growth Investing (DGI)</strong> is an investment approach that some investors discuss, which focuses on companies that have historically increased their dividend payments over time. This article provides an educational overview of the concept, common metrics referenced, and important limitations to consider.
-      </p>
+      <p><strong>Dividend Growth Investing (DGI)</strong> is an investment strategy that focuses on companies with track records of consistently increasing their dividend payments over time. Rather than chasing the highest current yields, DGI investors prioritize companies that demonstrate the ability and willingness to raise dividends year after year.</p>
+
+      <p>In this comprehensive guide, we'll explore the core concepts of dividend growth investing, key metrics used to evaluate DGI stocks, the Dividend Aristocrats and Kings, how compound growth works, the difference between DGI and high-yield investing, and the significant risks every investor should understand.</p>
+
+      <!-- Table of Contents -->
+      <div class="info-box">
+        <h3>📑 Table of Contents</h3>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li>What is Dividend Growth Investing?</li>
+          <li>DGI vs. High-Yield Investing</li>
+          <li>Key DGI Metrics</li>
+          <li>Dividend Aristocrats and Kings</li>
+          <li>The Power of Compound Growth</li>
+          <li>Yield on Cost (YOC)</li>
+          <li>Dividend Reinvestment (DRIP)</li>
+          <li>Sector Considerations</li>
+          <li>Significant Risks</li>
+          <li>FAQ: Frequently Asked Questions</li>
+        </ol>
+      </div>
 
       <h2>1. What is Dividend Growth Investing?</h2>
-      <p>
-        DGI is an approach that prioritizes companies with track records of increasing dividends, rather than simply focusing on current high yields. Proponents argue that consistent dividend increases may indicate business quality, while critics note that past increases don't guarantee future ones.
-      </p>
-      <p>
-        The approach differs from high-yield investing, which focuses on current income regardless of growth trajectory. Each approach involves different trade-offs and may suit different investor circumstances.
-      </p>
+      <p>Dividend Growth Investing is a strategy that prioritizes companies with histories of increasing dividends over simply seeking the highest current yield. The theory is that companies capable of consistently raising dividends have strong underlying businesses.</p>
 
-      <h2>2. Common Metrics Referenced in DGI</h2>
-      <p>
-        Those researching dividend growth stocks often encounter several metrics. Understanding these terms can be helpful for educational purposes, though no single metric or combination guarantees investment success:
-      </p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>DGI Principle</th>
+            <th>Description</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Growing Income Stream</strong></td>
+            <td>Dividends increase over time</td>
+            <td>Income keeps pace with or beats inflation</td>
+          </tr>
+          <tr>
+            <td><strong>Quality Focus</strong></td>
+            <td>Companies must earn enough to raise dividends</td>
+            <td>Filters for profitable, stable businesses</td>
+          </tr>
+          <tr>
+            <td><strong>Lower Starting Yield</strong></td>
+            <td>Growth stocks often yield less initially</td>
+            <td>Trade-off: lower now for more later</td>
+          </tr>
+          <tr>
+            <td><strong>Long-Term Orientation</strong></td>
+            <td>Benefits compound over decades</td>
+            <td>Patience required for strategy to work</td>
+          </tr>
+          <tr>
+            <td><strong>Total Return</strong></td>
+            <td>Dividends + capital appreciation</td>
+            <td>Not just income—growth matters too</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <div class="info-box">
-        <h3>📊 Key Terminology</h3>
-        <p style="margin-bottom: 15px;"><strong>Payout Ratio:</strong> The percentage of earnings or cash flow paid as dividends. Different analysts use different calculations (earnings-based vs. cash flow-based), making comparisons difficult.</p>
-        <p style="margin-bottom: 15px;"><strong>Dividend Growth Rate (DGR):</strong> The historical rate at which dividends have increased. Past growth rates do not predict future growth—companies can and do slow or stop dividend increases.</p>
-        <p style="margin-bottom: 15px;"><strong>Yield on Cost (YOC):</strong> Current dividend divided by original purchase price. While sometimes cited by DGI proponents, financial professionals often note this metric can be misleading as it ignores opportunity cost and total return.</p>
-        <p style="margin-bottom: 0;"><strong>Debt Ratios:</strong> Various leverage metrics used to assess financial health. High debt levels can pressure dividend sustainability during economic stress.</p>
+      <h2>2. DGI vs. High-Yield Investing</h2>
+      <p>Two distinct approaches to dividend investing with different trade-offs:</p>
+
+      <div class="compare-grid">
+        <div class="compare-box dgi">
+          <h4>📈 Dividend Growth Investing</h4>
+          <ul>
+            <li>Focus: Dividend growth rate</li>
+            <li>Typical yield: 1.5% - 3.5%</li>
+            <li>Dividend growth: 6% - 12%+ annually</li>
+            <li>Companies: Growing, profitable</li>
+            <li>Risk: Lower yield now</li>
+            <li>Goal: Growing income over time</li>
+          </ul>
+        </div>
+        <div class="compare-box high-yield">
+          <h4>💰 High-Yield Investing</h4>
+          <ul>
+            <li>Focus: Current income</li>
+            <li>Typical yield: 5% - 10%+</li>
+            <li>Dividend growth: 0% - 3%</li>
+            <li>Companies: Mature, slower growth</li>
+            <li>Risk: Dividend cuts, capital loss</li>
+            <li>Goal: Maximum current income</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="context-box">
-        <h4>⚠️ Important Context on Projections</h4>
-        <p>DGI discussions often include compound growth projections showing how dividends might grow over decades. These projections assume continuous dividend increases at historical rates—an assumption that frequently doesn't hold. Many companies that appeared to be reliable dividend growers have cut or eliminated dividends during recessions or industry disruptions.</p>
+      <h3>Income Comparison Over Time</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>DGI Stock (2.5% yield, 8% growth)</th>
+            <th>High-Yield Stock (6% yield, 0% growth)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Year 1</td>
+            <td>$2,500</td>
+            <td class="highlight">$6,000</td>
+          </tr>
+          <tr>
+            <td>Year 5</td>
+            <td>$3,401</td>
+            <td class="highlight">$6,000</td>
+          </tr>
+          <tr>
+            <td>Year 10</td>
+            <td>$4,999</td>
+            <td class="highlight">$6,000</td>
+          </tr>
+          <tr>
+            <td>Year 15</td>
+            <td class="green">$7,345</td>
+            <td>$6,000</td>
+          </tr>
+          <tr>
+            <td>Year 20</td>
+            <td class="green">$10,795</td>
+            <td>$6,000</td>
+          </tr>
+          <tr>
+            <td>Year 25</td>
+            <td class="green">$15,863</td>
+            <td>$6,000</td>
+          </tr>
+          <tr>
+            <td><strong>Total Income (25 yrs)</strong></td>
+            <td class="green">$175,000+</td>
+            <td>$150,000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Hypothetical example assuming $100,000 invested. Assumes constant growth rates which rarely occur in practice.</p>
+
+      <div class="warning-box">
+        <h4>⚠️ Reality Check on Projections</h4>
+        <p>The table above assumes continuous 8% dividend growth for 25 years—an assumption that rarely holds. Companies face recessions, competition, and disruption. Many "reliable" dividend growers have cut or frozen dividends. Past growth rates don't guarantee future growth. Use such projections for illustration only, not as predictions.</p>
       </div>
 
-      <h2>3. Dividend Reinvestment Concepts</h2>
-      <p>
-        <strong>Dividend Reinvestment Plans (DRIPs)</strong> allow investors to automatically reinvest dividends to purchase additional shares. Some investors view this as a form of dollar-cost averaging.
-      </p>
-      <p>
-        However, automatic reinvestment isn't inherently superior to taking dividends as cash. It means continued investment in the same security regardless of valuation, and may result in concentrated positions over time. The decision to reinvest or take cash depends on individual circumstances.
-      </p>
+      <h2>3. Key DGI Metrics</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Formula</th>
+            <th>What It Indicates</th>
+            <th>Healthy Range</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dividend Yield</strong></td>
+            <td>Annual Dividend ÷ Stock Price</td>
+            <td>Current income return</td>
+            <td>1.5% - 4%</td>
+          </tr>
+          <tr>
+            <td><strong>Dividend Growth Rate (DGR)</strong></td>
+            <td>% change in dividend over time</td>
+            <td>How fast dividends are growing</td>
+            <td class="highlight">6% - 12%+</td>
+          </tr>
+          <tr>
+            <td><strong>Payout Ratio (Earnings)</strong></td>
+            <td>Dividend ÷ EPS</td>
+            <td>% of earnings paid as dividends</td>
+            <td>&lt;60% (varies by sector)</td>
+          </tr>
+          <tr>
+            <td><strong>Payout Ratio (FCF)</strong></td>
+            <td>Dividend ÷ Free Cash Flow per Share</td>
+            <td>% of cash flow paid out</td>
+            <td>&lt;70%</td>
+          </tr>
+          <tr>
+            <td><strong>Consecutive Increases</strong></td>
+            <td>Years of consecutive raises</td>
+            <td>Track record of commitment</td>
+            <td class="green">10+ years preferred</td>
+          </tr>
+          <tr>
+            <td><strong>Chowder Number</strong></td>
+            <td>Yield + 5-Year DGR</td>
+            <td>Combined yield and growth</td>
+            <td>&gt;12 (varies)</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <!-- Risk Section -->
-      <div class="risk-section">
-        <h3>⚠️ Significant Risks and Limitations</h3>
-        <ul>
-          <li><strong>Dividends Are Not Guaranteed:</strong> Companies can reduce or eliminate dividends at any time, regardless of historical track record</li>
-          <li><strong>Principal Risk:</strong> Stock prices can decline significantly—dividend income may not offset capital losses</li>
-          <li><strong>Growth Rate Assumptions:</strong> Projections based on historical dividend growth often don't materialize as expected</li>
-          <li><strong>Opportunity Cost:</strong> Focus on dividend-paying stocks may mean missing growth opportunities in non-dividend sectors</li>
-          <li><strong>Yield on Cost Fallacy:</strong> This metric ignores that capital could have been deployed differently; it's not a measure of actual investment performance</li>
-          <li><strong>Tax Considerations:</strong> Dividends may be taxed less favorably than capital gains depending on jurisdiction and circumstances</li>
-          <li><strong>Sector Concentration:</strong> Dividend-focused portfolios often concentrate in certain sectors, reducing diversification</li>
-          <li><strong>Survivorship Bias:</strong> Success stories highlight companies that maintained dividend growth; failures are less visible</li>
-          <li><strong>Inflation Risk:</strong> Dividend growth may not keep pace with inflation, eroding real purchasing power</li>
-          <li><strong>Behavioral Risks:</strong> Emotional attachment to dividend income may lead to holding declining investments too long</li>
-        </ul>
+      <div class="formula-box">
+        <div style="color: var(--text-dim); margin-bottom: 10px;">Dividend Growth Rate (CAGR)</div>
+        <div class="formula">DGR = (Current Dividend ÷ Past Dividend)^(1/Years) - 1</div>
+        <div class="example">($3.00 ÷ $2.00)^(1/5) - 1 = 8.4% annual growth rate</div>
       </div>
 
-      <h2>4. Alternative Perspectives</h2>
-      <p>
-        Some financial researchers and practitioners question whether dividend-focused strategies provide advantages over total-return approaches. Critics argue that dividends are just one form of shareholder return, and that focusing on dividends may lead to suboptimal portfolio construction.
-      </p>
-      <p>
-        Academic research on whether dividend growth strategies outperform broad market indices shows mixed results depending on time period and methodology. This is an area where professional opinions differ.
-      </p>
+      <h3>Payout Ratio Analysis</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Payout Ratio</th>
+            <th>Interpretation</th>
+            <th>Dividend Safety</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="green">&lt; 40%</td>
+            <td>Very low; room for significant growth</td>
+            <td class="green">Strong cushion</td>
+          </tr>
+          <tr>
+            <td>40% - 60%</td>
+            <td>Healthy balance of payout and retention</td>
+            <td>Good</td>
+          </tr>
+          <tr>
+            <td>60% - 75%</td>
+            <td>Higher payout; less room for earnings dips</td>
+            <td>Adequate</td>
+          </tr>
+          <tr>
+            <td class="red">75% - 90%</td>
+            <td>Elevated risk; limited growth potential</td>
+            <td class="red">Moderate concern</td>
+          </tr>
+          <tr>
+            <td class="red">&gt; 90%</td>
+            <td>Very high; dividend may not be sustainable</td>
+            <td class="red">At risk</td>
+          </tr>
+          <tr>
+            <td class="red">&gt; 100%</td>
+            <td>Paying more than earning; unsustainable</td>
+            <td class="red">Cut likely</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>📊 Sector-Specific Payout Norms</h4>
+        <p>Payout ratios vary by industry. REITs must pay 90%+ of taxable income (so high ratios are normal). Utilities often have 60-80% payouts. Technology companies may pay only 20-30%. Always compare within sectors, not across the entire market.</p>
+      </div>
+
+      <h2>4. Dividend Aristocrats and Kings</h2>
+      <p>Companies with long histories of dividend increases are often categorized into tiers:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Requirement</th>
+            <th>Number of Companies</th>
+            <th>Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dividend Kings</strong></td>
+            <td class="highlight">50+ consecutive years of increases</td>
+            <td>~50</td>
+            <td>Coca-Cola, Johnson & Johnson, P&G</td>
+          </tr>
+          <tr>
+            <td><strong>Dividend Aristocrats</strong></td>
+            <td class="green">25+ years (S&P 500 member)</td>
+            <td>~67</td>
+            <td>Walmart, McDonald's, 3M</td>
+          </tr>
+          <tr>
+            <td><strong>Dividend Champions</strong></td>
+            <td>25+ years (any exchange)</td>
+            <td>~140</td>
+            <td>Includes non-S&P 500 companies</td>
+          </tr>
+          <tr>
+            <td><strong>Dividend Contenders</strong></td>
+            <td>10-24 years</td>
+            <td>~300+</td>
+            <td>Mid-tier track records</td>
+          </tr>
+          <tr>
+            <td><strong>Dividend Challengers</strong></td>
+            <td>5-9 years</td>
+            <td>~400+</td>
+            <td>Newer dividend growers</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Dividend Aristocrats Performance</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Dividend Aristocrats</th>
+            <th>S&P 500</th>
+            <th>Outperformance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10-Year (2014-2024)</td>
+            <td>~10.5% annualized</td>
+            <td>~12.0% annualized</td>
+            <td class="red">-1.5%</td>
+          </tr>
+          <tr>
+            <td>20-Year (2004-2024)</td>
+            <td>~10.8% annualized</td>
+            <td>~10.2% annualized</td>
+            <td class="green">+0.6%</td>
+          </tr>
+          <tr>
+            <td>2008 Financial Crisis</td>
+            <td>-22%</td>
+            <td>-38%</td>
+            <td class="green">+16%</td>
+          </tr>
+          <tr>
+            <td>2020 COVID Crash</td>
+            <td>-27%</td>
+            <td>-34%</td>
+            <td class="green">+7%</td>
+          </tr>
+          <tr>
+            <td>2022 Rate Hikes</td>
+            <td>-7%</td>
+            <td>-18%</td>
+            <td class="green">+11%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Approximate returns. Aristocrats tend to outperform in downturns but may lag in strong bull markets.</p>
+
+      <div class="warning-box">
+        <h4>⚠️ Aristocrats Can Fall</h4>
+        <p>Dividend track records don't guarantee future increases. AT&T, GE, and Walgreens were once Aristocrats before cutting dividends. 3M cut its dividend in 2024 after 66 years of increases. Even the strongest records can end during recessions, industry disruption, or management changes. Don't treat "Aristocrat" status as a guarantee.</p>
+      </div>
+
+      <h2>5. The Power of Compound Growth</h2>
+      <p>DGI proponents emphasize how dividend growth compounds over long periods:</p>
+
+      <div class="formula-box">
+        <div style="color: var(--text-dim); margin-bottom: 10px;">Future Dividend Formula</div>
+        <div class="formula">Future Dividend = Current Dividend × (1 + Growth Rate)^Years</div>
+        <div class="example">$1.00 × (1.08)^20 = $4.66 — Dividend quadruples in 20 years at 8% growth</div>
+      </div>
+
+      <h3>Dividend Growth Over Time</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Starting Dividend</th>
+            <th>5% Growth (10 yrs)</th>
+            <th>8% Growth (10 yrs)</th>
+            <th>10% Growth (10 yrs)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$1.00</td>
+            <td>$1.63</td>
+            <td class="highlight">$2.16</td>
+            <td class="green">$2.59</td>
+          </tr>
+          <tr>
+            <td>$2.00</td>
+            <td>$3.26</td>
+            <td>$4.32</td>
+            <td class="green">$5.19</td>
+          </tr>
+          <tr>
+            <td>$3.00</td>
+            <td>$4.89</td>
+            <td>$6.48</td>
+            <td class="green">$7.78</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>20-Year Growth Comparison</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Growth Rate</th>
+            <th>$1 Dividend After 20 Years</th>
+            <th>Multiplier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3%</td>
+            <td>$1.81</td>
+            <td>1.8x</td>
+          </tr>
+          <tr>
+            <td>5%</td>
+            <td>$2.65</td>
+            <td>2.7x</td>
+          </tr>
+          <tr>
+            <td>7%</td>
+            <td>$3.87</td>
+            <td>3.9x</td>
+          </tr>
+          <tr>
+            <td class="highlight">8%</td>
+            <td class="highlight">$4.66</td>
+            <td class="highlight">4.7x</td>
+          </tr>
+          <tr>
+            <td>10%</td>
+            <td class="green">$6.73</td>
+            <td class="green">6.7x</td>
+          </tr>
+          <tr>
+            <td>12%</td>
+            <td class="green">$9.65</td>
+            <td class="green">9.7x</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>6. Yield on Cost (YOC)</h2>
+      <p>Yield on Cost measures your dividend yield based on your original purchase price:</p>
+
+      <div class="formula-box">
+        <div style="color: var(--text-dim); margin-bottom: 10px;">Yield on Cost Formula</div>
+        <div class="formula">YOC = Current Annual Dividend ÷ Original Purchase Price</div>
+        <div class="example">$4.00 dividend ÷ $50 purchase price = 8% YOC</div>
+      </div>
+
+      <h3>YOC Example Over Time</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Dividend/Share</th>
+            <th>Current Yield (if $100 price)</th>
+            <th>YOC (if bought at $50)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Year 0 (Purchase)</td>
+            <td>$2.00</td>
+            <td>2.0%</td>
+            <td>4.0%</td>
+          </tr>
+          <tr>
+            <td>Year 5</td>
+            <td>$2.94</td>
+            <td>2.9%</td>
+            <td class="highlight">5.9%</td>
+          </tr>
+          <tr>
+            <td>Year 10</td>
+            <td>$4.32</td>
+            <td>4.3%</td>
+            <td class="green">8.6%</td>
+          </tr>
+          <tr>
+            <td>Year 15</td>
+            <td>$6.35</td>
+            <td>6.4%</td>
+            <td class="green">12.7%</td>
+          </tr>
+          <tr>
+            <td>Year 20</td>
+            <td>$9.32</td>
+            <td>9.3%</td>
+            <td class="green">18.6%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Assumes 8% annual dividend growth. Stock price assumed to grow proportionally.</p>
+
+      <div class="warning-box">
+        <h4>⚠️ The YOC Fallacy</h4>
+        <p>While YOC is popular among DGI investors, many financial professionals consider it misleading. YOC ignores opportunity cost—the capital could have been deployed elsewhere. It also ignores the current market value of your investment. A 10% YOC on a stock that's fallen 50% isn't actually good performance. Focus on total return (dividends + capital appreciation), not just YOC.</p>
+      </div>
+
+      <h2>7. Dividend Reinvestment (DRIP)</h2>
+      <p>DRIP allows automatic reinvestment of dividends to buy more shares:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>With DRIP</th>
+            <th>Without DRIP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dividend Use</strong></td>
+            <td>Auto-buys more shares</td>
+            <td>Cash deposited to account</td>
+          </tr>
+          <tr>
+            <td><strong>Share Count</strong></td>
+            <td class="green">Grows over time</td>
+            <td>Stays constant</td>
+          </tr>
+          <tr>
+            <td><strong>Compounding</strong></td>
+            <td class="green">Accelerated</td>
+            <td>Manual if reinvested</td>
+          </tr>
+          <tr>
+            <td><strong>Valuation</strong></td>
+            <td class="red">Buys at any price</td>
+            <td>Can be selective</td>
+          </tr>
+          <tr>
+            <td><strong>Concentration</strong></td>
+            <td class="red">May become overweight</td>
+            <td>Maintain diversification</td>
+          </tr>
+          <tr>
+            <td><strong>Taxes</strong></td>
+            <td>Still owed on dividends</td>
+            <td>Same tax treatment</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>DRIP Impact on $10,000 Investment</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>No DRIP (Cash Dividends)</th>
+            <th>With DRIP</th>
+            <th>Difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Year 5</td>
+            <td>$11,500</td>
+            <td>$12,100</td>
+            <td class="green">+$600</td>
+          </tr>
+          <tr>
+            <td>Year 10</td>
+            <td>$13,000</td>
+            <td>$14,800</td>
+            <td class="green">+$1,800</td>
+          </tr>
+          <tr>
+            <td>Year 15</td>
+            <td>$14,500</td>
+            <td>$18,200</td>
+            <td class="green">+$3,700</td>
+          </tr>
+          <tr>
+            <td>Year 20</td>
+            <td>$16,000</td>
+            <td>$22,500</td>
+            <td class="green">+$6,500</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Hypothetical example assuming 3% dividend yield, 7% stock appreciation.</p>
+
+      <h2>8. Sector Considerations</h2>
+      <p>Different sectors have different dividend characteristics:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Sector</th>
+            <th>Typical Yield</th>
+            <th>Typical Growth</th>
+            <th>DGI Suitability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Consumer Staples</strong></td>
+            <td>2.5% - 3.5%</td>
+            <td class="green">5% - 8%</td>
+            <td class="green">Excellent—stable, defensive</td>
+          </tr>
+          <tr>
+            <td><strong>Healthcare</strong></td>
+            <td>1.5% - 3%</td>
+            <td class="green">6% - 10%</td>
+            <td class="green">Good—recession-resistant</td>
+          </tr>
+          <tr>
+            <td><strong>Financials</strong></td>
+            <td>2% - 4%</td>
+            <td>5% - 12%</td>
+            <td>Good, but cyclical</td>
+          </tr>
+          <tr>
+            <td><strong>Industrials</strong></td>
+            <td>1.5% - 3%</td>
+            <td>5% - 10%</td>
+            <td>Good—economic sensitive</td>
+          </tr>
+          <tr>
+            <td><strong>Technology</strong></td>
+            <td>0.5% - 2%</td>
+            <td class="green">10% - 20%+</td>
+            <td>Growing DGI presence</td>
+          </tr>
+          <tr>
+            <td><strong>Utilities</strong></td>
+            <td class="highlight">3% - 5%</td>
+            <td>2% - 4%</td>
+            <td>Higher yield, slower growth</td>
+          </tr>
+          <tr>
+            <td><strong>REITs</strong></td>
+            <td class="highlight">4% - 6%</td>
+            <td>2% - 5%</td>
+            <td>High yield, moderate growth</td>
+          </tr>
+          <tr>
+            <td><strong>Energy</strong></td>
+            <td>3% - 6%</td>
+            <td class="red">Variable</td>
+            <td class="red">Cyclical—dividend risk</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="blue-box">
+        <h4>⚡ Tech's Emerging Role in DGI</h4>
+        <p>Historically, DGI investors avoided tech because most companies paid no dividends. But Apple, Microsoft, Visa, and others have become dividend growers with low yields (0.5-1%) but strong growth rates (10%+ annually). These "growth dividend" stocks appeal to younger DGI investors with longer time horizons.</p>
+      </div>
+
+      <h2>9. Significant Risks</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Risk</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="red"><strong>Dividend Cuts</strong></td>
+            <td>Companies can reduce or eliminate dividends</td>
+            <td>GE, Wells Fargo, Disney (2020)</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Capital Loss</strong></td>
+            <td>Stock price can fall more than dividends provide</td>
+            <td>AT&T -50% over 5 years despite dividends</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Sector Concentration</strong></td>
+            <td>DGI tilts toward certain sectors</td>
+            <td>Heavy in staples, utilities, healthcare</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Missed Growth</strong></td>
+            <td>Avoiding non-dividend stocks</td>
+            <td>Missing Amazon, Google, etc.</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Yield Trap</strong></td>
+            <td>High yield may signal trouble</td>
+            <td>High yield before dividend cut</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Inflation Risk</strong></td>
+            <td>Dividend growth may not keep pace</td>
+            <td>2022: 7% inflation vs 5% dividend growth</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Tax Inefficiency</strong></td>
+            <td>Dividends taxed even if reinvested</td>
+            <td>Forced taxable events annually</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Survivorship Bias</strong></td>
+            <td>Success stories highlighted; failures forgotten</td>
+            <td>Focus on Coca-Cola, ignore Kodak</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Notable Dividend Cuts</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Track Record Before Cut</th>
+            <th>Year</th>
+            <th>Cut Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>General Electric</strong></td>
+            <td>100+ years of dividends</td>
+            <td>2018</td>
+            <td class="red">-92%</td>
+          </tr>
+          <tr>
+            <td><strong>AT&T</strong></td>
+            <td>36 years of increases</td>
+            <td>2022</td>
+            <td class="red">-47%</td>
+          </tr>
+          <tr>
+            <td><strong>3M</strong></td>
+            <td>66 years of increases</td>
+            <td>2024</td>
+            <td class="red">-50%</td>
+          </tr>
+          <tr>
+            <td><strong>Walgreens</strong></td>
+            <td>47 years of increases</td>
+            <td>2024</td>
+            <td class="red">-48%</td>
+          </tr>
+          <tr>
+            <td><strong>Disney</strong></td>
+            <td>Decades of dividends</td>
+            <td>2020</td>
+            <td class="red">-100% (suspended)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>10. FAQ: Frequently Asked Questions</h2>
+      
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question">Is dividend growth investing better than index investing?</div>
+          <div class="faq-answer">It depends on your goals and time period. DGI tends to provide more consistent income and lower volatility, while broad index funds provide more diversification and may capture more growth. Studies show mixed results—DGI sometimes outperforms, sometimes underperforms. Many investors do both: index funds for growth, DGI for income. There's no definitively "better" approach.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Should I focus on yield or growth?</div>
+          <div class="faq-answer">It depends on your time horizon and income needs. Younger investors with 20+ year horizons may prefer lower-yield/higher-growth stocks that compound over time. Near-retirees may prefer higher current yields. The "Chowder Rule" (yield + 5-year growth rate &gt; 12) tries to balance both. But don't chase either extreme—very high yields often signal trouble, and high growth can be unsustainable.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How many dividend stocks should I own?</div>
+          <div class="faq-answer">Most advisors suggest 20-30 stocks for adequate diversification across sectors. Fewer than 15 may be too concentrated; more than 50 becomes difficult to monitor. Alternatively, dividend ETFs (like SCHD, VIG, DGRO) provide instant diversification. The right number depends on your ability to research and monitor holdings. Quality matters more than quantity.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's a safe payout ratio?</div>
+          <div class="faq-answer">It varies by sector. For most companies, under 60% is comfortable—leaving room for earnings dips and dividend growth. REITs are different (must pay 90%+ of taxable income). Utilities often run 60-80% payout. Tech companies may be under 30%. Compare to sector peers, not the overall market. Also check free cash flow payout, not just earnings-based payout.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Are Dividend Aristocrats safe investments?</div>
+          <div class="faq-answer">Safer than average, but not safe. Aristocrat status means 25+ years of increases—impressive, but not a guarantee. Multiple former Aristocrats have cut dividends (AT&T, GE, Walgreens). The track record suggests resilience, but companies face new challenges all the time. Don't treat any investment as "safe"—even dividend aristocrats can lose significant value.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Should I use DRIP or take cash dividends?</div>
+          <div class="faq-answer">DRIP is beneficial for compounding during accumulation phase. But it buys regardless of valuation and can create concentration risk. Consider: taking cash dividends and rebalancing across your portfolio may be more diversified. In taxable accounts, DRIP creates complex cost basis tracking. There's no universal answer—it depends on your situation and discipline.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is DGI tax-efficient?</div>
+          <div class="faq-answer">Less than growth investing. Qualified dividends are taxed at 0-20% (plus potential 3.8% NIIT), which is better than ordinary income but worse than unrealized gains. Each dividend payment is a taxable event, even if reinvested. Growth stocks that don't pay dividends defer taxes until sale. Consider holding dividend stocks in tax-advantaged accounts (IRA, 401k) when possible.</div>
+        </div>
+      </div>
 
       <h2>Conclusion</h2>
-      <p>
-        Dividend Growth Investing is one approach among many that investors discuss. Like all investment strategies, it involves trade-offs and assumptions that may or may not prove valid. The historical track record of dividend-paying companies provides no guarantee of future performance. Those considering any investment approach should carefully evaluate how it fits their individual circumstances, goals, and risk tolerance.
-      </p>
+      <p>Dividend Growth Investing is a legitimate strategy that appeals to investors seeking growing income streams from quality companies. The approach emphasizes companies that consistently raise dividends, theoretically filtering for businesses with strong fundamentals and shareholder-friendly management.</p>
 
-      <!-- Further Reading -->
+      <p>Key takeaways:</p>
+      <ul>
+        <li>DGI prioritizes dividend growth rate over current yield</li>
+        <li>Key metrics: payout ratio, dividend growth rate, years of consecutive increases</li>
+        <li>Dividend Aristocrats: 25+ years of increases; Kings: 50+ years</li>
+        <li>Compound growth can dramatically increase income over decades</li>
+        <li>Yield on Cost can be misleading—focus on total return</li>
+        <li>DRIP accelerates compounding but may create concentration</li>
+        <li>Sector exposure matters—DGI tilts toward staples, healthcare, utilities</li>
+        <li>Even long track records can end—GE, AT&T, 3M all cut dividends</li>
+        <li>Past dividend growth doesn't guarantee future growth</li>
+        <li>Compare DGI to total-return approaches; neither is universally superior</li>
+      </ul>
+
+      <p>DGI can be a valuable part of an investment strategy, particularly for those seeking growing income in retirement. However, it's not a guaranteed path to success. Dividends can be cut, stock prices can fall, and focusing solely on dividend stocks may mean missing growth opportunities elsewhere. As with any strategy, understand the trade-offs and how it fits your overall financial plan.</p>
+
+      <!-- Related Articles -->
+      <h3 style="margin-top: 60px; margin-bottom: 24px;">📚 Related Articles</h3>
+      <div class="related-articles">
+        <a href="/blog/what-is-a-dividend.html" class="related-card">
+          <h4>What Is a Dividend?</h4>
+          <p>Dividend basics explained</p>
+        </a>
+        <a href="/blog/understanding-dividend-yield.html" class="related-card">
+          <h4>Understanding Dividend Yield</h4>
+          <p>Yield calculations and interpretation</p>
+        </a>
+        <a href="/blog/understanding-payout-ratio.html" class="related-card">
+          <h4>Understanding Payout Ratio</h4>
+          <p>Dividend sustainability metrics</p>
+        </a>
+      </div>
+
       <div class="reading-section">
-        <h3>📚 Further Reading</h3>
+        <h3>📖 Additional Resources</h3>
         <ul>
-          <li><a href="https://www.investopedia.com/terms/d/dividend.asp" target="_blank" rel="noopener">Investopedia: Dividends</a> – Basic concepts explained</li>
-          <li><a href="https://www.sec.gov/investor/pubs/ininvest.htm" target="_blank" rel="noopener">SEC: Investor Resources</a> – General investment education</li>
-          <li><a href="https://www.bogleheads.org/wiki/Dividend_growth_investing" target="_blank" rel="noopener">Bogleheads Wiki: Dividend Growth Investing</a> – Community perspective with critiques</li>
+          <li><a href="https://www.spglobal.com/spdji/en/indices/strategy/sp-500-dividend-aristocrats/" target="_blank" rel="noopener">S&P Dividend Aristocrats Index</a></li>
+          <li><a href="https://www.sec.gov/investor/pubs/dividendpayout.htm" target="_blank" rel="noopener">SEC: Dividends Education</a></li>
+          <li><a href="https://www.bogleheads.org/wiki/Dividend_growth_investing" target="_blank" rel="noopener">Bogleheads: DGI Analysis</a></li>
         </ul>
       </div>
 
-      <!-- Final Warning -->
       <div class="warning-box" style="margin-top: 50px;">
         <h4>⚠️ Final Reminder</h4>
         <p>This article is for educational purposes only and does not constitute investment advice or a recommendation to use any strategy. Dividends are not guaranteed and can be reduced or eliminated. Past dividend growth does not predict future growth. All equity investments carry risk of loss. Consult a qualified financial advisor before making investment decisions.</p>
       </div>
-
     </div>
   </main>
 
   <footer>
     <div class="footer-links">
-        <a href="/about.html">About</a>
-        <a href="/resources.html">Resources</a>
-        <a href="/faq.html">FAQ</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/legal.html">Terms</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms</a>
     </div>
-    <p style="color: #475569; font-size: 0.85rem; margin-bottom: 20px;">© 2026 US Market Terminals. All rights reserved.</p>
     <div class="footer-disclaimer">
-        <strong>Risk Disclosure:</strong> This content is for educational and informational purposes only. It does not constitute investment advice, financial advice, or any recommendation to buy, sell, or hold any security. Dividends are not guaranteed and can be reduced or eliminated. Past performance does not indicate future results. Consult a qualified financial advisor before making investment decisions.
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk including the potential loss of principal. Past performance does not guarantee future results.
     </div>
   </footer>
-
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
