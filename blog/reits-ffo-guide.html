@@ -3,72 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Understanding FFO and AFFO in REIT Analysis | US Market Terminals</title>
-  <meta name="description" content="Educational overview of FFO (Funds From Operations) and AFFO (Adjusted Funds From Operations), two metrics commonly used in REIT analysis.">
-  
+  <title>Understanding FFO and AFFO | Complete Guide to REIT Metrics | US Market Terminals</title>
+  <meta name="description" content="Comprehensive guide to FFO (Funds From Operations) and AFFO (Adjusted FFO) in REIT analysis, including calculations, payout ratios, P/FFO valuation, and how to evaluate REIT dividend safety.">
+  <meta name="keywords" content="FFO, AFFO, Funds From Operations, REIT analysis, REIT valuation, P/FFO ratio, payout ratio, dividend coverage, real estate investment trust">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog/understanding-ffo-affo.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏢</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
-      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #f59e0b;
-      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
-    }
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #f59e0b; --accent-glow: rgba(245, 158, 11, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); --green: #22c55e; --green-glow: rgba(34, 197, 94, 0.1); --blue: #3b82f6; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; transition: 0.3s; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; }
     
     .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
-    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
-
-    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
-
-    /* Warning Boxes */
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; }
+    
+    .container { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    
     .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
-    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; }
     .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
-
-    .article-header { padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 50px; }
-    .tag { display: inline-block; background: rgba(245, 158, 11, 0.1); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; border: 1px solid rgba(245, 158, 11, 0.2); }
+    
+    .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
     .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
-
-    .content { font-size: 1.1rem; color: #cbd5e1; }
-    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; }
-    .content p { margin-bottom: 30px; text-align: justify; }
     
-    .formula-box { background: var(--panel); border: 1px solid var(--border); padding: 30px; border-radius: 20px; margin: 40px 0; font-family: 'JetBrains Mono', monospace; border-right: 4px solid var(--accent); }
-    .formula-title { color: var(--accent); font-weight: 800; margin-bottom: 15px; font-size: 0.9rem; text-transform: uppercase; }
-
-    /* Context Box */
-    .context-box { background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 16px; padding: 25px; margin: 40px 0; }
-    .context-box h4 { color: #fbbf24; margin-bottom: 12px; font-size: 1rem; }
-    .context-box p { margin: 0; font-size: 0.95rem; color: #fcd34d; }
-
-    /* Risk Section */
-    .risk-section { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .risk-section h3 { color: #f87171; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem; }
-    .risk-section ul { margin: 0; padding-left: 20px; }
-    .risk-section li { margin-bottom: 12px; color: #fca5a5; }
-
-    /* Further Reading */
-    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: #fff; margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; line-height: 1.9; }
+    .content strong { color: #fff; }
+    .content ul, .content ol { margin-bottom: 24px; padding-left: 24px; }
+    .content li { margin-bottom: 12px; }
+    
+    .formula-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; font-family: 'JetBrains Mono', monospace; text-align: center; }
+    .formula-box .formula { font-size: 1.1rem; color: var(--accent); margin: 15px 0; }
+    .formula-box .example { font-size: 0.95rem; color: var(--text-dim); margin-top: 15px; }
+    
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
+    
+    .key-point { background: var(--accent-glow); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #fbbf24; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #fcd34d; font-size: 0.95rem; }
+    
+    .green-box { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .green-box h4 { color: #4ade80; margin-bottom: 10px; font-size: 1rem; }
+    .green-box p { margin: 0; color: #86efac; font-size: 0.95rem; }
+    
+    .blue-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .blue-box h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .blue-box p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    .data-table th { background: var(--accent-glow); color: var(--accent); font-weight: 700; text-align: left; padding: 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table .highlight { color: var(--accent); font-weight: 700; }
+    .data-table .green { color: var(--green); font-weight: 700; }
+    .data-table .dim { color: var(--text-dim); }
+    .data-table .red { color: #f87171; font-weight: 700; }
+    .data-table .blue { color: var(--blue); font-weight: 700; }
+    
+    /* Comparison Grid */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .compare-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .compare-box h4 { margin-bottom: 16px; font-size: 1.1rem; color: #fff; }
+    .compare-box ul { margin: 0; padding-left: 20px; }
+    .compare-box li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dim); }
+    .compare-box.ffo { border-color: rgba(245, 158, 11, 0.3); }
+    .compare-box.ffo h4 { color: var(--accent); }
+    .compare-box.affo { border-color: rgba(34, 197, 94, 0.3); }
+    .compare-box.affo h4 { color: var(--green); }
+    
+    /* FAQ Section */
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+    .faq-answer { padding: 0 24px 20px; color: var(--text-dim); line-height: 1.8; display: block; }
+    
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
     .reading-section ul { margin: 0; padding-left: 20px; }
     .reading-section li { margin-bottom: 10px; }
     .reading-section a { color: #93c5fd; }
-    .reading-section a:hover { color: #bfdbfe; }
-
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 120px; }
-    .footer-disclaimer { max-width: 800px; margin: 0 auto; font-size: 0.75rem; color: #4b5563; line-height: 1.7; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; }
+    
+    /* Related Articles */
+    .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+    .related-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .related-card h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
+    .related-card p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+    
+    @media (max-width: 768px) {
+      .data-table { font-size: 0.85rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .related-articles { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <div class="nav-container">
       <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
@@ -77,114 +123,817 @@
   </nav>
 
   <main class="container">
-
-    <!-- Top Warning -->
     <div class="warning-box">
       <h4>⚠️ Educational Purpose Only</h4>
-      <p>This article explains FFO and AFFO, two metrics commonly used in REIT analysis. Understanding these terms does not guarantee investment success. REIT investments involve significant risks. Consult a qualified financial advisor before making investment decisions.</p>
+      <p>This article explains FFO and AFFO metrics used in REIT analysis. Understanding these terms does not guarantee investment success. REIT investments involve significant risks including interest rate sensitivity and potential dividend cuts. Consult a qualified financial advisor.</p>
     </div>
 
     <article class="article-header">
       <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
-      <span class="tag">Concept Overview</span>
-      <h1>Understanding FFO and AFFO in REIT Analysis</h1>
-      <div class="meta"><span>Concept Explanation</span> • <span>Jan 2026</span></div>
+      <span class="tag">REIT Analysis</span>
+      <h1>Understanding FFO and AFFO</h1>
+      <div class="meta">
+        <span>Intermediate Guide</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>14 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>Updated January 2026</span>
+      </div>
     </article>
 
     <div class="content">
-      <p>
-        When analyzing <strong>Real Estate Investment Trusts (REITs)</strong>, some analysts use different metrics than those typically applied to other stocks. This is partly because heavy depreciation charges on physical properties can make Net Income less useful for understanding cash generation. This article explains two commonly referenced metrics: <strong>FFO (Funds From Operations)</strong> and <strong>AFFO (Adjusted Funds From Operations)</strong>.
-      </p>
+      <p>When analyzing <strong>Real Estate Investment Trusts (REITs)</strong>, traditional metrics like Net Income and P/E ratio often tell an incomplete story. Heavy depreciation charges on physical properties make Net Income less useful for understanding cash generation. This article explains two essential REIT metrics: <strong>FFO (Funds From Operations)</strong> and <strong>AFFO (Adjusted Funds From Operations)</strong>.</p>
 
-      <h2>1. What is FFO (Funds From Operations)?</h2>
-      <p>
-        FFO is a metric developed by Nareit (the National Association of Real Estate Investment Trusts) to measure REIT operating performance. It adds back depreciation and amortization to net income, based on the rationale that real estate may not lose value in the way that depreciation accounting suggests.
-      </p>
+      <p>In this comprehensive guide, we'll explore how FFO and AFFO are calculated, why they matter for dividend analysis, how to use them for valuation, their limitations, and the red flags to watch for when analyzing REITs.</p>
+
+      <!-- Table of Contents -->
+      <div class="info-box">
+        <h3>📑 Table of Contents</h3>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li>Why REITs Need Different Metrics</li>
+          <li>What is FFO (Funds From Operations)?</li>
+          <li>What is AFFO (Adjusted FFO)?</li>
+          <li>FFO vs. AFFO: Key Differences</li>
+          <li>Calculating FFO and AFFO</li>
+          <li>Payout Ratios and Dividend Coverage</li>
+          <li>P/FFO Valuation</li>
+          <li>AFFO by REIT Sector</li>
+          <li>Limitations and Red Flags</li>
+          <li>FAQ: Frequently Asked Questions</li>
+        </ol>
+      </div>
+
+      <h2>1. Why REITs Need Different Metrics</h2>
+      <p>REITs own physical real estate—buildings depreciate for accounting purposes, but the properties often maintain or increase in value. This creates a mismatch between accounting income and economic reality:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>What It Measures</th>
+            <th>Problem for REITs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Net Income</strong></td>
+            <td>GAAP profit after all expenses</td>
+            <td class="red">Depressed by large non-cash depreciation</td>
+          </tr>
+          <tr>
+            <td><strong>EPS</strong></td>
+            <td>Net income per share</td>
+            <td class="red">Same issue—artificially low</td>
+          </tr>
+          <tr>
+            <td><strong>P/E Ratio</strong></td>
+            <td>Price relative to earnings</td>
+            <td class="red">Misleadingly high or meaningless</td>
+          </tr>
+          <tr>
+            <td><strong>FFO</strong></td>
+            <td>Cash-like operating performance</td>
+            <td class="green">Adds back depreciation—more useful</td>
+          </tr>
+          <tr>
+            <td><strong>AFFO</strong></td>
+            <td>Sustainable cash available</td>
+            <td class="green">Adjusts for maintenance CapEx</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>The Depreciation Problem: Example</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Line Item</th>
+            <th>Amount</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rental Revenue</td>
+            <td>$100 million</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Operating Expenses</td>
+            <td>-$40 million</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Interest Expense</td>
+            <td>-$15 million</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Depreciation</td>
+            <td class="red">-$35 million</td>
+            <td class="dim">Non-cash charge</td>
+          </tr>
+          <tr>
+            <td><strong>Net Income</strong></td>
+            <td class="red">$10 million</td>
+            <td>Looks weak</td>
+          </tr>
+          <tr>
+            <td>Add back: Depreciation</td>
+            <td class="green">+$35 million</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong>FFO</strong></td>
+            <td class="highlight">$45 million</td>
+            <td>Better reflects cash generation</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>💡 Why Depreciation Doesn't Tell the Whole Story</h4>
+        <p>Accounting rules require REITs to depreciate buildings over 27.5-39 years. But a well-maintained apartment building doesn't lose 3-4% of its value every year—it often appreciates. FFO removes this accounting distortion to show operating cash flow more clearly.</p>
+      </div>
+
+      <h2>2. What is FFO (Funds From Operations)?</h2>
+      <p>FFO is a standardized metric developed by <strong>Nareit</strong> (National Association of Real Estate Investment Trusts) to measure REIT operating performance. It adds back depreciation and removes gains/losses from property sales.</p>
 
       <div class="formula-box">
-        <div class="formula-title">Basic FFO Calculation</div>
-        Net Income + Depreciation + Amortization − Gains on Sales of Property = FFO
+        <div style="color: var(--text-dim); margin-bottom: 10px;">FFO Formula (Nareit Definition)</div>
+        <div class="formula">FFO = Net Income + Depreciation + Amortization − Gains on Property Sales</div>
+        <div class="example">$10M + $35M + $2M − $5M = $42M FFO</div>
       </div>
 
-      <div class="context-box">
-        <h4>⚠️ Important Limitation</h4>
-        <p>FFO is a non-GAAP metric, meaning companies have some flexibility in how they calculate it. Comparisons between REITs should account for potential differences in methodology.</p>
-      </div>
+      <h3>FFO Components Explained</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>What It Is</th>
+            <th>Why Adjusted</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Net Income</strong></td>
+            <td>Starting point (GAAP earnings)</td>
+            <td>Base for calculation</td>
+          </tr>
+          <tr>
+            <td><strong>+ Depreciation</strong></td>
+            <td>Non-cash charge for building wear</td>
+            <td class="green">Added back—buildings don't lose value like equipment</td>
+          </tr>
+          <tr>
+            <td><strong>+ Amortization</strong></td>
+            <td>Non-cash charge for intangibles</td>
+            <td class="green">Added back—non-cash expense</td>
+          </tr>
+          <tr>
+            <td><strong>− Gains on Sales</strong></td>
+            <td>Profit from selling properties</td>
+            <td class="red">Removed—one-time, not recurring</td>
+          </tr>
+          <tr>
+            <td><strong>+ Losses on Sales</strong></td>
+            <td>Loss from selling properties</td>
+            <td class="green">Added back—one-time event</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <h2>2. What is AFFO (Adjusted FFO)?</h2>
-      <p>
-        AFFO attempts to go further than FFO by subtracting recurring capital expenditures needed to maintain properties (such as roof repairs, HVAC replacement, etc.). Some analysts view AFFO as a closer approximation of sustainable cash flow available for dividends.
-      </p>
+      <h2>3. What is AFFO (Adjusted FFO)?</h2>
+      <p>AFFO goes further than FFO by subtracting <strong>recurring capital expenditures</strong> (maintenance CapEx) needed to keep properties operating. Many analysts consider AFFO a better measure of sustainable, distributable cash flow.</p>
 
       <div class="formula-box">
-        <div class="formula-title">Basic AFFO Calculation</div>
-        FFO − Recurring Capital Expenditures − Straight-line Rent Adjustments = AFFO
+        <div style="color: var(--text-dim); margin-bottom: 10px;">AFFO Formula (Common Approach)</div>
+        <div class="formula">AFFO = FFO − Maintenance CapEx − Straight-Line Rent Adjustment − Leasing Costs</div>
+        <div class="example">$42M − $6M − $2M − $1M = $33M AFFO</div>
       </div>
 
-      <div class="context-box">
-        <h4>⚠️ Calculation Varies</h4>
-        <p>There is no standardized definition of AFFO. Different REITs calculate it differently, making direct comparisons challenging. Some companies may use terms like "CAD" (Cash Available for Distribution) or "FAD" (Funds Available for Distribution) with different adjustments.</p>
+      <h3>AFFO Adjustments Explained</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Adjustment</th>
+            <th>What It Is</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Maintenance CapEx</strong></td>
+            <td>Recurring spending to maintain properties (roofs, HVAC, etc.)</td>
+            <td class="red">Real cash outflow required to sustain business</td>
+          </tr>
+          <tr>
+            <td><strong>Straight-Line Rent</strong></td>
+            <td>Accounting smoothing of rent over lease term</td>
+            <td>Removes non-cash revenue recognition</td>
+          </tr>
+          <tr>
+            <td><strong>Leasing Costs</strong></td>
+            <td>Commissions, tenant improvements</td>
+            <td>Real costs to maintain occupancy</td>
+          </tr>
+          <tr>
+            <td><strong>Stock Compensation</strong></td>
+            <td>Non-cash employee compensation</td>
+            <td>Some REITs adjust for this</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ No Standard AFFO Definition</h4>
+        <p>Unlike FFO (which Nareit standardized), AFFO has no official definition. Each REIT calculates it differently. Some call it "CAD" (Cash Available for Distribution) or "FAD" (Funds Available for Distribution). Always check how a specific REIT calculates its AFFO before comparing across companies.</p>
       </div>
 
-      <h2>3. Payout Ratio Considerations</h2>
-      <p>
-        When analyzing REIT dividends, some investors look at payout ratios based on FFO or AFFO rather than Net Income. A payout ratio measures what percentage of a metric is paid out as dividends.
-      </p>
-      <p>
-        However, using any single metric as a "safe" threshold for dividend sustainability is an oversimplification. Dividend sustainability depends on many factors including tenant quality, debt levels, interest rate environment, and overall business strategy—not just a single ratio.
-      </p>
+      <h2>4. FFO vs. AFFO: Key Differences</h2>
 
-      <!-- Risk Section -->
-      <div class="risk-section">
-        <h3>⚠️ Limitations of FFO and AFFO</h3>
-        <ul>
-          <li><strong>Non-Standardized:</strong> These are non-GAAP metrics with varying calculation methods across companies</li>
-          <li><strong>Backward-Looking:</strong> Historical FFO/AFFO doesn't predict future performance</li>
-          <li><strong>Manipulation Risk:</strong> Companies have discretion in certain adjustments</li>
-          <li><strong>Not a Guarantee:</strong> Strong FFO/AFFO metrics don't guarantee dividend safety or stock price stability</li>
-          <li><strong>Ignores Other Risks:</strong> These metrics don't capture interest rate risk, tenant credit risk, or sector disruption</li>
-          <li><strong>Capital Structure Blind:</strong> FFO/AFFO don't directly reflect leverage or refinancing risks</li>
-        </ul>
+      <div class="compare-grid">
+        <div class="compare-box ffo">
+          <h4>📊 FFO (Funds From Operations)</h4>
+          <ul>
+            <li>Nareit-standardized definition</li>
+            <li>Adds back depreciation</li>
+            <li>Removes property sale gains/losses</li>
+            <li>Does NOT adjust for maintenance CapEx</li>
+            <li>More comparable across REITs</li>
+            <li>May overstate sustainable cash flow</li>
+          </ul>
+        </div>
+        <div class="compare-box affo">
+          <h4>💵 AFFO (Adjusted FFO)</h4>
+          <ul>
+            <li>No standardized definition</li>
+            <li>Subtracts maintenance CapEx</li>
+            <li>Adjusts for straight-line rent</li>
+            <li>Better reflects "true" cash available</li>
+            <li>Harder to compare across REITs</li>
+            <li>Closer to sustainable dividend capacity</li>
+          </ul>
+        </div>
       </div>
 
-      <h2>4. Using These Metrics in Context</h2>
-      <p>
-        FFO and AFFO can be useful as part of a broader analysis, but they should not be relied upon in isolation. Other factors to consider include: the REIT's debt maturity schedule, tenant concentration, lease expiration timing, interest rate sensitivity, and management track record.
-      </p>
-      <p>
-        No single metric or set of metrics can predict whether a REIT investment will be successful. These tools provide one lens for understanding REIT operations but have significant limitations.
-      </p>
+      <h3>FFO vs. AFFO Comparison Example</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>REIT A</th>
+            <th>REIT B</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Net Income</td>
+            <td>$50M</td>
+            <td>$50M</td>
+            <td>Same starting point</td>
+          </tr>
+          <tr>
+            <td>+ Depreciation</td>
+            <td>$80M</td>
+            <td>$80M</td>
+            <td>Same</td>
+          </tr>
+          <tr>
+            <td>− Gains on Sales</td>
+            <td>$10M</td>
+            <td>$5M</td>
+            <td>REIT A sold more properties</td>
+          </tr>
+          <tr>
+            <td><strong>FFO</strong></td>
+            <td class="highlight">$120M</td>
+            <td class="highlight">$125M</td>
+            <td>REIT B looks slightly better</td>
+          </tr>
+          <tr>
+            <td>− Maintenance CapEx</td>
+            <td class="red">$15M</td>
+            <td class="red">$40M</td>
+            <td>REIT B has older buildings</td>
+          </tr>
+          <tr>
+            <td>− Straight-Line Rent</td>
+            <td>$3M</td>
+            <td>$2M</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong>AFFO</strong></td>
+            <td class="green">$102M</td>
+            <td class="red">$83M</td>
+            <td>REIT A actually better!</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="blue-box">
+        <h4>📊 The Lesson</h4>
+        <p>FFO alone can be misleading. REIT B looked better on FFO, but its high maintenance CapEx (older properties) means less cash is actually available for dividends. AFFO reveals the true picture.</p>
+      </div>
+
+      <h2>5. Calculating FFO and AFFO</h2>
+      <p>Here's a step-by-step example using hypothetical numbers:</p>
+
+      <h3>Step-by-Step FFO Calculation</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Item</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Start with Net Income</td>
+            <td>$200 million</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Add: Real Estate Depreciation</td>
+            <td class="green">+$350 million</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Add: Amortization of Intangibles</td>
+            <td class="green">+$25 million</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Subtract: Gains on Property Sales</td>
+            <td class="red">-$75 million</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><strong>FFO</strong></td>
+            <td class="highlight">$500 million</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Shares Outstanding</td>
+            <td>250 million</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><strong>FFO per Share</strong></td>
+            <td class="highlight">$2.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Step-by-Step AFFO Calculation</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Item</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Start with FFO</td>
+            <td>$500 million</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Subtract: Recurring CapEx</td>
+            <td class="red">-$75 million</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Subtract: Straight-Line Rent Adjustment</td>
+            <td class="red">-$15 million</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Subtract: Leasing Commissions</td>
+            <td class="red">-$10 million</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><strong>AFFO</strong></td>
+            <td class="highlight">$400 million</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Shares Outstanding</td>
+            <td>250 million</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><strong>AFFO per Share</strong></td>
+            <td class="highlight">$1.60</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>6. Payout Ratios and Dividend Coverage</h2>
+      <p>REITs must distribute at least 90% of taxable income as dividends. Payout ratios help assess dividend sustainability:</p>
+
+      <div class="formula-box">
+        <div style="color: var(--text-dim); margin-bottom: 10px;">Payout Ratio Formulas</div>
+        <div class="formula">FFO Payout Ratio = Annual Dividend ÷ FFO per Share</div>
+        <div class="formula" style="margin-top: 10px;">AFFO Payout Ratio = Annual Dividend ÷ AFFO per Share</div>
+        <div class="example">$1.50 dividend ÷ $2.00 FFO = 75% FFO payout | $1.50 ÷ $1.60 AFFO = 94% AFFO payout</div>
+      </div>
+
+      <h3>Payout Ratio Interpretation</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>AFFO Payout Ratio</th>
+            <th>Interpretation</th>
+            <th>Dividend Safety</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="green">&lt; 75%</td>
+            <td>Strong coverage; room for dividend growth</td>
+            <td class="green">Generally safe</td>
+          </tr>
+          <tr>
+            <td>75% - 85%</td>
+            <td>Healthy coverage; typical for stable REITs</td>
+            <td>Adequate</td>
+          </tr>
+          <tr>
+            <td>85% - 95%</td>
+            <td>High payout; limited cushion</td>
+            <td>Moderate concern</td>
+          </tr>
+          <tr>
+            <td class="red">&gt; 95%</td>
+            <td>Very tight; dividend at risk if earnings dip</td>
+            <td class="red">Elevated risk</td>
+          </tr>
+          <tr>
+            <td class="red">&gt; 100%</td>
+            <td>Paying more than earning; unsustainable</td>
+            <td class="red">High risk of cut</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Payout Ratio Example</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>REIT</th>
+            <th>AFFO/Share</th>
+            <th>Dividend/Share</th>
+            <th>Payout Ratio</th>
+            <th>Assessment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>REIT A</td>
+            <td>$3.50</td>
+            <td>$2.50</td>
+            <td class="green">71%</td>
+            <td class="green">Well covered</td>
+          </tr>
+          <tr>
+            <td>REIT B</td>
+            <td>$2.00</td>
+            <td>$1.70</td>
+            <td>85%</td>
+            <td>Adequate</td>
+          </tr>
+          <tr>
+            <td>REIT C</td>
+            <td>$1.20</td>
+            <td>$1.15</td>
+            <td class="red">96%</td>
+            <td class="red">Very tight</td>
+          </tr>
+          <tr>
+            <td>REIT D</td>
+            <td>$0.80</td>
+            <td>$1.00</td>
+            <td class="red">125%</td>
+            <td class="red">Unsustainable—cut likely</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ Payout Ratio Isn't Everything</h4>
+        <p>A low payout ratio doesn't guarantee dividend safety. Other factors matter: debt levels, interest rate exposure, tenant concentration, lease expirations, and management quality. A REIT with 70% payout but heavy debt maturities may be riskier than one with 85% payout and conservative leverage.</p>
+      </div>
+
+      <h2>7. P/FFO Valuation</h2>
+      <p>P/FFO (Price to FFO) is to REITs what P/E is to regular stocks. It shows how much investors pay for each dollar of FFO:</p>
+
+      <div class="formula-box">
+        <div style="color: var(--text-dim); margin-bottom: 10px;">P/FFO Formula</div>
+        <div class="formula">P/FFO = Stock Price ÷ FFO per Share</div>
+        <div class="example">$50 stock price ÷ $2.50 FFO = 20x P/FFO</div>
+      </div>
+
+      <h3>P/FFO by REIT Sector</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>REIT Sector</th>
+            <th>Typical P/FFO Range</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Industrial</strong></td>
+            <td class="blue">20-30x</td>
+            <td>Strong growth; e-commerce tailwinds</td>
+          </tr>
+          <tr>
+            <td><strong>Data Centers</strong></td>
+            <td class="blue">18-25x</td>
+            <td>AI/cloud growth; high demand</td>
+          </tr>
+          <tr>
+            <td><strong>Cell Towers</strong></td>
+            <td class="blue">20-28x</td>
+            <td>Recurring revenue; 5G expansion</td>
+          </tr>
+          <tr>
+            <td><strong>Residential (Apartments)</strong></td>
+            <td>15-22x</td>
+            <td>Stable demand; inflation hedge</td>
+          </tr>
+          <tr>
+            <td><strong>Healthcare</strong></td>
+            <td>12-18x</td>
+            <td>Aging demographics; operator risk</td>
+          </tr>
+          <tr>
+            <td><strong>Retail (Strip Centers)</strong></td>
+            <td>10-15x</td>
+            <td>Grocery-anchored; stable</td>
+          </tr>
+          <tr>
+            <td><strong>Office</strong></td>
+            <td class="red">8-14x</td>
+            <td>Remote work headwinds; uncertainty</td>
+          </tr>
+          <tr>
+            <td><strong>Malls</strong></td>
+            <td class="red">6-12x</td>
+            <td>E-commerce disruption; declining traffic</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Ranges are approximate and vary by market conditions, individual REIT quality, and growth prospects.</p>
+
+      <h2>8. AFFO by REIT Sector</h2>
+      <p>Different REIT types have different CapEx requirements, affecting the gap between FFO and AFFO:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>REIT Sector</th>
+            <th>Typical FFO-to-AFFO Gap</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Triple-Net (NNN)</strong></td>
+            <td class="green">Small (5-10%)</td>
+            <td>Tenants pay maintenance; minimal landlord CapEx</td>
+          </tr>
+          <tr>
+            <td><strong>Cell Towers</strong></td>
+            <td class="green">Small (5-10%)</td>
+            <td>Low maintenance requirements</td>
+          </tr>
+          <tr>
+            <td><strong>Industrial</strong></td>
+            <td>Moderate (10-15%)</td>
+            <td>Simple buildings; lower CapEx needs</td>
+          </tr>
+          <tr>
+            <td><strong>Self-Storage</strong></td>
+            <td>Moderate (10-15%)</td>
+            <td>Low-maintenance structures</td>
+          </tr>
+          <tr>
+            <td><strong>Apartments</strong></td>
+            <td>Moderate (15-20%)</td>
+            <td>Regular unit turnover and updates</td>
+          </tr>
+          <tr>
+            <td><strong>Office</strong></td>
+            <td class="red">Large (20-30%)</td>
+            <td>Tenant improvements; leasing costs</td>
+          </tr>
+          <tr>
+            <td><strong>Malls</strong></td>
+            <td class="red">Large (25-35%)</td>
+            <td>Heavy CapEx to attract tenants</td>
+          </tr>
+          <tr>
+            <td><strong>Hotels</strong></td>
+            <td class="red">Large (25-40%)</td>
+            <td>Constant room renovations needed</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="green-box">
+        <h4>💡 Why Triple-Net REITs Are Popular</h4>
+        <p>In triple-net (NNN) leases, tenants pay property taxes, insurance, AND maintenance. This minimizes landlord CapEx, making FFO and AFFO nearly identical. Examples include Realty Income (O), National Retail Properties (NNN), and STORE Capital. The predictable cash flows make dividend analysis more straightforward.</p>
+      </div>
+
+      <h2>9. Limitations and Red Flags</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Limitation</th>
+            <th>Description</th>
+            <th>What to Do</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Non-GAAP</strong></td>
+            <td>FFO/AFFO are not standardized (especially AFFO)</td>
+            <td>Read the company's definitions</td>
+          </tr>
+          <tr>
+            <td><strong>Backward-Looking</strong></td>
+            <td>Historical metrics don't predict future</td>
+            <td>Consider forward guidance</td>
+          </tr>
+          <tr>
+            <td><strong>Manipulation Risk</strong></td>
+            <td>Companies can classify expenses favorably</td>
+            <td>Compare to peers; look at trends</td>
+          </tr>
+          <tr>
+            <td><strong>Ignores Debt</strong></td>
+            <td>FFO/AFFO don't show leverage risk</td>
+            <td>Check debt ratios separately</td>
+          </tr>
+          <tr>
+            <td><strong>One Metric Isn't Enough</strong></td>
+            <td>Need full picture of REIT health</td>
+            <td>Use multiple metrics together</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Red Flags to Watch</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Red Flag</th>
+            <th>What It Suggests</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="red">AFFO payout ratio &gt; 100%</td>
+            <td>Dividend may not be sustainable</td>
+          </tr>
+          <tr>
+            <td class="red">FFO declining year-over-year</td>
+            <td>Operational deterioration</td>
+          </tr>
+          <tr>
+            <td class="red">Large gap between FFO and AFFO</td>
+            <td>High maintenance burden; older properties</td>
+          </tr>
+          <tr>
+            <td class="red">Company changes AFFO definition frequently</td>
+            <td>May be managing optics rather than operations</td>
+          </tr>
+          <tr>
+            <td class="red">FFO/AFFO growing only through acquisitions</td>
+            <td>Organic growth may be lacking</td>
+          </tr>
+          <tr>
+            <td class="red">Stock-based compensation excluded from AFFO</td>
+            <td>Real cost being ignored</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>10. FAQ: Frequently Asked Questions</h2>
+      
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question">Why can't I just use P/E ratio for REITs?</div>
+          <div class="faq-answer">P/E ratios are often misleading for REITs because Net Income includes large non-cash depreciation charges. A REIT might show low or even negative EPS while generating substantial cash flow. For example, a REIT with $1.00 EPS and $3.00 FFO would have very different P/E (high) vs. P/FFO (lower) multiples. P/FFO gives a clearer picture of valuation relative to cash-generating ability.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is FFO or AFFO more important?</div>
+          <div class="faq-answer">Both have value. FFO is standardized and better for comparing across REITs. AFFO better reflects sustainable distributable cash but varies by company definition. For dividend safety analysis, AFFO is generally more useful because it accounts for maintenance CapEx. For peer comparison, FFO may be more reliable. Many analysts look at both.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's a "good" FFO growth rate?</div>
+          <div class="faq-answer">It depends on the REIT sector. High-growth sectors (industrial, data centers) might show 5-10%+ annual FFO growth. Stable sectors (triple-net retail) might target 3-5%. Anything consistently above 3% generally supports dividend growth. Negative FFO growth is a warning sign unless there's a clear temporary reason (like a large tenant bankruptcy).</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Why do some REITs use "Core FFO" or "Normalized FFO"?</div>
+          <div class="faq-answer">Companies often report "Core FFO" or "Normalized FFO" to exclude items they consider one-time or unusual—like acquisition costs, severance, or legal settlements. This can be legitimate (removing true one-time items) or aggressive (excluding recurring "one-time" costs every year). Check what's being excluded and whether it's consistent year-to-year.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can a REIT with &gt;100% payout ratio be safe?</div>
+          <div class="faq-answer">Temporarily, yes—if it's due to a one-time event or timing issue. But sustained payout ratios above 100% mean the REIT is paying out more than it earns, which requires either selling assets, taking on debt, or cutting the dividend. Some high-yield REITs operate this way for extended periods before eventually cutting. It's a significant warning sign.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do interest rates affect FFO?</div>
+          <div class="faq-answer">Rising interest rates increase borrowing costs, reducing FFO for REITs with variable-rate debt or upcoming debt maturities. If a REIT has to refinance debt at higher rates, interest expense rises and FFO falls—even if operations are unchanged. Check debt maturity schedules and fixed vs. variable rate mix. Higher rates also make REIT dividends relatively less attractive vs. bonds, potentially pressuring stock prices.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Where can I find FFO and AFFO data?</div>
+          <div class="faq-answer">REITs report FFO in their quarterly and annual earnings releases and SEC filings (10-Q, 10-K). Look in the "Supplemental" or "Financial Highlights" sections. AFFO may be called FAD (Funds Available for Distribution) or CAD (Cash Available for Distribution). Financial sites like Seeking Alpha, REIT.com, and company investor relations pages typically provide these metrics. Always verify the company's specific calculation methodology.</div>
+        </div>
+      </div>
 
       <h2>Conclusion</h2>
-      <p>
-        FFO and AFFO are commonly referenced metrics in REIT analysis that attempt to better capture cash generation than traditional Net Income. However, they are non-standardized, have calculation variations, and should be used alongside other analysis methods. Understanding these terms can be helpful for reading REIT financial reports, but familiarity with the terminology does not reduce the inherent risks of REIT investing.
-      </p>
+      <p>FFO and AFFO are essential tools for analyzing REITs, providing better insight into cash-generating ability than traditional metrics like Net Income or EPS. FFO removes the distortion of depreciation accounting, while AFFO goes further to show cash actually available for dividends after maintenance spending.</p>
 
-      <!-- Further Reading -->
+      <p>Key takeaways:</p>
+      <ul>
+        <li>Net Income understates REIT cash flow due to high depreciation</li>
+        <li>FFO = Net Income + Depreciation − Gains on Sales (Nareit standard)</li>
+        <li>AFFO = FFO − Maintenance CapEx − Adjustments (no standard definition)</li>
+        <li>AFFO is generally better for dividend safety analysis</li>
+        <li>Payout ratios &gt;100% of AFFO are warning signs</li>
+        <li>P/FFO is the REIT equivalent of P/E ratio</li>
+        <li>Different REIT sectors have different typical P/FFO ranges</li>
+        <li>Triple-net REITs have minimal gap between FFO and AFFO</li>
+        <li>Always check how each REIT defines its metrics</li>
+        <li>Use FFO/AFFO alongside debt metrics, not in isolation</li>
+      </ul>
+
+      <p>Understanding these metrics helps you read REIT financials more effectively, but remember: no single metric guarantees investment success. REITs face real risks including interest rate sensitivity, tenant credit issues, and sector disruption. Use FFO and AFFO as part of comprehensive analysis, not as standalone decision tools.</p>
+
+      <!-- Related Articles -->
+      <h3 style="margin-top: 60px; margin-bottom: 24px;">📚 Related Articles</h3>
+      <div class="related-articles">
+        <a href="/blog/what-is-a-dividend.html" class="related-card">
+          <h4>What Is a Dividend?</h4>
+          <p>How companies return value to shareholders</p>
+        </a>
+        <a href="/blog/understanding-pe-ratio.html" class="related-card">
+          <h4>Understanding P/E Ratio</h4>
+          <p>The standard valuation metric (for non-REITs)</p>
+        </a>
+        <a href="/blog/understanding-interest-rates.html" class="related-card">
+          <h4>Interest Rates</h4>
+          <p>How rates affect REIT valuations</p>
+        </a>
+      </div>
+
       <div class="reading-section">
-        <h3>📚 Further Reading</h3>
+        <h3>📖 Official Resources</h3>
         <ul>
-          <li><a href="https://www.reit.com/what-reit/reit-basics/ffo-calculation" target="_blank" rel="noopener">Nareit: FFO Calculation</a> – Industry association standard</li>
-          <li><a href="https://www.investopedia.com/terms/f/fundsfromoperation.asp" target="_blank" rel="noopener">Investopedia: Funds From Operations</a> – Educational overview</li>
-          <li><a href="https://www.sec.gov/investor/pubs/reits.htm" target="_blank" rel="noopener">SEC: REITs</a> – Regulatory information</li>
+          <li><a href="https://www.reit.com/what-reit/reit-basics/ffo-calculation" target="_blank" rel="noopener">Nareit: FFO Calculation Standard</a></li>
+          <li><a href="https://www.sec.gov/investor/pubs/reits.htm" target="_blank" rel="noopener">SEC: REITs Investor Bulletin</a></li>
+          <li><a href="https://www.investopedia.com/terms/f/fundsfromoperation.asp" target="_blank" rel="noopener">Investopedia: Funds From Operations</a></li>
         </ul>
       </div>
 
-      <!-- Final Warning -->
       <div class="warning-box" style="margin-top: 50px;">
         <h4>⚠️ Final Reminder</h4>
-        <p>This article is for educational purposes only and does not constitute investment advice. Understanding financial metrics does not guarantee investment success. REIT investments involve significant risks including interest rate sensitivity, tenant credit risk, and potential dividend cuts. Consult a qualified financial advisor before making investment decisions.</p>
+        <p>This article is for educational purposes only and does not constitute investment advice. Understanding financial metrics does not guarantee investment success. REIT investments involve significant risks including interest rate sensitivity, tenant credit risk, sector disruption, and potential dividend cuts. Past performance does not predict future results. Consult a qualified financial advisor before making investment decisions.</p>
       </div>
-
     </div>
   </main>
 
   <footer>
-    <p style="color: #475569; font-size: 0.85rem; margin-bottom: 20px;">© 2026 US Market Terminals. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms</a>
+    </div>
     <div class="footer-disclaimer">
-        <strong>Risk Disclosure:</strong> This content is for educational and informational purposes only. It does not constitute investment advice. REIT investments involve significant risks including interest rate sensitivity and potential dividend cuts. Consult a qualified financial advisor before making investment decisions.
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk including the potential loss of principal. Past performance does not guarantee future results.
     </div>
   </footer>
-
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
