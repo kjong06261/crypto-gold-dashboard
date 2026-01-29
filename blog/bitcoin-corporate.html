@@ -3,82 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Understanding Bitcoin in Corporate Treasury Discussions | US Market Terminals</title>
-  <meta name="description" content="Educational overview of how some companies have approached Bitcoin as a treasury asset, including FASB accounting changes and associated considerations.">
-  
+  <title>Understanding Bitcoin in Corporate Treasury | Complete Guide | US Market Terminals</title>
+  <meta name="description" content="Comprehensive guide to Bitcoin as a corporate treasury asset, including FASB accounting rules, major corporate holders like MicroStrategy, custody options, and significant risks.">
+  <meta name="keywords" content="bitcoin corporate treasury, MicroStrategy bitcoin, FASB crypto accounting, corporate bitcoin holdings, bitcoin treasury strategy, digital asset treasury">
+  <link rel="canonical" href="https://us-dividend-pro.com/blog/understanding-bitcoin-corporate-treasury.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --bg: #05070a; --panel: #0d1117; --border: #1e222d;
-      --text: #e2e8f0; --text-dim: #94a3b8; --accent: #f59e0b;
-      --accent-glow: rgba(245, 158, 11, 0.1);
-      --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1);
-    }
-    
+    :root { --bg: #05070a; --panel: #0d1117; --border: #1e222d; --text: #e2e8f0; --text-dim: #94a3b8; --accent: #f59e0b; --accent-glow: rgba(245, 158, 11, 0.1); --warning: #dc2626; --warning-bg: rgba(220, 38, 38, 0.1); --green: #22c55e; --green-glow: rgba(34, 197, 94, 0.1); --blue: #3b82f6; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; transition: 0.3s; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+    a { text-decoration: none; }
     
-    .nav { 
-      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
-      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
-    }
-    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; }
-
-    .container { max-width: 850px; margin: 60px auto; padding: 0 24px; }
+    .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; }
     
-    /* Warning Boxes */
+    .container { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    
     .warning-box { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 12px; padding: 20px 24px; margin-bottom: 40px; }
-    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .warning-box h4 { color: var(--warning); font-size: 0.9rem; margin-bottom: 8px; }
     .warning-box p { color: #fca5a5; font-size: 0.85rem; line-height: 1.6; margin: 0; }
-
+    
     .article-header { margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
-    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .tag { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 20px; color: #fff; line-height: 1.1; letter-spacing: -2px; }
-    .meta { color: var(--text-dim); font-size: 0.9rem; display: flex; gap: 15px; font-family: 'JetBrains Mono', monospace; }
-
-    .content { font-size: 1.1rem; color: #cbd5e1; }
-    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 20px; letter-spacing: -0.5px; }
-    .content p { margin-bottom: 30px; text-align: justify; line-height: 1.9; }
+    .meta { color: var(--text-dim); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
+    
+    .content { font-size: 1.05rem; color: #cbd5e1; }
+    .content h2 { color: #fff; margin-top: 60px; margin-bottom: 24px; font-size: 1.7rem; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .content h3 { color: #fff; margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; }
+    .content p { margin-bottom: 24px; text-align: justify; line-height: 1.9; }
     .content strong { color: #fff; }
+    .content ul, .content ol { margin-bottom: 24px; padding-left: 24px; }
+    .content li { margin-bottom: 12px; }
     
-    .info-card { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .info-card h3 { color: var(--accent); margin-top: 0; margin-bottom: 15px; font-size: 1.3rem; }
-
-    .table-wrapper { overflow-x: auto; margin: 50px 0; border: 1px solid var(--border); border-radius: 20px; background: var(--panel); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-    .data-table { width: 100%; border-collapse: collapse; min-width: 600px; }
-    .data-table th { background: rgba(255,255,255,0.02); text-align: left; padding: 22px; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 1px solid var(--border); }
-    .data-table td { padding: 22px; border-bottom: 1px solid var(--border); color: var(--text); font-size: 1rem; }
+    .info-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 40px 0; }
+    .info-box h3 { color: #fff; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .info-box p { margin-bottom: 12px; font-size: 1rem; }
     
-    /* Risk Section */
-    .risk-section { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .risk-section h3 { color: #f87171; margin-top: 0; margin-bottom: 20px; font-size: 1.3rem; }
-    .risk-section ul { margin: 0; padding-left: 20px; }
-    .risk-section li { margin-bottom: 12px; color: #fca5a5; }
-
-    /* Further Reading */
-    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 35px; margin: 50px 0; }
-    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; }
+    .key-point { background: var(--accent-glow); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .key-point h4 { color: #fbbf24; margin-bottom: 10px; font-size: 1rem; }
+    .key-point p { margin: 0; color: #fcd34d; font-size: 0.95rem; }
+    
+    .green-box { background: var(--green-glow); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .green-box h4 { color: #4ade80; margin-bottom: 10px; font-size: 1rem; }
+    .green-box p { margin: 0; color: #86efac; font-size: 0.95rem; }
+    
+    .blue-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px 24px; margin: 30px 0; }
+    .blue-box h4 { color: #60a5fa; margin-bottom: 10px; font-size: 1rem; }
+    .blue-box p { margin: 0; color: #93c5fd; font-size: 0.95rem; }
+    
+    /* Tables */
+    .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    .data-table th { background: var(--accent-glow); color: var(--accent); font-weight: 700; text-align: left; padding: 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .data-table .highlight { color: var(--accent); font-weight: 700; }
+    .data-table .green { color: var(--green); font-weight: 700; }
+    .data-table .dim { color: var(--text-dim); }
+    .data-table .red { color: #f87171; font-weight: 700; }
+    .data-table .blue { color: var(--blue); font-weight: 700; }
+    
+    /* Comparison Grid */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+    .compare-box { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .compare-box h4 { margin-bottom: 16px; font-size: 1.1rem; color: #fff; }
+    .compare-box ul { margin: 0; padding-left: 20px; }
+    .compare-box li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dim); }
+    .compare-box.pros { border-color: rgba(34, 197, 94, 0.3); }
+    .compare-box.pros h4 { color: var(--green); }
+    .compare-box.cons { border-color: rgba(239, 68, 68, 0.3); }
+    .compare-box.cons h4 { color: #f87171; }
+    
+    /* FAQ Section */
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px 24px; color: #fff; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+    .faq-answer { padding: 0 24px 20px; color: var(--text-dim); line-height: 1.8; display: block; }
+    
+    .reading-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 30px; margin: 50px 0; }
+    .reading-section h3 { color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; }
     .reading-section ul { margin: 0; padding-left: 20px; }
     .reading-section li { margin-bottom: 10px; }
     .reading-section a { color: #93c5fd; }
-    .reading-section a:hover { color: #bfdbfe; }
-
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 80px 24px 60px; text-align: center; margin-top: 120px; }
-    .footer-links { margin-bottom: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-    .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
-
-    @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 2.2rem; } }
+    
+    /* Related Articles */
+    .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+    .related-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .related-card h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
+    .related-card p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 100px; }
+    .footer-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-disclaimer { max-width: 700px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.75rem; color: #4b5563; line-height: 1.7; }
+    
+    @media (max-width: 768px) {
+      .data-table { font-size: 0.85rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .related-articles { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <div class="nav-container">
       <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
@@ -87,146 +119,706 @@
   </nav>
 
   <main class="container">
-
-    <!-- Top Warning -->
     <div class="warning-box">
-      <h4>⚠️ Educational Purpose Only</h4>
-      <p>This article explains concepts discussed in financial media. It is not investment advice or a recommendation to buy any asset. Digital assets carry extreme volatility and risk of total loss. Consult a qualified financial advisor before making any investment decisions.</p>
+      <h4>⚠️ Educational Purpose Only – High Risk Asset Class</h4>
+      <p>This article explains Bitcoin corporate treasury concepts. It is not investment advice. Digital assets are extremely volatile and can lose most or all of their value. Consult a qualified financial advisor before making any decisions.</p>
     </div>
 
     <article class="article-header">
-      <a href="/guides.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
-      <span class="tag">Concept Overview</span>
-      <h1>Understanding Bitcoin in Corporate Treasury Discussions</h1>
+      <a href="/blog.html" style="color:var(--accent); font-weight:700; font-size:0.9rem; display:block; margin-bottom:20px;">← Back to Learning Resources</a>
+      <span class="tag">Digital Assets</span>
+      <h1>Understanding Bitcoin in Corporate Treasury</h1>
       <div class="meta">
-        <span>Concept Explanation</span>
-        <span>•</span>
-        <span>Jan 2026</span>
+        <span>Advanced Guide</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>14 min read</span>
+        <span style="margin: 0 10px;">•</span>
+        <span>Updated January 2026</span>
       </div>
     </article>
 
     <div class="content">
-      <p>
-        In recent years, some corporations have begun holding <strong>Bitcoin (BTC)</strong> as part of their treasury reserves. This approach has generated significant debate among financial professionals, with proponents citing potential inflation hedging and critics pointing to volatility risks. This article provides an educational overview of the key concepts involved.
-      </p>
+      <p>In recent years, some corporations have begun holding <strong>Bitcoin (BTC)</strong> as part of their treasury reserves. This approach—pioneered by MicroStrategy and adopted by companies like Tesla and Block—has generated significant debate among financial professionals, investors, and regulators.</p>
 
-      <h2>1. FASB Accounting Rule Changes</h2>
-      <p>
-        One development that has affected corporate Bitcoin holdings involves changes to <strong>FASB (Financial Accounting Standards Board)</strong> accounting treatment. Previously, corporations were required to treat Bitcoin as an "indefinite-lived intangible asset," meaning they had to report impairment losses when prices dropped but could not report unrealized gains.
-      </p>
-      <p>
-        Under newer fair value accounting rules, companies can mark digital asset holdings to market value each quarter. Proponents argue this provides more transparency, while critics note it may increase income statement volatility.
-      </p>
+      <p>In this comprehensive guide, we'll explore the rationale behind corporate Bitcoin holdings, FASB accounting rule changes, major corporate holders, treasury asset comparisons, custody solutions, Bitcoin ETF alternatives, and the significant risks and criticisms of this approach.</p>
 
-      <div class="info-card">
-        <h3>📋 Context: Exchange Flow Data</h3>
-        <p>Some analysts track "exchange net flows"—the movement of Bitcoin between trading exchanges and external wallets. Decreasing exchange balances are sometimes interpreted as reduced selling pressure, though this metric has limitations and does not reliably predict price movements.</p>
+      <!-- Table of Contents -->
+      <div class="info-box">
+        <h3>📑 Table of Contents</h3>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li>Why Companies Hold Bitcoin</li>
+          <li>FASB Accounting Rule Changes</li>
+          <li>Major Corporate Bitcoin Holders</li>
+          <li>Treasury Asset Comparison</li>
+          <li>Bitcoin's Historical Volatility</li>
+          <li>Custody and Security Options</li>
+          <li>Bitcoin ETF Alternatives</li>
+          <li>Arguments For and Against</li>
+          <li>Significant Risks</li>
+          <li>FAQ: Frequently Asked Questions</li>
+        </ol>
       </div>
 
-      <h2>2. The MicroStrategy Approach</h2>
-      <p>
-        MicroStrategy, a business intelligence company, has become known for accumulating Bitcoin using corporate funds and debt financing. This approach has been described by some as a model for other companies to follow.
-      </p>
-      <p>
-        However, this strategy involves significant risks: if Bitcoin's price declines substantially, companies using debt to purchase it may face financial distress. The approach remains controversial, with opinions divided among financial professionals.
-      </p>
+      <h2>1. Why Companies Hold Bitcoin</h2>
+      <p>Proponents cite several reasons for corporate Bitcoin holdings:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Rationale</th>
+            <th>Argument</th>
+            <th>Counterargument</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Inflation Hedge</strong></td>
+            <td>Fixed supply (21M cap) vs. fiat inflation</td>
+            <td class="red">Mixed historical evidence; didn't hedge 2022 inflation</td>
+          </tr>
+          <tr>
+            <td><strong>Excess Cash Deployment</strong></td>
+            <td>Better returns than 0% cash yields</td>
+            <td class="red">Extreme volatility can wipe out principal</td>
+          </tr>
+          <tr>
+            <td><strong>Balance Sheet Diversification</strong></td>
+            <td>Non-correlated asset class</td>
+            <td class="red">Correlation with risk assets has increased</td>
+          </tr>
+          <tr>
+            <td><strong>Shareholder Value</strong></td>
+            <td>Potential for significant appreciation</td>
+            <td class="red">Fiduciary duty concerns; not core business</td>
+          </tr>
+          <tr>
+            <td><strong>Strategic Positioning</strong></td>
+            <td>Position for crypto adoption</td>
+            <td class="red">Regulatory uncertainty remains high</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>💡 The MicroStrategy Thesis</h4>
+        <p>MicroStrategy's CEO Michael Saylor has argued that holding cash is "melting ice cube" due to inflation, while Bitcoin offers potential appreciation. However, this thesis relies on continued Bitcoin adoption and price appreciation—which is not guaranteed. Critics note that MicroStrategy's stock has become a leveraged Bitcoin bet rather than a software company.</p>
+      </div>
+
+      <h2>2. FASB Accounting Rule Changes</h2>
+      <p>The Financial Accounting Standards Board (FASB) updated accounting rules for digital assets, effective for fiscal years beginning after December 15, 2024:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>Old Rules</th>
+            <th>New Rules (ASU 2023-08)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Classification</strong></td>
+            <td>Indefinite-lived intangible asset</td>
+            <td class="highlight">Fair value measurement</td>
+          </tr>
+          <tr>
+            <td><strong>Price Declines</strong></td>
+            <td class="red">Impairment loss required</td>
+            <td>Mark-to-market (unrealized loss)</td>
+          </tr>
+          <tr>
+            <td><strong>Price Increases</strong></td>
+            <td class="red">Could NOT recognize gains</td>
+            <td class="green">CAN recognize unrealized gains</td>
+          </tr>
+          <tr>
+            <td><strong>Income Statement</strong></td>
+            <td>One-way (losses only)</td>
+            <td>Two-way (gains and losses)</td>
+          </tr>
+          <tr>
+            <td><strong>Transparency</strong></td>
+            <td>Understated true value</td>
+            <td class="green">More accurate picture</td>
+          </tr>
+          <tr>
+            <td><strong>Volatility Impact</strong></td>
+            <td>Balance sheet only</td>
+            <td class="red">Income statement volatility</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Accounting Example</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Old Rules</th>
+            <th>New Rules</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Buy Bitcoin at $50,000</td>
+            <td>Record at $50,000</td>
+            <td>Record at $50,000</td>
+          </tr>
+          <tr>
+            <td>Bitcoin drops to $30,000</td>
+            <td class="red">Impairment: -$20,000 loss</td>
+            <td class="red">Mark-to-market: -$20,000</td>
+          </tr>
+          <tr>
+            <td>Bitcoin rises to $70,000</td>
+            <td class="red">STILL recorded at $30,000</td>
+            <td class="green">Mark-to-market: $70,000</td>
+          </tr>
+          <tr>
+            <td>Net impact (if sold at $70K)</td>
+            <td>Gain: $40,000 on sale</td>
+            <td>Already reflected in fair value</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="green-box">
+        <h4>✅ Why the Change Matters</h4>
+        <p>Under old rules, companies like MicroStrategy showed large impairment losses during Bitcoin downturns but couldn't show gains when prices recovered. This created an asymmetric accounting picture. The new fair value rules allow companies to show both gains and losses, providing a more accurate (but more volatile) financial picture.</p>
+      </div>
+
+      <h2>3. Major Corporate Bitcoin Holders</h2>
+      <p>Several public companies hold significant Bitcoin positions:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Bitcoin Holdings*</th>
+            <th>Avg. Cost Basis*</th>
+            <th>Strategy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>MicroStrategy (MSTR)</strong></td>
+            <td class="highlight">~450,000+ BTC</td>
+            <td>~$30,000/BTC</td>
+            <td>Aggressive accumulation via debt/equity</td>
+          </tr>
+          <tr>
+            <td><strong>Marathon Digital (MARA)</strong></td>
+            <td>~44,000 BTC</td>
+            <td>Mining + purchases</td>
+            <td>Bitcoin miner; holds production</td>
+          </tr>
+          <tr>
+            <td><strong>Tesla (TSLA)</strong></td>
+            <td>~10,000 BTC</td>
+            <td>~$32,000/BTC</td>
+            <td>Reduced position; held remainder</td>
+          </tr>
+          <tr>
+            <td><strong>Coinbase (COIN)</strong></td>
+            <td>~9,500 BTC</td>
+            <td>Various</td>
+            <td>Exchange operator</td>
+          </tr>
+          <tr>
+            <td><strong>Hut 8 Mining</strong></td>
+            <td>~9,100 BTC</td>
+            <td>Mining</td>
+            <td>Bitcoin miner</td>
+          </tr>
+          <tr>
+            <td><strong>Block (SQ)</strong></td>
+            <td>~8,000 BTC</td>
+            <td>~$27,000/BTC</td>
+            <td>Strategic holding via Cash App</td>
+          </tr>
+          <tr>
+            <td><strong>Riot Platforms (RIOT)</strong></td>
+            <td>~7,300 BTC</td>
+            <td>Mining</td>
+            <td>Bitcoin miner</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="dim" style="font-size: 0.9rem; text-align: center; margin-top: -15px;">*Approximate figures as of late 2024. Holdings change frequently. Not investment advice.</p>
+
+      <div class="warning-box">
+        <h4>⚠️ Concentration Risk</h4>
+        <p>MicroStrategy holds more Bitcoin than most countries' reserves. Its stock price has become highly correlated with Bitcoin price, making it essentially a leveraged Bitcoin play. If Bitcoin experiences a severe decline (as it has multiple times historically), companies with large holdings could face significant balance sheet impairment and potential solvency concerns if debt-funded.</p>
+      </div>
+
+      <h2>4. Treasury Asset Comparison</h2>
+      <p>How does Bitcoin compare to traditional treasury assets?</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Liquidity</th>
+            <th>Volatility</th>
+            <th>Yield</th>
+            <th>Max Historical Drawdown</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cash (USD)</strong></td>
+            <td class="green">Highest</td>
+            <td class="green">None</td>
+            <td>0% (inflation erosion)</td>
+            <td class="green">N/A (nominal)</td>
+          </tr>
+          <tr>
+            <td><strong>Money Market</strong></td>
+            <td class="green">Very High</td>
+            <td class="green">Minimal</td>
+            <td>~4-5%</td>
+            <td class="green">Near zero</td>
+          </tr>
+          <tr>
+            <td><strong>T-Bills (3-month)</strong></td>
+            <td class="green">Very High</td>
+            <td class="green">Very Low</td>
+            <td>~4-5%</td>
+            <td class="green">&lt;1%</td>
+          </tr>
+          <tr>
+            <td><strong>T-Notes (2-year)</strong></td>
+            <td class="green">High</td>
+            <td>Low</td>
+            <td>~4%</td>
+            <td>~5%</td>
+          </tr>
+          <tr>
+            <td><strong>Corporate Bonds (IG)</strong></td>
+            <td>Moderate</td>
+            <td>Low-Moderate</td>
+            <td>~5-6%</td>
+            <td>~15%</td>
+          </tr>
+          <tr>
+            <td><strong>Gold</strong></td>
+            <td>Moderate</td>
+            <td>Moderate</td>
+            <td>0%</td>
+            <td>~45%</td>
+          </tr>
+          <tr>
+            <td><strong>Bitcoin</strong></td>
+            <td>Moderate</td>
+            <td class="red">Extreme</td>
+            <td>0%</td>
+            <td class="red">~77% (2022)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>5. Bitcoin's Historical Volatility</h2>
+      <p>Bitcoin has experienced extreme price swings:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Peak</th>
+            <th>Trough</th>
+            <th>Decline</th>
+            <th>Recovery Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>2011</strong></td>
+            <td>$32</td>
+            <td>$2</td>
+            <td class="red">-94%</td>
+            <td>~2 years</td>
+          </tr>
+          <tr>
+            <td><strong>2013-2015</strong></td>
+            <td>$1,163</td>
+            <td>$170</td>
+            <td class="red">-85%</td>
+            <td>~3 years</td>
+          </tr>
+          <tr>
+            <td><strong>2017-2018</strong></td>
+            <td>$19,783</td>
+            <td>$3,122</td>
+            <td class="red">-84%</td>
+            <td>~3 years</td>
+          </tr>
+          <tr>
+            <td><strong>2021-2022</strong></td>
+            <td>$69,000</td>
+            <td>$15,500</td>
+            <td class="red">-77%</td>
+            <td>~2 years</td>
+          </tr>
+          <tr>
+            <td><strong>2024-?</strong></td>
+            <td>$100,000+</td>
+            <td>TBD</td>
+            <td>TBD</td>
+            <td>TBD</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-point">
+        <h4>⚠️ Volatility Context</h4>
+        <p>Bitcoin has historically experienced 70-90% drawdowns multiple times. A corporate treasury holding Bitcoin could see its value decline by 70%+ during a crypto bear market. For a company with $100M in Bitcoin, that's a potential $70M+ loss. This level of volatility is unprecedented for treasury assets and raises serious fiduciary questions.</p>
+      </div>
+
+      <h2>6. Custody and Security Options</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Custody Type</th>
+            <th>Description</th>
+            <th>Pros</th>
+            <th>Cons</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Self-Custody</strong></td>
+            <td>Company controls private keys</td>
+            <td class="green">Full control; no counterparty risk</td>
+            <td class="red">Operational complexity; key loss risk</td>
+          </tr>
+          <tr>
+            <td><strong>Qualified Custodian</strong></td>
+            <td>Coinbase Custody, Fidelity, BitGo</td>
+            <td class="green">Insurance; regulatory compliance</td>
+            <td>Counterparty risk; fees</td>
+          </tr>
+          <tr>
+            <td><strong>Exchange Custody</strong></td>
+            <td>Hold on crypto exchange</td>
+            <td>Easy access; liquidity</td>
+            <td class="red">High counterparty risk (FTX lesson)</td>
+          </tr>
+          <tr>
+            <td><strong>Multi-Sig</strong></td>
+            <td>Multiple keys required</td>
+            <td class="green">Enhanced security</td>
+            <td>Operational complexity</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Major Institutional Custodians</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Custodian</th>
+            <th>Type</th>
+            <th>Insurance</th>
+            <th>Notable Clients</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Coinbase Custody</strong></td>
+            <td>Qualified Custodian</td>
+            <td>Up to $255M per client</td>
+            <td>MicroStrategy, Grayscale</td>
+          </tr>
+          <tr>
+            <td><strong>Fidelity Digital Assets</strong></td>
+            <td>Qualified Custodian</td>
+            <td>Yes (varies)</td>
+            <td>Institutional investors</td>
+          </tr>
+          <tr>
+            <td><strong>BitGo</strong></td>
+            <td>Qualified Custodian</td>
+            <td>Up to $250M</td>
+            <td>Galaxy, various funds</td>
+          </tr>
+          <tr>
+            <td><strong>Anchorage Digital</strong></td>
+            <td>OCC-chartered bank</td>
+            <td>Yes</td>
+            <td>Institutional clients</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>7. Bitcoin ETF Alternatives</h2>
+      <p>Companies can gain Bitcoin exposure without direct custody:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Type</th>
+            <th>Expense Ratio</th>
+            <th>Advantages</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>IBIT (BlackRock)</strong></td>
+            <td>Spot Bitcoin ETF</td>
+            <td>0.25%</td>
+            <td class="green">Largest; most liquid</td>
+          </tr>
+          <tr>
+            <td><strong>FBTC (Fidelity)</strong></td>
+            <td>Spot Bitcoin ETF</td>
+            <td>0.25%</td>
+            <td>Fidelity backing; self-custody</td>
+          </tr>
+          <tr>
+            <td><strong>GBTC (Grayscale)</strong></td>
+            <td>Spot Bitcoin ETF</td>
+            <td class="red">1.50%</td>
+            <td>Longest track record</td>
+          </tr>
+          <tr>
+            <td><strong>ARKB (ARK)</strong></td>
+            <td>Spot Bitcoin ETF</td>
+            <td>0.21%</td>
+            <td class="green">Low cost</td>
+          </tr>
+          <tr>
+            <td><strong>BITO (ProShares)</strong></td>
+            <td>Bitcoin Futures ETF</td>
+            <td>0.95%</td>
+            <td>No spot exposure needed</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="blue-box">
+        <h4>📊 ETF vs. Direct Holding</h4>
+        <p>Bitcoin ETFs simplify custody and compliance but add expense ratios and potential tracking error. Direct holding avoids ongoing fees but requires custody solutions, operational expertise, and carries key management risk. Many smaller companies may prefer ETF exposure for simplicity, while larger holders may prefer direct custody for cost efficiency.</p>
+      </div>
+
+      <h2>8. Arguments For and Against</h2>
+      <div class="compare-grid">
+        <div class="compare-box pros">
+          <h4>✅ Arguments For</h4>
+          <ul>
+            <li>Potential inflation hedge (fixed supply)</li>
+            <li>FASB fair value accounting now available</li>
+            <li>Diversification from USD exposure</li>
+            <li>Signal innovation/forward-thinking</li>
+            <li>Potential for significant appreciation</li>
+            <li>Bitcoin ETFs simplify access</li>
+            <li>Institutional adoption increasing</li>
+          </ul>
+        </div>
+        <div class="compare-box cons">
+          <h4>❌ Arguments Against</h4>
+          <ul>
+            <li>Extreme volatility (70-90% drawdowns)</li>
+            <li>No yield; opportunity cost vs. T-bills</li>
+            <li>Fiduciary duty concerns</li>
+            <li>Regulatory uncertainty</li>
+            <li>Custody complexity/risk</li>
+            <li>Correlation with risk assets</li>
+            <li>Not core business activity</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>9. Significant Risks</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Risk Category</th>
+            <th>Description</th>
+            <th>Severity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="red"><strong>Price Volatility</strong></td>
+            <td>70-90% drawdowns have occurred multiple times</td>
+            <td class="red">Extreme</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Regulatory Risk</strong></td>
+            <td>Government actions could restrict or ban holdings</td>
+            <td class="red">High</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Custody Risk</strong></td>
+            <td>Hacks, lost keys, custodian failure (FTX)</td>
+            <td class="red">High</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Fiduciary Risk</strong></td>
+            <td>Shareholder lawsuits over speculative allocation</td>
+            <td>Moderate-High</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Liquidity Risk</strong></td>
+            <td>Liquidity can evaporate in stress periods</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Earnings Volatility</strong></td>
+            <td>New FASB rules create income statement swings</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Correlation Risk</strong></td>
+            <td>Correlates with risk assets when hedging most needed</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td class="red"><strong>Concentration Risk</strong></td>
+            <td>Large positions create outsized exposure</td>
+            <td>High</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Historical Corporate Bitcoin Challenges</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Year</th>
+            <th>Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tesla sells 75% of holdings</strong></td>
+            <td>2022</td>
+            <td>$936M loss; reduced BTC treasury commitment</td>
+          </tr>
+          <tr>
+            <td><strong>MicroStrategy impairments</strong></td>
+            <td>2022</td>
+            <td>$2.4B+ impairment charges during bear market</td>
+          </tr>
+          <tr>
+            <td><strong>Celsius/Voyager bankruptcies</strong></td>
+            <td>2022</td>
+            <td>Companies with crypto exposure faced contagion</td>
+          </tr>
+          <tr>
+            <td><strong>FTX collapse</strong></td>
+            <td>2022</td>
+            <td>Highlighted custodian/counterparty risk</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>10. FAQ: Frequently Asked Questions</h2>
       
-      <div class="table-wrapper">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Asset Category</th>
-              <th>Liquidity</th>
-              <th>Volatility</th>
-              <th>Considerations</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Cash & Equivalents</strong></td>
-              <td>Highest</td>
-              <td>Minimal</td>
-              <td>Subject to inflation erosion over time</td>
-            </tr>
-            <tr>
-              <td><strong>US Treasuries</strong></td>
-              <td>High</td>
-              <td>Low</td>
-              <td>Interest rate risk; considered low-risk</td>
-            </tr>
-            <tr>
-              <td><strong>Bitcoin</strong></td>
-              <td>Moderate</td>
-              <td>Extreme</td>
-              <td>Highly volatile; regulatory uncertainty</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="padding: 15px 22px; color: var(--text-dim); font-size: 0.8rem; margin: 0;">Note: This table presents general characteristics for educational comparison. Actual risk profiles vary based on specific circumstances and market conditions.</p>
-      </div>
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-question">Is Bitcoin a good treasury asset?</div>
+          <div class="faq-answer">There's no consensus answer. Proponents argue it offers inflation hedging and appreciation potential. Critics point to extreme volatility, fiduciary concerns, and the availability of safer alternatives (T-bills yielding 4-5%). Most corporate treasury professionals still favor traditional assets. The appropriateness depends on company risk tolerance, shareholder expectations, and board approval.</div>
+        </div>
 
-      <h2>3. Operational Considerations</h2>
-      <p>
-        Companies considering digital asset holdings face various operational questions: custody solutions (self-custody vs. third-party custodians), execution methods (spot markets vs. OTC desks), and regulatory compliance requirements that vary by jurisdiction.
-      </p>
-      <p>
-        Exchange-Traded Products (ETPs) have emerged as an alternative for companies that prefer not to hold Bitcoin directly, though these products carry their own fee structures and tracking considerations.
-      </p>
+        <div class="faq-item">
+          <div class="faq-question">How does the FASB accounting change help?</div>
+          <div class="faq-answer">Previously, companies had to impair Bitcoin holdings when prices dropped but couldn't recognize gains when prices rose (until sold). The new fair value rules allow marking holdings to market each quarter—both gains and losses. This provides a more accurate picture but creates income statement volatility. Companies must weigh transparency against earnings volatility.</div>
+        </div>
 
-      <!-- Risks and Criticisms Section -->
-      <div class="risk-section">
-        <h3>⚠️ Significant Risks and Criticisms</h3>
-        <ul>
-          <li><strong>Extreme Volatility:</strong> Bitcoin has historically experienced drawdowns exceeding 70-80%, which could severely impact corporate balance sheets</li>
-          <li><strong>Regulatory Uncertainty:</strong> Government regulations around digital assets continue to evolve and vary significantly by jurisdiction</li>
-          <li><strong>Fiduciary Concerns:</strong> Some argue that allocating corporate treasury to highly volatile assets may conflict with fiduciary duties</li>
-          <li><strong>Correlation Assumptions:</strong> Bitcoin's behavior as an "inflation hedge" is debated; historical data shows mixed results</li>
-          <li><strong>Custody Risks:</strong> Digital assets face unique risks including hacking, loss of private keys, and custodian failures</li>
-          <li><strong>Liquidity Risk:</strong> During market stress, Bitcoin liquidity can deteriorate rapidly</li>
-          <li><strong>Accounting Complexity:</strong> Despite FASB changes, accounting and tax treatment remains complex</li>
-        </ul>
+        <div class="faq-item">
+          <div class="faq-question">Should I invest in MicroStrategy to get Bitcoin exposure?</div>
+          <div class="faq-answer">MicroStrategy stock has become a leveraged Bitcoin play—its price moves more than Bitcoin itself due to debt financing. This amplifies both gains and losses. If you want Bitcoin exposure, direct ownership or ETFs (IBIT, FBTC) are more straightforward. MicroStrategy stock includes company-specific risks and often trades at a premium to its Bitcoin holdings.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What happened to Tesla's Bitcoin?</div>
+          <div class="faq-answer">Tesla bought $1.5B in Bitcoin in early 2021, sold 75% in Q2 2022 (citing liquidity needs), and has held the remaining ~10,000 BTC since. The company reported impairment losses during the 2022 bear market. Tesla's experience illustrates both the potential (initial gains) and risks (impairments, forced selling) of corporate Bitcoin holdings.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is Bitcoin really an inflation hedge?</div>
+          <div class="faq-answer">The evidence is mixed. Bitcoin proponents cite its fixed 21 million supply as inherently inflation-resistant. However, in 2022, when inflation reached 9%+, Bitcoin fell 77%. It hasn't consistently acted as an inflation hedge in practice. Gold has a much longer track record as an inflation hedge, though it too has limitations. Bitcoin may have inflation hedge properties over very long periods, but its short-term correlation with risk assets undermines this narrative.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What are the tax implications?</div>
+          <div class="faq-answer">Corporate Bitcoin holdings are treated as property for tax purposes. Realized gains/losses are taxable. The new FASB fair value rules affect financial reporting but not necessarily tax treatment (which may still be based on realized gains). Tax treatment varies by jurisdiction. Companies should consult tax professionals for their specific situations. International holdings add additional complexity.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do custody risks work?</div>
+          <div class="faq-answer">Bitcoin is controlled by private keys. If keys are lost or stolen, the Bitcoin is irrecoverable. Self-custody requires operational expertise; errors can be catastrophic. Third-party custodians add counterparty risk—as FTX showed when it collapsed with customer assets. Qualified custodians (Coinbase Custody, Fidelity) offer insurance but caps are limited. No solution eliminates all risks; companies must choose their risk profile.</div>
+        </div>
       </div>
 
       <h2>Conclusion</h2>
-      <p>
-        Corporate Bitcoin holdings remain a debated topic in treasury management. While some companies have adopted this approach and proponents cite potential benefits, critics point to substantial risks including volatility, regulatory uncertainty, and fiduciary concerns. This is an evolving area where professional opinions differ significantly.
-      </p>
+      <p>Corporate Bitcoin treasury strategies remain controversial. While FASB accounting changes have made fair value reporting possible and some high-profile companies have accumulated significant holdings, the extreme volatility, regulatory uncertainty, and custody complexity create substantial risks that most corporate treasurers prefer to avoid.</p>
 
-      <!-- Further Reading -->
+      <p>Key takeaways:</p>
+      <ul>
+        <li>Some companies (MicroStrategy, Tesla, Block) hold Bitcoin as treasury assets</li>
+        <li>FASB fair value accounting (effective 2025) allows recognizing both gains and losses</li>
+        <li>Old rules only allowed impairment—creating asymmetric accounting</li>
+        <li>Bitcoin has experienced 70-90% drawdowns multiple times historically</li>
+        <li>Traditional treasury assets (T-bills, money markets) offer 4-5% yields with minimal risk</li>
+        <li>Custody options: self-custody, qualified custodians, or Bitcoin ETFs</li>
+        <li>ETFs (IBIT, FBTC) simplify access but add fees</li>
+        <li>Significant risks: volatility, regulatory, custody, fiduciary, correlation</li>
+        <li>MicroStrategy's approach is aggressive and debt-financed—not suitable for most companies</li>
+        <li>Professional opinions remain deeply divided on appropriateness</li>
+      </ul>
+
+      <p>Whether Bitcoin belongs in corporate treasury depends on company risk tolerance, board approval, shareholder expectations, and treasury policy. Most traditional companies continue to favor low-risk, liquid assets. The companies that have adopted Bitcoin strategies tend to have specific strategic rationales or leaders with strong Bitcoin convictions. This is an evolving area where caution is warranted.</p>
+
+      <!-- Related Articles -->
+      <h3 style="margin-top: 60px; margin-bottom: 24px;">📚 Related Articles</h3>
+      <div class="related-articles">
+        <a href="/blog/understanding-cryptocurrency.html" class="related-card">
+          <h4>Understanding Cryptocurrency</h4>
+          <p>Crypto basics explained</p>
+        </a>
+        <a href="/blog/understanding-crypto-staking.html" class="related-card">
+          <h4>Crypto Staking</h4>
+          <p>Proof-of-Stake explained</p>
+        </a>
+        <a href="/blog/understanding-inflation-investing.html" class="related-card">
+          <h4>Inflation Investing</h4>
+          <p>Protecting purchasing power</p>
+        </a>
+      </div>
+
       <div class="reading-section">
-        <h3>📚 Further Reading</h3>
+        <h3>📖 Additional Resources</h3>
         <ul>
-          <li><a href="https://fasb.org" target="_blank" rel="noopener">FASB Official Website</a> – Accounting standards information</li>
-          <li><a href="https://www.sec.gov/spotlight/cybersecurity" target="_blank" rel="noopener">SEC Digital Assets Resources</a> – Regulatory guidance</li>
-          <li><a href="https://www.investopedia.com/terms/b/bitcoin.asp" target="_blank" rel="noopener">Investopedia: Bitcoin Basics</a> – Educational overview</li>
+          <li><a href="https://fasb.org" target="_blank" rel="noopener">FASB: Accounting Standards</a></li>
+          <li><a href="https://www.sec.gov/spotlight/cybersecurity" target="_blank" rel="noopener">SEC: Digital Assets Resources</a></li>
+          <li><a href="https://www.investopedia.com/terms/b/bitcoin.asp" target="_blank" rel="noopener">Investopedia: Bitcoin</a></li>
         </ul>
       </div>
 
-      <!-- Final Warning -->
       <div class="warning-box" style="margin-top: 50px;">
         <h4>⚠️ Final Reminder</h4>
-        <p>Digital assets are highly speculative and can lose most or all of their value. This article is for educational purposes only and does not constitute investment advice. Past performance does not indicate future results. Always conduct your own research and consult qualified professionals before making financial decisions.</p>
+        <p>Digital assets are highly speculative and can lose most or all of their value. This article is for educational purposes only and does not constitute investment advice or a recommendation to buy any asset. Corporate treasury decisions should involve qualified financial, legal, and accounting professionals. Past performance does not predict future results.</p>
       </div>
-
     </div>
-
   </main>
 
   <footer>
     <div class="footer-links">
-        <a href="/about.html">About</a>
-        <a href="/resources.html">Resources</a>
-        <a href="/faq.html">FAQ</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/legal.html">Terms & Disclaimer</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/legal.html">Terms</a>
     </div>
-    <p class="footer-copy">
-        © 2026 US Market Terminals. All rights reserved.
-    </p>
     <div class="footer-disclaimer">
-        <strong>Risk Disclosure:</strong> This content is for educational and informational purposes only. It does not constitute investment advice, financial advice, or any recommendation to buy, sell, or hold any asset. Digital assets involve extreme volatility and risk of total loss. Consult a qualified financial advisor before making investment decisions.
+      <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. Digital assets involve extreme volatility and risk of total loss. Past performance does not guarantee future results.
     </div>
   </footer>
-
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
 </body>
 </html>
