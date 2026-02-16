@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex-Dividend Date Calendar | US Market Terminals</title>
+    <meta name="description" content="Track ex-dividend dates for popular dividend stocks. Never miss a dividend payment with our interactive calendar.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .controls-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .calendar-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .calendar-header h2 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.upcoming { background: #3b82f6; }
+        .legend-dot.recent { background: #10b981; }
+        .legend-dot.past { background: #94a3b8; }
+
+        .events-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .event-card {
+            background: #f8f9fa;
+            border-left: 4px solid #3b82f6;
+            border-radius: 8px;
+            padding: 18px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .event-card.recent {
+            border-left-color: #10b981;
+            background: #f0fdf4;
+        }
+
+        .event-card.past {
+            border-left-color: #94a3b8;
+            background: #f8fafc;
+            opacity: 0.7;
+        }
+
+        .event-date {
+            min-width: 120px;
+        }
+
+        .event-date .day {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            line-height: 1;
+        }
+
+        .event-date .month {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .event-info {
+            flex: 1;
+        }
+
+        .event-ticker {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+
+        .event-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .event-details {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .event-meta {
+            text-align: right;
+            min-width: 100px;
+        }
+
+        .event-dividend {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 4px;
+        }
+
+        .event-yield {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .calendar-card {
+                padding: 20px;
+            }
+
+            .event-card {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .event-meta {
+                text-align: left;
+            }
+
+            .legend {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>📅 Ex-Dividend Date Calendar</h1>
+            <p>Track upcoming ex-dividend dates for popular dividend stocks</p>
+        </div>
+
+        <div class="controls-card">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="monthFilter">Filter by Month</label>
+                    <select id="monthFilter" onchange="filterEvents()">
+                        <option value="all">All Upcoming</option>
+                        <option value="0">January</option>
+                        <option value="1">February</option>
+                        <option value="2">March</option>
+                        <option value="3">April</option>
+                        <option value="4">May</option>
+                        <option value="5">June</option>
+                        <option value="6">July</option>
+                        <option value="7">August</option>
+                        <option value="8">September</option>
+                        <option value="9">October</option>
+                        <option value="10">November</option>
+                        <option value="11">December</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sectorFilter">Filter by Sector</label>
+                    <select id="sectorFilter" onchange="filterEvents()">
+                        <option value="all">All Sectors</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Financial">Financial</option>
+                        <option value="Consumer">Consumer Goods</option>
+                        <option value="Energy">Energy</option>
+                        <option value="REIT">REITs</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="calendar-card">
+            <div class="calendar-header">
+                <h2>Upcoming Ex-Dividend Dates</h2>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-dot upcoming"></span>
+                        <span>Upcoming (7+ days)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot recent"></span>
+                        <span>Soon (0-7 days)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot past"></span>
+                        <span>Past</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="events-list" id="eventsList">
+                <!-- Events will be populated by JavaScript -->
+            </div>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-state-icon">📭</div>
+                <h3>No events found</h3>
+                <p>Try adjusting your filters</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📖 What is an Ex-Dividend Date?</h3>
+            <p>The <strong>ex-dividend date</strong> is the cutoff date to receive the next dividend payment. To receive the dividend, you must own the stock <strong>before</strong> the ex-dividend date.</p>
+            <p><strong>Key Rule:</strong> Buy at least 1 business day before the ex-dividend date to qualify for the dividend.</p>
+            <p><strong>Example:</strong> If the ex-dividend date is March 15th, you must own the stock by market close on March 14th.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>📅 Important Dividend Dates</h3>
+            <p>• <strong>Declaration Date:</strong> Company announces the dividend</p>
+            <p>• <strong>Ex-Dividend Date:</strong> Cutoff to be eligible for dividend</p>
+            <p>• <strong>Record Date:</strong> Company checks who owns shares (usually 1 day after ex-date)</p>
+            <p>• <strong>Payment Date:</strong> Dividend is paid to shareholders</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ Important Notes</h3>
+            <p>• This calendar shows educational examples - dates may not be current</p>
+            <p>• Always verify ex-dividend dates on the company's investor relations page</p>
+            <p>• Buying just for the dividend ("dividend capture") has tax implications</p>
+            <p>• Stock price typically drops by the dividend amount on ex-dividend date</p>
+            <p>• This tool is for educational purposes only - not investment advice</p>
+        </div>
+    </div>
+
+    <script>
+        // Sample dividend events data
+        // Note: These are example dates for educational purposes
+        const dividendEvents = [
+            { ticker: 'AAPL', name: 'Apple Inc.', sector: 'Technology', exDate: '2026-02-06', dividend: 0.25, yield: 0.5 },
+            { ticker: 'MSFT', name: 'Microsoft Corporation', sector: 'Technology', exDate: '2026-02-19', dividend: 0.75, yield: 0.7 },
+            { ticker: 'JNJ', name: 'Johnson & Johnson', sector: 'Healthcare', exDate: '2026-02-25', dividend: 1.19, yield: 2.8 },
+            { ticker: 'PG', name: 'Procter & Gamble', sector: 'Consumer', exDate: '2026-01-22', dividend: 0.94, yield: 2.3 },
+            { ticker: 'KO', name: 'Coca-Cola Company', sector: 'Consumer', exDate: '2026-03-14', dividend: 0.48, yield: 2.9 },
+            { ticker: 'JPM', name: 'JPMorgan Chase', sector: 'Financial', exDate: '2026-04-03', dividend: 1.15, yield: 2.1 },
+            { ticker: 'XOM', name: 'Exxon Mobil', sector: 'Energy', exDate: '2026-02-14', dividend: 0.95, yield: 3.4 },
+            { ticker: 'CVX', name: 'Chevron Corporation', sector: 'Energy', exDate: '2026-02-20', dividend: 1.63, yield: 3.6 },
+            { ticker: 'O', name: 'Realty Income', sector: 'REIT', exDate: '2026-02-28', dividend: 0.26, yield: 5.2 },
+            { ticker: 'VZ', name: 'Verizon Communications', sector: 'Technology', exDate: '2026-04-08', dividend: 0.67, yield: 6.8 },
+            { ticker: 'T', name: 'AT&T Inc.', sector: 'Technology', exDate: '2026-04-10', dividend: 0.28, yield: 5.5 },
+            { ticker: 'PFE', name: 'Pfizer Inc.', sector: 'Healthcare', exDate: '2026-05-05', dividend: 0.42, yield: 5.9 },
+            { ticker: 'MCD', name: "McDonald's Corporation", sector: 'Consumer', exDate: '2026-05-15', dividend: 1.67, yield: 2.1 },
+            { ticker: 'MMM', name: '3M Company', sector: 'Consumer', exDate: '2026-05-22', dividend: 1.51, yield: 6.2 },
+            { ticker: 'IBM', name: 'IBM Corporation', sector: 'Technology', exDate: '2026-05-08', dividend: 1.67, yield: 3.5 }
+        ];
+
+        let filteredEvents = [...dividendEvents];
+
+        function renderEvents() {
+            const eventsList = document.getElementById('eventsList');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (filteredEvents.length === 0) {
+                eventsList.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            eventsList.style.display = 'grid';
+            emptyState.style.display = 'none';
+
+            // Sort by date
+            filteredEvents.sort((a, b) => new Date(a.exDate) - new Date(b.exDate));
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            eventsList.innerHTML = filteredEvents.map(event => {
+                const exDate = new Date(event.exDate);
+                const daysUntil = Math.floor((exDate - today) / (1000 * 60 * 60 * 24));
+                
+                let statusClass = 'upcoming';
+                if (daysUntil < 0) {
+                    statusClass = 'past';
+                } else if (daysUntil <= 7) {
+                    statusClass = 'recent';
+                }
+
+                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const day = exDate.getDate();
+                const month = monthNames[exDate.getMonth()];
+
+                return `
+                    <div class="event-card ${statusClass}">
+                        <div class="event-date">
+                            <div class="day">${day}</div>
+                            <div class="month">${month}</div>
+                        </div>
+                        <div class="event-info">
+                            <span class="event-ticker">${event.ticker}</span>
+                            <div class="event-name">${event.name}</div>
+                            <div class="event-details">${event.sector} • ${daysUntil >= 0 ? (daysUntil === 0 ? 'Today' : daysUntil === 1 ? 'Tomorrow' : `${daysUntil} days`) : `${Math.abs(daysUntil)} days ago`}</div>
+                        </div>
+                        <div class="event-meta">
+                            <div class="event-dividend">$${event.dividend.toFixed(2)}</div>
+                            <div class="event-yield">${event.yield.toFixed(1)}% yield</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterEvents() {
+            const monthFilter = document.getElementById('monthFilter').value;
+            const sectorFilter = document.getElementById('sectorFilter').value;
+
+            filteredEvents = dividendEvents.filter(event => {
+                const exDate = new Date(event.exDate);
+                
+                // Month filter
+                if (monthFilter !== 'all' && exDate.getMonth() !== parseInt(monthFilter)) {
+                    return false;
+                }
+
+                // Sector filter
+                if (sectorFilter !== 'all' && event.sector !== sectorFilter) {
+                    return false;
+                }
+
+                return true;
+            });
+
+            renderEvents();
+        }
+
+        // Initial render
+        renderEvents();
+    </script>
+</body>
+</html>
