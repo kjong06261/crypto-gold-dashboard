@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dividend Frequency Comparison Tool | US Market Terminals</title>
+    <meta name="description" content="Compare monthly vs quarterly dividend strategies. Plan your dividend portfolio for consistent income throughout the year.">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .strategy-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .strategy-card.recommended {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .strategy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .strategy-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .strategy-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .strategy-stats {
+            margin-top: 15px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .strategy-card.recommended .stat-row {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .calendar-section {
+            margin-top: 30px;
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .month-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+
+        .month-card.has-income {
+            background: linear-gradient(135deg, #10b98120 0%, #3b82f620 100%);
+            border-color: #10b981;
+        }
+
+        .month-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .month-income {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .calculator-card {
+                padding: 25px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .month-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>📊 Dividend Frequency Tool</h1>
+            <p>Compare monthly vs quarterly dividend strategies for consistent income</p>
+        </div>
+
+        <div class="calculator-card">
+            <div class="section-title">Your Income Goal</div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="targetMonthly">Target Monthly Income ($)</label>
+                    <input type="number" id="targetMonthly" placeholder="1000" step="100" min="0" value="1000">
+                    <div class="help-text">How much per month do you want?</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="avgYield">Average Dividend Yield (%)</label>
+                    <input type="number" id="avgYield" placeholder="4.0" step="0.1" min="0" max="20" value="4.0">
+                    <div class="help-text">Expected portfolio yield</div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateStrategy()">Compare Strategies</button>
+
+            <div class="results" id="results">
+                <div class="comparison-grid" id="comparisonGrid">
+                    <!-- Strategy cards will be populated by JavaScript -->
+                </div>
+
+                <div class="calendar-section">
+                    <div class="section-title">12-Month Income Calendar (Quarterly Strategy)</div>
+                    <div class="month-grid" id="quarterlyCalendar">
+                        <!-- Calendar will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="calendar-section">
+                    <div class="section-title">12-Month Income Calendar (Monthly Strategy)</div>
+                    <div class="month-grid" id="monthlyCalendar">
+                        <!-- Calendar will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📅 Understanding Dividend Frequencies</h3>
+            <p><strong>Monthly Dividends:</strong> Pay 12 times per year. Provides the most consistent income stream but fewer stocks offer this.</p>
+            <p><strong>Quarterly Dividends:</strong> Pay 4 times per year (most common). Requires strategic planning to ensure even monthly income.</p>
+            <p><strong>Hybrid Strategy:</strong> Combine monthly and quarterly payers to smooth out income throughout the year.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>💡 Building a Monthly Income Portfolio</h3>
+            <p><strong>Quarterly Dividend Strategy:</strong> Divide portfolio into 3 equal parts, each paying in different months (Jan/Apr/Jul/Oct, Feb/May/Aug/Nov, Mar/Jun/Sep/Dec)</p>
+            <p><strong>Monthly Dividend Strategy:</strong> Focus on stocks/REITs that pay monthly (often Real Estate Investment Trusts)</p>
+            <p><strong>Hybrid Approach:</strong> Combine both for diversification and consistent income</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ Important Considerations</h3>
+            <p>• Don't sacrifice quality for frequency - dividend safety matters more than payment schedule</p>
+            <p>• Monthly dividend stocks often have higher yields but may carry more risk</p>
+            <p>• Quarterly dividend stocks from established companies tend to be more stable</p>
+            <p>• Consider building an emergency fund to cover gaps in income</p>
+            <p>• This tool is for educational purposes only - not investment advice</p>
+        </div>
+    </div>
+
+    <script>
+        let comparisonChart = null;
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        function calculateStrategy() {
+            const targetMonthly = parseFloat(document.getElementById('targetMonthly').value);
+            const avgYield = parseFloat(document.getElementById('avgYield').value) / 100;
+
+            if (!targetMonthly || !avgYield || targetMonthly <= 0 || avgYield <= 0) {
+                alert('Please enter valid values for target income and yield.');
+                return;
+            }
+
+            const targetAnnual = targetMonthly * 12;
+
+            // Calculate required capital for each strategy
+            const monthlyRequired = targetAnnual / avgYield;
+            const quarterlyRequired = targetAnnual / avgYield;
+            const hybridRequired = targetAnnual / avgYield;
+
+            // Generate strategy comparison
+            const strategies = [
+                {
+                    name: 'Monthly Dividends',
+                    capital: monthlyRequired,
+                    frequency: 'Monthly',
+                    payments: 12,
+                    consistency: 'High',
+                    diversification: 'Lower',
+                    recommended: false
+                },
+                {
+                    name: 'Quarterly Dividends',
+                    capital: quarterlyRequired,
+                    frequency: 'Quarterly',
+                    payments: 4,
+                    consistency: 'Medium',
+                    diversification: 'Higher',
+                    recommended: false
+                },
+                {
+                    name: 'Hybrid Strategy',
+                    capital: hybridRequired,
+                    frequency: 'Mixed',
+                    payments: '4-12',
+                    consistency: 'High',
+                    diversification: 'Highest',
+                    recommended: true
+                }
+            ];
+
+            renderStrategyCards(strategies, targetMonthly);
+            renderQuarterlyCalendar(targetMonthly);
+            renderMonthlyCalendar(targetMonthly);
+            renderChart(targetMonthly);
+
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function renderStrategyCards(strategies, targetMonthly) {
+            const grid = document.getElementById('comparisonGrid');
+            
+            grid.innerHTML = strategies.map(strategy => `
+                <div class="strategy-card ${strategy.recommended ? 'recommended' : ''}">
+                    <div class="strategy-header">
+                        <div class="strategy-title">${strategy.name}</div>
+                        ${strategy.recommended ? '<div class="strategy-badge">RECOMMENDED</div>' : ''}
+                    </div>
+                    <div class="strategy-stats">
+                        <div class="stat-row">
+                            <span class="stat-label">Required Capital</span>
+                            <span class="stat-value">$${strategy.capital.toLocaleString('en-US', {maximumFractionDigits: 0})}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Payment Frequency</span>
+                            <span class="stat-value">${strategy.frequency}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Payments/Year</span>
+                            <span class="stat-value">${strategy.payments}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Income Consistency</span>
+                            <span class="stat-value">${strategy.consistency}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Diversification</span>
+                            <span class="stat-value">${strategy.diversification}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderQuarterlyCalendar(targetMonthly) {
+            const calendar = document.getElementById('quarterlyCalendar');
+            
+            // Quarterly dividends: pay every 3 months, staggered across 3 groups
+            // Group 1: Jan, Apr, Jul, Oct
+            // Group 2: Feb, May, Aug, Nov
+            // Group 3: Mar, Jun, Sep, Dec
+            
+            const quarterlyIncome = targetMonthly * 3; // 3 months worth of income per payment
+            
+            calendar.innerHTML = monthNames.map((month, index) => {
+                const hasIncome = true; // With 3 groups, every month gets income
+                const income = hasIncome ? targetMonthly : 0;
+                
+                return `
+                    <div class="month-card ${hasIncome ? 'has-income' : ''}">
+                        <div class="month-name">${month}</div>
+                        <div class="month-income">$${income.toLocaleString('en-US', {maximumFractionDigits: 0})}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderMonthlyCalendar(targetMonthly) {
+            const calendar = document.getElementById('monthlyCalendar');
+            
+            calendar.innerHTML = monthNames.map(month => `
+                <div class="month-card has-income">
+                    <div class="month-name">${month}</div>
+                    <div class="month-income">$${targetMonthly.toLocaleString('en-US', {maximumFractionDigits: 0})}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderChart(targetMonthly) {
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+
+            if (comparisonChart) {
+                comparisonChart.destroy();
+            }
+
+            // Generate monthly income data for both strategies
+            const monthlyStrategy = new Array(12).fill(targetMonthly);
+            const quarterlyStrategy = monthNames.map((_, index) => targetMonthly); // Evenly distributed with 3 groups
+
+            comparisonChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: monthNames,
+                    datasets: [
+                        {
+                            label: 'Monthly Dividend Strategy',
+                            data: monthlyStrategy,
+                            backgroundColor: 'rgba(16, 185, 129, 0.8)',
+                            borderColor: '#10b981',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Quarterly Dividend Strategy (3 Groups)',
+                            data: quarterlyStrategy,
+                            backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                            borderColor: '#3b82f6',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2.5,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Monthly Income Comparison',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': $' + context.parsed.y.toLocaleString('en-US', {maximumFractionDigits: 0});
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString('en-US', {maximumFractionDigits: 0});
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Allow Enter key to calculate
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculateStrategy();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
