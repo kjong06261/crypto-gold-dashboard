@@ -1,298 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compound Interest Calculator (Demo) | US Market Terminals</title>
-    <meta name="description" content="Educational compound interest calculator to learn how compounding works over time. For educational purposes only - results are hypothetical.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #05070a;
-            --bg-secondary: #0d1117;
-            --bg-card: #161b22;
-            --bg-input: #010409;
-            --accent-green: #10b981;
-            --accent-green-glow: rgba(16, 185, 129, 0.3);
-            --accent-blue: #3b82f6;
-            --text-primary: #f0f6fc;
-            --text-secondary: #8b949e;
-            --text-muted: #484f58;
-            --border-color: #30363d;
-            --warning: #f59e0b;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment Calculators & Tools | US Market Terminals</title>
+  <meta name="description" content="Free dividend and investment calculators. Calculate yields, DRIP growth, compound interest, and track your portfolio income.">
+  <meta name="robots" content="index,follow">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05070a;
+      --panel: #0d1117;
+      --border: #1e222d;
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --accent: #3b82f6;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; transition: 0.3s; }
 
-        /* Unified Navigation */
-        .nav { padding: 15px 0; border-bottom: 1px solid var(--border-color); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
-        .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-        .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
-        .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
-        .nav-links a { text-decoration: none; color: var(--text-secondary); transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent-blue); }
+    .nav { 
+      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
+    }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .logo { font-weight: 900; color: #fff; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
+    .nav-links a { color: var(--text-dim); }
+    .nav-links a:hover { color: var(--accent); }
 
-        .simulator-container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
-        .simulator-header { text-align: center; margin-bottom: 40px; }
-        .simulator-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(100, 116, 139, 0.2); border: 1px solid rgba(100, 116, 139, 0.3); padding: 8px 16px; border-radius: 100px; font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-        .simulator-title { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -1.5px; }
-        .simulator-subtitle { font-size: 16px; color: var(--text-secondary); max-width: 550px; margin: 0 auto; }
+    .page-header { padding: 60px 24px 40px; text-align: center; max-width: 800px; margin: 0 auto; }
+    .page-header h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 900; margin-bottom: 15px; letter-spacing: -2px; color: #fff; }
+    .page-header p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.7; }
 
-        .warning-banner { max-width: 900px; margin: 0 auto 30px; padding: 20px 24px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 16px; }
-        .warning-banner p { color: #fbbf24; font-size: 0.9rem; margin: 0; text-align: center; }
+    .calculators-container { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
 
-        .simulator-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; }
-        .input-section { padding: 32px; background: var(--bg-secondary); }
-        .input-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
-        .input-group { display: flex; flex-direction: column; gap: 8px; }
-        .input-label { font-size: 12px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
-        .input-wrapper { position: relative; display: flex; align-items: center; }
-        .input-prefix, .input-suffix { position: absolute; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--text-muted); pointer-events: none; }
-        .input-prefix { left: 16px; } .input-suffix { right: 16px; }
-        .simulator-input { width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px 16px; color: #fff; font-family: 'JetBrains Mono'; }
-        .simulator-input.has-prefix { padding-left: 36px; }
-        .simulator-input:focus { outline: none; border-color: var(--accent-green); }
+    .section-title { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 25px; padding-left: 10px; border-left: 4px solid var(--accent); }
 
-        .calculate-btn { width: 100%; margin-top: 28px; padding: 16px; background: var(--accent-blue); border: none; border-radius: 12px; color: #fff; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .calculate-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4); }
+    .calc-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+      gap: 24px; 
+      margin-bottom: 60px;
+    }
 
-        .results-section { padding: 32px; display: none; background: var(--bg-secondary); border-top: 1px solid var(--border-color); }
-        .results-section.active { display: block; }
-        
-        .results-warning { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 12px; padding: 16px; margin-bottom: 24px; }
-        .results-warning p { color: var(--warning); font-size: 0.85rem; margin: 0; text-align: center; }
+    .calc-card {
+      background: var(--panel); 
+      border: 1px solid var(--border); 
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s;
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .monthly-section { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 24px; }
-        .monthly-value { font-family: 'JetBrains Mono'; font-size: 32px; font-weight: 700; color: var(--accent-blue); }
+    .calc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #8b5cf6);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
 
-        .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
-        .result-card { background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; }
-        .result-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
-        .result-value { font-family: 'JetBrains Mono'; font-size: 18px; font-weight: 600; }
+    .calc-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+    }
 
-        .chart-container { background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; }
-        .chart-bars { display: flex; align-items: flex-end; justify-content: space-between; height: 180px; gap: 4px; }
-        .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; }
-        .bar { width: 100%; border-radius: 2px 2px 0 0; }
-        .bar.principal { background: var(--accent-blue); }
-        .bar.dividend { background: var(--accent-blue); }
+    .calc-card:hover::before {
+      transform: scaleX(1);
+    }
 
-        /* Info Box */
-        .info-box { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-top: 30px; }
-        .info-box h3 { color: #fff; font-size: 1.1rem; margin-bottom: 12px; }
-        .info-box p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 10px; }
-        .info-box ul { color: var(--text-secondary); font-size: 0.9rem; padding-left: 20px; }
-        .info-box li { margin-bottom: 8px; }
+    .calc-icon {
+      font-size: 2.8rem;
+      margin-bottom: 18px;
+      display: block;
+    }
 
-        /* Unified Footer */
-        footer { background: #080a0e; border-top: 1px solid var(--border-color); padding: 80px 24px 60px; text-align: center; margin-top: 80px; }
-        .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-        .footer-links a:hover { color: var(--accent-blue); }
-        .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px; }
-        .footer-disclaimer { max-width: 800px; margin: 0 auto; padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 12px; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+    .calc-badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
 
-        @media (max-width: 768px) { .nav-links { display: none; } }
-    </style>
+    .calc-badge.new {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+
+    .calc-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .calc-desc {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .calc-features {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+
+    .calc-features li {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      padding-left: 18px;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .calc-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .calc-cta {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .calc-cta::after {
+      content: '→';
+      transition: transform 0.3s;
+    }
+
+    .calc-card:hover .calc-cta::after {
+      transform: translateX(4px);
+    }
+
+    .info-banner {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 60px;
+    }
+
+    .info-banner h3 {
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .info-banner p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; margin-top: 60px; }
+    .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px; }
+    .footer-disclaimer { max-width: 800px; margin: 0 auto; font-size: 0.75rem; color: #4b5563; line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .page-header { padding: 40px 24px 30px; }
+    }
+  </style>
 </head>
 <body>
 
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
-            <div class="nav-links">
-                <a href="/calculator.html" style="color: var(--accent-blue);">Calculator</a>
-                <a href="/market-pulse.html">Pulse</a>
-                <a href="/tools.html">Tools</a>
-                <a href="/blog.html">Learn</a>
-                <a href="/contact.html" style="background: var(--accent-blue); color: #fff !important; padding: 6px 14px; border-radius: 8px;">Contact</a>
-            </div>
-        </div>
-    </nav>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
+      <div class="nav-links">
+          <a href="calculator.html">Calculator</a>
+          <a href="market-pulse.html">Pulse</a>
+          <a href="tools.html">Tools</a>
+          <a href="blog.html">Learn</a>
+          <a href="contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <div class="simulator-container">
-        <header class="simulator-header">
-            <div class="simulator-badge"><span>Educational Demo</span></div>
-            <h1 class="simulator-title">Compound Interest Calculator</h1>
-            <p class="simulator-subtitle">A simple tool to illustrate how compound interest works over time. Results are hypothetical examples only.</p>
-        </header>
+  <div class="page-header">
+    <h1>🧮 Investment Calculators</h1>
+    <p>Free interactive tools to calculate dividend yields, compound growth, portfolio income, and explore investment scenarios. All calculators work directly in your browser—no signup required.</p>
+  </div>
 
-        <div class="warning-banner">
-            <p>⚠️ <strong>For Educational Purposes Only:</strong> This calculator produces hypothetical illustrations, not predictions. Actual investment results will differ. This is not investment advice.</p>
-        </div>
+  <div class="calculators-container">
 
-        <div class="simulator-card">
-            <div class="input-section">
-                <div class="input-grid">
-                    <div class="input-group">
-                        <label class="input-label">Starting Amount</label>
-                        <div class="input-wrapper">
-                            <span class="input-prefix">$</span>
-                            <input type="text" id="principal" class="simulator-input has-prefix" value="10,000">
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Monthly Contribution</label>
-                        <div class="input-wrapper">
-                            <span class="input-prefix">$</span>
-                            <input type="text" id="monthly" class="simulator-input has-prefix" value="500">
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Annual Yield (%)</label>
-                        <div class="input-wrapper">
-                            <input type="number" id="dividend-rate" class="simulator-input" value="4.0" step="0.1">
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Annual Growth (%)</label>
-                        <div class="input-wrapper">
-                            <input type="number" id="growth-rate" class="simulator-input" value="5.0" step="0.1">
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Time Period (Years)</label>
-                        <div class="input-wrapper">
-                            <input type="number" id="years" class="simulator-input" value="10">
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Tax Rate (%)</label>
-                        <div class="input-wrapper">
-                            <input type="number" id="tax-rate" class="simulator-input" value="15.0">
-                        </div>
-                    </div>
-                </div>
+    <!-- Dividend Calculators Section -->
+    <h2 class="section-title">💰 Dividend Calculators</h2>
+    
+    <div class="calc-grid">
+      
+      <a href="dividend-calculator.html" class="calc-card">
+        <span class="calc-badge new">NEW</span>
+        <span class="calc-icon">💰</span>
+        <h3 class="calc-title">Dividend Yield Calculator</h3>
+        <p class="calc-desc">Calculate dividend yield, annual income, and yield on cost for any dividend-paying stock.</p>
+        <ul class="calc-features">
+          <li>Current dividend yield</li>
+          <li>Annual & monthly income</li>
+          <li>Yield on cost tracking</li>
+          <li>Instant calculations</li>
+        </ul>
+        <span class="calc-cta">Open Calculator</span>
+      </a>
 
-                <button class="calculate-btn" onclick="calculate()">Calculate Example</button>
-            </div>
+      <a href="drip-calculator.html" class="calc-card">
+        <span class="calc-badge new">NEW</span>
+        <span class="calc-icon">📈</span>
+        <h3 class="calc-title">DRIP Calculator</h3>
+        <p class="calc-desc">See the power of dividend reinvestment over time with compound growth projections and interactive charts.</p>
+        <ul class="calc-features">
+          <li>Up to 30-year projections</li>
+          <li>Dividend growth modeling</li>
+          <li>DRIP vs. no reinvestment comparison</li>
+          <li>Visual growth charts</li>
+        </ul>
+        <span class="calc-cta">Open Calculator</span>
+      </a>
 
-            <div class="results-section" id="results">
-                <div class="results-warning">
-                    <p>⚠️ These are hypothetical illustrations only. They assume constant rates which never occur in real markets. Actual results will vary significantly.</p>
-                </div>
+      <a href="portfolio-tracker.html" class="calc-card">
+        <span class="calc-badge new">NEW</span>
+        <span class="calc-icon">💼</span>
+        <h3 class="calc-title">Portfolio Income Tracker</h3>
+        <p class="calc-desc">Track dividend income across your entire portfolio with monthly calendars and automated calculations.</p>
+        <ul class="calc-features">
+          <li>Multi-stock tracking</li>
+          <li>Monthly dividend calendar</li>
+          <li>Portfolio yield calculation</li>
+          <li>Automatic data saving</li>
+        </ul>
+        <span class="calc-cta">Open Calculator</span>
+      </a>
 
-                <div class="monthly-section">
-                    <div class="input-label" style="margin-bottom:8px">Hypothetical Monthly Income (Example)</div>
-                    <div class="monthly-value" id="monthly-dividend">$0</div>
-                </div>
-
-                <div class="results-grid">
-                    <div class="result-card">
-                        <div class="result-label">Hypothetical End Value</div>
-                        <div class="result-value" id="total-value" style="color:var(--accent-blue)">$0</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">Total Contributions</div>
-                        <div class="result-value" id="total-invested">$0</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">Hypothetical Earnings</div>
-                        <div class="result-value" id="total-dividends">$0</div>
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <div class="input-label" style="margin-bottom:15px">Hypothetical Growth Illustration</div>
-                    <div class="chart-bars" id="chart-bars"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="info-box">
-            <h3>About This Calculator</h3>
-            <p>This tool demonstrates the mathematical concept of compound interest. It is designed for educational purposes to help you understand how compounding works in theory.</p>
-            <p><strong>Important limitations:</strong></p>
-            <ul>
-                <li>Assumes constant rates, which never happen in real markets</li>
-                <li>Does not account for market volatility, fees, or inflation</li>
-                <li>Real investment returns vary significantly year to year</li>
-                <li>Past performance does not guarantee future results</li>
-                <li>This is not a prediction or projection of actual returns</li>
-            </ul>
-            <p style="margin-top: 15px; margin-bottom: 0;">For actual financial planning, consult with a qualified financial advisor who can assess your individual situation.</p>
-        </div>
     </div>
 
-    <footer>
-        <div class="footer-links">
-            <a href="/about.html">About</a>
-            <a href="/resources.html">Resources</a>
-            <a href="/faq.html">FAQ</a>
-            <a href="/privacy.html">Privacy</a>
-            <a href="/legal.html">Terms & Disclaimer</a>
-        </div>
-        <p class="footer-copy">
-            © 2026 US Market Terminals. All rights reserved. <br>
-            Educational Content • For Informational Purposes Only
-        </p>
-        <div class="footer-disclaimer">
-            <strong style="color: #94a3b8; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Important Disclaimer</strong>
-            US Market Terminals provides educational content for informational purposes only. This calculator produces hypothetical illustrations, not predictions or guarantees. Nothing on this site constitutes financial, investment, tax, or legal advice. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results. Always consult qualified professionals before making investment decisions.
-        </div>
-    </footer>
+    <!-- General Investment Calculators Section -->
+    <h2 class="section-title">📊 General Investment Calculators</h2>
+    
+    <div class="calc-grid">
+      
+      <a href="gauge.html" class="calc-card">
+        <span class="calc-badge">CLASSIC</span>
+        <span class="calc-icon">🎯</span>
+        <h3 class="calc-title">Compound Interest Calculator</h3>
+        <p class="calc-desc">Calculate compound growth on your investments with customizable time periods and interest rates.</p>
+        <ul class="calc-features">
+          <li>Flexible compounding periods</li>
+          <li>Monthly contribution options</li>
+          <li>Visual growth display</li>
+          <li>Total return breakdown</li>
+        </ul>
+        <span class="calc-cta">Open Calculator</span>
+      </a>
 
-    <script>
-        function formatNumber(num) { return Math.round(num).toLocaleString(); }
-        function parseNum(str) { return parseInt(str.toString().replace(/[^\d]/g, '')) || 0; }
+    </div>
 
-        function calculate() {
-            const principal = parseNum(document.getElementById('principal').value);
-            const monthlyAdd = parseNum(document.getElementById('monthly').value);
-            const divRate = parseFloat(document.getElementById('dividend-rate').value) / 100;
-            const growthRate = parseFloat(document.getElementById('growth-rate').value) / 100;
-            const years = parseInt(document.getElementById('years').value);
-            const tax = parseFloat(document.getElementById('tax-rate').value) / 100;
+    <!-- Info Banner -->
+    <div class="info-banner">
+      <h3>💡 How to Use These Calculators</h3>
+      <p>
+        All calculators are free and work entirely in your browser—no account needed. Your data stays private and isn't sent to any server. 
+        For the Portfolio Tracker, your holdings are saved locally in your browser using localStorage. 
+        These tools are for educational purposes only and do not constitute investment advice. Always consult with a qualified financial advisor before making investment decisions.
+      </p>
+    </div>
 
-            let current = principal;
-            let totalInvested = principal;
-            let totalDiv = 0;
-            let yearlyData = [];
+  </div>
 
-            for (let y = 1; y <= years; y++) {
-                for (let m = 0; m < 12; m++) {
-                    current += monthlyAdd;
-                    totalInvested += monthlyAdd;
-                    let mDiv = current * (divRate / 12) * (1 - tax);
-                    current += mDiv;
-                    totalDiv += mDiv;
-                    current *= (1 + growthRate / 12);
-                }
-                yearlyData.push({ y, total: current, inv: totalInvested });
-            }
+  <footer>
+    <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="faq.html">FAQ</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="legal.html">Terms & Disclaimer</a>
+    </div>
+    <p class="footer-copy">
+        © 2026 US Market Terminals. All rights reserved.
+    </p>
+    <div class="footer-disclaimer">
+        <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. All calculations are for illustrative purposes. Consult a qualified financial advisor before making investment decisions.
+    </div>
+  </footer>
 
-            document.getElementById('monthly-dividend').textContent = '$' + formatNumber(current * (divRate / 12) * (1 - tax));
-            document.getElementById('total-value').textContent = '$' + formatNumber(current);
-            document.getElementById('total-invested').textContent = '$' + formatNumber(totalInvested);
-            document.getElementById('total-dividends').textContent = '$' + formatNumber(totalDiv);
-
-            const container = document.getElementById('chart-bars');
-            container.innerHTML = '';
-            const max = current;
-            const step = Math.ceil(years / 10);
-
-            yearlyData.forEach((d, i) => {
-                if (i % step === 0 || i === years - 1) {
-                    const group = document.createElement('div');
-                    group.className = 'bar-group';
-                    const bar = document.createElement('div');
-                    bar.className = 'bar dividend';
-                    bar.style.height = (d.total / max * 100) + '%';
-                    const label = document.createElement('div');
-                    label.style.fontSize = '9px';
-                    label.style.marginTop = '5px';
-                    label.textContent = 'Y' + d.y;
-                    group.appendChild(bar);
-                    group.appendChild(label);
-                    container.appendChild(group);
-                }
-            });
-
-            document.getElementById('results').classList.add('active');
-        }
-        calculate();
-    </script>
 </body>
 </html>
