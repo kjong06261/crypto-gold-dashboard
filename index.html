@@ -58,6 +58,61 @@
     .gate-title { font-size: 1.2rem; font-weight: 700; color: #fff; display: block; margin-bottom: 8px; }
     .gate-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
 
+    /* Featured Calculators Section */
+    .calculators-section { max-width: 1100px; margin: 0 auto 70px; padding: 0 24px; }
+    .calculators-section .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .calculators-section .section-header h2 { font-size: 1.5rem; font-weight: 800; color: #fff; }
+    
+    .new-badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-left: 10px;
+    }
+
+    .calc-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; }
+    .calc-mini-card { 
+      background: var(--panel); 
+      border: 1px solid var(--border); 
+      border-radius: 14px; 
+      padding: 25px; 
+      transition: 0.3s; 
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .calc-mini-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #10b981, #3b82f6);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    
+    .calc-mini-card:hover { 
+      border-color: rgba(59, 130, 246, 0.4); 
+      transform: translateY(-3px);
+    }
+    
+    .calc-mini-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .calc-mini-card .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .calc-mini-card h3 { color: #fff; font-size: 1rem; font-weight: 700; line-height: 1.4; margin-bottom: 8px; }
+    .calc-mini-card p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; margin: 0; }
+
     /* Latest Articles Section */
     .articles-section { max-width: 1100px; margin: 0 auto 70px; padding: 0 24px; }
     .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
@@ -92,6 +147,7 @@
       .nav-links { display: none; }
       .hero { padding-top: 50px; }
       .gateways { grid-template-columns: 1fr; }
+      .calc-cards-grid { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr 1fr; }
       .articles-grid { grid-template-columns: 1fr; }
       .section-header { flex-direction: column; gap: 10px; align-items: flex-start; }
@@ -147,6 +203,40 @@
       </a>
     </div>
   </main>
+
+  <!-- Featured Calculators Section -->
+  <section class="calculators-section">
+    <div class="section-header">
+      <h2>🧮 Interactive Calculators<span class="new-badge">NEW</span></h2>
+      <a href="calculator.html" class="view-all">View All Calculators →</a>
+    </div>
+    
+    <div class="calc-cards-grid">
+      <a href="dividend-calculator.html" class="calc-mini-card">
+        <span class="icon">💰</span>
+        <h3>Dividend Yield Calculator</h3>
+        <p>Calculate yields, income, and yield on cost instantly.</p>
+      </a>
+      
+      <a href="dividend-growth-calculator.html" class="calc-mini-card">
+        <span class="icon">📊</span>
+        <h3>Dividend Growth Calculator</h3>
+        <p>Analyze historical CAGR and project future dividends.</p>
+      </a>
+      
+      <a href="drip-calculator.html" class="calc-mini-card">
+        <span class="icon">📈</span>
+        <h3>DRIP Calculator</h3>
+        <p>See compound growth from dividend reinvestment.</p>
+      </a>
+      
+      <a href="portfolio-tracker.html" class="calc-mini-card">
+        <span class="icon">💼</span>
+        <h3>Portfolio Income Tracker</h3>
+        <p>Track dividend income across all your holdings.</p>
+      </a>
+    </div>
+  </section>
 
   <!-- Latest Articles Section -->
   <section class="articles-section">
