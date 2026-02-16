@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Average Down Calculator | US Market Terminals</title>
+    <meta name="description" content="Calculate your new average cost when buying more shares at a lower price. Find out how much more to invest to reach your target average price.">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .result-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .result-section.highlight {
+            background: linear-gradient(135deg, #10b98120 0%, #3b82f620 100%);
+            border: 2px solid #10b981;
+        }
+
+        .result-section h3 {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .result-section.highlight h3 {
+            color: #10b981;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .result-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .result-value.positive {
+            color: #10b981;
+        }
+
+        .result-value.negative {
+            color: #ef4444;
+        }
+
+        .improvement-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .improvement-badge.worse {
+            background: #ef4444;
+        }
+
+        .scenario-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .scenario-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .scenario-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .scenario-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .scenario-table tr:hover {
+            background: #f0f0f0;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .warning-box h4 {
+            color: #f59e0b;
+            margin-bottom: 10px;
+        }
+
+        .warning-box p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .calculator-card {
+                padding: 25px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scenario-table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>📉 Average Down Calculator</h1>
+            <p>Calculate your new average cost when buying more shares at a lower price</p>
+        </div>
+
+        <div class="calculator-card">
+            <div class="section-title">Current Position</div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="currentShares">Current Shares Owned</label>
+                    <input type="number" id="currentShares" placeholder="100" step="1" min="0">
+                    <div class="help-text">How many shares do you own now?</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="currentAverage">Current Average Price ($)</label>
+                    <input type="number" id="currentAverage" placeholder="50.00" step="0.01" min="0">
+                    <div class="help-text">Your average cost per share</div>
+                </div>
+            </div>
+
+            <div class="section-title">Additional Purchase</div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="additionalShares">Additional Shares to Buy</label>
+                    <input type="number" id="additionalShares" placeholder="50" step="1" min="0">
+                    <div class="help-text">How many more shares to buy?</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="newPrice">New Purchase Price ($)</label>
+                    <input type="number" id="newPrice" placeholder="40.00" step="0.01" min="0">
+                    <div class="help-text">Price for additional shares</div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateAverageDown()">Calculate New Average</button>
+
+            <div class="results" id="results">
+                <div class="comparison-grid">
+                    <div class="result-section">
+                        <h3>Before Additional Purchase</h3>
+                        <div class="result-item">
+                            <span class="result-label">Total Shares</span>
+                            <span class="result-value" id="beforeShares">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Average Price</span>
+                            <span class="result-value" id="beforeAverage">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Total Invested</span>
+                            <span class="result-value" id="beforeInvested">-</span>
+                        </div>
+                    </div>
+
+                    <div class="result-section highlight">
+                        <h3>After Additional Purchase</h3>
+                        <div class="result-item">
+                            <span class="result-label">Total Shares</span>
+                            <span class="result-value" id="afterShares">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">New Average Price</span>
+                            <span class="result-value" id="afterAverage">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Total Invested</span>
+                            <span class="result-value" id="afterInvested">-</span>
+                        </div>
+                        <div id="improvement"></div>
+                    </div>
+                </div>
+
+                <div class="scenario-section">
+                    <h3 class="section-title">What-If Scenarios</h3>
+                    <p style="color: #666; margin-bottom: 15px;">See how different purchase amounts affect your average price:</p>
+                    <table class="scenario-table" id="scenarioTable">
+                        <thead>
+                            <tr>
+                                <th>Additional Shares</th>
+                                <th>Additional Cost</th>
+                                <th>New Average Price</th>
+                                <th>Price Reduction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="averageChart"></canvas>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Important Risk Considerations</h4>
+                    <p><strong>Averaging down is NOT always a good strategy.</strong> Consider these risks:</p>
+                    <p>• You're investing more money into a losing position</p>
+                    <p>• The stock could continue to decline, increasing your losses</p>
+                    <p>• You may be experiencing confirmation bias (refusing to admit you were wrong)</p>
+                    <p>• This increases your exposure to a single stock (concentration risk)</p>
+                    <p><strong>Only average down if:</strong> Your original investment thesis is still valid, company fundamentals remain strong, and you have capital you can afford to lose.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📊 How Averaging Down Works</h3>
+            <p><strong>Averaging down</strong> means buying more shares at a lower price to reduce your average cost per share.</p>
+            <p><strong>Formula:</strong> New Average = (Original Cost + Additional Cost) ÷ Total Shares</p>
+            <p><strong>Example:</strong> You own 100 shares at $50 ($5,000). You buy 50 more at $40 ($2,000). New average = $7,000 ÷ 150 = $46.67</p>
+        </div>
+
+        <div class="info-box">
+            <h3>✅ When Averaging Down Makes Sense</h3>
+            <p>• <strong>Temporary Setback:</strong> Stock dropped due to short-term bad news, not fundamental problems</p>
+            <p>• <strong>Market Overreaction:</strong> Price decline is not justified by company performance</p>
+            <p>• <strong>Strong Fundamentals:</strong> Company still has solid earnings, revenue growth, and business model</p>
+            <p>• <strong>Long-term Investment:</strong> You're investing for years, not trading short-term</p>
+            <p>• <strong>Available Capital:</strong> You have extra money you can afford to lose</p>
+        </div>
+
+        <div class="info-box">
+            <h3>❌ When NOT to Average Down</h3>
+            <p>• <strong>Fundamental Issues:</strong> Company has serious business problems or declining market share</p>
+            <p>• <strong>Broken Thesis:</strong> The reason you bought the stock is no longer valid</p>
+            <p>• <strong>Catching a Falling Knife:</strong> Stock is in free fall with no support level</p>
+            <p>• <strong>Limited Capital:</strong> You're using money you can't afford to lose</p>
+            <p>• <strong>Revenge Trading:</strong> You're emotionally trying to "get even" with the market</p>
+        </div>
+
+        <div class="info-box">
+            <h3>💡 Smarter Alternatives</h3>
+            <p>• <strong>Cut Your Losses:</strong> Accept the loss and move on (sometimes the best decision)</p>
+            <p>• <strong>Dollar-Cost Averaging:</strong> Buy fixed amounts at regular intervals instead of trying to time dips</p>
+            <p>• <strong>Diversify Instead:</strong> Use the money to buy a different stock and reduce concentration risk</p>
+            <p>• <strong>Wait for Confirmation:</strong> Let the stock show signs of recovery before adding more</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ Disclaimer</h3>
+            <p>• This calculator is for educational purposes only</p>
+            <p>• Not financial or investment advice</p>
+            <p>• Averaging down increases risk and potential losses</p>
+            <p>• Past performance does not guarantee future results</p>
+            <p>• Always consult with a qualified financial advisor</p>
+        </div>
+    </div>
+
+    <script>
+        let averageChart = null;
+
+        function calculateAverageDown() {
+            const currentShares = parseFloat(document.getElementById('currentShares').value);
+            const currentAverage = parseFloat(document.getElementById('currentAverage').value);
+            const additionalShares = parseFloat(document.getElementById('additionalShares').value);
+            const newPrice = parseFloat(document.getElementById('newPrice').value);
+
+            // Validation
+            if (!currentShares || !currentAverage || !additionalShares || !newPrice ||
+                currentShares <= 0 || currentAverage <= 0 || additionalShares <= 0 || newPrice <= 0) {
+                alert('Please enter valid values for all fields.');
+                return;
+            }
+
+            // Calculate before
+            const beforeInvested = currentShares * currentAverage;
+
+            // Calculate after
+            const totalShares = currentShares + additionalShares;
+            const additionalInvested = additionalShares * newPrice;
+            const afterInvested = beforeInvested + additionalInvested;
+            const newAverage = afterInvested / totalShares;
+            const priceReduction = currentAverage - newAverage;
+            const reductionPercent = (priceReduction / currentAverage) * 100;
+
+            // Update display
+            document.getElementById('beforeShares').textContent = currentShares.toLocaleString();
+            document.getElementById('beforeAverage').textContent = '$' + currentAverage.toFixed(2);
+            document.getElementById('beforeInvested').textContent = '$' + beforeInvested.toLocaleString('en-US', {maximumFractionDigits: 2});
+
+            document.getElementById('afterShares').textContent = totalShares.toLocaleString();
+            document.getElementById('afterAverage').textContent = '$' + newAverage.toFixed(2);
+            document.getElementById('afterInvested').textContent = '$' + afterInvested.toLocaleString('en-US', {maximumFractionDigits: 2});
+
+            // Show improvement
+            const improvementDiv = document.getElementById('improvement');
+            const badgeClass = priceReduction > 0 ? 'improvement-badge' : 'improvement-badge worse';
+            improvementDiv.innerHTML = `
+                <span class="${badgeClass}">
+                    ${priceReduction > 0 ? '↓' : '↑'} $${Math.abs(priceReduction).toFixed(2)} 
+                    (${Math.abs(reductionPercent).toFixed(1)}%)
+                </span>
+            `;
+
+            // Generate scenarios
+            generateScenarios(currentShares, currentAverage, newPrice);
+
+            // Update chart
+            updateChart(currentShares, additionalShares, currentAverage, newAverage);
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function generateScenarios(currentShares, currentAverage, newPrice) {
+            const tbody = document.getElementById('scenarioTable').querySelector('tbody');
+            const scenarios = [10, 25, 50, 100, 200, 500];
+
+            tbody.innerHTML = scenarios.map(shares => {
+                const totalShares = currentShares + shares;
+                const totalInvested = (currentShares * currentAverage) + (shares * newPrice);
+                const newAvg = totalInvested / totalShares;
+                const reduction = currentAverage - newAvg;
+                const additionalCost = shares * newPrice;
+
+                return `
+                    <tr>
+                        <td>${shares} shares</td>
+                        <td>$${additionalCost.toLocaleString('en-US', {maximumFractionDigits: 0})}</td>
+                        <td><strong>$${newAvg.toFixed(2)}</strong></td>
+                        <td style="color: ${reduction > 0 ? '#10b981' : '#ef4444'}">
+                            ${reduction > 0 ? '↓' : '↑'} $${Math.abs(reduction).toFixed(2)}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function updateChart(currentShares, additionalShares, currentAverage, newAverage) {
+            const ctx = document.getElementById('averageChart').getContext('2d');
+
+            if (averageChart) {
+                averageChart.destroy();
+            }
+
+            averageChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Before', 'After'],
+                    datasets: [
+                        {
+                            label: 'Number of Shares',
+                            data: [currentShares, currentShares + additionalShares],
+                            backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                            borderColor: '#667eea',
+                            borderWidth: 2,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Average Price',
+                            data: [currentAverage, newAverage],
+                            backgroundColor: 'rgba(16, 185, 129, 0.8)',
+                            borderColor: '#10b981',
+                            borderWidth: 2,
+                            yAxisID: 'y1',
+                            type: 'line'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Shares & Average Price Comparison',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Number of Shares'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Average Price ($)'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toFixed(2);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Allow Enter key to calculate
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculateAverageDown();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
