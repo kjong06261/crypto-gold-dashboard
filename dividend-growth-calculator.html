@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dividend Growth Rate Calculator | US Market Terminals</title>
+    <meta name="description" content="Calculate dividend growth rate (CAGR) and project future dividend payments. Free interactive calculator for dividend investors.">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .result-card.highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .result-subtext {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .projection-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .projection-table th,
+        .projection-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .projection-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .projection-table td:last-child {
+            text-align: right;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .toggle-section {
+            margin-top: 20px;
+        }
+
+        .toggle-btn {
+            background: #6b7280;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background: #4b5563;
+        }
+
+        .projection-section {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .projection-section.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .calculator-card {
+                padding: 25px;
+            }
+
+            .result-value {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>📊 Dividend Growth Rate Calculator</h1>
+            <p>Calculate CAGR and project future dividend payments</p>
+        </div>
+
+        <div class="calculator-card">
+            <div class="section-title">Historical Dividend Data</div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="startYear">Starting Year</label>
+                    <input type="number" id="startYear" placeholder="2015" min="1900" max="2030" value="2015">
+                </div>
+
+                <div class="input-group">
+                    <label for="startDividend">Starting Annual Dividend ($)</label>
+                    <input type="number" id="startDividend" placeholder="2.00" step="0.01" min="0">
+                    <div class="help-text">Annual dividend per share</div>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="endYear">Ending Year</label>
+                    <input type="number" id="endYear" placeholder="2025" min="1900" max="2030" value="2025">
+                </div>
+
+                <div class="input-group">
+                    <label for="endDividend">Ending Annual Dividend ($)</label>
+                    <input type="number" id="endDividend" placeholder="3.50" step="0.01" min="0">
+                    <div class="help-text">Current annual dividend per share</div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateGrowth()">Calculate Growth Rate</button>
+
+            <div class="results" id="results">
+                <div class="result-grid">
+                    <div class="result-card highlight">
+                        <div class="result-label">CAGR</div>
+                        <div class="result-value" id="cagrValue">-</div>
+                        <div class="result-subtext">Compound Annual Growth Rate</div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-label">Total Growth</div>
+                        <div class="result-value" id="totalGrowth">-</div>
+                        <div class="result-subtext">Over entire period</div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-label">Years Analyzed</div>
+                        <div class="result-value" id="yearsCount">-</div>
+                        <div class="result-subtext">Time period</div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-label">Doubling Time</div>
+                        <div class="result-value" id="doublingTime">-</div>
+                        <div class="result-subtext">Years to double</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="growthChart"></canvas>
+                </div>
+
+                <div class="toggle-section">
+                    <button class="toggle-btn" onclick="toggleProjection()">Show Future Projections</button>
+                </div>
+
+                <div class="projection-section" id="projectionSection">
+                    <div class="section-title">10-Year Dividend Projection</div>
+                    <p style="color: #666; margin-bottom: 15px;">
+                        Based on historical CAGR of <strong id="projectionCAGR">-</strong>, here's how the dividend could grow:
+                    </p>
+                    <table class="projection-table" id="projectionTable">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Projected Annual Dividend</th>
+                                <th style="text-align: right;">Cumulative Growth</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectionTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📈 Understanding CAGR</h3>
+            <p><strong>Compound Annual Growth Rate (CAGR)</strong> measures the average annual growth rate of dividends over a specific time period, accounting for compounding.</p>
+            <p>Formula: CAGR = (Ending Value / Beginning Value)^(1 / Number of Years) - 1</p>
+            <p>For example, if a dividend grows from $2.00 to $3.50 over 10 years, the CAGR is 5.75% per year.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>💡 How to Use This Calculator</h3>
+            <p>1. <strong>Find Historical Data:</strong> Look up the company's dividend history on their investor relations page or financial sites like Yahoo Finance</p>
+            <p>2. <strong>Enter Starting Point:</strong> Choose a year in the past and enter the annual dividend per share for that year</p>
+            <p>3. <strong>Enter Ending Point:</strong> Use the most recent year and current annual dividend</p>
+            <p>4. <strong>Analyze:</strong> The calculator shows the average growth rate and can project future dividends (assuming the same growth continues)</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ Important Notes</h3>
+            <p>• Past dividend growth does NOT guarantee future growth</p>
+            <p>• Companies can cut or eliminate dividends at any time</p>
+            <p>• Use CAGR as one factor among many in your research</p>
+            <p>• Projections assume constant growth rate (rarely happens in reality)</p>
+            <p>• This calculator is for educational purposes only - not investment advice</p>
+        </div>
+    </div>
+
+    <script>
+        let growthChart = null;
+
+        function calculateGrowth() {
+            // Get input values
+            const startYear = parseInt(document.getElementById('startYear').value);
+            const startDividend = parseFloat(document.getElementById('startDividend').value);
+            const endYear = parseInt(document.getElementById('endYear').value);
+            const endDividend = parseFloat(document.getElementById('endDividend').value);
+
+            // Validation
+            if (!startYear || !startDividend || !endYear || !endDividend) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (startDividend <= 0 || endDividend <= 0) {
+                alert('Dividend amounts must be greater than zero.');
+                return;
+            }
+
+            if (endYear <= startYear) {
+                alert('Ending year must be after starting year.');
+                return;
+            }
+
+            const years = endYear - startYear;
+
+            // Calculate CAGR: (Ending/Beginning)^(1/years) - 1
+            const cagr = Math.pow(endDividend / startDividend, 1 / years) - 1;
+            const cagrPercent = cagr * 100;
+
+            // Calculate total growth
+            const totalGrowthPercent = ((endDividend - startDividend) / startDividend) * 100;
+
+            // Calculate doubling time using Rule of 72
+            const doublingTime = cagrPercent > 0 ? 72 / cagrPercent : Infinity;
+
+            // Update results
+            document.getElementById('cagrValue').textContent = cagrPercent.toFixed(2) + '%';
+            document.getElementById('totalGrowth').textContent = '+' + totalGrowthPercent.toFixed(1) + '%';
+            document.getElementById('yearsCount').textContent = years;
+            document.getElementById('doublingTime').textContent = 
+                doublingTime === Infinity ? 'N/A' : doublingTime.toFixed(1) + ' yrs';
+
+            // Generate historical chart data
+            const chartData = [];
+            const chartLabels = [];
+            
+            for (let i = 0; i <= years; i++) {
+                const year = startYear + i;
+                const dividend = startDividend * Math.pow(1 + cagr, i);
+                chartLabels.push(year.toString());
+                chartData.push(dividend);
+            }
+
+            // Update chart
+            updateChart(chartLabels, chartData);
+
+            // Update projection data
+            document.getElementById('projectionCAGR').textContent = cagrPercent.toFixed(2) + '%';
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function updateChart(labels, data) {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+
+            if (growthChart) {
+                growthChart.destroy();
+            }
+
+            growthChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Annual Dividend',
+                        data: data,
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#667eea'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Historical Dividend Growth',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return '$' + context.parsed.y.toFixed(2);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toFixed(2);
+                                }
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Year'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function toggleProjection() {
+            const projectionSection = document.getElementById('projectionSection');
+            const isShowing = projectionSection.classList.contains('show');
+
+            if (!isShowing) {
+                generateProjection();
+                projectionSection.classList.add('show');
+                event.target.textContent = 'Hide Future Projections';
+            } else {
+                projectionSection.classList.remove('show');
+                event.target.textContent = 'Show Future Projections';
+            }
+        }
+
+        function generateProjection() {
+            const endYear = parseInt(document.getElementById('endYear').value);
+            const endDividend = parseFloat(document.getElementById('endDividend').value);
+            const cagrText = document.getElementById('cagrValue').textContent;
+            const cagr = parseFloat(cagrText) / 100;
+
+            const tbody = document.getElementById('projectionTableBody');
+            tbody.innerHTML = '';
+
+            for (let i = 1; i <= 10; i++) {
+                const year = endYear + i;
+                const projectedDividend = endDividend * Math.pow(1 + cagr, i);
+                const cumulativeGrowth = ((projectedDividend - endDividend) / endDividend) * 100;
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${year}</td>
+                    <td><strong>$${projectedDividend.toFixed(2)}</strong></td>
+                    <td style="text-align: right;">+${cumulativeGrowth.toFixed(1)}%</td>
+                `;
+                tbody.appendChild(tr);
+            }
+        }
+
+        // Allow Enter key to calculate
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculateGrowth();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
