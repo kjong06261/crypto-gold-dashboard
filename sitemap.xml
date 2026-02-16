@@ -3,13 +3,13 @@
   <!-- Main Pages -->
   <url>
     <loc>https://us-dividend-pro.com/</loc>
-    <lastmod>2026-01-20</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://us-dividend-pro.com/index.html</loc>
-    <lastmod>2026-01-20</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -33,9 +33,9 @@
   </url>
   <url>
     <loc>https://us-dividend-pro.com/calculator.html</loc>
-    <lastmod>2026-01-20</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://us-dividend-pro.com/market-pulse.html</loc>
@@ -60,6 +60,100 @@
     <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Dividend Calculators -->
+  <url>
+    <loc>https://us-dividend-pro.com/dividend-calculator.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://us-dividend-pro.com/dividend-growth-calculator.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://us-dividend-pro.com/drip-calculator.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://us-dividend-pro.com/portfolio-tracker.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Investment Planning Tools -->
+  <url>
+    <loc>https://us-dividend-pro.com/ex-dividend-calendar.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://us-dividend-pro.com/dividend-frequency-tool.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://us-dividend-pro.com/dividend-aristocrats.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Stock & Trading Tools -->
+  <url>
+    <loc>https://us-dividend-pro.com/stock-split-calculator.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://us-dividend-pro.com/position-size-calculator.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://us-dividend-pro.com/average-down-calculator.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://us-dividend-pro.com/dca-calculator.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Crypto Tools -->
+  <url>
+    <loc>https://us-dividend-pro.com/bitcoin-halving-countdown.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://us-dividend-pro.com/crypto-profit-calculator.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- General Investment Tools -->
+  <url>
+    <loc>https://us-dividend-pro.com/market-cap-calculator.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- Content Pages -->
