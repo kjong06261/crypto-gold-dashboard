@@ -1,5 +1,4 @@
 # 📊 US Market Terminals
-
 **Educational Resources for Learning About US Markets**
 
 US Market Terminals is an educational website providing learning resources and simple demo tools for understanding basic financial concepts.
@@ -16,10 +15,39 @@ This website offers:
 
 ## 📂 Project Structure
 
-* `index.html`: Homepage
-* `calculator.html`: Compound Interest Calculator (Demo)
-* `blog.html`: Educational Articles
-* `resources.html`: Links to Official Data Sources
+### Main Pages
+* `index.html` - Homepage with market overview
+* `calculator.html` - Compound Interest Calculator (Demo)
+* `market-pulse.html` - Market data dashboard
+* `tools.html` - Financial tools hub
+* `blog.html` - Educational articles index
+
+### Educational Content
+* `dividend-growth-strategy.html` - Dividend investing guide
+* `cryptocurrency-overview.html` - Crypto market overview
+* `barbell-strategy-guide.html` - Portfolio strategy guide
+* `bitcoin-corporate.html` - Bitcoin corporate treasury guide
+* `realty-income-o.html` - REIT case study
+
+### Calculators & Tools
+* `position-size-calculator.html` - Position sizing tool
+* `stock-split-calculator.html` - Stock split calculator
+* `market-cap-calculator.html` - Market capitalization tool
+* `portfolio-tracker.html` - Portfolio tracking demo
+* `bitcoin-halving.html` - Bitcoin halving countdown
+
+### Resources & Info
+* `resources.html` - External data sources
+* `glossary.html` - Financial terms glossary
+* `faq.html` - Frequently asked questions
+* `about.html` - About this website
+* `contact.html` - Contact form
+
+### Legal & Policies
+* `privacy.html` - Privacy policy
+* `legal.html` - Terms of use
+* `disclaimer.html` - Investment disclaimer
+* `robots.txt` - Search engine directives
 
 ## ⚠️ Disclaimer
 
