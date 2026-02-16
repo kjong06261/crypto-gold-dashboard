@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Cap Calculator | US Market Terminals</title>
+    <meta name="description" content="Calculate stock or cryptocurrency market capitalization. Find share price from market cap, or market cap from share price and outstanding shares.">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .mode-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mode-btn {
+            padding: 20px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .mode-btn:hover {
+            border-color: #667eea;
+        }
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .mode-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .mode-desc {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .result-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .result-highlight h3 {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .result-highlight .main-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .result-highlight .sub-value {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .breakdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .breakdown-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .breakdown-card h4 {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .breakdown-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .comparison-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .comparison-table tr:hover {
+            background: #f0f0f0;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .category-badge.mega { background: #10b981; color: white; }
+        .category-badge.large { background: #3b82f6; color: white; }
+        .category-badge.mid { background: #f59e0b; color: white; }
+        .category-badge.small { background: #ef4444; color: white; }
+        .category-badge.micro { background: #9ca3af; color: white; }
+
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .calculator-card {
+                padding: 25px;
+            }
+
+            .result-highlight .main-value {
+                font-size: 2.5rem;
+            }
+
+            .breakdown-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>📊 Market Cap Calculator</h1>
+            <p>Calculate market capitalization, share price, or shares outstanding</p>
+        </div>
+
+        <div class="calculator-card">
+            <div class="section-title">Calculation Mode</div>
+            
+            <div class="mode-selector">
+                <div class="mode-btn active" onclick="selectMode('marketcap')">
+                    <div class="mode-title">Calculate Market Cap</div>
+                    <div class="mode-desc">From price × shares</div>
+                </div>
+                <div class="mode-btn" onclick="selectMode('price')">
+                    <div class="mode-title">Calculate Share Price</div>
+                    <div class="mode-desc">From market cap ÷ shares</div>
+                </div>
+                <div class="mode-btn" onclick="selectMode('shares')">
+                    <div class="mode-title">Calculate Shares</div>
+                    <div class="mode-desc">From market cap ÷ price</div>
+                </div>
+            </div>
+
+            <div id="inputSection">
+                <!-- Populated by JavaScript based on mode -->
+            </div>
+
+            <button class="calculate-btn" onclick="calculate()">Calculate</button>
+
+            <div class="results" id="results">
+                <div class="result-highlight">
+                    <h3 id="resultLabel">Market Capitalization</h3>
+                    <div class="main-value" id="resultValue">$0</div>
+                    <div class="sub-value" id="resultCategory">-</div>
+                </div>
+
+                <div class="breakdown-grid" id="breakdownGrid">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <div class="comparison-section">
+                    <h3 class="section-title">Market Cap Categories</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Market Cap Range</th>
+                                <th>Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="category-badge mega">Mega Cap</span></td>
+                                <td>$200B+</td>
+                                <td>Apple, Microsoft, Google, Amazon</td>
+                            </tr>
+                            <tr>
+                                <td><span class="category-badge large">Large Cap</span></td>
+                                <td>$10B - $200B</td>
+                                <td>Netflix, Nike, Starbucks, Adobe</td>
+                            </tr>
+                            <tr>
+                                <td><span class="category-badge mid">Mid Cap</span></td>
+                                <td>$2B - $10B</td>
+                                <td>Etsy, Zoom, Robinhood, Coinbase</td>
+                            </tr>
+                            <tr>
+                                <td><span class="category-badge small">Small Cap</span></td>
+                                <td>$300M - $2B</td>
+                                <td>Regional banks, small tech companies</td>
+                            </tr>
+                            <tr>
+                                <td><span class="category-badge micro">Micro Cap</span></td>
+                                <td>Under $300M</td>
+                                <td>Early-stage companies, penny stocks</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📐 Market Cap Formula</h3>
+            <p><strong>Market Capitalization = Share Price × Total Outstanding Shares</strong></p>
+            <p>This represents the total market value of a company's outstanding shares of stock.</p>
+            <p><strong>Example:</strong> A company with 1 billion shares trading at $50 per share has a market cap of $50 billion.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>💡 Why Market Cap Matters</h3>
+            <p>• <strong>Company Size:</strong> Quickly compare companies regardless of share price</p>
+            <p>• <strong>Investment Risk:</strong> Generally, larger cap = lower risk, smaller cap = higher risk</p>
+            <p>• <strong>Liquidity:</strong> Mega/large caps typically have better liquidity</p>
+            <p>• <strong>Volatility:</strong> Smaller caps tend to be more volatile</p>
+            <p>• <strong>Index Inclusion:</strong> Determines eligibility for S&P 500, Russell 2000, etc.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>📊 Diluted vs Basic Market Cap</h3>
+            <p><strong>Basic Market Cap:</strong> Uses only currently outstanding shares (common calculation)</p>
+            <p><strong>Fully Diluted Market Cap:</strong> Includes all shares that could exist (options, warrants, convertible bonds)</p>
+            <p>For cryptocurrencies, this is especially important:</p>
+            <p>• <strong>Circulating Supply:</strong> Coins currently in circulation (basic market cap)</p>
+            <p>• <strong>Total Supply:</strong> All coins that exist</p>
+            <p>• <strong>Max Supply:</strong> Maximum possible coins (fully diluted market cap)</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ Market Cap Limitations</h3>
+            <p>• <strong>Doesn't Show Debt:</strong> Company could have huge debt not reflected in market cap</p>
+            <p>• <strong>Enterprise Value Better:</strong> Market cap + debt - cash gives true company value</p>
+            <p>• <strong>Share Price Misleading:</strong> $500 stock isn't necessarily "better" than $50 stock</p>
+            <p>• <strong>Float Matters:</strong> Low float stocks can have inflated market caps</p>
+            <p>• <strong>Not Book Value:</strong> Market cap ≠ company's actual assets</p>
+        </div>
+
+        <div class="info-box">
+            <h3>🎯 Practical Uses</h3>
+            <p>• <strong>Portfolio Allocation:</strong> Balance between large/mid/small cap exposure</p>
+            <p>• <strong>Sector Comparison:</strong> Compare companies within same industry</p>
+            <p>• <strong>IPO Valuation:</strong> Estimate share price from desired market cap</p>
+            <p>• <strong>Stock Split Impact:</strong> Market cap stays same, price and shares adjust</p>
+            <p>• <strong>Acquisition Target:</strong> Estimate cost to buy entire company</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ Disclaimer</h3>
+            <p>• This calculator is for educational purposes only</p>
+            <p>• Not financial or investment advice</p>
+            <p>• Market capitalization is just one metric - consider all fundamentals</p>
+            <p>• Share counts and prices change constantly</p>
+            <p>• Always verify data from official company filings</p>
+        </div>
+    </div>
+
+    <script>
+        let currentMode = 'marketcap';
+        let comparisonChart = null;
+
+        function selectMode(mode) {
+            currentMode = mode;
+            
+            // Update button states
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.mode-btn').classList.add('active');
+
+            // Update input fields
+            renderInputs();
+        }
+
+        function renderInputs() {
+            const inputSection = document.getElementById('inputSection');
+            
+            if (currentMode === 'marketcap') {
+                inputSection.innerHTML = `
+                    <div class="section-title">Enter Share Details</div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="sharePrice">Share Price ($)</label>
+                            <input type="number" id="sharePrice" placeholder="150.00" step="0.01" min="0">
+                            <div class="help-text">Current price per share</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="sharesOutstanding">Shares Outstanding</label>
+                            <input type="number" id="sharesOutstanding" placeholder="1000000000" step="1" min="0">
+                            <div class="help-text">Total shares issued</div>
+                        </div>
+                    </div>
+                `;
+            } else if (currentMode === 'price') {
+                inputSection.innerHTML = `
+                    <div class="section-title">Enter Company Details</div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="marketCap">Market Capitalization ($)</label>
+                            <input type="number" id="marketCap" placeholder="150000000000" step="1000000" min="0">
+                            <div class="help-text">Total market value</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="sharesOutstanding">Shares Outstanding</label>
+                            <input type="number" id="sharesOutstanding" placeholder="1000000000" step="1" min="0">
+                            <div class="help-text">Total shares issued</div>
+                        </div>
+                    </div>
+                `;
+            } else if (currentMode === 'shares') {
+                inputSection.innerHTML = `
+                    <div class="section-title">Enter Valuation Details</div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="marketCap">Market Capitalization ($)</label>
+                            <input type="number" id="marketCap" placeholder="150000000000" step="1000000" min="0">
+                            <div class="help-text">Total market value</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="sharePrice">Share Price ($)</label>
+                            <input type="number" id="sharePrice" placeholder="150.00" step="0.01" min="0">
+                            <div class="help-text">Current price per share</div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function calculate() {
+            let result, sharePrice, sharesOutstanding, marketCap;
+
+            if (currentMode === 'marketcap') {
+                sharePrice = parseFloat(document.getElementById('sharePrice').value);
+                sharesOutstanding = parseFloat(document.getElementById('sharesOutstanding').value);
+
+                if (!sharePrice || !sharesOutstanding || sharePrice <= 0 || sharesOutstanding <= 0) {
+                    alert('Please enter valid values for all fields.');
+                    return;
+                }
+
+                marketCap = sharePrice * sharesOutstanding;
+                result = marketCap;
+                
+                updateDisplay(marketCap, sharePrice, sharesOutstanding, 'Market Capitalization');
+                
+            } else if (currentMode === 'price') {
+                marketCap = parseFloat(document.getElementById('marketCap').value);
+                sharesOutstanding = parseFloat(document.getElementById('sharesOutstanding').value);
+
+                if (!marketCap || !sharesOutstanding || marketCap <= 0 || sharesOutstanding <= 0) {
+                    alert('Please enter valid values for all fields.');
+                    return;
+                }
+
+                sharePrice = marketCap / sharesOutstanding;
+                result = sharePrice;
+                
+                updateDisplay(marketCap, sharePrice, sharesOutstanding, 'Share Price');
+                
+            } else if (currentMode === 'shares') {
+                marketCap = parseFloat(document.getElementById('marketCap').value);
+                sharePrice = parseFloat(document.getElementById('sharePrice').value);
+
+                if (!marketCap || !sharePrice || marketCap <= 0 || sharePrice <= 0) {
+                    alert('Please enter valid values for all fields.');
+                    return;
+                }
+
+                sharesOutstanding = marketCap / sharePrice;
+                result = sharesOutstanding;
+                
+                updateDisplay(marketCap, sharePrice, sharesOutstanding, 'Shares Outstanding');
+            }
+        }
+
+        function updateDisplay(marketCap, sharePrice, sharesOutstanding, resultLabel) {
+            // Determine category
+            const category = getMarketCapCategory(marketCap);
+
+            // Update result highlight
+            document.getElementById('resultLabel').textContent = resultLabel;
+            
+            if (currentMode === 'marketcap') {
+                document.getElementById('resultValue').textContent = formatCurrency(marketCap);
+            } else if (currentMode === 'price') {
+                document.getElementById('resultValue').textContent = '$' + sharePrice.toFixed(2);
+            } else if (currentMode === 'shares') {
+                document.getElementById('resultValue').textContent = sharesOutstanding.toLocaleString('en-US', {maximumFractionDigits: 0});
+            }
+            
+            document.getElementById('resultCategory').textContent = category.name + ' Company';
+
+            // Update breakdown
+            const breakdownGrid = document.getElementById('breakdownGrid');
+            breakdownGrid.innerHTML = `
+                <div class="breakdown-card">
+                    <h4>Market Cap</h4>
+                    <div class="value">${formatCurrency(marketCap)}</div>
+                </div>
+                <div class="breakdown-card">
+                    <h4>Share Price</h4>
+                    <div class="value">$${sharePrice.toFixed(2)}</div>
+                </div>
+                <div class="breakdown-card">
+                    <h4>Shares Outstanding</h4>
+                    <div class="value">${sharesOutstanding.toLocaleString('en-US', {maximumFractionDigits: 0})}</div>
+                </div>
+                <div class="breakdown-card">
+                    <h4>Category</h4>
+                    <div class="value"><span class="category-badge ${category.class}">${category.name}</span></div>
+                </div>
+            `;
+
+            // Update chart
+            updateChart(marketCap);
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function getMarketCapCategory(marketCap) {
+            if (marketCap >= 200000000000) {
+                return { name: 'Mega Cap', class: 'mega' };
+            } else if (marketCap >= 10000000000) {
+                return { name: 'Large Cap', class: 'large' };
+            } else if (marketCap >= 2000000000) {
+                return { name: 'Mid Cap', class: 'mid' };
+            } else if (marketCap >= 300000000) {
+                return { name: 'Small Cap', class: 'small' };
+            } else {
+                return { name: 'Micro Cap', class: 'micro' };
+            }
+        }
+
+        function formatCurrency(value) {
+            if (value >= 1000000000000) {
+                return '$' + (value / 1000000000000).toFixed(2) + 'T';
+            } else if (value >= 1000000000) {
+                return '$' + (value / 1000000000).toFixed(2) + 'B';
+            } else if (value >= 1000000) {
+                return '$' + (value / 1000000).toFixed(2) + 'M';
+            } else {
+                return '$' + value.toLocaleString('en-US', {maximumFractionDigits: 0});
+            }
+        }
+
+        function updateChart(currentMarketCap) {
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+
+            if (comparisonChart) {
+                comparisonChart.destroy();
+            }
+
+            // Famous company market caps (approximate examples for reference)
+            const companies = ['Your Calculation', 'Apple', 'Microsoft', 'Google', 'Amazon', 'Tesla'];
+            const marketCaps = [
+                currentMarketCap / 1000000000, // Convert to billions
+                3000, // Apple ~$3T
+                2800, // Microsoft ~$2.8T
+                1800, // Google ~$1.8T
+                1500, // Amazon ~$1.5T
+                800   // Tesla ~$800B
+            ];
+
+            comparisonChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: companies,
+                    datasets: [{
+                        label: 'Market Cap (Billions)',
+                        data: marketCaps,
+                        backgroundColor: [
+                            'rgba(102, 126, 234, 0.8)',
+                            'rgba(16, 185, 129, 0.6)',
+                            'rgba(59, 130, 246, 0.6)',
+                            'rgba(245, 158, 11, 0.6)',
+                            'rgba(239, 68, 68, 0.6)',
+                            'rgba(139, 92, 246, 0.6)'
+                        ],
+                        borderColor: [
+                            '#667eea',
+                            '#10b981',
+                            '#3b82f6',
+                            '#f59e0b',
+                            '#ef4444',
+                            '#8b5cf6'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Market Cap Comparison (Approximate)',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return '$' + context.parsed.y.toFixed(2) + 'B';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Market Cap (Billions USD)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value + 'B';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize with market cap mode
+        renderInputs();
+
+        // Allow Enter key to calculate
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                calculate();
+            }
+        });
+    </script>
+</body>
+</html>
