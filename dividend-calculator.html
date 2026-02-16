@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dividend Yield Calculator | US Market Terminals</title>
+    <meta name="description" content="Calculate dividend yield, annual income, and yield on cost for your dividend stocks. Free interactive calculator.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .results.show {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .result-card.highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .result-subtext {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .calculator-card {
+                padding: 25px;
+            }
+
+            .result-value {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>💰 Dividend Yield Calculator</h1>
+            <p>Calculate your dividend returns and passive income</p>
+        </div>
+
+        <div class="calculator-card">
+            <div class="input-group">
+                <label for="stockPrice">Current Stock Price ($)</label>
+                <input type="number" id="stockPrice" placeholder="e.g., 150.00" step="0.01" min="0">
+            </div>
+
+            <div class="input-group">
+                <label for="annualDividend">Annual Dividend per Share ($)</label>
+                <input type="number" id="annualDividend" placeholder="e.g., 6.00" step="0.01" min="0">
+            </div>
+
+            <div class="input-group">
+                <label for="shares">Number of Shares (Optional)</label>
+                <input type="number" id="shares" placeholder="e.g., 100" step="1" min="0">
+            </div>
+
+            <div class="input-group">
+                <label for="purchasePrice">Original Purchase Price (Optional - for Yield on Cost)</label>
+                <input type="number" id="purchasePrice" placeholder="e.g., 120.00" step="0.01" min="0">
+            </div>
+
+            <button class="calculate-btn" onclick="calculateDividend()">Calculate</button>
+
+            <div class="results" id="results">
+                <div class="result-card highlight">
+                    <div class="result-label">Dividend Yield</div>
+                    <div class="result-value" id="yieldPercent">-</div>
+                    <div class="result-subtext">Annual return rate</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">Annual Income</div>
+                    <div class="result-value" id="annualIncome">-</div>
+                    <div class="result-subtext">Per year</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">Monthly Income</div>
+                    <div class="result-value" id="monthlyIncome">-</div>
+                    <div class="result-subtext">Per month</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">Yield on Cost</div>
+                    <div class="result-value" id="yieldOnCost">-</div>
+                    <div class="result-subtext">Based on purchase price</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📊 Understanding Dividend Yield</h3>
+            <p><strong>Dividend Yield</strong> shows what percentage of the stock price is paid out as dividends annually. For example, a 4% yield means you receive $4 per year for every $100 invested.</p>
+            <p style="margin-top: 10px;"><strong>Yield on Cost</strong> compares dividends to your original purchase price. If a stock's dividend grows over time, your yield on cost increases even if the current yield stays the same.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ Important Notes</h3>
+            <p>• High yields (>8%) may indicate risk or unsustainable payouts</p>
+            <p>• Check the company's payout ratio and dividend history</p>
+            <p>• Past dividends don't guarantee future payments</p>
+            <p>• This calculator is for educational purposes only - not investment advice</p>
+        </div>
+    </div>
+
+    <script>
+        function calculateDividend() {
+            // Get input values
+            const stockPrice = parseFloat(document.getElementById('stockPrice').value);
+            const annualDividend = parseFloat(document.getElementById('annualDividend').value);
+            const shares = parseFloat(document.getElementById('shares').value) || 1;
+            const purchasePrice = parseFloat(document.getElementById('purchasePrice').value);
+
+            // Validation
+            if (!stockPrice || !annualDividend || stockPrice <= 0 || annualDividend < 0) {
+                alert('Please enter valid stock price and annual dividend amounts.');
+                return;
+            }
+
+            // Calculate dividend yield
+            const dividendYield = (annualDividend / stockPrice) * 100;
+
+            // Calculate income
+            const annualIncome = annualDividend * shares;
+            const monthlyIncome = annualIncome / 12;
+
+            // Calculate yield on cost (if purchase price provided)
+            let yieldOnCost = '-';
+            if (purchasePrice && purchasePrice > 0) {
+                const yocPercent = (annualDividend / purchasePrice) * 100;
+                yieldOnCost = yocPercent.toFixed(2) + '%';
+            }
+
+            // Display results
+            document.getElementById('yieldPercent').textContent = dividendYield.toFixed(2) + '%';
+            document.getElementById('annualIncome').textContent = '$' + annualIncome.toFixed(2);
+            document.getElementById('monthlyIncome').textContent = '$' + monthlyIncome.toFixed(2);
+            document.getElementById('yieldOnCost').textContent = yieldOnCost;
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Allow Enter key to calculate
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculateDividend();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
