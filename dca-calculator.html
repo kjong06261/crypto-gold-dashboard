@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dollar Cost Averaging (DCA) Calculator | US Market Terminals</title>
+    <meta name="description" content="Compare lump sum investing vs dollar cost averaging (DCA). Calculate returns from regular investments over time with historical data simulation.">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .strategy-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .strategy-card.winner {
+            background: linear-gradient(135deg, #10b98120 0%, #3b82f620 100%);
+            border-color: #10b981;
+        }
+
+        .strategy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .strategy-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .winner-badge {
+            background: #10b981;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .strategy-stats {
+            margin-top: 15px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .stat-value.positive {
+            color: #10b981;
+        }
+
+        .stat-value.negative {
+            color: #ef4444;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .investment-schedule {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .schedule-item {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .schedule-month {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .schedule-amount {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .calculator-card {
+                padding: 25px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>📊 Dollar Cost Averaging Calculator</h1>
+            <p>Compare lump sum investing vs regular periodic investments</p>
+        </div>
+
+        <div class="calculator-card">
+            <div class="section-title">Investment Parameters</div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="totalAmount">Total Amount to Invest ($)</label>
+                    <input type="number" id="totalAmount" placeholder="10000" step="100" min="0" value="10000">
+                    <div class="help-text">Total capital available</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="frequency">Investment Frequency</label>
+                    <select id="frequency">
+                        <option value="weekly">Weekly</option>
+                        <option value="biweekly">Bi-weekly</option>
+                        <option value="monthly" selected>Monthly</option>
+                        <option value="quarterly">Quarterly</option>
+                    </select>
+                    <div class="help-text">How often to invest</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="timePeriod">Time Period (Months)</label>
+                    <input type="number" id="timePeriod" placeholder="12" step="1" min="1" max="120" value="12">
+                    <div class="help-text">DCA duration (1-120 months)</div>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="avgReturn">Expected Annual Return (%)</label>
+                    <input type="number" id="avgReturn" placeholder="10" step="0.1" min="-50" max="100" value="10">
+                    <div class="help-text">Average yearly growth rate</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="volatility">Market Volatility (%)</label>
+                    <input type="number" id="volatility" placeholder="15" step="1" min="0" max="100" value="15">
+                    <div class="help-text">Price fluctuation range</div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateDCA()">Compare Strategies</button>
+
+            <div class="results" id="results">
+                <div class="comparison-grid">
+                    <div class="strategy-card" id="lumpSumCard">
+                        <div class="strategy-header">
+                            <div class="strategy-title">Lump Sum</div>
+                            <div id="lumpSumBadge"></div>
+                        </div>
+                        <div class="strategy-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">Initial Investment</span>
+                                <span class="stat-value" id="lumpSumInitial">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Final Value</span>
+                                <span class="stat-value" id="lumpSumFinal">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Total Return</span>
+                                <span class="stat-value" id="lumpSumReturn">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Return %</span>
+                                <span class="stat-value" id="lumpSumPercent">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="strategy-card" id="dcaCard">
+                        <div class="strategy-header">
+                            <div class="strategy-title">Dollar Cost Averaging</div>
+                            <div id="dcaBadge"></div>
+                        </div>
+                        <div class="strategy-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">Total Invested</span>
+                                <span class="stat-value" id="dcaInitial">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Final Value</span>
+                                <span class="stat-value" id="dcaFinal">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Total Return</span>
+                                <span class="stat-value" id="dcaReturn">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Return %</span>
+                                <span class="stat-value" id="dcaPercent">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+
+                <div class="investment-schedule" id="scheduleSection">
+                    <h3 class="section-title">DCA Investment Schedule</h3>
+                    <div class="schedule-grid" id="scheduleGrid">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>💰 What is Dollar Cost Averaging (DCA)?</h3>
+            <p><strong>Dollar Cost Averaging</strong> is an investment strategy where you invest a fixed amount of money at regular intervals, regardless of the asset's price.</p>
+            <p><strong>Example:</strong> Instead of investing $12,000 all at once, you invest $1,000 per month for 12 months.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>✅ Advantages of DCA</h3>
+            <p>• <strong>Reduces Timing Risk:</strong> You don't need to guess the perfect entry point</p>
+            <p>• <strong>Emotional Discipline:</strong> Automates investing, removes emotion from decisions</p>
+            <p>• <strong>Buy More When Low:</strong> Fixed dollar amount buys more shares when prices drop</p>
+            <p>• <strong>Beginner Friendly:</strong> Simple strategy that doesn't require market expertise</p>
+            <p>• <strong>Flexible Commitment:</strong> Start small and increase over time</p>
+        </div>
+
+        <div class="info-box">
+            <h3>❌ Disadvantages of DCA</h3>
+            <p>• <strong>Lower Returns in Bull Markets:</strong> Lump sum typically outperforms when markets rise consistently</p>
+            <p>• <strong>More Transaction Fees:</strong> Multiple purchases can mean more fees (use commission-free brokers)</p>
+            <p>• <strong>Cash Drag:</strong> Uninvested cash earns little while waiting to be deployed</p>
+            <p>• <strong>Not Optimal Statistically:</strong> Studies show lump sum wins ~66% of the time historically</p>
+        </div>
+
+        <div class="info-box">
+            <h3>🎯 When to Use Each Strategy</h3>
+            <p><strong>Use Lump Sum If:</strong></p>
+            <p>• You have a large sum available now (inheritance, bonus, etc.)</p>
+            <p>• You have a long time horizon (10+ years)</p>
+            <p>• You can handle short-term volatility emotionally</p>
+            <p>• Historical data favors this approach</p>
+            <p><strong>Use DCA If:</strong></p>
+            <p>• You're investing from regular income (salary, business revenue)</p>
+            <p>• You're worried about market timing and want to reduce regret</p>
+            <p>• You're new to investing and want to ease in gradually</p>
+            <p>• You value emotional comfort over statistical optimization</p>
+        </div>
+
+        <div class="info-box">
+            <h3>💡 Best Practice: Hybrid Approach</h3>
+            <p>Many investors use a <strong>hybrid strategy</strong>:</p>
+            <p>1. Invest a portion immediately (50-80%)</p>
+            <p>2. DCA the remainder over 3-6 months</p>
+            <p>3. Continue regular monthly contributions from income</p>
+            <p>This balances statistical advantage with psychological comfort.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ Important Notes</h3>
+            <p>• This calculator uses simulated returns with random volatility - real markets may differ</p>
+            <p>• Past performance does not guarantee future results</p>
+            <p>• Both strategies assume you stay invested for the full period</p>
+            <p>• Results vary based on market conditions during your specific timeframe</p>
+            <p>• This is for educational purposes only - not investment advice</p>
+        </div>
+    </div>
+
+    <script>
+        let comparisonChart = null;
+
+        function calculateDCA() {
+            const totalAmount = parseFloat(document.getElementById('totalAmount').value);
+            const frequency = document.getElementById('frequency').value;
+            const timePeriod = parseFloat(document.getElementById('timePeriod').value);
+            const avgReturn = parseFloat(document.getElementById('avgReturn').value) / 100;
+            const volatility = parseFloat(document.getElementById('volatility').value) / 100;
+
+            // Validation
+            if (!totalAmount || !timePeriod || totalAmount <= 0 || timePeriod <= 0) {
+                alert('Please enter valid values for all fields.');
+                return;
+            }
+
+            // Calculate number of investments based on frequency
+            const investmentsPerYear = {
+                'weekly': 52,
+                'biweekly': 26,
+                'monthly': 12,
+                'quarterly': 4
+            };
+
+            const periodsPerYear = investmentsPerYear[frequency];
+            const totalPeriods = Math.floor((timePeriod / 12) * periodsPerYear);
+            const amountPerPeriod = totalAmount / totalPeriods;
+
+            // Simulate lump sum
+            const monthlyReturn = avgReturn / 12;
+            const lumpSumFinal = totalAmount * Math.pow(1 + monthlyReturn, timePeriod);
+            const lumpSumReturn = lumpSumFinal - totalAmount;
+            const lumpSumPercent = (lumpSumReturn / totalAmount) * 100;
+
+            // Simulate DCA with volatility
+            let dcaFinal = 0;
+            const monthsPerPeriod = 12 / periodsPerYear;
+            const dcaSchedule = [];
+
+            for (let i = 0; i < totalPeriods; i++) {
+                const investmentMonth = i * monthsPerPeriod;
+                const monthsRemaining = timePeriod - investmentMonth;
+                
+                // Add random volatility to returns
+                const randomReturn = monthlyReturn + (Math.random() - 0.5) * volatility / 6;
+                const periodReturn = Math.pow(1 + randomReturn, monthsRemaining);
+                
+                dcaFinal += amountPerPeriod * periodReturn;
+
+                // Store for schedule display
+                if (dcaSchedule.length < 24) { // Limit display to first 24 periods
+                    dcaSchedule.push({
+                        period: i + 1,
+                        amount: amountPerPeriod,
+                        month: investmentMonth
+                    });
+                }
+            }
+
+            const dcaReturn = dcaFinal - totalAmount;
+            const dcaPercent = (dcaReturn / totalAmount) * 100;
+
+            // Determine winner
+            const lumpSumWins = lumpSumFinal > dcaFinal;
+            
+            // Update display
+            document.getElementById('lumpSumInitial').textContent = '$' + totalAmount.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('lumpSumFinal').textContent = '$' + lumpSumFinal.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('lumpSumReturn').textContent = '$' + lumpSumReturn.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('lumpSumPercent').textContent = lumpSumPercent.toFixed(1) + '%';
+            document.getElementById('lumpSumPercent').className = 'stat-value ' + (lumpSumPercent >= 0 ? 'positive' : 'negative');
+
+            document.getElementById('dcaInitial').textContent = '$' + totalAmount.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('dcaFinal').textContent = '$' + dcaFinal.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('dcaReturn').textContent = '$' + dcaReturn.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('dcaPercent').textContent = dcaPercent.toFixed(1) + '%';
+            document.getElementById('dcaPercent').className = 'stat-value ' + (dcaPercent >= 0 ? 'positive' : 'negative');
+
+            // Update winner badges
+            const lumpSumCard = document.getElementById('lumpSumCard');
+            const dcaCard = document.getElementById('dcaCard');
+            const lumpSumBadge = document.getElementById('lumpSumBadge');
+            const dcaBadge = document.getElementById('dcaBadge');
+
+            lumpSumCard.classList.remove('winner');
+            dcaCard.classList.remove('winner');
+
+            if (lumpSumWins) {
+                lumpSumCard.classList.add('winner');
+                lumpSumBadge.innerHTML = '<span class="winner-badge">HIGHER RETURN</span>';
+                dcaBadge.innerHTML = '';
+            } else {
+                dcaCard.classList.add('winner');
+                dcaBadge.innerHTML = '<span class="winner-badge">HIGHER RETURN</span>';
+                lumpSumBadge.innerHTML = '';
+            }
+
+            // Generate schedule
+            generateSchedule(dcaSchedule, frequency);
+
+            // Update chart
+            updateChart(timePeriod, totalAmount, amountPerPeriod, monthlyReturn, periodsPerYear, totalPeriods, volatility);
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function generateSchedule(schedule, frequency) {
+            const grid = document.getElementById('scheduleGrid');
+            const frequencyLabels = {
+                'weekly': 'Week',
+                'biweekly': 'Period',
+                'monthly': 'Month',
+                'quarterly': 'Quarter'
+            };
+
+            grid.innerHTML = schedule.map(item => `
+                <div class="schedule-item">
+                    <div class="schedule-month">${frequencyLabels[frequency]} ${item.period}</div>
+                    <div class="schedule-amount">$${item.amount.toLocaleString('en-US', {maximumFractionDigits: 0})}</div>
+                </div>
+            `).join('');
+        }
+
+        function updateChart(timePeriod, totalAmount, amountPerPeriod, monthlyReturn, periodsPerYear, totalPeriods, volatility) {
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+
+            if (comparisonChart) {
+                comparisonChart.destroy();
+            }
+
+            // Generate month-by-month data
+            const months = [];
+            const lumpSumData = [];
+            const dcaData = [];
+
+            for (let month = 0; month <= timePeriod; month++) {
+                months.push(month);
+
+                // Lump sum growth
+                const lumpSumValue = totalAmount * Math.pow(1 + monthlyReturn, month);
+                lumpSumData.push(lumpSumValue);
+
+                // DCA growth
+                let dcaValue = 0;
+                const monthsPerPeriod = 12 / periodsPerYear;
+                const periodsElapsed = Math.floor(month / monthsPerPeriod);
+
+                for (let i = 0; i < periodsElapsed && i < totalPeriods; i++) {
+                    const investmentMonth = i * monthsPerPeriod;
+                    const monthsGrowth = month - investmentMonth;
+                    const randomReturn = monthlyReturn + (Math.random() - 0.5) * volatility / 6;
+                    dcaValue += amountPerPeriod * Math.pow(1 + randomReturn, monthsGrowth);
+                }
+
+                dcaData.push(dcaValue);
+            }
+
+            comparisonChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [
+                        {
+                            label: 'Lump Sum Strategy',
+                            data: lumpSumData,
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            borderWidth: 3,
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Dollar Cost Averaging',
+                            data: dcaData,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 3,
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Portfolio Value Over Time',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': $' + context.parsed.y.toLocaleString('en-US', {maximumFractionDigits: 0});
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Months'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Portfolio Value ($)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString('en-US', {maximumFractionDigits: 0});
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Allow Enter key to calculate
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculateDCA();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
