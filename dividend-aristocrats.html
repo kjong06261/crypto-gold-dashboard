@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dividend Aristocrats Tracker | US Market Terminals</title>
+    <meta name="description" content="Track S&P 500 Dividend Aristocrats - companies with 25+ consecutive years of dividend increases. Filter by sector, yield, and streak length.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .stats-banner {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: white;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .controls-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .table-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .table-header h2 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .result-count {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .aristocrats-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .aristocrats-table th {
+            background: #f8f9fa;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 700;
+            color: #333;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #e0e0e0;
+            cursor: pointer;
+            user-select: none;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .aristocrats-table th:hover {
+            background: #e9ecef;
+        }
+
+        .aristocrats-table th::after {
+            content: ' ⇅';
+            opacity: 0.3;
+            font-size: 0.8rem;
+        }
+
+        .aristocrats-table td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.95rem;
+        }
+
+        .aristocrats-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .ticker-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .streak-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .streak-badge.legendary {
+            background: #f59e0b;
+        }
+
+        .yield-value {
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .sector-tag {
+            display: inline-block;
+            background: #e0e0e0;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #333;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .table-card {
+                padding: 20px;
+            }
+
+            .aristocrats-table {
+                font-size: 0.85rem;
+            }
+
+            .aristocrats-table th,
+            .aristocrats-table td {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>👑 Dividend Aristocrats Tracker</h1>
+            <p>S&P 500 companies with 25+ consecutive years of dividend increases</p>
+        </div>
+
+        <div class="stats-banner">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value" id="totalCount">67</span>
+                    <span class="stat-label">Total Aristocrats</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="avgStreak">48</span>
+                    <span class="stat-label">Avg Streak (Years)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="avgYield">2.4%</span>
+                    <span class="stat-label">Avg Dividend Yield</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="longestStreak">68</span>
+                    <span class="stat-label">Longest Streak</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-card">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="sectorFilter">Filter by Sector</label>
+                    <select id="sectorFilter" onchange="applyFilters()">
+                        <option value="all">All Sectors</option>
+                        <option value="Consumer Staples">Consumer Staples</option>
+                        <option value="Industrials">Industrials</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Financials">Financials</option>
+                        <option value="Materials">Materials</option>
+                        <option value="Consumer Discretionary">Consumer Discretionary</option>
+                        <option value="Real Estate">Real Estate</option>
+                        <option value="Energy">Energy</option>
+                        <option value="Utilities">Utilities</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="streakFilter">Minimum Streak (Years)</label>
+                    <select id="streakFilter" onchange="applyFilters()">
+                        <option value="25">25+ years (All)</option>
+                        <option value="40">40+ years</option>
+                        <option value="50">50+ years (Legends)</option>
+                        <option value="60">60+ years (Ultra Rare)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="searchFilter">Search by Name/Ticker</label>
+                    <input type="text" id="searchFilter" placeholder="e.g., Coca-Cola or KO" oninput="applyFilters()">
+                </div>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <div class="table-header">
+                <h2>Dividend Aristocrats List</h2>
+                <span class="result-count" id="resultCount">Showing 67 companies</span>
+            </div>
+
+            <table class="aristocrats-table">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable('ticker')">Ticker</th>
+                        <th onclick="sortTable('name')">Company Name</th>
+                        <th onclick="sortTable('sector')">Sector</th>
+                        <th onclick="sortTable('streak')">Streak (Years)</th>
+                        <th onclick="sortTable('yield')">Dividend Yield</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-state-icon">🔍</div>
+                <h3>No companies found</h3>
+                <p>Try adjusting your filters</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>👑 What are Dividend Aristocrats?</h3>
+            <p><strong>Dividend Aristocrats</strong> are S&P 500 companies that have increased their dividend payouts for at least 25 consecutive years. This demonstrates:</p>
+            <p>• <strong>Financial Stability:</strong> Ability to grow earnings through multiple economic cycles</p>
+            <p>• <strong>Management Commitment:</strong> Dedication to returning value to shareholders</p>
+            <p>• <strong>Business Quality:</strong> Sustainable competitive advantages and pricing power</p>
+            <p>• <strong>Recession Resilience:</strong> Survived multiple downturns while still raising dividends</p>
+        </div>
+
+        <div class="info-box">
+            <h3>📊 Understanding the Streak</h3>
+            <p>• <strong>25-39 years:</strong> Established Aristocrat - proven track record</p>
+            <p>• <strong>40-49 years:</strong> Veteran Aristocrat - weathered many market cycles</p>
+            <p>• <strong>50-59 years:</strong> Legendary Aristocrat - half-century of growth</p>
+            <p>• <strong>60+ years:</strong> Ultra-Rare Aristocrat - generational wealth builders</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ Important Notes</h3>
+            <p>• This data is for educational purposes and may not reflect current market conditions</p>
+            <p>• Past dividend increases do not guarantee future increases</p>
+            <p>• Companies can be removed from the list if they cut, freeze, or fail to increase dividends</p>
+            <p>• Always verify current dividend information on company investor relations pages</p>
+            <p>• Dividend yields shown are approximate and change with stock prices</p>
+            <p>• This is not investment advice - consult a qualified financial advisor</p>
+        </div>
+    </div>
+
+    <script>
+        // Sample Dividend Aristocrats data (educational examples)
+        const aristocrats = [
+            { ticker: 'KO', name: 'Coca-Cola Company', sector: 'Consumer Staples', streak: 62, yield: 3.0 },
+            { ticker: 'PG', name: 'Procter & Gamble', sector: 'Consumer Staples', streak: 68, yield: 2.4 },
+            { ticker: 'JNJ', name: 'Johnson & Johnson', sector: 'Healthcare', streak: 62, yield: 2.9 },
+            { ticker: 'MMM', name: '3M Company', sector: 'Industrials', streak: 66, yield: 6.2 },
+            { ticker: 'TGT', name: 'Target Corporation', sector: 'Consumer Discretionary', streak: 57, yield: 2.8 },
+            { ticker: 'LOW', name: "Lowe's Companies", sector: 'Consumer Discretionary', streak: 61, yield: 1.8 },
+            { ticker: 'PEP', name: 'PepsiCo Inc.', sector: 'Consumer Staples', streak: 52, yield: 2.7 },
+            { ticker: 'WMT', name: 'Walmart Inc.', sector: 'Consumer Staples', streak: 51, yield: 1.3 },
+            { ticker: 'MCD', name: "McDonald's Corporation", sector: 'Consumer Discretionary', streak: 48, yield: 2.1 },
+            { ticker: 'ABT', name: 'Abbott Laboratories', sector: 'Healthcare', streak: 52, yield: 1.8 },
+            { ticker: 'ADP', name: 'Automatic Data Processing', sector: 'Industrials', streak: 49, yield: 2.1 },
+            { ticker: 'APD', name: 'Air Products and Chemicals', sector: 'Materials', streak: 42, yield: 2.3 },
+            { ticker: 'BDX', name: 'Becton Dickinson', sector: 'Healthcare', streak: 53, yield: 1.4 },
+            { ticker: 'CAT', name: 'Caterpillar Inc.', sector: 'Industrials', streak: 30, yield: 1.6 },
+            { ticker: 'CB', name: 'Chubb Limited', sector: 'Financials', streak: 31, yield: 1.5 },
+            { ticker: 'CL', name: 'Colgate-Palmolive', sector: 'Consumer Staples', streak: 61, yield: 2.2 },
+            { ticker: 'CVX', name: 'Chevron Corporation', sector: 'Energy', streak: 37, yield: 3.6 },
+            { ticker: 'EMR', name: 'Emerson Electric', sector: 'Industrials', streak: 68, yield: 2.0 },
+            { ticker: 'GD', name: 'General Dynamics', sector: 'Industrials', streak: 32, yield: 2.1 },
+            { ticker: 'IBM', name: 'IBM Corporation', sector: 'Industrials', streak: 29, yield: 3.5 },
+            { ticker: 'ITW', name: 'Illinois Tool Works', sector: 'Industrials', streak: 61, yield: 2.2 },
+            { ticker: 'KMB', name: 'Kimberly-Clark', sector: 'Consumer Staples', streak: 52, yield: 3.5 },
+            { ticker: 'MKC', name: 'McCormick & Company', sector: 'Consumer Staples', streak: 38, yield: 2.4 },
+            { ticker: 'O', name: 'Realty Income', sector: 'Real Estate', streak: 29, yield: 5.2 },
+            { ticker: 'SHW', name: 'Sherwin-Williams', sector: 'Materials', streak: 46, yield: 0.8 },
+            { ticker: 'SWK', name: 'Stanley Black & Decker', sector: 'Industrials', streak: 56, yield: 3.0 },
+            { ticker: 'SYY', name: 'Sysco Corporation', sector: 'Consumer Staples', streak: 54, yield: 2.5 },
+            { ticker: 'XOM', name: 'Exxon Mobil', sector: 'Energy', streak: 42, yield: 3.4 },
+            { ticker: 'ED', name: 'Consolidated Edison', sector: 'Utilities', streak: 50, yield: 3.3 },
+            { ticker: 'GWW', name: 'W.W. Grainger', sector: 'Industrials', streak: 53, yield: 0.9 }
+        ];
+
+        let filteredData = [...aristocrats];
+        let sortColumn = 'streak';
+        let sortDirection = 'desc';
+
+        function applyFilters() {
+            const sectorFilter = document.getElementById('sectorFilter').value;
+            const streakFilter = parseInt(document.getElementById('streakFilter').value);
+            const searchFilter = document.getElementById('searchFilter').value.toLowerCase();
+
+            filteredData = aristocrats.filter(stock => {
+                const matchesSector = sectorFilter === 'all' || stock.sector === sectorFilter;
+                const matchesStreak = stock.streak >= streakFilter;
+                const matchesSearch = stock.name.toLowerCase().includes(searchFilter) || 
+                                    stock.ticker.toLowerCase().includes(searchFilter);
+
+                return matchesSector && matchesStreak && matchesSearch;
+            });
+
+            updateStats();
+            renderTable();
+        }
+
+        function sortTable(column) {
+            if (sortColumn === column) {
+                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                sortColumn = column;
+                sortDirection = 'desc';
+            }
+
+            filteredData.sort((a, b) => {
+                let aVal = a[column];
+                let bVal = b[column];
+
+                if (typeof aVal === 'string') {
+                    aVal = aVal.toLowerCase();
+                    bVal = bVal.toLowerCase();
+                }
+
+                if (sortDirection === 'asc') {
+                    return aVal > bVal ? 1 : -1;
+                } else {
+                    return aVal < bVal ? 1 : -1;
+                }
+            });
+
+            renderTable();
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            const emptyState = document.getElementById('emptyState');
+            const resultCount = document.getElementById('resultCount');
+
+            if (filteredData.length === 0) {
+                tbody.style.display = 'none';
+                emptyState.style.display = 'block';
+                resultCount.textContent = 'No companies found';
+                return;
+            }
+
+            tbody.style.display = '';
+            emptyState.style.display = 'none';
+            resultCount.textContent = `Showing ${filteredData.length} ${filteredData.length === 1 ? 'company' : 'companies'}`;
+
+            tbody.innerHTML = filteredData.map(stock => {
+                const streakClass = stock.streak >= 60 ? 'legendary' : '';
+                
+                return `
+                    <tr>
+                        <td><span class="ticker-badge">${stock.ticker}</span></td>
+                        <td>${stock.name}</td>
+                        <td><span class="sector-tag">${stock.sector}</span></td>
+                        <td><span class="streak-badge ${streakClass}">${stock.streak} years</span></td>
+                        <td><span class="yield-value">${stock.yield.toFixed(1)}%</span></td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function updateStats() {
+            const totalCount = filteredData.length;
+            const avgStreak = totalCount > 0 
+                ? Math.round(filteredData.reduce((sum, s) => sum + s.streak, 0) / totalCount)
+                : 0;
+            const avgYield = totalCount > 0
+                ? (filteredData.reduce((sum, s) => sum + s.yield, 0) / totalCount).toFixed(1)
+                : 0;
+            const longestStreak = totalCount > 0
+                ? Math.max(...filteredData.map(s => s.streak))
+                : 0;
+
+            document.getElementById('totalCount').textContent = totalCount;
+            document.getElementById('avgStreak').textContent = avgStreak;
+            document.getElementById('avgYield').textContent = avgYield + '%';
+            document.getElementById('longestStreak').textContent = longestStreak;
+        }
+
+        // Initial render
+        applyFilters();
+    </script>
+</body>
+</html>
