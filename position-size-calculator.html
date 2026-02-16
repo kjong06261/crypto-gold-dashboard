@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Size Calculator | US Market Terminals</title>
+    <meta name="description" content="Calculate optimal position size for trading and investing. Manage risk by determining how many shares to buy based on your account size and risk tolerance.">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .risk-slider-container {
+            margin-bottom: 30px;
+        }
+
+        .risk-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #10b981, #f59e0b, #ef4444);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .risk-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .risk-slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .risk-value-display {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 15px 0;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .result-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .result-highlight h3 {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .result-highlight .main-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .result-highlight .sub-value {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .result-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .result-card h4 {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .result-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .risk-warning {
+            background: #fff3cd;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .risk-warning.high-risk {
+            background: #fee;
+            border-left-color: #ef4444;
+        }
+
+        .risk-warning h4 {
+            color: #f59e0b;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .risk-warning.high-risk h4 {
+            color: #ef4444;
+        }
+
+        .risk-warning p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .calculator-card {
+                padding: 25px;
+            }
+
+            .result-highlight .main-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="header">
+            <h1>⚖️ Position Size Calculator</h1>
+            <p>Calculate how many shares to buy based on your risk tolerance</p>
+        </div>
+
+        <div class="calculator-card">
+            <div class="section-title">Account & Risk Settings</div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="accountSize">Account Size ($)</label>
+                    <input type="number" id="accountSize" placeholder="10000" step="100" min="0" value="10000">
+                    <div class="help-text">Total capital available for trading</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="entryPrice">Entry Price ($)</label>
+                    <input type="number" id="entryPrice" placeholder="50.00" step="0.01" min="0">
+                    <div class="help-text">Price you plan to buy at</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="stopLoss">Stop Loss Price ($)</label>
+                    <input type="number" id="stopLoss" placeholder="45.00" step="0.01" min="0">
+                    <div class="help-text">Price you'll exit if wrong</div>
+                </div>
+            </div>
+
+            <div class="risk-slider-container">
+                <label style="display: block; font-weight: 600; margin-bottom: 15px; color: #333;">Risk Per Trade (%)</label>
+                <div class="risk-value-display" id="riskDisplay">1.0%</div>
+                <input type="range" class="risk-slider" id="riskSlider" min="0.1" max="5" step="0.1" value="1.0" oninput="updateRiskDisplay()">
+                <div class="risk-labels">
+                    <span>Conservative (0.1%)</span>
+                    <span>Moderate (2-3%)</span>
+                    <span>Aggressive (5%)</span>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculatePosition()">Calculate Position Size</button>
+
+            <div class="results" id="results">
+                <div class="result-highlight">
+                    <h3>Recommended Position Size</h3>
+                    <div class="main-value" id="recommendedShares">-</div>
+                    <div class="sub-value" id="totalInvestment">Total Investment: $-</div>
+                </div>
+
+                <div class="result-grid">
+                    <div class="result-card">
+                        <h4>Risk Amount</h4>
+                        <div class="value" id="riskAmount">$-</div>
+                    </div>
+
+                    <div class="result-card">
+                        <h4>Risk Per Share</h4>
+                        <div class="value" id="riskPerShare">$-</div>
+                    </div>
+
+                    <div class="result-card">
+                        <h4>Stop Loss %</h4>
+                        <div class="value" id="stopLossPercent">-%</div>
+                    </div>
+
+                    <div class="result-card">
+                        <h4>Portfolio %</h4>
+                        <div class="value" id="portfolioPercent">-%</div>
+                    </div>
+                </div>
+
+                <div id="riskWarning">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="riskChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📐 How Position Sizing Works</h3>
+            <p><strong>Position sizing</strong> determines how many shares to buy based on your account size and risk tolerance. This is crucial for risk management.</p>
+            <p><strong>Formula:</strong> Position Size = (Account Size × Risk %) ÷ (Entry Price - Stop Loss Price)</p>
+            <p><strong>Example:</strong> With a $10,000 account, 1% risk ($100), entry at $50, and stop loss at $45 ($5 risk per share), you should buy 20 shares ($100 ÷ $5).</p>
+        </div>
+
+        <div class="info-box">
+            <h3>🎯 Risk Management Guidelines</h3>
+            <p>• <strong>Conservative (0.5-1%):</strong> Beginner-friendly, preserves capital, slower growth</p>
+            <p>• <strong>Moderate (1-2%):</strong> Balanced approach for most traders</p>
+            <p>• <strong>Aggressive (2-5%):</strong> Higher potential returns but more volatile</p>
+            <p>• <strong>Never exceed 5% per trade:</strong> Risking more than 5% is gambling, not investing</p>
+        </div>
+
+        <div class="info-box">
+            <h3>💡 Pro Tips</h3>
+            <p>• <strong>Always use a stop loss:</strong> Know your exit point before entering</p>
+            <p>• <strong>Risk what you can afford to lose:</strong> Each trade should be survivable if wrong</p>
+            <p>• <strong>Diversify positions:</strong> Don't put all capital in one stock</p>
+            <p>• <strong>Adjust for volatility:</strong> More volatile stocks = smaller position sizes</p>
+            <p>• <strong>Paper trade first:</strong> Test your strategy before risking real money</p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚠️ Important Disclaimer</h3>
+            <p>• This calculator is for educational purposes only</p>
+            <p>• Not financial or investment advice</p>
+            <p>• Trading involves substantial risk of loss</p>
+            <p>• Past performance does not guarantee future results</p>
+            <p>• Always consult with a qualified financial advisor before trading</p>
+        </div>
+    </div>
+
+    <script>
+        let riskChart = null;
+
+        function updateRiskDisplay() {
+            const riskValue = document.getElementById('riskSlider').value;
+            document.getElementById('riskDisplay').textContent = parseFloat(riskValue).toFixed(1) + '%';
+        }
+
+        function calculatePosition() {
+            const accountSize = parseFloat(document.getElementById('accountSize').value);
+            const entryPrice = parseFloat(document.getElementById('entryPrice').value);
+            const stopLoss = parseFloat(document.getElementById('stopLoss').value);
+            const riskPercent = parseFloat(document.getElementById('riskSlider').value) / 100;
+
+            // Validation
+            if (!accountSize || !entryPrice || !stopLoss || accountSize <= 0 || entryPrice <= 0 || stopLoss <= 0) {
+                alert('Please enter valid values for all fields.');
+                return;
+            }
+
+            if (stopLoss >= entryPrice) {
+                alert('Stop loss price must be lower than entry price.');
+                return;
+            }
+
+            // Calculate position size
+            const riskAmount = accountSize * riskPercent;
+            const riskPerShare = entryPrice - stopLoss;
+            const positionSize = Math.floor(riskAmount / riskPerShare);
+            const totalInvestment = positionSize * entryPrice;
+            const stopLossPercent = (riskPerShare / entryPrice) * 100;
+            const portfolioPercent = (totalInvestment / accountSize) * 100;
+
+            // Update display
+            document.getElementById('recommendedShares').textContent = positionSize.toLocaleString() + ' shares';
+            document.getElementById('totalInvestment').textContent = 'Total Investment: $' + totalInvestment.toLocaleString('en-US', {maximumFractionDigits: 2});
+            document.getElementById('riskAmount').textContent = '$' + riskAmount.toFixed(2);
+            document.getElementById('riskPerShare').textContent = '$' + riskPerShare.toFixed(2);
+            document.getElementById('stopLossPercent').textContent = stopLossPercent.toFixed(2) + '%';
+            document.getElementById('portfolioPercent').textContent = portfolioPercent.toFixed(1) + '%';
+
+            // Generate risk warning
+            generateRiskWarning(riskPercent, portfolioPercent, stopLossPercent);
+
+            // Update chart
+            updateChart(accountSize, totalInvestment, riskAmount);
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function generateRiskWarning(riskPercent, portfolioPercent, stopLossPercent) {
+            const warningDiv = document.getElementById('riskWarning');
+            let warningClass = 'risk-warning';
+            let warningTitle = '✓ Risk Level: Appropriate';
+            let warningText = 'Your position size is within recommended risk management guidelines.';
+
+            if (riskPercent > 0.03 || portfolioPercent > 30 || stopLossPercent > 15) {
+                warningClass = 'risk-warning high-risk';
+                warningTitle = '⚠️ Warning: High Risk Detected';
+                warningText = '';
+
+                if (riskPercent > 0.03) {
+                    warningText += 'You are risking more than 3% per trade, which is considered aggressive. ';
+                }
+                if (portfolioPercent > 30) {
+                    warningText += 'This position represents over 30% of your portfolio, reducing diversification. ';
+                }
+                if (stopLossPercent > 15) {
+                    warningText += 'Your stop loss is very wide (>15%), increasing potential loss per share. ';
+                }
+
+                warningText += 'Consider reducing position size or tightening your stop loss.';
+            } else if (riskPercent > 0.02 || portfolioPercent > 20) {
+                warningTitle = '⚡ Moderate Risk Level';
+                warningText = 'Your risk level is moderate. This is acceptable for experienced traders, but beginners should consider reducing position size.';
+            }
+
+            warningDiv.innerHTML = `
+                <div class="${warningClass}">
+                    <h4>${warningTitle}</h4>
+                    <p>${warningText}</p>
+                </div>
+            `;
+        }
+
+        function updateChart(accountSize, totalInvestment, riskAmount) {
+            const ctx = document.getElementById('riskChart').getContext('2d');
+
+            if (riskChart) {
+                riskChart.destroy();
+            }
+
+            const remainingCash = accountSize - totalInvestment;
+
+            riskChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Position Investment', 'Risk Amount', 'Remaining Cash'],
+                    datasets: [{
+                        data: [totalInvestment, riskAmount, remainingCash],
+                        backgroundColor: [
+                            'rgba(102, 126, 234, 0.8)',
+                            'rgba(239, 68, 68, 0.8)',
+                            'rgba(16, 185, 129, 0.8)'
+                        ],
+                        borderColor: [
+                            '#667eea',
+                            '#ef4444',
+                            '#10b981'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Account Allocation',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed;
+                                    const percent = ((value / accountSize) * 100).toFixed(1);
+                                    return label + ': $' + value.toLocaleString('en-US', {maximumFractionDigits: 0}) + ' (' + percent + '%)';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Allow Enter key to calculate
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculatePosition();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
