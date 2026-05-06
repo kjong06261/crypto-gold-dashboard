@@ -1,184 +1,530 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disclaimer | US Market Terminals</title>
-    <meta name="description" content="Important disclaimers and disclosures for US Market Terminals. Understand the limitations of our educational content and data displays.">
-    <meta name="robots" content="index, follow">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #05070a;
-            --panel: #0d1117;
-            --border: #1e222d;
-            --text: #e2e8f0;
-            --text-dim: #94a3b8;
-            --accent: #3b82f6;
-            --red: #ef4444;
-        }
-        body { font-family: 'Inter', sans-serif; line-height: 1.8; background: var(--bg); color: var(--text); margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disclaimer — Educational Research Only · DFB</title>
+<meta name="description" content="DFB publishes generalized structural research only. Not investment advice. Educational purposes only.">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" href="shieldy.png">
 
-        .nav { padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); }
-        .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-        .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
-        .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
-        .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        .container { max-width: 800px; margin: 0 auto; padding: 80px 24px; }
-        h1 { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 20px; letter-spacing: -1.5px; }
-        .last-updated { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 40px; }
-        
-        .intro-text { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 40px; line-height: 1.8; }
+<style>
+:root {
+  --dfb-navy: #0F1B3D;
+  --dfb-navy-soft: #1A2B4C;
+  --dfb-cyan: #3B7EA8;
+  --dfb-cyan-bright: #5BA3C9;
+  --dfb-burgundy: #8B1A2C;
+  --dfb-cream: #FAF8F3;
+  --dfb-paper: #F2EDE2;
+  --dfb-charcoal: #1A1A1A;
+  --dfb-graphite: #4A4A4A;
+  --dfb-line: #D4CFC2;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--dfb-cream);
+  color: var(--dfb-charcoal);
+  line-height: 1.7; font-size: 17px;
+  -webkit-font-smoothing: antialiased; position: relative;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.07 0 0 0 0 0.10 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.45; mix-blend-mode: multiply;
+}
+a { color: inherit; }
 
-        .legal-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 40px; margin-bottom: 30px; }
-        .legal-section { margin-bottom: 30px; }
-        .legal-section:last-child { margin-bottom: 0; }
-        .legal-section h2 { font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 15px; }
-        .legal-text { font-size: 1rem; color: var(--text-dim); text-align: justify; line-height: 1.8; }
-        .legal-text strong { color: #fff; }
+.marquee {
+  background: var(--dfb-navy); color: var(--dfb-cream);
+  padding: 9px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.22em;
+  text-align: center; text-transform: uppercase;
+  position: relative; z-index: 5;
+}
+.marquee span { opacity: 0.85; }
+.marquee .sep { margin: 0 14px; opacity: 0.4; }
 
-        .warning-box { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 30px; margin-bottom: 40px; }
-        .warning-box h3 { color: var(--red); margin: 0 0 15px 0; font-size: 1.1rem; }
-        .warning-box p { color: var(--text-dim); margin: 0; font-size: 1rem; line-height: 1.8; }
+header {
+  border-bottom: 1px solid var(--dfb-line);
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250, 248, 243, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.header-inner {
+  max-width: 1240px; margin: 0 auto; padding: 22px 32px;
+  display: flex; justify-content: space-between; align-items: center; gap: 32px;
+}
+.logo {
+  font-family: 'Lora', serif; font-weight: 700; font-size: 21px;
+  color: var(--dfb-navy); letter-spacing: -0.01em;
+  text-decoration: none; display: flex; align-items: center; gap: 12px; line-height: 1.1;
+}
+.logo-mark {
+  flex-shrink: 0; width: 40px; height: 40px;
+  background: var(--dfb-cream); border-radius: 50%;
+  position: relative; display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--dfb-burgundy); overflow: hidden;
+}
+.logo-mark::before {
+  content: ''; position: absolute; inset: -4px;
+  border: 1px solid var(--dfb-burgundy); border-radius: 50%;
+  opacity: 0.28; pointer-events: none;
+}
+.logo-mark img { width: 86%; height: 86%; object-fit: contain; display: block; }
+.logo-text { display: flex; flex-direction: column; }
+.logo-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.22em;
+  color: var(--dfb-graphite); text-transform: uppercase;
+  margin-top: 3px; font-weight: 400;
+}
+nav ul { display: flex; gap: 32px; list-style: none; font-family: 'Lora', serif; font-size: 15px; }
+nav a {
+  color: var(--dfb-charcoal); text-decoration: none;
+  position: relative; padding-bottom: 4px; transition: color 0.25s;
+}
+nav a:hover { color: var(--dfb-burgundy); }
+nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1px; background: var(--dfb-burgundy);
+  transition: width 0.35s ease;
+}
+nav a:hover::after { width: 100%; }
 
-        .related-links { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border); }
-        .related-links h3 { color: #fff; font-size: 1rem; margin-bottom: 15px; }
-        .related-links a { color: var(--accent); text-decoration: none; margin-right: 20px; font-size: 0.95rem; }
-        .related-links a:hover { text-decoration: underline; }
+.page-hero { max-width: 880px; margin: 0 auto; padding: 100px 32px 60px; position: relative; z-index: 3; }
+.page-hero .brackets { position: absolute; inset: 24px; pointer-events: none; z-index: 2; }
+.brackets::before, .brackets::after {
+  content: ''; position: absolute; width: 18px; height: 18px;
+  border: 0 solid var(--dfb-burgundy);
+}
+.brackets::before { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+.brackets::after { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+.brackets > i { position: absolute; width: 18px; height: 18px; border: 0 solid var(--dfb-burgundy); }
+.brackets > i:first-child { top: 0; right: 0; border-top-width: 1px; border-right-width: 1px; }
+.brackets > i:last-child { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; }
+.page-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.32em;
+  color: var(--dfb-burgundy); text-transform: uppercase;
+  margin-bottom: 28px; display: flex; align-items: center; gap: 16px; font-weight: 500;
+}
+.page-eyebrow::before { content: ''; display: inline-block; width: 38px; height: 1px; background: var(--dfb-burgundy); }
+.page-title {
+  font-family: 'Lora', serif; font-weight: 700;
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 0.98; letter-spacing: -0.025em;
+  color: var(--dfb-navy); font-style: italic; margin-bottom: 28px;
+}
+.page-title em { font-style: normal; color: var(--dfb-burgundy); }
+.page-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--dfb-graphite);
+  padding-top: 16px; border-top: 1px solid var(--dfb-line);
+  display: flex; gap: 24px; flex-wrap: wrap;
+}
 
-        footer { background: #080a0e; border-top: 1px solid var(--border); padding: 60px 24px; text-align: center; margin-top: 60px; }
-        .footer-links { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-        .footer-links a:hover { color: var(--accent); }
-        .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; }
+.article-body { max-width: 880px; margin: 0 auto; padding: 60px 32px 100px; position: relative; z-index: 3; }
+.article-body .lede {
+  font-family: 'Lora', serif; font-style: italic;
+  font-size: 22px; line-height: 1.55; color: var(--dfb-graphite);
+  margin-bottom: 56px; padding-left: 24px;
+  border-left: 2px solid var(--dfb-burgundy); max-width: 720px;
+}
+.article-body section { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--dfb-line); }
+.article-body section:last-child { border-bottom: none; }
+.article-body .section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--dfb-burgundy);
+  margin-bottom: 14px; font-weight: 500;
+  display: flex; align-items: center; gap: 14px;
+}
+.article-body .section-num::before { content: ''; width: 24px; height: 1px; background: var(--dfb-burgundy); }
+.article-body h2 {
+  font-family: 'Lora', serif; font-weight: 700;
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.2; letter-spacing: -0.012em;
+  color: var(--dfb-navy); margin-bottom: 20px;
+}
+.article-body h2 em { color: var(--dfb-burgundy); font-style: italic; }
+.article-body p { font-size: 17px; line-height: 1.75; color: var(--dfb-charcoal); margin-bottom: 18px; max-width: 720px; }
+.article-body p:last-child { margin-bottom: 0; }
+.article-body strong { color: var(--dfb-navy); font-weight: 600; }
+.article-body em { color: var(--dfb-burgundy); font-style: italic; }
+.article-body ul { list-style: none; max-width: 720px; margin: 18px 0; }
+.article-body ul li { position: relative; padding-left: 28px; margin-bottom: 12px; line-height: 1.7; }
+.article-body ul li::before {
+  content: '·'; position: absolute; left: 8px; top: -2px;
+  color: var(--dfb-burgundy); font-size: 26px; font-weight: 700;
+}
 
-        @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 2rem; } .legal-box { padding: 25px 20px; } }
-    </style>
+.statement-box {
+  margin: 28px 0; padding: 32px 36px;
+  background: var(--dfb-paper); border: 1px solid var(--dfb-line);
+  position: relative;
+}
+.statement-box::before {
+  content: ''; position: absolute; top: -1px; left: -1px;
+  width: 16px; height: 16px;
+  border-top: 1px solid var(--dfb-burgundy);
+  border-left: 1px solid var(--dfb-burgundy);
+}
+.statement-box::after {
+  content: ''; position: absolute; bottom: -1px; right: -1px;
+  width: 16px; height: 16px;
+  border-bottom: 1px solid var(--dfb-burgundy);
+  border-right: 1px solid var(--dfb-burgundy);
+}
+.statement-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--dfb-burgundy);
+  margin-bottom: 16px; font-weight: 500;
+}
+.statement-text {
+  font-family: 'Lora', serif; font-style: italic;
+  font-size: 19px; line-height: 1.55; color: var(--dfb-charcoal);
+}
+.lang-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; max-width: 720px; }
+.lang-col { padding: 24px; background: var(--dfb-paper); border: 1px solid var(--dfb-line); }
+.lang-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.25em;
+  text-transform: uppercase; font-weight: 500;
+  margin-bottom: 14px; padding-bottom: 10px;
+  border-bottom: 1px dashed var(--dfb-line);
+}
+.lang-col.diagnostic h4 { color: var(--dfb-cyan); }
+.lang-col.prohibited h4 { color: var(--dfb-burgundy); }
+.lang-col ul li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px; letter-spacing: 0.04em;
+  padding-left: 18px; margin-bottom: 6px;
+  color: var(--dfb-graphite); line-height: 1.6;
+}
+.lang-col ul li::before { font-size: 18px; left: 4px; top: -3px; }
+.lang-col.diagnostic ul li::before { color: var(--dfb-cyan); }
+
+.shield-list { counter-reset: shield; list-style: none; max-width: 720px; }
+.shield-list li {
+  counter-increment: shield; position: relative;
+  padding-left: 64px; margin-bottom: 18px; line-height: 1.7;
+}
+.shield-list li::before {
+  content: counter(shield, decimal-leading-zero);
+  position: absolute; left: 0; top: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.2em;
+  color: var(--dfb-burgundy); font-weight: 500;
+  background: var(--dfb-paper); border: 1px solid var(--dfb-line);
+  padding: 4px 8px;
+}
+
+.callout {
+  margin: 28px 0; padding: 24px 28px;
+  background: var(--dfb-paper);
+  border-left: 3px solid var(--dfb-burgundy);
+  font-size: 16px; line-height: 1.65; color: var(--dfb-graphite);
+}
+.callout strong { color: var(--dfb-burgundy); }
+.callout.warning { background: rgba(139, 26, 44, 0.04); }
+
+footer {
+  background: var(--dfb-navy);
+  color: rgba(250, 248, 243, 0.7);
+  padding: 60px 32px 32px;
+  font-family: 'Lora', serif; font-size: 14px;
+  position: relative; z-index: 3;
+}
+.footer-inner { max-width: 1240px; margin: 0 auto; }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(212, 207, 194, 0.15);
+}
+.footer-brand .footer-logo {
+  font-family: 'Lora', serif; font-weight: 700;
+  font-size: 20px; color: var(--dfb-cream);
+  margin-bottom: 14px; letter-spacing: -0.01em;
+}
+.footer-brand p { font-size: 14px; line-height: 1.7; max-width: 360px; }
+.footer-brand .footer-tag {
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.24em;
+  color: var(--dfb-cyan-bright); text-transform: uppercase; font-weight: 500;
+}
+.footer-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--dfb-cyan-bright);
+  margin-bottom: 18px; font-weight: 500;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 11px; }
+.footer-col a {
+  color: rgba(250, 248, 243, 0.7);
+  text-decoration: none; font-size: 14px;
+  transition: color 0.25s;
+}
+.footer-col a:hover { color: var(--dfb-cream); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.2em;
+  color: rgba(250, 248, 243, 0.5);
+  text-transform: uppercase;
+}
+.footer-disclaimer {
+  margin-top: 28px; padding-top: 28px;
+  border-top: 1px solid rgba(212, 207, 194, 0.12);
+  font-size: 11.5px; line-height: 1.75;
+  color: rgba(250, 248, 243, 0.4);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em; max-width: 920px;
+}
+
+@media (max-width: 920px) {
+  .header-inner { padding: 16px 20px; flex-wrap: wrap; gap: 14px; }
+  nav ul { gap: 18px; font-size: 14px; flex-wrap: wrap; }
+  .page-hero { padding: 60px 20px 40px; }
+  .article-body { padding: 40px 20px 70px; }
+  .article-body .lede { font-size: 19px; padding-left: 18px; }
+  .lang-row { grid-template-columns: 1fr; gap: 16px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .marquee .sep { display: none; }
+  .marquee span { display: inline-block; margin: 2px 6px; }
+  .brackets { inset: 14px !important; }
+  .statement-box { padding: 24px 22px; }
+  .statement-text { font-size: 17px; }
+}
+</style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
-            <div class="nav-links">
-                <a href="/calculator.html">Calculator</a>
-                <a href="/market-pulse.html">Pulse</a>
-                <a href="/tools.html">Tools</a>
-                <a href="/blog.html">Learn</a>
-                <a href="/contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
-            </div>
-        </div>
+
+<div class="marquee">
+  <span>Independent Structural Research</span><span class="sep">·</span><span>Boutique</span><span class="sep">·</span><span>Framework Publisher</span><span class="sep">·</span><span>Established 2026</span>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark"><img src="shieldy.png" alt="DFB Shieldy Seal" /></span>
+      <span class="logo-text">
+        <span>Dividend Forensics Bureau</span>
+        <span class="logo-sub">DFB · Independent Research</span>
+      </span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="/#frameworks">Frameworks</a></li>
+        <li><a href="/#essays">Essays</a></li>
+        <li><a href="/#research">Research</a></li>
+        <li><a href="/#shieldy">Shieldy Lab</a></li>
+        <li><a href="/#reports">Reports</a></li>
+        <li><a href="/#about">About</a></li>
+      </ul>
     </nav>
+  </div>
+</header>
 
-    <div class="container">
-        <h1>Disclaimer</h1>
-        <p class="last-updated">Last Updated: February 16, 2026</p>
-        
-        <p class="intro-text">
-            Please read this disclaimer carefully before using US Market Terminals. By accessing or using this website, you acknowledge that you have read, understood, and agree to be bound by the following terms and limitations.
-        </p>
+<section class="page-hero">
+  <div class="brackets"><i></i><i></i></div>
+  <div class="page-eyebrow">Site Documents · Disclaimer</div>
+  <h1 class="page-title">Educational <em>Research</em> Only.</h1>
+  <div class="page-meta">
+    <span>Last Updated · 2026-05-06</span>
+    <span>Effective · 2026-05-11</span>
+    <span>Status · Draft pending counsel review</span>
+  </div>
+</section>
 
-        <div class="warning-box">
-            <h3>Important Notice</h3>
-            <p>
-                US Market Terminals is an educational website that displays publicly available market data. This website does not provide investment advice, financial planning services, or personalized recommendations. Nothing on this site should be construed as a solicitation or offer to buy or sell any security or financial instrument.
-            </p>
-        </div>
+<article class="article-body">
+  <p class="lede">
+    Dividend Forensics Bureau (DFB) is a publisher of independent, generalized research on U.S. income-generating assets. DFB is not an investment adviser, broker-dealer, or fiduciary. Nothing on this site, in any DFB publication, or in any communication from the Operator constitutes investment advice.
+  </p>
 
-        <div class="legal-box">
-            <div class="legal-section">
-                <h2>1. Educational Purpose Only</h2>
-                <p class="legal-text">
-                    All content on US Market Terminals, including but not limited to articles, data displays, calculators, and tools, is provided <strong>for educational and informational purposes only</strong>. The information presented is intended to help visitors understand financial concepts and market data. It is not intended to serve as the basis for any investment decision.
-                </p>
-            </div>
+  <section>
+    <div class="section-num">A · Position Summary</div>
+    <h2>Two <em>statements</em>.</h2>
 
-            <div class="legal-section">
-                <h2>2. Not Financial Advice</h2>
-                <p class="legal-text">
-                    US Market Terminals is <strong>not a registered investment advisor, broker-dealer, or financial planner</strong>. We do not provide personalized investment advice, tax advice, or legal advice. The general information on this site is not a substitute for professional advice tailored to your individual circumstances. Before making any financial decisions, you should consult with qualified professionals who can assess your specific situation.
-                </p>
-            </div>
-
-            <div class="legal-section">
-                <h2>3. Investment Risk</h2>
-                <p class="legal-text">
-                    All investments carry risk, including the potential loss of principal. The value of investments can go down as well as up. <strong>Past performance is not indicative of future results.</strong> Different types of investments involve varying degrees of risk, and there can be no assurance that any specific investment will be profitable. Cryptocurrencies and other digital assets are particularly volatile and speculative. You should carefully consider your investment objectives, risk tolerance, and financial situation before engaging with any financial market.
-                </p>
-            </div>
-
-            <div class="legal-section">
-                <h2>4. Data Accuracy and Limitations</h2>
-                <p class="legal-text">
-                    Market data displayed on this website is provided through third-party services such as TradingView widgets. While we endeavor to present accurate information, <strong>we do not guarantee the accuracy, completeness, timeliness, or reliability</strong> of any data displayed. Market data may be delayed, contain errors, or become outdated. For official financial data, please refer to primary sources such as stock exchanges, regulatory filings (SEC EDGAR), or official company publications.
-                </p>
-            </div>
-
-            <div class="legal-section">
-                <h2>5. Third-Party Links and Content</h2>
-                <p class="legal-text">
-                    This website may contain links to third-party websites, embedded content, or references to external resources. These links are provided for convenience and informational purposes only. US Market Terminals <strong>does not endorse, control, or assume responsibility</strong> for the content, privacy policies, or practices of any third-party websites. Accessing third-party sites is at your own risk.
-                </p>
-            </div>
-
-            <div class="legal-section">
-                <h2>6. Advertising Disclosure</h2>
-                <p class="legal-text">
-                    This website may display advertisements provided by third-party advertising networks, including Google AdSense. These advertisements are served based on various factors and may use cookies or similar technologies to display relevant content. <strong>The appearance of advertisements does not constitute an endorsement</strong> of the advertised products or services. We have no control over the content of third-party advertisements.
-                </p>
-            </div>
-
-            <div class="legal-section">
-                <h2>7. No Warranties</h2>
-                <p class="legal-text">
-                    This website and its content are provided <strong>"as is" and "as available"</strong> without warranties of any kind, either express or implied. We disclaim all warranties, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components.
-                </p>
-            </div>
-
-            <div class="legal-section">
-                <h2>8. Limitation of Liability</h2>
-                <p class="legal-text">
-                    To the fullest extent permitted by applicable law, US Market Terminals and its operators shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, this website or its content. This includes, without limitation, damages for loss of profits, data, or other intangible losses, even if we have been advised of the possibility of such damages.
-                </p>
-            </div>
-
-            <div class="legal-section">
-                <h2>9. User Responsibility</h2>
-                <p class="legal-text">
-                    You are solely responsible for evaluating the accuracy, completeness, and usefulness of any information provided on this website. You are also solely responsible for any investment decisions you make. <strong>We strongly encourage you to conduct your own research</strong> and due diligence before making any financial decisions. Consider seeking advice from qualified financial, legal, and tax professionals.
-                </p>
-            </div>
-
-            <div class="legal-section">
-                <h2>10. Changes to This Disclaimer</h2>
-                <p class="legal-text">
-                    We reserve the right to modify this disclaimer at any time without prior notice. Changes will be effective immediately upon posting to this page. Your continued use of the website after any changes indicates your acceptance of the modified disclaimer. We encourage you to review this page periodically for updates.
-                </p>
-            </div>
-        </div>
-
-        <div class="related-links">
-            <h3>Related Policies</h3>
-            <a href="/privacy.html">Privacy Policy</a>
-            <a href="/legal.html">Terms of Use</a>
-            <a href="/contact.html">Contact Us</a>
-        </div>
+    <div class="statement-box">
+      <div class="statement-label">Statement A · Short Form</div>
+      <p class="statement-text">DFB publishes generalized structural research for educational purposes only. Nothing on this site is investment advice, a recommendation, or a solicitation. Past performance does not guarantee future results.</p>
     </div>
 
-    <footer>
-        <div class="footer-links">
-            <a href="/about.html">About</a>
-            <a href="/resources.html">Resources</a>
-            <a href="/faq.html">FAQ</a>
-            <a href="/privacy.html">Privacy</a>
-            <a href="/legal.html">Terms & Disclaimer</a>
-        </div>
-        <p class="footer-copy">
-            © 2026 US Market Terminals. All rights reserved.
-        </p>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
+    <div class="statement-box">
+      <div class="statement-label">Statement B · Extended Form</div>
+      <p class="statement-text">DFB is a bona fide publisher of impersonal investment research of regular and general circulation. Content reflects the analytical opinions of the Operator at the time of publication and is not tailored to any individual's financial situation, objectives, or risk tolerance. DFB operates as a publisher of generalized, impersonal research and does not provide personalized advisory services.</p>
+    </div>
+
+    <div class="callout">
+      <strong>Document status.</strong> The wording above is a publishable draft. The final controlling text — including precise word counts and any jurisdictional references — is subject to review by qualified counsel prior to formal lock.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">B · Scope of Research</div>
+    <h2>What DFB <em>publishes</em>.</h2>
+    <p>DFB content includes essays, framework explainers, free guides, premium reports, and visual or analytical materials covering U.S. income-generating assets — including REITs, BDCs, MLPs, CLOs, CEFs, dividend equities, and related instruments.</p>
+    <p>All published material is <strong>generalized</strong>, intended for a broad audience of self-directed readers. Nothing is customized to any individual subscriber, member, or correspondent.</p>
+    <p>DFB does not maintain or publish model portfolios, position-level recommendations, ticker lists framed as advice, or any output that could be construed as personalized investment guidance.</p>
+  </section>
+
+  <section>
+    <div class="section-num">C · No Personalized Advice</div>
+    <h2>What DFB does <em>not</em> do.</h2>
+    <p>DFB does not provide:</p>
+    <ul>
+      <li>One-on-one consultations or personal advisory sessions.</li>
+      <li>Account management, financial planning, or fiduciary services.</li>
+      <li>Customized portfolio review or position sizing guidance.</li>
+      <li>Tax advice, legal advice, or accounting guidance.</li>
+      <li>Investment recommendations communicated through direct messages, email, or any private channel.</li>
+    </ul>
+    <p>Subscriptions to DFB Substack, Ko-fi, Gumroad products, and Structural Income Desk™ memberships purchase access to <strong>generalized research output</strong>. They do not establish an advisory, fiduciary, or client-adviser relationship with the Operator.</p>
+  </section>
+
+  <section>
+    <div class="section-num">D · Diagnostic vs Prohibited Language</div>
+    <h2>How DFB <em>describes</em> what it sees.</h2>
+    <p>DFB uses structural diagnostic language to describe the condition of an asset's underlying mechanics. It does not use prescriptive trading language that would imply a recommendation to act.</p>
+
+    <div class="lang-row">
+      <div class="lang-col diagnostic">
+        <h4>Diagnostic — Used</h4>
+        <ul>
+          <li>improving</li>
+          <li>stable</li>
+          <li>pressured</li>
+          <li>compressing</li>
+          <li>deteriorating</li>
+        </ul>
+      </div>
+      <div class="lang-col prohibited">
+        <h4>Prohibited — Avoided</h4>
+        <ul>
+          <li>buy</li>
+          <li>sell</li>
+          <li>add</li>
+          <li>hold</li>
+          <li>trim / exit</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Where readers encounter what may appear to be a directional view, the language describes the condition of the asset's structure — not an instruction to the reader. Translating a structural assessment into a personal action is the sole responsibility of the reader, ideally in consultation with a licensed professional appropriate to their jurisdiction.</p>
+  </section>
+
+  <section>
+    <div class="section-num">E · Risk Warnings</div>
+    <h2>What can <em>go wrong</em>.</h2>
+    <p>All investments — including those in dividend-paying or income-generating assets — carry risk. The risks include, but are not limited to:</p>
+    <ul>
+      <li><strong>Loss of principal.</strong> The full amount invested may be lost.</li>
+      <li><strong>Dividend reduction or suspension.</strong> Dividends are not guaranteed and can be cut, deferred, or eliminated by the issuer at any time.</li>
+      <li><strong>Market and price volatility.</strong> Asset prices can decline materially over short and long periods.</li>
+      <li><strong>Credit and refinancing risk.</strong> Issuers may face downgrades, refinancing difficulty, or impaired market access.</li>
+      <li><strong>Liquidity risk.</strong> Some instruments may be difficult to sell at an acceptable price.</li>
+      <li><strong>Regulatory and tax risk.</strong> Changes in laws or rules may materially affect outcomes.</li>
+    </ul>
+    <p>Past performance is not indicative of future results. Historical analyses, framework illustrations, and case studies in DFB content are provided for educational understanding and should not be relied upon as predictive of any specific future outcome.</p>
+  </section>
+
+  <section>
+    <div class="section-num">F · Shield Layers</div>
+    <h2>Six points of <em>structural notice</em>.</h2>
+    <p>DFB applies notices of its non-advisory status across the full distribution surface. Readers should encounter this position at any reasonable point of contact:</p>
+
+    <ol class="shield-list">
+      <li><strong>PDF layering.</strong> All downloadable guides and reports include disclaimer language on the cover, in the front matter, and at point of conclusion.</li>
+      <li><strong>Marketplace notices.</strong> Gumroad product pages and Ko-fi pages carry mini-disclaimer text in the product description and order receipt.</li>
+      <li><strong>FAQ &amp; About.</strong> The site About page and any published FAQ explicitly state DFB's non-advisory scope.</li>
+      <li><strong>Direct-message protocol.</strong> Any direct correspondence requesting personalized advice receives a standard response declining the request and re-stating DFB's published scope.</li>
+      <li><strong>Site footer.</strong> Every page footer carries the short-form disclaimer.</li>
+      <li><strong>Broadcast publication.</strong> All content is published one-to-many through public or subscriber channels — never one-to-one as personalized output.</li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="section-num">G · Operator</div>
+    <h2>Who is <em>publishing</em> this.</h2>
+    <p>DFB is operated independently by <strong>Jeong-Mo Goo</strong>, founder of DFB and the Operator of this publication. The Operator's jurisdiction is the Republic of Korea. The Operator is not registered as an investment adviser in any jurisdiction.</p>
+    <p>The Operator may, from time to time, hold positions in securities discussed, if any, consistent with ordinary personal investing activity. DFB content reflects the Operator's analytical view of an asset's structure and is not influenced by personal holdings beyond ordinary editorial perspective.</p>
+  </section>
+
+  <section>
+    <div class="section-num">H · Counsel Review</div>
+    <h2>Status &amp; <em>controlling text</em>.</h2>
+    <p>This Disclaimer is the publicly posted position of DFB as of the date above. Final controlling language — including any specific statutory references, jurisdictional language, or precedent citations — is subject to qualified-counsel review prior to formal lock.</p>
+    <p>Readers requiring definitive legal interpretation of any provision should consult their own qualified counsel. The English version of this Disclaimer is the controlling text.</p>
+
+    <div class="callout warning">
+      <strong>Reader notice.</strong> If you are seeking personalized investment advice, this is not the right resource. DFB respectfully declines requests for one-on-one guidance, account-specific analysis, or any service that would require advisory registration. Please consult a licensed professional appropriate to your jurisdiction.
+    </div>
+  </section>
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Dividend Forensics Bureau</div>
+        <p>Independent structural research focused on durability, coverage, and dividend risk for U.S. income portfolios.</p>
+        <div class="footer-tag">Structure &gt; Dividend</div>
+      </div>
+      <div class="footer-col">
+        <h4>Frameworks</h4>
+        <ul>
+          <li><a href="/#frameworks">Three Clocks™</a></li>
+          <li><a href="/#frameworks">Buffer Half-Life™</a></li>
+          <li><a href="/#frameworks">BBB- Cliff™</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Channels</h4>
+        <ul>
+          <li><a href="https://jungmoku.substack.com">Substack</a></li>
+          <li><a href="https://medium.com/@kjong0626">Medium</a></li>
+          <li><a href="https://www.benzinga.com">Benzinga</a></li>
+          <li><a href="https://www.gurufocus.com">GuruFocus</a></li>
+          <li><a href="https://dividendforensics.gumroad.com">Gumroad</a></li>
+          <li><a href="https://ko-fi.com/dividendforensics">Ko-fi</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/#about">About</a></li>
+          <li><a href="legal.html">Legal</a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="/#about">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Dividend Forensics Bureau · All Rights Reserved</div>
+      <div>Bureau Est. 2026</div>
+    </div>
+    <div class="footer-disclaimer">
+      DFB publishes generalized structural research only. Nothing on this site constitutes investment advice, a recommendation, a solicitation, or an offer to buy or sell any security. All content is for educational and informational purposes only. Past performance does not guarantee future results. All investments carry risk, including the potential loss of principal.
+    </div>
+  </div>
 </footer>
+
 </body>
 </html>
