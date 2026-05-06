@@ -1,356 +1,1448 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>US Market Terminals | Market Data & Educational Tools</title>
-  <meta name="description" content="Free market data visualization tools and educational content about stocks, dividends, cryptocurrency, and investing concepts.">
-  <meta name="robots" content="index,follow">
-  
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #05070a;
-      --panel: #0d1117;
-      --border: #1e222d;
-      --text: #e2e8f0;
-      --text-dim: #94a3b8;
-      --accent: #3b82f6;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DFB — Dividend Forensics Bureau · Look Beneath the Yield</title>
+<meta name="description" content="Independent structural research focused on durability, coverage, and dividend risk. Three Clocks™ · Buffer Half-Life™ · BBB- Cliff™ frameworks for income portfolios.">
+<meta name="robots" content="index,follow">
+<meta name="author" content="Jeong-Mo Goo">
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; transition: 0.3s; }
+<meta property="og:title" content="DFB — Dividend Forensics Bureau">
+<meta property="og:description" content="Structure &gt; Dividend. Independent structural research for income portfolios.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://us-dividend-pro.com/">
+<meta property="og:image" content="https://us-dividend-pro.com/shieldy.png">
 
-    .nav { 
-      padding: 15px 0; border-bottom: 1px solid var(--border); background: rgba(5, 7, 10, 0.85); 
-      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); 
-    }
-    .nav-container { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
-    .logo { font-weight: 900; color: #fff; text-decoration: none; font-size: 1.15rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
-    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.85rem; font-weight: 600; }
-    .nav-links a { color: var(--text-dim); }
-    .nav-links a:hover { color: var(--accent); }
+<link rel="icon" type="image/png" href="shieldy.png">
 
-    /* Hero Section */
-    .hero { padding: 80px 20px 50px; text-align: center; }
-    h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 900; margin: 0 0 20px; letter-spacing: -2px; line-height: 1.1; color: #fff; }
-    .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 650px; margin: 0 auto 25px; line-height: 1.7; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    .disclaimer-banner { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; padding: 15px 20px; max-width: 700px; margin: 0 auto 50px; }
-    .disclaimer-banner p { color: var(--text-dim); font-size: 0.9rem; margin: 0; }
+<style>
+:root {
+  --dfb-navy: #0F1B3D;
+  --dfb-navy-soft: #1A2B4C;
+  --dfb-cyan: #3B7EA8;
+  --dfb-cyan-bright: #5BA3C9;
+  --dfb-burgundy: #8B1A2C;
+  --dfb-burgundy-deep: #6B1320;
+  --dfb-cream: #FAF8F3;
+  --dfb-paper: #F2EDE2;
+  --dfb-paper-deep: #E8E2D2;
+  --dfb-charcoal: #1A1A1A;
+  --dfb-graphite: #4A4A4A;
+  --dfb-line: #D4CFC2;
+  --dfb-line-soft: #E5E0D3;
+}
 
-    /* 4-Grid Gateway */
-    .gateways { 
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-      gap: 20px; width: 100%; max-width: 1100px; margin: 0 auto 70px; padding: 0 24px;
-    }
-    .gate-card {
-      background: var(--panel); border: 1px solid var(--border); border-radius: 18px;
-      padding: 35px 25px; transition: all 0.3s;
-      display: block;
-    }
-    .gate-card:hover { transform: translateY(-4px); border-color: rgba(59, 130, 246, 0.3); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-    .gate-icon { font-size: 2.2rem; margin-bottom: 15px; display: block; }
-    .gate-title { font-size: 1.2rem; font-weight: 700; color: #fff; display: block; margin-bottom: 8px; }
-    .gate-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--dfb-cream);
+  color: var(--dfb-charcoal);
+  line-height: 1.65;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
 
-    /* Featured Calculators Section */
-    .calculators-section { max-width: 1100px; margin: 0 auto 70px; padding: 0 24px; }
-    .calculators-section .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-    .calculators-section .section-header h2 { font-size: 1.5rem; font-weight: 800; color: #fff; }
-    
-    .new-badge {
-      display: inline-block;
-      background: rgba(16, 185, 129, 0.15);
-      color: #10b981;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-left: 10px;
-    }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.07 0 0 0 0 0.10 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+}
 
-    .calc-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
-    .calc-mini-card { 
-      background: var(--panel); 
-      border: 1px solid var(--border); 
-      border-radius: 14px; 
-      padding: 25px; 
-      transition: 0.3s; 
-      display: block;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .calc-mini-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #10b981, #3b82f6);
-      transform: scaleX(0);
-      transition: transform 0.3s;
-    }
-    
-    .calc-mini-card:hover { 
-      border-color: rgba(59, 130, 246, 0.4); 
-      transform: translateY(-3px);
-    }
-    
-    .calc-mini-card:hover::before {
-      transform: scaleX(1);
-    }
-    
-    .calc-mini-card .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
-    .calc-mini-card h3 { color: #fff; font-size: 1rem; font-weight: 700; line-height: 1.4; margin-bottom: 8px; }
-    .calc-mini-card p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; margin: 0; }
+a { color: inherit; }
 
-    /* Latest Articles Section */
-    .articles-section { max-width: 1100px; margin: 0 auto 70px; padding: 0 24px; }
-    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-    .section-header h2 { font-size: 1.5rem; font-weight: 800; color: #fff; }
-    .view-all { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
-    .view-all:hover { text-decoration: underline; }
+.marquee {
+  background: var(--dfb-navy);
+  color: var(--dfb-cream);
+  padding: 9px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 5;
+}
+.marquee span { opacity: 0.85; }
+.marquee .sep { margin: 0 14px; opacity: 0.4; }
 
-    .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
-    .article-card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 22px; transition: 0.3s; display: block; }
-    .article-card:hover { border-color: rgba(59, 130, 246, 0.3); }
-    .article-card .tag { color: var(--accent); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: block; }
-    .article-card h3 { color: #fff; font-size: 1rem; font-weight: 700; line-height: 1.4; margin: 0; }
+header {
+  border-bottom: 1px solid var(--dfb-line);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 248, 243, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 22px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+.logo {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--dfb-navy);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.1;
+}
+.logo-mark {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--dfb-cream);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--dfb-burgundy);
+  overflow: hidden;
+}
+.logo-mark::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--dfb-burgundy);
+  border-radius: 50%;
+  opacity: 0.28;
+  pointer-events: none;
+}
+.logo-mark img {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+  display: block;
+}
+.logo-text { display: flex; flex-direction: column; }
+.logo-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  color: var(--dfb-graphite);
+  text-transform: uppercase;
+  margin-top: 3px;
+  font-weight: 400;
+}
 
-    /* About Section */
-    .about-section { max-width: 800px; margin: 0 auto 70px; padding: 0 24px; }
-    .about-section h2 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 15px; text-align: center; }
-    .about-section p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.8; margin-bottom: 15px; text-align: center; }
+nav ul {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  font-family: 'Lora', serif;
+  font-size: 15px;
+}
+nav a {
+  color: var(--dfb-charcoal);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.25s;
+}
+nav a:hover { color: var(--dfb-burgundy); }
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--dfb-burgundy);
+  transition: width 0.35s ease;
+}
+nav a:hover::after { width: 100%; }
 
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 30px; }
-    .feature-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
-    .feature-item h3 { color: #fff; font-size: 0.95rem; margin-bottom: 6px; }
-    .feature-item p { color: var(--text-dim); font-size: 0.8rem; margin: 0; line-height: 1.5; }
+.brackets {
+  position: absolute;
+  inset: 24px;
+  pointer-events: none;
+  z-index: 2;
+}
+.brackets::before, .brackets::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 0 solid var(--dfb-burgundy);
+}
+.brackets::before { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+.brackets::after { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+.brackets > i {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 0 solid var(--dfb-burgundy);
+}
+.brackets > i:first-child {
+  top: 0; right: 0;
+  border-top-width: 1px; border-right-width: 1px;
+}
+.brackets > i:last-child {
+  bottom: 0; left: 0;
+  border-bottom-width: 1px; border-left-width: 1px;
+}
 
-    footer { background: #080a0e; border-top: 1px solid var(--border); padding: 50px 24px; text-align: center; }
-    .footer-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
-    .footer-links a { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-copy { color: #475569; font-size: 0.85rem; line-height: 1.6; margin-bottom: 15px; }
-    .footer-disclaimer { max-width: 800px; margin: 0 auto; font-size: 0.75rem; color: #4b5563; text-align: justify; text-align-last: center; line-height: 1.7; }
+.hero {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 120px 32px 90px;
+  position: relative;
+  z-index: 3;
+}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.32em;
+  color: var(--dfb-burgundy);
+  text-transform: uppercase;
+  margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 500;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 38px;
+  height: 1px;
+  background: var(--dfb-burgundy);
+}
+.hero-h1 {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: clamp(70px, 14vw, 184px);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  color: var(--dfb-navy);
+  margin-bottom: 0;
+  font-style: italic;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.08em;
+}
+.hero-h1 .word { display: inline-block; }
+.hero-h1 .gt {
+  color: var(--dfb-burgundy);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.82em;
+  font-family: 'Lora', serif;
+  display: inline-block;
+  position: relative;
+  top: -0.04em;
+  letter-spacing: 0;
+  margin: 0 0.04em;
+}
+.hero-sub-display {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(22px, 3.2vw, 38px);
+  line-height: 1.3;
+  color: var(--dfb-graphite);
+  max-width: 760px;
+  margin: 48px 0 36px;
+  letter-spacing: -0.005em;
+}
+.hero-tagline {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 19px;
+  max-width: 560px;
+  color: var(--dfb-graphite);
+  line-height: 1.55;
+  margin-bottom: 56px;
+  border-left: 2px solid var(--dfb-burgundy);
+  padding-left: 24px;
+  opacity: 0.95;
+}
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hero { padding-top: 50px; }
-      .gateways { grid-template-columns: 1fr; }
-      .calc-cards-grid { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .articles-grid { grid-template-columns: 1fr; }
-      .section-header { flex-direction: column; gap: 10px; align-items: flex-start; }
-    }
-  </style>
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 17px 30px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--dfb-navy);
+  background: var(--dfb-navy);
+  color: var(--dfb-cream);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(.2,.6,.2,1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.btn:hover {
+  background: var(--dfb-burgundy);
+  border-color: var(--dfb-burgundy);
+  transform: translateY(-1px);
+}
+.btn-secondary { background: transparent; color: var(--dfb-navy); }
+.btn-secondary:hover {
+  background: var(--dfb-navy);
+  color: var(--dfb-cream);
+  border-color: var(--dfb-navy);
+}
+.btn .arrow { transition: transform 0.3s cubic-bezier(.2,.6,.2,1); }
+.btn:hover .arrow { transform: translateX(5px); }
+
+.credentials {
+  background: var(--dfb-paper);
+  border-top: 1px solid var(--dfb-line);
+  border-bottom: 1px solid var(--dfb-line);
+  padding: 26px 32px;
+  position: relative;
+  z-index: 3;
+}
+.cred-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dfb-graphite);
+  font-weight: 500;
+}
+.cred-label { color: var(--dfb-burgundy); }
+.cred-list {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.cred-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.cred-item strong {
+  color: var(--dfb-navy);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  font-family: 'Lora', serif;
+  font-style: italic;
+}
+
+section { padding: 100px 32px; border-top: 1px solid var(--dfb-line); position: relative; z-index: 3; }
+.section-inner { max-width: 1240px; margin: 0 auto; }
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--dfb-graphite);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 500;
+}
+.section-label::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--dfb-graphite);
+}
+.section-title {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: clamp(36px, 4.8vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--dfb-navy);
+  margin-bottom: 56px;
+  max-width: 940px;
+}
+.section-title em { color: var(--dfb-burgundy); font-style: italic; }
+
+.clocks-diagram {
+  max-width: 540px;
+  margin: 0 0 64px;
+  position: relative;
+}
+.clocks-svg { width: 100%; height: auto; display: block; }
+.clocks-svg .axis { stroke: var(--dfb-line); stroke-width: 1; }
+.clocks-svg .arm { stroke: var(--dfb-burgundy); stroke-width: 1.5; }
+.clocks-svg .core { fill: var(--dfb-burgundy); }
+.clocks-svg .ring-outer { fill: none; stroke: var(--dfb-line); stroke-width: 1; stroke-dasharray: 2 4; }
+.clocks-svg .label-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  fill: var(--dfb-navy);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.clocks-svg .label-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  fill: var(--dfb-cyan);
+  text-transform: uppercase;
+}
+.clocks-svg .arm-dot { fill: var(--dfb-burgundy); }
+
+.frameworks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--dfb-line);
+  background: var(--dfb-paper);
+}
+.framework-card {
+  padding: 56px 40px;
+  border-right: 1px solid var(--dfb-line);
+  position: relative;
+  transition: background 0.3s;
+}
+.framework-card:last-child { border-right: none; }
+.framework-card:hover { background: var(--dfb-cream); }
+.framework-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--dfb-burgundy);
+  transition: width 0.6s cubic-bezier(.2,.6,.2,1);
+}
+.framework-card:hover::before { width: 100%; }
+.framework-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  color: var(--dfb-burgundy);
+  margin-bottom: 28px;
+  display: block;
+  font-weight: 500;
+}
+.framework-name {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--dfb-navy);
+  margin-bottom: 20px;
+  line-height: 1.12;
+  letter-spacing: -0.012em;
+}
+.framework-name sup {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dfb-cyan);
+  margin-left: 2px;
+}
+.framework-desc {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--dfb-graphite);
+  margin-bottom: 32px;
+}
+.framework-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  color: var(--dfb-cyan);
+  text-transform: uppercase;
+  padding-top: 18px;
+  border-top: 1px dashed var(--dfb-line);
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.framework-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--dfb-burgundy);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.framework-link:hover { color: var(--dfb-navy); }
+.framework-link.coming {
+  color: var(--dfb-graphite);
+  cursor: default;
+  opacity: 0.7;
+}
+.framework-link .arrow { transition: transform 0.2s; }
+.framework-link:hover:not(.coming) .arrow { transform: translateX(3px); }
+
+/* === Featured Essays === */
+.essays-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.essay-card {
+  padding: 40px 32px;
+  border: 1px solid var(--dfb-line);
+  background: var(--dfb-cream);
+  transition: all 0.35s cubic-bezier(.2,.6,.2,1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.essay-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--dfb-burgundy);
+  transition: width 0.5s cubic-bezier(.2,.6,.2,1);
+}
+.essay-card:hover {
+  border-color: var(--dfb-burgundy);
+  background: var(--dfb-paper);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -20px rgba(15, 27, 61, 0.2);
+}
+.essay-card:hover::before { width: 100%; }
+.essay-channel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dfb-burgundy);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+.essay-title {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 1.25;
+  color: var(--dfb-navy);
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+.essay-excerpt {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--dfb-graphite);
+  margin-bottom: 24px;
+  flex: 1;
+}
+.essay-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dfb-cyan);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 500;
+  transition: color 0.25s;
+  margin-top: auto;
+}
+.essay-link:hover { color: var(--dfb-burgundy); }
+.essay-link:hover .arrow { transform: translateX(4px); }
+.essay-link .arrow { transition: transform 0.25s; }
+
+/* === Research === */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.research-card {
+  padding: 38px 34px;
+  border: 1px solid var(--dfb-line);
+  background: var(--dfb-paper);
+  transition: all 0.35s cubic-bezier(.2,.6,.2,1);
+  position: relative;
+}
+.research-card:hover {
+  border-color: var(--dfb-burgundy);
+  background: var(--dfb-cream);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -16px rgba(15, 27, 61, 0.18);
+}
+.research-channel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dfb-burgundy);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.research-title {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--dfb-navy);
+  margin-bottom: 16px;
+  letter-spacing: -0.005em;
+}
+.research-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: var(--dfb-graphite);
+  letter-spacing: 0.05em;
+}
+.research-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dfb-cyan);
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 500;
+  transition: color 0.25s;
+}
+.research-link:hover { color: var(--dfb-burgundy); }
+.research-link:hover .arrow { transform: translateX(4px); }
+.research-link .arrow { transition: transform 0.25s; }
+
+/* === Shieldy Lab === */
+.shieldy-section {
+  background: var(--dfb-paper);
+  text-align: center;
+  padding: 120px 32px;
+}
+.shieldy-image-wrap {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shieldy-image-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px dashed var(--dfb-burgundy);
+  border-radius: 50%;
+  opacity: 0.25;
+  animation: pulseRing 4s ease-in-out infinite;
+}
+.shieldy-image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px solid var(--dfb-burgundy);
+  border-radius: 50%;
+  opacity: 0.12;
+}
+.shieldy-image-wrap img {
+  width: 220px;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 8px 24px rgba(139, 26, 44, 0.15));
+}
+@keyframes pulseRing {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.08; transform: scale(1.06); }
+}
+.shieldy-section h2 {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 40px;
+  color: var(--dfb-navy);
+  margin-bottom: 20px;
+  letter-spacing: -0.012em;
+}
+.shieldy-section p {
+  max-width: 580px;
+  margin: 0 auto 14px;
+  color: var(--dfb-graphite);
+  font-size: 17px;
+  line-height: 1.7;
+}
+.shieldy-coming {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dfb-burgundy);
+  margin-top: 32px;
+  font-weight: 500;
+}
+
+.reports-section {
+  background: var(--dfb-navy);
+  color: var(--dfb-cream);
+  border-top: none;
+  padding: 110px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.reports-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(91, 163, 201, 0.06), transparent 60%);
+  pointer-events: none;
+}
+.reports-section .section-label::before { background: var(--dfb-cyan-bright); }
+.reports-section .section-label { color: var(--dfb-cyan-bright); }
+.reports-section .section-title { color: var(--dfb-cream); }
+.reports-section .section-title em { color: var(--dfb-cyan-bright); }
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+.reports-text {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(250, 248, 243, 0.82);
+  margin-bottom: 24px;
+}
+
+.bhl-cover-card {
+  position: relative;
+  margin-bottom: 36px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 28px;
+  background: rgba(250, 248, 243, 0.04);
+  border: 1px solid rgba(250, 248, 243, 0.12);
+}
+.bhl-cover-img {
+  width: 130px;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(155deg, var(--dfb-navy-soft) 0%, var(--dfb-burgundy-deep) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 14px;
+  color: var(--dfb-cream);
+  border: 1px solid rgba(250, 248, 243, 0.15);
+  position: relative;
+  flex-shrink: 0;
+}
+.bhl-cover-img::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(250, 248, 243, 0.12);
+  pointer-events: none;
+}
+.bhl-cover-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--dfb-cyan-bright);
+  font-weight: 500;
+}
+.bhl-cover-title {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--dfb-cream);
+}
+.bhl-cover-foot {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 243, 0.6);
+}
+.bhl-cover-info { padding-right: 8px; }
+.bhl-cover-info-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dfb-cyan-bright);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.bhl-cover-info-name {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--dfb-cream);
+  margin-bottom: 12px;
+  letter-spacing: -0.005em;
+}
+.bhl-cover-info-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(250, 248, 243, 0.6);
+  margin-bottom: 14px;
+}
+.bhl-cover-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dfb-cyan-bright);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+.bhl-cover-link:hover { color: var(--dfb-cream); }
+
+.reports-list {
+  list-style: none;
+  border-top: 1px solid rgba(212, 207, 194, 0.18);
+}
+.reports-list li {
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(212, 207, 194, 0.18);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  transition: padding-left 0.3s;
+}
+.reports-list li:hover { padding-left: 8px; }
+.report-name {
+  font-family: 'Lora', serif;
+  font-size: 16.5px;
+  color: var(--dfb-cream);
+  line-height: 1.4;
+}
+.report-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dfb-cyan-bright);
+  border: 1px solid var(--dfb-cyan-bright);
+  padding: 5px 11px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.report-tag.tag-coming {
+  color: rgba(250, 248, 243, 0.5);
+  border-color: rgba(250, 248, 243, 0.28);
+}
+.reports-cta-row {
+  margin-top: 56px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.reports-cta-row .btn {
+  background: var(--dfb-cyan-bright);
+  border-color: var(--dfb-cyan-bright);
+  color: var(--dfb-navy);
+}
+.reports-cta-row .btn:hover {
+  background: var(--dfb-cream);
+  border-color: var(--dfb-cream);
+  color: var(--dfb-navy);
+}
+.reports-cta-row .btn-secondary {
+  background: transparent;
+  border-color: var(--dfb-cream);
+  color: var(--dfb-cream);
+}
+.reports-cta-row .btn-secondary:hover {
+  background: var(--dfb-cream);
+  color: var(--dfb-navy);
+}
+
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  padding: 110px 32px;
+  border-top: 1px solid var(--dfb-line);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.about-section .section-title { font-size: clamp(30px, 3.6vw, 46px); margin-bottom: 0; }
+.about-text {
+  font-size: 18px;
+  line-height: 1.78;
+  color: var(--dfb-charcoal);
+}
+.about-text p { margin-bottom: 22px; }
+.about-text strong { color: var(--dfb-burgundy); font-weight: 600; }
+.signature-block {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--dfb-line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--dfb-graphite);
+  line-height: 1.95;
+}
+.signature-block strong { color: var(--dfb-navy); font-weight: 500; }
+
+footer {
+  background: var(--dfb-navy);
+  color: rgba(250, 248, 243, 0.7);
+  padding: 72px 32px 36px;
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  position: relative;
+  z-index: 3;
+}
+.footer-inner { max-width: 1240px; margin: 0 auto; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 52px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid rgba(212, 207, 194, 0.15);
+}
+.footer-brand .footer-logo {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--dfb-cream);
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 360px;
+}
+.footer-brand .footer-tag {
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: var(--dfb-cyan-bright);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.footer-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--dfb-cyan-bright);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 11px; }
+.footer-col a {
+  color: rgba(250, 248, 243, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.25s;
+}
+.footer-col a:hover { color: var(--dfb-cream); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  color: rgba(250, 248, 243, 0.5);
+  text-transform: uppercase;
+}
+.footer-disclaimer {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(212, 207, 194, 0.12);
+  font-size: 11.5px;
+  line-height: 1.75;
+  color: rgba(250, 248, 243, 0.4);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  max-width: 920px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.hero-eyebrow { animation: fadeUp 0.7s ease 0.1s both; }
+.hero-h1 .word { animation: fadeUp 0.9s cubic-bezier(.2,.6,.2,1) both; }
+.hero-h1 .word:nth-child(1) { animation-delay: 0.22s; }
+.hero-h1 .gt { animation: fadeIn 1s ease 0.55s both; }
+.hero-h1 .word:nth-child(3) { animation-delay: 0.42s; }
+.hero-sub-display { animation: fadeUp 0.7s ease 0.7s both; }
+.hero-tagline { animation: fadeUp 0.7s ease 0.85s both; }
+.hero-cta { animation: fadeUp 0.7s ease 0.98s both; }
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.95s cubic-bezier(.2,.6,.2,1), transform 0.95s cubic-bezier(.2,.6,.2,1);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal][data-delay="1"] { transition-delay: 0.08s; }
+[data-reveal][data-delay="2"] { transition-delay: 0.16s; }
+[data-reveal][data-delay="3"] { transition-delay: 0.24s; }
+[data-reveal][data-delay="4"] { transition-delay: 0.32s; }
+
+@media (max-width: 920px) {
+  .header-inner { padding: 16px 20px; flex-wrap: wrap; gap: 14px; }
+  nav ul { gap: 18px; font-size: 14px; flex-wrap: wrap; }
+  .hero { padding: 70px 20px 60px; }
+  .hero-h1 { font-size: clamp(50px, 14vw, 80px); }
+  .hero-sub-display { font-size: 22px; }
+  .hero-tagline { font-size: 17px; padding-left: 20px; margin-bottom: 40px; }
+  .credentials { padding: 22px 20px; }
+  .cred-inner { gap: 14px; font-size: 10px; }
+  .cred-list { gap: 18px; }
+  section { padding: 70px 20px; }
+  .clocks-diagram { margin-bottom: 40px; }
+  .frameworks-grid { grid-template-columns: 1fr; }
+  .framework-card { border-right: none; border-bottom: 1px solid var(--dfb-line); padding: 40px 28px; }
+  .framework-card:last-child { border-bottom: none; }
+  .essays-grid { grid-template-columns: 1fr; gap: 16px; }
+  .essay-card { padding: 32px 26px; }
+  .research-grid { grid-template-columns: 1fr; gap: 16px; }
+  .reports-section { padding: 70px 20px; }
+  .reports-grid { grid-template-columns: 1fr; gap: 40px; }
+  .bhl-cover-card { grid-template-columns: 1fr; padding: 22px; gap: 20px; }
+  .bhl-cover-img { width: 110px; }
+  .shieldy-image-wrap { width: 220px; height: 220px; }
+  .shieldy-image-wrap img { width: 170px; }
+  .about-section { grid-template-columns: 1fr; gap: 28px; padding: 70px 20px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .marquee .sep { display: none; }
+  .marquee span { display: inline-block; margin: 2px 6px; }
+  .brackets { inset: 14px; }
+}
+</style>
 </head>
 <body>
 
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="/index.html" class="logo">📊 US MARKET TERMINALS</a>
-      <div class="nav-links">
-          <a href="calculator.html">Calculator</a>
-          <a href="market-pulse.html">Pulse</a>
-          <a href="tools.html">Tools</a>
-          <a href="blog.html">Learn</a>
-          <a href="contact.html" style="background: var(--accent); color: #fff !important; padding: 8px 16px; border-radius: 8px;">Contact</a>
+<!-- Top Marquee -->
+<div class="marquee">
+  <span>Independent Structural Research</span><span class="sep">·</span><span>Boutique</span><span class="sep">·</span><span>Framework Publisher</span><span class="sep">·</span><span>Established 2026</span>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark"><img src="shieldy.png" alt="DFB Shieldy Seal" /></span>
+      <span class="logo-text">
+        <span>Dividend Forensics Bureau</span>
+        <span class="logo-sub">DFB · Independent Research</span>
+      </span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#frameworks">Frameworks</a></li>
+        <li><a href="#essays">Essays</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#shieldy">Shieldy Lab</a></li>
+        <li><a href="#reports">Reports</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" style="border-top: none;">
+  <div class="brackets"><i></i><i></i></div>
+  <div class="hero-eyebrow">DFB · Season 01 · Look Beneath the Yield</div>
+  <h1 class="hero-h1">
+    <span class="word">Structure</span><span class="gt">&gt;</span><span class="word">Dividend</span>
+  </h1>
+  <p class="hero-sub-display">
+    What keeps paying<br>when earnings don't?
+  </p>
+  <p class="hero-tagline">
+    The yield is what you're paid.<br>
+    The buffer is what's paying it.
+  </p>
+  <div class="hero-cta">
+    <a href="#frameworks" class="btn">Explore Frameworks <span class="arrow">→</span></a>
+    <a href="https://jungmoku.substack.com" class="btn btn-secondary">Read Latest Research <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- Credentials Band -->
+<div class="credentials">
+  <div class="cred-inner">
+    <span class="cred-label">Published Across</span>
+    <div class="cred-list">
+      <span class="cred-item">Benzinga · <strong>66+</strong></span>
+      <span class="cred-item">Substack · <strong>10</strong></span>
+      <span class="cred-item">Medium · <strong>10</strong></span>
+      <span class="cred-item">GuruFocus</span>
+      <span class="cred-item">Gumroad</span>
+    </div>
+    <span class="cred-label">Est. 2026</span>
+  </div>
+</div>
+
+<!-- Frameworks -->
+<section id="frameworks">
+  <div class="section-inner">
+    <div class="section-label" data-reveal>01 · The DFB Signal Frameworks</div>
+    <h2 class="section-title" data-reveal data-delay="1">Three lenses that separate <em>what is visible</em> from <em>what is not</em>.</h2>
+
+    <div class="clocks-diagram" data-reveal data-delay="2">
+      <svg class="clocks-svg" viewBox="0 0 540 300" xmlns="http://www.w3.org/2000/svg">
+        <circle class="ring-outer" cx="270" cy="170" r="118"/>
+        <line class="axis" x1="60" y1="170" x2="480" y2="170"/>
+
+        <line class="arm" x1="270" y1="170" x2="270" y2="62"/>
+        <circle class="arm-dot" cx="270" cy="62" r="4"/>
+        <text class="label-num" x="270" y="40" text-anchor="middle">CLOCK · 01</text>
+        <text class="label-text" x="270" y="22" text-anchor="middle">Coverage</text>
+
+        <line class="arm" x1="270" y1="170" x2="176" y2="224"/>
+        <circle class="arm-dot" cx="176" cy="224" r="4"/>
+        <text class="label-num" x="120" y="246" text-anchor="middle">CLOCK · 02</text>
+        <text class="label-text" x="120" y="264" text-anchor="middle">Maturity</text>
+
+        <line class="arm" x1="270" y1="170" x2="364" y2="224"/>
+        <circle class="arm-dot" cx="364" cy="224" r="4"/>
+        <text class="label-num" x="420" y="246" text-anchor="middle">CLOCK · 03</text>
+        <text class="label-text" x="420" y="264" text-anchor="middle">Access</text>
+
+        <circle class="core" cx="270" cy="170" r="6"/>
+        <circle cx="270" cy="170" r="14" fill="none" stroke="#8B1A2C" stroke-width="1" opacity="0.3"/>
+      </svg>
+    </div>
+
+    <div class="frameworks-grid" data-reveal data-delay="2">
+      <div class="framework-card">
+        <span class="framework-num">FRAMEWORK 01</span>
+        <h3 class="framework-name">Three Clocks<sup>™</sup></h3>
+        <p class="framework-desc">Coverage today. Maturity tomorrow. Market access when tomorrow arrives. Three independent clocks every income asset runs on — the one that breaks first defines the risk.</p>
+        <div class="framework-meta">
+          <span>Coverage / Maturity / Access</span>
+          <a href="https://jungmoku.substack.com" class="framework-link">Read on Substack <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="framework-card">
+        <span class="framework-num">FRAMEWORK 02</span>
+        <h3 class="framework-name">Buffer Half-Life<sup>™</sup></h3>
+        <p class="framework-desc">A dividend is paid by something. That something — the buffer — has a half-life. Coverage measures the surface; half-life measures the structure compressing underneath.</p>
+        <div class="framework-meta">
+          <span>Surface / Structure / Compression</span>
+          <a href="https://dividendforensics.gumroad.com/l/bhlife" class="framework-link">Free Guide <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="framework-card">
+        <span class="framework-num">FRAMEWORK 03</span>
+        <h3 class="framework-name">BBB- Cliff<sup>™</sup></h3>
+        <p class="framework-desc">The single notch separating investment grade from migration. Below this line, refinancing economics shift, market access narrows, and dividend math is rewritten.</p>
+        <div class="framework-meta">
+          <span>Rating / Refinance / Migration</span>
+          <span class="framework-link coming">Primer · Coming</span>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <main class="hero">
-    <h1>Market Data &<br>Educational Tools</h1>
-    <p>Free tools to visualize market data and educational content to help you understand financial concepts. Covering stocks, dividends, cryptocurrency, and precious metals.</p>
+<!-- Featured Essays -->
+<section id="essays">
+  <div class="section-inner">
+    <div class="section-label" data-reveal>02 · Featured Essays</div>
+    <h2 class="section-title" data-reveal data-delay="1">Selected <em>writing</em>.</h2>
 
-    <div class="disclaimer-banner">
-      <p><strong>Educational Purpose Only:</strong> This site provides information and tools for learning. Nothing here constitutes investment advice. See our <a href="/disclaimer.html" style="color: var(--accent);">full disclaimer</a>.</p>
+    <div class="essays-grid">
+      <article class="essay-card" data-reveal data-delay="1">
+        <div class="essay-channel">Medium · 2026-05-06</div>
+        <h3 class="essay-title">The Hidden Clocks Behind Dividend Cuts</h3>
+        <p class="essay-excerpt">Three independent clocks every income asset runs on. The one that breaks first defines the risk — long before the cut is announced.</p>
+        <a href="https://medium.com/@kjong0626/the-hidden-clocks-behind-dividend-cuts-b00589c3c5bc" class="essay-link">Read on Medium <span class="arrow">→</span></a>
+      </article>
+
+      <article class="essay-card" data-reveal data-delay="2">
+        <div class="essay-channel">Substack · 2026-05-04</div>
+        <h3 class="essay-title">Three Clocks of Dividend Risk</h3>
+        <p class="essay-excerpt">Coverage today. Maturity tomorrow. Market access when tomorrow arrives. The framework deep dive — for subscribers.</p>
+        <a href="https://jungmoku.substack.com" class="essay-link">Read on Substack <span class="arrow">→</span></a>
+      </article>
+
+      <article class="essay-card" data-reveal data-delay="3">
+        <div class="essay-channel">Benzinga · Series</div>
+        <h3 class="essay-title">Ticker-Level Structural Assessments</h3>
+        <p class="essay-excerpt">Stability case · caution · shift · watch. 66+ pieces across REITs, BDCs, infrastructure, and income-bearing assets.</p>
+        <a href="https://www.benzinga.com" class="essay-link">Read on Benzinga <span class="arrow">→</span></a>
+      </article>
     </div>
+  </div>
+</section>
 
-    <div class="gateways">
-      <a href="nasdaq.html" class="gate-card">
-        <span class="gate-icon">📈</span>
-        <span class="gate-title">Nasdaq 100 Charts</span>
-        <span class="gate-desc">View charts and data for Nasdaq 100 companies using embedded TradingView widgets.</span>
-      </a>
+<!-- Research -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-label" data-reveal>03 · Research Distribution</div>
+    <h2 class="section-title" data-reveal data-delay="1">Where the <em>analysis</em> lives.</h2>
 
-      <a href="coin.html" class="gate-card">
-        <span class="gate-icon">⚡</span>
-        <span class="gate-title">Cryptocurrency Data</span>
-        <span class="gate-desc">Browse cryptocurrency market data and learn about digital asset concepts.</span>
-      </a>
-
-      <a href="dividend.html" class="gate-card">
-        <span class="gate-icon">🗺️</span>
-        <span class="gate-title">S&P 500 Heatmap</span>
-        <span class="gate-desc">Visual heatmap of S&P 500 sectors and educational content about dividend investing.</span>
-      </a>
-
-      <a href="calculator.html" class="gate-card">
-        <span class="gate-icon">🧮</span>
-        <span class="gate-title">Investment Calculators</span>
-        <span class="gate-desc">Dividend yield, DRIP growth, portfolio tracking, and compound interest calculators.</span>
-      </a>
-    </div>
-  </main>
-
-  <!-- Featured Calculators Section -->
-  <section class="calculators-section">
-    <div class="section-header">
-      <h2>🧮 Featured Tools<span class="new-badge">NEW</span></h2>
-      <a href="calculator.html" class="view-all">View All 16 Tools →</a>
-    </div>
-    
-    <div class="calc-cards-grid">
-      <a href="dividend-calculator.html" class="calc-mini-card">
-        <span class="icon">💰</span>
-        <h3>Dividend Yield Calculator</h3>
-        <p>Calculate yields, income, and yield on cost.</p>
-      </a>
-      
-      <a href="stock-split-calculator.html" class="calc-mini-card">
-        <span class="icon">🔀</span>
-        <h3>Stock Split Calculator</h3>
-        <p>Calculate stock split impact on holdings.</p>
-      </a>
-      
-      <a href="position-size-calculator.html" class="calc-mini-card">
-        <span class="icon">⚖️</span>
-        <h3>Position Size Calculator</h3>
-        <p>Manage risk with optimal position sizing.</p>
-      </a>
-      
-      <a href="crypto-profit-calculator.html" class="calc-mini-card">
-        <span class="icon">💰</span>
-        <h3>Crypto Profit Calculator</h3>
-        <p>Calculate crypto trading profit with fees.</p>
-      </a>
-
-      <a href="bitcoin-halving-countdown.html" class="calc-mini-card">
-        <span class="icon">₿</span>
-        <h3>Bitcoin Halving Countdown</h3>
-        <p>Live countdown to next BTC halving.</p>
-      </a>
-
-      <a href="dca-calculator.html" class="calc-mini-card">
-        <span class="icon">📊</span>
-        <h3>DCA Calculator</h3>
-        <p>Compare lump sum vs dollar cost averaging.</p>
-      </a>
-
-      <a href="dividend-aristocrats.html" class="calc-mini-card">
-        <span class="icon">👑</span>
-        <h3>Dividend Aristocrats</h3>
-        <p>Track 25+ year dividend growers.</p>
-      </a>
-
-      <a href="ex-dividend-calendar.html" class="calc-mini-card">
-        <span class="icon">📅</span>
-        <h3>Ex-Dividend Calendar</h3>
-        <p>Track upcoming ex-dividend dates.</p>
-      </a>
-    </div>
-  </section>
-
-  <!-- Latest Articles Section -->
-  <section class="articles-section">
-    <div class="section-header">
-      <h2>📚 Latest Educational Articles</h2>
-      <a href="blog.html" class="view-all">View All 29 Articles →</a>
-    </div>
-    
-    <div class="articles-grid">
-      <a href="/blog/what-is-a-stock.html" class="article-card">
-        <span class="tag">Basics</span>
-        <h3>What Is a Stock?</h3>
-      </a>
-      <a href="/blog/what-is-a-bond.html" class="article-card">
-        <span class="tag">Basics</span>
-        <h3>What Is a Bond?</h3>
-      </a>
-      <a href="/blog/what-is-an-etf.html" class="article-card">
-        <span class="tag">Basics</span>
-        <h3>What Is an ETF?</h3>
-      </a>
-      <a href="/blog/what-is-compound-interest.html" class="article-card">
-        <span class="tag">Basics</span>
-        <h3>What Is Compound Interest?</h3>
-      </a>
-      <a href="/blog/understanding-pe-ratio.html" class="article-card">
-        <span class="tag">Terminology</span>
-        <h3>Understanding the P/E Ratio</h3>
-      </a>
-      <a href="/blog/understanding-volatility-vix.html" class="article-card">
-        <span class="tag">Terminology</span>
-        <h3>Understanding Volatility and the VIX</h3>
-      </a>
-      <a href="/blog/what-is-dollar-cost-averaging.html" class="article-card">
-        <span class="tag">Concepts</span>
-        <h3>What Is Dollar-Cost Averaging?</h3>
-      </a>
-      <a href="/blog/bull-vs-bear-markets.html" class="article-card">
-        <span class="tag">Markets</span>
-        <h3>Bull vs Bear Markets Explained</h3>
-      </a>
-    </div>
-  </section>
-
-  <section class="about-section">
-    <h2>What Is This Site?</h2>
-    <p>
-      US Market Terminals is an educational website that displays market data through embedded widgets and provides articles explaining financial concepts. We are not financial advisors and do not provide investment recommendations.
-    </p>
-    <p>
-      Our tools help you visualize publicly available market data. Our articles explain terminology and concepts. All content is for learning purposes—not for making investment decisions.
-    </p>
-
-    <div class="features-grid">
-      <div class="feature-item">
-        <h3>📊 Data Visualization</h3>
-        <p>Market data via TradingView. May be delayed.</p>
+    <div class="research-grid">
+      <div class="research-card" data-reveal data-delay="1">
+        <div class="research-channel">Substack · jungmoku</div>
+        <h3 class="research-title">Long-form structural essays. Framework deep dives. Subscriber-first.</h3>
+        <div class="research-meta">10 essays · weekly cadence</div>
+        <a href="https://jungmoku.substack.com" class="research-link">Read on Substack <span class="arrow">→</span></a>
       </div>
-      <div class="feature-item">
-        <h3>📚 Educational Articles</h3>
-        <p>Guides on terms, concepts, and mechanics.</p>
+      <div class="research-card" data-reveal data-delay="2">
+        <div class="research-channel">Benzinga · Contributor</div>
+        <h3 class="research-title">Ticker-level structural assessments. Stability case · caution · shift · watch.</h3>
+        <div class="research-meta">66+ articles · institutional readership</div>
+        <a href="https://www.benzinga.com" class="research-link">Read on Benzinga <span class="arrow">→</span></a>
       </div>
-      <div class="feature-item">
-        <h3>🧮 Calculators</h3>
-        <p>Explore compound growth scenarios.</p>
+      <div class="research-card" data-reveal data-delay="3">
+        <div class="research-channel">Medium · @kjong0626</div>
+        <h3 class="research-title">Narrative essays. Structural thinking made readable for the public.</h3>
+        <div class="research-meta">10 essays published</div>
+        <a href="https://medium.com/@kjong0626" class="research-link">Read on Medium <span class="arrow">→</span></a>
       </div>
-      <div class="feature-item">
-        <h3>💰 Free Access</h3>
-        <p>All content free. Ad-supported.</p>
+      <div class="research-card" data-reveal data-delay="4">
+        <div class="research-channel">GuruFocus · Contributor</div>
+        <h3 class="research-title">Framework-driven equity research for the value investor audience.</h3>
+        <div class="research-meta">Published archive</div>
+        <a href="https://www.gurufocus.com" class="research-link">Read on GuruFocus <span class="arrow">→</span></a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <div class="footer-links">
-        <a href="about.html">About</a>
-        <a href="resources.html">Resources</a>
-        <a href="faq.html">FAQ</a>
-        <a href="glossary.html">Glossary</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="legal.html">Terms & Disclaimer</a>
+<!-- Shieldy Lab -->
+<section id="shieldy" class="shieldy-section">
+  <div class="section-inner">
+    <div class="shieldy-image-wrap" data-reveal>
+      <img src="shieldy.png" alt="Shieldy — DFB Brand Seal" />
     </div>
-    <p class="footer-copy">
-        © 2026 US Market Terminals. All rights reserved.
-    </p>
+    <h2 data-reveal data-delay="1">Shieldy Lab</h2>
+    <p data-reveal data-delay="2">The brand seal of DFB — a small mascot for a serious idea. That structural risk is something every income investor should learn to see, regardless of expertise level.</p>
+    <p data-reveal data-delay="3">Educational explainers, beginner guides, and framework illustrations.</p>
+    <div class="shieldy-coming" data-reveal data-delay="4">Opening · D+30</div>
+  </div>
+</section>
+
+<!-- Reports -->
+<section id="reports" class="reports-section">
+  <div class="section-inner">
+    <div class="section-label" data-reveal>05 · Reports & Library</div>
+    <h2 class="section-title" data-reveal data-delay="1">Free <em>frameworks</em>. Premium <em>diagnostics</em>.</h2>
+
+    <div class="reports-grid">
+      <div data-reveal data-delay="1">
+        <p class="reports-text">DFB publishes free framework guides as a public good — and reserves quarterly structural deep-dives for the Structural Income Desk™ membership.</p>
+        <p class="reports-text" style="margin-bottom: 36px;">All reports are educational research. Not investment advice.</p>
+
+        <div class="bhl-cover-card">
+          <div class="bhl-cover-img">
+            <div class="bhl-cover-tag">DFB · 01</div>
+            <div class="bhl-cover-title">Buffer<br>Half-Life<sup style="font-size:9px;color:#5BA3C9;">™</sup></div>
+            <div class="bhl-cover-foot">Free Guide</div>
+          </div>
+          <div class="bhl-cover-info">
+            <div class="bhl-cover-info-label">Free Guide · Series 01</div>
+            <div class="bhl-cover-info-name">A 5-Minute Guide<br>to Dividend Risk</div>
+            <div class="bhl-cover-info-meta">6 pages · PDF · Email-gated</div>
+            <a href="https://dividendforensics.gumroad.com/l/bhlife" class="bhl-cover-link">Download Free <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+      <div data-reveal data-delay="2">
+        <ul class="reports-list">
+          <li>
+            <span class="report-name">Buffer Half-Life™ — A 5-Minute Guide</span>
+            <span class="report-tag">Free</span>
+          </li>
+          <li>
+            <span class="report-name">Three Clocks™ — Framework Primer</span>
+            <span class="report-tag tag-coming">Coming</span>
+          </li>
+          <li>
+            <span class="report-name">BBB- Cliff™ — Structural Mechanics</span>
+            <span class="report-tag tag-coming">Coming</span>
+          </li>
+          <li>
+            <span class="report-name">Quarterly Deep Dives — Single-Ticker</span>
+            <span class="report-tag">Members</span>
+          </li>
+          <li>
+            <span class="report-name">Structural Income Desk™ — Cadence Notes</span>
+            <span class="report-tag">Members</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reports-cta-row" data-reveal data-delay="2">
+      <a href="https://dividendforensics.gumroad.com/l/bhlife" class="btn">Download Free BHL Guide <span class="arrow">→</span></a>
+      <a href="https://dividendforensics.gumroad.com" class="btn btn-secondary">Visit Library <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="about-section" style="border-top: none;">
+  <div data-reveal>
+    <div class="section-label">06 · About</div>
+    <h2 class="section-title">An independent <em>research bureau</em>.</h2>
+  </div>
+  <div class="about-text" data-reveal data-delay="1">
+    <p><strong>Dividend Forensics Bureau (DFB)</strong> analyzes U.S. income assets through structural frameworks — coverage, buffer, maturity — rather than headlines.</p>
+    <p>Built and operated by <strong>Jeong-Mo Goo (구정모)</strong>, DFB publishes across writing channels (Substack, Benzinga, Medium, GuruFocus) and visual channels (Instagram, Threads, Pinterest), with the Shieldy mascot serving as the visual seal of the framework system.</p>
+    <p>DFB does not sell time. DFB sells the <strong>framework</strong>.</p>
+
+    <div class="signature-block">
+      <strong>Dividend Forensics Bureau</strong><br>
+      Three Clocks™ · Buffer Half-Life™ · BBB- Cliff™<br>
+      Independent structural research · Est. 2026<br>
+      Operator: Jeong-Mo Goo (구정모)
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Dividend Forensics Bureau</div>
+        <p>Independent structural research focused on durability, coverage, and dividend risk for U.S. income portfolios.</p>
+        <div class="footer-tag">Structure &gt; Dividend</div>
+      </div>
+      <div class="footer-col">
+        <h4>Frameworks</h4>
+        <ul>
+          <li><a href="#frameworks">Three Clocks™</a></li>
+          <li><a href="#frameworks">Buffer Half-Life™</a></li>
+          <li><a href="#frameworks">BBB- Cliff™</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Channels</h4>
+        <ul>
+          <li><a href="https://jungmoku.substack.com">Substack</a></li>
+          <li><a href="https://medium.com/@kjong0626">Medium</a></li>
+          <li><a href="https://www.benzinga.com">Benzinga</a></li>
+          <li><a href="https://www.gurufocus.com">GuruFocus</a></li>
+          <li><a href="https://dividendforensics.gumroad.com">Gumroad</a></li>
+          <li><a href="https://ko-fi.com/dividendforensics">Ko-fi</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="legal.html">Legal</a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="#about">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Dividend Forensics Bureau · All Rights Reserved</div>
+      <div>Bureau Est. 2026</div>
+    </div>
+
     <div class="footer-disclaimer">
-        <strong>Disclaimer:</strong> US Market Terminals provides educational content only. Nothing on this site constitutes financial, investment, tax, or legal advice. Market data is provided by third parties and may be delayed or inaccurate. All investments carry risk, including the potential loss of principal. Past performance does not guarantee future results.
+      DFB publishes generalized structural research only. Nothing on this site constitutes investment advice, a recommendation, a solicitation, or an offer to buy or sell any security. All content is for educational and informational purposes only. Past performance does not guarantee future results. All investments carry risk, including the potential loss of principal.
     </div>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3030006828946894" crossorigin="anonymous"></script>
-  </footer>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+})();
+</script>
 
 </body>
 </html>
